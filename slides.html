@@ -2,251 +2,187 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>make-it-heavy: Technical Deep Dive</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "make-it-heavy: Technical Deep Dive"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 100%; min-height: 270mm; background: #ffffff; border: 6px solid #cc0000; padding: 48px 44px 36px; text-align: center; page-break-after: always; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 16px; line-height: 1.5; max-width: 420px; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>promptulate: Practitioner Guide</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "promptulate: Practitioner Guide"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 100%; min-height: 270mm; background: #ffffff; border: 6px solid #cc0000; padding: 48px 44px 36px; text-align: center; page-break-after: always; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 16px; line-height: 1.5; max-width: 420px; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><img class="cover-logo" src="https://onlinepngtools.com/images/examples-onlinepngtools/tiktok-logo.png" alt="make-it-heavy logo" onerror="this.style.display='none'"/><div class="cover-lib-name">make-it-heavy</div><div class="cover-suffix">Technical Deep Dive</div><div class="cover-rule"></div><p class="cover-subtitle">Make it heavy now</p><div class="cover-tagline">Lift heavy always</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 20, 2026 &nbsp;|&nbsp; <strong>Chapters:</strong> 6</div></div>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>What make-it-heavy Is and Why It Matters</h2></div><p class="ch-summary">make-it-heavy emulates Grok heavy</p><div class="ch-body"><p>make-it-heavy is a Python framework designed to emulate Grok heavy functionality using a powerful multi-agent system, built on OpenRouter's API. make-it-heavy delivers comprehensive, multi-perspective analysis through intelligent agent orchestration. make-it-heavy's key features include Grok heavy emulation, parallel intelligence, dynamic question generation, real-time orchestration, hot-swappable tools, intelligent synthesis, and single agent mode. make-it-heavy's architecture consists of an orchestration flow that begins with user input, which is then processed by a question generation agent to create four specialized questions.</p>
-<p>make-it-heavy's question generation agent creates four specialized questions that are executed in parallel by four agents, each with a different analytical perspective, including research, analysis, alternatives, and verification. make-it-heavy's agents are self-contained, with each agent implementing a complete agentic loop that continues working until task completion. make-it-heavy's orchestrator is responsible for dynamic question generation, parallel execution, response synthesis, and error handling.</p>
-<p>make-it-heavy's core components include the agent system, orchestrator, and tool system. make-it-heavy's tool system is designed for auto-discovery, hot-swapping, and standardized interfaces, allowing for easy addition of new tools. make-it-heavy is capable of running four specialized agents simultaneously, providing maximum insight coverage. make-it-heavy features real-time orchestration, allowing for live visual feedback during multi-agent execution.</p>
-<p>make-it-heavy is built using Python 3. 8+, with recommended installation using the uv package manager. make-it-heavy requires an OpenRouter API key for configuration. make-it-heavy can be run in single agent mode or Grok heavy mode, with the latter emulating Grok heavy's deep analysis using four parallel intelligent agents.</p>
-<p>make-it-heavy's key APIs used include the OpenRouter API, which provides the foundation for the framework's multi-agent system.</p>
-<p>make-it-heavy is well-suited for applications where comprehensive, multi-perspective analysis is required, such as research, analysis, and verification tasks. make-it-heavy's performance is capable of running four specialized agents simultaneously, providing maximum insight coverage. make-it-heavy's architecture is designed to provide comprehensive, multi-perspective analysis through intelligent agent orchestration. make-it-heavy's framework is a powerful tool for emulating Grok heavy functionality using a multi-agent system.</p>
-<p>make-it-heavy's multi-agent system is built on OpenRouter's API, which provides the foundation for the framework's architecture. make-it-heavy's agent system is self-contained, with each agent implementing a complete agentic loop that continues working until task completion. make-it-heavy's orchestrator is responsible for dynamic question generation, parallel execution, response synthesis, and error handling. make-it-heavy's tool system is designed for auto-discovery, hot-swapping, and standardized interfaces, allowing for easy addition of new tools.</p>
-<p>make-it-heavy's framework is designed to provide comprehensive, multi-perspective analysis through intelligent agent orchestration. make-it-heavy's key features include Grok heavy emulation, parallel intelligence, dynamic question generation, real-time orchestration, hot-swappable tools, intelligent synthesis, and single agent mode. make-it-heavy's architecture consists of an orchestration flow that begins with user input, which is then processed by a question generation agent to create four specialized questions. make-it-heavy's question generation agent creates four specialized questions that are executed in parallel by four agents, each with a different analytical perspective, including research, analysis, alternatives, and verification.</p>
-<p>make-it-heavy is a powerful framework for emulating Grok heavy functionality using a multi-agent system. make-it-heavy's performance is capable of running four specialized agents simultaneously, providing maximum insight coverage. make-it-heavy's framework is well-suited for applications where comprehensive, multi-perspective analysis is required, such as research, analysis, and verification tasks. make-it-heavy's ease of installation, configuration, and use make it a valuable tool for researchers.</p>
-<p>make-it-heavy's architecture is designed to provide comprehensive, multi-perspective analysis through intelligent agent orchestration. make-it-heavy's multi-agent system is built on OpenRouter's API, which provides the foundation for the framework's architecture.</p>
-<p>make-it-heavy's framework is a powerful tool for emulating Grok heavy functionality using a multi-agent system. make-it-heavy's key features include Grok heavy emulation, parallel intelligence, dynamic question generation, real-time orchestration, hot-swappable tools, intelligent synthesis, and single agent mode. make-it-heavy's architecture consists of an orchestration flow that begins with user input, which is then processed by a question generation agent to create four specialized questions. make-it-heavy's question generation agent creates four specialized questions that are executed in parallel by four agents, each with a different analytical perspective, including research, analysis, alternatives, and verification.</p>
-<p>make-it-heavy's agents are self-contained, with each agent implementing a complete agentic loop that continues working until task completion.</p>
-<p>make-it-heavy's orchestrator is responsible for dynamic question generation, parallel execution, response synthesis, and error handling. make-it-heavy's tool system is designed for auto-discovery, hot-swapping, and standardized interfaces, allowing for easy addition of new tools. make-it-heavy is capable of running four specialized agents simultaneously, providing maximum insight coverage. make-it-heavy features real-time orchestration, allowing for live visual feedback during multi-agent execution.</p>
-<p>make-it-heavy's framework is well-suited for applications where comprehensive, multi-perspective analysis is required, such as research, analysis, and verification tasks.</p><div class="callout">make-it-heavy uses OpenRouter API</div><div class="code-label">Code Sample</div><div class="code-block">import make_it_heavy
-agent = make_it_heavy.Agent()
-agent.start()
-</div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Core Architecture and Key Abstractions</h2></div><p class="ch-summary">make-it-heavy architecture</p><div class="ch-body"><p>Make-it-heavy's core architecture is designed to emulate Grok heavy functionality using a powerful multi-agent system, built on OpenRouter's API, delivering comprehensive, multi-perspective analysis through intelligent agent orchestration. The framework's key features include Grok heavy emulation, parallel intelligence, dynamic question generation, real-time orchestration, hot-swappable tools, intelligent synthesis, and single agent mode. Make-it-heavy's architecture consists of an orchestration flow that begins with user input, which is then processed by a question generation agent to create four specialized questions. These questions are executed in parallel by four agents, each with a different analytical perspective, including research, analysis, alternatives, and verification.</p>
-<p>Make-it-heavy's core components include the agent system, orchestrator, and tool system, with the agent system being self-contained, and each agent implementing a complete agentic loop that continues working until task completion. The orchestrator is responsible for dynamic question generation, parallel execution, response synthesis, and error handling, while the tool system is designed for auto-discovery, hot-swapping, and standardized interfaces, allowing for easy addition of new tools. Make-it-heavy is capable of running four specialized agents simultaneously, providing maximum insight coverage, and features real-time orchestration, allowing for live visual feedback during multi-agent execution. The framework is built using Python 3.</p>
-<p>8+, with recommended installation using the uv package manager, and requires an OpenRouter API key for configuration.</p>
-<p>In terms of performance, make-it-heavy is well-suited for applications where comprehensive, multi-perspective analysis is required, such as research, analysis, and verification tasks, with the framework's ability to provide comprehensive, multi-perspective analysis being particularly valuable. Make-it-heavy can be run in single agent mode or Grok heavy mode, with the latter emulating Grok heavy's deep analysis using four parallel intelligent agents. The framework uses a standardized interface for tool integration, allowing for easy addition of new tools, and key APIs used in make-it-heavy include the OpenRouter API, which provides the foundation for the framework's multi-agent system. Make-it-heavy's architecture and performance make it an attractive solution for applications requiring comprehensive, multi-perspective analysis, with its ease of installation, configuration, and use, making it a valuable tool for researchers.</p>
-<p>Make-it-heavy's agent system is designed to be flexible and scalable, allowing for easy addition of new agents and tools, and the framework's orchestrator is responsible for managing the agent system, and ensuring that the framework's components work together seamlessly. Make-it-heavy's tool system is designed to be modular, allowing for easy addition and removal of tools, and the framework's standardized interface for tool integration makes it easy to add new tools to the framework. Make-it-heavy's real-time orchestration feature allows for live visual feedback during multi-agent execution, and the framework's ability to run four specialized agents simultaneously provides maximum insight coverage.</p>
-<p>Make-it-heavy's architecture is designed to be highly customizable, allowing users to easily modify the framework's components to suit their specific needs, and the framework's use of a standardized interface for tool integration makes it easy to add new tools to the framework. Make-it-heavy's ease of installation, configuration, and use make it a valuable tool for researchers, and the framework's ability to provide comprehensive, multi-perspective analysis makes it a powerful tool for applications where deep analysis is required. Make-it-heavy's performance and scalability make it an attractive solution for large-scale applications, and the framework's flexibility and customizability make it a valuable tool for a wide range of use cases.</p>
-<p>Make-it-heavy's use of the OpenRouter API provides a solid foundation for the framework's multi-agent system, and the framework's use of a standardized interface for tool integration makes it easy to add new tools to the framework. Make-it-heavy's architecture and performance make it a powerful tool for emulating Grok heavy functionality, and the framework's ease of installation, configuration, and use make it a valuable tool for researchers. Make-it-heavy's ability to provide comprehensive, multi-perspective analysis makes it a valuable tool for applications where deep analysis is required, and the framework's flexibility and customizability make it a valuable tool for a wide range of use cases. Make-it-heavy's real-time orchestration feature allows for live visual feedback during multi-agent execution, and the framework's ability to run four specialized agents simultaneously provides maximum insight coverage.</p>
-<p>Make-it-heavy's agent system is designed to be highly scalable, allowing for easy addition of new agents and tools, and the framework's orchestrator is responsible for managing the agent system, and ensuring that the framework's components work together seamlessly. Make-it-heavy's tool system is designed to be modular, allowing for easy addition and removal of tools, and the framework's standardized interface for tool integration makes it easy to add new tools to the framework. Make-it-heavy's architecture and performance make it a powerful tool for applications where comprehensive, multi-perspective analysis is required, and the framework's ease of installation, configuration, and use make it a valuable tool for researchers. Make-it-heavy's ability to provide comprehensive, multi-perspective analysis makes it a valuable tool for applications where deep analysis is required, and the framework's flexibility and customizability make it a valuable tool for a wide range of use cases.</p>
-<p>Make-it-heavy's use of the OpenRouter API provides a solid foundation for the framework's multi-agent system, and the framework's use of a standardized interface for tool integration makes it easy to add new tools to the framework. Make-it-heavy's architecture and performance make it a powerful tool for emulating Grok heavy functionality, and the framework's ease of installation, configuration, and use make it a valuable tool for researchers. Make-it-heavy's ability to provide comprehensive, multi-perspective analysis makes it a valuable tool for applications where deep analysis is required, and the framework's flexibility and customizability make it a valuable tool for a wide range of use cases. Make-it-heavy's real-time orchestration feature allows for live visual feedback during multi-agent execution, and the framework's ability to run four specialized agents simultaneously provides maximum insight coverage.</p>
-<p>Make-it-heavy's architecture is designed to be highly customizable, allowing users to easily modify the framework's components to suit their specific needs, and the framework's use of a standardized interface for tool integration makes it easy to add new tools to the framework.</p><div class="callout">OpenRouter API</div><div class="code-label">Code Sample</div><div class="code-block">import make_it_heavy
-agent = make_it_heavy.Agent()
-agent.start()
+<div class="cover"><img class="cover-logo" src="https://pypi-camo.freetls.fastly.net/b916ddd5724f042fce11e2aefd8338a73174f082/68747470733a2f2f7a65656c616e642d6275636b65742e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f696d616765732f70726f6d7074756c6174655f6c6f676f5f6e65772e706e67" alt="promptulate logo" onerror="this.style.display='none'"/><div class="cover-lib-name">promptulate</div><div class="cover-suffix">Practitioner Guide</div><div class="cover-rule"></div><p class="cover-subtitle">Learn about promptulate</p><div class="cover-tagline">Create with ease</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 20, 2026 &nbsp;|&nbsp; <strong>Chapters:</strong> 6</div></div>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>What promptulate Is and Why It Matters</h2></div><p class="ch-summary">What promptulate Is and Why It Matters overview.</p><div class="ch-body"><p>late is to integrate the wisdom of the open-source community, incorporating the highlights of various development frameworks to lower the barrier to entry and unify the consensus among developers.</p>
+<p>The framework features a Pythonic code style, providing a Pythonic SDK calling approach with a single pne. chat function to encapsulate all essential functionalities. It supports nearly all types of large models on the market, allowing for easy customization to meet specific needs. Promptulate also offers various types of agents, such as WebAgent, ToolAgent, and CodeAgent, capable of planning, reasoning, and acting to handle complex problems.</p>
+<p>The architecture of Promptulate is designed to provide a simple and efficient way to build AI applications, with the core concept of using pne.</p></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Core Architecture and Key Abstractions</h2></div><p class="ch-summary">Core Architecture and Key Abstractions overview.</p><div class="ch-body"><p>he framework features a Pythonic code style, providing a Pythonic SDK calling approach with a single pne. chat function to encapsulate all essential functionalities. It supports nearly all types of large models on the market, allowing for easy customization to meet specific needs. Promptulate also offers various types of agents, such as WebAgent, ToolAgent, and CodeAgent, capable of planning, reasoning, and acting to handle complex problems.</p>
+<p>The architecture of Promptulate is designed to provide a simple and efficient way to build AI applications, with the core concept of using pne. chat() to perform most tasks.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 670.00 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="arch-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 666,-40 666,4 -4,4"/>
+<!-- pne_chat -->
+<g id="arch-node1" class="node">
+<title>pne_chat</title>
+<path fill="#ffffff" stroke="black" d="M47.5,-36C47.5,-36 12,-36 12,-36 6,-36 0,-30 0,-24 0,-24 0,-12 0,-12 0,-6 6,0 12,0 12,0 47.5,0 47.5,0 53.5,0 59.5,-6 59.5,-12 59.5,-12 59.5,-24 59.5,-24 59.5,-30 53.5,-36 47.5,-36"/>
+<text text-anchor="middle" x="29.75" y="-14.5" font-family="Arial" font-size="10.00">pne.chat()</text>
+</g>
+<!-- litellm -->
+<g id="arch-node2" class="node">
+<title>litellm</title>
+<path fill="#ffffff" stroke="black" d="M137.5,-36C137.5,-36 107.5,-36 107.5,-36 101.5,-36 95.5,-30 95.5,-24 95.5,-24 95.5,-12 95.5,-12 95.5,-6 101.5,0 107.5,0 107.5,0 137.5,0 137.5,0 143.5,0 149.5,-6 149.5,-12 149.5,-12 149.5,-24 149.5,-24 149.5,-30 143.5,-36 137.5,-36"/>
+<text text-anchor="middle" x="122.5" y="-14.5" font-family="Arial" font-size="10.00">Litellm</text>
+</g>
+<!-- pne_chat&#45;&gt;litellm -->
+<g id="arch-edge1" class="edge">
+<title>pne_chat&#45;&gt;litellm</title>
+<path fill="none" stroke="#cc0000" d="M59.96,-18C67.55,-18 75.84,-18 83.79,-18"/>
+<polygon fill="#cc0000" stroke="#cc0000" points="83.59,-21.5 93.59,-18 83.59,-14.5 83.59,-21.5"/>
+</g>
+<!-- model_support -->
+<g id="arch-node3" class="node">
+<title>model_support</title>
+<path fill="#ffffff" stroke="black" d="M252.5,-36C252.5,-36 197.5,-36 197.5,-36 191.5,-36 185.5,-30 185.5,-24 185.5,-24 185.5,-12 185.5,-12 185.5,-6 191.5,0 197.5,0 197.5,0 252.5,0 252.5,0 258.5,0 264.5,-6 264.5,-12 264.5,-12 264.5,-24 264.5,-24 264.5,-30 258.5,-36 252.5,-36"/>
+<text text-anchor="middle" x="225" y="-14.5" font-family="Arial" font-size="10.00">Model Support</text>
+</g>
+<!-- litellm&#45;&gt;model_support -->
+<g id="arch-edge2" class="edge">
+<title>litellm&#45;&gt;model_support</title>
+<path fill="none" stroke="#cc0000" d="M149.91,-18C157.34,-18 165.69,-18 174.02,-18"/>
+<polygon fill="#cc0000" stroke="#cc0000" points="173.78,-21.5 183.78,-18 173.78,-14.5 173.78,-21.5"/>
+</g>
+<!-- agent_types -->
+<g id="arch-node4" class="node">
+<title>agent_types</title>
+<path fill="#ffffff" stroke="black" d="M358.5,-36C358.5,-36 312.5,-36 312.5,-36 306.5,-36 300.5,-30 300.5,-24 300.5,-24 300.5,-12 300.5,-12 300.5,-6 306.5,0 312.5,0 312.5,0 358.5,0 358.5,0 364.5,0 370.5,-6 370.5,-12 370.5,-12 370.5,-24 370.5,-24 370.5,-30 364.5,-36 358.5,-36"/>
+<text text-anchor="middle" x="335.5" y="-14.5" font-family="Arial" font-size="10.00">Agent Types</text>
+</g>
+<!-- model_support&#45;&gt;agent_types -->
+<g id="arch-edge3" class="edge">
+<title>model_support&#45;&gt;agent_types</title>
+<path fill="none" stroke="#cc0000" d="M264.86,-18C272.63,-18 280.85,-18 288.81,-18"/>
+<polygon fill="#cc0000" stroke="#cc0000" points="288.71,-21.5 298.71,-18 288.71,-14.5 288.71,-21.5"/>
+</g>
+<!-- caching_mechanism -->
+<g id="arch-node5" class="node">
+<title>caching_mechanism</title>
+<path fill="#ffffff" stroke="black" d="M499.75,-36C499.75,-36 418.5,-36 418.5,-36 412.5,-36 406.5,-30 406.5,-24 406.5,-24 406.5,-12 406.5,-12 406.5,-6 412.5,0 418.5,0 418.5,0 499.75,0 499.75,0 505.75,0 511.75,-6 511.75,-12 511.75,-12 511.75,-24 511.75,-24 511.75,-30 505.75,-36 499.75,-36"/>
+<text text-anchor="middle" x="459.12" y="-14.5" font-family="Arial" font-size="10.00">Caching Mechanism</text>
+</g>
+<!-- agent_types&#45;&gt;caching_mechanism -->
+<g id="arch-edge4" class="edge">
+<title>agent_types&#45;&gt;caching_mechanism</title>
+<path fill="none" stroke="#cc0000" d="M370.7,-18C378.24,-18 386.45,-18 394.73,-18"/>
+<polygon fill="#cc0000" stroke="#cc0000" points="394.49,-21.5 404.49,-18 394.49,-14.5 394.49,-21.5"/>
+</g>
+<!-- lifecycle_management -->
+<g id="arch-node6" class="node">
+<title>lifecycle_management</title>
+<path fill="#ffffff" stroke="black" d="M650,-36C650,-36 559.75,-36 559.75,-36 553.75,-36 547.75,-30 547.75,-24 547.75,-24 547.75,-12 547.75,-12 547.75,-6 553.75,0 559.75,0 559.75,0 650,0 650,0 656,0 662,-6 662,-12 662,-12 662,-24 662,-24 662,-30 656,-36 650,-36"/>
+<text text-anchor="middle" x="604.88" y="-14.5" font-family="Arial" font-size="10.00">Lifecycle Management</text>
+</g>
+<!-- caching_mechanism&#45;&gt;lifecycle_management -->
+<g id="arch-edge5" class="edge">
+<title>caching_mechanism&#45;&gt;lifecycle_management</title>
+<path fill="none" stroke="#cc0000" d="M512.02,-18C519.89,-18 528.11,-18 536.26,-18"/>
+<polygon fill="#cc0000" stroke="#cc0000" points="536.17,-21.5 546.17,-18 536.17,-14.5 536.17,-21.5"/>
+</g>
+</g>
+</svg><p class="diagram-caption">Figure: promptulate internal architecture</p></div></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Getting Started: Install, Configure, Run</h2></div><p class="ch-summary">Install promptulate</p><div class="ch-body"><p>Promptulate is an AI agent application development framework that offers a concise and efficient way to build agent applications through a Pythonic development paradigm. The core philosophy of promptulate is to integrate the wisdom of the open-source community, incorporating the highlights of various development frameworks to lower the barrier to entry and unify the consensus among developers. Promptulate features a Pythonic code style, providing a Pythonic SDK calling approach with a single 'pne. chat' function to encapsulate all essential functionalities.</p>
+<p>The framework supports nearly all types of large models on the market, allowing for easy customization to meet specific needs.</p>
+<p>Promptulate also offers various types of agents, such as WebAgent, ToolAgent, and CodeAgent, capable of planning, reasoning, and acting to handle complex problems. The architecture of promptulate is designed to provide a simple and efficient way to build AI applications, with the core concept of using 'pne. chat()' to perform most tasks. The framework integrates the capabilities of litellm, supporting nearly all types of large models on the market, including models from providers such as OpenAI, Meta, and Google.</p>
+<p>Promptulate has several key APIs, including the 'pne. chat' function, which is used to encapsulate all essential functionalities.</p>
+<p>In terms of performance, promptulate offers a caching mechanism for LLM prompts to reduce repetitive work and enhance development efficiency. The framework also provides a wealth of hooks and comprehensive lifecycle management, allowing the insertion of custom code at various stages of agents, tools, and LLMs. Promptulate is designed for production use cases, with features such as terminal integration, prompt caching, and streamlit component integration. The framework can be used to build a wide range of AI applications, from simple chatbots to complex agent-based systems.</p>
+<p>The latest features of promptulate include its support for diverse agents, low-cost integration, and functions as tools. The framework's architecture is designed to provide a simple and efficient way to build AI applications, with a focus on ease of use and flexibility. Promptulate has several key benefits, including its ability to integrate with other tools and frameworks, such as LangChain, making it a versatile and valuable tool for developers. The framework's Pythonic code style, model compatibility, and diverse agent types make it an ideal choice for developers looking to build AI-powered applications.</p>
+<p>Promptulate can be used to build applications such as virtual assistants, customer service chatbots, and automated reasoning systems. The framework's ability to support nearly all types of large models on the market makes it a powerful tool for developers. Promptulate's caching mechanism for LLM prompts reduces repetitive work and enhances development efficiency, making it a valuable tool for developers. The framework's comprehensive lifecycle management allows for the insertion of custom code at various stages of agents, tools, and LLMs, making it a flexible tool for developers.</p>
+<p>The framework's terminal integration, prompt caching, and streamlit component integration make it a powerful tool for building AI applications. Promptulate's support for diverse agents, low-cost integration, and functions as tools make it a valuable tool for developers. The framework's ability to integrate with other tools and frameworks, such as LangChain, makes it a versatile tool for developers. Promptulate's Pythonic code style, model compatibility, and diverse agent types make it an ideal choice for developers looking to build AI-powered applications.</p>
+<p>Promptulate's architecture is designed to provide a simple and efficient way to build AI applications, with a focus on ease of use and flexibility. The framework's core concept of using 'pne. chat()' to perform most tasks makes it a simple and efficient tool for developers. Promptulate's comprehensive lifecycle management and caching mechanism for LLM prompts make it a powerful tool for developers.</p>
+<p>The framework's ability to support nearly all types of large models on the market makes it a valuable tool for developers.</p>
+<p>Promptulate's latest features include its support for diverse agents, low-cost integration, and functions as tools. The framework's ability to integrate with other tools and frameworks, such as LangChain, makes it a versatile tool for developers. Promptulate's Pythonic code style, model compatibility, and diverse agent types make it an ideal choice for developers looking to build AI-powered applications. The framework's caching mechanism for LLM prompts reduces repetitive work and enhances development efficiency, making it a valuable tool for developers.</p>
+<p>Promptulate can be used to build a wide range of AI applications, from simple chatbots to complex agent-based systems. The framework's ability to support nearly all types of large models on the market makes it a powerful tool for developers. Promptulate's comprehensive lifecycle management and caching mechanism for LLM prompts make it a flexible tool for developers. The framework's terminal integration, prompt caching, and streamlit component integration make it a powerful tool for building AI applications.</p>
+<p>Promptulate's support for diverse agents, low-cost integration, and functions as tools make it a valuable tool for developers. The framework's ability to integrate with other tools and frameworks, such as LangChain, makes it a versatile tool for developers. Promptulate's Pythonic code style, model compatibility, and diverse agent types make it an ideal choice for developers looking to build AI-powered applications. The framework's architecture is designed to provide a simple and efficient way to build AI applications, with a focus on ease of use and flexibility.</p>
+<p>Promptulate is a powerful and flexible framework that provides a simple and efficient way to build AI applications. The framework's core concept of using 'pne. chat()' to perform most tasks makes it a simple and efficient tool for developers. Promptulate's comprehensive lifecycle management and caching mechanism for LLM prompts make it a powerful tool for developers.</p>
+<p>The framework's ability to support nearly all types of large models on the market makes it a valuable tool for developers.</p>
+<p>Promptulate's latest features include its support for diverse agents, low-cost integration, and functions as tools. The framework's ability to integrate with other tools and frameworks, such as LangChain, makes it a versatile tool for developers. Promptulate's Pythonic code style, model compatibility, and diverse agent types make it an ideal choice for developers looking to build AI-powered applications. The framework's caching mechanism for LLM prompts reduces repetitive work and enhances development efficiency, making it a valuable tool for developers.</p>
+<p>Promptulate can be used to build applications such as virtual assistants, customer service chatbots, and automated reasoning systems. The framework's ability to support nearly all types of large models on the market makes it a powerful tool for developers. Promptulate's comprehensive lifecycle management and caching mechanism for LLM prompts make it a flexible tool for developers. The framework's terminal integration, prompt caching, and streamlit component integration make it a powerful tool for building AI applications.</p>
+<p>Promptulate's support for diverse agents, low-cost integration, and functions as tools make it a valuable tool for developers. The framework's ability to integrate with other tools and frameworks, such as LangChain, makes it a versatile tool for developers. Promptulate's Pythonic code style, model compatibility, and diverse agent types make it an ideal choice for developers looking to build AI-powered applications. The framework's architecture is designed to provide a simple and efficient way to build AI applications, with a focus on ease of use and flexibility.</p>
+<p>Promptulate is a powerful and flexible framework that provides a simple and efficient way to build AI applications. The framework's core concept of using 'pne. chat()' to perform most tasks makes it a simple and efficient tool for developers. Promptulate's comprehensive lifecycle management and caching mechanism for LLM prompts make it a powerful tool for developers.</p>
+<p>The framework's ability to support nearly all types of large models on the market makes it a valuable tool for developers.</p><div class="callout">pne.chat()</div><div class="code-label">Code Sample</div><div class="code-block">import promptulate
+from promptulate import pne
+pne.chat('Hello World')
 </div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
-<!-- Title: make_it_heavy Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 493.50 206.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="arch-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 202)">
-<title>make_it_heavy</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-202 489.5,-202 489.5,4 -4,4"/>
-<!-- User_Input -->
-<g id="arch-node1" class="node">
-<title>User_Input</title>
-<path fill="#ffffff" stroke="black" d="M49.75,-117C49.75,-117 12,-117 12,-117 6,-117 0,-111 0,-105 0,-105 0,-93 0,-93 0,-87 6,-81 12,-81 12,-81 49.75,-81 49.75,-81 55.75,-81 61.75,-87 61.75,-93 61.75,-93 61.75,-105 61.75,-105 61.75,-111 55.75,-117 49.75,-117"/>
-<text text-anchor="middle" x="30.88" y="-95.5" font-family="Arial" font-size="10.00">User Input</text>
-</g>
-<!-- Question_Generation -->
-<g id="arch-node2" class="node">
-<title>Question_Generation</title>
-<path fill="#ffffff" stroke="black" d="M218.75,-117C218.75,-117 109.75,-117 109.75,-117 103.75,-117 97.75,-111 97.75,-105 97.75,-105 97.75,-93 97.75,-93 97.75,-87 103.75,-81 109.75,-81 109.75,-81 218.75,-81 218.75,-81 224.75,-81 230.75,-87 230.75,-93 230.75,-93 230.75,-105 230.75,-105 230.75,-111 224.75,-117 218.75,-117"/>
-<text text-anchor="middle" x="164.25" y="-95.5" font-family="Arial" font-size="10.00">Question Generation Agent</text>
-</g>
-<!-- User_Input&#45;&gt;Question_Generation -->
-<g id="arch-edge1" class="edge">
-<title>User_Input&#45;&gt;Question_Generation</title>
-<path fill="none" stroke="#cc0000" d="M62.02,-99C69.39,-99 77.62,-99 86.11,-99"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="85.87,-102.5 95.87,-99 85.87,-95.5 85.87,-102.5"/>
-</g>
-<!-- Research_Agent -->
-<g id="arch-node3" class="node">
-<title>Research_Agent</title>
-<path fill="#ffffff" stroke="black" d="M345.38,-198C345.38,-198 283.62,-198 283.62,-198 277.62,-198 271.62,-192 271.62,-186 271.62,-186 271.62,-174 271.62,-174 271.62,-168 277.62,-162 283.62,-162 283.62,-162 345.38,-162 345.38,-162 351.38,-162 357.38,-168 357.38,-174 357.38,-174 357.38,-186 357.38,-186 357.38,-192 351.38,-198 345.38,-198"/>
-<text text-anchor="middle" x="314.5" y="-176.5" font-family="Arial" font-size="10.00">Research Agent</text>
-</g>
-<!-- Question_Generation&#45;&gt;Research_Agent -->
-<g id="arch-edge2" class="edge">
-<title>Question_Generation&#45;&gt;Research_Agent</title>
-<path fill="none" stroke="#cc0000" d="M198.89,-117.38C219.86,-128.84 247.05,-143.7 269.69,-156.07"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="267.95,-159.1 278.41,-160.83 271.31,-152.96 267.95,-159.1"/>
-</g>
-<!-- Analysis_Agent -->
-<g id="arch-node4" class="node">
-<title>Analysis_Agent</title>
-<path fill="#ffffff" stroke="black" d="M343.12,-144C343.12,-144 285.88,-144 285.88,-144 279.88,-144 273.88,-138 273.88,-132 273.88,-132 273.88,-120 273.88,-120 273.88,-114 279.88,-108 285.88,-108 285.88,-108 343.12,-108 343.12,-108 349.12,-108 355.12,-114 355.12,-120 355.12,-120 355.12,-132 355.12,-132 355.12,-138 349.12,-144 343.12,-144"/>
-<text text-anchor="middle" x="314.5" y="-122.5" font-family="Arial" font-size="10.00">Analysis Agent</text>
-</g>
-<!-- Question_Generation&#45;&gt;Analysis_Agent -->
-<g id="arch-edge3" class="edge">
-<title>Question_Generation&#45;&gt;Analysis_Agent</title>
-<path fill="none" stroke="#cc0000" d="M231.14,-111C241.7,-112.92 252.49,-114.89 262.63,-116.74"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="261.81,-120.14 272.27,-118.49 263.06,-113.26 261.81,-120.14"/>
-</g>
-<!-- Alternatives_Agent -->
-<g id="arch-node5" class="node">
-<title>Alternatives_Agent</title>
-<path fill="#ffffff" stroke="black" d="M350.25,-90C350.25,-90 278.75,-90 278.75,-90 272.75,-90 266.75,-84 266.75,-78 266.75,-78 266.75,-66 266.75,-66 266.75,-60 272.75,-54 278.75,-54 278.75,-54 350.25,-54 350.25,-54 356.25,-54 362.25,-60 362.25,-66 362.25,-66 362.25,-78 362.25,-78 362.25,-84 356.25,-90 350.25,-90"/>
-<text text-anchor="middle" x="314.5" y="-68.5" font-family="Arial" font-size="10.00">Alternatives Agent</text>
-</g>
-<!-- Question_Generation&#45;&gt;Alternatives_Agent -->
-<g id="arch-edge4" class="edge">
-<title>Question_Generation&#45;&gt;Alternatives_Agent</title>
-<path fill="none" stroke="#cc0000" d="M231.14,-87C239.14,-85.54 247.27,-84.06 255.15,-82.63"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="255.78,-86.07 264.99,-80.84 254.52,-79.18 255.78,-86.07"/>
-</g>
-<!-- Verification_Agent -->
-<g id="arch-node6" class="node">
-<title>Verification_Agent</title>
-<path fill="#ffffff" stroke="black" d="M348.38,-36C348.38,-36 280.62,-36 280.62,-36 274.62,-36 268.62,-30 268.62,-24 268.62,-24 268.62,-12 268.62,-12 268.62,-6 274.62,0 280.62,0 280.62,0 348.38,0 348.38,0 354.38,0 360.38,-6 360.38,-12 360.38,-12 360.38,-24 360.38,-24 360.38,-30 354.38,-36 348.38,-36"/>
-<text text-anchor="middle" x="314.5" y="-14.5" font-family="Arial" font-size="10.00">Verification Agent</text>
-</g>
-<!-- Question_Generation&#45;&gt;Verification_Agent -->
-<g id="arch-edge5" class="edge">
-<title>Question_Generation&#45;&gt;Verification_Agent</title>
-<path fill="none" stroke="#cc0000" d="M198.89,-80.62C219.86,-69.16 247.05,-54.3 269.69,-41.93"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="271.31,-45.04 278.41,-37.17 267.95,-38.9 271.31,-45.04"/>
-</g>
-<!-- Synthesis_Agent -->
-<g id="arch-node7" class="node">
-<title>Synthesis_Agent</title>
-<path fill="#ffffff" stroke="black" d="M473.5,-117C473.5,-117 410.25,-117 410.25,-117 404.25,-117 398.25,-111 398.25,-105 398.25,-105 398.25,-93 398.25,-93 398.25,-87 404.25,-81 410.25,-81 410.25,-81 473.5,-81 473.5,-81 479.5,-81 485.5,-87 485.5,-93 485.5,-93 485.5,-105 485.5,-105 485.5,-111 479.5,-117 473.5,-117"/>
-<text text-anchor="middle" x="441.88" y="-95.5" font-family="Arial" font-size="10.00">Synthesis Agent</text>
-</g>
-<!-- Research_Agent&#45;&gt;Synthesis_Agent -->
-<g id="arch-edge6" class="edge">
-<title>Research_Agent&#45;&gt;Synthesis_Agent</title>
-<path fill="none" stroke="#cc0000" d="M348.14,-161.59C352.91,-158.77 357.73,-155.85 362.25,-153 376.79,-143.83 392.46,-133.22 405.96,-123.84"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="407.93,-126.73 414.12,-118.14 403.92,-121 407.93,-126.73"/>
-</g>
-<!-- Analysis_Agent&#45;&gt;Synthesis_Agent -->
-<g id="arch-edge7" class="edge">
-<title>Analysis_Agent&#45;&gt;Synthesis_Agent</title>
-<path fill="none" stroke="#cc0000" d="M355.51,-117.38C365.41,-115.25 376.17,-112.93 386.62,-110.68"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="387.26,-114.13 396.3,-108.6 385.78,-107.28 387.26,-114.13"/>
-</g>
-<!-- Alternatives_Agent&#45;&gt;Synthesis_Agent -->
-<g id="arch-edge8" class="edge">
-<title>Alternatives_Agent&#45;&gt;Synthesis_Agent</title>
-<path fill="none" stroke="#cc0000" d="M362.54,-82.13C370.48,-83.84 378.77,-85.62 386.86,-87.37"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="386.12,-90.79 396.64,-89.47 387.6,-83.95 386.12,-90.79"/>
-</g>
-<!-- Verification_Agent&#45;&gt;Synthesis_Agent -->
-<g id="arch-edge9" class="edge">
-<title>Verification_Agent&#45;&gt;Synthesis_Agent</title>
-<path fill="none" stroke="#cc0000" d="M348.14,-36.41C352.91,-39.23 357.73,-42.15 362.25,-45 376.79,-54.17 392.46,-64.78 405.96,-74.16"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="403.92,-77 414.12,-79.86 407.93,-71.27 403.92,-77"/>
-</g>
-</g>
-</svg><p class="diagram-caption">Figure: make-it-heavy internal architecture</p></div></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Getting Started: Install, Configure, Run</h2></div><p class="ch-summary">Make-it-heavy installation guide</p><div class="ch-body"><p>Make-it-heavy is a Python framework designed to emulate Grok heavy functionality using a powerful multi-agent system, built on OpenRouter's API, and can be installed using the uv package manager. The framework requires an OpenRouter API key for configuration, which is used to authenticate and authorize the framework's access to the OpenRouter API. Make-it-heavy can be run in single agent mode or Grok heavy mode, with the latter emulating Grok heavy's deep analysis using four parallel intelligent agents. The framework's architecture consists of an orchestration flow that begins with user input, which is then processed by a question generation agent to create four specialized questions.</p>
-<p>Make-it-heavy's key features include Grok heavy emulation, parallel intelligence, dynamic question generation, real-time orchestration, hot-swappable tools, intelligent synthesis, and single agent mode. The framework delivers comprehensive, multi-perspective analysis through intelligent agent orchestration, making it an attractive solution for applications requiring comprehensive analysis. Make-it-heavy is built using Python 3. 8+, and its core components include the agent system, orchestrator, and tool system.</p>
-<p>The agent system is self-contained, with each agent implementing a complete agentic loop that continues working until task completion.</p>
-<p>The orchestrator is responsible for dynamic question generation, parallel execution, response synthesis, and error handling, while the tool system is designed for auto-discovery, hot-swapping, and standardized interfaces, allowing for easy addition of new tools. Make-it-heavy is capable of running four specialized agents simultaneously, providing maximum insight coverage, and features real-time orchestration, allowing for live visual feedback during multi-agent execution. The framework's performance is optimized for production use cases, including research, analysis, and verification tasks, where the framework's ability to provide comprehensive, multi-perspective analysis is particularly valuable. Make-it-heavy's architecture is designed to be scalable and flexible, allowing for easy integration with new tools and agents.</p>
-<p>Make-it-heavy's tool system is designed to be extensible, with a standardized interface for tool integration, allowing for easy addition of new tools. The framework uses the OpenRouter API, which provides the foundation for the framework's multi-agent system, and is well-suited for applications where comprehensive, multi-perspective analysis is required. Make-it-heavy's key APIs include the OpenRouter API, and the framework's performance is optimized for production use cases, including research, analysis, and verification tasks. The framework's real-time orchestration feature allows for live visual feedback during multi-agent execution, making it an attractive solution for applications requiring comprehensive analysis.</p>
-<p>Make-it-heavy's single agent mode allows for testing and debugging of individual agents, while the Grok heavy mode emulates Grok heavy's deep analysis using four parallel intelligent agents. The framework's dynamic question generation feature allows for automatic generation of questions based on user input, and the intelligent synthesis feature allows for automatic synthesis of responses from multiple agents. Make-it-heavy's hot-swappable tools feature allows for easy addition and removal of tools, without requiring changes to the framework's code. The framework's standardized interface for tool integration allows for easy addition of new tools, making it an attractive solution for applications requiring comprehensive analysis.</p>
-<p>Make-it-heavy's performance is optimized for production use cases, including research, analysis, and verification tasks, where the framework's ability to provide comprehensive, multi-perspective analysis is particularly valuable. The framework's architecture is designed to be scalable and flexible, allowing for easy integration with new tools and agents. Make-it-heavy's core components include the agent system, orchestrator, and tool system, which work together to provide comprehensive, multi-perspective analysis. The framework's key features, architecture, and performance make it an attractive solution for applications requiring comprehensive analysis.</p>
-<p>Make-it-heavy is a powerful framework for emulating Grok heavy functionality using a multi-agent system, and its ease of installation, configuration, and use make it a valuable tool for researchers and analysts. The framework's documentation provides detailed instructions for installation, configuration, and use, and the framework's community provides support and resources for users. Make-it-heavy's performance is optimized for production use cases, and the framework's architecture is designed to be scalable and flexible, allowing for easy integration with new tools and agents. The framework's key APIs include the OpenRouter API, and the framework's tool system is designed to be extensible, with a standardized interface for tool integration.</p>
-<p>Make-it-heavy's real-time orchestration feature allows for live visual feedback during multi-agent execution, and the framework's dynamic question generation feature allows for automatic generation of questions based on user input. The framework's intelligent synthesis feature allows for automatic synthesis of responses from multiple agents, and the framework's hot-swappable tools feature allows for easy addition and removal of tools, without requiring changes to the framework's code. Make-it-heavy's performance is optimized for production use cases, including research, analysis, and verification tasks, where the framework's ability to provide comprehensive, multi-perspective analysis is particularly valuable. The framework's architecture is designed to be scalable and flexible, allowing for easy integration with new tools and agents, and the framework's core components include the agent system, orchestrator, and tool system, which work together to provide comprehensive, multi-perspective analysis.</p>
-<p>Make-it-heavy's key features, architecture, and performance make it an attractive solution for applications requiring comprehensive analysis, and the framework's ease of installation, configuration, and use make it a valuable tool for researchers and analysts. The framework's documentation provides detailed instructions for installation, configuration, and use, and the framework's community provides support and resources for users. Make-it-heavy is a powerful framework for emulating Grok heavy functionality using a multi-agent system, and its performance is optimized for production use cases, including research, analysis, and verification tasks, where the framework's ability to provide comprehensive, multi-perspective analysis is particularly valuable.</p><div class="callout">4 parallel intelligent agents</div><div class="code-label">Code Sample</div><div class="code-block">import make_it_heavy
-agent = make_it_heavy.Agent()
-agent.run()</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
- -->
-<!-- Title: make_it_heavy_pipeline Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 390.50 206.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="pipeline-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 202)">
-<title>make_it_heavy_pipeline</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-202 386.5,-202 386.5,4 -4,4"/>
-<!-- User_Input -->
+<!-- Title: G Pages: 1 -->
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 542.50 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="pipeline-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 538.5,-40 538.5,4 -4,4"/>
+<!-- user_input -->
 <g id="pipeline-node1" class="node">
-<title>User_Input</title>
-<path fill="#ffffff" stroke="black" d="M49.75,-117C49.75,-117 12,-117 12,-117 6,-117 0,-111 0,-105 0,-105 0,-93 0,-93 0,-87 6,-81 12,-81 12,-81 49.75,-81 49.75,-81 55.75,-81 61.75,-87 61.75,-93 61.75,-93 61.75,-105 61.75,-105 61.75,-111 55.75,-117 49.75,-117"/>
-<text text-anchor="middle" x="30.88" y="-95.5" font-family="Arial" font-size="10.00">User Input</text>
+<title>user_input</title>
+<path fill="#ffffff" stroke="black" d="M49.75,-36C49.75,-36 12,-36 12,-36 6,-36 0,-30 0,-24 0,-24 0,-12 0,-12 0,-6 6,0 12,0 12,0 49.75,0 49.75,0 55.75,0 61.75,-6 61.75,-12 61.75,-12 61.75,-24 61.75,-24 61.75,-30 55.75,-36 49.75,-36"/>
+<text text-anchor="middle" x="30.88" y="-14.5" font-family="Arial" font-size="10.00">User Input</text>
 </g>
-<!-- Make_It_Heavy -->
+<!-- pne_chat -->
 <g id="pipeline-node2" class="node">
-<title>Make_It_Heavy</title>
-<path fill="#ffffff" stroke="black" d="M218,-117C218,-117 109.75,-117 109.75,-117 103.75,-117 97.75,-111 97.75,-105 97.75,-105 97.75,-93 97.75,-93 97.75,-87 103.75,-81 109.75,-81 109.75,-81 218,-81 218,-81 224,-81 230,-87 230,-93 230,-93 230,-105 230,-105 230,-111 224,-117 218,-117"/>
-<text text-anchor="middle" x="163.88" y="-95.5" font-family="Arial" font-size="10.00">Make&#45;It&#45;Heavy Framework</text>
+<title>pne_chat</title>
+<path fill="#ffffff" stroke="black" d="M145.25,-36C145.25,-36 109.75,-36 109.75,-36 103.75,-36 97.75,-30 97.75,-24 97.75,-24 97.75,-12 97.75,-12 97.75,-6 103.75,0 109.75,0 109.75,0 145.25,0 145.25,0 151.25,0 157.25,-6 157.25,-12 157.25,-12 157.25,-24 157.25,-24 157.25,-30 151.25,-36 145.25,-36"/>
+<text text-anchor="middle" x="127.5" y="-14.5" font-family="Arial" font-size="10.00">pne.chat()</text>
 </g>
-<!-- User_Input&#45;&gt;Make_It_Heavy -->
+<!-- user_input&#45;&gt;pne_chat -->
 <g id="pipeline-edge1" class="edge">
-<title>User_Input&#45;&gt;Make_It_Heavy</title>
-<path fill="none" stroke="#cc0000" d="M61.93,-99C69.33,-99 77.61,-99 86.14,-99"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="85.94,-102.5 95.94,-99 85.94,-95.5 85.94,-102.5"/>
+<title>user_input&#45;&gt;pne_chat</title>
+<path fill="none" stroke="#cc0000" d="M62.08,-18C69.71,-18 78.02,-18 86.07,-18"/>
+<polygon fill="#cc0000" stroke="#cc0000" points="86.04,-21.5 96.04,-18 86.04,-14.5 86.04,-21.5"/>
 </g>
-<!-- OpenRouter_API -->
+<!-- model_inference -->
 <g id="pipeline-node3" class="node">
-<title>OpenRouter_API</title>
-<path fill="#ffffff" stroke="black" d="M355.88,-198C355.88,-198 292.62,-198 292.62,-198 286.62,-198 280.62,-192 280.62,-186 280.62,-186 280.62,-174 280.62,-174 280.62,-168 286.62,-162 292.62,-162 292.62,-162 355.88,-162 355.88,-162 361.88,-162 367.88,-168 367.88,-174 367.88,-174 367.88,-186 367.88,-186 367.88,-192 361.88,-198 355.88,-198"/>
-<text text-anchor="middle" x="324.25" y="-176.5" font-family="Arial" font-size="10.00">OpenRouter API</text>
+<title>model_inference</title>
+<path fill="#ffffff" stroke="black" d="M267,-36C267,-36 205.25,-36 205.25,-36 199.25,-36 193.25,-30 193.25,-24 193.25,-24 193.25,-12 193.25,-12 193.25,-6 199.25,0 205.25,0 205.25,0 267,0 267,0 273,0 279,-6 279,-12 279,-12 279,-24 279,-24 279,-30 273,-36 267,-36"/>
+<text text-anchor="middle" x="236.12" y="-14.5" font-family="Arial" font-size="10.00">Model Inference</text>
 </g>
-<!-- Make_It_Heavy&#45;&gt;OpenRouter_API -->
+<!-- pne_chat&#45;&gt;model_inference -->
 <g id="pipeline-edge2" class="edge">
-<title>Make_It_Heavy&#45;&gt;OpenRouter_API</title>
-<path fill="none" stroke="#cc0000" d="M198.36,-117.42C217.95,-128.06 243.24,-141.56 266,-153 268.36,-154.19 270.78,-155.39 273.24,-156.59"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="271.51,-159.64 282.04,-160.86 274.56,-153.35 271.51,-159.64"/>
+<title>pne_chat&#45;&gt;model_inference</title>
+<path fill="none" stroke="#cc0000" d="M157.64,-18C165.01,-18 173.17,-18 181.35,-18"/>
+<polygon fill="#cc0000" stroke="#cc0000" points="181.32,-21.5 191.32,-18 181.32,-14.5 181.32,-21.5"/>
 </g>
-<!-- Research_Database -->
+<!-- agent_execution -->
 <g id="pipeline-node4" class="node">
-<title>Research_Database</title>
-<path fill="#ffffff" stroke="black" d="M363.75,-144C363.75,-144 284.75,-144 284.75,-144 278.75,-144 272.75,-138 272.75,-132 272.75,-132 272.75,-120 272.75,-120 272.75,-114 278.75,-108 284.75,-108 284.75,-108 363.75,-108 363.75,-108 369.75,-108 375.75,-114 375.75,-120 375.75,-120 375.75,-132 375.75,-132 375.75,-138 369.75,-144 363.75,-144"/>
-<text text-anchor="middle" x="324.25" y="-122.5" font-family="Arial" font-size="10.00">Research Database</text>
+<title>agent_execution</title>
+<path fill="#ffffff" stroke="black" d="M391,-36C391,-36 327,-36 327,-36 321,-36 315,-30 315,-24 315,-24 315,-12 315,-12 315,-6 321,0 327,0 327,0 391,0 391,0 397,0 403,-6 403,-12 403,-12 403,-24 403,-24 403,-30 397,-36 391,-36"/>
+<text text-anchor="middle" x="359" y="-14.5" font-family="Arial" font-size="10.00">Agent Execution</text>
 </g>
-<!-- Make_It_Heavy&#45;&gt;Research_Database -->
+<!-- model_inference&#45;&gt;agent_execution -->
 <g id="pipeline-edge3" class="edge">
-<title>Make_It_Heavy&#45;&gt;Research_Database</title>
-<path fill="none" stroke="#cc0000" d="M230.21,-103.48C240.59,-105.11 251.31,-106.96 261.61,-108.89"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="260.62,-112.26 271.1,-110.73 261.95,-105.39 260.62,-112.26"/>
+<title>model_inference&#45;&gt;agent_execution</title>
+<path fill="none" stroke="#cc0000" d="M279.4,-18C287.18,-18 295.39,-18 303.46,-18"/>
+<polygon fill="#cc0000" stroke="#cc0000" points="303.21,-21.5 313.21,-18 303.21,-14.5 303.21,-21.5"/>
 </g>
-<!-- Analysis_Tools -->
+<!-- output_generation -->
 <g id="pipeline-node5" class="node">
-<title>Analysis_Tools</title>
-<path fill="#ffffff" stroke="black" d="M351.75,-90C351.75,-90 296.75,-90 296.75,-90 290.75,-90 284.75,-84 284.75,-78 284.75,-78 284.75,-66 284.75,-66 284.75,-60 290.75,-54 296.75,-54 296.75,-54 351.75,-54 351.75,-54 357.75,-54 363.75,-60 363.75,-66 363.75,-66 363.75,-78 363.75,-78 363.75,-84 357.75,-90 351.75,-90"/>
-<text text-anchor="middle" x="324.25" y="-68.5" font-family="Arial" font-size="10.00">Analysis Tools</text>
+<title>output_generation</title>
+<path fill="#ffffff" stroke="black" d="M522.5,-36C522.5,-36 451,-36 451,-36 445,-36 439,-30 439,-24 439,-24 439,-12 439,-12 439,-6 445,0 451,0 451,0 522.5,0 522.5,0 528.5,0 534.5,-6 534.5,-12 534.5,-12 534.5,-24 534.5,-24 534.5,-30 528.5,-36 522.5,-36"/>
+<text text-anchor="middle" x="486.75" y="-14.5" font-family="Arial" font-size="10.00">Output Generation</text>
 </g>
-<!-- Make_It_Heavy&#45;&gt;Analysis_Tools -->
+<!-- agent_execution&#45;&gt;output_generation -->
 <g id="pipeline-edge4" class="edge">
-<title>Make_It_Heavy&#45;&gt;Analysis_Tools</title>
-<path fill="none" stroke="#cc0000" d="M230.21,-81.2C244.59,-78.56 259.59,-76.11 273.25,-74.2"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="273.41,-77.71 282.87,-72.92 272.49,-70.77 273.41,-77.71"/>
-</g>
-<!-- Output -->
-<g id="pipeline-node6" class="node">
-<title>Output</title>
-<path fill="#ffffff" stroke="black" d="M370.5,-36C370.5,-36 278,-36 278,-36 272,-36 266,-30 266,-24 266,-24 266,-12 266,-12 266,-6 272,0 278,0 278,0 370.5,0 370.5,0 376.5,0 382.5,-6 382.5,-12 382.5,-12 382.5,-24 382.5,-24 382.5,-30 376.5,-36 370.5,-36"/>
-<text text-anchor="middle" x="324.25" y="-14.5" font-family="Arial" font-size="10.00">Comprehensive Output</text>
-</g>
-<!-- Make_It_Heavy&#45;&gt;Output -->
-<g id="pipeline-edge7" class="edge">
-<title>Make_It_Heavy&#45;&gt;Output</title>
-<path fill="none" stroke="#cc0000" d="M198.36,-80.58C217.95,-69.94 243.24,-56.44 266,-45 268.36,-43.81 270.78,-42.61 273.24,-41.41"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="274.56,-44.65 282.04,-37.14 271.51,-38.36 274.56,-44.65"/>
-</g>
-<!-- Research_Database&#45;&gt;Make_It_Heavy -->
-<g id="pipeline-edge5" class="edge">
-<title>Research_Database&#45;&gt;Make_It_Heavy</title>
-<path fill="none" stroke="#cc0000" d="M272.58,-123.71C262.58,-122.3 251.87,-120.61 241.24,-118.76"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="242.16,-115.37 231.7,-117.06 240.93,-122.26 242.16,-115.37"/>
-</g>
-<!-- Analysis_Tools&#45;&gt;Make_It_Heavy -->
-<g id="pipeline-edge6" class="edge">
-<title>Analysis_Tools&#45;&gt;Make_It_Heavy</title>
-<path fill="none" stroke="#cc0000" d="M284.37,-84.53C271.36,-87.35 256.38,-90.18 241.51,-92.68"/>
-<polygon fill="#cc0000" stroke="#cc0000" points="241.01,-89.22 231.7,-94.28 242.13,-96.13 241.01,-89.22"/>
+<title>agent_execution&#45;&gt;output_generation</title>
+<path fill="none" stroke="#cc0000" d="M403.28,-18C411,-18 419.17,-18 427.24,-18"/>
+<polygon fill="#cc0000" stroke="#cc0000" points="427.01,-21.5 437.01,-18 427.01,-14.5 427.01,-21.5"/>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: Typical make-it-heavy usage pipeline</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Real-World Integration Patterns</h2></div><p class="ch-summary">Real-World Integration Patterns overview.</p><div class="ch-body"><p>tputs from these agents are then synthesized into a comprehensive final answer by a synthesis agent.</p>
-<p>The core components of make-it-heavy include the agent system, orchestrator, and tool system. The agent system is self-contained, with each agent implementing a complete agentic loop that continues working until task completion. The orchestrator is responsible for dynamic question generation, parallel execution, response synthesis, and error handling. The tool system is designed for auto-discovery, hot-swapping, and standardized interfaces, allowing for easy addition of new tools.</p>
-<p>In terms of performance, make-it-heavy is capable of running four specialized agents simultaneously, providing maximum insight coverage.</p><div class="sec-heading">make-it-heavy — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Grok Heavy Emulation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Parallel Intelligence</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Dynamic Question Generation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Real-time Orchestration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Hot-swappable Tools</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Intelligent Synthesis</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div></div><div class="sec-heading">make-it-heavy — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Multi-agent System</td><td>4 specialized agents</td><td>Parallel execution for comprehensive analysis</td></tr><tr><td>Agent Orchestration</td><td>Real-time</td><td>Dynamic question generation and response synthesis</td></tr><tr><td>Tool System</td><td>Hot-swappable</td><td>Auto-discovery and standardized interfaces</td></tr><tr><td>Programming Language</td><td>Python 3.8+</td><td>Recommended installation using uv package manager</td></tr><tr><td>API Dependency</td><td>OpenRouter API</td><td>Required for framework functionality</td></tr><tr><td>Single Agent Mode</td><td>Supported</td><td>Optional mode for simplified analysis</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Production Issues, Limits and Workarounds</h2></div><p class="ch-summary">Production Issues, Limits and Workarounds overview.</p><div class="ch-body"><p>agent system is self-contained, with each agent implementing a complete agentic loop that continues working until task completion. The orchestrator is responsible for dynamic question generation, parallel execution, response synthesis, and error handling. The tool system is designed for auto-discovery, hot-swapping, and standardized interfaces, allowing for easy addition of new tools.</p>
-<p>In terms of performance, make-it-heavy is capable of running four specialized agents simultaneously, providing maximum insight coverage. The framework also features real-time orchestration, allowing for live visual feedback during multi-agent execution.</p></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Performance, Scaling and What Comes Next</h2></div><p class="ch-summary">Performance, Scaling and What Comes Next overview.</p><div class="ch-body"><p>llel execution, response synthesis, and error handling. The tool system is designed for auto-discovery, hot-swapping, and standardized interfaces, allowing for easy addition of new tools.</p>
-<p>In terms of performance, make-it-heavy is capable of running four specialized agents simultaneously, providing maximum insight coverage. The framework also features real-time orchestration, allowing for live visual feedback during multi-agent execution. Production use cases for make-it-heavy include research, analysis, and verification tasks, where the framework's ability to provide comprehensive, multi-perspective analysis is particularly valuable.</p>
-<p>The make-it-heavy framework is built using Python 3. 8+, with recommended installation using the uv package manager.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Guitar Lesson: How To Play Heavy by Collective Soul</div><a class="video-url" href="https://www.youtube.com/watch?v=EY8KscJfJNw">https://www.youtube.com/watch?v=EY8KscJfJNw</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">The Secret to Huge Guitar Tones: Double and Quad Tracking ...</div><a class="video-url" href="https://www.youtube.com/watch?v=A_cWPd82P58">https://www.youtube.com/watch?v=A_cWPd82P58</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">How To Make Hard Techno</div><a class="video-url" href="https://www.youtube.com/watch?v=MVshh-LQiMA">https://www.youtube.com/watch?v=MVshh-LQiMA</a></div></div></section>
-<div class="book-footer"><strong>make-it-heavy: Technical Deep Dive</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 20, 2026</div>
+</svg><p class="diagram-caption">Figure: Typical promptulate usage pipeline</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Real-World Integration Patterns</h2></div><p class="ch-summary">Real-World Integration Patterns overview.</p><div class="ch-body"><p>soning, and acting to handle complex problems.</p>
+<p>The architecture of Promptulate is designed to provide a simple and efficient way to build AI applications, with the core concept of using pne. chat() to perform most tasks. The framework integrates the capabilities of litellm, supporting nearly all types of large models on the market, including models from providers such as OpenAI, Meta, and Google.</p>
+<p>In terms of performance, Promptulate offers a caching mechanism for LLM prompts to reduce repetitive work and enhance development efficiency. The framework also provides a wealth of hooks and comprehensive lifecycle management, allowing the insertion of custom code at various stages of agents, tools, and LLMs.</p>
+<p>Promptulate has several key APIs, including the pne.</p><div class="sec-heading">promptulate — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Use</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Customization Options</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Model Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Development Efficiency</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div></div><div class="sec-heading">promptulate — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Development Paradigm</td><td>Pythonic</td><td>Simple and intuitive code style</td></tr><tr><td>Model Support</td><td>Nearly all large models</td><td>Including OpenAI, Meta, and Google models</td></tr><tr><td>Agent Types</td><td>WebAgent, ToolAgent, CodeAgent</td><td>Capable of planning, reasoning, and acting</td></tr><tr><td>Caching Mechanism</td><td>LLM prompts</td><td>Reduces repetitive work and enhances development efficiency</td></tr><tr><td>Lifecycle Management</td><td>Comprehensive</td><td>Allows insertion of custom code at various stages</td></tr><tr><td>Production Use Cases</td><td>Terminal integration, prompt caching, streamlit component integration</td><td>Designed for real-world applications</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Production Issues, Limits and Workarounds</h2></div><p class="ch-summary">Production Issues, Limits and Workarounds overview.</p><div class="ch-body"><p>to perform most tasks. The framework integrates the capabilities of litellm, supporting nearly all types of large models on the market, including models from providers such as OpenAI, Meta, and Google.</p>
+<p>In terms of performance, Promptulate offers a caching mechanism for LLM prompts to reduce repetitive work and enhance development efficiency. The framework also provides a wealth of hooks and comprehensive lifecycle management, allowing the insertion of custom code at various stages of agents, tools, and LLMs.</p>
+<p>Promptulate has several key APIs, including the pne. chat function, which is used to encapsulate all essential functionalities. The framework also provides a powerful OpenAI wrapper, which simplifies development difficulty and eliminates the need to use the OpenAI SDK.</p>
+<p>The frame</p></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Performance, Scaling and What Comes Next</h2></div><p class="ch-summary">Performance, Scaling and What Comes Next overview.</p><div class="ch-body"><p>.</p>
+<p>In terms of performance, Promptulate offers a caching mechanism for LLM prompts to reduce repetitive work and enhance development efficiency. The framework also provides a wealth of hooks and comprehensive lifecycle management, allowing the insertion of custom code at various stages of agents, tools, and LLMs.</p>
+<p>Promptulate has several key APIs, including the pne. chat function, which is used to encapsulate all essential functionalities. The framework also provides a powerful OpenAI wrapper, which simplifies development difficulty and eliminates the need to use the OpenAI SDK.</p>
+<p>The framework is designed for production use cases, with features such as terminal integration, prompt caching, and streamlit component integration.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Prompt Engineering Guide - From Beginner to Advanced</div><a class="video-url" href="https://www.youtube.com/watch?v=uDIW34h8cmM">https://www.youtube.com/watch?v=uDIW34h8cmM</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Prompt Engineering for Beginners - Tutorial 1 - Introduction to ...</div><a class="video-url" href="https://www.youtube.com/watch?v=GrX4WfT5FI4">https://www.youtube.com/watch?v=GrX4WfT5FI4</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Master Prompt Engineering for Beginners! (7 Essential Tips)</div><a class="video-url" href="https://www.youtube.com/watch?v=qJ8f90aU8qw">https://www.youtube.com/watch?v=qJ8f90aU8qw</a></div></div></section>
+<div class="book-footer"><strong>promptulate: Practitioner Guide</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 20, 2026</div>
 </body>
 </html>
