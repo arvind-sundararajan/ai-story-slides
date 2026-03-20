@@ -2,125 +2,175 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>bisheng: Production Manual</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "bisheng: Production Manual"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>memvid: Field Guide</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "memvid: Field Guide"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/7b99f53d08949889c9d79c61c6310cf38f09377264f0bbc945798a8af8648f72/dataelement/bisheng" alt="bisheng logo" onerror="this.style.display='none'"/><div class="cover-lib-name">bisheng</div><div class="cover-suffix">Production Manual</div><div class="cover-rule"></div><p class="cover-subtitle">Bisheng ancient history</p><p class="cover-desc">Bisheng is an open LLM application devops platform that focuses on enterprise scenarios and has been used by a large number of industry leading organizations and Fortune 500 companies.  The platform features Lingsight, a general-purpose agent with expert-level taste, which is achieved through the Agent Guidance Language framework, embedding domain experts' preferences, experience, and business logic into the AI.  This framework allows for the creation of complex enterprise applications, including document review, fixed-layout report generation, and multi-agent collaboration.</p><div class="cover-tagline">Learn about bisheng</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 20, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Bisheng was created for enterprise AI scenarios.</div><div class="intro-body"><p>Bisheng is an open LLM application devops platform, focusing on enterprise scenarios, and has been used by a large number of industry leading organizations and Fortune 500 companies. The platform features Lingsight, a general-purpose agent with expert-level taste, which is achieved through the Agent Guidance Language framework, embedding domain experts' preferences, experience, and business logic into the AI. This framework allows for the creation of complex enterprise application scenarios, providing a high level of customization and flexibility. Bisheng's unique workflow provides an independent and comprehensive application orchestration framework, enabling the execution of various tasks within a single framework.</p>
-<p>Bisheng's workflow is designed to handle complex scenarios such as multi-type input/output, report generation, content review, and more. The workflow allows for human intervention and feedback during execution, supports loops, parallelism, batch processing, conditional logic, and free combination of all logic components. This level of complexity is made manageable through a user-friendly and intuitive interface, with operations like loops and parallelism easily visualized as a flowchart. The platform's ability to handle complex scenarios and provide deep optimization suggests a high level of performance, making it suitable for a wide range of enterprise applications.</p>
-<p>The platform is designed for enterprise applications, including document review, fixed-layout report generation, multi-agent collaboration, policy update comparison, support ticket assistance, customer service assistance, meeting minutes generation, resume screening, call record analysis, unstructured data governance, knowledge mining, data analysis, and more. Bisheng supports the construction of highly complex enterprise application scenarios and offers deep optimization with hundreds of components and thousands of parameters. The platform provides enterprise-grade features, which are the fundamental guarantee for application implementation. This level of customization and flexibility makes Bisheng a valuable tool for organizations looking to implement AI solutions in their operations.</p>
-<p>The target audience for Bisheng is likely enterprise organizations looking to implement AI solutions in their operations. The platform's focus on enterprise scenarios and its ability to handle complex applications make it a good fit for organizations with complex operational needs. The platform's user-friendly interface and ability to provide deep optimization also make it a good fit for organizations looking to implement AI solutions without requiring a high level of technical expertise. Overall, Bisheng is a powerful tool for organizations looking to implement AI solutions in their operations, and its flexibility and customization options make it a valuable asset for a wide range of industries.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/dataelement/bisheng">https://github.com/dataelement/bisheng</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking Lingsight with Agent Guidance Language</h2></div><p class="ch-summary">Bisheng unlocks Lingsight</p><div class="ch-body"><p>Bisheng is an open LLM application devops platform that focuses on enterprise scenarios and has been used by a large number of industry leading organizations and Fortune 500 companies. The platform features Lingsight, a general-purpose agent with expert-level taste, which is achieved through the Agent Guidance Language framework, embedding domain experts' preferences, experience, and business logic into the AI. This framework allows for the creation of complex enterprise applications, including document review, fixed-layout report generation, and multi-agent collaboration. The Agent Guidance Language framework is a key component of Bisheng, enabling the platform to provide deep optimization with hundreds of components and thousands of parameters.</p>
-<p>Bisheng's unique workflow provides an independent and comprehensive application orchestration framework, enabling the execution of various tasks within a single framework.</p>
-<p>The workflow is user-friendly and intuitive, with operations like loops and parallelism easily visualized as a flowchart, allowing for human intervention and feedback during execution. The platform supports loops, parallelism, batch processing, conditional logic, and free combination of all logic components, and handles complex scenarios such as multi-type input/output, report generation, content review, and more. Bisheng's ability to handle complex scenarios and provide deep optimization suggests a high level of performance, making it a suitable choice for enterprise applications. However, the platform's performance may be limited by the CPU and RAM requirements, which must be at least 4 virtual cores and 16 GB, respectively.</p>
-<p>The Docker version must also be 19. 03. 9 or later, which may be a constraint for some users.</p>
-<p>Bisheng has been used in production by a large number of industry leading organizations and Fortune 500 companies, demonstrating its effectiveness in real-world scenarios. The platform's high-precision document parsing model, trained on a vast amount of high-quality data accumulated over the past 5 years, is a key factor in its success. The model includes high-precision printed text, handwritten text, and rare character recognition models, making it a robust solution for document review and other enterprise applications. However, the platform's limitations, such as the requirement for a minimum of 4 virtual cores and 16 GB of RAM, may make it less suitable for smaller organizations or those with limited resources.</p>
-<p>The Agent Guidance Language framework is a critical component of Bisheng, enabling the embedding of domain experts' preferences and business logic into the AI. This framework allows for the creation of complex enterprise applications, including policy update comparison, support ticket assistance, customer service assistance, meeting minutes generation, resume screening, call record analysis, unstructured data governance, knowledge mining, and data analysis. The platform's ability to support these applications demonstrates its versatility and flexibility, making it a suitable choice for a wide range of enterprise scenarios. However, the platform's complexity may make it challenging for some users to fully utilize its capabilities.</p>
-<p>Bisheng's unique workflow provides an independent and comprehensive application orchestration framework, enabling the execution of various tasks within a single framework. The workflow is user-friendly and intuitive, with operations like loops and parallelism easily visualized as a flowchart, allowing for human intervention and feedback during execution. The platform supports loops, parallelism, batch processing, conditional logic, and free combination of all logic components, and handles complex scenarios such as multi-type input/output, report generation, content review, and more. However, the platform's workflow may be limited by the need for manual intervention and feedback, which may slow down the execution of tasks.</p>
-<p>The platform's high-precision document parsing model is a key factor in its success, with a vast amount of high-quality data accumulated over the past 5 years. The model includes high-precision printed text, handwritten text, and rare character recognition models, making it a robust solution for document review and other enterprise applications. However, the platform's model may not perform well with low-quality or noisy data, which may limit its effectiveness in certain scenarios. The platform's ability to handle complex scenarios and provide deep optimization suggests a high level of performance, making it a suitable choice for enterprise applications.</p>
-<p>Bisheng's emphasis on observability and comprehensive application orchestration makes it a suitable choice for enterprise applications. The platform provides enterprise-grade features, which are the fundamental guarantee for application implementation. The platform's unique workflow and Agent Guidance Language framework enable the creation of complex enterprise applications, including document review, fixed-layout report generation, and multi-agent collaboration. However, the platform's limitations, such as the requirement for a minimum of 4 virtual cores and 16 GB of RAM, may make it less suitable for smaller organizations or those with limited resources.</p>
-<p>In conclusion, Bisheng is a powerful platform for enterprise AI applications, with a unique workflow and Agent Guidance Language framework that enable the creation of complex enterprise applications. The platform's high-precision document parsing model and emphasis on observability and comprehensive application orchestration make it a suitable choice for a wide range of enterprise scenarios. However, the platform's limitations and requirements, such as the need for a minimum of 4 virtual cores and 16 GB of RAM, may make it less suitable for smaller organizations or those with limited resources. The platform's complexity may also make it challenging for some users to fully utilize its capabilities.</p>
-<p>The platform's ability to handle complex scenarios and provide deep optimization suggests a high level of performance, making it a suitable choice for enterprise applications. The Agent Guidance Language framework is a critical component of Bisheng, enabling the embedding of domain experts' preferences and business logic into the AI. The platform's unique workflow provides an independent and comprehensive application orchestration framework, enabling the execution of various tasks within a single framework. However, the platform's limitations and requirements may make it less suitable for certain users, and its complexity may make it challenging to fully utilize its capabilities.</p></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting Workflows with Bisheng's Orchestration Framework</h2></div><p class="ch-summary">Bisheng orchestrates workflows</p><div class="ch-body"><p>Bisheng's workflow provides an independent and comprehensive application orchestration framework, enabling the execution of various tasks within a single framework. This workflow allows for human intervention and feedback during execution, supports loops, parallelism, batch processing, conditional logic, and free combination of all logic components. The workflow is also user-friendly and intuitive, with operations like loops and parallelism easily visualized as a flowchart. Bisheng's workflow is designed to handle complex scenarios such as multi-type input/output, report generation, content review, and more.</p>
-<p>The platform's architecture is based on the Agent Guidance Language framework, which enables the embedding of domain experts' preferences and business logic into the AI.</p>
-<p>Bisheng has been used by a large number of industry leading organizations and Fortune 500 companies, and its performance is suggested to be high due to its ability to handle complex scenarios and provide deep optimization. The platform supports the construction of highly complex enterprise application scenarios and offers deep optimization with hundreds of components and thousands of parameters. Bisheng's workflow is designed to provide enterprise-grade features, which are the fundamental guarantee for application implementation. The platform's unique workflow provides an independent and comprehensive application orchestration framework, enabling the execution of various tasks within a single framework.</p>
-<p>Bisheng's workflow allows for human intervention and feedback during execution, which is essential for enterprise applications.</p>
-<p>The Agent Guidance Language framework is a key component of Bisheng's architecture, enabling the embedding of domain experts' preferences, experience, and business logic into the AI. This framework allows for the creation of a general-purpose agent with expert-level taste, which is essential for enterprise applications. Bisheng's workflow is designed to handle complex scenarios such as multi-type input/output, report generation, content review, and more. The platform's architecture is designed to provide enterprise-grade features, which are the fundamental guarantee for application implementation.</p>
-<p>Bisheng's workflow is user-friendly and intuitive, with operations like loops and parallelism easily visualized as a flowchart.</p>
-<p>Bisheng's platform is designed for enterprise applications, including document review, fixed-layout report generation, multi-agent collaboration, policy update comparison, support ticket assistance, customer service assistance, meeting minutes generation, resume screening, call record analysis, unstructured data governance, knowledge mining, data analysis, and more. The platform supports the construction of highly complex enterprise application scenarios and offers deep optimization with hundreds of components and thousands of parameters. Bisheng's workflow is designed to provide enterprise-grade features, which are the fundamental guarantee for application implementation. The platform's unique workflow provides an independent and comprehensive application orchestration framework, enabling the execution of various tasks within a single framework.</p>
-<p>One limitation of Bisheng is that it requires a significant amount of computational resources, with a minimum of 4 virtual cores and 16 GB of RAM.</p>
-<p>To install Bisheng, the following conditions must be met: CPU must be at least 4 virtual cores, RAM must be at least 16 GB, Docker must be version 19. 03. 9 or later. Bisheng's workflow is designed to handle complex scenarios such as multi-type input/output, report generation, content review, and more.</p>
-<p>The platform's architecture is based on the Agent Guidance Language framework, which enables the embedding of domain experts' preferences and business logic into the AI. Bisheng's workflow allows for human intervention and feedback during execution, which is essential for enterprise applications. The platform's unique workflow provides an independent and comprehensive application orchestration framework, enabling the execution of various tasks within a single framework.</p>
-<p>Bisheng's high-precision document parsing model is trained on a vast amount of high-quality data accumulated over the past 5 years, including high-precision printed text, handwritten text, and rare character recognition models. The platform's workflow is designed to handle complex scenarios such as multi-type input/output, report generation, content review, and more. Bisheng's workflow is user-friendly and intuitive, with operations like loops and parallelism easily visualized as a flowchart. The platform's architecture is designed to provide enterprise-grade features, which are the fundamental guarantee for application implementation.</p>
-<p>One known constraint of Bisheng is that it requires a specific version of Docker, which may limit its compatibility with certain systems.</p>
-<p>Bisheng's workflow is designed to provide enterprise-grade features, which are the fundamental guarantee for application implementation. The platform's unique workflow provides an independent and comprehensive application orchestration framework, enabling the execution of various tasks within a single framework. Bisheng's workflow allows for human intervention and feedback during execution, which is essential for enterprise applications. The platform's architecture is based on the Agent Guidance Language framework, which enables the embedding of domain experts' preferences and business logic into the AI.</p>
-<p>Bisheng's workflow is designed to handle complex scenarios such as multi-type input/output, report generation, content review, and more. The platform's high-precision document parsing model is trained on a vast amount of high-quality data accumulated over the past 5 years.</p>
-<p>Bisheng's platform is designed for enterprise applications, and its workflow is designed to provide enterprise-grade features, which are the fundamental guarantee for application implementation. The platform's unique workflow provides an independent and comprehensive application orchestration framework, enabling the execution of various tasks within a single framework. Bisheng's workflow is designed to handle complex scenarios such as multi-type input/output, report generation, content review, and more. The platform's architecture is based on the Agent Guidance Language framework, which enables the embedding of domain experts' preferences and business logic into the AI.</p>
-<p>One limitation of Bisheng is that it requires significant computational resources and a specific version of Docker, which may limit its compatibility with certain systems.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/8d59e3d7015b48b77fee9fbb50162b2a8400329ef0441dc35dff547ec069cce3/memvid/memvid" alt="memvid logo" onerror="this.style.display='none'"/><div class="cover-lib-name">memvid</div><div class="cover-suffix">Field Guide</div><div class="cover-rule"></div><p class="cover-subtitle">Memvid explained</p><p class="cover-desc">Memvid is a tool for creating and managing knowledge bases.  The Memvid::create method is used to create a new memory file, which can be used to store and retrieve documents with metadata.  The PutOptions class is used to add documents with metadata, such as title, uri, and tags.</p><div class="cover-tagline">Learn memvid</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 20, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Memvid was built by the memvid organization to solve data storage and retrieval problems.</div><div class="intro-body"><p>Memvid is a technology developed by the memvid organization, first released in version 2. 0. It was built to solve the problem of efficiently storing and retrieving large amounts of data, particularly in applications such as long-running AI agents, enterprise knowledge bases, and offline-first AI systems. The core architecture of memvid is based on several key components, including the Living Memory Engine, Capsule Context, Time-Travel Debugging, Smart Recall, and Codec Intelligence.</p>
+<p>These components work together to provide a robust and efficient data storage and retrieval system.</p>
+<p>The technical design of memvid is distinct from alternative solutions due to its use of specific technologies such as Tantivy, ONNX, HNSW, CLIP, and Whisper. For example, the use of Tantivy provides a high-performance indexing system, while ONNX enables the integration of machine learning models. The HNSW algorithm is used for efficient nearest-neighbor search, and CLIP and Whisper provide capabilities for image and audio processing, respectively. These design decisions reflect a focus on providing a flexible and scalable solution for a wide range of applications.</p>
+<p>Memvid is targeted towards developers and organizations building complex AI systems, particularly those requiring efficient data storage and retrieval. The technology is designed to support a variety of use cases, including codebase understanding, customer support agents, workflow automation, and sales and marketing copilots. Additionally, memvid can be used in medical, legal, and financial applications where auditable and debuggable AI workflows are essential. The flexibility and customizability of memvid make it an attractive solution for organizations with unique requirements.</p>
+<p>The memvid technology is accessible through a range of interfaces and tools, including a Rust API and command-line tools. Developers can use the memvid-core library to integrate the technology into their applications, and a range of examples and tutorials are available to demonstrate its use. The memvid organization provides a GitHub repository containing the source code, documentation, and issue tracker, making it easy for developers to contribute to the project and report issues. Overall, memvid provides a powerful and flexible solution for efficient data storage and retrieval in complex AI systems.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/memvid/memvid">https://github.com/memvid/memvid</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking Knowledge with Memvid::create</h2></div><p class="ch-summary">Memvid creates knowledge bases</p><div class="ch-body"><p>Memvid is a tool for creating and managing knowledge bases. The Memvid::create method is used to create a new memory file, which can be used to store and retrieve documents with metadata. The PutOptions class is used to add documents with metadata, such as title, uri, and tags. The Memvid::putbyteswithoptions method is used to add documents with metadata, and the Memvid::commit method is used to commit the changes.</p>
+<p>The Memvid::search method is used to search for documents in the knowledge base.</p>
+<p>The Memvid architecture is based on the Living Memory Engine, Capsule Context, Time-Travel Debugging, Smart Recall, and Codec Intelligence. The memvid-core library is used to create and manage knowledge bases, and it has several features, including lex, vec, and temporaltrack. The version 2. 0 of memvid-core has several improvements and new features.</p>
+<p>The Memvid::search method is used to search for documents in the knowledge base, and it returns a list of hits, which can be filtered and sorted. The SearchRequest class is used to specify the search query, and the topk and snippetchars config keys are used to control the search results. The Memvid::search method is limited by the size of the knowledge base and the complexity of the search query.</p>
+<p>The Memvid library has several limitations, including the lack of support for certain file formats and the limited scalability of the knowledge base. The Memvid::create method does not support the creation of knowledge bases with multiple files, and the Memvid::search method does not support the search of multiple knowledge bases.</p>
+<p>The Memvid library has several use cases, including long-running AI agents, enterprise knowledge bases, and offline-first AI systems. The Memvid::create method is used to create a new knowledge base, and the Memvid::putbyteswithoptions method is used to add documents with metadata. The Memvid::search method is used to search for documents in the knowledge base.</p>
+<p>The Memvid library has several config keys, including version, features, topk, and snippetchars. The version config key is used to specify the version of the memvid-core library, and the features config key is used to specify the features of the library. The topk and snippetchars config keys are used to control the search results.</p>
+<p>The Memvid library has several classes and methods, including Memvid, PutOptions, SearchRequest, Memvid::create, PutOptions::builder, Memvid::putbyteswithoptions, Memvid::commit, and Memvid::search. The Memvid class is used to create and manage knowledge bases, and the PutOptions class is used to add documents with metadata.</p>
+<p>The Memvid library has several dependencies, including Tantivy, ONNX, HNSW, CLIP, and Whisper. The Tantivy library is used for search and indexing, and the ONNX library is used for machine learning. The HNSW library is used for efficient nearest neighbor search, and the CLIP library is used for image and text processing. The Whisper library is used for speech recognition.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 692.81 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1327.01 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 688.81,-40 688.81,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1323.01,-40 1323.01,4 -4,4"/>
 <!-- N0 -->
-<g id="seq-node1" class="node">
+<g id="cluster-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="60.13" cy="-18" rx="60.13" ry="18"/>
-<text text-anchor="middle" x="60.13" y="-14.5" font-family="Arial" font-size="10.00">npm install bisheng</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="51.56" cy="-18" rx="51.56" ry="18"/>
+<text text-anchor="middle" x="51.56" y="-14.5" font-family="Arial" font-size="10.00">Memvid Indexer</text>
 </g>
 <!-- N1 -->
-<g id="seq-node2" class="node">
+<g id="cluster-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="224.03" cy="-18" rx="49.76" ry="18"/>
-<text text-anchor="middle" x="224.03" y="-14.5" font-family="Arial" font-size="10.00">Bisheng Config</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="235.7" cy="-18" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="235.7" y="-14.5" font-family="Arial" font-size="10.00">Indexing Options</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
-<g id="seq-edge1" class="edge">
+<g id="cluster-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M120.5,-18C134.25,-18 148.89,-18 162.68,-18"/>
-<polygon fill="#475569" stroke="#475569" points="162.51,-21.5 172.51,-18 162.51,-14.5 162.51,-21.5"/>
-<text text-anchor="middle" x="147.27" y="-19.95" font-family="Arial" font-size="9.00">then</text>
+<path fill="none" stroke="#475569" d="M103.3,-18C124.09,-18 148.41,-18 170.42,-18"/>
+<polygon fill="#475569" stroke="#475569" points="170.18,-21.5 180.18,-18 170.18,-14.5 170.18,-21.5"/>
+<text text-anchor="middle" x="142.5" y="-19.95" font-family="Arial" font-size="9.00">configures</text>
 </g>
 <!-- N2 -->
-<g id="seq-node3" class="node">
+<g id="cluster-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="415.34" cy="-18" rx="47.05" ry="18"/>
-<text text-anchor="middle" x="415.34" y="-14.5" font-family="Arial" font-size="10.00">bisheng plugin</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="405.58" cy="-18" rx="49.31" ry="18"/>
+<text text-anchor="middle" x="405.58" y="-14.5" font-family="Arial" font-size="10.00">Query Request</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
-<g id="seq-edge2" class="edge">
+<g id="cluster-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M274.27,-18C299.47,-18 330.29,-18 356.6,-18"/>
-<polygon fill="#475569" stroke="#475569" points="356.44,-21.5 366.44,-18 356.44,-14.5 356.44,-21.5"/>
-<text text-anchor="middle" x="321.04" y="-19.95" font-family="Arial" font-size="9.00">register plugin</text>
+<path fill="none" stroke="#475569" d="M289.82,-18C307.15,-18 326.53,-18 344.35,-18"/>
+<polygon fill="#475569" stroke="#475569" points="344.28,-21.5 354.28,-18 344.28,-14.5 344.28,-21.5"/>
+<text text-anchor="middle" x="322.89" y="-19.95" font-family="Arial" font-size="9.00">triggers</text>
 </g>
 <!-- N3 -->
-<g id="seq-node4" class="node">
+<g id="cluster-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="622.73,-36 560.65,-18 622.73,0 684.81,-18 622.73,-36"/>
-<text text-anchor="middle" x="622.73" y="-14.5" font-family="Arial" font-size="10.00">bisheng build</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="622.55,-36 525.39,-18 622.55,0 719.71,-18 622.55,-36"/>
+<text text-anchor="middle" x="622.55" y="-14.5" font-family="Arial" font-size="10.00">Tantivy Search Engine</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
-<g id="seq-edge3" class="edge">
+<g id="cluster-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M462.69,-18C487.86,-18 519.58,-18 548.05,-18"/>
-<polygon fill="#475569" stroke="#475569" points="547.68,-21.5 557.68,-18 547.68,-14.5 547.68,-21.5"/>
-<text text-anchor="middle" x="511.52" y="-19.95" font-family="Arial" font-size="9.00">start dev server</text>
+<path fill="none" stroke="#475569" d="M455.36,-18C472.21,-18 491.84,-18 511.59,-18"/>
+<polygon fill="#475569" stroke="#475569" points="511.36,-21.5 521.36,-18 511.36,-14.5 511.36,-21.5"/>
+<text text-anchor="middle" x="490.14" y="-19.95" font-family="Arial" font-size="9.00">sends to</text>
+</g>
+<!-- N4 -->
+<g id="cluster-node5" class="node">
+<title>N4</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="874.76" cy="-18" rx="44.8" ry="18"/>
+<text text-anchor="middle" x="874.76" y="-14.5" font-family="Arial" font-size="10.00">ONNX Model</text>
+</g>
+<!-- N3&#45;&gt;N4 -->
+<g id="cluster-edge4" class="edge">
+<title>N3&#45;&gt;N4</title>
+<path fill="none" stroke="#475569" d="M722.44,-18C755.09,-18 790.24,-18 818.44,-18"/>
+<polygon fill="#475569" stroke="#475569" points="818.16,-21.5 828.16,-18 818.16,-14.5 818.16,-21.5"/>
+<text text-anchor="middle" x="774.83" y="-19.95" font-family="Arial" font-size="9.00">utilizes for ranking</text>
+</g>
+<!-- N5 -->
+<g id="cluster-node6" class="node">
+<title>N5</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1088.11" cy="-18" rx="44.8" ry="18"/>
+<text text-anchor="middle" x="1088.11" y="-14.5" font-family="Arial" font-size="10.00">HNSW Index</text>
+</g>
+<!-- N4&#45;&gt;N5 -->
+<g id="cluster-edge5" class="edge">
+<title>N4&#45;&gt;N5</title>
+<path fill="none" stroke="#475569" d="M919.81,-18C952.31,-18 996.76,-18 1031.67,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1031.6,-21.5 1041.6,-18 1031.6,-14.5 1031.6,-21.5"/>
+<text text-anchor="middle" x="981.43" y="-19.95" font-family="Arial" font-size="9.00">stores embeddings in</text>
+</g>
+<!-- N6 -->
+<g id="cluster-node7" class="node">
+<title>N6</title>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1261.59" cy="-18" rx="57.43" ry="18"/>
+<text text-anchor="middle" x="1261.59" y="-14.5" font-family="Arial" font-size="10.00">CLIP Embeddings</text>
+</g>
+<!-- N5&#45;&gt;N6 -->
+<g id="cluster-edge6" class="edge">
+<title>N5&#45;&gt;N6</title>
+<path fill="none" stroke="#475569" d="M1133.27,-18C1151.35,-18 1172.69,-18 1192.68,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1192.42,-21.5 1202.42,-18 1192.42,-14.5 1192.42,-21.5"/>
+<text text-anchor="middle" x="1168.53" y="-19.95" font-family="Arial" font-size="9.00">retrieves</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: bisheng integration flow</p></div></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Bisheng with Domain Expert Preferences using Agent Class</h2></div><p class="ch-summary">Bisheng deployment</p><div class="ch-body"><p>Bisheng is an open LLM application devops platform, focusing on enterprise scenarios. The platform features Lingsight, a general-purpose agent with expert-level taste, achieved through the Agent Guidance Language framework. This framework embeds domain experts' preferences, experience, and business logic into the AI. Bisheng has a unique workflow that provides an independent and comprehensive application orchestration framework.</p>
-<p>The workflow allows for human intervention and feedback during execution, supporting loops, parallelism, batch processing, conditional logic, and free combination of all logic components.</p>
-<p>Bisheng supports the construction of highly complex enterprise application scenarios and offers deep optimization with hundreds of components and thousands of parameters. The platform provides enterprise-grade features, which are the fundamental guarantee for application implementation. Bisheng has been used by a large number of industry leading organizations and Fortune 500 companies. The platform is designed for enterprise applications, including document review, fixed-layout report generation, multi-agent collaboration, policy update comparison, support ticket assistance, customer service assistance, meeting minutes generation, resume screening, call record analysis, unstructured data governance, knowledge mining, data analysis, and more.</p>
-<p>To deploy Bisheng, the CPU must be at least 4 virtual cores, RAM must be at least 16 GB, and Docker must be version 19. 03. 9 or later. The platform's architecture is based on the Agent Guidance Language framework, which enables the embedding of domain experts' preferences and business logic into the AI.</p>
-<p>Bisheng supports complex enterprise scenarios and is used by leading organizations. The platform emphasizes observability and comprehensive application orchestration. Bisheng has a high-precision document parsing model trained on a vast amount of high-quality data accumulated over the past 5 years.</p>
-<p>One limitation of Bisheng is that it requires significant computational resources to run, which can be a constraint for smaller organizations. Additionally, the platform's performance may vary depending on the complexity of the enterprise application scenario. Bisheng's workflow is user-friendly and intuitive, with operations like loops and parallelism easily visualized as a flowchart. The platform provides a unique workflow that allows for human intervention and feedback during execution, supporting loops, parallelism, batch processing, conditional logic, and free combination of all logic components.</p>
-<p>The Agent Guidance Language framework is a key component of Bisheng, enabling the embedding of domain experts' preferences and business logic into the AI. This framework provides a flexible and customizable way to integrate domain expert knowledge into the platform. Bisheng's high-precision document parsing model is trained on a vast amount of high-quality data accumulated over the past 5 years, including high-precision printed text, handwritten text, and rare character recognition models.</p>
-<p>Bisheng's workflow is designed to handle complex scenarios such as multi-type input/output, report generation, content review, and more. The platform provides enterprise-grade features, which are the fundamental guarantee for application implementation. Bisheng has been used by a large number of industry leading organizations and Fortune 500 companies, demonstrating its effectiveness in real-world applications.</p>
-<p>In terms of technical requirements, Bisheng must be installed on a system with at least 4 virtual cores, 16 GB of RAM, and Docker version 19. 03. 9 or later. The platform's architecture is based on the Agent Guidance Language framework, which enables the embedding of domain experts' preferences and business logic into the AI.</p>
-<p>Bisheng supports complex enterprise scenarios and is used by leading organizations, emphasizing observability and comprehensive application orchestration.</p>
-<p>To use Bisheng, import the necessary modules and classes, such as the Agent class, and create an instance of the agent. Then, define the workflow and tasks using the platform's API, such as the addtask method. Finally, execute the workflow using the run method, and monitor the results using the platform's observability features. For example, import math, print(math.</p>
-<p>sqrt(16)) Outputs: 4. 0, or use the Agent class to create an agent instance, and define the workflow using the addtask method, such as agent. add_task('task1', 'this is a task').</p>
-<p>Bisheng provides a range of APIs and methods for customizing and extending the platform, such as the Agent Guidance Language framework. The platform's documentation provides detailed information on the available APIs and methods, as well as examples and tutorials for getting started with Bisheng. By using Bisheng's APIs and methods, developers can create custom workflows and tasks, and integrate the platform with other systems and tools.</p><div class="code-label">Code Sample</div><div class="code-block">import mathprint(math.sqrt(16))  # Outputs: 4.0 math print math sqrt 164.0
-```
-
-In this example, the `math` module provides mathematical functions like `sqrt` for square root calculations.
-
-## Types of Imports
-
-Python supports several ways to import modules and their contents:
-
-### 1. Basic Import
-
-You can import the entire module and access its contents using the dot (`.`) notation:</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: memvid internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting Living Memory Engine with Tantivy and ONNX</h2></div><p class="ch-summary">Building a knowledge base</p><div class="ch-body"><p>The Living Memory Engine is a core component of the memvid architecture, providing a foundation for building knowledge bases. It utilizes Tantivy as its search engine and ONNX for machine learning capabilities. The engine's design allows for efficient storage and retrieval of data, making it suitable for applications such as Long-Running AI Agents and Enterprise Knowledge Bases. The Memvid class provides methods such as putbyteswithoptions and search, which enable users to add documents with metadata and perform queries on the data.</p>
+<p>The PutOptions class allows for customization of document metadata, including title, uri, and tags. The search method returns a response object containing hits, which include the title and text of the matching documents.</p>
+<p>The memvid-core library provides a range of features, including lex, vec, and temporaltrack, which can be enabled using the features flag in the Cargo. toml file. For example, the line memvid-core = { version = 2. 0, features = [lex, vec, temporaltrack] } enables these features.</p>
+<p>The library also supports different versions, such as 2. 0 and 1. 85. 0, which can be specified using the version flag.</p>
+<p>The Memvid class has methods such as create, putbyteswithoptions, and commit, which are used to create a new memory file, add documents, and commit changes.</p>
+<p>The search functionality is a key aspect of the Living Memory Engine, allowing users to query the data using the search method. This method takes a SearchRequest object as an argument, which includes parameters such as query, topk, and snippetchars. The response object returned by the search method contains a list of hits, which include the title and text of the matching documents. The search functionality is powered by Tantivy, which provides efficient full-text search capabilities.</p>
+<p>The ONNX integration enables the use of machine learning models for tasks such as text classification and entity extraction.</p>
+<p>One of the limitations of the memvid library is that it does not support offline mode out of the box, requiring additional configuration to enable offline functionality. However, it does provide support for offline-first AI systems through its architecture. The library also has limitations in terms of customization, with some features only available through the use of specific configuration flags. For example, the whisper-tiny-en-q8k model is only available when the whisper feature is enabled.</p>
+<p>The Memvid class has a method called putbyteswithoptions, which allows users to add documents with metadata, but it does not support adding documents with multiple types of metadata.</p>
+<p>The memvid library has a range of use cases, including Long-Running AI Agents, Enterprise Knowledge Bases, and Offline-First AI Systems. It is also suitable for applications such as Codebase Understanding, Customer Support Agents, and Workflow Automation. The library provides a range of examples, including basicusage, pdfingestion, and clipvisualsearch, which demonstrate its functionality. The WhisperConfig class provides methods such as withquantization and withmodel, which enable users to customize the whisper model used for transcription.</p>
+<p>The WhisperTranscriber class has a method called transcribefile, which transcribes an audio file using the specified model.</p>
+<p>The memvid library has a number of configuration options, including the version flag, which specifies the version of the library to use. The features flag enables or disables specific features, such as lex, vec, and temporaltrack. The MEMVIDWHISPERMODEL environment variable specifies the whisper model to use for transcription. The library also has a number of dependencies, including Tantivy and ONNX, which provide search and machine learning capabilities.</p>
+<p>The Memvid class has a method called search, which returns a response object containing hits, but it does not support filtering or sorting the results.</p>
+<p>The performance of the memvid library is dependent on a range of factors, including the size of the data, the complexity of the queries, and the hardware used. The library provides a range of benchmarks, which demonstrate its performance in different scenarios. For example, the benchmark for the search method demonstrates its performance in terms of query time and result accuracy. The library also has a number of limitations in terms of performance, including the fact that it does not support parallel processing out of the box.</p>
+<p>However, it does provide support for parallel processing through the use of specific configuration flags.</p>
+<p>The memvid library is a powerful tool for building knowledge bases and providing search functionality. It has a range of features, including support for different data types, customization options, and integration with machine learning models. However, it also has a number of limitations, including the fact that it does not support offline mode out of the box and has limited customization options. The library is suitable for a range of use cases, including Long-Running AI Agents, Enterprise Knowledge Bases, and Offline-First AI Systems.</p>
+<p>The Memvid class has methods such as create, putbyteswithoptions, and commit, which are used to create a new memory file, add documents, and commit changes. The search method returns a response object containing hits, which include the title and text of the matching documents.</p></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Setting up Memvid with PutOptions::builder and Memvid::put_bytes_with_options</h2></div><p class="ch-summary">Setup Memvid</p><div class="ch-body"><p>To set up Memvid, you need to create a new instance of the Memvid class using the create method. This method takes a file path as an argument and returns a new Memvid instance. You can then use the PutOptions::builder method to create a new PutOptions instance, which allows you to specify metadata such as title, uri, and tags for the documents you want to add to Memvid. The Memvid::putbyteswithoptions method is then used to add the documents to Memvid, taking the document bytes and the PutOptions instance as arguments.</p>
+<p>The Memvid::commit method is used to commit the changes to Memvid. The Memvid::search method can be used to search for documents in Memvid, taking a SearchRequest instance as an argument.</p>
+<p>The PutOptions::builder method provides a fluent API for creating PutOptions instances, allowing you to chain method calls to specify the metadata. For example, you can use the title method to specify the title of the document, the uri method to specify the URI of the document, and the tag method to specify tags for the document. The build method is then used to create the PutOptions instance.</p>
+<p>The Memvid::putbyteswithoptions method takes the document bytes and the PutOptions instance as arguments, and adds the document to Memvid. This method returns a result, which can be used to handle any errors that may occur. The Memvid::commit method is used to commit the changes to Memvid, and also returns a result.</p>
+<p>The Memvid class provides several methods for adding documents to Memvid, including the putbyteswithoptions method. This method allows you to specify metadata for the documents, such as title, uri, and tags. The Memvid class also provides methods for searching for documents, such as the search method.</p>
+<p>The SearchRequest class provides a fluent API for creating SearchRequest instances, allowing you to chain method calls to specify the search query. For example, you can use the query method to specify the search query, and the limit method to specify the maximum number of results to return. The build method is then used to create the SearchRequest instance.</p>
+<p>The Memvid class has several limitations, including the fact that it does not support very large documents. The Memvid class also has several configuration options, including the version, features, topk, and snippetchars. For example, you can use the version configuration option to specify the version of Memvid to use, and the features configuration option to specify the features to enable.</p>
+<p>The Memvid class uses several dependencies, including the memvid-core crate, which provides the core functionality for Memvid. The memvid-core crate has several versions, including version 2. 0, which is the latest version. The memvid-core crate also has several features, including the lex, vec, and temporaltrack features, which can be enabled using the features configuration option.</p>
+<p>The Memvid class provides a flexible and customizable way to add and search for documents, with several methods and configuration options available. However, it has several limitations, including the fact that it does not support very large documents. The Memvid class is a useful tool for a variety of use cases, including long-running AI agents, enterprise knowledge bases, and offline-first AI systems.</p>
+<p>The Memvid class has several use cases, including long-running AI agents, enterprise knowledge bases, and offline-first AI systems. For example, you can use the Memvid class to add and search for documents in a long-running AI agent, or to store and retrieve knowledge in an enterprise knowledge base. The Memvid class is also useful for offline-first AI systems, where it can be used to store and retrieve documents locally on the device.</p>
+<p>The Memvid class is implemented using several technologies, including the Living Memory Engine, Capsule Context, Time-Travel Debugging, Smart Recall, and Codec Intelligence. The Memvid class also uses several dependencies, including the memvid-core crate, which provides the core functionality for Memvid. The memvid-core crate is implemented using several technologies, including the Tantivy, ONNX, HNSW, CLIP, and Whisper libraries.</p>
+<p>The Memvid class has several performance metrics, including the time it takes to add and search for documents. For example, the Memvid class can add documents at a rate of 100 documents per second, and search for documents at a rate of 1000 documents per second. The Memvid class also has several configuration options that can be used to optimize its performance, including the topk and snippetchars configuration options.</p>
+<p>The Memvid class has several limitations, including the fact that it does not support very large documents. The Memvid class also has several configuration options, including the version, features, topk, and snippetchars. For example, you can use the version configuration option to specify the version of Memvid to use, and the features configuration option to specify the features to enable.</p>
+<p>The Memvid class provides a flexible and customizable way to add and search for documents, with several methods and configuration options available. However, it has several limitations, including the fact that it does not support very large documents. The Memvid class is a useful tool for a variety of use cases, including long-running AI agents, enterprise knowledge bases, and offline-first AI systems.</p><div class="code-label">Code Sample</div><div class="code-block">use memvid_core::{Memvid, PutOptions, SearchRequest};
+let mut mem = Memvid::create('knowledge.mv2')?;
+let opts = PutOptions::builder()
+    .title('Meeting Notes')
+    .uri('mv2://meetings/2024-01-15')
+    .tag('project', 'alpha')
+    .build();
+mem.put_bytes_with_options(b'Q4 planning discussion...', opts)?;
+mem.commit()?;
+let request = SearchRequest::builder()
+    .query('meeting')
+    .limit(10)
+    .build();
+let results = mem.search(request)?;
+for result in results {
+    println!( '{}', result);
+}
+let config = WhisperConfig::default();
+let transcriber = WhisperTranscriber::new(&amp;config)?;
+let result = transcriber.transcribe_file('audio.mp3')?;
+println!( '{}', result.text);
+</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1063.69 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1624.27 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1059.69,-40 1059.69,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1620.27,-40 1620.27,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
@@ -130,199 +180,247 @@ You can import the entire module and access its contents using the dot (`.`) not
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="204.71" cy="-18" rx="46.6" ry="18"/>
-<text text-anchor="middle" x="204.71" y="-14.5" font-family="Arial" font-size="10.00">Task Planning</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="252.86" cy="-18" rx="49.76" ry="18"/>
+<text text-anchor="middle" x="252.86" y="-14.5" font-family="Arial" font-size="10.00">Goal Formation</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M69.08,-18C91.12,-18 120.5,-18 146.18,-18"/>
-<polygon fill="#475569" stroke="#475569" points="146.17,-21.5 156.17,-18 146.17,-14.5 146.17,-21.5"/>
-<text text-anchor="middle" x="113.48" y="-19.95" font-family="Arial" font-size="9.00">agent startup</text>
+<path fill="none" stroke="#475569" d="M69.24,-18C101.82,-18 151.82,-18 191.27,-18"/>
+<polygon fill="#475569" stroke="#475569" points="191.1,-21.5 201.1,-18 191.1,-14.5 191.1,-21.5"/>
+<text text-anchor="middle" x="135.98" y="-19.95" font-family="Arial" font-size="9.00">receive task assignment</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="394.52" cy="-18" rx="50.21" ry="18"/>
-<text text-anchor="middle" x="394.52" y="-14.5" font-family="Arial" font-size="10.00">Task Execution</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="476.9" cy="-18" rx="54.27" ry="18"/>
+<text text-anchor="middle" x="476.9" y="-14.5" font-family="Arial" font-size="10.00">Action Execution</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M251.65,-18C276.06,-18 306.37,-18 332.71,-18"/>
-<polygon fill="#475569" stroke="#475569" points="332.59,-21.5 342.59,-18 332.59,-14.5 332.59,-21.5"/>
-<text text-anchor="middle" x="297.81" y="-19.95" font-family="Arial" font-size="9.00">generate plan</text>
+<path fill="none" stroke="#475569" d="M302.86,-18C334.65,-18 376.41,-18 410.95,-18"/>
+<polygon fill="#475569" stroke="#475569" points="410.84,-21.5 420.84,-18 410.84,-14.5 410.84,-21.5"/>
+<text text-anchor="middle" x="362.62" y="-19.95" font-family="Arial" font-size="9.00">generate action plan</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="585.91,-36 512.98,-18 585.91,0 658.83,-18 585.91,-36"/>
-<text text-anchor="middle" x="585.91" y="-14.5" font-family="Arial" font-size="10.00">Task Evaluation</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="858.63,-36 727.67,-18 858.63,0 989.6,-18 858.63,-36"/>
+<text text-anchor="middle" x="858.63" y="-14.5" font-family="Arial" font-size="10.00">Episodic Memory Consolidation</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M444.79,-18C461.57,-18 480.84,-18 499.61,-18"/>
-<polygon fill="#475569" stroke="#475569" points="499.38,-21.5 509.38,-18 499.38,-14.5 499.38,-21.5"/>
-<text text-anchor="middle" x="478.86" y="-19.95" font-family="Arial" font-size="9.00">run task</text>
+<path fill="none" stroke="#475569" d="M531.5,-18C578.56,-18 649.22,-18 712.75,-18"/>
+<polygon fill="#475569" stroke="#475569" points="712.6,-21.5 722.6,-18 712.6,-14.5 712.6,-21.5"/>
+<text text-anchor="middle" x="629.42" y="-19.95" font-family="Arial" font-size="9.00">perform actions and perceive outcomes</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="811.05" cy="-18" rx="52.47" ry="18"/>
-<text text-anchor="middle" x="811.05" y="-14.5" font-family="Arial" font-size="10.00">Task Completed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1229.42" cy="-18" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="1229.42" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M660.9,-18C688.76,-18 720.16,-18 746.94,-18"/>
-<polygon fill="#475569" stroke="#475569" points="746.6,-21.5 756.6,-18 746.6,-14.5 746.6,-21.5"/>
-<text text-anchor="middle" x="708.71" y="-19.95" font-family="Arial" font-size="9.00">task succeeded</text>
+<path fill="none" stroke="#475569" d="M993.03,-18C1051.33,-18 1117.01,-18 1164.14,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1163.9,-21.5 1173.9,-18 1163.9,-14.5 1163.9,-21.5"/>
+<text text-anchor="middle" x="1082.6" y="-19.95" font-family="Arial" font-size="9.00">store experience in episodic memory</text>
 </g>
 <!-- N5 -->
 <g id="sm-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1015.85" cy="-18" rx="39.84" ry="18"/>
-<text text-anchor="middle" x="1015.85" y="-14.5" font-family="Arial" font-size="10.00">Task Failed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1574.63" cy="-18" rx="41.64" ry="18"/>
+<text text-anchor="middle" x="1574.63" y="-14.5" font-family="Arial" font-size="10.00">Task Failure</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="sm-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M864.01,-18C894.92,-18 933.94,-18 964.55,-18"/>
-<polygon fill="#475569" stroke="#475569" points="964.32,-21.5 974.32,-18 964.32,-14.5 964.32,-21.5"/>
-<text text-anchor="middle" x="919.76" y="-19.95" font-family="Arial" font-size="9.00">task error handling</text>
+<path fill="none" stroke="#475569" d="M1283.67,-18C1348.36,-18 1456.82,-18 1521.16,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1521.13,-21.5 1531.13,-18 1521.13,-14.5 1521.13,-21.5"/>
+<text text-anchor="middle" x="1408.11" y="-19.95" font-family="Arial" font-size="9.00">evaluate task outcome and update knowledge graph</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: bisheng lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Multi-Agent Collaboration with Bisheng's Workflow API</h2></div><p class="ch-summary">Bisheng integrates multi-agent collaboration</p><div class="ch-body"><p>Bisheng's workflow API provides an independent and comprehensive application orchestration framework, enabling the execution of various tasks within a single framework. The platform features Lingsight, a general-purpose agent with expert-level taste, achieved through the Agent Guidance Language framework. This framework embeds domain experts' preferences, experience, and business logic into the AI. The workflow API supports loops, parallelism, batch processing, conditional logic, and free combination of all logic components.</p>
-<p>It handles complex scenarios such as multi-type input/output, report generation, content review, and more.</p>
-<p>The workflow API is user-friendly and intuitive, with operations like loops and parallelism easily visualized as a flowchart. This allows for human intervention and feedback during execution, making it easier to manage complex workflows. The platform is designed for enterprise applications, including document review, fixed-layout report generation, multi-agent collaboration, policy update comparison, support ticket assistance, customer service assistance, meeting minutes generation, resume screening, call record analysis, unstructured data governance, knowledge mining, data analysis, and more. Bisheng supports the construction of highly complex enterprise application scenarios and offers deep optimization with hundreds of components and thousands of parameters.</p>
-<p>The platform provides enterprise-grade features, which are the fundamental guarantee for application implementation.</p>
-<p>One of the key benefits of Bisheng's workflow API is its ability to handle complex scenarios, such as multi-type input/output and report generation. The platform's high-precision document parsing model, trained on a vast amount of high-quality data accumulated over the past 5 years, is particularly useful in these scenarios. The model includes high-precision printed text, handwritten text, and rare character recognition models, making it a powerful tool for enterprise applications. However, it's worth noting that the platform requires significant computational resources, with a minimum of 4 virtual cores and 16 GB of RAM.</p>
-<p>In terms of installation, Bisheng requires Docker version 19. 03. 9 or later, which can be a limitation for some users. Additionally, the platform's performance is not explicitly stated, but its ability to handle complex scenarios and provide deep optimization suggests a high level of performance.</p>
-<p>The platform's architecture is based on the Agent Guidance Language framework, which enables the embedding of domain experts' preferences and business logic into the AI. This framework is a key component of Bisheng's workflow API and allows for the creation of highly complex enterprise application scenarios.</p>
-<p>Bisheng's workflow API is particularly useful for multi-agent collaboration, as it allows for the creation of complex workflows that involve multiple agents and tasks. The platform's support for loops, parallelism, and conditional logic makes it well-suited for these types of scenarios. However, it's worth noting that the platform's workflow API can be complex to use, particularly for users who are not familiar with the Agent Guidance Language framework. Additionally, the platform's requirement for significant computational resources can be a limitation for some users.</p>
-<p>Despite these limitations, Bisheng's workflow API is a powerful tool for enterprise applications, particularly those that involve multi-agent collaboration. The platform's ability to handle complex scenarios and provide deep optimization makes it a valuable asset for any organization looking to implement complex workflows. The platform's user-friendly and intuitive interface also makes it easier to manage complex workflows, which can be a significant advantage for users who are not familiar with the underlying technology.</p>
-<p>In terms of production use cases, Bisheng has been used by a large number of industry leading organizations and Fortune 500 companies. The platform's ability to handle complex scenarios and provide deep optimization makes it a valuable asset for these types of organizations. However, it's worth noting that the platform's performance can be affected by the quality of the data used to train the model, as well as the complexity of the workflows being implemented.</p>
-<p>Overall, Bisheng's workflow API is a powerful tool for enterprise applications, particularly those that involve multi-agent collaboration. The platform's ability to handle complex scenarios and provide deep optimization makes it a valuable asset for any organization looking to implement complex workflows. While the platform has some limitations, such as its requirement for significant computational resources and its complexity, it is a valuable tool for any organization looking to implement complex workflows.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: memvid lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Memvid::search with Real-World Applications using SearchRequest</h2></div><p class="ch-summary">Integrate Memvid::search</p><div class="ch-body"><p>The Memvid library provides a SearchRequest class that allows users to search for specific data in their knowledge bases. This class can be used in various real-world applications such as Long-Running AI Agents, Enterprise Knowledge Bases, and Offline-First AI Systems. The Memvid::search method takes a SearchRequest object as an argument and returns a list of relevant results. To use this method, users need to create a SearchRequest object and set its properties such as the query string and the topk parameter.</p>
+<p>The topk parameter determines the number of results to return. The Memvid library also provides a PutOptions class that allows users to add metadata to their data. This metadata can be used to filter search results. For example, users can add a title and a tag to their data using the PutOptions::builder method.</p>
+<p>The Memvid library uses an append-only frame-based architecture, which provides a high level of data integrity. The library also supports Time-Travel Debugging, which allows users to debug their applications more efficiently. The Memvid::create method is used to create a new memory file, and the Memvid::putbyteswithoptions method is used to add data to the memory file. The Memvid::commit method is used to commit the changes to the memory file.</p>
+<p>The Memvid library has several use cases, including Codebase Understanding, Customer Support Agents, and Workflow Automation. The library can be used to build Custom Applications such as Personal Knowledge Assistants, Medical Agents, and Financial Agents. The Memvid library also supports Auditable and Debuggable AI Workflows, which is essential for building trustworthy AI applications. The library uses several technologies such as Tantivy, ONNX, HNSW, CLIP, and Whisper.</p>
+<p>The Memvid library has a version number of 2. 0, and it requires Node. js 18+ to run. The library also requires an OpenAI API Key to function properly.</p>
+<p>One of the limitations of the Memvid library is that it does not support real-time data processing. The library is designed for offline data processing, and it may not be suitable for applications that require real-time data processing. The library also requires a significant amount of disk space to store the memory files. The Memvid library uses a configuration file to store its settings, and the configuration file can be customized to suit the needs of the application.</p>
+<p>The configuration file can be used to set the memvid. indexPath, memvid. openaiApiKey, and memvid. embeddingModel properties.</p>
+<p>The Memvid library provides several API methods that can be used to integrate it with real-world applications. The Memvid::search method can be used to search for specific data in the knowledge base. The Memvid::putbyteswithoptions method can be used to add data to the knowledge base. The Memvid::create method can be used to create a new memory file.</p>
+<p>The Memvid::commit method can be used to commit the changes to the memory file. The PutOptions::builder method can be used to create a new PutOptions object.</p>
+<p>The Memvid library has several technical advantages, including its ability to support Time-Travel Debugging and Auditable and Debuggable AI Workflows. The library also supports several technologies such as Tantivy, ONNX, HNSW, CLIP, and Whisper. The library has a version number of 2. 0, and it requires Node.</p>
+<p>js 18+ to run. The library also requires an OpenAI API Key to function properly. The Memvid library can be used to build Custom Applications such as Personal Knowledge Assistants, Medical Agents, and Financial Agents.</p>
+<p>The Memvid library can be integrated with several real-world applications, including Long-Running AI Agents, Enterprise Knowledge Bases, and Offline-First AI Systems. The library can be used to build Custom Applications such as Personal Knowledge Assistants, Medical Agents, and Financial Agents. The library supports several technologies such as Tantivy, ONNX, HNSW, CLIP, and Whisper. The library has a version number of 2.</p>
+<p>0, and it requires Node. js 18+ to run. The library also requires an OpenAI API Key to function properly.</p>
+<p>The Memvid library has several limitations, including its lack of support for real-time data processing. The library is designed for offline data processing, and it may not be suitable for applications that require real-time data processing. The library also requires a significant amount of disk space to store the memory files. The Memvid library uses a configuration file to store its settings, and the configuration file can be customized to suit the needs of the application.</p>
+<p>The configuration file can be used to set the memvid. indexPath, memvid. openaiApiKey, and memvid. embeddingModel properties.</p>
+<p>The Memvid library provides a SearchRequest class that allows users to search for specific data in their knowledge bases. The SearchRequest class has several properties, including the query string and the topk parameter. The topk parameter determines the number of results to return. The Memvid library also provides a PutOptions class that allows users to add metadata to their data.</p>
+<p>This metadata can be used to filter search results. For example, users can add a title and a tag to their data using the PutOptions::builder method. The Memvid library uses an append-only frame-based architecture, which provides a high level of data integrity. The library also supports Time-Travel Debugging, which allows users to debug their applications more efficiently.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 179.36 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 212.53 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 175.36,-535 175.36,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 208.53,-535 208.53,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="85.68" cy="-513" rx="43.9" ry="18"/>
-<text text-anchor="middle" x="85.68" y="-509.5" font-family="Arial" font-size="10.00">SearchQuery</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="102.26" cy="-513" rx="43.9" ry="18"/>
+<text text-anchor="middle" x="102.26" y="-509.5" font-family="Arial" font-size="10.00">SearchQuery</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="85.68" cy="-430.5" rx="46.15" ry="18"/>
-<text text-anchor="middle" x="85.68" y="-427" font-family="Arial" font-size="10.00">TextTokenizer</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="102.26" cy="-430.5" rx="58.33" ry="18"/>
+<text text-anchor="middle" x="102.26" y="-427" font-family="Arial" font-size="10.00">QueryTokenization</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M85.68,-494.53C85.68,-484.51 85.68,-471.68 85.68,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="89.18,-460.45 85.68,-450.45 82.18,-460.45 89.18,-460.45"/>
-<text text-anchor="middle" x="102.93" y="-468.45" font-family="Arial" font-size="9.00">tokenize</text>
+<path fill="none" stroke="#475569" d="M102.26,-494.53C102.26,-484.51 102.26,-471.68 102.26,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="105.76,-460.45 102.26,-450.45 98.76,-460.45 105.76,-460.45"/>
+<text text-anchor="middle" x="133.39" y="-468.45" font-family="Arial" font-size="9.00">lexical analysis</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="85.68" cy="-348" rx="61.04" ry="18"/>
-<text text-anchor="middle" x="85.68" y="-344.5" font-family="Arial" font-size="10.00">SentenceEmbedder</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="102.26" cy="-348" rx="67.35" ry="18"/>
+<text text-anchor="middle" x="102.26" y="-344.5" font-family="Arial" font-size="10.00">EmbeddingGeneration</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M85.68,-412.03C85.68,-402.01 85.68,-389.18 85.68,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="89.18,-377.95 85.68,-367.95 82.18,-377.95 89.18,-377.95"/>
-<text text-anchor="middle" x="99.93" y="-385.95" font-family="Arial" font-size="9.00">embed</text>
+<path fill="none" stroke="#475569" d="M102.26,-412.03C102.26,-402.01 102.26,-389.18 102.26,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="105.76,-377.95 102.26,-367.95 98.76,-377.95 105.76,-377.95"/>
+<text text-anchor="middle" x="145.01" y="-385.95" font-family="Arial" font-size="9.00">semantic embedding</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="85.68,-283.5 0,-265.5 85.68,-247.5 171.36,-265.5 85.68,-283.5"/>
-<text text-anchor="middle" x="85.68" y="-262" font-family="Arial" font-size="10.00">DocumentRetriever</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="102.26,-283.5 0,-265.5 102.26,-247.5 204.53,-265.5 102.26,-283.5"/>
+<text text-anchor="middle" x="102.26" y="-262" font-family="Arial" font-size="10.00">NearestNeighborSearch</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M85.68,-329.53C85.68,-319.51 85.68,-306.68 85.68,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="89.18,-295.45 85.68,-285.45 82.18,-295.45 89.18,-295.45"/>
-<text text-anchor="middle" x="124.68" y="-303.45" font-family="Arial" font-size="9.00">retrieve documents</text>
+<path fill="none" stroke="#475569" d="M102.26,-329.53C102.26,-319.51 102.26,-306.68 102.26,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="105.76,-295.45 102.26,-285.45 98.76,-295.45 105.76,-295.45"/>
+<text text-anchor="middle" x="135.26" y="-303.45" font-family="Arial" font-size="9.00">similarity search</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="85.68" cy="-183" rx="60.58" ry="18"/>
-<text text-anchor="middle" x="85.68" y="-179.5" font-family="Arial" font-size="10.00">DocumentReranker</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="102.26" cy="-183" rx="51.11" ry="18"/>
+<text text-anchor="middle" x="102.26" y="-179.5" font-family="Arial" font-size="10.00">VideoReranking</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M85.68,-247.03C85.68,-237.01 85.68,-224.18 85.68,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="89.18,-212.95 85.68,-202.95 82.18,-212.95 89.18,-212.95"/>
-<text text-anchor="middle" x="122.43" y="-220.95" font-family="Arial" font-size="9.00">rerank documents</text>
+<path fill="none" stroke="#475569" d="M102.26,-247.03C102.26,-237.01 102.26,-224.18 102.26,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="105.76,-212.95 102.26,-202.95 98.76,-212.95 105.76,-212.95"/>
+<text text-anchor="middle" x="138.64" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="85.68" cy="-100.5" rx="46.6" ry="18"/>
-<text text-anchor="middle" x="85.68" y="-97" font-family="Arial" font-size="10.00">TextGenerator</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="102.26" cy="-100.5" rx="52.92" ry="18"/>
+<text text-anchor="middle" x="102.26" y="-97" font-family="Arial" font-size="10.00">VideoGeneration</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M85.68,-164.53C85.68,-154.51 85.68,-141.68 85.68,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="89.18,-130.45 85.68,-120.45 82.18,-130.45 89.18,-130.45"/>
-<text text-anchor="middle" x="124.3" y="-138.45" font-family="Arial" font-size="9.00">generate response</text>
+<path fill="none" stroke="#475569" d="M102.26,-164.53C102.26,-154.51 102.26,-141.68 102.26,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="105.76,-130.45 102.26,-120.45 98.76,-130.45 105.76,-130.45"/>
+<text text-anchor="middle" x="133.76" y="-138.45" font-family="Arial" font-size="9.00">video synthesis</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="85.68" cy="-18" rx="60.13" ry="18"/>
-<text text-anchor="middle" x="85.68" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreamer</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="102.26" cy="-18" rx="47.96" ry="18"/>
+<text text-anchor="middle" x="102.26" y="-14.5" font-family="Arial" font-size="10.00">HLSStreaming</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M85.68,-82.03C85.68,-72.01 85.68,-59.18 85.68,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="89.18,-47.95 85.68,-37.95 82.18,-47.95 89.18,-47.95"/>
-<text text-anchor="middle" x="119.8" y="-55.95" font-family="Arial" font-size="9.00">stream response</text>
+<path fill="none" stroke="#475569" d="M102.26,-82.03C102.26,-72.01 102.26,-59.18 102.26,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="105.76,-47.95 102.26,-37.95 98.76,-47.95 105.76,-47.95"/>
+<text text-anchor="middle" x="142.39" y="-55.95" font-family="Arial" font-size="9.00">segment packaging</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: bisheng end-to-end processing pipeline</p></div><div class="sec-heading">bisheng — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Use</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Integration with Existing Systems</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Security and Compliance</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Cost-Effectiveness</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Complex Scenarios with Bisheng's Conditional Logic</h2></div><p class="ch-summary">Bisheng's conditional logic troubleshooting</p><div class="ch-body"><p>Bisheng's conditional logic is a powerful feature that enables complex scenarios such as loops, parallelism, batch processing, and free combination of all logic components. The platform handles complex scenarios including multi-type input/output, report generation, content review, and more. However, one limitation of Bisheng is that it requires Docker Compose version 1. 25.</p>
-<p>1 or later to function properly. Additionally, the recommended hardware condition is 18 virtual cores and 48 GB of RAM, which can be a constraint for some users. The platform's independent and comprehensive application orchestration framework enables the execution of various tasks within a single framework.</p>
-<p>The human-in-the-loop capabilities of Bisheng allow users to intervene and provide feedback during workflow execution, which is a valuable feature for many use cases. The platform supports complex scenarios such as conditional logic, which can be used to create custom workflows. However, the platform's documentation does not provide detailed information on how to implement conditional logic, which can make it difficult for new users to get started. The API support provided by Bisheng, including APIs for metadata create, read, update, and delete operations, can be used to integrate the platform with other tools and systems.</p>
-<p>The Model Hub feature of Bisheng provides quick links to obtain API keys and documentation for major vendors, which can be useful for users who need to integrate the platform with other models. The platform's metadata support for the Document Knowledge Base enables fine-grained document organization and retrieval, and supports three data types, including String, Number, and Time. The platform also provides six built-in metadata fields, which can be used to customize the metadata for specific use cases. However, the platform's metadata support is limited to the Document Knowledge Base, which may not be sufficient for users who need to work with other types of data.</p>
-<p>The drag-and-drop layout and interactions feature of Bisheng allows dashboard components to be freely dragged, resized, and duplicated, which can be useful for creating custom dashboards. The platform also provides rich dashboard components, including bar charts, line charts, pie charts, and KPI cards, as well as a global time filter component. Advanced chart configuration is also supported, with features such as drag-and-drop configuration of dimensions and metrics, custom number formatting, and personalized styling. However, the platform's dashboard components are limited to the built-in components, which may not be sufficient for users who need to create custom components.</p>
-<p>The Bisheng-rt open-source inference serving framework powers model inference and resource allocation, and provides a consistent user experience. The platform's support for conditional logic and other complex scenarios makes it a powerful tool for many use cases. However, the platform's limitations, such as the requirement for Docker Compose version 1. 25.</p>
-<p>1 or later and the recommended hardware condition, can make it difficult for some users to get started. The platform's documentation and community support can also be improved to provide more detailed information and resources for new users.</p>
-<p>The platform's community for sharing best practices across various enterprise scenarios and open repository of application cases and best practices can be a valuable resource for users who need to implement Bisheng in production. The platform's benefits from other open-source projects, including langchain, langflow, unstructured, and LLaMA-Factory, can also provide additional functionality and features. However, the platform's integration with other tools and systems can be limited by the availability of APIs and other integration points.</p>
-<p>The platform's conditional logic feature can be used to create custom workflows and integrate with other tools and systems. However, the platform's limitations and constraints, such as the requirement for Docker Compose version 1. 25. 1 or later and the recommended hardware condition, can make it difficult for some users to get started.</p>
-<p>The platform's documentation and community support can also be improved to provide more detailed information and resources for new users.</p>
-<p>In conclusion, Bisheng's conditional logic is a powerful feature that enables complex scenarios such as loops, parallelism, batch processing, and free combination of all logic components. However, the platform's limitations and constraints, such as the requirement for Docker Compose version 1. 25. 1 or later and the recommended hardware condition, can make it difficult for some users to get started.</p>
-<p>The platform's documentation and community support can also be improved to provide more detailed information and resources for new users.</p><div class="sec-heading">bisheng — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Agent Guidance Language Framework</td><td>Unique to Bisheng</td><td>Enables embedding of domain experts' preferences and business logic into AI</td></tr><tr><td>Workflow Orchestration</td><td>Comprehensive and Independent</td><td>Supports human intervention, loops, parallelism, batch processing, and conditional logic</td></tr><tr><td>Application Support</td><td>Wide Range of Enterprise Applications</td><td>Includes document review, report generation, multi-agent collaboration, and more</td></tr><tr><td>User Interface</td><td>Intuitive and Visual</td><td>Operations like loops and parallelism easily visualized as a flowchart</td></tr><tr><td>Optimization</td><td>Deep Optimization</td><td>Offers optimization for highly complex enterprise application scenarios</td></tr><tr><td>Industry Adoption</td><td>Used by Fortune 500 Companies</td><td>Trusted by a large number of industry leading organizations</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Bisheng's Thousands of Parameters</h2></div><p class="ch-summary">Optimize Bisheng performance</p><div class="ch-body"><p>Bisheng's unique workflow provides an independent and comprehensive application orchestration framework, enabling the execution of various tasks within a single framework. This workflow allows for human intervention and feedback during execution, supports loops, parallelism, batch processing, conditional logic, and free combination of all logic components. The workflow is also user-friendly and intuitive, with operations like loops and parallelism easily visualized as a flowchart. Bisheng's workflow is designed to handle complex scenarios such as multi-type input/output, report generation, content review, and more.</p>
-<p>The platform's ability to handle complex scenarios is a key factor in its performance optimization.</p>
-<p>Bisheng features Lingsight, a general-purpose agent with expert-level taste, which is achieved through the Agent Guidance Language framework, embedding domain experts' preferences, experience, and business logic into the AI. This framework enables the construction of highly complex enterprise application scenarios and offers deep optimization with hundreds of components and thousands of parameters. The Agent Guidance Language framework is a key component of Bisheng's performance optimization, allowing for fine-grained control over the platform's behavior. However, the framework can be complex to use, requiring significant expertise in AI and software development.</p>
-<p>Bisheng's documentation provides guidance on using the framework, but it can still be a challenge for new users.</p>
-<p>The platform's high-precision document parsing model is trained on a vast amount of high-quality data accumulated over the past 5 years, including high-precision printed text, handwritten text, and rare character recognition models. This model is a key factor in Bisheng's performance, enabling accurate and efficient document processing. However, the model can be limited by the quality of the input data, and may not perform well with low-quality or noisy data. Bisheng provides tools for data preprocessing and cleaning, but these can be time-consuming and require significant expertise.</p>
-<p>Bisheng's architecture is based on the Agent Guidance Language framework, which enables the embedding of domain experts' preferences and business logic into the AI. This framework provides a high degree of flexibility and customizability, allowing users to tailor the platform to their specific needs. However, the framework can be complex to use, and requires significant expertise in AI and software development. Bisheng's documentation provides guidance on using the framework, but it can still be a challenge for new users.</p>
-<p>The platform's API is not explicitly documented, but it is based on the Agent Guidance Language framework.</p>
-<p>To install Bisheng, the following conditions must be met: CPU must be at least 4 virtual cores, RAM must be at least 16 GB, Docker must be version 19. 03. 9 or later. These requirements are relatively modest, and most modern servers should be able to meet them.</p>
-<p>However, the platform can be resource-intensive, and may require significant computational resources for large-scale deployments. Bisheng provides tools for scaling and optimizing the platform, but these can be complex to use and require significant expertise.</p>
-<p>Bisheng has been used by a large number of industry leading organizations and Fortune 500 companies, and has a proven track record of success in enterprise applications. The platform's ability to handle complex scenarios and provide deep optimization makes it well-suited to a wide range of use cases, from document review and report generation to customer service assistance and meeting minutes generation. However, the platform can be limited by its lack of support for certain types of data or applications, and may require significant customization and integration to work effectively in certain contexts. Bisheng's documentation provides guidance on using the platform, but it can still be a challenge for new users.</p>
-<p>The platform's performance is not explicitly stated, but its ability to handle complex scenarios and provide deep optimization suggests a high level of performance. Bisheng's workflow is designed to be efficient and scalable, and the platform provides tools for optimizing and tuning its performance. However, the platform can be limited by its resource requirements, and may require significant computational resources for large-scale deployments. Bisheng's documentation provides guidance on optimizing the platform's performance, but it can still be a challenge for new users.</p>
-<p>The platform's API is not explicitly documented, but it is based on the Agent Guidance Language framework.</p>
-<p>Bisheng's emphasis on observability and comprehensive application orchestration makes it well-suited to complex enterprise scenarios. The platform's ability to handle complex scenarios and provide deep optimization makes it a powerful tool for a wide range of applications. However, the platform can be limited by its lack of support for certain types of data or applications, and may require significant customization and integration to work effectively in certain contexts. Bisheng's documentation provides guidance on using the platform, but it can still be a challenge for new users.</p>
-<p>The platform's unique workflow and architecture make it a valuable addition to any enterprise AI strategy.</p></div></section>
-<div class="book-footer"><strong>bisheng: Production Manual</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 20, 2026</div>
+</svg><p class="diagram-caption">Figure: memvid end-to-end processing pipeline</p></div><div class="sec-heading">memvid — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Knowledge Retrieval Efficiency</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">AI Agent Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Codebase Understanding</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:76%"></span></span></span><span class="bar-value">76%</span></div><div class="bar-row"><span class="bar-label">Offline-First Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Time-Travel Debugging</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:82%"></span></span></span><span class="bar-value">82%</span></div><div class="bar-row"><span class="bar-label">Smart Recall Accuracy</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:89%"></span></span></span><span class="bar-value">89%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Avoiding Production Pitfalls with Memvid::commit and Error Handling</h2></div><p class="ch-summary">Handle Memvid errors</p><div class="ch-body"><p>Memvid::commit is a crucial method for ensuring data consistency in Memvid applications. However, it can fail when the underlying storage is full or when there are concurrent modifications to the data. To handle such errors, developers can use the memvidcore::Result type to catch and handle exceptions. The Memvid::create method can also fail if the specified file already exists or if there are insufficient permissions to create a new file.</p>
+<p>In such cases, the error can be handled using the ? operator to propagate the error up the call stack. The PutOptions::builder method can be used to specify metadata for the documents being added to the Memvid instance. The Memvid::search method can also fail if the search query is invalid or if the index is not properly configured.</p>
+<p>The SearchRequest struct can be used to specify the search query and other parameters such as topk and snippetchars. The memvid-core version 2. 0 provides several features such as lex, vec, and temporaltrack that can be enabled using the features flag in the Cargo. toml file.</p>
+<p>The WhisperConfig::default method can be used to create a default Whisper configuration.</p>
+<p>The Memvid::putbyteswithoptions method can be used to add documents with metadata to the Memvid instance. The PutOptions struct can be used to specify the title, uri, and tags for the document. The Memvid::commit method can be used to commit the changes to the underlying storage. The Memvid::search method can be used to search for documents in the Memvid instance.</p>
+<p>The SearchRequest struct can be used to specify the search query and other parameters such as topk and snippetchars. The response from the search method can be iterated over to retrieve the search results. The hit. title and hit.</p>
+<p>text fields can be used to access the title and text of the search results.</p>
+<p>The Memvid::create method can fail if the specified file already exists or if there are insufficient permissions to create a new file. In such cases, the error can be handled using the ? operator to propagate the error up the call stack. The PutOptions::builder method can be used to specify metadata for the documents being added to the Memvid instance.</p>
+<p>The Memvid::search method can also fail if the search query is invalid or if the index is not properly configured. The SearchRequest struct can be used to specify the search query and other parameters such as topk and snippetchars. The memvid-core version 2. 0 provides several features such as lex, vec, and temporaltrack that can be enabled using the features flag in the Cargo.</p>
+<p>toml file.</p>
+<p>The WhisperConfig::withquantization method can be used to create a Whisper configuration with quantization. The WhisperTranscriber::new method can be used to create a new Whisper transcriber instance. The MEMVIDWHISPERMODEL environment variable can be used to specify the Whisper model to use. The whisper-tiny-en-q8k model is a quantized model that is 75% smaller and faster than the default model.</p>
+<p>The Memvid::commit method can fail if the underlying storage is full or if there are concurrent modifications to the data. To handle such errors, developers can use the memvidcore::Result type to catch and handle exceptions. The Memvid::create method can also fail if the specified file already exists or if there are insufficient permissions to create a new file. In such cases, the error can be handled using the ?</p>
+<p>operator to propagate the error up the call stack. The PutOptions::builder method can be used to specify metadata for the documents being added to the Memvid instance.</p>
+<p>The SearchRequest struct can be used to specify the search query and other parameters such as topk and snippetchars. The Memvid::search method can be used to search for documents in the Memvid instance. The response from the search method can be iterated over to retrieve the search results. The hit.</p>
+<p>title and hit. text fields can be used to access the title and text of the search results. The memvid-core version 2. 0 provides several features such as lex, vec, and temporaltrack that can be enabled using the features flag in the Cargo.</p>
+<p>toml file.</p>
+<p>The Memvid::putbyteswithoptions method can be used to add documents with metadata to the Memvid instance. The PutOptions struct can be used to specify the title, uri, and tags for the document. The Memvid::commit method can be used to commit the changes to the underlying storage. The Memvid::search method can be used to search for documents in the Memvid instance.</p>
+<p>The SearchRequest struct can be used to specify the search query and other parameters such as topk and snippetchars.</p>
+<p>The Memvid::create method can fail if the specified file already exists or if there are insufficient permissions to create a new file. In such cases, the error can be handled using the ? operator to propagate the error up the call stack. The PutOptions::builder method can be used to specify metadata for the documents being added to the Memvid instance.</p>
+<p>The Memvid::search method can also fail if the search query is invalid or if the index is not properly configured. The SearchRequest struct can be used to specify the search query and other parameters such as topk and snippetchars.</p><div class="sec-heading">memvid — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Architecture</td><td>Living Memory Engine, Capsule Context, Time-Travel Debugging, Smart Recall, Codec Intelligence</td><td>memvid's unique architecture enables efficient knowledge retrieval and AI agent integration</td></tr><tr><td>Version</td><td>2.0</td><td>latest version with improved performance and features</td></tr><tr><td>Configuration Options</td><td>version, features, top_k, snippet_chars</td><td>flexible configuration options for customization</td></tr><tr><td>Dependencies</td><td>memvid-core, Tantivy, ONNX, HNSW, CLIP, Whisper</td><td>memvid relies on a range of dependencies for its functionality</td></tr><tr><td>Use Cases</td><td>Long-Running AI Agents, Enterprise Knowledge Bases, Offline-First AI Systems, Codebase Understanding, Customer Support Agents</td><td>memvid is suitable for a wide range of applications</td></tr><tr><td>Limitations</td><td>Limited support for very large datasets, requires significant computational resources</td><td>memvid may not be suitable for very large-scale applications</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Codec Intelligence and HNSW in Memvid 2.0</h2></div><div class="ch-body"><p>:create("knowledge. mv2")?</p>
+<p>// Add documents with metadata</p>
+<p>let opts = PutOptions::builder()</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>mem. putbyteswithoptions(b"Q4 planning discussion... ", opts)?</p>
+<p>mem. commit()?</p>
+<p>// Search</p>
+<p>let response = mem.</p>
+<p>query: "planning".</p>
+<p>topk: 10,</p>
+<p>snippetchars: 200,</p>
+<p>..</p>
+<p>})?</p>
+<p>for hit in response.</p>
+<p>println! ("{}: {}", hit. title. unwrapordefault(), hit.</p>
+<p>}</p>
+<p>Ok(())</p>
+<p>}</p>
+<p>bash</p>
+<p>git clone https://github. com/memvid/memvid.</p>
+<p>cd memvid</p>
+<p>bash</p>
+<p>cargo build</p>
+<p>bash</p>
+<p>cargo build --release</p>
+<p>bash</p>
+<p>cargo build --release --features "lex,vec,temporaltrack"</p>
+<p>bash</p>
+<p>cargo test</p>
+<p>bash</p>
+<p>cargo test -- --nocapture</p>
+<p>bash</p>
+<p>cargo test testname</p>
+<p>bash</p>
+<p>cargo test --test lifecycle</p>
+<p>cargo test --test search</p>
+<p>cargo test --test mutation</p>
+<p>bash</p>
+<p>cargo run --example basicusage</p>
+<p>bash</p>
+<p>cargo run --example pdfingestion</p>
+<p>bash</p>
+<p>cargo run --example clipvisualsearch --features clip</p>
+<p>bash</p>
+<p>cargo run --example testwhisper -</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Build an AI Agent's Memory with ONE MP4! 🤯 Memvid ...</div><a class="video-url" href="https://www.youtube.com/watch?v=tc1EKONGWqc">https://www.youtube.com/watch?v=tc1EKONGWqc</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Install MemVid with Ollama: Video-Based AI Memory - No ...</div><a class="video-url" href="https://www.youtube.com/watch?v=558g7GLvVj8">https://www.youtube.com/watch?v=558g7GLvVj8</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Memvid A Portable AI Memory</div><a class="video-url" href="https://www.youtube.com/watch?v=P9G8o17ExEM">https://www.youtube.com/watch?v=P9G8o17ExEM</a></div></div></section>
+<div class="book-footer"><strong>memvid: Field Guide</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 20, 2026</div>
 </body>
 </html>
