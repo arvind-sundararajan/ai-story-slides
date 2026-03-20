@@ -2,479 +2,419 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>beeai-framework: Builder's Handbook</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "beeai-framework: Builder's Handbook"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>OpenAgentsControl: Production Manual</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "OpenAgentsControl: Production Manual"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://research-website-prod-cms-uploads.s3.us.cloud-object-storage.appdomain.cloud/Bee_AI_animation_8a662c5834.gif" alt="beeai-framework logo" onerror="this.style.display='none'"/><div class="cover-lib-name">beeai-framework</div><div class="cover-suffix">Builder's Handbook</div><div class="cover-rule"></div><p class="cover-subtitle">Introducing beeai framework</p><p class="cover-desc">The beeai-framework is a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems.  It provides features such as Requirement Agent, which allows for predictable and controlled behavior across different Large Language Models (LLMs) by setting rules the agent must follow.  The framework also includes Agents, which are intelligent entities that can reason, act, and adapt.</p><div class="cover-tagline">Learn beeai</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 20, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building Autonomous Agents with the Requirement Agent</h2></div><p class="ch-summary">Building autonomous agents</p><div class="ch-body"><p>The beeai-framework is a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems. It provides features such as Requirement Agent, which allows for predictable and controlled behavior across different Large Language Models (LLMs) by setting rules the agent must follow. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt. The Requirement Agent is a key component of the framework, enabling developers to define specific requirements for their agents.</p>
-<p>The framework's architecture is designed to support production-ready multi-agent systems, and its key APIs include those for the Backend module, Workflows, and protocol integrations.</p>
-<p>The beeai-framework's Backend feature connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation. The Tools feature extends agents with built-in tools, including web search, weather, code execution, and more, or custom tools. The framework also includes Retrieval-Augmented Generation (RAG) systems, which build vector stores and document processing. The Backend module is designed to simplify working with AI services, and it provides a unified interface for interacting with different LLM providers.</p>
-<p>The framework's support for DeepSeek R1 and LLaMa 3. 3 is also notable, as it enables developers to build agents that can leverage these powerful models.</p>
-<p>The beeai-framework includes a range of features that enable developers to build complex multi-agent systems. The Workflows feature allows developers to define workflows that involve multiple agents and tasks, and it provides a flexible way to manage the interactions between agents. The Model Context Protocol is also supported, which enables agents to share context and collaborate on tasks. The framework's support for Workflows and the Model Context Protocol makes it an ideal choice for building complex multi-agent systems.</p>
-<p>The framework's performance is also suitable for production use cases, and it has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3.</p>
-<p>The beeai-framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models. The framework's architecture is designed to support production-ready multi-agent systems, and its key APIs include those for the Backend module, Workflows, and protocol integrations. The framework's support for DeepSeek R1 and LLaMa 3. 3 is also notable, as it enables developers to build agents that can leverage these powerful models.</p>
-<p>The framework's performance is suitable for production use cases, and it has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3. The framework's documentation is also available, which provides detailed information on how to use the framework and its various features.</p>
-<p>The beeai-framework includes a range of APIs and classes that enable developers to build autonomous agents and multi-agent systems. The Requirement Agent is a key component of the framework, and it provides a way to define specific requirements for agents. The Backend module is also an important part of the framework, as it provides a unified interface for interacting with different LLM providers. The Workflows feature is another key component, as it enables developers to define workflows that involve multiple agents and tasks.</p>
-<p>The framework's support for the Model Context Protocol is also notable, as it enables agents to share context and collaborate on tasks.</p>
-<p>The beeai-framework's support for Retrieval-Augmented Generation (RAG) systems is also an important feature, as it enables developers to build agents that can leverage the power of RAG models. The framework's support for Templates is also notable, as it enables developers to build dynamic prompts with enhanced Mustache syntax. The framework's support for Memory is also important, as it enables developers to manage conversation history with built-in memory strategies. The framework's support for Observability is also notable, as it enables developers to monitor agent behavior with events, logging, and robust error handling.</p>
-<p>The beeai-framework includes a range of features that enable developers to build and deploy autonomous agents and multi-agent systems. The Serve feature enables developers to host agents in servers, and it includes support for multiple protocols such as A2A and MCP. The Cache feature optimizes performance and reduces costs with intelligent caching, while the Serialization feature saves and loads agent state for persistence across sessions. The framework's support for starter templates, including beeai-framework-py-starter for Python and beeai-framework-ts-starter for TypeScript, is also notable, as it enables developers to get started quickly with building autonomous agents and multi-agent systems.</p>
-<p>The beeai-framework is a powerful toolkit for building intelligent, autonomous agents and multi-agent systems. It provides a range of features and APIs that enable developers to build complex systems that can reason, act, and adapt. The framework's support for Requirement Agent, Backend module, Workflows, and protocol integrations makes it an ideal choice for building production-ready multi-agent systems. The framework's performance is suitable for production use cases, and it has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3.</p>
-<p>3. The framework's documentation is also available, which provides detailed information on how to use the framework and its various features.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/OpenCorporates_logo.svg/3840px-OpenCorporates_logo.svg.png" alt="OpenAgentsControl logo" onerror="this.style.display='none'"/><div class="cover-lib-name">OpenAgentsControl</div><div class="cover-suffix">Production Manual</div><div class="cover-rule"></div><p class="cover-subtitle">Control your agents</p><p class="cover-desc">OpenAgentsControl features pattern control, which allows users to define their patterns once and have the AI use them forever.  It also includes approval gates, which require review and approval before execution, ensuring that users stay in control.  The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p><div class="cover-tagline">Manage with ease</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 20, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking OpenAgentsControl with Pattern Control and Approval Gates</h2></div><div class="ch-body"><p>OpenAgentsControl features pattern control, which allows users to define their patterns once and have the AI use them forever. It also includes approval gates, which require review and approval before execution, ensuring that users stay in control. The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
+<p>The system is multi-language, supporting languages such as TypeScript, Python, Go, and Rust, and is model-agnostic, allowing users to work with various AI models, including Claude, GPT, and Gemini, as well as local models. OpenAgentsControl handles both frontend and backend work, with agents coordinating to build complete features from UI to database.</p>
+<p>Key aspects of OpenAgentsControl include its context-aware approach, which loads user patterns before generating code, and its editable agents, which can be modified directly through markdown files.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 833.27 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 975.50 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 829.27,-40 829.27,4 -4,4"/>
-<!-- DataIngestion -->
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 971.5,-40 971.5,4 -4,4"/>
+<!-- N0 -->
 <g id="cluster-node1" class="node">
-<title>DataIngestion</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="47.96" cy="-18" rx="47.96" ry="18"/>
-<text text-anchor="middle" x="47.96" y="-14.5" font-family="Arial" font-size="10.00">Data Ingestion</text>
+<title>N0</title>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="50.21" cy="-18" rx="50.21" ry="18"/>
+<text text-anchor="middle" x="50.21" y="-14.5" font-family="Arial" font-size="10.00">AgentController</text>
 </g>
-<!-- DataProcessing -->
+<!-- N1 -->
 <g id="cluster-node2" class="node">
-<title>DataProcessing</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="203.28" cy="-18" rx="53.37" ry="18"/>
-<text text-anchor="middle" x="203.28" y="-14.5" font-family="Arial" font-size="10.00">Data Processing</text>
+<title>N1</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="205.98" cy="-18" rx="47.05" ry="18"/>
+<text text-anchor="middle" x="205.98" y="-14.5" font-family="Arial" font-size="10.00">AgentRegistry</text>
 </g>
-<!-- DataIngestion&#45;&gt;DataProcessing -->
+<!-- N0&#45;&gt;N1 -->
 <g id="cluster-edge1" class="edge">
-<title>DataIngestion&#45;&gt;DataProcessing</title>
-<path fill="none" stroke="#475569" d="M96.21,-18C109.54,-18 124.27,-18 138.4,-18"/>
-<polygon fill="#475569" stroke="#475569" points="138.06,-21.5 148.06,-18 138.06,-14.5 138.06,-21.5"/>
-<text text-anchor="middle" x="122.91" y="-19.95" font-family="Arial" font-size="9.00">load</text>
+<title>N0&#45;&gt;N1</title>
+<path fill="none" stroke="#475569" d="M100.71,-18C115.47,-18 131.78,-18 147.03,-18"/>
+<polygon fill="#475569" stroke="#475569" points="146.93,-21.5 156.93,-18 146.93,-14.5 146.93,-21.5"/>
+<text text-anchor="middle" x="129.67" y="-19.95" font-family="Arial" font-size="9.00">loads</text>
 </g>
-<!-- ModelTraining -->
+<!-- N2 -->
 <g id="cluster-node3" class="node">
-<title>ModelTraining</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="377.83,-36 310.65,-18 377.83,0 445.02,-18 377.83,-36"/>
-<text text-anchor="middle" x="377.83" y="-14.5" font-family="Arial" font-size="10.00">Model Training</text>
+<title>N2</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="364.44" cy="-18" rx="46.15" ry="18"/>
+<text text-anchor="middle" x="364.44" y="-14.5" font-family="Arial" font-size="10.00">AgentMemory</text>
 </g>
-<!-- DataProcessing&#45;&gt;ModelTraining -->
+<!-- N1&#45;&gt;N2 -->
 <g id="cluster-edge2" class="edge">
-<title>DataProcessing&#45;&gt;ModelTraining</title>
-<path fill="none" stroke="#475569" d="M256.99,-18C269.77,-18 283.71,-18 297.41,-18"/>
-<polygon fill="#475569" stroke="#475569" points="297.33,-21.5 307.33,-18 297.33,-14.5 297.33,-21.5"/>
-<text text-anchor="middle" x="283.65" y="-19.95" font-family="Arial" font-size="9.00">train</text>
+<title>N1&#45;&gt;N2</title>
+<path fill="none" stroke="#475569" d="M253.5,-18C270.2,-18 289.22,-18 306.69,-18"/>
+<polygon fill="#475569" stroke="#475569" points="306.39,-21.5 316.39,-18 306.39,-14.5 306.39,-21.5"/>
+<text text-anchor="middle" x="285.66" y="-19.95" font-family="Arial" font-size="9.00">caches</text>
 </g>
-<!-- ModelEvaluation -->
+<!-- N3 -->
 <g id="cluster-node4" class="node">
-<title>ModelEvaluation</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="570.99" cy="-18" rx="54.72" ry="18"/>
-<text text-anchor="middle" x="570.99" y="-14.5" font-family="Arial" font-size="10.00">Model Evaluation</text>
+<title>N3</title>
+<polygon fill="#fef9c3" stroke="#2563eb" points="556.22,-36 491.59,-18 556.22,0 620.85,-18 556.22,-36"/>
+<text text-anchor="middle" x="556.22" y="-14.5" font-family="Arial" font-size="10.00">AgentContext</text>
 </g>
-<!-- ModelTraining&#45;&gt;ModelEvaluation -->
+<!-- N2&#45;&gt;N3 -->
 <g id="cluster-edge3" class="edge">
-<title>ModelTraining&#45;&gt;ModelEvaluation</title>
-<path fill="none" stroke="#475569" d="M446.77,-18C465.52,-18 485.82,-18 504.43,-18"/>
-<polygon fill="#475569" stroke="#475569" points="504.26,-21.5 514.26,-18 504.26,-14.5 504.26,-21.5"/>
-<text text-anchor="middle" x="480.64" y="-19.95" font-family="Arial" font-size="9.00">evaluate</text>
+<title>N2&#45;&gt;N3</title>
+<path fill="none" stroke="#475569" d="M410.89,-18C431.16,-18 455.59,-18 478.55,-18"/>
+<polygon fill="#475569" stroke="#475569" points="478.52,-21.5 488.52,-18 478.52,-14.5 478.52,-21.5"/>
+<text text-anchor="middle" x="451.09" y="-19.95" font-family="Arial" font-size="9.00">provides to</text>
 </g>
-<!-- ModelEvaluation&#45;&gt;ModelTraining -->
-<g id="cluster-edge4" class="edge">
-<title>ModelEvaluation&#45;&gt;ModelTraining</title>
-<path fill="none" stroke="#475569" stroke-dasharray="5,2" d="M525.43,-7.56C516.49,-5.87 507.12,-4.39 498.27,-3.5 474.37,-1.11 447.86,-3.79 425.89,-7.47"/>
-<polygon fill="#475569" stroke="#475569" points="425.56,-3.97 416.34,-9.19 426.8,-10.86 425.56,-3.97"/>
-<text text-anchor="middle" x="480.64" y="-4.95" font-family="Arial" font-size="9.00">retrain</text>
-</g>
-<!-- Prediction -->
+<!-- N4 -->
 <g id="cluster-node5" class="node">
-<title>Prediction</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="698.49" cy="-18" rx="35.78" ry="18"/>
-<text text-anchor="middle" x="698.49" y="-14.5" font-family="Arial" font-size="10.00">Prediction</text>
+<title>N4</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="735.56" cy="-18" rx="47.96" ry="18"/>
+<text text-anchor="middle" x="735.56" y="-14.5" font-family="Arial" font-size="10.00">AgentApproval</text>
 </g>
-<!-- ModelEvaluation&#45;&gt;Prediction -->
-<g id="cluster-edge5" class="edge">
-<title>ModelEvaluation&#45;&gt;Prediction</title>
-<path fill="none" stroke="#475569" d="M625.94,-18C634.34,-18 642.95,-18 651.16,-18"/>
-<polygon fill="#475569" stroke="#475569" points="650.92,-21.5 660.92,-18 650.92,-14.5 650.92,-21.5"/>
+<!-- N3&#45;&gt;N4 -->
+<g id="cluster-edge4" class="edge">
+<title>N3&#45;&gt;N4</title>
+<path fill="none" stroke="#475569" d="M622.5,-18C639.91,-18 658.62,-18 675.67,-18"/>
+<polygon fill="#475569" stroke="#475569" points="675.65,-21.5 685.65,-18 675.65,-14.5 675.65,-21.5"/>
+<text text-anchor="middle" x="654.23" y="-19.95" font-family="Arial" font-size="9.00">triggers</text>
 </g>
-<!-- Result -->
+<!-- N5 -->
 <g id="cluster-node6" class="node">
-<title>Result</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="798.27" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="798.27" y="-14.5" font-family="Arial" font-size="10.00">Result</text>
+<title>N5</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="914.13" cy="-18" rx="53.37" ry="18"/>
+<text text-anchor="middle" x="914.13" y="-14.5" font-family="Arial" font-size="10.00">AgentRepository</text>
 </g>
-<!-- Prediction&#45;&gt;Result -->
-<g id="cluster-edge6" class="edge">
-<title>Prediction&#45;&gt;Result</title>
-<path fill="none" stroke="#475569" d="M734.51,-18C742.63,-18 751.31,-18 759.54,-18"/>
-<polygon fill="#475569" stroke="#475569" points="759.26,-21.5 769.26,-18 759.26,-14.5 759.26,-21.5"/>
+<!-- N4&#45;&gt;N5 -->
+<g id="cluster-edge5" class="edge">
+<title>N4&#45;&gt;N5</title>
+<path fill="none" stroke="#475569" d="M783.88,-18C803.88,-18 827.49,-18 849.02,-18"/>
+<polygon fill="#475569" stroke="#475569" points="848.88,-21.5 858.88,-18 848.88,-14.5 848.88,-21.5"/>
+<text text-anchor="middle" x="822.14" y="-19.95" font-family="Arial" font-size="9.00">persists in</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: beeai-framework internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Multi-Agent Systems with the Workflow API</h2></div><p class="ch-summary">Building multi-agent systems</p><div class="ch-body"><p>The beeai-framework provides a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems, with features such as Requirement Agent, which allows for predictable and controlled behavior across different Large Language Models (LLMs) by setting rules the agent must follow. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt. The Backend feature connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation. The Tools feature extends agents with built-in tools, including web search, weather, code execution, and more, or custom tools.</p>
-<p>The framework also includes Retrieval-Augmented Generation (RAG) systems, which build vector stores and document processing.</p>
-<p>The beeai-framework's architecture is designed to support production-ready multi-agent systems, and its key APIs include those for the Backend module, Workflows, and protocol integrations. The framework's performance is suitable for production use cases, and it has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3. The framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models.</p>
-<p>The beeai-framework is licensed under Apache 2. 0, and its documentation is available. The framework is part of the Linux Foundation's LF AI & Data projects.</p>
-<p>The beeai-framework's Workflow API is a key component of the framework, allowing developers to build multi-agent systems by defining workflows that specify the interactions between agents. The Workflow API provides a simple and intuitive way to define workflows, using a syntax that is easy to read and write. The API also provides a range of features, including support for conditional statements, loops, and functions, making it easy to create complex workflows. The Workflow API is also extensible, allowing developers to add custom features and functionality as needed.</p>
-<p>The beeai-framework's Workflow API is built on top of the framework's Agent API, which provides a range of features for building and managing agents. The Agent API provides a simple and intuitive way to define agents, using a syntax that is easy to read and write. The API also provides a range of features, including support for conditional statements, loops, and functions, making it easy to create complex agents. The Agent API is also extensible, allowing developers to add custom features and functionality as needed.</p>
-<p>The beeai-framework's Workflow API has been used in a range of real-world use cases, including building multi-agent systems for competitive analysis and integrating with AI services. The framework's performance is suitable for production use cases, and it has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3. The framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models.</p>
-<p>The beeai-framework is licensed under Apache 2. 0, and its documentation is available.</p>
-<p>The beeai-framework's Workflow API provides a range of benefits, including improved productivity, increased flexibility, and enhanced scalability. The API provides a simple and intuitive way to define workflows, making it easy to create complex multi-agent systems. The API also provides a range of features, including support for conditional statements, loops, and functions, making it easy to create custom workflows. The Workflow API is also extensible, allowing developers to add custom features and functionality as needed.</p>
-<p>The beeai-framework's Workflow API is designed to work seamlessly with the framework's other features, including the Backend module, Agents, and protocol integrations. The API provides a simple and intuitive way to define workflows, making it easy to create complex multi-agent systems. The API also provides a range of features, including support for conditional statements, loops, and functions, making it easy to create custom workflows. The Workflow API is also extensible, allowing developers to add custom features and functionality as needed.</p>
-<p>The beeai-framework's Workflow API has a range of technical details that are important to understand, including the syntax for defining workflows, the features and functionality provided by the API, and the ways in which the API can be extended and customized. The API provides a simple and intuitive way to define workflows, using a syntax that is easy to read and write. The API also provides a range of features, including support for conditional statements, loops, and functions, making it easy to create complex workflows. The Workflow API is also extensible, allowing developers to add custom features and functionality as needed.</p>
-<p>The beeai-framework's documentation provides a range of information and resources for learning more about the Workflow API and how to use it to build multi-agent systems.</p>
-<p>The beeai-framework's Workflow API is an important part of the framework, providing a simple and intuitive way to define workflows and build multi-agent systems. The API provides a range of features and functionality, including support for conditional statements, loops, and functions, making it easy to create complex workflows. The Workflow API is also extensible, allowing developers to add custom features and functionality as needed. The beeai-framework's documentation provides a range of information and resources for learning more about the Workflow API and how to use it to build multi-agent systems.</p>
-<p>The framework's performance is suitable for production use cases, and it has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3. The framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: OpenAgentsControl internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Building Context-Aware Agents with the OpenCode Framework</h2></div><div class="ch-body"><p>It also includes approval gates, which require review and approval before execution, ensuring that users stay in control. The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
+<p>The system is multi-language, supporting languages such as TypeScript, Python, Go, and Rust, and is model-agnostic, allowing users to work with various AI models, including Claude, GPT, and Gemini, as well as local models. OpenAgentsControl handles both frontend and backend work, with agents coordinating to build complete features from UI to database.</p>
+<p>Key aspects of OpenAgentsControl include its context-aware approach, which loads user patterns before generating code, and its editable agents, which can be modified directly through markdown files. The system also features approval gates, ensuring that agents always request approval before execution, and is designed to be token-efficient, using a minimal viable information approach to load only what is needed.</p>
+<p>OpenAgentsControl is designed to provide production-ready code that ships without heavy rework,</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 762.96 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1038.80 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 758.96,-40 758.96,4 -4,4"/>
-<!-- A -->
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1034.8,-40 1034.8,4 -4,4"/>
+<!-- N0 -->
 <g id="seq-node1" class="node">
-<title>A</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="27" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="27" y="-14.5" font-family="Arial" font-size="10.00">Install</text>
+<title>N0</title>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="84.04" cy="-18" rx="84.04" ry="18"/>
+<text text-anchor="middle" x="84.04" y="-14.5" font-family="Arial" font-size="10.00">pip install openagentscontrol</text>
 </g>
-<!-- B -->
+<!-- N1 -->
 <g id="seq-node2" class="node">
-<title>B</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="162.38" cy="-18" rx="34.88" ry="18"/>
-<text text-anchor="middle" x="162.38" y="-14.5" font-family="Arial" font-size="10.00">Configure</text>
+<title>N1</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="306.46" cy="-18" rx="39.39" ry="18"/>
+<text text-anchor="middle" x="306.46" y="-14.5" font-family="Arial" font-size="10.00">OAC Agent</text>
 </g>
-<!-- A&#45;&gt;B -->
+<!-- N0&#45;&gt;N1 -->
 <g id="seq-edge1" class="edge">
-<title>A&#45;&gt;B</title>
-<path fill="none" stroke="#475569" d="M54.35,-18C71.95,-18 95.55,-18 116.11,-18"/>
-<polygon fill="#475569" stroke="#475569" points="115.96,-21.5 125.96,-18 115.96,-14.5 115.96,-21.5"/>
-<text text-anchor="middle" x="90.75" y="-19.95" font-family="Arial" font-size="9.00">complete</text>
+<title>N0&#45;&gt;N1</title>
+<path fill="none" stroke="#475569" d="M168.37,-18C197.66,-18 229.64,-18 255.34,-18"/>
+<polygon fill="#475569" stroke="#475569" points="255.16,-21.5 265.16,-18 255.16,-14.5 255.16,-21.5"/>
+<text text-anchor="middle" x="217.57" y="-19.95" font-family="Arial" font-size="9.00">then import oac</text>
 </g>
-<!-- C -->
+<!-- N2 -->
 <g id="seq-node3" class="node">
-<title>C</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="285.52" cy="-18" rx="31.27" ry="18"/>
-<text text-anchor="middle" x="285.52" y="-14.5" font-family="Arial" font-size="10.00">Initialize</text>
+<title>N2</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="505.84" cy="-18" rx="43" ry="18"/>
+<text text-anchor="middle" x="505.84" y="-14.5" font-family="Arial" font-size="10.00">add_tool oac</text>
 </g>
-<!-- B&#45;&gt;C -->
+<!-- N1&#45;&gt;N2 -->
 <g id="seq-edge2" class="edge">
-<title>B&#45;&gt;C</title>
-<path fill="none" stroke="#475569" d="M197.45,-18C211.47,-18 227.86,-18 242.61,-18"/>
-<polygon fill="#475569" stroke="#475569" points="242.5,-21.5 252.5,-18 242.5,-14.5 242.5,-21.5"/>
-<text text-anchor="middle" x="225.76" y="-19.95" font-family="Arial" font-size="9.00">done</text>
+<title>N1&#45;&gt;N2</title>
+<path fill="none" stroke="#475569" d="M345.99,-18C375.99,-18 418,-18 451.28,-18"/>
+<polygon fill="#475569" stroke="#475569" points="451.14,-21.5 461.14,-18 451.14,-14.5 451.14,-21.5"/>
+<text text-anchor="middle" x="404.35" y="-19.95" font-family="Arial" font-size="9.00">configure oac agent</text>
 </g>
-<!-- D -->
+<!-- N3 -->
 <g id="seq-node4" class="node">
-<title>D</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="414.27,-36 370.04,-18 414.27,0 458.49,-18 414.27,-36"/>
-<text text-anchor="middle" x="414.27" y="-14.5" font-family="Arial" font-size="10.00">Call API</text>
+<title>N3</title>
+<polygon fill="#fef9c3" stroke="#2563eb" points="758.19,-36 689.09,-18 758.19,0 827.28,-18 758.19,-36"/>
+<text text-anchor="middle" x="758.19" y="-14.5" font-family="Arial" font-size="10.00">invoke oac_init</text>
 </g>
-<!-- C&#45;&gt;D -->
+<!-- N2&#45;&gt;N3 -->
 <g id="seq-edge3" class="edge">
-<title>C&#45;&gt;D</title>
-<path fill="none" stroke="#475569" d="M317.21,-18C329.34,-18 343.67,-18 357.52,-18"/>
-<polygon fill="#475569" stroke="#475569" points="357.46,-21.5 367.46,-18 357.46,-14.5 357.46,-21.5"/>
-<text text-anchor="middle" x="343.42" y="-19.95" font-family="Arial" font-size="9.00">start</text>
+<title>N2&#45;&gt;N3</title>
+<path fill="none" stroke="#475569" d="M549.31,-18C583.94,-18 633.86,-18 676.1,-18"/>
+<polygon fill="#475569" stroke="#475569" points="675.99,-21.5 685.99,-18 675.99,-14.5 675.99,-21.5"/>
+<text text-anchor="middle" x="618.97" y="-19.95" font-family="Arial" font-size="9.00">initialize oac environment</text>
 </g>
-<!-- E -->
+<!-- N4 -->
 <g id="seq-node5" class="node">
-<title>E</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="581.01" cy="-18" rx="56.53" ry="18"/>
-<text text-anchor="middle" x="581.01" y="-14.5" font-family="Arial" font-size="10.00">Handle Response</text>
+<title>N4</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="970.67" cy="-18" rx="60.13" ry="18"/>
+<text text-anchor="middle" x="970.67" y="-14.5" font-family="Arial" font-size="10.00">OpenCode CLI oac</text>
 </g>
-<!-- D&#45;&gt;E -->
+<!-- N3&#45;&gt;N4 -->
 <g id="seq-edge4" class="edge">
-<title>D&#45;&gt;E</title>
-<path fill="none" stroke="#475569" d="M459.42,-18C475.83,-18 494.86,-18 512.87,-18"/>
-<polygon fill="#475569" stroke="#475569" points="512.71,-21.5 522.71,-18 512.71,-14.5 512.71,-21.5"/>
-<text text-anchor="middle" x="491.49" y="-19.95" font-family="Arial" font-size="9.00">receive</text>
-</g>
-<!-- F -->
-<g id="seq-node6" class="node">
-<title>F</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="727.75" cy="-18" rx="27.21" ry="18"/>
-<text text-anchor="middle" x="727.75" y="-14.5" font-family="Arial" font-size="10.00">Output</text>
-</g>
-<!-- E&#45;&gt;F -->
-<g id="seq-edge5" class="edge">
-<title>E&#45;&gt;F</title>
-<path fill="none" stroke="#475569" d="M637.97,-18C655.09,-18 673.5,-18 689.09,-18"/>
-<polygon fill="#475569" stroke="#475569" points="688.88,-21.5 698.88,-18 688.88,-14.5 688.88,-21.5"/>
-<text text-anchor="middle" x="669.04" y="-19.95" font-family="Arial" font-size="9.00">render</text>
+<title>N3&#45;&gt;N4</title>
+<path fill="none" stroke="#475569" d="M828.98,-18C851.5,-18 876.48,-18 899.06,-18"/>
+<polygon fill="#475569" stroke="#475569" points="898.76,-21.5 908.76,-18 898.76,-14.5 898.76,-21.5"/>
+<text text-anchor="middle" x="868.91" y="-19.95" font-family="Arial" font-size="9.00">call oac run</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: beeai-framework integration flow</p></div></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Backend Modules with Unified LLM Provider Interfaces</h2></div><p class="ch-summary">Deploying backend modules</p><div class="ch-body"><p>The beeai-framework is a production-ready framework for building multi-agent systems, and its Backend module is designed to simplify working with AI services. The Backend module connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation. This allows for predictable and controlled behavior across different Large Language Models (LLMs) by setting rules the agent must follow. The Backend module is a key component of the beeai-framework, and its performance is suitable for production use cases.</p>
-<p>The framework's architecture is designed to support production-ready multi-agent systems, and its key APIs include those for the Backend module, Workflows, and protocol integrations.</p>
-<p>The beeai-framework provides features such as Requirement Agent, which allows for predictable and controlled behavior across different LLMs by setting rules the agent must follow. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt. The Backend feature connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation. The Tools feature extends agents with built-in tools, including web search, weather, code execution, and more, or custom tools.</p>
-<p>The framework also includes Retrieval-Augmented Generation (RAG) systems, which build vector stores and document processing.</p>
-<p>The beeai-framework supports hosting agents in servers with the Serve feature, which includes support for multiple protocols such as A2A and MCP. The Cache feature optimizes performance and reduces costs with intelligent caching, while the Serialization feature saves and loads agent state for persistence across sessions. The framework has recently added an experimental Streamlit agent and provides starter templates, including beeai-framework-py-starter for Python and beeai-framework-ts-starter for TypeScript, to get started quickly. The framework's documentation is available, and it is part of the Linux Foundation's LF AI & Data projects.</p>
-<p>The beeai-framework is a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems. It provides features such as Requirement Agent, which allows for predictable and controlled behavior across different LLMs by setting rules the agent must follow. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt. The Backend feature connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation.</p>
-<p>The Tools feature extends agents with built-in tools, including web search, weather, code execution, and more, or custom tools.</p>
-<p>The beeai-framework has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3. The framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models. The framework's performance is suitable for production use cases, and its architecture is designed to support production-ready multi-agent systems.</p>
-<p>The framework's key APIs include those for the Backend module, Workflows, and protocol integrations. The framework also includes support for DeepSeek R1 and LLaMa 3. 3.</p>
-<p>The beeai-framework provides a Python library and a TypeScript library, both of which are available on GitHub. The framework is licensed under Apache 2. 0, and the latest updates to the framework include the introduction of the Requirement Agent, new protocol integrations such as ACP and MCP, and the launch of the Python library alpha. The framework's documentation is available, and it is part of the Linux Foundation's LF AI & Data projects.</p>
-<p>The framework's architecture is designed to support production-ready multi-agent systems, and its key APIs include those for the Backend module, Workflows, and protocol integrations.</p>
-<p>The beeai-framework is designed to support production-ready multi-agent systems, and its key APIs include those for the Backend module, Workflows, and protocol integrations. The framework provides features such as Requirement Agent, which allows for predictable and controlled behavior across different LLMs by setting rules the agent must follow. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt. The Backend feature connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation.</p>
-<p>The Tools feature extends agents with built-in tools, including web search, weather, code execution, and more, or custom tools.</p>
-<p>The beeai-framework has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3. The framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models. The framework's performance is suitable for production use cases, and its architecture is designed to support production-ready multi-agent systems.</p>
-<p>The framework's key APIs include those for the Backend module, Workflows, and protocol integrations. The framework also includes support for DeepSeek R1 and LLaMa 3. 3. The beeai-framework is a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems.</p><div class="code-label">Code Sample</div><div class="code-block">name = 'wxo-beeai'
-version = '0.0.1'
-requires-python = '&gt;=3.11,&lt;3.13'
-dependencies = [
- 'beeai-framework[watsonx-orchestrate] (&gt;=0.1.68,&lt;0.2.0)',
- 'pydantic (&gt;=2.11.7,&lt;3.0.0)',
- 'pydantic-settings (&gt;=2.9.1,&lt;3.0.0)',
- 'python-dotenv (&gt;=1.1.0,&lt;2.0.0)',
- 'tavily-python (&gt;=0.7.7,&lt;0.8.0)',
- 'sse-starlette (&gt;=2.4.1,&lt;3.0.0)'
-]
-build-system = 'poetry'
-requires = ['poetry-core&gt;=2.0.0,&lt;3.0.0']
-build-backend = 'poetry.core.masonry.api'
-from beeai_framework import Backend
-backend = Backend()
-backend.connect('llm_provider')
-backend.send('message')
-backend.receive()
-from beeai_framework import Workflows
-workflows = Workflows()
-workflows.create('workflow')
-workflows.start('workflow')</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: OpenAgentsControl integration flow</p></div></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Editable Agents with Markdown Configuration</h2></div><p class="ch-summary">OpenAgentsControl editable agents</p><div class="ch-body"><p>OpenAgentsControl is a system that enables AI agents to learn and generate code based on a user's coding patterns, providing repeatable results and production-ready code. The system is built on the OpenCode open-source AI coding framework and extends it with specialized agents, context management, and team workflows. OpenAgentsControl features pattern control, which allows users to define their patterns once and have the AI use them forever. It also includes approval gates, which require review and approval before execution, ensuring that users stay in control.</p>
+<p>The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
+<p>OpenAgentsControl is a multi-language system, supporting languages such as TypeScript, Python, Go, and Rust, and is model-agnostic, allowing users to work with various AI models, including Claude, GPT, and Gemini, as well as local models. The system handles both frontend and backend work, with agents coordinating to build complete features from UI to database. Key aspects of OpenAgentsControl include its context-aware approach, which loads user patterns before generating code, and its editable agents, which can be modified directly through markdown files. The system also features approval gates, ensuring that agents always request approval before execution, and is designed to be token-efficient, using a minimal viable information approach to load only what is needed.</p>
+<p>The context system is the core of the OpenAgentsControl solution and allows for the automatic discovery and application of relevant patterns, resulting in code that matches the user's established coding patterns from the start. OpenAgentsControl is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in. OpenAgentsControl provides a powerful solution for users looking to generate high-quality code that meets their specific needs and standards.</p>
+<p>In terms of architecture, OpenAgentsControl utilizes a context system that enables agents to load and apply user-defined patterns and standards to generated code. The system also allows for the choice of any model and provider, with support for multiple models. OpenAgentsControl includes a token efficiency reduction of 80% based on the MVI principle, support for shared context files, and the ability to edit agent behavior using Markdown files and configuration files. The system also features a context-aware approach, which loads user patterns before generating code, and its editable agents, which can be modified directly through markdown files.</p>
+<p>OpenAgentsControl is a system that enables efficient and controlled code generation using artificial intelligence. The system is built on the OpenCode open-source AI coding framework and extends it with specialized agents, context management, and team workflows. OpenAgentsControl features pattern control, which allows users to define their patterns once and have the AI use them forever. It also includes approval gates, which require review and approval before execution, ensuring that users stay in control.</p>
+<p>The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
+<p>The latest features of OpenAgentsControl include a token efficiency reduction of 80% based on the MVI principle, support for shared context files, and the ability to edit agent behavior using Markdown files and configuration files. The system also allows for the choice of any model and provider, with support for multiple models. OpenAgentsControl is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in.</p>
+<p>OpenAgentsControl provides a powerful solution for users looking to generate high-quality code that meets their specific needs and standards. The system is built on the OpenCode open-source AI coding framework and extends it with specialized agents, context management, and team workflows. OpenAgentsControl features pattern control, which allows users to define their patterns once and have the AI use them forever. It also includes approval gates, which require review and approval before execution, ensuring that users stay in control.</p>
+<p>The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
+<p>OpenAgentsControl is a system that enables AI agents to learn and generate code based on a user's coding patterns, providing repeatable results and production-ready code. The system handles both frontend and backend work, with agents coordinating to build complete features from UI to database. Key aspects of OpenAgentsControl include its context-aware approach, which loads user patterns before generating code, and its editable agents, which can be modified directly through markdown files. The system also features approval gates, ensuring that agents always request approval before execution, and is designed to be token-efficient, using a minimal viable information approach to load only what is needed.</p>
+<p>OpenAgentsControl provides a powerful solution for users looking to generate high-quality code that meets their specific needs and standards. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in. OpenAgentsControl is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically.</p><div class="code-label">Code Sample</div><div class="code-block">bun run scripts/registry/validate-registry.ts
+# Registry validation
+# ✓ All 244 paths valid
+bun run scripts/registry/check-dependencies.ts
+# Dependency checking
+# ✓ All 262 checks passed
+./scripts/tests/test-installer-files.sh --local --profile=essential
+# Installer test
+# ✓ All files accessible
+bun run scripts/registry/validate-registry.ts --local
+# Registry validation
+# ✓ All 244 paths valid
+bun run scripts/registry/check-dependencies.ts --local
+# Dependency checking
+# ✓ All 262 checks passed
+./scripts/tests/test-installer-files.sh --local --profile=essential --verbose
+# Installer test
+# ✓ All files accessible
+bun run scripts/registry/validate-registry.ts --local --verbose
+# Registry validation
+# ✓ All 244 paths valid
+bun run scripts/registry/check-dependencies.ts --local --verbose
+# Dependency checking
+# ✓ All 262 checks passed
+./scripts/tests/test-installer-files.sh --local --profile=essential --verbose --debug
+# Installer test
+# ✓ All files accessible</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 443.58 199.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 195)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1468.82 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-195 439.58,-195 439.58,4 -4,4"/>
-<!-- Created -->
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1464.82,-40 1464.82,4 -4,4"/>
+<!-- N0 -->
 <g id="sm-node1" class="node">
-<title>Created</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="30.37" cy="-108" rx="30.37" ry="18"/>
-<text text-anchor="middle" x="30.37" y="-104.5" font-family="Arial" font-size="10.00">Created</text>
+<title>N0</title>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="41.64" cy="-18" rx="41.64" ry="18"/>
+<text text-anchor="middle" x="41.64" y="-14.5" font-family="Arial" font-size="10.00">Uninitialized</text>
 </g>
-<!-- Running -->
+<!-- N1 -->
 <g id="sm-node2" class="node">
-<title>Running</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="145.25" cy="-108" rx="31.27" ry="18"/>
-<text text-anchor="middle" x="145.25" y="-104.5" font-family="Arial" font-size="10.00">Running</text>
+<title>N1</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="199.64" cy="-18" rx="46.6" ry="18"/>
+<text text-anchor="middle" x="199.64" y="-14.5" font-family="Arial" font-size="10.00">Task Planning</text>
 </g>
-<!-- Created&#45;&gt;Running -->
+<!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
-<title>Created&#45;&gt;Running</title>
-<path fill="none" stroke="#475569" d="M61.03,-108C73.68,-108 88.68,-108 102.43,-108"/>
-<polygon fill="#475569" stroke="#475569" points="102.1,-111.5 112.1,-108 102.1,-104.5 102.1,-111.5"/>
-<text text-anchor="middle" x="87.36" y="-109.95" font-family="Arial" font-size="9.00">start</text>
+<title>N0&#45;&gt;N1</title>
+<path fill="none" stroke="#475569" d="M83.63,-18C101.28,-18 122.22,-18 141.37,-18"/>
+<polygon fill="#475569" stroke="#475569" points="141.19,-21.5 151.19,-18 141.19,-14.5 141.19,-21.5"/>
+<text text-anchor="middle" x="118.16" y="-19.95" font-family="Arial" font-size="9.00">initialize</text>
 </g>
-<!-- Waiting -->
+<!-- N2 -->
 <g id="sm-node3" class="node">
-<title>Waiting</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="279.2" cy="-173" rx="29.01" ry="18"/>
-<text text-anchor="middle" x="279.2" y="-169.5" font-family="Arial" font-size="10.00">Waiting</text>
+<title>N2</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="394.7" cy="-18" rx="50.21" ry="18"/>
+<text text-anchor="middle" x="394.7" y="-14.5" font-family="Arial" font-size="10.00">Task Execution</text>
 </g>
-<!-- Running&#45;&gt;Waiting -->
+<!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
-<title>Running&#45;&gt;Waiting</title>
-<path fill="none" stroke="#475569" d="M159.38,-124.39C168.27,-134.41 180.85,-146.67 194.52,-154 208.09,-161.28 224.35,-165.78 238.91,-168.55"/>
-<polygon fill="#475569" stroke="#475569" points="238.2,-171.98 248.64,-170.18 239.36,-165.08 238.2,-171.98"/>
-<text text-anchor="middle" x="209.9" y="-166.95" font-family="Arial" font-size="9.00">pause</text>
+<title>N1&#45;&gt;N2</title>
+<path fill="none" stroke="#475569" d="M246.39,-18C272.27,-18 304.94,-18 332.94,-18"/>
+<polygon fill="#475569" stroke="#475569" points="332.71,-21.5 342.71,-18 332.71,-14.5 332.71,-21.5"/>
+<text text-anchor="middle" x="295.37" y="-19.95" font-family="Arial" font-size="9.00">plan generated</text>
 </g>
-<!-- Success -->
+<!-- N3 -->
 <g id="sm-node4" class="node">
-<title>Success</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="279.2" cy="-112" rx="32.62" ry="18"/>
-<text text-anchor="middle" x="279.2" y="-108.5" font-family="Arial" font-size="10.00">Success</text>
+<title>N3</title>
+<polygon fill="#fef9c3" stroke="#2563eb" points="638.15,-36 537.17,-18 638.15,0 739.14,-18 638.15,-36"/>
+<text text-anchor="middle" x="638.15" y="-14.5" font-family="Arial" font-size="10.00">Post&#45;Execution Review</text>
 </g>
-<!-- Running&#45;&gt;Success -->
+<!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
-<title>Running&#45;&gt;Success</title>
-<path fill="none" stroke="#475569" d="M176.65,-108.38C191.35,-108.61 209.23,-108.97 225.27,-109.5 228.46,-109.61 231.76,-109.73 235.08,-109.86"/>
-<polygon fill="#475569" stroke="#475569" points="234.65,-113.35 244.79,-110.28 234.95,-106.35 234.65,-113.35"/>
-<text text-anchor="middle" x="209.9" y="-110.95" font-family="Arial" font-size="9.00">finish</text>
+<title>N2&#45;&gt;N3</title>
+<path fill="none" stroke="#475569" d="M445.15,-18C467.82,-18 495.73,-18 523.16,-18"/>
+<polygon fill="#475569" stroke="#475569" points="522.95,-21.5 532.95,-18 522.95,-14.5 522.95,-21.5"/>
+<text text-anchor="middle" x="491.04" y="-19.95" font-family="Arial" font-size="9.00">task executed</text>
 </g>
-<!-- Failed -->
+<!-- N4 -->
 <g id="sm-node5" class="node">
-<title>Failed</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="279.2,-76 243.27,-58 279.2,-40 315.13,-58 279.2,-76"/>
-<text text-anchor="middle" x="279.2" y="-54.5" font-family="Arial" font-size="10.00">Failed</text>
+<title>N4</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="934.86" cy="-18" rx="52.47" ry="18"/>
+<text text-anchor="middle" x="934.86" y="-14.5" font-family="Arial" font-size="10.00">Task Completed</text>
 </g>
-<!-- Running&#45;&gt;Failed -->
+<!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
-<title>Running&#45;&gt;Failed</title>
-<path fill="none" stroke="#475569" d="M172.01,-98.24C193.54,-90.08 224.3,-78.43 247.18,-69.76"/>
-<polygon fill="#475569" stroke="#475569" points="248.18,-73.12 256.29,-66.3 245.7,-66.57 248.18,-73.12"/>
-<text text-anchor="middle" x="209.9" y="-89.95" font-family="Arial" font-size="9.00">fail</text>
+<title>N3&#45;&gt;N4</title>
+<path fill="none" stroke="#475569" d="M741.81,-18C784.72,-18 833.21,-18 870.73,-18"/>
+<polygon fill="#475569" stroke="#475569" points="870.49,-21.5 880.49,-18 870.49,-14.5 870.49,-21.5"/>
+<text text-anchor="middle" x="810.77" y="-19.95" font-family="Arial" font-size="9.00">execution result evaluated</text>
 </g>
-<!-- Waiting&#45;&gt;Running -->
-<g id="sm-edge5" class="edge">
-<title>Waiting&#45;&gt;Running</title>
-<path fill="none" stroke="#475569" d="M258.21,-160.23C248.45,-154.22 236.44,-147.15 225.27,-141.5 211.53,-134.54 196.01,-127.74 182.38,-122.1"/>
-<polygon fill="#475569" stroke="#475569" points="183.9,-118.95 173.32,-118.42 181.27,-125.43 183.9,-118.95"/>
-<text text-anchor="middle" x="209.9" y="-142.95" font-family="Arial" font-size="9.00">resume</text>
-</g>
-<!-- Retrying -->
+<!-- N5 -->
 <g id="sm-node6" class="node">
-<title>Retrying</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="403.86" cy="-18" rx="31.72" ry="18"/>
-<text text-anchor="middle" x="403.86" y="-14.5" font-family="Arial" font-size="10.00">Retrying</text>
+<title>N5</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1163.66" cy="-18" rx="39.84" ry="18"/>
+<text text-anchor="middle" x="1163.66" y="-14.5" font-family="Arial" font-size="10.00">Task Failed</text>
 </g>
-<!-- Failed&#45;&gt;Retrying -->
-<g id="sm-edge6" class="edge">
-<title>Failed&#45;&gt;Retrying</title>
-<path fill="none" stroke="#475569" d="M301.85,-50.94C319.34,-45.24 344.37,-37.07 365.14,-30.3"/>
-<polygon fill="#475569" stroke="#475569" points="366,-33.7 374.42,-27.27 363.82,-27.05 366,-33.7"/>
-<text text-anchor="middle" x="343.63" y="-41.95" font-family="Arial" font-size="9.00">retry</text>
+<!-- N4&#45;&gt;N5 -->
+<g id="sm-edge5" class="edge">
+<title>N4&#45;&gt;N5</title>
+<path fill="none" stroke="#475569" d="M987.61,-18C1025.05,-18 1075.37,-18 1112.45,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1111.99,-21.5 1121.99,-18 1111.99,-14.5 1111.99,-21.5"/>
+<text text-anchor="middle" x="1055.57" y="-19.95" font-family="Arial" font-size="9.00">result reflected on failure</text>
 </g>
-<!-- Error -->
+<!-- N6 -->
 <g id="sm-node7" class="node">
-<title>Error</title>
-<ellipse fill="#fbe3e4" stroke="#2563eb" cx="403.86" cy="-78" rx="27" ry="18"/>
-<text text-anchor="middle" x="403.86" y="-74.5" font-family="Arial" font-size="10.00">Error</text>
+<title>N6</title>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1412.41" cy="-18" rx="48.41" ry="18"/>
+<text text-anchor="middle" x="1412.41" y="-14.5" font-family="Arial" font-size="10.00">Task Approved</text>
 </g>
-<!-- Failed&#45;&gt;Error -->
-<g id="sm-edge8" class="edge">
-<title>Failed&#45;&gt;Error</title>
-<path fill="none" stroke="#475569" d="M307.12,-62.39C324.41,-65.21 347.08,-68.91 366.03,-71.99"/>
-<polygon fill="#475569" stroke="#475569" points="365.33,-75.43 375.77,-73.58 366.46,-68.52 365.33,-75.43"/>
-<text text-anchor="middle" x="343.63" y="-70.95" font-family="Arial" font-size="9.00">abort</text>
-</g>
-<!-- Retrying&#45;&gt;Running -->
-<g id="sm-edge7" class="edge">
-<title>Retrying&#45;&gt;Running</title>
-<path fill="none" stroke="#475569" d="M373.42,-12.47C340.47,-7.61 286.08,-3.66 243.27,-20.5 211.28,-33.08 183.16,-61.44 165.55,-82.48"/>
-<polygon fill="#475569" stroke="#475569" points="162.96,-80.11 159.39,-90.09 168.4,-84.52 162.96,-80.11"/>
-<text text-anchor="middle" x="279.2" y="-22.95" font-family="Arial" font-size="9.00">restarted</text>
+<!-- N5&#45;&gt;N6 -->
+<g id="sm-edge6" class="edge">
+<title>N5&#45;&gt;N6</title>
+<path fill="none" stroke="#475569" d="M1203.76,-18C1243.72,-18 1306.28,-18 1352.3,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1352.1,-21.5 1362.1,-18 1352.1,-14.5 1352.1,-21.5"/>
+<text text-anchor="middle" x="1283.75" y="-19.95" font-family="Arial" font-size="9.00">failure reviewed and approved</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: beeai-framework lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating ACP and MCP Protocols with the Model Context Protocol</h2></div><p class="ch-summary">Integrate ACP and MCP protocols</p><div class="ch-body"><p>The beeai-framework provides a comprehensive set of tools for building multi-agent systems, including the integration of ACP and MCP protocols with the Model Context Protocol. The Model Context Protocol is a key feature of the framework, allowing for the management of conversation history and context. The ACP and MCP protocols are integrated into the framework through the Serve feature, which supports multiple protocols. The Serve feature includes support for A2A and MCP protocols, allowing for hosting agents in servers.</p>
-<p>The integration of ACP and MCP protocols with the Model Context Protocol enables the framework to support production-ready multi-agent systems.</p>
-<p>The beeai-framework's architecture is designed to support production-ready multi-agent systems, with a focus on scalability and performance. The framework's key APIs include those for the Backend module, Workflows, and protocol integrations. The Backend module provides a unified interface for connecting to LLM providers, while the Workflows feature allows for building multi-agent systems. The protocol integrations, including ACP and MCP, enable the framework to support a wide range of use cases.</p>
-<p>The framework's performance is suitable for production use cases, with a focus on optimizing performance and reducing costs.</p>
-<p>The beeai-framework's Requirement Agent feature allows for predictable and controlled behavior across different LLMs, by setting rules the agent must follow. The Requirement Agent is integrated with the Model Context Protocol, enabling the framework to manage conversation history and context. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt. The Agents are integrated with the ACP and MCP protocols, enabling the framework to support production-ready multi-agent systems.</p>
-<p>The framework's Tools feature extends agents with built-in tools, including web search, weather, code execution, and more.</p>
-<p>The beeai-framework's Retrieval-Augmented Generation (RAG) systems build vector stores and document processing, enabling the framework to support a wide range of use cases. The RAG systems are integrated with the Model Context Protocol, enabling the framework to manage conversation history and context. The framework also includes Templates, which build dynamic prompts with enhanced Mustache syntax, and Memory, which manages conversation history with built-in memory strategies. The framework's Observability feature allows for monitoring of agent behavior with events, logging, and robust error handling.</p>
-<p>The Observability feature is integrated with the ACP and MCP protocols, enabling the framework to support production-ready multi-agent systems.</p>
-<p>The beeai-framework's Cache feature optimizes performance and reduces costs with intelligent caching, while the Serialization feature saves and loads agent state for persistence across sessions. The Cache and Serialization features are integrated with the Model Context Protocol, enabling the framework to manage conversation history and context. The framework's experimental Streamlit agent provides a simple way to build and deploy agents, while the starter templates, including beeai-framework-py-starter for Python and beeai-framework-ts-starter for TypeScript, provide a starting point for building multi-agent systems. The framework's documentation is available, providing a comprehensive guide to building and deploying multi-agent systems.</p>
-<p>The beeai-framework's integration of ACP and MCP protocols with the Model Context Protocol enables the framework to support a wide range of use cases, including building multi-agent systems, working with AI services, and integrating with various protocols and models. The framework's performance is suitable for production use cases, with a focus on optimizing performance and reducing costs. The framework's key APIs, including those for the Backend module, Workflows, and protocol integrations, provide a comprehensive set of tools for building and deploying multi-agent systems. The framework's architecture is designed to support production-ready multi-agent systems, with a focus on scalability and performance.</p>
-<p>The framework's Tools feature extends agents with built-in tools, including web search, weather, code execution, and more.</p>
-<p>The beeai-framework's support for DeepSeek R1 and LLaMa 3. 3 enables the framework to support a wide range of use cases, including building multi-agent systems and working with AI services. The framework's integration of ACP and MCP protocols with the Model Context Protocol enables the framework to manage conversation history and context, while the Retrieval-Augmented Generation (RAG) systems build vector stores and document processing. The framework's Observability feature allows for monitoring of agent behavior with events, logging, and robust error handling, while the Cache and Serialization features optimize performance and reduce costs.</p>
-<p>The framework's experimental Streamlit agent and starter templates provide a simple way to build and deploy agents, while the framework's documentation provides a comprehensive guide to building and deploying multi-agent systems.</p>
-<p>The beeai-framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models. The framework's integration of ACP and MCP protocols with the Model Context Protocol enables the framework to support production-ready multi-agent systems, while the framework's performance is suitable for production use cases. The framework's key APIs, including those for the Backend module, Workflows, and protocol integrations, provide a comprehensive set of tools for building and deploying multi-agent systems. The framework's architecture is designed to support production-ready multi-agent systems, with a focus on scalability and performance.</p>
-<p>The framework's Tools feature extends agents with built-in tools, including web search, weather, code execution, and more.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: OpenAgentsControl lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Multi-Language Support for TypeScript, Python, Go, and Rust</h2></div><div class="ch-body"><p>OpenAgentsControl handles both frontend and backend work, with agents coordinating to build complete features from UI to database.</p>
+<p>Key aspects of OpenAgentsControl include its context-aware approach, which loads user patterns before generating code, and its editable agents, which can be modified directly through markdown files. The system also features approval gates, ensuring that agents always request approval before execution, and is designed to be token-efficient, using a minimal viable information approach to load only what is needed.</p>
+<p>OpenAgentsControl is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in. Overall, OpenAgentsControl provides a powerful solution for users looking to generate high-quality code that meets their specific needs and standards.</p>
+<p>OpenAgen</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 161.50 456.50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 452.5)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 183.19 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-452.5 157.5,-452.5 157.5,4 -4,4"/>
-<!-- A -->
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 179.19,-535 179.19,4 -4,4"/>
+<!-- N0 -->
 <g id="pipe-node1" class="node">
-<title>A</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="76.52" cy="-430.5" rx="27" ry="18"/>
-<text text-anchor="middle" x="76.52" y="-427" font-family="Arial" font-size="10.00">Input</text>
+<title>N0</title>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="87.59" cy="-513" rx="66.9" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
 </g>
-<!-- B -->
+<!-- N1 -->
 <g id="pipe-node2" class="node">
-<title>B</title>
-<ellipse fill="#fef9c3" stroke="#2563eb" cx="76.52" cy="-348" rx="30.37" ry="18"/>
-<text text-anchor="middle" x="76.52" y="-344.5" font-family="Arial" font-size="10.00">Validate</text>
+<title>N1</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-430.5" rx="54.27" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-427" font-family="Arial" font-size="10.00">NLPTokenization</text>
 </g>
-<!-- A&#45;&gt;B -->
+<!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
-<title>A&#45;&gt;B</title>
-<path fill="none" stroke="#475569" d="M76.52,-412.03C76.52,-402.01 76.52,-389.18 76.52,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="80.02,-377.95 76.52,-367.95 73.02,-377.95 80.02,-377.95"/>
-<text text-anchor="middle" x="91.52" y="-385.95" font-family="Arial" font-size="9.00">receive</text>
+<title>N0&#45;&gt;N1</title>
+<path fill="none" stroke="#475569" d="M87.59,-494.53C87.59,-484.51 87.59,-471.68 87.59,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-460.45 87.59,-450.45 84.09,-460.45 91.09,-460.45"/>
+<text text-anchor="middle" x="118.72" y="-468.45" font-family="Arial" font-size="9.00">lexical analysis</text>
 </g>
-<!-- C -->
+<!-- N2 -->
 <g id="pipe-node3" class="node">
-<title>C</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="76.52" cy="-265.5" rx="31.27" ry="18"/>
-<text text-anchor="middle" x="76.52" y="-262" font-family="Arial" font-size="10.00">Process</text>
+<title>N2</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-348" rx="67.35" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-344.5" font-family="Arial" font-size="10.00">ContextualEmbedding</text>
 </g>
-<!-- B&#45;&gt;C -->
+<!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
-<title>B&#45;&gt;C</title>
-<path fill="none" stroke="#475569" d="M76.52,-329.53C76.52,-319.51 76.52,-306.68 76.52,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="80.02,-295.45 76.52,-285.45 73.02,-295.45 80.02,-295.45"/>
-<text text-anchor="middle" x="86.27" y="-303.45" font-family="Arial" font-size="9.00">pass</text>
+<title>N1&#45;&gt;N2</title>
+<path fill="none" stroke="#475569" d="M87.59,-412.03C87.59,-402.01 87.59,-389.18 87.59,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-377.95 87.59,-367.95 84.09,-377.95 91.09,-377.95"/>
+<text text-anchor="middle" x="126.22" y="-385.95" font-family="Arial" font-size="9.00">semantic encoding</text>
 </g>
-<!-- D -->
+<!-- N3 -->
 <g id="pipe-node4" class="node">
-<title>D</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="76.52,-201 30.39,-183 76.52,-165 122.66,-183 76.52,-201"/>
-<text text-anchor="middle" x="76.52" y="-179.5" font-family="Arial" font-size="10.00">Decision</text>
+<title>N3</title>
+<polygon fill="#fef9c3" stroke="#2563eb" points="87.59,-283.5 0,-265.5 87.59,-247.5 175.19,-265.5 87.59,-283.5"/>
+<text text-anchor="middle" x="87.59" y="-262" font-family="Arial" font-size="10.00">KnowledgeRetrieval</text>
 </g>
-<!-- C&#45;&gt;D -->
+<!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
-<title>C&#45;&gt;D</title>
-<path fill="none" stroke="#475569" d="M76.52,-247.03C76.52,-237.01 76.52,-224.18 76.52,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="80.02,-212.95 76.52,-202.95 73.02,-212.95 80.02,-212.95"/>
-<text text-anchor="middle" x="94.15" y="-220.95" font-family="Arial" font-size="9.00">evaluate</text>
+<title>N2&#45;&gt;N3</title>
+<path fill="none" stroke="#475569" d="M87.59,-329.53C87.59,-319.51 87.59,-306.68 87.59,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-295.45 87.59,-285.45 84.09,-295.45 91.09,-295.45"/>
+<text text-anchor="middle" x="128.09" y="-303.45" font-family="Arial" font-size="9.00">information retrieval</text>
 </g>
-<!-- E -->
+<!-- N4 -->
 <g id="pipe-node5" class="node">
-<title>E</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="33.52" cy="-100.5" rx="33.52" ry="18"/>
-<text text-anchor="middle" x="33.52" y="-97" font-family="Arial" font-size="10.00">Branch A</text>
+<title>N4</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-183" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranking</text>
 </g>
-<!-- D&#45;&gt;E -->
+<!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
-<title>D&#45;&gt;E</title>
-<path fill="none" stroke="#475569" d="M68.18,-167.79C64.53,-161.46 60.24,-153.9 56.52,-147 53.25,-140.91 49.83,-134.29 46.66,-128.05"/>
-<polygon fill="#475569" stroke="#475569" points="49.92,-126.75 42.31,-119.38 43.67,-129.89 49.92,-126.75"/>
-<text text-anchor="middle" x="73.02" y="-138.45" font-family="Arial" font-size="9.00">option 1</text>
+<title>N3&#45;&gt;N4</title>
+<path fill="none" stroke="#475569" d="M87.59,-247.03C87.59,-237.01 87.59,-224.18 87.59,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-212.95 87.59,-202.95 84.09,-212.95 91.09,-212.95"/>
+<text text-anchor="middle" x="123.97" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
 </g>
-<!-- F -->
+<!-- N5 -->
 <g id="pipe-node6" class="node">
-<title>F</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="119.52" cy="-100.5" rx="33.98" ry="18"/>
-<text text-anchor="middle" x="119.52" y="-97" font-family="Arial" font-size="10.00">Branch B</text>
+<title>N5</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-100.5" rx="49.31" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
 </g>
-<!-- D&#45;&gt;F -->
+<!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
-<title>D&#45;&gt;F</title>
-<path fill="none" stroke="#475569" d="M84.21,-167.61C90.04,-156.69 98.23,-141.37 105.25,-128.22"/>
-<polygon fill="#475569" stroke="#475569" points="108.23,-130.08 109.85,-119.61 102.05,-126.78 108.23,-130.08"/>
-<text text-anchor="middle" x="117.02" y="-138.45" font-family="Arial" font-size="9.00">option 2</text>
+<title>N4&#45;&gt;N5</title>
+<path fill="none" stroke="#475569" d="M87.59,-164.53C87.59,-154.51 87.59,-141.68 87.59,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-130.45 87.59,-120.45 84.09,-130.45 91.09,-130.45"/>
+<text text-anchor="middle" x="124.34" y="-138.45" font-family="Arial" font-size="9.00">response creation</text>
 </g>
-<!-- G -->
+<!-- N6 -->
 <g id="pipe-node7" class="node">
-<title>G</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="76.52" cy="-18" rx="27.21" ry="18"/>
-<text text-anchor="middle" x="76.52" y="-14.5" font-family="Arial" font-size="10.00">Output</text>
+<title>N6</title>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="87.59" cy="-18" rx="70.51" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-14.5" font-family="Arial" font-size="10.00">AgentResponseStream</text>
 </g>
-<!-- E&#45;&gt;G -->
+<!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
-<title>E&#45;&gt;G</title>
-<path fill="none" stroke="#475569" d="M42.43,-82.82C48.24,-71.95 55.93,-57.55 62.54,-45.18"/>
-<polygon fill="#475569" stroke="#475569" points="65.44,-47.19 67.06,-36.72 59.26,-43.89 65.44,-47.19"/>
-<text text-anchor="middle" x="69.77" y="-55.95" font-family="Arial" font-size="9.00">result</text>
-</g>
-<!-- F&#45;&gt;G -->
-<g id="pipe-edge7" class="edge">
-<title>F&#45;&gt;G</title>
-<path fill="none" stroke="#475569" d="M110.61,-82.82C104.81,-71.95 97.12,-57.55 90.51,-45.18"/>
-<polygon fill="#475569" stroke="#475569" points="93.79,-43.89 85.99,-36.72 87.61,-47.19 93.79,-43.89"/>
-<text text-anchor="middle" x="111.77" y="-55.95" font-family="Arial" font-size="9.00">result</text>
+<title>N5&#45;&gt;N6</title>
+<path fill="none" stroke="#475569" d="M87.59,-82.03C87.59,-72.01 87.59,-59.18 87.59,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-47.95 87.59,-37.95 84.09,-47.95 91.09,-47.95"/>
+<text text-anchor="middle" x="127.72" y="-55.95" font-family="Arial" font-size="9.00">response validation</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: beeai-framework end-to-end processing pipeline</p></div><div class="sec-heading">beeai-framework — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Use</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Integration with AI Services</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Support for Multi-Agent Systems</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div></div><div class="sec-heading">beeai-framework — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Programming Languages Supported</td><td>Python and TypeScript</td><td>Both languages have dedicated libraries available on GitHub</td></tr><tr><td>License</td><td>Apache 2.0</td><td>Open-source and permissive license for wide adoption</td></tr><tr><td>Key Protocols Supported</td><td>ACP, MCP, and Model Context Protocol</td><td>Enables seamless integration with various protocols and models</td></tr><tr><td>AI Services Support</td><td>DeepSeek R1 and LLaMa 3.3</td><td>Simplifies working with AI services through the Backend module</td></tr><tr><td>Production Readiness</td><td>Suitable for production use cases</td><td>Designed for building production-ready multi-agent systems</td></tr><tr><td>Community and Documentation</td><td>Part of LF AI &amp; Data projects with available documentation</td><td>Backed by the Linux Foundation with extensive documentation for ease of use</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Production Workflows with the Tools Feature</h2></div><p class="ch-summary">Troubleshooting beeai-framework</p><div class="ch-body"><p>The beeai-framework is a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems, supporting both Python and TypeScript. It features a range of tools for reasoning, action, and collaboration, as well as observability and memory management. The framework provides a unified interface for connecting to any large language model provider. The Requirement Agent allows for predictable and controlled behavior across different LLMs by setting rules that the agent must follow.</p>
-<p>The framework also supports the creation of intelligent agents that can reason, act, and adapt, and provides a range of built-in tools, such as web search, weather, and code execution, as well as support for custom tools.</p>
-<p>The beeai-framework includes a backend component that enables connection to any LLM provider, and supports the building of retrieval-augmented generation systems with vector stores and document processing. The framework also provides templates for building dynamic prompts with enhanced Mustache syntax, and includes built-in memory strategies for managing conversation history. The GlobalTrajectoryMiddleware component enables logging of tool calls to the console for easier debugging. The framework is designed to support multi-agent systems with complex execution flows, and provides a range of APIs for building and managing agents.</p>
-<p>The framework includes a range of production use cases, including building intelligent agents that can reason, act, and collaborate to solve complex problems.</p>
-<p>The beeai-framework has a range of features for monitoring agent behavior, including events, logging, and robust error handling. The framework is designed to be highly extensible, with support for custom tools and integrations with other systems. The latest features of the beeai-framework include support for Requirement Agents, which enable predictable and controlled behavior across different LLMs. The framework also includes a range of built-in tools, such as ThinkTool, WikipediaTool, and OpenMeteoTool, which can be used to extend the capabilities of agents.</p>
-<p>The framework can be installed using pip or npm, and is available on GitHub.</p>
-<p>The beeai-framework is designed to be highly scalable and efficient, with support for asynchronous execution and robust error handling. The framework includes a range of features for optimizing performance, such as caching and serialization. The framework is suitable for production use cases, with support for hosting agents in servers and monitoring their behavior. The framework's releases page provides a full changelog of updates and new features, including the latest additions and improvements.</p>
-<p>The framework's architecture and key APIs are documented on the framework's website, including modules for agents, backend, tools, and more.</p>
-<p>The beeai-framework provides a unified interface for connecting to any large language model provider, allowing for easy integration with different LLMs. The framework also supports the creation of custom tools, which can be used to extend the capabilities of agents. The framework includes a range of built-in tools, such as web search, weather, and code execution, which can be used to build intelligent agents. The framework's backend component enables connection to any LLM provider, and supports the building of retrieval-augmented generation systems with vector stores and document processing.</p>
-<p>The beeai-framework includes a range of APIs for building and managing agents, including the GlobalTrajectoryMiddleware component, which enables logging of tool calls to the console for easier debugging. The framework is designed to support multi-agent systems with complex execution flows, and provides a range of features for monitoring agent behavior, including events, logging, and robust error handling. The framework is designed to be highly extensible, with support for custom tools and integrations with other systems. The framework's latest features include support for Requirement Agents, which enable predictable and controlled behavior across different LLMs.</p>
-<p>The beeai-framework is designed to be highly scalable and efficient, with support for asynchronous execution and robust error handling. The framework includes a range of features for optimizing performance, such as caching and serialization. The framework is suitable for production use cases, with support for hosting agents in servers and monitoring their behavior. The framework's releases page provides a full changelog of updates and new features, including the latest additions and improvements.</p>
-<p>The framework's architecture and key APIs are documented on the framework's website, including modules for agents, backend, tools, and more.</p>
-<p>The beeai-framework provides a range of tools for reasoning, action, and collaboration, as well as observability and memory management. The framework includes a range of built-in tools, such as ThinkTool, WikipediaTool, and OpenMeteoTool, which can be used to extend the capabilities of agents. The framework also supports the creation of custom tools, which can be used to build intelligent agents. The framework's backend component enables connection to any LLM provider, and supports the building of retrieval-augmented generation systems with vector stores and document processing.</p>
-<p>The beeai-framework is designed to support multi-agent systems with complex execution flows, and provides a range of APIs for building and managing agents. The framework includes a range of features for monitoring agent behavior, including events, logging, and robust error handling. The framework is designed to be highly extensible, with support for custom tools and integrations with other systems. The framework's latest features include support for Requirement Agents, which enable predictable and controlled behavior across different LLMs.</p>
-<p>The framework can be installed using pip or npm, and is available on GitHub.</p>
-<p>The beeai-framework includes a range of production use cases, including building intelligent agents that can reason, act, and collaborate to solve complex problems. The framework is designed to be highly scalable and efficient, with support for asynchronous execution and robust error handling. The framework includes a range of features for optimizing performance, such as caching and serialization. The framework is suitable for production use cases, with support for hosting agents in servers and monitoring their behavior.</p>
-<p>The framework's releases page provides a full changelog of updates and new features, including the latest additions and improvements.</p></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with DeepSeek R1 and LLaMa 3.3 Support</h2></div><div class="ch-body"><p>The BeeAI Framework is a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems. It provides features such as Requirement Agent, which allows for predictable and controlled behavior across different Large Language Models (LLMs) by setting rules the agent must follow. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt.</p>
-<p>The Backend feature connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation. The Tools feature extends agents with built-in tools, including web search, weather, code execution, and more, or custom tools. The framework also includes Retrieval-Augmented Generation (RAG) systems, which build vector stores and document processing.</p>
-<p>Additionally, the framework provides Templates, which build dynamic prompts with enhanced Mustache syntax, and Memory, which manages conversation history with built-in memory strategies.</p></div></section>
-<div class="book-footer"><strong>beeai-framework: Builder's Handbook</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 20, 2026</div>
+</svg><p class="diagram-caption">Figure: OpenAgentsControl end-to-end processing pipeline</p></div><div class="sec-heading">OpenAgentsControl — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Code Generation Accuracy</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">User Control and Oversight</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Multi-Language Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Team Collaboration Features</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Model-Agnostic Compatibility</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Context-Aware Code Generation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:89%"></span></span></span><span class="bar-value">89%</span></div></div><div class="sec-heading">OpenAgentsControl — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Code Generation Speed</td><td>Up to 5x faster than manual coding</td><td>Dependent on complexity and user patterns</td></tr><tr><td>Supported Programming Languages</td><td>TypeScript, Python, Go, Rust, and more</td><td>Continuously updated to support new languages</td></tr><tr><td>AI Model Compatibility</td><td>Claude, GPT, Gemini, local models, and more</td><td>Model-agnostic approach for flexibility</td></tr><tr><td>Approval and Control Mechanisms</td><td>Approval gates and editable agents</td><td>Ensuring user control and review before execution</td></tr><tr><td>Team Collaboration Features</td><td>Shared patterns, standards, and workflows</td><td>Enhancing team productivity and consistency</td></tr><tr><td>Context Awareness and Pattern Control</td><td>Loads user patterns before code generation</td><td>Enabling repeatable and production-ready code</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Navigating Production Gotchas with Token-Efficient Approval Gates</h2></div><p class="ch-summary">OpenAgentsControl production gotchas</p><div class="ch-body"><p>OpenAgentsControl is a powerful system for controlled and efficient code generation using artificial intelligence, designed for professional development workflows and supporting multiple languages and models. The framework implements a plan-first, approval-based execution model where agents must propose solutions and receive explicit human approval before taking action. This approach ensures that the generated code matches the user's patterns, eliminating the need for refactoring. The core idea of OpenAgentsControl is to generate code that matches the user's patterns, requiring human approval before actions.</p>
+<p>The system is built around the Minimal Viable Information principle, which only loads what's needed, when it's needed, reducing token usage by 80% and resulting in massive cost savings.</p>
+<p>OpenAgentsControl offers sequential execution with approval gates, which allows for controlled and validated code generation. The system also supports parallel agents, which enables fast execution of tasks. Error recovery is also supported, with human-guided validation and self-correcting capabilities. The system is suitable for production use cases, particularly for teams and power users working on complex projects.</p>
+<p>The installation process for OpenAgentsControl involves installing the OpenCode CLI and running the install. sh script.</p>
+<p>The OpenAgentsControl framework features editable agents, which are markdown files that can be edited directly to change workflows, add constraints, and customize behavior. The framework also features ContextScout, which discovers relevant patterns from the user's context files and ranks them by priority. This approach enables the system to generate code that matches the user's patterns, eliminating the need for refactoring. The system supports team collaboration, allowing teams to store their patterns in a shared context file and commit it to a repository, ensuring consistent code across the entire team.</p>
+<p>The system can be used for a variety of tasks, including creating user authentication systems and generating production-ready code.</p>
+<p>The OpenAgentsControl system is designed to work with established coding patterns and provides approval gates for quality control, making it ideal for use cases where token efficiency and costs are a concern. The system can be installed as a Claude Code plugin, which provides additional features and capabilities. The plugin can be installed using the plugin install oac command, and the context files can be set up using the /oac:setup command. The system also supports the opencode command, which is used to start building with OpenAgentsControl, and the --agent option, which is used to specify the agent to use.</p>
+<p>The /oac:plan command is used to plan features with the plugin.</p>
+<p>OpenAgentsControl is an open-source AI framework that learns user coding patterns for repeatable results, requiring human approval before actions. The framework is designed for professional development workflows and supports multiple languages and models. The system is built around the Minimal Viable Information principle, which only loads what's needed, when it's needed, reducing token usage by 80% and resulting in massive cost savings. The system supports team collaboration, allowing teams to store their patterns in a shared context file and commit it to a repository, ensuring consistent code across the entire team.</p>
+<p>The system can be used for a variety of tasks, including creating user authentication systems and generating production-ready code.</p>
+<p>The OpenAgentsControl system offers a high degree of customization and flexibility, allowing users to edit agents directly and change workflows, add constraints, and customize behavior. The system also features ContextScout, which discovers relevant patterns from the user's context files and ranks them by priority. This approach enables the system to generate code that matches the user's patterns, eliminating the need for refactoring. The system supports parallel agents, which enables fast execution of tasks, and error recovery, with human-guided validation and self-correcting capabilities.</p>
+<p>The system is suitable for production use cases, particularly for teams and power users working on complex projects.</p>
+<p>OpenAgentsControl is a powerful system for controlled and efficient code generation using artificial intelligence, designed for professional development workflows and supporting multiple languages and models. The framework implements a plan-first, approval-based execution model where agents must propose solutions and receive explicit human approval before taking action. This approach ensures that the generated code matches the user's patterns, eliminating the need for refactoring. The system is built around the Minimal Viable Information principle, which only loads what's needed, when it's needed, reducing token usage by 80% and resulting in massive cost savings.</p>
+<p>The system supports team collaboration, allowing teams to store their patterns in a shared context file and commit it to a repository, ensuring consistent code across the entire team.</p>
+<p>The OpenAgentsControl system is designed to work with established coding patterns and provides approval gates for quality control, making it ideal for use cases where token efficiency and costs are a concern. The system can be installed as a Claude Code plugin, which provides additional features and capabilities. The plugin can be installed using the plugin install oac command, and the context files can be set up using the /oac:setup command. The system also supports the opencode command, which is used to start building with OpenAgentsControl, and the --agent option, which is used to specify the agent to use.</p>
+<p>The /oac:plan command is used to plan features with the plugin. The system offers a high degree of customization and flexibility, allowing users to edit agents directly and change workflows, add constraints, and customize behavior.</p></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Lazy Loading and Model-Agnostic Design</h2></div><p class="ch-summary">Optimizing OpenAgentsControl performance</p><div class="ch-body"><p>OpenAgentsControl is a system that enables AI agents to learn and generate code based on a user's coding patterns, providing repeatable results and production-ready code. The system is built on the OpenCode open-source AI coding framework and extends it with specialized agents, context management, and team workflows. OpenAgentsControl features pattern control, which allows users to define their patterns once and have the AI use them forever. It also includes approval gates, which require review and approval before execution, ensuring that users stay in control.</p>
+<p>The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
+<p>OpenAgentsControl is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in. OpenAgentsControl handles both frontend and backend work, with agents coordinating to build complete features from UI to database. The system is multi-language, supporting languages such as TypeScript, Python, Go, and Rust, and is model-agnostic, allowing users to work with various AI models, including Claude, GPT, and Gemini, as well as local models.</p>
+<p>The context-aware approach of OpenAgentsControl loads user patterns before generating code, and its editable agents can be modified directly through markdown files.</p>
+<p>The latest features of OpenAgentsControl include a token efficiency reduction of 80% based on the MVI principle, support for shared context files, and the ability to edit agent behavior using Markdown files and configuration files. The system also allows for the choice of any model and provider, with support for multiple models. OpenAgentsControl is a system that enables efficient and controlled code generation using artificial intelligence. The system utilizes a context system that enables agents to load and apply user-defined patterns and standards to generated code.</p>
+<p>This context system is the core of the OpenAgentsControl solution and allows for the automatic discovery and application of relevant patterns, resulting in code that matches the user's established coding patterns from the start.</p>
+<p>Key APIs and commands used in OpenAgentsControl include the OpenCode CLI, which is a free and open-source command-line interface that enables users to interact with the system. The OpenCode CLI provides a range of commands for managing agents, context, and code generation. OpenAgentsControl also features approval gates, which require review and approval before execution, ensuring that users stay in control. The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
+<p>The context-aware approach of OpenAgentsControl loads user patterns before generating code, and its editable agents can be modified directly through markdown files.</p>
+<p>OpenAgentsControl is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in. OpenAgentsControl handles both frontend and backend work, with agents coordinating to build complete features from UI to database. The system is multi-language, supporting languages such as TypeScript, Python, Go, and Rust, and is model-agnostic, allowing users to work with various AI models, including Claude, GPT, and Gemini, as well as local models.</p>
+<p>The system also features pattern control, which allows users to define their patterns once and have the AI use them forever.</p>
+<p>The system utilizes a context system that enables agents to load and apply user-defined patterns and standards to generated code. This context system is the core of the OpenAgentsControl solution and allows for the automatic discovery and application of relevant patterns, resulting in code that matches the user's established coding patterns from the start. OpenAgentsControl also features approval gates, which require review and approval before execution, ensuring that users stay in control. The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
+<p>The context-aware approach of OpenAgentsControl loads user patterns before generating code, and its editable agents can be modified directly through markdown files.</p>
+<p>OpenAgentsControl is a system that enables efficient and controlled code generation using artificial intelligence. The system is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in. OpenAgentsControl handles both frontend and backend work, with agents coordinating to build complete features from UI to database.</p>
+<p>The system is multi-language, supporting languages such as TypeScript, Python, Go, and Rust, and is model-agnostic, allowing users to work with various AI models, including Claude, GPT, and Gemini, as well as local models. The latest features of OpenAgentsControl include a token efficiency reduction of 80% based on the MVI principle, support for shared context files, and the ability to edit agent behavior using Markdown files and configuration files.</p></div></section>
+<div class="book-footer"><strong>OpenAgentsControl: Production Manual</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 20, 2026</div>
 </body>
 </html>
