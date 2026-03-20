@@ -2,128 +2,129 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>sdk-python: Expert Handbook</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "sdk-python: Expert Handbook"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>beeai-framework: Builder's Handbook</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "beeai-framework: Builder's Handbook"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png" alt="sdk-python logo" onerror="this.style.display='none'"/><div class="cover-lib-name">sdk-python</div><div class="cover-suffix">Expert Handbook</div><div class="cover-rule"></div><p class="cover-subtitle">Python sdk guide</p><p class="cover-desc">The sdk-python is a model-driven approach to building AI agents in just a few lines of code.  It is a simple yet powerful SDK that scales with user needs, from simple conversational assistants to complex autonomous workflows, and from local development to production deployment.  The sdk-python has a lightweight and flexible architecture, with a simple agent loop that is fully customizable.</p><div class="cover-tagline">Learn python</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 20, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building AI Agents with Model-Driven Architecture</h2></div><p class="ch-summary">sdk-python builds AI agents</p><div class="ch-body"><p>The sdk-python is a model-driven approach to building AI agents in just a few lines of code. It is a simple yet powerful SDK that scales with user needs, from simple conversational assistants to complex autonomous workflows, and from local development to production deployment. The sdk-python has a lightweight and flexible architecture, with a simple agent loop that is fully customizable. It is model agnostic, supporting various providers such as Amazon Bedrock, Anthropic, Gemini, LiteLLM, Llama, Ollama, OpenAI, Writer, and custom providers.</p>
-<p>The sdk-python also features advanced capabilities, including multi-agent systems, autonomous agents, and streaming support.</p>
-<p>The sdk-python has built-in support for the Model Context Protocol (MCP) servers, enabling access to thousands of pre-built tools. It can be installed using pip, and the installation process involves creating and activating a virtual environment, then installing the Strands Agents and tools. The sdk-python provides a quick start guide, which involves installing the Strands Agents and tools, then creating an agent and using it to perform tasks. The agent can be customized with various tools, including a calculator tool and a word count tool.</p>
-<p>The sdk-python uses Python decorators to build tools, making it easy to create custom tools. For example, a word count tool can be created using the @tool decorator, and then used by the agent to count the words in a given text. The sdk-python also supports seamless integration with MCP servers, allowing users to access a wide range of pre-built tools and models. The sdk-python is designed to be efficient and scalable, allowing users to build and deploy complex AI agents and workflows.</p>
-<p>In terms of performance, the sdk-python is designed to be production-ready, with features such as automatic tool loading and reloading, and support for MCP servers. The key APIs in the sdk-python include the Agent class, which is used to create and customize agents, and the tool decorator, which is used to build custom tools. The sdk-python also provides a range of pre-built tools and models, including the calculator tool and the word count tool. The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows.</p>
-<p>The architecture of the sdk-python is based on a modular design, allowing users to easily integrate different models and tools. The sdk-python supports multiple model providers, such as Amazon Bedrock, Google Gemini, Ollama, Llama API, and others. The sdk-python is designed to be highly customizable, allowing users to create complex AI agents and workflows. The sdk-python also features advanced capabilities, including multi-agent systems, autonomous agents, and streaming support.</p>
-<p>The sdk-python provides a range of benefits, including ease of use, flexibility, and scalability. The sdk-python is designed to be easy to use, with a simple and intuitive API. The sdk-python is also highly flexible, allowing users to create custom tools and models. The sdk-python is designed to be scalable, allowing users to build and deploy complex AI agents and workflows.</p>
-<p>The sdk-python is a powerful tool for building and deploying AI agents and workflows. The sdk-python is designed to be production-ready, with features such as automatic tool loading and reloading, and support for MCP servers. The sdk-python is also highly customizable, allowing users to create complex AI agents and workflows. The sdk-python supports multiple model providers, such as Amazon Bedrock, Google Gemini, Ollama, Llama API, and others.</p>
-<p>The sdk-python is a model-driven approach to building AI agents, and it is designed to be highly flexible and scalable. The sdk-python uses Python decorators to build tools, making it easy to create custom tools. The sdk-python also supports seamless integration with MCP servers, allowing users to access a wide range of pre-built tools and models. The sdk-python is designed to be efficient and scalable, allowing users to build and deploy complex AI agents and workflows.</p>
-<p>The sdk-python provides a range of pre-built tools and models, including the calculator tool and the word count tool. The sdk-python is designed to be easy to use, with a simple and intuitive API. The sdk-python is also highly flexible, allowing users to create custom tools and models. The sdk-python is designed to be scalable, allowing users to build and deploy complex AI agents and workflows.</p>
-<p>The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows. The sdk-python is designed to be production-ready, with features such as automatic tool loading and reloading, and support for MCP servers. The sdk-python is also highly customizable, allowing users to create complex AI agents and workflows. The sdk-python supports multiple model providers, such as Amazon Bedrock, Google Gemini, Ollama, Llama API, and others.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://research-website-prod-cms-uploads.s3.us.cloud-object-storage.appdomain.cloud/Bee_AI_animation_8a662c5834.gif" alt="beeai-framework logo" onerror="this.style.display='none'"/><div class="cover-lib-name">beeai-framework</div><div class="cover-suffix">Builder's Handbook</div><div class="cover-rule"></div><p class="cover-subtitle">Introducing beeai framework</p><p class="cover-desc">The beeai-framework is a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems.  It provides features such as Requirement Agent, which allows for predictable and controlled behavior across different Large Language Models (LLMs) by setting rules the agent must follow.  The framework also includes Agents, which are intelligent entities that can reason, act, and adapt.</p><div class="cover-tagline">Learn beeai</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 20, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building Autonomous Agents with the Requirement Agent</h2></div><p class="ch-summary">Building autonomous agents</p><div class="ch-body"><p>The beeai-framework is a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems. It provides features such as Requirement Agent, which allows for predictable and controlled behavior across different Large Language Models (LLMs) by setting rules the agent must follow. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt. The Requirement Agent is a key component of the framework, enabling developers to define specific requirements for their agents.</p>
+<p>The framework's architecture is designed to support production-ready multi-agent systems, and its key APIs include those for the Backend module, Workflows, and protocol integrations.</p>
+<p>The beeai-framework's Backend feature connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation. The Tools feature extends agents with built-in tools, including web search, weather, code execution, and more, or custom tools. The framework also includes Retrieval-Augmented Generation (RAG) systems, which build vector stores and document processing. The Backend module is designed to simplify working with AI services, and it provides a unified interface for interacting with different LLM providers.</p>
+<p>The framework's support for DeepSeek R1 and LLaMa 3. 3 is also notable, as it enables developers to build agents that can leverage these powerful models.</p>
+<p>The beeai-framework includes a range of features that enable developers to build complex multi-agent systems. The Workflows feature allows developers to define workflows that involve multiple agents and tasks, and it provides a flexible way to manage the interactions between agents. The Model Context Protocol is also supported, which enables agents to share context and collaborate on tasks. The framework's support for Workflows and the Model Context Protocol makes it an ideal choice for building complex multi-agent systems.</p>
+<p>The framework's performance is also suitable for production use cases, and it has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3.</p>
+<p>The beeai-framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models. The framework's architecture is designed to support production-ready multi-agent systems, and its key APIs include those for the Backend module, Workflows, and protocol integrations. The framework's support for DeepSeek R1 and LLaMa 3. 3 is also notable, as it enables developers to build agents that can leverage these powerful models.</p>
+<p>The framework's performance is suitable for production use cases, and it has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3. The framework's documentation is also available, which provides detailed information on how to use the framework and its various features.</p>
+<p>The beeai-framework includes a range of APIs and classes that enable developers to build autonomous agents and multi-agent systems. The Requirement Agent is a key component of the framework, and it provides a way to define specific requirements for agents. The Backend module is also an important part of the framework, as it provides a unified interface for interacting with different LLM providers. The Workflows feature is another key component, as it enables developers to define workflows that involve multiple agents and tasks.</p>
+<p>The framework's support for the Model Context Protocol is also notable, as it enables agents to share context and collaborate on tasks.</p>
+<p>The beeai-framework's support for Retrieval-Augmented Generation (RAG) systems is also an important feature, as it enables developers to build agents that can leverage the power of RAG models. The framework's support for Templates is also notable, as it enables developers to build dynamic prompts with enhanced Mustache syntax. The framework's support for Memory is also important, as it enables developers to manage conversation history with built-in memory strategies. The framework's support for Observability is also notable, as it enables developers to monitor agent behavior with events, logging, and robust error handling.</p>
+<p>The beeai-framework includes a range of features that enable developers to build and deploy autonomous agents and multi-agent systems. The Serve feature enables developers to host agents in servers, and it includes support for multiple protocols such as A2A and MCP. The Cache feature optimizes performance and reduces costs with intelligent caching, while the Serialization feature saves and loads agent state for persistence across sessions. The framework's support for starter templates, including beeai-framework-py-starter for Python and beeai-framework-ts-starter for TypeScript, is also notable, as it enables developers to get started quickly with building autonomous agents and multi-agent systems.</p>
+<p>The beeai-framework is a powerful toolkit for building intelligent, autonomous agents and multi-agent systems. It provides a range of features and APIs that enable developers to build complex systems that can reason, act, and adapt. The framework's support for Requirement Agent, Backend module, Workflows, and protocol integrations makes it an ideal choice for building production-ready multi-agent systems. The framework's performance is suitable for production use cases, and it has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3.</p>
+<p>3. The framework's documentation is also available, which provides detailed information on how to use the framework and its various features.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 649.61 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 833.27 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-70 645.61,-70 645.61,4 -4,4"/>
-<!-- Core -->
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 829.27,-40 829.27,4 -4,4"/>
+<!-- DataIngestion -->
 <g id="cluster-node1" class="node">
-<title>Core</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="27" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="27" y="-14.5" font-family="Arial" font-size="10.00">Core</text>
+<title>DataIngestion</title>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="47.96" cy="-18" rx="47.96" ry="18"/>
+<text text-anchor="middle" x="47.96" y="-14.5" font-family="Arial" font-size="10.00">Data Ingestion</text>
 </g>
-<!-- Auth -->
+<!-- DataProcessing -->
 <g id="cluster-node2" class="node">
-<title>Auth</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="129" cy="-48" rx="27" ry="18"/>
-<text text-anchor="middle" x="129" y="-44.5" font-family="Arial" font-size="10.00">Auth</text>
+<title>DataProcessing</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="203.28" cy="-18" rx="53.37" ry="18"/>
+<text text-anchor="middle" x="203.28" y="-14.5" font-family="Arial" font-size="10.00">Data Processing</text>
 </g>
-<!-- Core&#45;&gt;Auth -->
+<!-- DataIngestion&#45;&gt;DataProcessing -->
 <g id="cluster-edge1" class="edge">
-<title>Core&#45;&gt;Auth</title>
-<path fill="none" stroke="#475569" d="M52.21,-25.26C64.49,-28.95 79.63,-33.49 93.15,-37.54"/>
-<polygon fill="#475569" stroke="#475569" points="91.98,-40.85 102.57,-40.37 93.99,-34.14 91.98,-40.85"/>
-<text text-anchor="middle" x="78" y="-35.95" font-family="Arial" font-size="9.00">init</text>
+<title>DataIngestion&#45;&gt;DataProcessing</title>
+<path fill="none" stroke="#475569" d="M96.21,-18C109.54,-18 124.27,-18 138.4,-18"/>
+<polygon fill="#475569" stroke="#475569" points="138.06,-21.5 148.06,-18 138.06,-14.5 138.06,-21.5"/>
+<text text-anchor="middle" x="122.91" y="-19.95" font-family="Arial" font-size="9.00">load</text>
 </g>
-<!-- API -->
+<!-- ModelTraining -->
 <g id="cluster-node3" class="node">
-<title>API</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="249.75" cy="-48" rx="27" ry="18"/>
-<text text-anchor="middle" x="249.75" y="-44.5" font-family="Arial" font-size="10.00">API</text>
+<title>ModelTraining</title>
+<polygon fill="#fef9c3" stroke="#2563eb" points="377.83,-36 310.65,-18 377.83,0 445.02,-18 377.83,-36"/>
+<text text-anchor="middle" x="377.83" y="-14.5" font-family="Arial" font-size="10.00">Model Training</text>
 </g>
-<!-- Auth&#45;&gt;API -->
+<!-- DataProcessing&#45;&gt;ModelTraining -->
 <g id="cluster-edge2" class="edge">
-<title>Auth&#45;&gt;API</title>
-<path fill="none" stroke="#475569" d="M156.35,-48C172.42,-48 193.22,-48 211.01,-48"/>
-<polygon fill="#475569" stroke="#475569" points="210.96,-51.5 220.96,-48 210.96,-44.5 210.96,-51.5"/>
-<text text-anchor="middle" x="189.38" y="-49.95" font-family="Arial" font-size="9.00">request</text>
+<title>DataProcessing&#45;&gt;ModelTraining</title>
+<path fill="none" stroke="#475569" d="M256.99,-18C269.77,-18 283.71,-18 297.41,-18"/>
+<polygon fill="#475569" stroke="#475569" points="297.33,-21.5 307.33,-18 297.33,-14.5 297.33,-21.5"/>
+<text text-anchor="middle" x="283.65" y="-19.95" font-family="Arial" font-size="9.00">train</text>
 </g>
-<!-- Config -->
+<!-- ModelEvaluation -->
 <g id="cluster-node4" class="node">
-<title>Config</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="388.84,-66 351,-48 388.84,-30 426.69,-48 388.84,-66"/>
-<text text-anchor="middle" x="388.84" y="-44.5" font-family="Arial" font-size="10.00">Config</text>
+<title>ModelEvaluation</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="570.99" cy="-18" rx="54.72" ry="18"/>
+<text text-anchor="middle" x="570.99" y="-14.5" font-family="Arial" font-size="10.00">Model Evaluation</text>
 </g>
-<!-- API&#45;&gt;Config -->
+<!-- ModelTraining&#45;&gt;ModelEvaluation -->
 <g id="cluster-edge3" class="edge">
-<title>API&#45;&gt;Config</title>
-<path fill="none" stroke="#475569" d="M277.18,-48C294.65,-48 318.06,-48 338.86,-48"/>
-<polygon fill="#475569" stroke="#475569" points="338.57,-51.5 348.57,-48 338.57,-44.5 338.57,-51.5"/>
-<text text-anchor="middle" x="313.88" y="-49.95" font-family="Arial" font-size="9.00">load</text>
+<title>ModelTraining&#45;&gt;ModelEvaluation</title>
+<path fill="none" stroke="#475569" d="M446.77,-18C465.52,-18 485.82,-18 504.43,-18"/>
+<polygon fill="#475569" stroke="#475569" points="504.26,-21.5 514.26,-18 504.26,-14.5 504.26,-21.5"/>
+<text text-anchor="middle" x="480.64" y="-19.95" font-family="Arial" font-size="9.00">evaluate</text>
 </g>
-<!-- Logger -->
-<g id="cluster-node5" class="node">
-<title>Logger</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="502.65" cy="-48" rx="27.21" ry="18"/>
-<text text-anchor="middle" x="502.65" y="-44.5" font-family="Arial" font-size="10.00">Logger</text>
-</g>
-<!-- Config&#45;&gt;Logger -->
+<!-- ModelEvaluation&#45;&gt;ModelTraining -->
 <g id="cluster-edge4" class="edge">
-<title>Config&#45;&gt;Logger</title>
-<path fill="none" stroke="#475569" d="M427.7,-48C439.38,-48 452.25,-48 463.93,-48"/>
-<polygon fill="#475569" stroke="#475569" points="463.61,-51.5 473.61,-48 463.61,-44.5 463.61,-51.5"/>
-<text text-anchor="middle" x="451.06" y="-49.95" font-family="Arial" font-size="9.00">log</text>
+<title>ModelEvaluation&#45;&gt;ModelTraining</title>
+<path fill="none" stroke="#475569" stroke-dasharray="5,2" d="M525.43,-7.56C516.49,-5.87 507.12,-4.39 498.27,-3.5 474.37,-1.11 447.86,-3.79 425.89,-7.47"/>
+<polygon fill="#475569" stroke="#475569" points="425.56,-3.97 416.34,-9.19 426.8,-10.86 425.56,-3.97"/>
+<text text-anchor="middle" x="480.64" y="-4.95" font-family="Arial" font-size="9.00">retrain</text>
 </g>
-<!-- Client -->
-<g id="cluster-node6" class="node">
-<title>Client</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="614.61" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="614.61" y="-14.5" font-family="Arial" font-size="10.00">Client</text>
+<!-- Prediction -->
+<g id="cluster-node5" class="node">
+<title>Prediction</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="698.49" cy="-18" rx="35.78" ry="18"/>
+<text text-anchor="middle" x="698.49" y="-14.5" font-family="Arial" font-size="10.00">Prediction</text>
 </g>
-<!-- Logger&#45;&gt;Client -->
+<!-- ModelEvaluation&#45;&gt;Prediction -->
 <g id="cluster-edge5" class="edge">
-<title>Logger&#45;&gt;Client</title>
-<path fill="none" stroke="#475569" d="M528.33,-41.27C543.04,-37.25 561.96,-32.09 578.25,-27.65"/>
-<polygon fill="#475569" stroke="#475569" points="578.83,-31.12 587.55,-25.11 576.98,-24.36 578.83,-31.12"/>
-<text text-anchor="middle" x="558.73" y="-36.95" font-family="Arial" font-size="9.00">notify</text>
+<title>ModelEvaluation&#45;&gt;Prediction</title>
+<path fill="none" stroke="#475569" d="M625.94,-18C634.34,-18 642.95,-18 651.16,-18"/>
+<polygon fill="#475569" stroke="#475569" points="650.92,-21.5 660.92,-18 650.92,-14.5 650.92,-21.5"/>
 </g>
-<!-- Client&#45;&gt;Core -->
+<!-- Result -->
+<g id="cluster-node6" class="node">
+<title>Result</title>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="798.27" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="798.27" y="-14.5" font-family="Arial" font-size="10.00">Result</text>
+</g>
+<!-- Prediction&#45;&gt;Result -->
 <g id="cluster-edge6" class="edge">
-<title>Client&#45;&gt;Core</title>
-<path fill="none" stroke="#475569" stroke-dasharray="5,2" d="M588.86,-12.31C566.68,-7.72 533.16,-2 503.65,-2 128,-2 128,-2 128,-2 106.6,-2 82.94,-5.62 64.01,-9.41"/>
-<polygon fill="#475569" stroke="#475569" points="63.43,-5.96 54.37,-11.45 64.88,-12.81 63.43,-5.96"/>
-<text text-anchor="middle" x="313.88" y="-3.95" font-family="Arial" font-size="9.00">response</text>
+<title>Prediction&#45;&gt;Result</title>
+<path fill="none" stroke="#475569" d="M734.51,-18C742.63,-18 751.31,-18 759.54,-18"/>
+<polygon fill="#475569" stroke="#475569" points="759.26,-21.5 769.26,-18 759.26,-14.5 759.26,-21.5"/>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: sdk-python internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Customizing the Agent Loop with Model Agnostic Providers</h2></div><p class="ch-summary">sdk-python customizes agent loops</p><div class="ch-body"><p>The sdk-python is a model-driven approach to building AI agents in just a few lines of code. It is a simple yet powerful SDK that scales with user needs, from simple conversational assistants to complex autonomous workflows, and from local development to production deployment. The sdk-python has a lightweight and flexible architecture, with a simple agent loop that is fully customizable. It is model agnostic, supporting various providers such as Amazon Bedrock, Anthropic, Gemini, LiteLLM, Llama, Ollama, OpenAI, Writer, and custom providers.</p>
-<p>The sdk-python also features advanced capabilities, including multi-agent systems, autonomous agents, and streaming support.</p>
-<p>The sdk-python uses Python decorators to build tools, making it easy to create custom tools. For example, a word count tool can be created using the @tool decorator, and then used by the agent to count the words in a given text. The sdk-python also supports seamless integration with MCP servers, allowing users to access a wide range of pre-built tools and models. The key APIs in the sdk-python include the Agent class, which is used to create and customize agents, and the tool decorator, which is used to build custom tools.</p>
-<p>The sdk-python provides a range of pre-built tools and models, including the calculator tool and the word count tool.</p>
-<p>The sdk-python is designed to be efficient and scalable, allowing users to build and deploy complex AI agents and workflows. The sdk-python is also designed to be production-ready, with features such as automatic tool loading and reloading, and support for MCP servers. The sdk-python can be installed using pip, and the installation process involves creating and activating a virtual environment, then installing the Strands Agents and tools. The sdk-python provides a quick start guide, which involves installing the Strands Agents and tools, then creating an agent and using it to perform tasks.</p>
-<p>The sdk-python supports hot reloading from a directory, allowing users to automatically load and reload tools from the . /tools/ directory. The sdk-python also supports multi-agent systems, allowing users to create and manage multiple agents in a single application. The sdk-python features advanced capabilities, including autonomous agents, which can operate independently without human intervention.</p>
-<p>The sdk-python also supports streaming support, allowing users to process large amounts of data in real-time.</p>
-<p>The sdk-python has built-in support for the Model Context Protocol (MCP) servers, enabling access to thousands of pre-built tools. The sdk-python can be used to build a wide range of applications, from simple conversational assistants to complex autonomous workflows. The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows. The sdk-python is designed to be easy to use, with a simple and intuitive API that makes it easy to create and customize agents.</p>
-<p>The sdk-python is a model-driven approach to building AI agents, which means that it uses pre-built models to perform tasks. The sdk-python supports various model providers, including Amazon Bedrock, Anthropic, Gemini, LiteLLM, Llama, Ollama, OpenAI, Writer, and custom providers. The sdk-python also supports seamless integration with MCP servers, allowing users to access a wide range of pre-built tools and models. The sdk-python is designed to be efficient and scalable, allowing users to build and deploy complex AI agents and workflows.</p>
-<p>The sdk-python uses a modular design, which allows users to easily integrate different models and tools into their applications. The sdk-python provides a range of pre-built tools and models, including the calculator tool and the word count tool. The sdk-python also supports hot reloading from a directory, allowing users to automatically load and reload tools from the . /tools/ directory.</p>
-<p>The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows.</p>
-<p>The sdk-python is designed to be production-ready, with features such as automatic tool loading and reloading, and support for MCP servers. The sdk-python can be used to build a wide range of applications, from simple conversational assistants to complex autonomous workflows. The sdk-python is a simple yet powerful SDK that scales with user needs, from local development to production deployment. The sdk-python has a lightweight and flexible architecture, with a simple agent loop that is fully customizable.</p>
-<p>The sdk-python supports advanced capabilities, including multi-agent systems, autonomous agents, and streaming support. The sdk-python also supports seamless integration with MCP servers, allowing users to access a wide range of pre-built tools and models. The sdk-python is designed to be efficient and scalable, allowing users to build and deploy complex AI agents and workflows. The sdk-python is a model-driven approach to building AI agents, which means that it uses pre-built models to perform tasks.</p>
-<p>The sdk-python has built-in support for the Model Context Protocol (MCP) servers, enabling access to thousands of pre-built tools. The sdk-python can be installed using pip, and the installation process involves creating and activating a virtual environment, then installing the Strands Agents and tools. The sdk-python provides a quick start guide, which involves installing the Strands Agents and tools, then creating an agent and using it to perform tasks. The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: beeai-framework internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Multi-Agent Systems with the Workflow API</h2></div><p class="ch-summary">Building multi-agent systems</p><div class="ch-body"><p>The beeai-framework provides a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems, with features such as Requirement Agent, which allows for predictable and controlled behavior across different Large Language Models (LLMs) by setting rules the agent must follow. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt. The Backend feature connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation. The Tools feature extends agents with built-in tools, including web search, weather, code execution, and more, or custom tools.</p>
+<p>The framework also includes Retrieval-Augmented Generation (RAG) systems, which build vector stores and document processing.</p>
+<p>The beeai-framework's architecture is designed to support production-ready multi-agent systems, and its key APIs include those for the Backend module, Workflows, and protocol integrations. The framework's performance is suitable for production use cases, and it has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3. The framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models.</p>
+<p>The beeai-framework is licensed under Apache 2. 0, and its documentation is available. The framework is part of the Linux Foundation's LF AI & Data projects.</p>
+<p>The beeai-framework's Workflow API is a key component of the framework, allowing developers to build multi-agent systems by defining workflows that specify the interactions between agents. The Workflow API provides a simple and intuitive way to define workflows, using a syntax that is easy to read and write. The API also provides a range of features, including support for conditional statements, loops, and functions, making it easy to create complex workflows. The Workflow API is also extensible, allowing developers to add custom features and functionality as needed.</p>
+<p>The beeai-framework's Workflow API is built on top of the framework's Agent API, which provides a range of features for building and managing agents. The Agent API provides a simple and intuitive way to define agents, using a syntax that is easy to read and write. The API also provides a range of features, including support for conditional statements, loops, and functions, making it easy to create complex agents. The Agent API is also extensible, allowing developers to add custom features and functionality as needed.</p>
+<p>The beeai-framework's Workflow API has been used in a range of real-world use cases, including building multi-agent systems for competitive analysis and integrating with AI services. The framework's performance is suitable for production use cases, and it has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3. The framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models.</p>
+<p>The beeai-framework is licensed under Apache 2. 0, and its documentation is available.</p>
+<p>The beeai-framework's Workflow API provides a range of benefits, including improved productivity, increased flexibility, and enhanced scalability. The API provides a simple and intuitive way to define workflows, making it easy to create complex multi-agent systems. The API also provides a range of features, including support for conditional statements, loops, and functions, making it easy to create custom workflows. The Workflow API is also extensible, allowing developers to add custom features and functionality as needed.</p>
+<p>The beeai-framework's Workflow API is designed to work seamlessly with the framework's other features, including the Backend module, Agents, and protocol integrations. The API provides a simple and intuitive way to define workflows, making it easy to create complex multi-agent systems. The API also provides a range of features, including support for conditional statements, loops, and functions, making it easy to create custom workflows. The Workflow API is also extensible, allowing developers to add custom features and functionality as needed.</p>
+<p>The beeai-framework's Workflow API has a range of technical details that are important to understand, including the syntax for defining workflows, the features and functionality provided by the API, and the ways in which the API can be extended and customized. The API provides a simple and intuitive way to define workflows, using a syntax that is easy to read and write. The API also provides a range of features, including support for conditional statements, loops, and functions, making it easy to create complex workflows. The Workflow API is also extensible, allowing developers to add custom features and functionality as needed.</p>
+<p>The beeai-framework's documentation provides a range of information and resources for learning more about the Workflow API and how to use it to build multi-agent systems.</p>
+<p>The beeai-framework's Workflow API is an important part of the framework, providing a simple and intuitive way to define workflows and build multi-agent systems. The API provides a range of features and functionality, including support for conditional statements, loops, and functions, making it easy to create complex workflows. The Workflow API is also extensible, allowing developers to add custom features and functionality as needed. The beeai-framework's documentation provides a range of information and resources for learning more about the Workflow API and how to use it to build multi-agent systems.</p>
+<p>The framework's performance is suitable for production use cases, and it has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3. The framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 776.46 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 762.96 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 772.46,-40 772.46,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 758.96,-40 758.96,4 -4,4"/>
 <!-- A -->
 <g id="seq-node1" class="node">
 <title>A</title>
@@ -146,100 +147,100 @@
 <!-- C -->
 <g id="seq-node3" class="node">
 <title>C</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="299.98,-36 255.76,-18 299.98,0 344.2,-18 299.98,-36"/>
-<text text-anchor="middle" x="299.98" y="-14.5" font-family="Arial" font-size="10.00">Initialize</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="285.52" cy="-18" rx="31.27" ry="18"/>
+<text text-anchor="middle" x="285.52" y="-14.5" font-family="Arial" font-size="10.00">Initialize</text>
 </g>
 <!-- B&#45;&gt;C -->
 <g id="seq-edge2" class="edge">
 <title>B&#45;&gt;C</title>
-<path fill="none" stroke="#475569" d="M197.6,-18C211.48,-18 227.89,-18 243.41,-18"/>
-<polygon fill="#475569" stroke="#475569" points="242.99,-21.5 252.99,-18 242.99,-14.5 242.99,-21.5"/>
-<text text-anchor="middle" x="226.51" y="-19.95" font-family="Arial" font-size="9.00">setup</text>
+<path fill="none" stroke="#475569" d="M197.45,-18C211.47,-18 227.86,-18 242.61,-18"/>
+<polygon fill="#475569" stroke="#475569" points="242.5,-21.5 252.5,-18 242.5,-14.5 242.5,-21.5"/>
+<text text-anchor="middle" x="225.76" y="-19.95" font-family="Arial" font-size="9.00">done</text>
 </g>
 <!-- D -->
 <g id="seq-node4" class="node">
 <title>D</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="438.47" cy="-18" rx="31.27" ry="18"/>
-<text text-anchor="middle" x="438.47" y="-14.5" font-family="Arial" font-size="10.00">Call API</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="414.27,-36 370.04,-18 414.27,0 458.49,-18 414.27,-36"/>
+<text text-anchor="middle" x="414.27" y="-14.5" font-family="Arial" font-size="10.00">Call API</text>
 </g>
 <!-- C&#45;&gt;D -->
 <g id="seq-edge3" class="edge">
 <title>C&#45;&gt;D</title>
-<path fill="none" stroke="#475569" d="M345.29,-18C361.45,-18 379.66,-18 395.6,-18"/>
-<polygon fill="#475569" stroke="#475569" points="395.23,-21.5 405.23,-18 395.23,-14.5 395.23,-21.5"/>
-<text text-anchor="middle" x="375.7" y="-19.95" font-family="Arial" font-size="9.00">invoke</text>
+<path fill="none" stroke="#475569" d="M317.21,-18C329.34,-18 343.67,-18 357.52,-18"/>
+<polygon fill="#475569" stroke="#475569" points="357.46,-21.5 367.46,-18 357.46,-14.5 357.46,-21.5"/>
+<text text-anchor="middle" x="343.42" y="-19.95" font-family="Arial" font-size="9.00">start</text>
 </g>
 <!-- E -->
 <g id="seq-node5" class="node">
 <title>E</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="592.26" cy="-18" rx="56.53" ry="18"/>
-<text text-anchor="middle" x="592.26" y="-14.5" font-family="Arial" font-size="10.00">Handle Response</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="581.01" cy="-18" rx="56.53" ry="18"/>
+<text text-anchor="middle" x="581.01" y="-14.5" font-family="Arial" font-size="10.00">Handle Response</text>
 </g>
 <!-- D&#45;&gt;E -->
 <g id="seq-edge4" class="edge">
 <title>D&#45;&gt;E</title>
-<path fill="none" stroke="#475569" d="M470.19,-18C485.76,-18 505.31,-18 524.14,-18"/>
-<polygon fill="#475569" stroke="#475569" points="523.9,-21.5 533.9,-18 523.9,-14.5 523.9,-21.5"/>
-<text text-anchor="middle" x="502.74" y="-19.95" font-family="Arial" font-size="9.00">receive</text>
+<path fill="none" stroke="#475569" d="M459.42,-18C475.83,-18 494.86,-18 512.87,-18"/>
+<polygon fill="#475569" stroke="#475569" points="512.71,-21.5 522.71,-18 512.71,-14.5 512.71,-21.5"/>
+<text text-anchor="middle" x="491.49" y="-19.95" font-family="Arial" font-size="9.00">receive</text>
 </g>
 <!-- F -->
 <g id="seq-node6" class="node">
 <title>F</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="741.25" cy="-18" rx="27.21" ry="18"/>
-<text text-anchor="middle" x="741.25" y="-14.5" font-family="Arial" font-size="10.00">Output</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="727.75" cy="-18" rx="27.21" ry="18"/>
+<text text-anchor="middle" x="727.75" y="-14.5" font-family="Arial" font-size="10.00">Output</text>
 </g>
 <!-- E&#45;&gt;F -->
 <g id="seq-edge5" class="edge">
 <title>E&#45;&gt;F</title>
-<path fill="none" stroke="#475569" d="M649.25,-18C667.01,-18 686.21,-18 702.38,-18"/>
-<polygon fill="#475569" stroke="#475569" points="702.04,-21.5 712.04,-18 702.04,-14.5 702.04,-21.5"/>
-<text text-anchor="middle" x="681.41" y="-19.95" font-family="Arial" font-size="9.00">display</text>
+<path fill="none" stroke="#475569" d="M637.97,-18C655.09,-18 673.5,-18 689.09,-18"/>
+<polygon fill="#475569" stroke="#475569" points="688.88,-21.5 698.88,-18 688.88,-14.5 688.88,-21.5"/>
+<text text-anchor="middle" x="669.04" y="-19.95" font-family="Arial" font-size="9.00">render</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: sdk-python integration flow</p></div></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Quick Starting with Strands Agents and Model Context Protocol Servers</h2></div><div class="ch-body"><p>The SDK has built-in support for the Model Context Protocol (MCP) servers, enabling access to thousands of pre-built tools. It can be installed using pip, and the installation process involves creating and activating a virtual environment, then installing the Strands Agents and tools.</p>
-<p>The SDK provides a quick start guide, which involves installing the Strands Agents and tools, then creating an agent and using it to perform tasks. The agent can be customized with various tools, including a calculator tool and a word count tool. The SDK also supports hot reloading from a directory, allowing users to automatically load and reload tools from the . /tools/ directory.</p>
-<p>The SDK uses Python decorators to build tools, making it easy to create custom tools. For example, a word count tool can be created using the @tool decorator, and then used by the agent to count the words in a given text. The SDK also supports seamless integration with MCP servers, allowing users to access a wide range of pre-built tools and models.</p>
-<p>In terms of performance, the SDK is designed to be efficient and scalable, allowing users to bui</p><div class="code-label">Code Sample</div><div class="code-block"># Installation: pip install strands-agents
-import strands_agents.mdp_task_agent as mdp
-import strands_agents.mdp_domain_agent as domain
-import strands_agents.mdp_task_environment as env
-
-# Initialize the task environment
-task_env = env.MDPTaskEnvironment('example_task')
-
-# Create an MDP domain agent
-domain_agent = domain.MDPDomainAgent(task_env)
-
-# Define the MDP task agent parameters
-params = {'discount_factor': 0.9, 'epsilon': 0.1, 'learning_rate': 0.1}
-
-# Initialize the MDP task agent
-task_agent = mdp.MDPTaskAgent(task_env, domain_agent, params)
-
-# Set the agent's policy
-task_agent.set_policy('epsilon_greedy')
-
-# Perform a single step in the environment
-task_agent.step()  # take an action in the environment
-
-# Get the current state of the environment
-state = task_env.get_state()  # get the current state
-
-# Print the current state
-print('Current state:', state)  # print the state
-
-# Perform multiple steps in the environment
-for _ in range(10):  # loop 10 times
-    task_agent.step()  # take an action in the environment
-    state = task_env.get_state()  # get the current state
-    print('Current state:', state)  # print the state</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: beeai-framework integration flow</p></div></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Backend Modules with Unified LLM Provider Interfaces</h2></div><p class="ch-summary">Deploying backend modules</p><div class="ch-body"><p>The beeai-framework is a production-ready framework for building multi-agent systems, and its Backend module is designed to simplify working with AI services. The Backend module connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation. This allows for predictable and controlled behavior across different Large Language Models (LLMs) by setting rules the agent must follow. The Backend module is a key component of the beeai-framework, and its performance is suitable for production use cases.</p>
+<p>The framework's architecture is designed to support production-ready multi-agent systems, and its key APIs include those for the Backend module, Workflows, and protocol integrations.</p>
+<p>The beeai-framework provides features such as Requirement Agent, which allows for predictable and controlled behavior across different LLMs by setting rules the agent must follow. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt. The Backend feature connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation. The Tools feature extends agents with built-in tools, including web search, weather, code execution, and more, or custom tools.</p>
+<p>The framework also includes Retrieval-Augmented Generation (RAG) systems, which build vector stores and document processing.</p>
+<p>The beeai-framework supports hosting agents in servers with the Serve feature, which includes support for multiple protocols such as A2A and MCP. The Cache feature optimizes performance and reduces costs with intelligent caching, while the Serialization feature saves and loads agent state for persistence across sessions. The framework has recently added an experimental Streamlit agent and provides starter templates, including beeai-framework-py-starter for Python and beeai-framework-ts-starter for TypeScript, to get started quickly. The framework's documentation is available, and it is part of the Linux Foundation's LF AI & Data projects.</p>
+<p>The beeai-framework is a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems. It provides features such as Requirement Agent, which allows for predictable and controlled behavior across different LLMs by setting rules the agent must follow. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt. The Backend feature connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation.</p>
+<p>The Tools feature extends agents with built-in tools, including web search, weather, code execution, and more, or custom tools.</p>
+<p>The beeai-framework has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3. The framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models. The framework's performance is suitable for production use cases, and its architecture is designed to support production-ready multi-agent systems.</p>
+<p>The framework's key APIs include those for the Backend module, Workflows, and protocol integrations. The framework also includes support for DeepSeek R1 and LLaMa 3. 3.</p>
+<p>The beeai-framework provides a Python library and a TypeScript library, both of which are available on GitHub. The framework is licensed under Apache 2. 0, and the latest updates to the framework include the introduction of the Requirement Agent, new protocol integrations such as ACP and MCP, and the launch of the Python library alpha. The framework's documentation is available, and it is part of the Linux Foundation's LF AI & Data projects.</p>
+<p>The framework's architecture is designed to support production-ready multi-agent systems, and its key APIs include those for the Backend module, Workflows, and protocol integrations.</p>
+<p>The beeai-framework is designed to support production-ready multi-agent systems, and its key APIs include those for the Backend module, Workflows, and protocol integrations. The framework provides features such as Requirement Agent, which allows for predictable and controlled behavior across different LLMs by setting rules the agent must follow. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt. The Backend feature connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation.</p>
+<p>The Tools feature extends agents with built-in tools, including web search, weather, code execution, and more, or custom tools.</p>
+<p>The beeai-framework has been used in various examples, including a competitive analysis workflow example and a multi-agent workflow example using LLaMa 3. 3. The framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models. The framework's performance is suitable for production use cases, and its architecture is designed to support production-ready multi-agent systems.</p>
+<p>The framework's key APIs include those for the Backend module, Workflows, and protocol integrations. The framework also includes support for DeepSeek R1 and LLaMa 3. 3. The beeai-framework is a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems.</p><div class="code-label">Code Sample</div><div class="code-block">name = 'wxo-beeai'
+version = '0.0.1'
+requires-python = '&gt;=3.11,&lt;3.13'
+dependencies = [
+ 'beeai-framework[watsonx-orchestrate] (&gt;=0.1.68,&lt;0.2.0)',
+ 'pydantic (&gt;=2.11.7,&lt;3.0.0)',
+ 'pydantic-settings (&gt;=2.9.1,&lt;3.0.0)',
+ 'python-dotenv (&gt;=1.1.0,&lt;2.0.0)',
+ 'tavily-python (&gt;=0.7.7,&lt;0.8.0)',
+ 'sse-starlette (&gt;=2.4.1,&lt;3.0.0)'
+]
+build-system = 'poetry'
+requires = ['poetry-core&gt;=2.0.0,&lt;3.0.0']
+build-backend = 'poetry.core.masonry.api'
+from beeai_framework import Backend
+backend = Backend()
+backend.connect('llm_provider')
+backend.send('message')
+backend.receive()
+from beeai_framework import Workflows
+workflows = Workflows()
+workflows.create('workflow')
+workflows.start('workflow')</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 436.96 199.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 443.58 199.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 195)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-195 432.96,-195 432.96,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-195 439.58,-195 439.58,4 -4,4"/>
 <!-- Created -->
 <g id="sm-node1" class="node">
 <title>Created</title>
@@ -262,93 +263,99 @@ for _ in range(10):  # loop 10 times
 <!-- Waiting -->
 <g id="sm-node3" class="node">
 <title>Waiting</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="275.9" cy="-173" rx="29.01" ry="18"/>
-<text text-anchor="middle" x="275.9" y="-169.5" font-family="Arial" font-size="10.00">Waiting</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="279.2" cy="-173" rx="29.01" ry="18"/>
+<text text-anchor="middle" x="279.2" y="-169.5" font-family="Arial" font-size="10.00">Waiting</text>
 </g>
 <!-- Running&#45;&gt;Waiting -->
 <g id="sm-edge2" class="edge">
 <title>Running&#45;&gt;Waiting</title>
-<path fill="none" stroke="#475569" d="M159.4,-124.35C168.3,-134.35 180.89,-146.61 194.52,-154 207.13,-160.83 222.15,-165.23 235.78,-168.04"/>
-<polygon fill="#475569" stroke="#475569" points="234.86,-171.43 245.32,-169.79 236.11,-164.55 234.86,-171.43"/>
+<path fill="none" stroke="#475569" d="M159.38,-124.39C168.27,-134.41 180.85,-146.67 194.52,-154 208.09,-161.28 224.35,-165.78 238.91,-168.55"/>
+<polygon fill="#475569" stroke="#475569" points="238.2,-171.98 248.64,-170.18 239.36,-165.08 238.2,-171.98"/>
 <text text-anchor="middle" x="209.9" y="-166.95" font-family="Arial" font-size="9.00">pause</text>
 </g>
 <!-- Success -->
 <g id="sm-node4" class="node">
 <title>Success</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="275.9" cy="-112" rx="32.62" ry="18"/>
-<text text-anchor="middle" x="275.9" y="-108.5" font-family="Arial" font-size="10.00">Success</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="279.2" cy="-112" rx="32.62" ry="18"/>
+<text text-anchor="middle" x="279.2" y="-108.5" font-family="Arial" font-size="10.00">Success</text>
 </g>
 <!-- Running&#45;&gt;Success -->
 <g id="sm-edge3" class="edge">
 <title>Running&#45;&gt;Success</title>
-<path fill="none" stroke="#475569" d="M176.65,-108.35C191.35,-108.58 209.23,-108.94 225.27,-109.5 227.44,-109.58 229.66,-109.66 231.9,-109.75"/>
-<polygon fill="#475569" stroke="#475569" points="231.48,-113.24 241.62,-110.18 231.79,-106.24 231.48,-113.24"/>
+<path fill="none" stroke="#475569" d="M176.65,-108.38C191.35,-108.61 209.23,-108.97 225.27,-109.5 228.46,-109.61 231.76,-109.73 235.08,-109.86"/>
+<polygon fill="#475569" stroke="#475569" points="234.65,-113.35 244.79,-110.28 234.95,-106.35 234.65,-113.35"/>
 <text text-anchor="middle" x="209.9" y="-110.95" font-family="Arial" font-size="9.00">finish</text>
 </g>
 <!-- Failed -->
 <g id="sm-node5" class="node">
 <title>Failed</title>
-<ellipse fill="#ffc2c7" stroke="#2563eb" cx="275.9" cy="-58" rx="27" ry="18"/>
-<text text-anchor="middle" x="275.9" y="-54.5" font-family="Arial" font-size="10.00">Failed</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="279.2,-76 243.27,-58 279.2,-40 315.13,-58 279.2,-76"/>
+<text text-anchor="middle" x="279.2" y="-54.5" font-family="Arial" font-size="10.00">Failed</text>
 </g>
 <!-- Running&#45;&gt;Failed -->
 <g id="sm-edge4" class="edge">
 <title>Running&#45;&gt;Failed</title>
-<path fill="none" stroke="#475569" d="M171.98,-98C191.96,-90.24 219.82,-79.41 241.52,-70.97"/>
-<polygon fill="#475569" stroke="#475569" points="242.77,-74.24 250.82,-67.36 240.23,-67.72 242.77,-74.24"/>
-<text text-anchor="middle" x="209.9" y="-89.95" font-family="Arial" font-size="9.00">crash</text>
+<path fill="none" stroke="#475569" d="M172.01,-98.24C193.54,-90.08 224.3,-78.43 247.18,-69.76"/>
+<polygon fill="#475569" stroke="#475569" points="248.18,-73.12 256.29,-66.3 245.7,-66.57 248.18,-73.12"/>
+<text text-anchor="middle" x="209.9" y="-89.95" font-family="Arial" font-size="9.00">fail</text>
 </g>
 <!-- Waiting&#45;&gt;Running -->
 <g id="sm-edge5" class="edge">
 <title>Waiting&#45;&gt;Running</title>
-<path fill="none" stroke="#475569" d="M255.54,-159.67C246.54,-153.74 235.57,-146.91 225.27,-141.5 211.64,-134.34 196.13,-127.5 182.48,-121.89"/>
-<polygon fill="#475569" stroke="#475569" points="184,-118.73 173.42,-118.24 181.38,-125.22 184,-118.73"/>
+<path fill="none" stroke="#475569" d="M258.21,-160.23C248.45,-154.22 236.44,-147.15 225.27,-141.5 211.53,-134.54 196.01,-127.74 182.38,-122.1"/>
+<polygon fill="#475569" stroke="#475569" points="183.9,-118.95 173.32,-118.42 181.27,-125.43 183.9,-118.95"/>
 <text text-anchor="middle" x="209.9" y="-142.95" font-family="Arial" font-size="9.00">resume</text>
 </g>
 <!-- Retrying -->
 <g id="sm-node6" class="node">
 <title>Retrying</title>
-<ellipse fill="#fbe7c6" stroke="#2563eb" cx="397.24" cy="-18" rx="31.72" ry="18"/>
-<text text-anchor="middle" x="397.24" y="-14.5" font-family="Arial" font-size="10.00">Retrying</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="403.86" cy="-18" rx="31.72" ry="18"/>
+<text text-anchor="middle" x="403.86" y="-14.5" font-family="Arial" font-size="10.00">Retrying</text>
 </g>
 <!-- Failed&#45;&gt;Retrying -->
 <g id="sm-edge6" class="edge">
 <title>Failed&#45;&gt;Retrying</title>
-<path fill="none" stroke="#475569" d="M300.48,-50.1C317.06,-44.54 339.59,-36.99 358.64,-30.6"/>
-<polygon fill="#475569" stroke="#475569" points="359.57,-33.98 367.94,-27.48 357.35,-27.34 359.57,-33.98"/>
-<text text-anchor="middle" x="337.02" y="-41.95" font-family="Arial" font-size="9.00">retry</text>
+<path fill="none" stroke="#475569" d="M301.85,-50.94C319.34,-45.24 344.37,-37.07 365.14,-30.3"/>
+<polygon fill="#475569" stroke="#475569" points="366,-33.7 374.42,-27.27 363.82,-27.05 366,-33.7"/>
+<text text-anchor="middle" x="343.63" y="-41.95" font-family="Arial" font-size="9.00">retry</text>
 </g>
 <!-- Error -->
 <g id="sm-node7" class="node">
 <title>Error</title>
-<ellipse fill="#fbe7c6" stroke="#2563eb" cx="397.24" cy="-78" rx="27" ry="18"/>
-<text text-anchor="middle" x="397.24" y="-74.5" font-family="Arial" font-size="10.00">Error</text>
+<ellipse fill="#fbe3e4" stroke="#2563eb" cx="403.86" cy="-78" rx="27" ry="18"/>
+<text text-anchor="middle" x="403.86" y="-74.5" font-family="Arial" font-size="10.00">Error</text>
 </g>
 <!-- Failed&#45;&gt;Error -->
 <g id="sm-edge8" class="edge">
 <title>Failed&#45;&gt;Error</title>
-<path fill="none" stroke="#475569" d="M302.5,-62.29C319.1,-65.07 340.98,-68.74 359.43,-71.83"/>
-<polygon fill="#475569" stroke="#475569" points="358.75,-75.27 369.19,-73.47 359.9,-68.36 358.75,-75.27"/>
-<text text-anchor="middle" x="337.02" y="-70.95" font-family="Arial" font-size="9.00">abort</text>
+<path fill="none" stroke="#475569" d="M307.12,-62.39C324.41,-65.21 347.08,-68.91 366.03,-71.99"/>
+<polygon fill="#475569" stroke="#475569" points="365.33,-75.43 375.77,-73.58 366.46,-68.52 365.33,-75.43"/>
+<text text-anchor="middle" x="343.63" y="-70.95" font-family="Arial" font-size="9.00">abort</text>
 </g>
 <!-- Retrying&#45;&gt;Running -->
 <g id="sm-edge7" class="edge">
 <title>Retrying&#45;&gt;Running</title>
-<path fill="none" stroke="#475569" d="M366.59,-12.51C334.87,-7.98 283.68,-4.59 243.27,-20.5 211.29,-33.1 183.17,-61.45 165.55,-82.49"/>
-<polygon fill="#475569" stroke="#475569" points="162.96,-80.12 159.39,-90.09 168.4,-84.52 162.96,-80.12"/>
-<text text-anchor="middle" x="275.9" y="-22.95" font-family="Arial" font-size="9.00">restarted</text>
+<path fill="none" stroke="#475569" d="M373.42,-12.47C340.47,-7.61 286.08,-3.66 243.27,-20.5 211.28,-33.08 183.16,-61.44 165.55,-82.48"/>
+<polygon fill="#475569" stroke="#475569" points="162.96,-80.11 159.39,-90.09 168.4,-84.52 162.96,-80.11"/>
+<text text-anchor="middle" x="279.2" y="-22.95" font-family="Arial" font-size="9.00">restarted</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: sdk-python lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Multi-Agent Systems and Streaming Support with Real-World Workflows</h2></div><p class="ch-summary">sdk-python integrates multi-agent systems</p><div class="ch-body"><p>The sdk-python is a model-driven approach to building AI agents in just a few lines of code, it is a simple yet powerful SDK that scales with user needs, from simple conversational assistants to complex autonomous workflows, and from local development to production deployment. The sdk-python has a lightweight and flexible architecture, with a simple agent loop that is fully customizable, it is model agnostic, supporting various providers such as Amazon Bedrock, Anthropic, Gemini, LiteLLM, Llama, Ollama, OpenAI, Writer, and custom providers. The sdk-python features advanced capabilities, including multi-agent systems, autonomous agents, and streaming support, it has built-in support for the Model Context Protocol (MCP) servers, enabling access to thousands of pre-built tools. The sdk-python can be installed using pip, and the installation process involves creating and activating a virtual environment, then installing the Strands Agents and tools.</p>
-<p>The sdk-python provides a quick start guide, which involves installing the Strands Agents and tools, then creating an agent and using it to perform tasks, the agent can be customized with various tools, including a calculator tool and a word count tool.</p>
-<p>The sdk-python uses Python decorators to build tools, making it easy to create custom tools, for example, a word count tool can be created using the @tool decorator, and then used by the agent to count the words in a given text. The sdk-python supports seamless integration with MCP servers, allowing users to access a wide range of pre-built tools and models, it is designed to be efficient and scalable, allowing users to build and deploy complex AI agents and workflows. The sdk-python is designed to be production-ready, with features such as automatic tool loading and reloading, and support for MCP servers, it provides a range of pre-built tools and models, including the calculator tool and the word count tool. The key APIs in the sdk-python include the Agent class, which is used to create and customize agents, and the tool decorator, which is used to build custom tools.</p>
-<p>The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows, its model-driven approach, advanced capabilities, and seamless integration with MCP servers make it an ideal choice for developers and organizations looking to build complex AI systems. The sdk-python has a modular design, allowing users to easily integrate different models and tools, it supports multiple model providers, such as Amazon Bedrock, Google Gemini, Ollama, Llama API, and others. The sdk-python is designed to be highly customizable, allowing users to create custom agents and tools tailored to their specific needs, it provides a range of features and tools to support the development and deployment of AI agents and workflows.</p>
-<p>In terms of performance, the sdk-python is designed to be efficient and scalable, allowing users to build and deploy complex AI agents and workflows, it is designed to be production-ready, with features such as automatic tool loading and reloading, and support for MCP servers. The sdk-python provides a range of pre-built tools and models, including the calculator tool and the word count tool, it supports seamless integration with MCP servers, allowing users to access a wide range of pre-built tools and models. The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows, its model-driven approach, advanced capabilities, and seamless integration with MCP servers make it an ideal choice for developers and organizations looking to build complex AI systems.</p>
-<p>The sdk-python has a simple and intuitive API, making it easy to create and customize agents, it provides a range of features and tools to support the development and deployment of AI agents and workflows. The sdk-python is designed to be highly customizable, allowing users to create custom agents and tools tailored to their specific needs, it supports multiple model providers, such as Amazon Bedrock, Google Gemini, Ollama, Llama API, and others. The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows, its model-driven approach, advanced capabilities, and seamless integration with MCP servers make it an ideal choice for developers and organizations looking to build complex AI systems.</p>
-<p>The sdk-python provides a range of features and tools to support the development and deployment of AI agents and workflows, it has a modular design, allowing users to easily integrate different models and tools. The sdk-python is designed to be efficient and scalable, allowing users to build and deploy complex AI agents and workflows, it is designed to be production-ready, with features such as automatic tool loading and reloading, and support for MCP servers. The sdk-python supports seamless integration with MCP servers, allowing users to access a wide range of pre-built tools and models, it provides a range of pre-built tools and models, including the calculator tool and the word count tool.</p>
-<p>The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows, its model-driven approach, advanced capabilities, and seamless integration with MCP servers make it an ideal choice for developers and organizations looking to build complex AI systems. The sdk-python has a simple and intuitive API, making it easy to create and customize agents, it provides a range of features and tools to support the development and deployment of AI agents and workflows. The sdk-python is designed to be highly customizable, allowing users to create custom agents and tools tailored to their specific needs, it supports multiple model providers, such as Amazon Bedrock, Google Gemini, Ollama, Llama API, and others.</p>
-<p>The sdk-python is designed to be efficient and scalable, allowing users to build and deploy complex AI agents and workflows, it is designed to be production-ready, with features such as automatic tool loading and reloading, and support for MCP servers. The sdk-python provides a range of pre-built tools and models, including the calculator tool and the word count tool, it supports seamless integration with MCP servers, allowing users to access a wide range of pre-built tools and models. The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows, its model-driven approach, advanced capabilities, and seamless integration with MCP servers make it an ideal choice for developers and organizations looking to build complex AI systems.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: beeai-framework lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating ACP and MCP Protocols with the Model Context Protocol</h2></div><p class="ch-summary">Integrate ACP and MCP protocols</p><div class="ch-body"><p>The beeai-framework provides a comprehensive set of tools for building multi-agent systems, including the integration of ACP and MCP protocols with the Model Context Protocol. The Model Context Protocol is a key feature of the framework, allowing for the management of conversation history and context. The ACP and MCP protocols are integrated into the framework through the Serve feature, which supports multiple protocols. The Serve feature includes support for A2A and MCP protocols, allowing for hosting agents in servers.</p>
+<p>The integration of ACP and MCP protocols with the Model Context Protocol enables the framework to support production-ready multi-agent systems.</p>
+<p>The beeai-framework's architecture is designed to support production-ready multi-agent systems, with a focus on scalability and performance. The framework's key APIs include those for the Backend module, Workflows, and protocol integrations. The Backend module provides a unified interface for connecting to LLM providers, while the Workflows feature allows for building multi-agent systems. The protocol integrations, including ACP and MCP, enable the framework to support a wide range of use cases.</p>
+<p>The framework's performance is suitable for production use cases, with a focus on optimizing performance and reducing costs.</p>
+<p>The beeai-framework's Requirement Agent feature allows for predictable and controlled behavior across different LLMs, by setting rules the agent must follow. The Requirement Agent is integrated with the Model Context Protocol, enabling the framework to manage conversation history and context. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt. The Agents are integrated with the ACP and MCP protocols, enabling the framework to support production-ready multi-agent systems.</p>
+<p>The framework's Tools feature extends agents with built-in tools, including web search, weather, code execution, and more.</p>
+<p>The beeai-framework's Retrieval-Augmented Generation (RAG) systems build vector stores and document processing, enabling the framework to support a wide range of use cases. The RAG systems are integrated with the Model Context Protocol, enabling the framework to manage conversation history and context. The framework also includes Templates, which build dynamic prompts with enhanced Mustache syntax, and Memory, which manages conversation history with built-in memory strategies. The framework's Observability feature allows for monitoring of agent behavior with events, logging, and robust error handling.</p>
+<p>The Observability feature is integrated with the ACP and MCP protocols, enabling the framework to support production-ready multi-agent systems.</p>
+<p>The beeai-framework's Cache feature optimizes performance and reduces costs with intelligent caching, while the Serialization feature saves and loads agent state for persistence across sessions. The Cache and Serialization features are integrated with the Model Context Protocol, enabling the framework to manage conversation history and context. The framework's experimental Streamlit agent provides a simple way to build and deploy agents, while the starter templates, including beeai-framework-py-starter for Python and beeai-framework-ts-starter for TypeScript, provide a starting point for building multi-agent systems. The framework's documentation is available, providing a comprehensive guide to building and deploying multi-agent systems.</p>
+<p>The beeai-framework's integration of ACP and MCP protocols with the Model Context Protocol enables the framework to support a wide range of use cases, including building multi-agent systems, working with AI services, and integrating with various protocols and models. The framework's performance is suitable for production use cases, with a focus on optimizing performance and reducing costs. The framework's key APIs, including those for the Backend module, Workflows, and protocol integrations, provide a comprehensive set of tools for building and deploying multi-agent systems. The framework's architecture is designed to support production-ready multi-agent systems, with a focus on scalability and performance.</p>
+<p>The framework's Tools feature extends agents with built-in tools, including web search, weather, code execution, and more.</p>
+<p>The beeai-framework's support for DeepSeek R1 and LLaMa 3. 3 enables the framework to support a wide range of use cases, including building multi-agent systems and working with AI services. The framework's integration of ACP and MCP protocols with the Model Context Protocol enables the framework to manage conversation history and context, while the Retrieval-Augmented Generation (RAG) systems build vector stores and document processing. The framework's Observability feature allows for monitoring of agent behavior with events, logging, and robust error handling, while the Cache and Serialization features optimize performance and reduce costs.</p>
+<p>The framework's experimental Streamlit agent and starter templates provide a simple way to build and deploy agents, while the framework's documentation provides a comprehensive guide to building and deploying multi-agent systems.</p>
+<p>The beeai-framework's production use cases include building multi-agent systems, working with AI services, and integrating with various protocols and models. The framework's integration of ACP and MCP protocols with the Model Context Protocol enables the framework to support production-ready multi-agent systems, while the framework's performance is suitable for production use cases. The framework's key APIs, including those for the Backend module, Workflows, and protocol integrations, provide a comprehensive set of tools for building and deploying multi-agent systems. The framework's architecture is designed to support production-ready multi-agent systems, with a focus on scalability and performance.</p>
+<p>The framework's Tools feature extends agents with built-in tools, including web search, weather, code execution, and more.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
 <svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 161.50 456.50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -358,80 +365,73 @@ for _ in range(10):  # loop 10 times
 <!-- A -->
 <g id="pipe-node1" class="node">
 <title>A</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="75.52" cy="-430.5" rx="27" ry="18"/>
-<text text-anchor="middle" x="75.52" y="-427" font-family="Arial" font-size="10.00">Input</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="76.52" cy="-430.5" rx="27" ry="18"/>
+<text text-anchor="middle" x="76.52" y="-427" font-family="Arial" font-size="10.00">Input</text>
 </g>
 <!-- B -->
 <g id="pipe-node2" class="node">
 <title>B</title>
-<ellipse fill="#fef9c3" stroke="#2563eb" cx="75.52" cy="-348" rx="30.37" ry="18"/>
-<text text-anchor="middle" x="75.52" y="-344.5" font-family="Arial" font-size="10.00">Validate</text>
+<ellipse fill="#fef9c3" stroke="#2563eb" cx="76.52" cy="-348" rx="30.37" ry="18"/>
+<text text-anchor="middle" x="76.52" y="-344.5" font-family="Arial" font-size="10.00">Validate</text>
 </g>
 <!-- A&#45;&gt;B -->
 <g id="pipe-edge1" class="edge">
 <title>A&#45;&gt;B</title>
-<path fill="none" stroke="#475569" d="M75.52,-412.03C75.52,-402.01 75.52,-389.18 75.52,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="79.02,-377.95 75.52,-367.95 72.02,-377.95 79.02,-377.95"/>
-<text text-anchor="middle" x="89.02" y="-385.95" font-family="Arial" font-size="9.00">submit</text>
+<path fill="none" stroke="#475569" d="M76.52,-412.03C76.52,-402.01 76.52,-389.18 76.52,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="80.02,-377.95 76.52,-367.95 73.02,-377.95 80.02,-377.95"/>
+<text text-anchor="middle" x="91.52" y="-385.95" font-family="Arial" font-size="9.00">receive</text>
 </g>
 <!-- C -->
 <g id="pipe-node3" class="node">
 <title>C</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="75.52,-283.5 29.39,-265.5 75.52,-247.5 121.66,-265.5 75.52,-283.5"/>
-<text text-anchor="middle" x="75.52" y="-262" font-family="Arial" font-size="10.00">Decision</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="76.52" cy="-265.5" rx="31.27" ry="18"/>
+<text text-anchor="middle" x="76.52" y="-262" font-family="Arial" font-size="10.00">Process</text>
 </g>
 <!-- B&#45;&gt;C -->
 <g id="pipe-edge2" class="edge">
 <title>B&#45;&gt;C</title>
-<path fill="none" stroke="#475569" d="M75.52,-329.53C75.52,-319.51 75.52,-306.68 75.52,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="79.02,-295.45 75.52,-285.45 72.02,-295.45 79.02,-295.45"/>
-<text text-anchor="middle" x="87.52" y="-303.45" font-family="Arial" font-size="9.00">check</text>
+<path fill="none" stroke="#475569" d="M76.52,-329.53C76.52,-319.51 76.52,-306.68 76.52,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="80.02,-295.45 76.52,-285.45 73.02,-295.45 80.02,-295.45"/>
+<text text-anchor="middle" x="86.27" y="-303.45" font-family="Arial" font-size="9.00">pass</text>
 </g>
 <!-- D -->
 <g id="pipe-node4" class="node">
 <title>D</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="33.52" cy="-183" rx="33.52" ry="18"/>
-<text text-anchor="middle" x="33.52" y="-179.5" font-family="Arial" font-size="10.00">Branch A</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="76.52,-201 30.39,-183 76.52,-165 122.66,-183 76.52,-201"/>
+<text text-anchor="middle" x="76.52" y="-179.5" font-family="Arial" font-size="10.00">Decision</text>
 </g>
 <!-- C&#45;&gt;D -->
 <g id="pipe-edge3" class="edge">
 <title>C&#45;&gt;D</title>
-<path fill="none" stroke="#475569" d="M68.02,-250.11C62.32,-239.19 54.32,-223.87 47.47,-210.72"/>
-<polygon fill="#475569" stroke="#475569" points="50.7,-209.36 42.98,-202.11 44.5,-212.6 50.7,-209.36"/>
-<text text-anchor="middle" x="70.65" y="-220.95" font-family="Arial" font-size="9.00">path A</text>
+<path fill="none" stroke="#475569" d="M76.52,-247.03C76.52,-237.01 76.52,-224.18 76.52,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="80.02,-212.95 76.52,-202.95 73.02,-212.95 80.02,-212.95"/>
+<text text-anchor="middle" x="94.15" y="-220.95" font-family="Arial" font-size="9.00">evaluate</text>
 </g>
 <!-- E -->
 <g id="pipe-node5" class="node">
 <title>E</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="119.52" cy="-183" rx="33.98" ry="18"/>
-<text text-anchor="middle" x="119.52" y="-179.5" font-family="Arial" font-size="10.00">Branch B</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="33.52" cy="-100.5" rx="33.52" ry="18"/>
+<text text-anchor="middle" x="33.52" y="-97" font-family="Arial" font-size="10.00">Branch A</text>
 </g>
-<!-- C&#45;&gt;E -->
+<!-- D&#45;&gt;E -->
 <g id="pipe-edge4" class="edge">
-<title>C&#45;&gt;E</title>
-<path fill="none" stroke="#475569" d="M83.39,-250.11C89.36,-239.19 97.73,-223.87 104.92,-210.72"/>
-<polygon fill="#475569" stroke="#475569" points="107.91,-212.55 109.63,-202.1 101.76,-209.2 107.91,-212.55"/>
-<text text-anchor="middle" x="113.65" y="-220.95" font-family="Arial" font-size="9.00">path B</text>
+<title>D&#45;&gt;E</title>
+<path fill="none" stroke="#475569" d="M68.18,-167.79C64.53,-161.46 60.24,-153.9 56.52,-147 53.25,-140.91 49.83,-134.29 46.66,-128.05"/>
+<polygon fill="#475569" stroke="#475569" points="49.92,-126.75 42.31,-119.38 43.67,-129.89 49.92,-126.75"/>
+<text text-anchor="middle" x="73.02" y="-138.45" font-family="Arial" font-size="9.00">option 1</text>
 </g>
 <!-- F -->
 <g id="pipe-node6" class="node">
 <title>F</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="76.52" cy="-100.5" rx="31.27" ry="18"/>
-<text text-anchor="middle" x="76.52" y="-97" font-family="Arial" font-size="10.00">Process</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="119.52" cy="-100.5" rx="33.98" ry="18"/>
+<text text-anchor="middle" x="119.52" y="-97" font-family="Arial" font-size="10.00">Branch B</text>
 </g>
 <!-- D&#45;&gt;F -->
 <g id="pipe-edge5" class="edge">
 <title>D&#45;&gt;F</title>
-<path fill="none" stroke="#475569" d="M38.83,-165.11C41.88,-156.33 46.09,-145.57 51.02,-136.5 52.82,-133.2 54.89,-129.85 57.05,-126.6"/>
-<polygon fill="#475569" stroke="#475569" points="59.85,-128.71 62.79,-118.53 54.14,-124.66 59.85,-128.71"/>
-<text text-anchor="middle" x="71.77" y="-138.45" font-family="Arial" font-size="9.00">execute A</text>
-</g>
-<!-- E&#45;&gt;F -->
-<g id="pipe-edge6" class="edge">
-<title>E&#45;&gt;F</title>
-<path fill="none" stroke="#475569" d="M110.61,-165.32C104.91,-154.63 97.37,-140.53 90.84,-128.29"/>
-<polygon fill="#475569" stroke="#475569" points="93.93,-126.66 86.14,-119.49 87.76,-129.96 93.93,-126.66"/>
-<text text-anchor="middle" x="121.77" y="-138.45" font-family="Arial" font-size="9.00">execute B</text>
+<path fill="none" stroke="#475569" d="M84.21,-167.61C90.04,-156.69 98.23,-141.37 105.25,-128.22"/>
+<polygon fill="#475569" stroke="#475569" points="108.23,-130.08 109.85,-119.61 102.05,-126.78 108.23,-130.08"/>
+<text text-anchor="middle" x="117.02" y="-138.45" font-family="Arial" font-size="9.00">option 2</text>
 </g>
 <!-- G -->
 <g id="pipe-node7" class="node">
@@ -439,49 +439,42 @@ for _ in range(10):  # loop 10 times
 <ellipse fill="#bbf7d0" stroke="#2563eb" cx="76.52" cy="-18" rx="27.21" ry="18"/>
 <text text-anchor="middle" x="76.52" y="-14.5" font-family="Arial" font-size="10.00">Output</text>
 </g>
+<!-- E&#45;&gt;G -->
+<g id="pipe-edge6" class="edge">
+<title>E&#45;&gt;G</title>
+<path fill="none" stroke="#475569" d="M42.43,-82.82C48.24,-71.95 55.93,-57.55 62.54,-45.18"/>
+<polygon fill="#475569" stroke="#475569" points="65.44,-47.19 67.06,-36.72 59.26,-43.89 65.44,-47.19"/>
+<text text-anchor="middle" x="69.77" y="-55.95" font-family="Arial" font-size="9.00">result</text>
+</g>
 <!-- F&#45;&gt;G -->
 <g id="pipe-edge7" class="edge">
 <title>F&#45;&gt;G</title>
-<path fill="none" stroke="#475569" d="M76.52,-82.03C76.52,-72.01 76.52,-59.18 76.52,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="80.02,-47.95 76.52,-37.95 73.02,-47.95 80.02,-47.95"/>
-<text text-anchor="middle" x="95.27" y="-55.95" font-family="Arial" font-size="9.00">complete</text>
+<path fill="none" stroke="#475569" d="M110.61,-82.82C104.81,-71.95 97.12,-57.55 90.51,-45.18"/>
+<polygon fill="#475569" stroke="#475569" points="93.79,-43.89 85.99,-36.72 87.61,-47.19 93.79,-43.89"/>
+<text text-anchor="middle" x="111.77" y="-55.95" font-family="Arial" font-size="9.00">result</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: sdk-python end-to-end processing pipeline</p></div><div class="sec-heading">sdk-python — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Use</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Model Agnosticism</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Documentation Quality</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div></div><div class="sec-heading">sdk-python — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Architecture</td><td>Lightweight and Flexible</td><td>Supports simple agent loop and customizable architecture</td></tr><tr><td>Model Support</td><td>Model Agnostic</td><td>Supports various providers such as Amazon Bedrock, Anthropic, and OpenAI</td></tr><tr><td>Advanced Capabilities</td><td>Multi-Agent Systems, Autonomous Agents, Streaming Support</td><td>Enables complex autonomous workflows and real-time data processing</td></tr><tr><td>Installation Process</td><td>pip installation with virtual environment</td><td>Simple and straightforward installation process</td></tr><tr><td>Development Tools</td><td>Built-in support for Model Context Protocol (MCP) servers</td><td>Access to thousands of pre-built tools and hot reloading from a directory</td></tr><tr><td>Customization Options</td><td>Python decorators for building tools</td><td>Easy creation of custom tools using @tool decorator</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Deploying Autonomous Agents to Production with Automatic Tool Loading</h2></div><p class="ch-summary">Deploying sdk-python agents</p><div class="ch-body"><p>The sdk-python is a tool for building AI agents using Python, supporting model providers and featuring structured output and multi-agent interactions. The latest features of the sdk-python include the ability to configure audio settings and turn detection, as well as support for multi-modal input, allowing users to interact with agents using both audio and text. The architecture of the sdk-python is based on the concept of agents, which can be created and invoked using the BidiAgent class. The agent can be configured with various tools, such as calculators and stop conversation handlers, and can be run with real-time audio streaming.</p>
-<p>The sdk-python also supports custom input/output handlers using the BidiInput and BidiOutput protocols.</p>
-<p>The key APIs of the sdk-python include the Agent class, which is the main entry point for building conversational agents. The Agent class takes a model provider as an argument, which can be one of the built-in providers or a custom provider implemented by the user. The Agent class also supports the use of tools, which are pre-built functions that can be used to perform specific tasks, such as calculations or data processing. The performance of the sdk-python is dependent on the model provider used, as well as the specific use case and requirements of the application.</p>
-<p>The sdk-python is designed to be flexible and scalable, allowing users to build a wide range of conversational agents, from simple chatbots to complex virtual assistants.</p>
-<p>In terms of production use cases, the sdk-python can be used to build a variety of applications, such as customer service chatbots, virtual assistants, and language translation systems. The sdk-python is also suitable for use in research and development environments, where it can be used to prototype and test new conversational AI models and algorithms. The sdk-python supports bidirectional streaming, which allows for real-time voice and audio conversations with persistent streaming connections. This feature is currently in experimental status and is supported by a limited number of model providers, including Amazon Nova Sonic and Google Gemini Live.</p>
-<p>The sdk-python can be installed using pip, and it is also available on GitHub.</p>
-<p>The sdk-python includes a number of pre-built tools and examples, such as the calculator tool, which can be used to get started with building conversational agents. The calculator tool is a simple example of a conversational agent that can perform basic arithmetic operations. The sdk-python also provides a range of configuration options, including the ability to set the input and output rates, voice, and end. The BidiNovaSonicModel class is used to configure audio settings and turn detection, and the BidiAudioIO and BidiTextIO classes are used to handle audio and text input/output.</p>
-<p>The sdk-python also supports custom input/output handlers using the BidiInput and BidiOutput protocols.</p>
-<p>The sdk-python is designed to be highly customizable, allowing users to build conversational agents that meet their specific needs. The Agent class can be extended to support custom tools and model providers, and the sdk-python provides a range of APIs for configuring and customizing the behavior of the agent. The sdk-python also supports multi-modal input, allowing users to interact with agents using both audio and text. The sdk-python is a powerful tool for building conversational agents, and its flexibility and customizability make it a popular choice for developers.</p>
-<p>The sdk-python is also highly scalable, allowing users to build conversational agents that can handle a large volume of conversations.</p>
-<p>The sdk-python can be used to build a wide range of conversational agents, from simple chatbots to complex virtual assistants. The sdk-python is also suitable for use in research and development environments, where it can be used to prototype and test new conversational AI models and algorithms. The sdk-python supports bidirectional streaming, which allows for real-time voice and audio conversations with persistent streaming connections. The sdk-python is designed to be highly customizable, allowing users to build conversational agents that meet their specific needs.</p>
-<p>The sdk-python is a powerful tool for building conversational agents, and its flexibility and customizability make it a popular choice for developers.</p>
-<p>The sdk-python is a tool for building AI agents using Python, supporting model providers and featuring structured output and multi-agent interactions. The latest features of the sdk-python include the ability to configure audio settings and turn detection, as well as support for multi-modal input, allowing users to interact with agents using both audio and text. The architecture of the sdk-python is based on the concept of agents, which can be created and invoked using the BidiAgent class. The agent can be configured with various tools, such as calculators and stop conversation handlers, and can be run with real-time audio streaming.</p>
-<p>The sdk-python also supports custom input/output handlers using the BidiInput and BidiOutput protocols.</p>
-<p>The sdk-python includes a number of pre-built tools and examples, such as the calculator tool, which can be used to get started with building conversational agents. The calculator tool is a simple example of a conversational agent that can perform basic arithmetic operations. The sdk-python also provides a range of configuration options, including the ability to set the input and output rates, voice, and end. The BidiNovaSonicModel class is used to configure audio settings and turn detection, and the BidiAudioIO and BidiTextIO classes are used to handle audio and text input/output.</p>
-<p>The sdk-python also supports custom input/output handlers using the BidiInput and BidiOutput protocols. The sdk-python is designed to be highly customizable, allowing users to build conversational agents that meet their specific needs.</p>
-<p>The sdk-python can be installed using pip, and it is also available on GitHub. The installation process varies depending on the specific requirements of the application, with options for server-side only installation or installation with audio I/O support. The sdk-python is a powerful tool for building conversational agents, and its flexibility and customizability make it a popular choice for developers. The sdk-python is also highly scalable, allowing users to build conversational agents that can handle a large volume of conversations.</p>
-<p>The sdk-python supports bidirectional streaming, which allows for real-time voice and audio conversations with persistent streaming connections. The sdk-python is designed to be highly customizable, allowing users to build conversational agents that meet their specific needs.</p>
-<p>The sdk-python is a tool for building AI agents using Python, supporting model providers and featuring structured output and multi-agent interactions. The latest features of the sdk-python include the ability to configure audio settings and turn detection, as well as support for multi-modal input, allowing users to interact with agents using both audio and text. The architecture of the sdk-python is based on the concept of agents, which can be created and invoked using the BidiAgent class. The agent can be configured with various tools, such as calculators and stop conversation handlers, and can be run with real-time audio streaming.</p>
-<p>The sdk-python also supports custom input/output handlers using the BidiInput and BidiOutput protocols. The sdk-python is designed to be highly customizable, allowing users to build conversational agents that meet their specific needs. The sdk-python is a powerful tool for building conversational agents, and its flexibility and customizability make it a popular choice for developers.</p></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Hot Reloading and Seamless MCP Server Integration</h2></div><p class="ch-summary">Optimize sdk-python performance</p><div class="ch-body"><p>The sdk-python is a model-driven approach to building AI agents in just a few lines of code, it is a simple yet powerful SDK that scales with user needs, from simple conversational assistants to complex autonomous workflows, and from local development to production deployment. The sdk-python has a lightweight and flexible architecture, with a simple agent loop that is fully customizable, it is model agnostic, supporting various providers such as Amazon Bedrock, Anthropic, Gemini, LiteLLM, Llama, Ollama, OpenAI, Writer, and custom providers. The sdk-python also features advanced capabilities, including multi-agent systems, autonomous agents, and streaming support. The sdk-python has built-in support for the Model Context Protocol (MCP) servers, enabling access to thousands of pre-built tools.</p>
-<p>The sdk-python can be installed using pip, and the installation process involves creating and activating a virtual environment, then installing the Strands Agents and tools.</p>
-<p>The sdk-python provides a quick start guide, which involves installing the Strands Agents and tools, then creating an agent and using it to perform tasks, the agent can be customized with various tools, including a calculator tool and a word count tool. The sdk-python supports hot reloading from a directory, allowing users to automatically load and reload tools from the . /tools/ directory. The sdk-python uses Python decorators to build tools, making it easy to create custom tools, for example, a word count tool can be created using the @tool decorator, and then used by the agent to count the words in a given text.</p>
-<p>The sdk-python also supports seamless integration with MCP servers, allowing users to access a wide range of pre-built tools and models.</p>
-<p>In terms of performance, the sdk-python is designed to be efficient and scalable, allowing users to build and deploy complex AI agents and workflows, the sdk-python is also designed to be production-ready, with features such as automatic tool loading and reloading, and support for MCP servers. The key APIs in the sdk-python include the Agent class, which is used to create and customize agents, and the tool decorator, which is used to build custom tools. The sdk-python also provides a range of pre-built tools and models, including the calculator tool and the word count tool. The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows, its model-driven approach, advanced capabilities, and seamless integration with MCP servers make it an ideal choice for developers and organizations looking to build complex AI systems.</p>
-<p>The sdk-python architecture is based on a modular design, allowing users to easily integrate different models and tools, the sdk-python also supports multiple model providers, such as Amazon Bedrock, Google Gemini, Ollama, Llama API, and others. The sdk-python is designed to be highly customizable, allowing users to create custom agents and tools tailored to their specific needs, the sdk-python also provides a range of pre-built tools and models, making it easy to get started with building AI agents and workflows. The sdk-python is a powerful tool for building and deploying AI agents and workflows, its advanced capabilities, seamless integration with MCP servers, and highly customizable architecture make it an ideal choice for developers and organizations looking to build complex AI systems.</p>
-<p>The sdk-python provides a range of features and tools for building and deploying AI agents and workflows, including support for multi-agent systems, autonomous agents, and streaming support, the sdk-python also provides a range of pre-built tools and models, making it easy to get started with building AI agents and workflows. The sdk-python is designed to be highly scalable, allowing users to build and deploy complex AI agents and workflows, the sdk-python is also designed to be production-ready, with features such as automatic tool loading and reloading, and support for MCP servers. The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows, its model-driven approach, advanced capabilities, and seamless integration with MCP servers make it an ideal choice for developers and organizations looking to build complex AI systems.</p>
-<p>The sdk-python is a Python-based software development kit that provides a framework for building conversational agents, the latest features of the sdk-python include support for multiple model providers, such as Amazon Bedrock, Google Gemini, Ollama, Llama API, and others. The sdk-python is designed to be highly customizable, allowing users to create custom agents and tools tailored to their specific needs, the sdk-python also provides a range of pre-built tools and models, making it easy to get started with building AI agents and workflows. The sdk-python is a powerful tool for building and deploying AI agents and workflows, its advanced capabilities, seamless integration with MCP servers, and highly customizable architecture make it an ideal choice for developers and organizations looking to build complex AI systems.</p>
-<p>The sdk-python has built-in support for the Model Context Protocol (MCP) servers, enabling access to thousands of pre-built tools, the sdk-python can be installed using pip, and the installation process involves creating and activating a virtual environment, then installing the Strands Agents and tools. The sdk-python provides a quick start guide, which involves installing the Strands Agents and tools, then creating an agent and using it to perform tasks, the agent can be customized with various tools, including a calculator tool and a word count tool. The sdk-python supports hot reloading from a directory, allowing users to automatically load and reload tools from the . /tools/ directory.</p>
-<p>The sdk-python uses Python decorators to build tools, making it easy to create custom tools, for example, a word count tool can be created using the @tool decorator, and then used by the agent to count the words in a given text, the sdk-python also supports seamless integration with MCP servers, allowing users to access a wide range of pre-built tools and models. The sdk-python is designed to be efficient and scalable, allowing users to build and deploy complex AI agents and workflows, the sdk-python is also designed to be production-ready, with features such as automatic tool loading and reloading, and support for MCP servers. The key APIs in the sdk-python include the Agent class, which is used to create and customize agents, and the tool decorator, which is used to build custom tools.</p>
-<p>The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows, its model-driven approach, advanced capabilities, and seamless integration with MCP servers make it an ideal choice for developers and organizations looking to build complex AI systems, the sdk-python is designed to be highly customizable, allowing users to create custom agents and tools tailored to their specific needs. The sdk-python provides a range of pre-built tools and models, making it easy to get started with building AI agents and workflows, the sdk-python is also designed to be highly scalable, allowing users to build and deploy complex AI agents and workflows. The sdk-python is a Python-based software development kit that provides a framework for building conversational agents, the latest features of the sdk-python include support for multiple model providers, such as Amazon Bedrock, Google Gemini, Ollama, Llama API, and others.</p>
-<p>The sdk-python architecture is based on a modular design, allowing users to easily integrate different models and tools, the sdk-python also supports multiple model providers, such as Amazon Bedrock, Google Gemini, Ollama, Llama API, and others. The sdk-python is designed to be highly customizable, allowing users to create custom agents and tools tailored to their specific needs, the sdk-python also provides a range of pre-built tools and models, making it easy to get started with building AI agents and workflows. The sdk-python is a powerful tool for building and deploying AI agents and workflows, its advanced capabilities, seamless integration with MCP servers, and highly customizable architecture make it an ideal choice for developers and organizations looking to build complex AI systems.</p>
-<p>The sdk-python provides a range of features and tools for building and deploying AI agents and workflows, including support for multi-agent systems, autonomous agents, and streaming support, the sdk-python also provides a range of pre-built tools and models, making it easy to get started with building AI agents and workflows. The sdk-python is designed to be highly scalable, allowing users to build and deploy complex AI agents and workflows, the sdk-python is also designed to be production-ready, with features such as automatic tool loading and reloading, and support for MCP servers. The sdk-python is a powerful and flexible tool for building and deploying AI agents and workflows, its model-driven approach, advanced capabilities, and seamless integration with MCP servers make it an ideal choice for developers and organizations looking to build complex AI systems.</p>
-<p>The sdk-python is a Python-based software development kit that provides a framework for building conversational agents, the latest features of the sdk-python include support for multiple model providers, such as Amazon Bedrock, Google Gemini, Ollama, Llama API, and others. The sdk-python is designed to be highly customizable, allowing users to create custom agents and tools tailored to their specific needs, the sdk-python also provides a range of pre-built tools and models, making it easy to get started with building AI agents and workflows. The sdk-python is a powerful tool for building and deploying AI agents and workflows, its advanced capabilities, seamless integration with MCP servers, and highly customizable architecture make it an ideal choice for developers and organizations looking to build complex AI systems.</p></div></section>
-<div class="book-footer"><strong>sdk-python: Expert Handbook</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 20, 2026</div>
+</svg><p class="diagram-caption">Figure: beeai-framework end-to-end processing pipeline</p></div><div class="sec-heading">beeai-framework — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Use</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Integration with AI Services</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Support for Multi-Agent Systems</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div></div><div class="sec-heading">beeai-framework — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Programming Languages Supported</td><td>Python and TypeScript</td><td>Both languages have dedicated libraries available on GitHub</td></tr><tr><td>License</td><td>Apache 2.0</td><td>Open-source and permissive license for wide adoption</td></tr><tr><td>Key Protocols Supported</td><td>ACP, MCP, and Model Context Protocol</td><td>Enables seamless integration with various protocols and models</td></tr><tr><td>AI Services Support</td><td>DeepSeek R1 and LLaMa 3.3</td><td>Simplifies working with AI services through the Backend module</td></tr><tr><td>Production Readiness</td><td>Suitable for production use cases</td><td>Designed for building production-ready multi-agent systems</td></tr><tr><td>Community and Documentation</td><td>Part of LF AI &amp; Data projects with available documentation</td><td>Backed by the Linux Foundation with extensive documentation for ease of use</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Production Workflows with the Tools Feature</h2></div><p class="ch-summary">Troubleshooting beeai-framework</p><div class="ch-body"><p>The beeai-framework is a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems, supporting both Python and TypeScript. It features a range of tools for reasoning, action, and collaboration, as well as observability and memory management. The framework provides a unified interface for connecting to any large language model provider. The Requirement Agent allows for predictable and controlled behavior across different LLMs by setting rules that the agent must follow.</p>
+<p>The framework also supports the creation of intelligent agents that can reason, act, and adapt, and provides a range of built-in tools, such as web search, weather, and code execution, as well as support for custom tools.</p>
+<p>The beeai-framework includes a backend component that enables connection to any LLM provider, and supports the building of retrieval-augmented generation systems with vector stores and document processing. The framework also provides templates for building dynamic prompts with enhanced Mustache syntax, and includes built-in memory strategies for managing conversation history. The GlobalTrajectoryMiddleware component enables logging of tool calls to the console for easier debugging. The framework is designed to support multi-agent systems with complex execution flows, and provides a range of APIs for building and managing agents.</p>
+<p>The framework includes a range of production use cases, including building intelligent agents that can reason, act, and collaborate to solve complex problems.</p>
+<p>The beeai-framework has a range of features for monitoring agent behavior, including events, logging, and robust error handling. The framework is designed to be highly extensible, with support for custom tools and integrations with other systems. The latest features of the beeai-framework include support for Requirement Agents, which enable predictable and controlled behavior across different LLMs. The framework also includes a range of built-in tools, such as ThinkTool, WikipediaTool, and OpenMeteoTool, which can be used to extend the capabilities of agents.</p>
+<p>The framework can be installed using pip or npm, and is available on GitHub.</p>
+<p>The beeai-framework is designed to be highly scalable and efficient, with support for asynchronous execution and robust error handling. The framework includes a range of features for optimizing performance, such as caching and serialization. The framework is suitable for production use cases, with support for hosting agents in servers and monitoring their behavior. The framework's releases page provides a full changelog of updates and new features, including the latest additions and improvements.</p>
+<p>The framework's architecture and key APIs are documented on the framework's website, including modules for agents, backend, tools, and more.</p>
+<p>The beeai-framework provides a unified interface for connecting to any large language model provider, allowing for easy integration with different LLMs. The framework also supports the creation of custom tools, which can be used to extend the capabilities of agents. The framework includes a range of built-in tools, such as web search, weather, and code execution, which can be used to build intelligent agents. The framework's backend component enables connection to any LLM provider, and supports the building of retrieval-augmented generation systems with vector stores and document processing.</p>
+<p>The beeai-framework includes a range of APIs for building and managing agents, including the GlobalTrajectoryMiddleware component, which enables logging of tool calls to the console for easier debugging. The framework is designed to support multi-agent systems with complex execution flows, and provides a range of features for monitoring agent behavior, including events, logging, and robust error handling. The framework is designed to be highly extensible, with support for custom tools and integrations with other systems. The framework's latest features include support for Requirement Agents, which enable predictable and controlled behavior across different LLMs.</p>
+<p>The beeai-framework is designed to be highly scalable and efficient, with support for asynchronous execution and robust error handling. The framework includes a range of features for optimizing performance, such as caching and serialization. The framework is suitable for production use cases, with support for hosting agents in servers and monitoring their behavior. The framework's releases page provides a full changelog of updates and new features, including the latest additions and improvements.</p>
+<p>The framework's architecture and key APIs are documented on the framework's website, including modules for agents, backend, tools, and more.</p>
+<p>The beeai-framework provides a range of tools for reasoning, action, and collaboration, as well as observability and memory management. The framework includes a range of built-in tools, such as ThinkTool, WikipediaTool, and OpenMeteoTool, which can be used to extend the capabilities of agents. The framework also supports the creation of custom tools, which can be used to build intelligent agents. The framework's backend component enables connection to any LLM provider, and supports the building of retrieval-augmented generation systems with vector stores and document processing.</p>
+<p>The beeai-framework is designed to support multi-agent systems with complex execution flows, and provides a range of APIs for building and managing agents. The framework includes a range of features for monitoring agent behavior, including events, logging, and robust error handling. The framework is designed to be highly extensible, with support for custom tools and integrations with other systems. The framework's latest features include support for Requirement Agents, which enable predictable and controlled behavior across different LLMs.</p>
+<p>The framework can be installed using pip or npm, and is available on GitHub.</p>
+<p>The beeai-framework includes a range of production use cases, including building intelligent agents that can reason, act, and collaborate to solve complex problems. The framework is designed to be highly scalable and efficient, with support for asynchronous execution and robust error handling. The framework includes a range of features for optimizing performance, such as caching and serialization. The framework is suitable for production use cases, with support for hosting agents in servers and monitoring their behavior.</p>
+<p>The framework's releases page provides a full changelog of updates and new features, including the latest additions and improvements.</p></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with DeepSeek R1 and LLaMa 3.3 Support</h2></div><div class="ch-body"><p>The BeeAI Framework is a comprehensive toolkit for building intelligent, autonomous agents and multi-agent systems. It provides features such as Requirement Agent, which allows for predictable and controlled behavior across different Large Language Models (LLMs) by setting rules the agent must follow. The framework also includes Agents, which are intelligent entities that can reason, act, and adapt.</p>
+<p>The Backend feature connects to any LLM provider with unified interfaces, supporting multiple providers as listed in the framework's documentation. The Tools feature extends agents with built-in tools, including web search, weather, code execution, and more, or custom tools. The framework also includes Retrieval-Augmented Generation (RAG) systems, which build vector stores and document processing.</p>
+<p>Additionally, the framework provides Templates, which build dynamic prompts with enhanced Mustache syntax, and Memory, which manages conversation history with built-in memory strategies.</p></div></section>
+<div class="book-footer"><strong>beeai-framework: Builder's Handbook</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 20, 2026</div>
 </body>
 </html>
