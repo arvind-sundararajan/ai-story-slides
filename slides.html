@@ -2,207 +2,68 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>OpenAgentsControl: Production Manual</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "OpenAgentsControl: Production Manual"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>agentfield: Complete Reference</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "agentfield: Complete Reference"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/OpenCorporates_logo.svg/3840px-OpenCorporates_logo.svg.png" alt="OpenAgentsControl logo" onerror="this.style.display='none'"/><div class="cover-lib-name">OpenAgentsControl</div><div class="cover-suffix">Production Manual</div><div class="cover-rule"></div><p class="cover-subtitle">Control your agents</p><p class="cover-desc">OpenAgentsControl features pattern control, which allows users to define their patterns once and have the AI use them forever.  It also includes approval gates, which require review and approval before execution, ensuring that users stay in control.  The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p><div class="cover-tagline">Manage with ease</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 20, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking OpenAgentsControl with Pattern Control and Approval Gates</h2></div><div class="ch-body"><p>OpenAgentsControl features pattern control, which allows users to define their patterns once and have the AI use them forever. It also includes approval gates, which require review and approval before execution, ensuring that users stay in control. The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
-<p>The system is multi-language, supporting languages such as TypeScript, Python, Go, and Rust, and is model-agnostic, allowing users to work with various AI models, including Claude, GPT, and Gemini, as well as local models. OpenAgentsControl handles both frontend and backend work, with agents coordinating to build complete features from UI to database.</p>
-<p>Key aspects of OpenAgentsControl include its context-aware approach, which loads user patterns before generating code, and its editable agents, which can be modified directly through markdown files.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/8bec00ff776e49148a39b26aa1ba06a0?ik-sanitizeSvg=true" alt="agentfield logo" onerror="this.style.display='none'"/><div class="cover-lib-name">agentfield</div><div class="cover-suffix">Complete Reference</div><div class="cover-rule"></div><p class="cover-subtitle">Secret agent stories</p><p class="cover-desc">AgentField is an open-source control plane that enables AI agents to be callable by any service in a stack, similar to APIs, allowing users to write agent logic in Python, Go, or TypeScript, and then turns it into production infrastructure, handling routing, coordination, memory, asynchronous execution, and cryptographic audit trails.  Every function becomes a REST endpoint, and every agent gets a cryptographic identity, making every decision traceable.  The architecture of AgentField includes a control plane that auto-registers agents, assigns them a cryptographic identity, and produces a verifiable and tamper-proof audit trail for every execution.</p><div class="cover-tagline">Spy games ahead</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 20, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">AgentField was built by an unknown organization.</div><div class="intro-body"><p>AgentField is an open-source control plane that enables AI agents to be callable by any service in a stack, similar to APIs. It allows users to write agent logic in Python, Go, or TypeScript, and then turns it into production infrastructure, handling routing, coordination, memory, asynchronous execution, and cryptographic audit trails. Every function becomes a REST endpoint, and every agent gets a cryptographic identity, making every decision traceable. The architecture of AgentField includes a control plane that auto-registers agents, assigns them a cryptographic identity, and produces a verifiable and tamper-proof audit trail for every execution.</p>
+<p>The control plane also enables routing to other agents and supports human approval through webhooks. Key APIs in AgentField include app. ai(), which calls a large language model and returns structured output, app. pause(), which suspends execution for human approval, and app.</p>
+<p>call(), which routes to other agents through the control plane. The app. run() API auto-exposes everything as REST, creating a REST endpoint for every function. In terms of performance, AgentField supports canary deploys, A/B testing, and blue-green rollouts, allowing for flexible and controlled deployment of AI agents.</p>
+<p>AgentField was created to solve the problem of deploying and managing AI agents in a scalable and secure manner. The platform provides a robust and scalable infrastructure for AI agents, making it suitable for a wide range of applications, including insurance claims processing. The example code shows how to create an AgentField agent using Python, defining a decision-making function that uses a large language model to evaluate insurance claims. The agent uses the app.</p>
+<p>ai() API to call the language model, the app. pause() API to suspend execution for human approval, and the app. call() API to route to other agents.</p>
+<p>The target audience for this book includes developers, data scientists, and engineers who want to learn how to build and deploy AI agents using AgentField. This book will provide a comprehensive guide to AgentField, covering its architecture, APIs, and use cases. Readers will learn how to create and deploy AI agents, use the control plane to manage and route agents, and leverage the platform's performance features to scale their AI workloads. By the end of this book, readers will have a deep understanding of AgentField and how to use it to build and deploy scalable and secure AI agents.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/Agent-Field/agentfield">https://github.com/Agent-Field/agentfield</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building Autonomous Agents with app.run()</h2></div><p class="ch-summary">AgentField enables AI agents</p><div class="ch-body"><p>AgentField is an open-source control plane that enables AI agents to be callable by any service in a stack, similar to APIs, allowing users to write agent logic in Python, Go, or TypeScript, and then turns it into production infrastructure, handling routing, coordination, memory, asynchronous execution, and cryptographic audit trails. Every function becomes a REST endpoint, and every agent gets a cryptographic identity, making every decision traceable. The architecture of AgentField includes a control plane that auto-registers agents, assigns them a cryptographic identity, and produces a verifiable and tamper-proof audit trail for every execution. The control plane also enables routing to other agents and supports human approval through webhooks.</p>
+<p>AgentField provides a robust and scalable infrastructure for AI agents, making it suitable for a wide range of applications.</p>
+<p>AgentField supports multiple programming languages, including Python, Go, and TypeScript, and agents can be built using these languages, with every function becoming a REST endpoint. The platform provides various features, including reasoners and skills, structured AI, harness, cross-agent calls, discovery, and memory. Reasoners and skills are implemented using the @app. reasoner() and @app.</p>
+<p>skill() decorators, respectively. Structured AI is implemented using the app. ai() method, which provides typed output. The app.</p>
+<p>ai() method is used to call a large language model and returns structured output.</p>
+<p>The app. run() API auto-exposes everything as REST, creating a REST endpoint for every function, and is used to auto-expose the agent as a REST endpoint. The app. pause() API suspends execution for human approval, and the app.</p>
+<p>call() API routes to other agents through the control plane. The app. run() API is used in conjunction with the app. ai(), app.</p>
+<p>pause(), and app. call() APIs to create a robust and scalable AI agent. AgentField also supports asynchronous execution, enabling efficient and scalable processing of AI workloads. The platform supports canary deploys, A/B testing, and blue-green rollouts, allowing for flexible and controlled deployment of AI agents.</p>
+<p>In terms of performance, AgentField supports flexible and controlled deployment of AI agents, allowing for canary deploys, A/B testing, and blue-green rollouts. The platform also supports asynchronous execution, enabling efficient and scalable processing of AI workloads. AgentField provides a command-line interface (CLI) that can be installed using a bash script, and the CLI provides various commands, including af init to scaffold an agent, af server to start the server, and af to interact with the agent. The CLI is used to manage and deploy AI agents, and provides a simple and intuitive way to interact with the platform.</p>
+<p>The architecture of AgentField is designed to provide a robust and scalable infrastructure for AI agents, and includes a control plane that auto-registers agents, assigns them a cryptographic identity, and produces a verifiable and tamper-proof audit trail for every execution. The control plane also enables routing to other agents and supports human approval through webhooks. AgentField provides a wide range of features, including reasoners and skills, structured AI, harness, cross-agent calls, discovery, and memory, making it a versatile and powerful platform for building and deploying AI agents. The platform is suitable for a wide range of applications, including insurance claims processing, and provides a simple and intuitive way to interact with AI agents.</p>
+<p>AgentField is a platform that enables the development and deployment of AI agents, and provides a robust and scalable infrastructure for AI agents. The platform supports multiple programming languages, including Python, Go, and TypeScript, and agents can be built using these languages, with every function becoming a REST endpoint. The app. run() API is used to auto-expose the agent as a REST endpoint, and is used in conjunction with the app.</p>
+<p>ai(), app. pause(), and app. call() APIs to create a robust and scalable AI agent. AgentField also supports asynchronous execution, enabling efficient and scalable processing of AI workloads, and provides a command-line interface (CLI) that can be installed using a bash script.</p>
+<p>The app. ai() method is used to call a large language model and returns structured output, and is implemented using the app. ai() method, which provides typed output. The app.</p>
+<p>pause() API suspends execution for human approval, and the app. call() API routes to other agents through the control plane. The app. run() API is used in conjunction with the app.</p>
+<p>ai(), app. pause(), and app. call() APIs to create a robust and scalable AI agent, and is used to auto-expose the agent as a REST endpoint. AgentField provides a wide range of features, including reasoners and skills, structured AI, harness, cross-agent calls, discovery, and memory, making it a versatile and powerful platform for building and deploying AI agents.</p>
+<p>AgentField provides a robust and scalable infrastructure for AI agents, making it suitable for a wide range of applications, including insurance claims processing. The platform supports multiple programming languages, including Python, Go, and TypeScript, and agents can be built using these languages, with every function becoming a REST endpoint. The app. run() API is used to auto-expose the agent as a REST endpoint, and is used in conjunction with the app.</p>
+<p>ai(), app. pause(), and app. call() APIs to create a robust and scalable AI agent. AgentField also supports asynchronous execution, enabling efficient and scalable processing of AI workloads, and provides a command-line interface (CLI) that can be installed using a bash script.</p>
+<p>The platform is designed to provide a simple and intuitive way to interact with AI agents, and provides a wide range of features, including reasoners and skills, structured AI, harness, cross-agent calls, discovery, and memory.</p></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting Control Planes with Auto-Registration and Cryptographic Identities</h2></div><p class="ch-summary">AgentField control plane architecture</p><div class="ch-body"><p>AgentField is an open-source control plane that enables AI agents to be callable by any service in a stack, similar to APIs, allowing users to write agent logic in Python, Go, or TypeScript, and then turns it into production infrastructure, handling routing, coordination, memory, asynchronous execution, and cryptographic audit trails. Every function becomes a REST endpoint, and every agent gets a cryptographic identity, making every decision traceable. The architecture of AgentField includes a control plane that auto-registers agents, assigns them a cryptographic identity, and produces a verifiable and tamper-proof audit trail for every execution. The control plane also enables routing to other agents and supports human approval through webhooks.</p>
+<p>AgentField provides a robust and scalable infrastructure for AI agents, making it suitable for a wide range of applications. AgentField supports multiple programming languages, including Python, Go, and TypeScript, and every function becomes a REST endpoint.</p>
+<p>AgentField's control plane is designed to handle the complexity of AI agent deployment, providing features such as reasoners and skills, structured AI, harness, cross-agent calls, discovery, and memory. The control plane is responsible for managing the lifecycle of agents, from creation to deployment, and provides a command-line interface (CLI) for interacting with agents. The CLI provides various commands, including af init to scaffold an agent, af server to start the server, and af to interact with the agent. AgentField's control plane also supports canary deploys, A/B testing, and blue-green rollouts, allowing for flexible and controlled deployment of AI agents.</p>
+<p>The control plane's auto-registration feature allows agents to be automatically registered and assigned a cryptographic identity.</p>
+<p>The key APIs in AgentField include app. ai(), which calls a large language model and returns structured output, app. pause(), which suspends execution for human approval, and app. call(), which routes to other agents through the control plane.</p>
+<p>The app. run() API auto-exposes everything as REST, creating a REST endpoint for every function. These APIs provide a simple and intuitive way to interact with AI agents, making it easy to build and deploy AI-powered applications. AgentField's APIs are designed to be flexible and scalable, allowing developers to build complex AI systems with ease.</p>
+<p>The app. ai() API is particularly useful for building AI-powered applications, as it provides a simple way to call large language models and retrieve structured output.</p>
+<p>AgentField's control plane is designed to provide a high degree of flexibility and scalability, making it suitable for a wide range of applications. The control plane's support for multiple programming languages, including Python, Go, and TypeScript, makes it easy for developers to build AI agents using their language of choice. The control plane's auto-registration feature and cryptographic identities provide a secure and trustworthy way to deploy AI agents. AgentField's support for canary deploys, A/B testing, and blue-green rollouts makes it easy to deploy AI agents in a controlled and flexible manner.</p>
+<p>The control plane's APIs, including app. ai(), app. pause(), and app. call(), provide a simple and intuitive way to interact with AI agents.</p>
+<p>In terms of performance, AgentField supports asynchronous execution, enabling efficient and scalable processing of AI workloads. The control plane's support for canary deploys, A/B testing, and blue-green rollouts allows for flexible and controlled deployment of AI agents. AgentField's APIs are designed to be lightweight and efficient, making it easy to build and deploy AI-powered applications. The control plane's auto-registration feature and cryptographic identities provide a secure and trustworthy way to deploy AI agents.</p>
+<p>AgentField's support for multiple programming languages makes it easy for developers to build AI agents using their language of choice.</p>
+<p>AgentField's control plane provides a robust and scalable infrastructure for AI agents, making it suitable for a wide range of applications, including insurance claims processing. The control plane's support for reasoners and skills, structured AI, harness, cross-agent calls, discovery, and memory makes it easy to build complex AI systems. The control plane's APIs, including app. ai(), app.</p>
+<p>pause(), and app. call(), provide a simple and intuitive way to interact with AI agents. AgentField's support for canary deploys, A/B testing, and blue-green rollouts makes it easy to deploy AI agents in a controlled and flexible manner. The control plane's auto-registration feature and cryptographic identities provide a secure and trustworthy way to deploy AI agents.</p>
+<p>AgentField's control plane is designed to provide a high degree of flexibility and scalability, making it suitable for a wide range of applications. The control plane's support for multiple programming languages, including Python, Go, and TypeScript, makes it easy for developers to build AI agents using their language of choice. The control plane's auto-registration feature and cryptographic identities provide a secure and trustworthy way to deploy AI agents. AgentField's support for canary deploys, A/B testing, and blue-green rollouts makes it easy to deploy AI agents in a controlled and flexible manner.</p>
+<p>The control plane's APIs, including app. ai(), app. pause(), and app. call(), provide a simple and intuitive way to interact with AI agents.</p>
+<p>AgentField's control plane provides a robust and scalable infrastructure for AI agents, making it suitable for a wide range of applications. The control plane's support for reasoners and skills, structured AI, harness, cross-agent calls, discovery, and memory makes it easy to build complex AI systems. The control plane's APIs, including app. ai(), app.</p>
+<p>pause(), and app. call(), provide a simple and intuitive way to interact with AI agents. AgentField's support for canary deploys, A/B testing, and blue-green rollouts makes it easy to deploy AI agents in a controlled and flexible manner. The control plane's auto-registration feature and cryptographic identities provide a secure and trustworthy way to deploy AI agents.</p>
+<p>AgentField's control plane is designed to provide a high degree of flexibility and scalability, making it suitable for a wide range of applications.</p></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying AI Logic with app.ai() and app.call()</h2></div><div class="ch-body"><p>The control plane also enables routing to other agents and supports human approval through webhooks.</p>
+<p>Key APIs in AgentField include app. ai(), which calls a large language model and returns structured output, app. pause(), which suspends execution for human approval, and app. call(), which routes to other agents through the control plane.</p>
+<p>The app. run() API auto-exposes everything as REST, creating a REST endpoint for every function.</p>
+<p>In terms of performance, AgentField supports canary deploys, A/B testing, and blue-green rollouts, allowing for flexible and controlled deployment of AI agents. It also supports asynchronous execution, enabling efficient and scalable processing of AI workloads.</p>
+<p>Production use cases for AgentField include building and scaling AI agents, deploying and observing AI models, and proving the integrity and accuracy of AI decisions. AgentField provides a robust and scalable infrastructure for AI agents, making it suitable for a wide range of applications, including insurance claims processing, as demonstrated in the example code.</p>
+<p>The example code shows how to create an AgentField agent using Pyt</p><div class="code-label">Code Sample</div><div class="code-block">1. Uncomment and update the `ai_config` section:
+
+```
+app = Agent(app = Agent( node_id="my-agent",  node_id ="my-agent", agentfield_server="http://localhost:8080",  agentfield_server ="http://localhost:8080", version="1.0.0",  version ="1.0.0", dev_mode=True,  dev_mode = True, ai_config=AIConfig( ai_config =AIConfig( model="openai/gpt-4o", # LiteLLM format: provider/model  model ="openai/gpt-4o", # LiteLLM format: provider/model temperature=0.7,  temperature =0.7, ), ),))</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 975.50 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
-<title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 971.5,-40 971.5,4 -4,4"/>
-<!-- N0 -->
-<g id="cluster-node1" class="node">
-<title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="50.21" cy="-18" rx="50.21" ry="18"/>
-<text text-anchor="middle" x="50.21" y="-14.5" font-family="Arial" font-size="10.00">AgentController</text>
-</g>
-<!-- N1 -->
-<g id="cluster-node2" class="node">
-<title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="205.98" cy="-18" rx="47.05" ry="18"/>
-<text text-anchor="middle" x="205.98" y="-14.5" font-family="Arial" font-size="10.00">AgentRegistry</text>
-</g>
-<!-- N0&#45;&gt;N1 -->
-<g id="cluster-edge1" class="edge">
-<title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M100.71,-18C115.47,-18 131.78,-18 147.03,-18"/>
-<polygon fill="#475569" stroke="#475569" points="146.93,-21.5 156.93,-18 146.93,-14.5 146.93,-21.5"/>
-<text text-anchor="middle" x="129.67" y="-19.95" font-family="Arial" font-size="9.00">loads</text>
-</g>
-<!-- N2 -->
-<g id="cluster-node3" class="node">
-<title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="364.44" cy="-18" rx="46.15" ry="18"/>
-<text text-anchor="middle" x="364.44" y="-14.5" font-family="Arial" font-size="10.00">AgentMemory</text>
-</g>
-<!-- N1&#45;&gt;N2 -->
-<g id="cluster-edge2" class="edge">
-<title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M253.5,-18C270.2,-18 289.22,-18 306.69,-18"/>
-<polygon fill="#475569" stroke="#475569" points="306.39,-21.5 316.39,-18 306.39,-14.5 306.39,-21.5"/>
-<text text-anchor="middle" x="285.66" y="-19.95" font-family="Arial" font-size="9.00">caches</text>
-</g>
-<!-- N3 -->
-<g id="cluster-node4" class="node">
-<title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="556.22,-36 491.59,-18 556.22,0 620.85,-18 556.22,-36"/>
-<text text-anchor="middle" x="556.22" y="-14.5" font-family="Arial" font-size="10.00">AgentContext</text>
-</g>
-<!-- N2&#45;&gt;N3 -->
-<g id="cluster-edge3" class="edge">
-<title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M410.89,-18C431.16,-18 455.59,-18 478.55,-18"/>
-<polygon fill="#475569" stroke="#475569" points="478.52,-21.5 488.52,-18 478.52,-14.5 478.52,-21.5"/>
-<text text-anchor="middle" x="451.09" y="-19.95" font-family="Arial" font-size="9.00">provides to</text>
-</g>
-<!-- N4 -->
-<g id="cluster-node5" class="node">
-<title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="735.56" cy="-18" rx="47.96" ry="18"/>
-<text text-anchor="middle" x="735.56" y="-14.5" font-family="Arial" font-size="10.00">AgentApproval</text>
-</g>
-<!-- N3&#45;&gt;N4 -->
-<g id="cluster-edge4" class="edge">
-<title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M622.5,-18C639.91,-18 658.62,-18 675.67,-18"/>
-<polygon fill="#475569" stroke="#475569" points="675.65,-21.5 685.65,-18 675.65,-14.5 675.65,-21.5"/>
-<text text-anchor="middle" x="654.23" y="-19.95" font-family="Arial" font-size="9.00">triggers</text>
-</g>
-<!-- N5 -->
-<g id="cluster-node6" class="node">
-<title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="914.13" cy="-18" rx="53.37" ry="18"/>
-<text text-anchor="middle" x="914.13" y="-14.5" font-family="Arial" font-size="10.00">AgentRepository</text>
-</g>
-<!-- N4&#45;&gt;N5 -->
-<g id="cluster-edge5" class="edge">
-<title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M783.88,-18C803.88,-18 827.49,-18 849.02,-18"/>
-<polygon fill="#475569" stroke="#475569" points="848.88,-21.5 858.88,-18 848.88,-14.5 848.88,-21.5"/>
-<text text-anchor="middle" x="822.14" y="-19.95" font-family="Arial" font-size="9.00">persists in</text>
-</g>
-</g>
-</svg><p class="diagram-caption">Figure: OpenAgentsControl internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Building Context-Aware Agents with the OpenCode Framework</h2></div><div class="ch-body"><p>It also includes approval gates, which require review and approval before execution, ensuring that users stay in control. The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
-<p>The system is multi-language, supporting languages such as TypeScript, Python, Go, and Rust, and is model-agnostic, allowing users to work with various AI models, including Claude, GPT, and Gemini, as well as local models. OpenAgentsControl handles both frontend and backend work, with agents coordinating to build complete features from UI to database.</p>
-<p>Key aspects of OpenAgentsControl include its context-aware approach, which loads user patterns before generating code, and its editable agents, which can be modified directly through markdown files. The system also features approval gates, ensuring that agents always request approval before execution, and is designed to be token-efficient, using a minimal viable information approach to load only what is needed.</p>
-<p>OpenAgentsControl is designed to provide production-ready code that ships without heavy rework,</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
- -->
-<!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1038.80 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
-<title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1034.8,-40 1034.8,4 -4,4"/>
-<!-- N0 -->
-<g id="seq-node1" class="node">
-<title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="84.04" cy="-18" rx="84.04" ry="18"/>
-<text text-anchor="middle" x="84.04" y="-14.5" font-family="Arial" font-size="10.00">pip install openagentscontrol</text>
-</g>
-<!-- N1 -->
-<g id="seq-node2" class="node">
-<title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="306.46" cy="-18" rx="39.39" ry="18"/>
-<text text-anchor="middle" x="306.46" y="-14.5" font-family="Arial" font-size="10.00">OAC Agent</text>
-</g>
-<!-- N0&#45;&gt;N1 -->
-<g id="seq-edge1" class="edge">
-<title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M168.37,-18C197.66,-18 229.64,-18 255.34,-18"/>
-<polygon fill="#475569" stroke="#475569" points="255.16,-21.5 265.16,-18 255.16,-14.5 255.16,-21.5"/>
-<text text-anchor="middle" x="217.57" y="-19.95" font-family="Arial" font-size="9.00">then import oac</text>
-</g>
-<!-- N2 -->
-<g id="seq-node3" class="node">
-<title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="505.84" cy="-18" rx="43" ry="18"/>
-<text text-anchor="middle" x="505.84" y="-14.5" font-family="Arial" font-size="10.00">add_tool oac</text>
-</g>
-<!-- N1&#45;&gt;N2 -->
-<g id="seq-edge2" class="edge">
-<title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M345.99,-18C375.99,-18 418,-18 451.28,-18"/>
-<polygon fill="#475569" stroke="#475569" points="451.14,-21.5 461.14,-18 451.14,-14.5 451.14,-21.5"/>
-<text text-anchor="middle" x="404.35" y="-19.95" font-family="Arial" font-size="9.00">configure oac agent</text>
-</g>
-<!-- N3 -->
-<g id="seq-node4" class="node">
-<title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="758.19,-36 689.09,-18 758.19,0 827.28,-18 758.19,-36"/>
-<text text-anchor="middle" x="758.19" y="-14.5" font-family="Arial" font-size="10.00">invoke oac_init</text>
-</g>
-<!-- N2&#45;&gt;N3 -->
-<g id="seq-edge3" class="edge">
-<title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M549.31,-18C583.94,-18 633.86,-18 676.1,-18"/>
-<polygon fill="#475569" stroke="#475569" points="675.99,-21.5 685.99,-18 675.99,-14.5 675.99,-21.5"/>
-<text text-anchor="middle" x="618.97" y="-19.95" font-family="Arial" font-size="9.00">initialize oac environment</text>
-</g>
-<!-- N4 -->
-<g id="seq-node5" class="node">
-<title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="970.67" cy="-18" rx="60.13" ry="18"/>
-<text text-anchor="middle" x="970.67" y="-14.5" font-family="Arial" font-size="10.00">OpenCode CLI oac</text>
-</g>
-<!-- N3&#45;&gt;N4 -->
-<g id="seq-edge4" class="edge">
-<title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M828.98,-18C851.5,-18 876.48,-18 899.06,-18"/>
-<polygon fill="#475569" stroke="#475569" points="898.76,-21.5 908.76,-18 898.76,-14.5 898.76,-21.5"/>
-<text text-anchor="middle" x="868.91" y="-19.95" font-family="Arial" font-size="9.00">call oac run</text>
-</g>
-</g>
-</svg><p class="diagram-caption">Figure: OpenAgentsControl integration flow</p></div></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Editable Agents with Markdown Configuration</h2></div><p class="ch-summary">OpenAgentsControl editable agents</p><div class="ch-body"><p>OpenAgentsControl is a system that enables AI agents to learn and generate code based on a user's coding patterns, providing repeatable results and production-ready code. The system is built on the OpenCode open-source AI coding framework and extends it with specialized agents, context management, and team workflows. OpenAgentsControl features pattern control, which allows users to define their patterns once and have the AI use them forever. It also includes approval gates, which require review and approval before execution, ensuring that users stay in control.</p>
-<p>The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
-<p>OpenAgentsControl is a multi-language system, supporting languages such as TypeScript, Python, Go, and Rust, and is model-agnostic, allowing users to work with various AI models, including Claude, GPT, and Gemini, as well as local models. The system handles both frontend and backend work, with agents coordinating to build complete features from UI to database. Key aspects of OpenAgentsControl include its context-aware approach, which loads user patterns before generating code, and its editable agents, which can be modified directly through markdown files. The system also features approval gates, ensuring that agents always request approval before execution, and is designed to be token-efficient, using a minimal viable information approach to load only what is needed.</p>
-<p>The context system is the core of the OpenAgentsControl solution and allows for the automatic discovery and application of relevant patterns, resulting in code that matches the user's established coding patterns from the start. OpenAgentsControl is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in. OpenAgentsControl provides a powerful solution for users looking to generate high-quality code that meets their specific needs and standards.</p>
-<p>In terms of architecture, OpenAgentsControl utilizes a context system that enables agents to load and apply user-defined patterns and standards to generated code. The system also allows for the choice of any model and provider, with support for multiple models. OpenAgentsControl includes a token efficiency reduction of 80% based on the MVI principle, support for shared context files, and the ability to edit agent behavior using Markdown files and configuration files. The system also features a context-aware approach, which loads user patterns before generating code, and its editable agents, which can be modified directly through markdown files.</p>
-<p>OpenAgentsControl is a system that enables efficient and controlled code generation using artificial intelligence. The system is built on the OpenCode open-source AI coding framework and extends it with specialized agents, context management, and team workflows. OpenAgentsControl features pattern control, which allows users to define their patterns once and have the AI use them forever. It also includes approval gates, which require review and approval before execution, ensuring that users stay in control.</p>
-<p>The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
-<p>The latest features of OpenAgentsControl include a token efficiency reduction of 80% based on the MVI principle, support for shared context files, and the ability to edit agent behavior using Markdown files and configuration files. The system also allows for the choice of any model and provider, with support for multiple models. OpenAgentsControl is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in.</p>
-<p>OpenAgentsControl provides a powerful solution for users looking to generate high-quality code that meets their specific needs and standards. The system is built on the OpenCode open-source AI coding framework and extends it with specialized agents, context management, and team workflows. OpenAgentsControl features pattern control, which allows users to define their patterns once and have the AI use them forever. It also includes approval gates, which require review and approval before execution, ensuring that users stay in control.</p>
-<p>The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
-<p>OpenAgentsControl is a system that enables AI agents to learn and generate code based on a user's coding patterns, providing repeatable results and production-ready code. The system handles both frontend and backend work, with agents coordinating to build complete features from UI to database. Key aspects of OpenAgentsControl include its context-aware approach, which loads user patterns before generating code, and its editable agents, which can be modified directly through markdown files. The system also features approval gates, ensuring that agents always request approval before execution, and is designed to be token-efficient, using a minimal viable information approach to load only what is needed.</p>
-<p>OpenAgentsControl provides a powerful solution for users looking to generate high-quality code that meets their specific needs and standards. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in. OpenAgentsControl is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically.</p><div class="code-label">Code Sample</div><div class="code-block">bun run scripts/registry/validate-registry.ts
-# Registry validation
-# ✓ All 244 paths valid
-bun run scripts/registry/check-dependencies.ts
-# Dependency checking
-# ✓ All 262 checks passed
-./scripts/tests/test-installer-files.sh --local --profile=essential
-# Installer test
-# ✓ All files accessible
-bun run scripts/registry/validate-registry.ts --local
-# Registry validation
-# ✓ All 244 paths valid
-bun run scripts/registry/check-dependencies.ts --local
-# Dependency checking
-# ✓ All 262 checks passed
-./scripts/tests/test-installer-files.sh --local --profile=essential --verbose
-# Installer test
-# ✓ All files accessible
-bun run scripts/registry/validate-registry.ts --local --verbose
-# Registry validation
-# ✓ All 244 paths valid
-bun run scripts/registry/check-dependencies.ts --local --verbose
-# Dependency checking
-# ✓ All 262 checks passed
-./scripts/tests/test-installer-files.sh --local --profile=essential --verbose --debug
-# Installer test
-# ✓ All files accessible</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
- -->
-<!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1468.82 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1173.42 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1464.82,-40 1464.82,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1169.42,-40 1169.42,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
@@ -212,209 +73,187 @@ bun run scripts/registry/check-dependencies.ts --local --verbose
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="199.64" cy="-18" rx="46.6" ry="18"/>
-<text text-anchor="middle" x="199.64" y="-14.5" font-family="Arial" font-size="10.00">Task Planning</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="248.26" cy="-18" rx="54.72" ry="18"/>
+<text text-anchor="middle" x="248.26" y="-14.5" font-family="Arial" font-size="10.00">Task Assignment</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M83.63,-18C101.28,-18 122.22,-18 141.37,-18"/>
-<polygon fill="#475569" stroke="#475569" points="141.19,-21.5 151.19,-18 141.19,-14.5 141.19,-21.5"/>
-<text text-anchor="middle" x="118.16" y="-19.95" font-family="Arial" font-size="9.00">initialize</text>
+<path fill="none" stroke="#475569" d="M83.56,-18C111.73,-18 149.75,-18 182.05,-18"/>
+<polygon fill="#475569" stroke="#475569" points="181.71,-21.5 191.71,-18 181.71,-14.5 181.71,-21.5"/>
+<text text-anchor="middle" x="138.41" y="-19.95" font-family="Arial" font-size="9.00">agent initialization</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="394.7" cy="-18" rx="50.21" ry="18"/>
-<text text-anchor="middle" x="394.7" y="-14.5" font-family="Arial" font-size="10.00">Task Execution</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="447.69" cy="-18" rx="50.21" ry="18"/>
+<text text-anchor="middle" x="447.69" y="-14.5" font-family="Arial" font-size="10.00">Task Execution</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M246.39,-18C272.27,-18 304.94,-18 332.94,-18"/>
-<polygon fill="#475569" stroke="#475569" points="332.71,-21.5 342.71,-18 332.71,-14.5 332.71,-21.5"/>
-<text text-anchor="middle" x="295.37" y="-19.95" font-family="Arial" font-size="9.00">plan generated</text>
+<path fill="none" stroke="#475569" d="M303.47,-18C328.92,-18 359.38,-18 385.64,-18"/>
+<polygon fill="#475569" stroke="#475569" points="385.48,-21.5 395.48,-18 385.48,-14.5 385.48,-21.5"/>
+<text text-anchor="middle" x="350.23" y="-19.95" font-family="Arial" font-size="9.00">task allocation</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="638.15,-36 537.17,-18 638.15,0 739.14,-18 638.15,-36"/>
-<text text-anchor="middle" x="638.15" y="-14.5" font-family="Arial" font-size="10.00">Post&#45;Execution Review</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="697.58,-36 624.65,-18 697.58,0 770.5,-18 697.58,-36"/>
+<text text-anchor="middle" x="697.58" y="-14.5" font-family="Arial" font-size="10.00">Task Evaluation</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M445.15,-18C467.82,-18 495.73,-18 523.16,-18"/>
-<polygon fill="#475569" stroke="#475569" points="522.95,-21.5 532.95,-18 522.95,-14.5 522.95,-21.5"/>
-<text text-anchor="middle" x="491.04" y="-19.95" font-family="Arial" font-size="9.00">task executed</text>
+<path fill="none" stroke="#475569" d="M498.26,-18C530.52,-18 573.46,-18 611.13,-18"/>
+<polygon fill="#475569" stroke="#475569" points="611.12,-21.5 621.12,-18 611.12,-14.5 611.12,-21.5"/>
+<text text-anchor="middle" x="561.28" y="-19.95" font-family="Arial" font-size="9.00">task execution attempt</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="934.86" cy="-18" rx="52.47" ry="18"/>
-<text text-anchor="middle" x="934.86" y="-14.5" font-family="Arial" font-size="10.00">Task Completed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="912.07" cy="-18" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="912.07" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M741.81,-18C784.72,-18 833.21,-18 870.73,-18"/>
-<polygon fill="#475569" stroke="#475569" points="870.49,-21.5 880.49,-18 870.49,-14.5 870.49,-21.5"/>
-<text text-anchor="middle" x="810.77" y="-19.95" font-family="Arial" font-size="9.00">execution result evaluated</text>
+<path fill="none" stroke="#475569" d="M772.3,-18C796.51,-18 823.21,-18 846.67,-18"/>
+<polygon fill="#475569" stroke="#475569" points="846.39,-21.5 856.39,-18 846.39,-14.5 846.39,-21.5"/>
+<text text-anchor="middle" x="814.37" y="-19.95" font-family="Arial" font-size="9.00">task success</text>
 </g>
 <!-- N5 -->
 <g id="sm-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1163.66" cy="-18" rx="39.84" ry="18"/>
-<text text-anchor="middle" x="1163.66" y="-14.5" font-family="Arial" font-size="10.00">Task Failed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1123.78" cy="-18" rx="41.64" ry="18"/>
+<text text-anchor="middle" x="1123.78" y="-14.5" font-family="Arial" font-size="10.00">Task Failure</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="sm-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M987.61,-18C1025.05,-18 1075.37,-18 1112.45,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1111.99,-21.5 1121.99,-18 1111.99,-14.5 1111.99,-21.5"/>
-<text text-anchor="middle" x="1055.57" y="-19.95" font-family="Arial" font-size="9.00">result reflected on failure</text>
-</g>
-<!-- N6 -->
-<g id="sm-node7" class="node">
-<title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1412.41" cy="-18" rx="48.41" ry="18"/>
-<text text-anchor="middle" x="1412.41" y="-14.5" font-family="Arial" font-size="10.00">Task Approved</text>
-</g>
-<!-- N5&#45;&gt;N6 -->
-<g id="sm-edge6" class="edge">
-<title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M1203.76,-18C1243.72,-18 1306.28,-18 1352.3,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1352.1,-21.5 1362.1,-18 1352.1,-14.5 1352.1,-21.5"/>
-<text text-anchor="middle" x="1283.75" y="-19.95" font-family="Arial" font-size="9.00">failure reviewed and approved</text>
+<path fill="none" stroke="#475569" d="M966.26,-18C998.25,-18 1038.79,-18 1070.6,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1070.38,-21.5 1080.38,-18 1070.38,-14.5 1070.38,-21.5"/>
+<text text-anchor="middle" x="1024.01" y="-19.95" font-family="Arial" font-size="9.00">task failure analysis</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: OpenAgentsControl lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Multi-Language Support for TypeScript, Python, Go, and Rust</h2></div><div class="ch-body"><p>OpenAgentsControl handles both frontend and backend work, with agents coordinating to build complete features from UI to database.</p>
-<p>Key aspects of OpenAgentsControl include its context-aware approach, which loads user patterns before generating code, and its editable agents, which can be modified directly through markdown files. The system also features approval gates, ensuring that agents always request approval before execution, and is designed to be token-efficient, using a minimal viable information approach to load only what is needed.</p>
-<p>OpenAgentsControl is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in. Overall, OpenAgentsControl provides a powerful solution for users looking to generate high-quality code that meets their specific needs and standards.</p>
-<p>OpenAgen</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: agentfield lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Human Approval Workflows with app.pause() and Webhooks</h2></div><div class="ch-body"><p>The app. run() API auto-exposes everything as REST, creating a REST endpoint for every function.</p>
+<p>In terms of performance, AgentField supports canary deploys, A/B testing, and blue-green rollouts, allowing for flexible and controlled deployment of AI agents. It also supports asynchronous execution, enabling efficient and scalable processing of AI workloads.</p>
+<p>Production use cases for AgentField include building and scaling AI agents, deploying and observing AI models, and proving the integrity and accuracy of AI decisions. AgentField provides a robust and scalable infrastructure for AI agents, making it suitable for a wide range of applications, including insurance claims processing, as demonstrated in the example code.</p>
+<p>The example code shows how to create an AgentField agent using Python, defining a decision-making function that uses a large language model to evaluate insurance claims. The agent uses the app. ai() API to call the language model, the app.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 183.19 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 227.83 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 179.19,-535 179.19,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 223.83,-535 223.83,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="87.59" cy="-513" rx="66.9" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="109.92" cy="-513" rx="66.9" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-430.5" rx="54.27" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-427" font-family="Arial" font-size="10.00">NLPTokenization</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-430.5" rx="54.27" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-427" font-family="Arial" font-size="10.00">NLPTokenization</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M87.59,-494.53C87.59,-484.51 87.59,-471.68 87.59,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-460.45 87.59,-450.45 84.09,-460.45 91.09,-460.45"/>
-<text text-anchor="middle" x="118.72" y="-468.45" font-family="Arial" font-size="9.00">lexical analysis</text>
+<path fill="none" stroke="#475569" d="M109.92,-494.53C109.92,-484.51 109.92,-471.68 109.92,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-460.45 109.92,-450.45 106.42,-460.45 113.42,-460.45"/>
+<text text-anchor="middle" x="141.04" y="-468.45" font-family="Arial" font-size="9.00">lexical analysis</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-348" rx="67.35" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-344.5" font-family="Arial" font-size="10.00">ContextualEmbedding</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-348" rx="63.74" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-344.5" font-family="Arial" font-size="10.00">SemanticEmbedding</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M87.59,-412.03C87.59,-402.01 87.59,-389.18 87.59,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-377.95 87.59,-367.95 84.09,-377.95 91.09,-377.95"/>
-<text text-anchor="middle" x="126.22" y="-385.95" font-family="Arial" font-size="9.00">semantic encoding</text>
+<path fill="none" stroke="#475569" d="M109.92,-412.03C109.92,-402.01 109.92,-389.18 109.92,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-377.95 109.92,-367.95 106.42,-377.95 113.42,-377.95"/>
+<text text-anchor="middle" x="144.42" y="-385.95" font-family="Arial" font-size="9.00">contextualization</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="87.59,-283.5 0,-265.5 87.59,-247.5 175.19,-265.5 87.59,-283.5"/>
-<text text-anchor="middle" x="87.59" y="-262" font-family="Arial" font-size="10.00">KnowledgeRetrieval</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="109.92,-283.5 0,-265.5 109.92,-247.5 219.83,-265.5 109.92,-283.5"/>
+<text text-anchor="middle" x="109.92" y="-262" font-family="Arial" font-size="10.00">KnowledgeGraphRetrieval</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M87.59,-329.53C87.59,-319.51 87.59,-306.68 87.59,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-295.45 87.59,-285.45 84.09,-295.45 91.09,-295.45"/>
-<text text-anchor="middle" x="128.09" y="-303.45" font-family="Arial" font-size="9.00">information retrieval</text>
+<path fill="none" stroke="#475569" d="M109.92,-329.53C109.92,-319.51 109.92,-306.68 109.92,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-295.45 109.92,-285.45 106.42,-295.45 113.42,-295.45"/>
+<text text-anchor="middle" x="153.42" y="-303.45" font-family="Arial" font-size="9.00">entity disambiguation</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-183" rx="62.84" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranking</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-183" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranking</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M87.59,-247.03C87.59,-237.01 87.59,-224.18 87.59,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-212.95 87.59,-202.95 84.09,-212.95 91.09,-212.95"/>
-<text text-anchor="middle" x="123.97" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
+<path fill="none" stroke="#475569" d="M109.92,-247.03C109.92,-237.01 109.92,-224.18 109.92,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-212.95 109.92,-202.95 106.42,-212.95 113.42,-212.95"/>
+<text text-anchor="middle" x="146.29" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-100.5" rx="49.31" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-100.5" rx="49.31" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M87.59,-164.53C87.59,-154.51 87.59,-141.68 87.59,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-130.45 87.59,-120.45 84.09,-130.45 91.09,-130.45"/>
-<text text-anchor="middle" x="124.34" y="-138.45" font-family="Arial" font-size="9.00">response creation</text>
+<path fill="none" stroke="#475569" d="M109.92,-164.53C109.92,-154.51 109.92,-141.68 109.92,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-130.45 109.92,-120.45 106.42,-130.45 113.42,-130.45"/>
+<text text-anchor="middle" x="153.04" y="-138.45" font-family="Arial" font-size="9.00">response formulation</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="87.59" cy="-18" rx="70.51" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-14.5" font-family="Arial" font-size="10.00">AgentResponseStream</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="109.92" cy="-18" rx="59.68" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-14.5" font-family="Arial" font-size="10.00">RealtimeStreaming</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M87.59,-82.03C87.59,-72.01 87.59,-59.18 87.59,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-47.95 87.59,-37.95 84.09,-47.95 91.09,-47.95"/>
-<text text-anchor="middle" x="127.72" y="-55.95" font-family="Arial" font-size="9.00">response validation</text>
+<path fill="none" stroke="#475569" d="M109.92,-82.03C109.92,-72.01 109.92,-59.18 109.92,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-47.95 109.92,-37.95 106.42,-47.95 113.42,-47.95"/>
+<text text-anchor="middle" x="148.54" y="-55.95" font-family="Arial" font-size="9.00">output serialization</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: OpenAgentsControl end-to-end processing pipeline</p></div><div class="sec-heading">OpenAgentsControl — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Code Generation Accuracy</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">User Control and Oversight</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Multi-Language Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Team Collaboration Features</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Model-Agnostic Compatibility</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Context-Aware Code Generation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:89%"></span></span></span><span class="bar-value">89%</span></div></div><div class="sec-heading">OpenAgentsControl — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Code Generation Speed</td><td>Up to 5x faster than manual coding</td><td>Dependent on complexity and user patterns</td></tr><tr><td>Supported Programming Languages</td><td>TypeScript, Python, Go, Rust, and more</td><td>Continuously updated to support new languages</td></tr><tr><td>AI Model Compatibility</td><td>Claude, GPT, Gemini, local models, and more</td><td>Model-agnostic approach for flexibility</td></tr><tr><td>Approval and Control Mechanisms</td><td>Approval gates and editable agents</td><td>Ensuring user control and review before execution</td></tr><tr><td>Team Collaboration Features</td><td>Shared patterns, standards, and workflows</td><td>Enhancing team productivity and consistency</td></tr><tr><td>Context Awareness and Pattern Control</td><td>Loads user patterns before code generation</td><td>Enabling repeatable and production-ready code</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Navigating Production Gotchas with Token-Efficient Approval Gates</h2></div><p class="ch-summary">OpenAgentsControl production gotchas</p><div class="ch-body"><p>OpenAgentsControl is a powerful system for controlled and efficient code generation using artificial intelligence, designed for professional development workflows and supporting multiple languages and models. The framework implements a plan-first, approval-based execution model where agents must propose solutions and receive explicit human approval before taking action. This approach ensures that the generated code matches the user's patterns, eliminating the need for refactoring. The core idea of OpenAgentsControl is to generate code that matches the user's patterns, requiring human approval before actions.</p>
-<p>The system is built around the Minimal Viable Information principle, which only loads what's needed, when it's needed, reducing token usage by 80% and resulting in massive cost savings.</p>
-<p>OpenAgentsControl offers sequential execution with approval gates, which allows for controlled and validated code generation. The system also supports parallel agents, which enables fast execution of tasks. Error recovery is also supported, with human-guided validation and self-correcting capabilities. The system is suitable for production use cases, particularly for teams and power users working on complex projects.</p>
-<p>The installation process for OpenAgentsControl involves installing the OpenCode CLI and running the install. sh script.</p>
-<p>The OpenAgentsControl framework features editable agents, which are markdown files that can be edited directly to change workflows, add constraints, and customize behavior. The framework also features ContextScout, which discovers relevant patterns from the user's context files and ranks them by priority. This approach enables the system to generate code that matches the user's patterns, eliminating the need for refactoring. The system supports team collaboration, allowing teams to store their patterns in a shared context file and commit it to a repository, ensuring consistent code across the entire team.</p>
-<p>The system can be used for a variety of tasks, including creating user authentication systems and generating production-ready code.</p>
-<p>The OpenAgentsControl system is designed to work with established coding patterns and provides approval gates for quality control, making it ideal for use cases where token efficiency and costs are a concern. The system can be installed as a Claude Code plugin, which provides additional features and capabilities. The plugin can be installed using the plugin install oac command, and the context files can be set up using the /oac:setup command. The system also supports the opencode command, which is used to start building with OpenAgentsControl, and the --agent option, which is used to specify the agent to use.</p>
-<p>The /oac:plan command is used to plan features with the plugin.</p>
-<p>OpenAgentsControl is an open-source AI framework that learns user coding patterns for repeatable results, requiring human approval before actions. The framework is designed for professional development workflows and supports multiple languages and models. The system is built around the Minimal Viable Information principle, which only loads what's needed, when it's needed, reducing token usage by 80% and resulting in massive cost savings. The system supports team collaboration, allowing teams to store their patterns in a shared context file and commit it to a repository, ensuring consistent code across the entire team.</p>
-<p>The system can be used for a variety of tasks, including creating user authentication systems and generating production-ready code.</p>
-<p>The OpenAgentsControl system offers a high degree of customization and flexibility, allowing users to edit agents directly and change workflows, add constraints, and customize behavior. The system also features ContextScout, which discovers relevant patterns from the user's context files and ranks them by priority. This approach enables the system to generate code that matches the user's patterns, eliminating the need for refactoring. The system supports parallel agents, which enables fast execution of tasks, and error recovery, with human-guided validation and self-correcting capabilities.</p>
-<p>The system is suitable for production use cases, particularly for teams and power users working on complex projects.</p>
-<p>OpenAgentsControl is a powerful system for controlled and efficient code generation using artificial intelligence, designed for professional development workflows and supporting multiple languages and models. The framework implements a plan-first, approval-based execution model where agents must propose solutions and receive explicit human approval before taking action. This approach ensures that the generated code matches the user's patterns, eliminating the need for refactoring. The system is built around the Minimal Viable Information principle, which only loads what's needed, when it's needed, reducing token usage by 80% and resulting in massive cost savings.</p>
-<p>The system supports team collaboration, allowing teams to store their patterns in a shared context file and commit it to a repository, ensuring consistent code across the entire team.</p>
-<p>The OpenAgentsControl system is designed to work with established coding patterns and provides approval gates for quality control, making it ideal for use cases where token efficiency and costs are a concern. The system can be installed as a Claude Code plugin, which provides additional features and capabilities. The plugin can be installed using the plugin install oac command, and the context files can be set up using the /oac:setup command. The system also supports the opencode command, which is used to start building with OpenAgentsControl, and the --agent option, which is used to specify the agent to use.</p>
-<p>The /oac:plan command is used to plan features with the plugin. The system offers a high degree of customization and flexibility, allowing users to edit agents directly and change workflows, add constraints, and customize behavior.</p></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Lazy Loading and Model-Agnostic Design</h2></div><p class="ch-summary">Optimizing OpenAgentsControl performance</p><div class="ch-body"><p>OpenAgentsControl is a system that enables AI agents to learn and generate code based on a user's coding patterns, providing repeatable results and production-ready code. The system is built on the OpenCode open-source AI coding framework and extends it with specialized agents, context management, and team workflows. OpenAgentsControl features pattern control, which allows users to define their patterns once and have the AI use them forever. It also includes approval gates, which require review and approval before execution, ensuring that users stay in control.</p>
-<p>The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
-<p>OpenAgentsControl is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in. OpenAgentsControl handles both frontend and backend work, with agents coordinating to build complete features from UI to database. The system is multi-language, supporting languages such as TypeScript, Python, Go, and Rust, and is model-agnostic, allowing users to work with various AI models, including Claude, GPT, and Gemini, as well as local models.</p>
-<p>The context-aware approach of OpenAgentsControl loads user patterns before generating code, and its editable agents can be modified directly through markdown files.</p>
-<p>The latest features of OpenAgentsControl include a token efficiency reduction of 80% based on the MVI principle, support for shared context files, and the ability to edit agent behavior using Markdown files and configuration files. The system also allows for the choice of any model and provider, with support for multiple models. OpenAgentsControl is a system that enables efficient and controlled code generation using artificial intelligence. The system utilizes a context system that enables agents to load and apply user-defined patterns and standards to generated code.</p>
-<p>This context system is the core of the OpenAgentsControl solution and allows for the automatic discovery and application of relevant patterns, resulting in code that matches the user's established coding patterns from the start.</p>
-<p>Key APIs and commands used in OpenAgentsControl include the OpenCode CLI, which is a free and open-source command-line interface that enables users to interact with the system. The OpenCode CLI provides a range of commands for managing agents, context, and code generation. OpenAgentsControl also features approval gates, which require review and approval before execution, ensuring that users stay in control. The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
-<p>The context-aware approach of OpenAgentsControl loads user patterns before generating code, and its editable agents can be modified directly through markdown files.</p>
-<p>OpenAgentsControl is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in. OpenAgentsControl handles both frontend and backend work, with agents coordinating to build complete features from UI to database. The system is multi-language, supporting languages such as TypeScript, Python, Go, and Rust, and is model-agnostic, allowing users to work with various AI models, including Claude, GPT, and Gemini, as well as local models.</p>
-<p>The system also features pattern control, which allows users to define their patterns once and have the AI use them forever.</p>
-<p>The system utilizes a context system that enables agents to load and apply user-defined patterns and standards to generated code. This context system is the core of the OpenAgentsControl solution and allows for the automatic discovery and application of relevant patterns, resulting in code that matches the user's established coding patterns from the start. OpenAgentsControl also features approval gates, which require review and approval before execution, ensuring that users stay in control. The system provides editable agents, allowing for full control over AI behavior, and is team-ready, enabling entire teams to use the same patterns and standards.</p>
-<p>The context-aware approach of OpenAgentsControl loads user patterns before generating code, and its editable agents can be modified directly through markdown files.</p>
-<p>OpenAgentsControl is a system that enables efficient and controlled code generation using artificial intelligence. The system is designed to provide production-ready code that ships without heavy rework, and its team-ready features enable new developers to inherit team patterns automatically. The system's performance is optimized through its lazy loading and faster response design, and its model-agnostic approach eliminates vendor lock-in. OpenAgentsControl handles both frontend and backend work, with agents coordinating to build complete features from UI to database.</p>
-<p>The system is multi-language, supporting languages such as TypeScript, Python, Go, and Rust, and is model-agnostic, allowing users to work with various AI models, including Claude, GPT, and Gemini, as well as local models. The latest features of OpenAgentsControl include a token efficiency reduction of 80% based on the MVI principle, support for shared context files, and the ability to edit agent behavior using Markdown files and configuration files.</p></div></section>
-<div class="book-footer"><strong>OpenAgentsControl: Production Manual</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 20, 2026</div>
+</svg><p class="diagram-caption">Figure: agentfield end-to-end processing pipeline</p></div><div class="sec-heading">agentfield — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Security</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Flexibility</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Performance</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:89%"></span></span></span><span class="bar-value">89%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div></div><div class="sec-heading">agentfield — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Programming Languages</td><td>Python, Go, TypeScript</td><td>AgentField supports multiple programming languages for writing agent logic</td></tr><tr><td>API Style</td><td>REST</td><td>Every function becomes a REST endpoint, enabling easy integration with other services</td></tr><tr><td>Audit Trail</td><td>Cryptographic and Tamper-Proof</td><td>AgentField provides a verifiable and tamper-proof audit trail for every execution</td></tr><tr><td>Deployment Strategies</td><td>Canary Deploys, A/B Testing, Blue-Green Rollouts</td><td>AgentField supports flexible and controlled deployment of AI agents</td></tr><tr><td>Execution Style</td><td>Asynchronous</td><td>AgentField enables efficient and scalable processing of AI workloads</td></tr><tr><td>Identity Management</td><td>Cryptographic Identity</td><td>Every agent gets a cryptographic identity, making every decision traceable</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Production Agents with Audit Trails and app.call() Debugging</h2></div><p class="ch-summary">Agentfield troubleshooting</p><div class="ch-body"><p>Agentfield provides a comprehensive platform for building, deploying, and managing AI agents, and troubleshooting is a critical aspect of ensuring the smooth operation of production agents. The platform provides features such as audit trails and app. call() debugging to help identify and resolve issues. Audit trails provide a record of all agent interactions, including cross-agent calls and discovery, allowing developers to track the flow of execution and identify potential bottlenecks.</p>
+<p>The app. call() method is used for cross-agent calls, and debugging this method can help resolve issues related to agent communication. The control plane manages the lifecycle of agents, including registration, execution, and termination, and provides features for managing agent interactions.</p>
+<p>Agentfield's architecture is based on a microservices architecture, which provides a scalable and fault-tolerant platform for deploying AI agents. The platform provides a REST API that can be used to interact with agents, including the /api/v1/execute endpoint for executing agents. The API provides endpoints for executing agents, and the dashboard can be accessed at http://localhost:8080. The platform also provides features for governing AI agents, including cryptographic identity, verifiable credentials, and policy enforcement.</p>
+<p>Every agent is assigned a decentralized identifier (DID) and authenticates to other agents using cryptographic signatures.</p>
+<p>The app. harness() method is used to dispatch multi-turn tasks to various AI models, and the app. discover() method is used to find agents and capabilities across the mesh. The app.</p>
+<p>memory() method provides key-value and vector search capabilities, allowing agents to store and retrieve data. The platform also provides features for running agents in production, including async execution, human-in-the-loop, canary deployments, and observability. Async execution allows agents to run for hours or days without timeout limits, and human-in-the-loop allows agents to suspend execution for human approval. Canary deployments allow traffic weight routing, A/B testing, and blue-green deployments.</p>
+<p>In terms of performance, the platform provides automatic workflow DAGs, Prometheus metrics, structured logs, and execution timelines. The platform also provides features for deploying agents in production, including Docker Compose, Kubernetes, and production setups. The deployment guide provides more information on deploying agents in production. The control plane is implemented using a microservices architecture and provides a scalable and fault-tolerant platform for deploying AI agents.</p>
+<p>The platform provides a wide range of features and tools for developing and deploying AI agents, including support for multiple programming languages, reasoners and skills, structured AI, harness, cross-agent calls, discovery, and memory.</p>
+<p>The app. call() method is a critical component of the Agentfield platform, and debugging this method can help resolve issues related to agent communication. The method routes calls through the control plane with full tracing, allowing developers to track the flow of execution and identify potential bottlenecks. The control plane manages the lifecycle of agents, including registration, execution, and termination, and provides features for managing agent interactions.</p>
+<p>The platform provides a REST API that can be used to interact with agents, including the /api/v1/execute endpoint for executing agents. The API provides endpoints for executing agents, and the dashboard can be accessed at http://localhost:8080.</p>
+<p>Agentfield provides a comprehensive platform for building, deploying, and managing AI agents, and troubleshooting is a critical aspect of ensuring the smooth operation of production agents. The platform provides features such as audit trails and app. call() debugging to help identify and resolve issues. Audit trails provide a record of all agent interactions, including cross-agent calls and discovery, allowing developers to track the flow of execution and identify potential bottlenecks.</p>
+<p>The app. call() method is used for cross-agent calls, and debugging this method can help resolve issues related to agent communication. The control plane manages the lifecycle of agents, including registration, execution, and termination, and provides features for managing agent interactions.</p>
+<p>The platform provides features for governing AI agents, including cryptographic identity, verifiable credentials, and policy enforcement. Every agent is assigned a decentralized identifier (DID) and authenticates to other agents using cryptographic signatures. Verifiable credentials provide a tamper-proof receipt for every execution, and policy enforcement provides tag-based policy gates with cryptographic verification. The platform also provides features for running agents in production, including async execution, human-in-the-loop, canary deployments, and observability.</p>
+<p>Async execution allows agents to run for hours or days without timeout limits, and human-in-the-loop allows agents to suspend execution for human approval. Canary deployments allow traffic weight routing, A/B testing, and blue-green deployments.</p>
+<p>Agentfield's architecture is based on a microservices architecture, which provides a scalable and fault-tolerant platform for deploying AI agents. The platform provides a wide range of features and tools for developing and deploying AI agents, including support for multiple programming languages, reasoners and skills, structured AI, harness, cross-agent calls, discovery, and memory. The platform also provides features for deploying agents in production, including Docker Compose, Kubernetes, and production setups. The deployment guide provides more information on deploying agents in production.</p>
+<p>The control plane is implemented using a microservices architecture and provides a scalable and fault-tolerant platform for deploying AI agents.</p></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Agent Performance with Canary Deploys and Asynchronous Execution</h2></div><div class="ch-body"><p>It also supports asynchronous execution, enabling efficient and scalable processing of AI workloads.</p>
+<p>Production use cases for AgentField include building and scaling AI agents, deploying and observing AI models, and proving the integrity and accuracy of AI decisions. AgentField provides a robust and scalable infrastructure for AI agents, making it suitable for a wide range of applications, including insurance claims processing, as demonstrated in the example code.</p>
+<p>The example code shows how to create an AgentField agent using Python, defining a decision-making function that uses a large language model to evaluate insurance claims. The agent uses the app. ai() API to call the language model, the app. pause() API to suspend execution for human approval, and the app.</p>
+<p>call() API to route to other agents. The app. run() API is used to auto-expose the agent as a REST endpoint.</p>
+<p>Agentfield is a platform that enables the development and deployment of AI agents. The platform provides a command-line interface (CLI) that can be installed using a bash script.</p></div></section>
+<div class="book-footer"><strong>agentfield: Complete Reference</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 20, 2026</div>
 </body>
 </html>
