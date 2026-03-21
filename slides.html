@@ -2,176 +2,177 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>haystack: Technical Deep Dive</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "haystack: Technical Deep Dive"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>RagaAI-Catalyst: Engineering Handbook</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "RagaAI-Catalyst: Engineering Handbook"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://repository-images.githubusercontent.com/221654678/23b1cde8-4a33-45f4-8b0b-0686221c8126" alt="haystack logo" onerror="this.style.display='none'"/><div class="cover-lib-name">haystack</div><div class="cover-suffix">Technical Deep Dive</div><div class="cover-rule"></div><p class="cover-subtitle">A pile of hay</p><p class="cover-desc">Haystack's architecture is based on modular pipelines and agent workflows, allowing for flexible and scalable design of LLM applications.  The getapp and getpipelines methods are used to initialize and manage pipelines.  Haystack supports various use cases, including semantic search, question answering, and autonomous agents.</p><div class="cover-tagline">Hay is gold</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 20, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Deepset-ai built Haystack to simplify LLM application development.</div><div class="intro-body"><p>Haystack is an open-source framework developed by deepset-ai, designed to build production-ready large language model (LLM) applications. It provides a modular architecture for designing pipelines and agent workflows, enabling the creation of scalable and flexible systems for various use cases such as semantic search, question answering, and multimodal applications. The framework is built around the concept of modular pipelines, which allows for the integration of different components and tools, making it a versatile solution for a wide range of applications.</p>
-<p>The specific problem Haystack was built to solve is the complexity of building and deploying LLM applications, which often require significant expertise and resources. By providing a modular and extensible architecture, Haystack simplifies the process of designing and deploying these applications, making it more accessible to developers and organizations. The framework's architecture is based on a pipeline-based approach, which allows for the integration of different components and tools, such as retrieval, routing, memory, and generation, making it a comprehensive solution for building LLM applications.</p>
-<p>One of the key technical differences between Haystack and alternative frameworks is its modular design, which allows for the integration of different components and tools. This is achieved through the use of pipelines, which provide a flexible and extensible way of designing and deploying LLM applications. Additionally, Haystack's architecture is designed to be model- and vendor-agnostic, allowing for the integration of different LLM models and vendors, such as OpenAI, Mistral, Anthropic, Cohere, Hugging Face, Azure OpenAI, and AWS Bedrock. This makes Haystack a versatile solution for a wide range of applications and use cases.</p>
-<p>The target audience for Haystack is developers and organizations looking to build production-ready LLM applications, including those in the fields of natural language processing, machine learning, and artificial intelligence. The framework is designed to be accessible to developers with varying levels of expertise, from beginners to experienced professionals, and provides a comprehensive set of tools and resources for building and deploying LLM applications. With its modular architecture and extensible design, Haystack provides a flexible and scalable solution for a wide range of applications and use cases, making it an ideal choice for developers and organizations looking to build and deploy LLM applications.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/deepset-ai/haystack">https://github.com/deepset-ai/haystack</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building Modular Pipelines with Haystack's Agent Workflows</h2></div><p class="ch-summary">Haystack enables modular pipelines</p><div class="ch-body"><p>Haystack's architecture is based on modular pipelines and agent workflows, allowing for flexible and scalable design of LLM applications. The getapp and getpipelines methods are used to initialize and manage pipelines. Haystack supports various use cases, including semantic search, question answering, and autonomous agents. The app.</p>
-<p>router. includerouter method is used to include custom routers in the application. Haystack's pipelines can be deployed as REST APIs or MCP servers, enabling easy integration with other systems. The loaddotenv function is used to load environment variables from a .</p>
-<p>env file, allowing for easy configuration of the application.</p>
-<p>Haystack's agent workflows enable the design of complex pipelines, involving multiple components and tasks. The Agent. addtask method is used to add tasks to an agent's workflow, while the workflow. run method is used to execute the workflow.</p>
-<p>Haystack's pipelines can be customized using various config keys, such as PIPELINEYAMLPATH and QUERYPIPELINENAME. The os. environ['PIPELINEYAMLPATH'] variable is used to specify the path to a custom pipeline YAML file. Haystack's pipelines can be shared and reused across different applications, enabling efficient development and deployment of LLM applications.</p>
-<p>The restapi/utils module provides various utility functions, including getapp and getpipelines, which are used to initialize and manage pipelines. The restapi/controller/search module provides functions for handling search requests and returning results. Haystack's pipelines can be integrated with various models and vendors, including OpenAI, Mistral, and Hugging Face. The app.</p>
-<p>includerouter method is used to include custom routers in the application, enabling easy extension of the pipeline's functionality. Haystack's pipelines can be deployed on various platforms, including local machines and cloud services.</p>
-<p>Haystack's pipelines can be used for various use cases, including building production-ready LLM applications, designing modular pipelines and agent workflows, and building scalable RAG systems. The getpipeline method is used to retrieve a specific pipeline, while the getpipelines method is used to retrieve all pipelines. Haystack's pipelines can be customized using various config keys, such as QUERYPIPELINENAME2. The loaddotenv function is used to load environment variables from a .</p>
-<p>env file, allowing for easy configuration of the application. Haystack's pipelines do not support real-time processing of large datasets, which can be a limitation in certain use cases.</p>
-<p>The Haystack library provides various benefits, including easy integration with other systems and flexible design of pipelines. However, it requires careful configuration and customization to achieve optimal performance. The app. router.</p>
-<p>includerouter method is used to include custom routers in the application, enabling easy extension of the pipeline's functionality. Haystack's pipelines can be deployed as REST APIs or MCP servers, enabling easy integration with other systems. The os. environ['PIPELINEYAMLPATH'] variable is used to specify the path to a custom pipeline YAML file.</p>
-<p>Haystack's pipelines do not support automatic optimization of pipeline performance, which can be a limitation in certain use cases.</p>
-<p>The Haystack library provides various tools and utilities for designing and deploying pipelines. The restapi/utils module provides various utility functions, including getapp and getpipelines, which are used to initialize and manage pipelines. The restapi/controller/search module provides functions for handling search requests and returning results. Haystack's pipelines can be customized using various config keys, such as PIPELINEYAMLPATH and QUERYPIPELINENAME.</p>
-<p>The loaddotenv function is used to load environment variables from a . env file, allowing for easy configuration of the application. Haystack's pipelines can be used for various use cases, including building production-ready LLM applications and designing modular pipelines and agent workflows.</p>
-<p>The Haystack library provides a flexible and scalable architecture for designing and deploying pipelines. The getapp and getpipelines methods are used to initialize and manage pipelines. Haystack's pipelines can be customized using various config keys, such as QUERYPIPELINENAME2. The app.</p>
-<p>includerouter method is used to include custom routers in the application, enabling easy extension of the pipeline's functionality. Haystack's pipelines can be deployed as REST APIs or MCP servers, enabling easy integration with other systems. The os. environ['PIPELINEYAMLPATH'] variable is used to specify the path to a custom pipeline YAML file.</p>
-<p>Haystack's pipelines do not support automatic scaling of pipeline performance, which can be a limitation in certain use cases.</p>
-<p>The Haystack library provides various benefits and limitations, including easy integration with other systems and flexible design of pipelines. However, it requires careful configuration and customization to achieve optimal performance. The restapi/utils module provides various utility functions, including getapp and getpipelines, which are used to initialize and manage pipelines. The restapi/controller/search module provides functions for handling search requests and returning results.</p>
-<p>Haystack's pipelines can be customized using various config keys, such as PIPELINEYAMLPATH and QUERYPIPELINENAME. The load_dotenv function is used to load environment variables from a . env file, allowing for easy configuration of the application. Haystack's pipelines can be used for various use cases, including building production-ready LLM applications and designing modular pipelines and agent workflows.</p></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing RAG Systems with Haystack's Retrieval and Generation Components</h2></div><p class="ch-summary">RAG systems design</p><div class="ch-body"><p>When designing RAG systems with Haystack, it's essential to understand the modular pipelines and agent workflows. The architecture of Haystack includes retrieval, memory, tools, generation, and indexing components. The getapp and getpipelines methods from the restapi. utils module can be used to create and manage pipelines.</p>
-<p>The PIPELINEYAMLPATH config key is used to specify the path to the pipeline YAML file. The app. router. includerouter method is used to include routers in the application.</p>
-<p>The Haystack API provides a range of features for building production-ready LLM applications, including semantic search, question answering, and autonomous agents. The restapi. application:app class is used to create a REST API application. The host and port config keys are used to specify the host and port of the application.</p>
-<p>The gunicorn and uvicorn commands can be used to launch the application.</p>
-<p>The Haystack architecture includes a range of components, including pipelines, agent workflows, and Hayhooks. The pipeline YAML file is used to define the pipeline configuration. The loaddotenv method is used to load environment variables from a . env file.</p>
-<p>The os. environ dictionary is used to access environment variables.</p>
-<p>The Haystack API provides a range of methods for building and managing pipelines, including the getpipeline method. The app. includerouter method is used to include routers in the application. The search2.</p>
-<p>router is an example of a router that can be included in the application.</p>
-<p>One of the limitations of Haystack is that modifying core Haystack files can invite continual merge conflicts. The Haystack API does not support certain features, such as modifying the pipeline configuration at runtime. The Haystack API provides a range of tools and features for building production-ready LLM applications, but it requires careful configuration and management.</p>
-<p>The Haystack API provides a range of features for building scalable RAG systems, including support for multimodal applications and semantic search. The Haystack API provides a range of methods for building and managing pipelines, including the getpipelines method. The pipeline YAML file is used to define the pipeline configuration.</p>
-<p>The Haystack API provides a range of features for deploying and serving Haystack pipelines as REST APIs or MCP servers. The Haystack API provides a range of methods for creating custom endpoints, nodes, and pipelines. The Hayhooks feature provides a range of tools and features for wrapping pipelines and agents with custom logic and exposing them through HTTP endpoints or MCP.</p>
-<p>The Haystack API provides a range of features for building production-ready LLM applications, including support for OpenAI-compatible chat completion endpoints and chat UIs like open-webui. The Haystack API provides a range of methods for building and managing pipelines, including the getapp method. The pipeline YAML file is used to define the pipeline configuration.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/14f78aec742e8d22bd3e88b258f5312a61f6336cf214e744271764ecc2d34595/raga-ai-hub/RagaAI-Catalyst" alt="RagaAI-Catalyst logo" onerror="this.style.display='none'"/><div class="cover-lib-name">RagaAI-Catalyst</div><div class="cover-suffix">Engineering Handbook</div><div class="cover-rule"></div><p class="cover-subtitle">RagaAI Catalyst explained</p><p class="cover-desc">The RagaAI-Catalyst platform provides a range of tools for building and managing projects, including the createproject method, which allows users to create new projects with specific use cases.  The projectusecases method can be used to retrieve a list of available use cases, while the listprojects method returns a list of all existing projects.  The RagaAICatalyst class is used to initialize the platform, with config keys such as accesskey, secretkey, and baseurl.</p><div class="cover-tagline">AI made simple</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 21, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">RagaAI-Catalyst was built by the raga-ai-hub organization.</div><div class="intro-body"><p>RagaAI-Catalyst is a platform developed to address the complexities of managing projects, datasets, and evaluations in AI applications. It provides a comprehensive framework for creating and managing projects, including the ability to list projects, create new projects, and manage project use cases. The platform also includes dataset management capabilities, such as listing existing datasets, creating datasets from CSV files, and getting schema mappings. Additionally, RagaAI-Catalyst offers evaluation management features, including listing available metrics, adding metrics to experiments, and getting evaluation results.</p>
+<p>The specific problem RagaAI-Catalyst was built to solve is the need for a unified platform to manage the various components of AI applications, including project management, dataset management, and evaluation management. This platform is designed to simplify the process of creating and managing AI projects, making it easier for developers to focus on building and improving their applications. The technical differences between RagaAI-Catalyst and alternative solutions lie in its architecture, which includes project management, dataset management, evaluation management, trace management, prompt management, synthetic data generation, and guardrail management. These features are designed to provide a comprehensive framework for managing AI applications.</p>
+<p>RagaAI-Catalyst is technically different from alternatives due to its design decisions, such as the use of a modular architecture and the inclusion of features like synthetic data generation and guardrail management. The platform is also designed to be extensible, allowing developers to add new features and capabilities as needed. The target audience for RagaAI-Catalyst is developers and data scientists who are building and managing AI applications, particularly those who need a unified platform to manage the various components of their applications. The platform is designed to be easy to use and integrate into existing workflows, making it a valuable tool for anyone working with AI applications.</p>
+<p>To get started with RagaAI-Catalyst, developers can install the platform using pip, and then import the RagaAICatalyst class to create a new instance of the platform. The platform can be configured using access keys, secret keys, and base URLs, and it provides a range of methods for managing projects, datasets, and evaluations. For example, developers can use the createproject method to create a new project, and the listprojects method to list all existing projects. The platform also includes a range of other methods and features, including dataset management and evaluation management capabilities.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/raga-ai-hub/RagaAI-Catalyst">https://github.com/raga-ai-hub/RagaAI-Catalyst</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building RagaAI-Catalyst Projects with create_project</h2></div><p class="ch-summary">Create projects with RagaAI-Catalyst</p><div class="ch-body"><p>The RagaAI-Catalyst platform provides a range of tools for building and managing projects, including the createproject method, which allows users to create new projects with specific use cases. The projectusecases method can be used to retrieve a list of available use cases, while the listprojects method returns a list of all existing projects. The RagaAICatalyst class is used to initialize the platform, with config keys such as accesskey, secretkey, and baseurl. The createproject method takes two parameters: projectname and usecase.</p>
+<p>The RagaAI-Catalyst platform also includes dataset management capabilities, with the Dataset class providing methods such as listdatasets and createfromcsv. The createfromcsv method allows users to create a new dataset from a CSV file, with options for specifying schema mapping. The getschemamapping method can be used to retrieve the schema mapping for a specific dataset. The Evaluation class provides methods for creating experiments and adding metrics, with options for specifying metrics and schema mapping.</p>
+<p>The addmetrics method takes a list of metrics, with each metric including a name, config, and schema mapping. The listmetrics method returns a list of available metrics. The RagaAI-Catalyst platform also includes evaluation management capabilities, with the Evaluation class providing methods such as getstatus and getresults. The getstatus method returns the status of an experiment, while the getresults method returns the results of an experiment.</p>
+<p>The RagaAI-Catalyst platform has several limitations, including the requirement for a valid access key and secret key to initialize the platform. The createproject method does not support the creation of projects with duplicate names. The listprojects method returns a list of all existing projects, but does not provide any filtering or sorting options. The Dataset class does not support the creation of datasets from files other than CSV.</p>
+<p>The Evaluation class does not support the creation of experiments with multiple datasets. The getschemamapping method returns the schema mapping for a specific dataset, but does not provide any options for modifying the schema mapping.</p>
+<p>The RagaAI-Catalyst platform provides several benefits, including the ability to create and manage projects with specific use cases. The platform also provides dataset management capabilities, with options for creating datasets from CSV files and specifying schema mapping. The Evaluation class provides methods for creating experiments and adding metrics, with options for specifying metrics and schema mapping. The platform also provides evaluation management capabilities, with methods for retrieving the status and results of experiments.</p>
+<p>The RagaAI-Catalyst platform is a useful tool for building and managing projects, with a range of features and capabilities.</p>
+<p>The RagaAI-Catalyst platform can be initialized using the RagaAICatalyst class, with config keys such as accesskey, secretkey, and baseurl. The createproject method can be used to create new projects, with options for specifying use cases. The projectusecases method can be used to retrieve a list of available use cases. The listprojects method returns a list of all existing projects.</p>
+<p>The Dataset class provides methods for managing datasets, including listdatasets and createfromcsv. The Evaluation class provides methods for creating experiments and adding metrics.</p>
+<p>The RagaAI-Catalyst platform provides a range of API methods, including createproject, projectusecases, listprojects, listdatasets, createfromcsv, getschemamapping, addmetrics, getstatus, and getresults. The platform also provides several config keys, including accesskey, secretkey, and baseurl. The RagaAICatalyst class is used to initialize the platform, with options for specifying config keys. The Dataset class provides methods for managing datasets, with options for specifying schema mapping.</p>
+<p>The Evaluation class provides methods for creating experiments and adding metrics, with options for specifying metrics and schema mapping.</p>
+<p>The RagaAI-Catalyst platform has several technical requirements, including the requirement for a valid access key and secret key to initialize the platform. The platform also requires a valid base URL to initialize the platform. The createproject method requires a valid project name and use case to create a new project. The listprojects method returns a list of all existing projects, but does not provide any filtering or sorting options.</p>
+<p>The Dataset class requires a valid CSV file to create a new dataset. The Evaluation class requires a valid experiment name and dataset name to create a new experiment.</p>
+<p>The RagaAI-Catalyst platform provides a range of features and capabilities, including project management, dataset management, and evaluation management. The platform provides several API methods, including createproject, projectusecases, listprojects, listdatasets, createfromcsv, getschemamapping, addmetrics, getstatus, and getresults. The platform also provides several config keys, including accesskey, secretkey, and baseurl. The RagaAICatalyst class is used to initialize the platform, with options for specifying config keys.</p>
+<p>The Dataset class provides methods for managing datasets, with options for specifying schema mapping. The Evaluation class provides methods for creating experiments and adding metrics, with options for specifying metrics and schema mapping.</p>
+<p>The RagaAI-Catalyst platform is a useful tool for building and managing projects, with a range of features and capabilities. The platform provides several benefits, including the ability to create and manage projects with specific use cases. The platform also provides dataset management capabilities, with options for creating datasets from CSV files and specifying schema mapping. The Evaluation class provides methods for creating experiments and adding metrics, with options for specifying metrics and schema mapping.</p>
+<p>The platform also provides evaluation management capabilities, with methods for retrieving the status and results of experiments. The RagaAI-Catalyst platform is a useful tool for building and managing projects, with a range of features and capabilities.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1410.17 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1162.20 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1406.17,-40 1406.17,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1158.2,-40 1158.2,4 -4,4"/>
 <!-- N0 -->
-<g id="seq-node1" class="node">
+<g id="cluster-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="66.45" cy="-18" rx="66.45" ry="18"/>
-<text text-anchor="middle" x="66.45" y="-14.5" font-family="Arial" font-size="10.00">pip install haystack&#45;ai</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="87.64" cy="-18" rx="87.64" ry="18"/>
+<text text-anchor="middle" x="87.64" y="-14.5" font-family="Arial" font-size="10.00">RagaAI&#45;Catalyst Orchestrator</text>
 </g>
 <!-- N1 -->
-<g id="seq-node2" class="node">
+<g id="cluster-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="279.95" cy="-18" rx="93.06" ry="18"/>
-<text text-anchor="middle" x="279.95" y="-14.5" font-family="Arial" font-size="10.00">pip install &#45;&#45;pre haystack&#45;agents</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="310.57" cy="-18" rx="56.53" ry="18"/>
+<text text-anchor="middle" x="310.57" y="-14.5" font-family="Arial" font-size="10.00">AlgorithmRegistry</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
-<g id="seq-edge1" class="edge">
+<g id="cluster-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M133.21,-18C146.51,-18 160.8,-18 175.05,-18"/>
-<polygon fill="#475569" stroke="#475569" points="174.93,-21.5 184.93,-18 174.93,-14.5 174.93,-21.5"/>
-<text text-anchor="middle" x="159.9" y="-19.95" font-family="Arial" font-size="9.00">then</text>
+<path fill="none" stroke="#475569" d="M175.64,-18C197.85,-18 221.39,-18 242.43,-18"/>
+<polygon fill="#475569" stroke="#475569" points="242.33,-21.5 252.33,-18 242.33,-14.5 242.33,-21.5"/>
+<text text-anchor="middle" x="214.66" y="-19.95" font-family="Arial" font-size="9.00">configures</text>
 </g>
 <!-- N2 -->
-<g id="seq-node3" class="node">
+<g id="cluster-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="569.66" cy="-18" rx="69.15" ry="18"/>
-<text text-anchor="middle" x="569.66" y="-14.5" font-family="Arial" font-size="10.00">initialize Haystack app</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="511.84" cy="-18" rx="68.25" ry="18"/>
+<text text-anchor="middle" x="511.84" y="-14.5" font-family="Arial" font-size="10.00">KnowledgeGraphStore</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
-<g id="seq-edge2" class="edge">
+<g id="cluster-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M373.17,-18C410.4,-18 452.95,-18 488.82,-18"/>
-<polygon fill="#475569" stroke="#475569" points="488.7,-21.5 498.7,-18 488.7,-14.5 488.7,-21.5"/>
-<text text-anchor="middle" x="436.76" y="-19.95" font-family="Arial" font-size="9.00">configure environment</text>
+<path fill="none" stroke="#475569" d="M367.34,-18C387.35,-18 410.31,-18 431.9,-18"/>
+<polygon fill="#475569" stroke="#475569" points="431.88,-21.5 441.88,-18 431.88,-14.5 431.88,-21.5"/>
+<text text-anchor="middle" x="405.34" y="-19.95" font-family="Arial" font-size="9.00">populates</text>
 </g>
 <!-- N3 -->
-<g id="seq-node4" class="node">
+<g id="cluster-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="827.81,-36 732.57,-18 827.81,0 923.06,-18 827.81,-36"/>
-<text text-anchor="middle" x="827.81" y="-14.5" font-family="Arial" font-size="10.00">get available pipelines</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="710.76,-36 650.6,-18 710.76,0 770.93,-18 710.76,-36"/>
+<text text-anchor="middle" x="710.76" y="-14.5" font-family="Arial" font-size="10.00">ModelServer</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
-<g id="seq-edge3" class="edge">
+<g id="cluster-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M639.31,-18C663.69,-18 691.75,-18 718.63,-18"/>
-<polygon fill="#475569" stroke="#475569" points="718.54,-21.5 728.54,-18 718.54,-14.5 718.54,-21.5"/>
-<text text-anchor="middle" x="685.69" y="-19.95" font-family="Arial" font-size="9.00">load pipelines</text>
+<path fill="none" stroke="#475569" d="M580.34,-18C598.78,-18 618.83,-18 637.52,-18"/>
+<polygon fill="#475569" stroke="#475569" points="637.45,-21.5 647.45,-18 637.45,-14.5 637.45,-21.5"/>
+<text text-anchor="middle" x="615.35" y="-19.95" font-family="Arial" font-size="9.00">sends to</text>
 </g>
 <!-- N4 -->
-<g id="seq-node5" class="node">
+<g id="cluster-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1079.8" cy="-18" rx="61.49" ry="18"/>
-<text text-anchor="middle" x="1079.8" y="-14.5" font-family="Arial" font-size="10.00">get specific pipeline</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="895.7" cy="-18" rx="52.02" ry="18"/>
+<text text-anchor="middle" x="895.7" y="-14.5" font-family="Arial" font-size="10.00">InferenceEngine</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
-<g id="seq-edge4" class="edge">
+<g id="cluster-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M925.46,-18C952.51,-18 981.43,-18 1006.77,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1006.64,-21.5 1016.64,-18 1006.64,-14.5 1006.64,-21.5"/>
-<text text-anchor="middle" x="970.69" y="-19.95" font-family="Arial" font-size="9.00">select pipeline</text>
+<path fill="none" stroke="#475569" d="M772.42,-18C791.55,-18 812.71,-18 831.97,-18"/>
+<polygon fill="#475569" stroke="#475569" points="831.86,-21.5 841.86,-18 831.86,-14.5 831.86,-21.5"/>
+<text text-anchor="middle" x="807.3" y="-19.95" font-family="Arial" font-size="9.00">runs with</text>
 </g>
 <!-- N5 -->
-<g id="seq-node6" class="node">
+<g id="cluster-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1327.6" cy="-18" rx="74.57" ry="18"/>
-<text text-anchor="middle" x="1327.6" y="-14.5" font-family="Arial" font-size="10.00">register pipeline with app</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1100.83" cy="-18" rx="53.37" ry="18"/>
+<text text-anchor="middle" x="1100.83" y="-14.5" font-family="Arial" font-size="10.00">ResultProcessor</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
-<g id="seq-edge5" class="edge">
+<g id="cluster-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M1141.56,-18C1171.7,-18 1208.6,-18 1241.51,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1241.45,-21.5 1251.45,-18 1241.45,-14.5 1241.45,-21.5"/>
-<text text-anchor="middle" x="1197.16" y="-19.95" font-family="Arial" font-size="9.00">register with router</text>
+<path fill="none" stroke="#475569" d="M947.95,-18C974.61,-18 1007.44,-18 1035.75,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1035.66,-21.5 1045.66,-18 1035.66,-14.5 1035.66,-21.5"/>
+<text text-anchor="middle" x="997.59" y="-19.95" font-family="Arial" font-size="9.00">sends results to</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: haystack integration flow</p></div></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Installing and Setting up Haystack with Pip Install</h2></div><p class="ch-summary">Install Haystack with pip</p><div class="ch-body"><p>To get started with Haystack, you can install it using pip. The installation process is straightforward and can be completed with a single command. The command to install Haystack is pip install haystack-ai. Alternatively, you can install the pre-release version using pip install --pre haystack-ai.</p>
-<p>This will give you access to the latest features and updates. Once installed, you can start building your own pipelines and workflows using Haystack's modular architecture. The architecture consists of pipelines, agent workflows, retrieval, memory, tools, generation, and indexing.</p>
-<p>The Haystack API provides several methods for building and managing pipelines, including getapp, getpipelines, and getpipeline. These methods can be used to create and customize your own pipelines. The API also includes several config keys, such as PIPELINEYAMLPATH, QUERYPIPELINENAME, and QUERYPIPELINENAME2, which can be used to configure your pipelines. The restapi application provides a way to deploy and serve Haystack pipelines as REST APIs or MCP servers.</p>
-<p>One of the key features of Haystack is its support for building production-ready LLM applications. This includes designing modular pipelines and agent workflows, building scalable RAG systems, and creating multimodal applications. Haystack also provides tools for semantic search and question answering. The Haystack API includes several classes and methods for working with these features, including restapi.</p>
-<p>application:app and Hayhooks.</p>
-<p>The Haystack API also provides several tools for working with pipelines, including the ability to load and save pipelines, and to include routers in the application. The app. router. includerouter method can be used to include routers in the application, and the getpipelines method can be used to retrieve a list of pipelines.</p>
-<p>The loaddotenv method can be used to load environment variables from a . env file.</p>
-<p>One of the limitations of Haystack is that modifying core Haystack files can invite continual merge conflicts. This can make it difficult to customize the Haystack code and integrate it with other projects. However, Haystack provides several ways to extend and customize its functionality, including the use of Hayhooks and custom pipelines.</p>
-<p>The Haystack API provides several ways to deploy and serve pipelines, including using gunicorn and uvicorn. The gunicorn command can be used to launch the application, and the uvicorn command can be used to run the application with reload support. The restapi. application:app can be used to deploy the application as a REST API or MCP server.</p>
-<p>In terms of performance, Haystack provides several tools for optimizing pipeline performance, including the ability to cache results and to use parallel processing. However, the performance of Haystack will depend on the specific use case and the complexity of the pipelines. The Haystack API provides several methods for monitoring and optimizing pipeline performance, including the ability to track pipeline execution time and to monitor pipeline metrics.</p>
-<p>The Haystack API provides several examples of how to use its features, including examples of how to build and deploy pipelines, and how to use Hayhooks to customize pipeline behavior. The API also provides several tools for debugging and troubleshooting pipelines, including the ability to log pipeline execution and to track pipeline errors.</p><div class="code-label">Code Sample</div><div class="code-block">from rest_api.utils import get_app, get_pipelines 
+</svg><p class="diagram-caption">Figure: RagaAI-Catalyst internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting Dataset Management with Dataset and list_datasets</h2></div><p class="ch-summary">Dataset management</p><div class="ch-body"><p>The RagaAI-Catalyst platform provides a range of tools for managing datasets, including the Dataset class and its associated methods. The listdatasets method, for example, allows users to retrieve a list of existing datasets for a specific project. This can be useful for tracking and organizing datasets, as well as for ensuring that the correct datasets are being used for a particular project. The createfromcsv method, on the other hand, enables users to create a new dataset from a CSV file, which can be a convenient way to import data from external sources.</p>
+<p>The getschemamapping method is also available, which returns the schema mapping for a given dataset.</p>
+<p>The Dataset class is a key component of the RagaAI-Catalyst platform, and is used to manage and manipulate datasets. It provides a range of methods for working with datasets, including createfromcsv, listdatasets, and getschemamapping. These methods can be used to create, retrieve, and manipulate datasets, and are an important part of the dataset management process. The RagaAICatalyst class also provides a range of methods for working with datasets, including createproject and projectusecases, which can be used to create and manage projects, and to retrieve information about the use cases associated with a project.</p>
+<p>One of the key benefits of using the RagaAI-Catalyst platform is its ability to support a range of different dataset management tasks. For example, the platform provides support for creating and managing datasets, as well as for tracking and analyzing dataset performance. The platform also provides a range of tools and methods for working with datasets, including the Dataset class and its associated methods. The listdatasets method, for example, can be used to retrieve a list of existing datasets for a specific project, while the createfromcsv method can be used to create a new dataset from a CSV file.</p>
+<p>The RagaAI-Catalyst platform also provides a range of configuration options that can be used to customize its behavior. For example, the accesskey, secretkey, and baseurl config keys can be used to specify the credentials and endpoint for the platform. The projectname and datasetname config keys can also be used to specify the name of the project and dataset being worked with. The RagaAICatalyst class provides a range of methods for working with these config keys, including the createproject and listprojects methods.</p>
+<p>In terms of technical limitations, the RagaAI-Catalyst platform does not support the use of multiple datasets with the same name. This can be a limitation in certain scenarios, where multiple datasets with the same name may be required. The platform also does not provide support for automatic dataset versioning, which can make it difficult to track changes to datasets over time. The Evaluation class and its associated methods, such as listmetrics and addmetrics, can be used to track and analyze dataset performance, but do not provide support for automatic versioning.</p>
+<p>The RagaAI-Catalyst platform provides a range of tools and methods for working with datasets, including the Dataset class and its associated methods. The listdatasets method, for example, can be used to retrieve a list of existing datasets for a specific project, while the createfromcsv method can be used to create a new dataset from a CSV file. The getschemamapping method can also be used to retrieve the schema mapping for a given dataset. The RagaAICatalyst class provides a range of methods for working with datasets, including createproject and projectusecases, which can be used to create and manage projects, and to retrieve information about the use cases associated with a project.</p>
+<p>The RagaAI-Catalyst platform is a powerful tool for managing and analyzing datasets, and provides a range of features and methods for working with datasets. The Dataset class and its associated methods are a key part of the platform, and provide a range of tools for creating, retrieving, and manipulating datasets. The platform also provides a range of configuration options that can be used to customize its behavior, including the accesskey, secretkey, and baseurl config keys. The RagaAICatalyst class provides a range of methods for working with these config keys, including the createproject and listprojects methods.</p>
+<p>In terms of performance, the RagaAI-Catalyst platform is able to handle large datasets and provide fast and efficient dataset management and analysis. The platform is also highly scalable, and can be used to manage and analyze datasets of varying sizes. The Evaluation class and its associated methods, such as listmetrics and addmetrics, can be used to track and analyze dataset performance, and provide a range of tools for optimizing dataset management and analysis. The RagaAI-Catalyst platform is a powerful tool for managing and analyzing datasets, and provides a range of features and methods for working with datasets.</p></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Setting Up RagaAICatalyst with access_key, secret_key, and base_url</h2></div><p class="ch-summary">Setup RagaAICatalyst</p><div class="ch-body"><p>To set up RagaAICatalyst, you need to install the ragaai-catalyst library using pip install ragaai-catalyst. Then, import the RagaAICatalyst class and create an instance of it by passing the accesskey, secretkey, and baseurl as parameters. The accesskey and secretkey are used for authentication, while the baseurl is the URL of the RagaAI Catalyst platform. The RagaAICatalyst class provides methods such as createproject, projectusecases, and listprojects for project management.</p>
+<p>The createproject method takes a project name and use case as parameters and returns a project object. The projectusecases method returns a list of use cases for a project, and the listprojects method returns a list of all projects.</p>
+<p>The RagaAICatalyst class also provides methods for dataset management, such as listdatasets and createfromcsv. The listdatasets method returns a list of all datasets for a project, and the createfromcsv method creates a new dataset from a CSV file. The createfromcsv method takes a CSV path, dataset name, and schema mapping as parameters. The schema mapping is a dictionary that maps the columns in the CSV file to the schema elements.</p>
+<p>The RagaAICatalyst class also provides methods for evaluation management, such as listmetrics and addmetrics. The listmetrics method returns a list of all metrics for a project, and the addmetrics method adds a new metric to a project. The addmetrics method takes a metric name and value as parameters.</p>
+<p>The RagaAICatalyst class also provides methods for synthetic data generation, such as generateqna and generateexamples. The generateqna method generates a list of questions and answers from a text, and the generateexamples method generates a list of examples from a user instruction.</p>
+<p>The RagaAICatalyst class also provides methods for guardrail management, such as listguardrails and addguardrails. The listguardrails method returns a list of all guardrails for a project, and the addguardrails method adds a new guardrail to a project.</p>
+<p>One of the limitations of the RagaAICatalyst class is that it does not support the creation of multiple projects with the same name. If you try to create a project with a name that already exists, it will raise an error.</p>
+<p>The RagaAICatalyst class also provides methods for trace management and prompt management. The trace management methods include listtraces and gettrace, and the prompt management methods include listprompts and get_prompt.</p>
+<p>The RagaAICatalyst class is a powerful tool for managing projects, datasets, and evaluations on the RagaAI Catalyst platform. It provides a wide range of methods for creating, listing, and managing projects, datasets, and evaluations, as well as generating synthetic data and managing guardrails.</p><div class="code-label">Code Sample</div><div class="code-block">from ragaai_catalyst import RagaAICatalyst 
 
-os.environ['PIPELINE_YAML_PATH'] = 'path/to/custom/pipelines.haystack-pipeline.yml' 
+catalyst = RagaAICatalyst(
 
-app = get_app() 
+    access_key='YOUR_ACCESS_KEY', 
 
-app.router.include_router() 
+    secret_key='YOUR_SECRET_KEY', 
 
-pipelines = get_pipelines() 
+    base_url='BASE_URL' 
 
-app = get_app() 
+) 
 
-app.include_router(search2.router, tags=['search2']) 
+project = catalyst.create_project(
 
-gunicorn rest_api.application:app -b 0.0.0.0:8000 
+    project_name='Test-RAG-App-1', 
 
-uvicorn rest_api.application:app --host 0.0.0.0 --port 8000 --reload 
+    usecase='Chatbot' 
 
-from rest_api.utils import load_dotenv 
+) 
 
-load_dotenv() 
+catalyst.project_use_cases() 
 
-from rest_api.controller.search import search 
+projects = catalyst.list_projects() 
 
-app.include_router(search.router, tags=['search']) 
+print(projects) 
 
-from rest_api.controller import search2 
+from ragaai_catalyst import Dataset 
 
-app.include_router(search2.router, tags=['search2']) 
+dataset_manager = Dataset(project_name='project_name') 
 
-get_app().include_router(search.router, tags=['search']) 
+datasets = dataset_manager.list_datasets() 
 
-get_pipelines() 
+print('Existing Datasets:', datasets) 
 
-app.router.include_router(search2.router, tags=['search2'])</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+dataset_manager.create_from_csv(
+
+    csv_path='path/to/your.csv', 
+
+    dataset_name='MyDataset', 
+
+    schema_mapping={'column1': 'schema_element1', 'column2': 'schema_element2'} 
+
+)</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1109.97 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1200.79 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1105.97,-40 1105.97,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1196.79,-40 1196.79,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
@@ -181,206 +182,207 @@ app.router.include_router(search2.router, tags=['search2'])</div><div class="dia
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="215.96" cy="-18" rx="46.6" ry="18"/>
-<text text-anchor="middle" x="215.96" y="-14.5" font-family="Arial" font-size="10.00">Task Planning</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="219.11" cy="-18" rx="49.76" ry="18"/>
+<text text-anchor="middle" x="219.11" y="-14.5" font-family="Arial" font-size="10.00">Goal Formation</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M69.19,-18C94.12,-18 128.64,-18 157.83,-18"/>
-<polygon fill="#475569" stroke="#475569" points="157.63,-21.5 167.63,-18 157.63,-14.5 157.63,-21.5"/>
+<path fill="none" stroke="#475569" d="M68.93,-18C93.67,-18 128.02,-18 157.52,-18"/>
+<polygon fill="#475569" stroke="#475569" points="157.46,-21.5 167.46,-18 157.46,-14.5 157.46,-21.5"/>
 <text text-anchor="middle" x="119.1" y="-19.95" font-family="Arial" font-size="9.00">agent activation</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="415.52" cy="-18" rx="50.21" ry="18"/>
-<text text-anchor="middle" x="415.52" y="-14.5" font-family="Arial" font-size="10.00">Task Execution</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="419.59" cy="-18" rx="50.21" ry="18"/>
+<text text-anchor="middle" x="419.59" y="-14.5" font-family="Arial" font-size="10.00">Task Execution</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M262.78,-18C289.85,-18 324.45,-18 353.78,-18"/>
-<polygon fill="#475569" stroke="#475569" points="353.63,-21.5 363.63,-18 353.63,-14.5 353.63,-21.5"/>
-<text text-anchor="middle" x="313.94" y="-19.95" font-family="Arial" font-size="9.00">plan submission</text>
+<path fill="none" stroke="#475569" d="M269.17,-18C295.91,-18 329.24,-18 357.63,-18"/>
+<polygon fill="#475569" stroke="#475569" points="357.54,-21.5 367.54,-18 357.54,-14.5 357.54,-21.5"/>
+<text text-anchor="middle" x="319.12" y="-19.95" font-family="Arial" font-size="9.00">plan generation</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="640.17,-36 560.23,-18 640.17,0 720.11,-18 640.17,-36"/>
-<text text-anchor="middle" x="640.17" y="-14.5" font-family="Arial" font-size="10.00">Task Assessment</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="676.72,-36 572.55,-18 676.72,0 780.9,-18 676.72,-36"/>
+<text text-anchor="middle" x="676.72" y="-14.5" font-family="Arial" font-size="10.00">Post&#45;Execution Analysis</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M466.21,-18C489.98,-18 519.22,-18 546.85,-18"/>
-<polygon fill="#475569" stroke="#475569" points="546.65,-21.5 556.65,-18 546.65,-14.5 546.65,-21.5"/>
-<text text-anchor="middle" x="512.98" y="-19.95" font-family="Arial" font-size="9.00">task execution</text>
+<path fill="none" stroke="#475569" d="M470.08,-18C495.38,-18 527.33,-18 558.46,-18"/>
+<polygon fill="#475569" stroke="#475569" points="558.36,-21.5 568.36,-18 558.36,-14.5 558.36,-21.5"/>
+<text text-anchor="middle" x="521.17" y="-19.95" font-family="Arial" font-size="9.00">action execution</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="876.08" cy="-18" rx="52.47" ry="18"/>
-<text text-anchor="middle" x="876.08" y="-14.5" font-family="Arial" font-size="10.00">Task Completed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="948.72" cy="-18" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="948.72" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M722.33,-18C751.65,-18 784.3,-18 811.86,-18"/>
-<polygon fill="#475569" stroke="#475569" points="811.82,-21.5 821.82,-18 811.82,-14.5 811.82,-21.5"/>
-<text text-anchor="middle" x="771.86" y="-19.95" font-family="Arial" font-size="9.00">result evaluation</text>
+<path fill="none" stroke="#475569" d="M783.66,-18C817.18,-18 853.21,-18 882.94,-18"/>
+<polygon fill="#475569" stroke="#475569" points="882.91,-21.5 892.91,-18 882.91,-14.5 882.91,-21.5"/>
+<text text-anchor="middle" x="837.9" y="-19.95" font-family="Arial" font-size="9.00">success evaluation</text>
 </g>
 <!-- N5 -->
 <g id="sm-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1062.13" cy="-18" rx="39.84" ry="18"/>
-<text text-anchor="middle" x="1062.13" y="-14.5" font-family="Arial" font-size="10.00">Task Failed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1147.54" cy="-18" rx="45.25" ry="18"/>
+<text text-anchor="middle" x="1147.54" y="-14.5" font-family="Arial" font-size="10.00">Task Abortion</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="sm-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M928.84,-18C954.47,-18 985.3,-18 1010.74,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1010.5,-21.5 1020.5,-18 1010.5,-14.5 1010.5,-21.5"/>
-<text text-anchor="middle" x="975.42" y="-19.95" font-family="Arial" font-size="9.00">error handling</text>
+<path fill="none" stroke="#475569" d="M1002.98,-18C1030.08,-18 1063,-18 1090.48,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1090.38,-21.5 1100.38,-18 1090.38,-14.5 1090.38,-21.5"/>
+<text text-anchor="middle" x="1052.42" y="-19.95" font-family="Arial" font-size="9.00">failure handling</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: haystack lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Haystack with OpenAI and Hugging Face for Multimodal Applications</h2></div><p class="ch-summary">Haystack integrates with OpenAI</p><div class="ch-body"><p>Haystack is designed to work with various LLM applications, including OpenAI and Hugging Face, to enable multimodal applications. The Pipeline class is a key component in Haystack, allowing for the creation of modular workflows. The Pipeline. run() method is used to execute the pipeline, and the askllm function is used to interact with the LLM.</p>
-<p>The FastAPI framework is used to build REST APIs, and the CORSMiddleware is used to prevent CORS errors. The alloworigins config key is used to specify the allowed origins for the API.</p>
-<p>The Haystack API provides a range of features for building production-ready LLM applications, including support for semantic search and question answering. The RAG setups and CohereRanker are used to enable retrieval and ranking of documents. The LiteLLM is a lightweight LLM that can be used for inference. The Haystack API also provides support for long-chain workflows and semantic traceability.</p>
-<p>The multi-model fallback feature allows for the use of multiple models in a pipeline.</p>
-<p>The Haystack architecture is designed to be modular and flexible, with a range of components that can be used to build custom pipelines. The DocumentStore class is used to store and retrieve documents, and the Retriever class is used to retrieve documents from the store. The Query class is used to represent a query, and the AnswerExactMatchEvaluator is used to evaluate the accuracy of the answers. The Evaluator class is used to evaluate the performance of the pipeline.</p>
-<p>The Haystack API provides a range of config keys that can be used to customize the behavior of the pipeline, including the host and port config keys. The apibaseurl config key is used to specify the base URL of the API. The Haystack API also provides support for versioning, with version numbers such as v2. 0 and v2.</p>
-<p>25. 2. The Haystack API is designed to be highly scalable, with support for large-scale deployments.</p>
-<p>One of the limitations of the Haystack API is that it does not support the use of semantic search with embedding. The Haystack API also has limitations in terms of the size of the documents that can be stored in the DocumentStore. The Haystack API is designed to be highly flexible, but this flexibility can also make it more complex to use. The Haystack API provides a range of tools and features to help users build and deploy custom pipelines, including the Hayhooks feature.</p>
-<p>The Haystack API provides a range of features for building and deploying custom pipelines, including support for custom endpoints and nodes. The Haystack API also provides support for deploying pipelines as REST APIs or MCP servers. The Haystack API provides a range of features for building and deploying custom chatbots, including support for custom chat completion endpoints and chat UIs. The Haystack API is designed to be highly customizable, with a range of config keys and features that can be used to tailor the behavior of the pipeline.</p>
-<p>The Haystack API is designed to be highly scalable, with support for large-scale deployments. The Haystack API provides a range of features for building and deploying custom pipelines, including support for custom endpoints and nodes. The Haystack API also provides support for deploying pipelines as REST APIs or MCP servers. The Haystack API is designed to be highly customizable, with a range of config keys and features that can be used to tailor the behavior of the pipeline.</p>
-<p>The Haystack API provides a range of tools and features to help users build and deploy custom pipelines, including the Hayhooks feature.</p>
-<p>The Haystack API provides a range of features for building and deploying custom pipelines, including support for custom endpoints and nodes. The Haystack API also provides support for deploying pipelines as REST APIs or MCP servers. The Haystack API provides a range of features for building and deploying custom chatbots, including support for custom chat completion endpoints and chat UIs. The Haystack API is designed to be highly customizable, with a range of config keys and features that can be used to tailor the behavior of the pipeline.</p>
-<p>The Haystack API is designed to be highly scalable, with support for large-scale deployments.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: RagaAI-Catalyst lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Evaluation Metrics with list_metrics and add_metrics</h2></div><p class="ch-summary">Evaluating metrics</p><div class="ch-body"><p>The RagaAICatalyst class provides methods for project management, including createproject and listprojects. The Evaluation class has methods like listmetrics and addmetrics for evaluation management. The Dataset class allows for dataset management with methods such as listdatasets and createfromcsv. The accesskey, secretkey, and baseurl config keys are used for authentication.</p>
+<p>The RagaAI Catalyst platform supports various use cases, including project management, dataset management, and evaluation management. The platform's architecture includes project management, dataset management, evaluation management, trace management, prompt management, synthetic data generation, and guardrail management. The Evaluation class is initialized with a projectname and datasetname. The listmetrics method returns a list of available metrics.</p>
+<p>The addmetrics method is used to add custom metrics. The RagaAICatalyst class is initialized with accesskey, secretkey, and baseurl. The createproject method creates a new project with a given projectname and usecase. The projectusecases method returns a list of available use cases.</p>
+<p>The listprojects method returns a list of existing projects. The Dataset class is initialized with a projectname. The listdatasets method returns a list of existing datasets. The createfromcsv method creates a new dataset from a CSV file.</p>
+<p>The getschemamapping method returns the schema mapping of a dataset.</p>
+<p>The Evaluation class provides methods for evaluating the performance of a model. The listmetrics method returns a list of available metrics, such as accuracy, precision, and recall. The addmetrics method is used to add custom metrics. The getstatus method returns the status of an evaluation job.</p>
+<p>The getresults method returns the results of an evaluation job. The RagaAICatalyst class provides methods for managing projects, including createproject and listprojects. The Dataset class provides methods for managing datasets, including listdatasets and createfromcsv. The accesskey, secretkey, and baseurl config keys are used for authentication.</p>
+<p>The RagaAI Catalyst platform supports various use cases, including project management, dataset management, and evaluation management.</p>
+<p>The RagaAI Catalyst platform has a limitation in that it does not support real-time data processing. The platform is designed for batch processing and may not be suitable for applications that require real-time data processing. The Evaluation class has a limitation in that it does not support custom metrics for all use cases. The addmetrics method can only be used to add custom metrics for specific use cases.</p>
+<p>The RagaAICatalyst class has a limitation in that it does not support multiple authentication methods. The accesskey, secretkey, and baseurl config keys are the only supported authentication methods.</p>
+<p>The RagaAI Catalyst platform provides a range of methods for managing projects, datasets, and evaluations. The createproject method creates a new project with a given projectname and usecase. The listprojects method returns a list of existing projects. The listdatasets method returns a list of existing datasets.</p>
+<p>The createfromcsv method creates a new dataset from a CSV file. The listmetrics method returns a list of available metrics. The addmetrics method is used to add custom metrics. The getstatus method returns the status of an evaluation job.</p>
+<p>The getresults method returns the results of an evaluation job.</p>
+<p>The Evaluation class provides methods for evaluating the performance of a model. The listmetrics method returns a list of available metrics, such as accuracy, precision, and recall. The addmetrics method is used to add custom metrics. The getstatus method returns the status of an evaluation job.</p>
+<p>The getresults method returns the results of an evaluation job. The RagaAICatalyst class provides methods for managing projects, including createproject and listprojects. The Dataset class provides methods for managing datasets, including listdatasets and createfromcsv.</p>
+<p>The RagaAI Catalyst platform supports various use cases, including project management, dataset management, and evaluation management. The platform's architecture includes project management, dataset management, evaluation management, trace management, prompt management, synthetic data generation, and guardrail management. The Evaluation class is initialized with a projectname and datasetname. The listmetrics method returns a list of available metrics.</p>
+<p>The addmetrics method is used to add custom metrics. The RagaAICatalyst class is initialized with accesskey, secretkey, and baseurl.</p>
+<p>The RagaAI Catalyst platform has a range of features, including project management, dataset management, and evaluation management. The platform provides methods for creating and managing projects, datasets, and evaluations. The createproject method creates a new project with a given projectname and usecase. The listprojects method returns a list of existing projects.</p>
+<p>The listdatasets method returns a list of existing datasets. The createfromcsv method creates a new dataset from a CSV file. The listmetrics method returns a list of available metrics. The addmetrics method is used to add custom metrics.</p>
+<p>The RagaAI Catalyst platform provides a range of benefits, including improved project management, dataset management, and evaluation management. The platform provides methods for creating and managing projects, datasets, and evaluations. The createproject method creates a new project with a given projectname and usecase. The listprojects method returns a list of existing projects.</p>
+<p>The listdatasets method returns a list of existing datasets. The createfromcsv method creates a new dataset from a CSV file. The listmetrics method returns a list of available metrics. The addmetrics method is used to add custom metrics.</p>
+<p>The RagaAICatalyst class provides methods for managing projects, including createproject and listprojects. The Dataset class provides methods for managing datasets, including listdatasets and createfrom_csv.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 226.56 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 227.83 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 222.56,-535 222.56,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 223.83,-535 223.83,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="109.28" cy="-513" rx="50.66" ry="18"/>
-<text text-anchor="middle" x="109.28" y="-509.5" font-family="Arial" font-size="10.00">HaystackQuery</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="109.92" cy="-513" rx="66.9" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.28" cy="-430.5" rx="60.13" ry="18"/>
-<text text-anchor="middle" x="109.28" y="-427" font-family="Arial" font-size="10.00">HaystackTokenizer</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-430.5" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-427" font-family="Arial" font-size="10.00">TextTokenization</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M109.28,-494.53C109.28,-484.51 109.28,-471.68 109.28,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="112.78,-460.45 109.28,-450.45 105.78,-460.45 112.78,-460.45"/>
-<text text-anchor="middle" x="139.28" y="-468.45" font-family="Arial" font-size="9.00">tokenize query</text>
+<path fill="none" stroke="#475569" d="M109.92,-494.53C109.92,-484.51 109.92,-471.68 109.92,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-460.45 109.92,-450.45 106.42,-460.45 113.42,-460.45"/>
+<text text-anchor="middle" x="141.04" y="-468.45" font-family="Arial" font-size="9.00">lexical analysis</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.28" cy="-348" rx="105.69" ry="18"/>
-<text text-anchor="middle" x="109.28" y="-344.5" font-family="Arial" font-size="10.00">Dense Passage Retriever Embedder</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-348" rx="63.74" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-344.5" font-family="Arial" font-size="10.00">SemanticEmbedding</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M109.28,-412.03C109.28,-402.01 109.28,-389.18 109.28,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="112.78,-377.95 109.28,-367.95 105.78,-377.95 112.78,-377.95"/>
-<text text-anchor="middle" x="136.28" y="-385.95" font-family="Arial" font-size="9.00">embed query</text>
+<path fill="none" stroke="#475569" d="M109.92,-412.03C109.92,-402.01 109.92,-389.18 109.92,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-377.95 109.92,-367.95 106.42,-377.95 113.42,-377.95"/>
+<text text-anchor="middle" x="151.17" y="-385.95" font-family="Arial" font-size="9.00">contextual encoding</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="109.28,-283.5 0,-265.5 109.28,-247.5 218.56,-265.5 109.28,-283.5"/>
-<text text-anchor="middle" x="109.28" y="-262" font-family="Arial" font-size="10.00">Dense Passage Retriever</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="109.92,-283.5 0,-265.5 109.92,-247.5 219.83,-265.5 109.92,-283.5"/>
+<text text-anchor="middle" x="109.92" y="-262" font-family="Arial" font-size="10.00">KnowledgeGraphRetrieval</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M109.28,-329.53C109.28,-319.51 109.28,-306.68 109.28,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="112.78,-295.45 109.28,-285.45 105.78,-295.45 112.78,-295.45"/>
-<text text-anchor="middle" x="148.28" y="-303.45" font-family="Arial" font-size="9.00">retrieve documents</text>
+<path fill="none" stroke="#475569" d="M109.92,-329.53C109.92,-319.51 109.92,-306.68 109.92,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-295.45 109.92,-285.45 106.42,-295.45 113.42,-295.45"/>
+<text text-anchor="middle" x="153.42" y="-303.45" font-family="Arial" font-size="9.00">entity disambiguation</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.28" cy="-183" rx="70.96" ry="18"/>
-<text text-anchor="middle" x="109.28" y="-179.5" font-family="Arial" font-size="10.00">CrossEncoderReranker</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-183" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranking</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M109.28,-247.03C109.28,-237.01 109.28,-224.18 109.28,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="112.78,-212.95 109.28,-202.95 105.78,-212.95 112.78,-212.95"/>
-<text text-anchor="middle" x="146.03" y="-220.95" font-family="Arial" font-size="9.00">rerank documents</text>
+<path fill="none" stroke="#475569" d="M109.92,-247.03C109.92,-237.01 109.92,-224.18 109.92,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-212.95 109.92,-202.95 106.42,-212.95 113.42,-212.95"/>
+<text text-anchor="middle" x="146.29" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.28" cy="-100.5" rx="35.33" ry="18"/>
-<text text-anchor="middle" x="109.28" y="-97" font-family="Arial" font-size="10.00">Generator</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-100.5" rx="49.31" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M109.28,-164.53C109.28,-154.51 109.28,-141.68 109.28,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="112.78,-130.45 109.28,-120.45 105.78,-130.45 112.78,-130.45"/>
-<text text-anchor="middle" x="143.78" y="-138.45" font-family="Arial" font-size="9.00">generate answer</text>
+<path fill="none" stroke="#475569" d="M109.92,-164.53C109.92,-154.51 109.92,-141.68 109.92,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-130.45 109.92,-120.45 106.42,-130.45 113.42,-130.45"/>
+<text text-anchor="middle" x="153.42" y="-138.45" font-family="Arial" font-size="9.00">sequence generation</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="109.28" cy="-18" rx="80.43" ry="18"/>
-<text text-anchor="middle" x="109.28" y="-14.5" font-family="Arial" font-size="10.00">HaystackResponseStream</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="109.92" cy="-18" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreaming</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M109.28,-82.03C109.28,-72.01 109.28,-59.18 109.28,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="112.78,-47.95 109.28,-37.95 105.78,-47.95 112.78,-47.95"/>
-<text text-anchor="middle" x="143.4" y="-55.95" font-family="Arial" font-size="9.00">stream response</text>
+<path fill="none" stroke="#475569" d="M109.92,-82.03C109.92,-72.01 109.92,-59.18 109.92,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-47.95 109.92,-37.95 106.42,-47.95 113.42,-47.95"/>
+<text text-anchor="middle" x="144.04" y="-55.95" font-family="Arial" font-size="9.00">output formatting</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: haystack end-to-end processing pipeline</p></div><div class="sec-heading">haystack — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Modular Pipelines</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Agent Workflows</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">RAG Systems</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Multimodal Applications</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Semantic Search</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:89%"></span></span></span><span class="bar-value">89%</span></div><div class="bar-row"><span class="bar-label">Question Answering</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:91%"></span></span></span><span class="bar-value">91%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Common Gotchas in Haystack's Agent Workflows and Pipelines</h2></div><p class="ch-summary">Haystack troubleshooting</p><div class="ch-body"><p>When working with Haystack's agent workflows and pipelines, one common issue is modifying core Haystack files, which can invite continual merge conflicts. The getapp and getpipelines methods from restapi. utils can be used to create custom pipelines and workflows. The PIPELINEYAMLPATH config key is used to specify the path to a custom pipeline YAML file.</p>
-<p>The app. router. includerouter method is used to include custom routers in the application. The loaddotenv function can be used to load environment variables from a .</p>
-<p>env file.</p>
-<p>The Haystack architecture is based on modular pipelines and agent workflows, which can be used to build scalable RAG systems and multimodal applications. The restapi. application:app class is used to create a REST API application, and the restapi/utils module provides utility functions such as getapp and getpipelines. The app.</p>
-<p>includerouter method is used to include custom routers in the application. The host config key is used to specify the host for the REST API application. The os. environ['PIPELINEYAMLPATH'] is used to set the path to a custom pipeline YAML file.</p>
-<p>The Haystack pipeline YAML file is used to define the pipeline and its components, such as the retrieval and generation nodes. The getpipeline method from restapi. utils can be used to get a pipeline by name, and the getpipelines method can be used to get all pipelines. The app.</p>
-<p>router. includerouter method is used to include custom routers in the application, and the loaddotenv function can be used to load environment variables from a . env file. The PIPELINEYAMLPATH config key is used to specify the path to a custom pipeline YAML file.</p>
-<p>The Haystack agent workflows and pipelines can be used to build production-ready LLM applications, and the restapi. application:app class is used to create a REST API application. The getapp and getpipelines methods from restapi. utils can be used to create custom pipelines and workflows, and the app.</p>
-<p>includerouter method is used to include custom routers in the application. The host config key is used to specify the host for the REST API application, and the os. environ['PIPELINEYAMLPATH'] is used to set the path to a custom pipeline YAML file.</p>
-<p>The Haystack architecture does not support modifying core Haystack files, as this can invite continual merge conflicts. The getapp and getpipelines methods from restapi. utils can be used to create custom pipelines and workflows, and the app. router.</p>
-<p>includerouter method is used to include custom routers in the application. The loaddotenv function can be used to load environment variables from a . env file, and the PIPELINEYAMLPATH config key is used to specify the path to a custom pipeline YAML file.</p>
-<p>The Haystack pipeline YAML file is used to define the pipeline and its components, such as the retrieval and generation nodes, and the getpipeline method from restapi. utils can be used to get a pipeline by name. The getpipelines method can be used to get all pipelines, and the app. includerouter method is used to include custom routers in the application.</p>
-<p>The host config key is used to specify the host for the REST API application, and the os. environ['PIPELINEYAMLPATH'] is used to set the path to a custom pipeline YAML file.</p>
-<p>The Haystack agent workflows and pipelines can be used to build scalable RAG systems and multimodal applications, and the restapi. application:app class is used to create a REST API application. The getapp and getpipelines methods from restapi. utils can be used to create custom pipelines and workflows, and the app.</p>
-<p>router. includerouter method is used to include custom routers in the application. The loaddotenv function can be used to load environment variables from a . env file, and the PIPELINEYAMLPATH config key is used to specify the path to a custom pipeline YAML file.</p>
-<p>The Haystack architecture is based on modular pipelines and agent workflows, which can be used to build production-ready LLM applications, and the getapp and getpipelines methods from restapi. utils can be used to create custom pipelines and workflows. The app. includerouter method is used to include custom routers in the application, and the host config key is used to specify the host for the REST API application.</p>
-<p>The os. environ['PIPELINEYAMLPATH'] is used to set the path to a custom pipeline YAML file, and the loaddotenv function can be used to load environment variables from a . env file.</p>
-<p>The research does not provide implementation details for this area, but the Haystack pipeline YAML file is used to define the pipeline and its components, such as the retrieval and generation nodes. The getpipeline method from restapi. utils can be used to get a pipeline by name, and the getpipelines method can be used to get all pipelines. The app.</p>
-<p>router. includerouter method is used to include custom routers in the application, and the loaddotenv function can be used to load environment variables from a . env file. The PIPELINEYAML_PATH config key is used to specify the path to a custom pipeline YAML file.</p><div class="sec-heading">haystack — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Architecture</td><td>Modular Pipelines, Agent Workflows, RAG Systems</td><td>Haystack's architecture is designed to be highly modular and flexible, allowing for easy integration with various components and tools.</td></tr><tr><td>Installation</td><td>pip install haystack-ai</td><td>Haystack can be easily installed using pip, with optional pre-release versions available.</td></tr><tr><td>Use Cases</td><td>LLM Applications, Semantic Search, Question Answering</td><td>Haystack is designed to support a wide range of use cases, including building production-ready LLM applications and designing modular pipelines.</td></tr><tr><td>Integration</td><td>OpenAI, Mistral, Anthropic, Cohere, Hugging Face, Azure OpenAI, AWS Bedrock</td><td>Haystack supports integration with a variety of popular AI models and platforms, allowing for seamless incorporation into existing workflows.</td></tr><tr><td>Customization</td><td>Building and Sharing Custom Components</td><td>Haystack allows users to build and share custom components, enabling high degrees of customization and flexibility.</td></tr><tr><td>Deployment</td><td>REST APIs, MCP Servers, Chat Completion Endpoints, Chat UIs</td><td>Haystack pipelines can be easily deployed as REST APIs or MCP servers, with support for chat completion endpoints and chat UIs like open-webui.</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance in Haystack's Semantic Search and Question Answering Applications</h2></div><p class="ch-summary">Optimize Haystack performance</p><div class="ch-body"><p>To optimize performance in Haystack's semantic search and question answering applications, it is essential to understand the various components involved, such as the Pipeline, Retriever, and DocumentStore. The Pipeline class provides a run method, Pipeline. run(), which can be used to execute a pipeline. The AnswerExactMatchEvaluator class is used to evaluate the accuracy of the answers.</p>
-<p>The convertfiletodocs method is used to convert files to documents. The runbatch method is used to run a pipeline in batch mode.</p>
-<p>The RAG setups in Haystack provide a modular and remote way to perform question answering. The CohereRanker is a ranker that can be used to rank answers. The LiteLLM is a lightweight language model that can be used for question answering. The draw method is used to visualize the pipeline.</p>
-<p>The run method is used to run a pipeline.</p>
-<p>The Haystack API provides several endpoints, including the health endpoint, which can be used to check if the API is accessible. The askllm function is used to ask a question to a language model. The FastAPI framework is used to build the API. The CORSMiddleware is used to prevent CORS errors.</p>
-<p>The Haystack application has several use cases, including external rerank via API, modular and remote RAG setups, long-chain workflows, semantic traceability, and multi-model fallback. The application also provides a way to contribute to the main Haystack project, contribute an integration on haystack-core-integrations, and contribute to the documentation in haystack/docs-website.</p>
-<p>The Haystack application has several limitations, including the fact that running SASEvaluator fails when using the default model. The application also has several version numbers, including 2. 1. 0, 2.</p>
-<p>0, and 1. 9. The application provides a way to update the Pipeline. run() documentation to show all the ways it can be used.</p>
-<p>The Haystack application provides a way to implement custom LLM-based evaluators, including the LLM Eval - Implement custom LLM evaluator component in core, LLM Eval - Implement Faithfulness/Factual Accuracy metric, and LLM Eval - Implement Context Relevance metric. The application also provides a way to implement a custom LLM-based evaluator in Haystack core.</p>
-<p>The Haystack application provides a way to optimize performance by using the Pipeline. run() method, which can be used to execute a pipeline. The application also provides a way to use the AnswerExactMatchEvaluator class to evaluate the accuracy of the answers. The application has a limitation that running SASEvaluator fails when using the default model.</p>
-<p>The Haystack application provides a way to use the convertfiletodocs method to convert files to documents. The application also provides a way to use the run_batch method to run a pipeline in batch mode. The application has several version numbers, including 2. 1.</p>
-<p>0, 2. 0, and 1. 9.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Haystack AI: Production-ready RAG with Custom Data made ...</div><a class="video-url" href="https://www.youtube.com/watch?v=8qqaqefugWQ">https://www.youtube.com/watch?v=8qqaqefugWQ</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Intro to Haystack Pipelines: Build and customize AI applications</div><a class="video-url" href="https://www.youtube.com/watch?v=SxAwyeCkguc">https://www.youtube.com/watch?v=SxAwyeCkguc</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Extractive Q&amp;A With Haystack and FastAPI in Python</div><a class="video-url" href="https://www.youtube.com/watch?v=2tdLYIKPafc">https://www.youtube.com/watch?v=2tdLYIKPafc</a></div></div></section>
-<div class="book-footer"><strong>haystack: Technical Deep Dive</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 20, 2026</div>
+</svg><p class="diagram-caption">Figure: RagaAI-Catalyst end-to-end processing pipeline</p></div><div class="sec-heading">RagaAI-Catalyst — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Project Creation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Dataset Management Efficiency</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Evaluation Metrics Coverage</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Synthetic Data Generation Capabilities</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Guardrail Management Effectiveness</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:89%"></span></span></span><span class="bar-value">89%</span></div><div class="bar-row"><span class="bar-label">Overall User Experience</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:91%"></span></span></span><span class="bar-value">91%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Project Use Cases with project_use_cases and get_status</h2></div><p class="ch-summary">Troubleshoot project use cases</p><div class="ch-body"><p>The RagaAICatalyst class provides a createproject method to initialize a new project, but it does not support concurrent project creation. The projectusecases method can be used to retrieve a list of available use cases for a project. However, it does not provide any information about the status of each use case. The getstatus method can be used to retrieve the status of a specific use case, but it requires the use case ID as an argument.</p>
+<p>The RagaAICatalyst class also provides a listprojects method to retrieve a list of all projects, but it does not provide any information about the use cases associated with each project. The Evaluation class provides a listmetrics method to retrieve a list of metrics for a project, but it does not provide any information about the use cases associated with each metric. The GuardrailsManager class provides a listguardrails method to retrieve a list of guardrails for a project, but it does not provide any information about the use cases associated with each guardrail. The SyntheticDataGeneration class provides a processdocument method to process a document and generate synthetic data, but it does not support processing documents in parallel.</p>
+<p>The RagaAICatalyst class provides a config key called projectname to specify the name of the project. The projectname config key is required to create a new project using the createproject method. The RagaAICatalyst class also provides a config key called usecase to specify the use case for a project. The usecase config key is optional, but it is required to retrieve the status of a specific use case using the getstatus method.</p>
+<p>The RagaAICatalyst class also provides a config key called accesskey to specify the access key for a project. The accesskey config key is required to authenticate with the RagaAICatalyst API. The RagaAICatalyst class also provides a config key called secretkey to specify the secret key for a project. The secretkey config key is required to authenticate with the RagaAICatalyst API.</p>
+<p>The RagaAICatalyst class provides an API method called listprojects to retrieve a list of all projects. The listprojects method returns a list of project IDs, but it does not provide any information about the use cases associated with each project. The RagaAICatalyst class also provides an API method called projectusecases to retrieve a list of available use cases for a project. The projectusecases method returns a list of use case IDs, but it does not provide any information about the status of each use case.</p>
+<p>The RagaAICatalyst class also provides an API method called getstatus to retrieve the status of a specific use case. The getstatus method returns the status of the use case as a string, but it requires the use case ID as an argument.</p>
+<p>The RagaAICatalyst class does not support concurrent project creation, which can be a limitation for large-scale projects. The RagaAICatalyst class also does not provide any information about the use cases associated with each project, which can make it difficult to troubleshoot project use cases. The RagaAICatalyst class provides a listmetrics method to retrieve a list of metrics for a project, but it does not provide any information about the use cases associated with each metric. The RagaAICatalyst class also provides a listguardrails method to retrieve a list of guardrails for a project, but it does not provide any information about the use cases associated with each guardrail.</p>
+<p>The SyntheticDataGeneration class provides a processdocument method to process a document and generate synthetic data. The processdocument method returns a list of synthetic data points, but it does not support processing documents in parallel. The SyntheticDataGeneration class also provides a generateqna method to generate questions and answers from a document. The generateqna method returns a list of questions and answers, but it does not support generating questions and answers in parallel.</p>
+<p>The RagaAICatalyst class provides a config key called baseurl to specify the base URL for the RagaAICatalyst API. The baseurl config key is required to authenticate with the RagaAICatalyst API. The RagaAICatalyst class also provides a config key called csvpath to specify the path to a CSV file. The csvpath config key is optional, but it is required to retrieve data from a CSV file using the createfromcsv method.</p>
+<p>The RagaAICatalyst class provides an API method called createfromcsv to create a new project from a CSV file. The createfromcsv method returns a project ID, but it requires the path to the CSV file as an argument. The RagaAICatalyst class also provides an API method called getschemamapping to retrieve the schema mapping for a project. The getschemamapping method returns a dictionary of schema mappings, but it requires the project ID as an argument.</p><div class="sec-heading">RagaAI-Catalyst — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Project Management</td><td>Centralized</td><td>RagaAI-Catalyst offers a unified platform for managing multiple projects.</td></tr><tr><td>Dataset Support</td><td>CSV, JSON</td><td>RagaAI-Catalyst supports creation of datasets from CSV and JSON files.</td></tr><tr><td>Evaluation Metrics</td><td>Accuracy, F1 Score, ROC-AUC</td><td>RagaAI-Catalyst provides a range of metrics for evaluating model performance.</td></tr><tr><td>Synthetic Data Generation</td><td>Supported</td><td>RagaAI-Catalyst allows for generation of synthetic data for model training.</td></tr><tr><td>Guardrail Management</td><td>Real-time Monitoring</td><td>RagaAI-Catalyst offers real-time monitoring and management of guardrails.</td></tr><tr><td>Integration Complexity</td><td>Low</td><td>RagaAI-Catalyst provides a simple and intuitive API for integration with existing workflows.</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with get_results and get_schema_mapping</h2></div><p class="ch-summary">Optimize RagaAI-Catalyst performance</p><div class="ch-body"><p>The RagaAI-Catalyst library provides several methods to optimize performance, including the getresults and getschemamapping methods. The getresults method can be used to retrieve the results of a query, while the getschemamapping method can be used to retrieve the schema mapping of a dataset. The datasetmanager. listdatasets() method can be used to list all existing datasets, and the datasetmanager.</p>
+<p>createfromcsv() method can be used to create a new dataset from a CSV file. The Tracer class can be used to track the performance of a pipeline, and the Settings class can be used to configure the settings of the pipeline. The OpenAI class can be used to interact with the OpenAI API, and the OpenAIEmbedding class can be used to embed text using the OpenAI API. The PDFReader class can be used to read PDF files, and the loaddocument() function can be used to load a document from a file.</p>
+<p>The getschemamapping method returns a dictionary that maps column names to schema elements, which can be used to optimize the performance of queries. The datasetmanager. getschemamapping() method can be used to retrieve the schema mapping of a dataset, and the schemaElements variable can be used to store the schema mapping. The createfromcsv method can be used to create a new dataset from a CSV file, and the schemamapping parameter can be used to specify the schema mapping of the dataset.</p>
+<p>The tracertype parameter of the Tracer class can be used to specify the type of tracer to use, and the pipeline parameter can be used to specify the pipeline to use. The llmmodel parameter of the pipeline can be used to specify the language model to use, and the vectorstore parameter can be used to specify the vector store to use.</p>
+<p>The performance of the RagaAI-Catalyst library can be optimized by using the getresults and getschemamapping methods to retrieve the results of a query and the schema mapping of a dataset. The datasetmanager. listdatasets() method can be used to list all existing datasets, and the datasetmanager. createfromcsv() method can be used to create a new dataset from a CSV file.</p>
+<p>The Tracer class can be used to track the performance of a pipeline, and the Settings class can be used to configure the settings of the pipeline. The OpenAI class can be used to interact with the OpenAI API, and the OpenAIEmbedding class can be used to embed text using the OpenAI API. The PDFReader class can be used to read PDF files, and the loaddocument() function can be used to load a document from a file.</p>
+<p>The RagaAI-Catalyst library does not support the use of multiple language models in a single pipeline, which can limit the performance of the library. The tracertype parameter of the Tracer class can be used to specify the type of tracer to use, but the library does not provide a way to specify multiple tracers. The pipeline parameter of the Tracer class can be used to specify the pipeline to use, but the library does not provide a way to specify multiple pipelines. The llmmodel parameter of the pipeline can be used to specify the language model to use, but the library does not provide a way to specify multiple language models.</p>
+<p>The getresults method can be used to retrieve the results of a query, and the getschemamapping method can be used to retrieve the schema mapping of a dataset. The datasetmanager. listdatasets() method can be used to list all existing datasets, and the datasetmanager. createfromcsv() method can be used to create a new dataset from a CSV file.</p>
+<p>The Tracer class can be used to track the performance of a pipeline, and the Settings class can be used to configure the settings of the pipeline. The OpenAI class can be used to interact with the OpenAI API, and the OpenAIEmbedding class can be used to embed text using the OpenAI API.</p>
+<p>The RagaAI-Catalyst library provides several configuration keys that can be used to optimize performance, including the projectname key, the datasetname key, and the csvpath key. The schemamapping key can be used to specify the schema mapping of a dataset, and the metadata key can be used to specify the metadata of a pipeline. The tracertype key can be used to specify the type of tracer to use, and the pipeline key can be used to specify the pipeline to use. The llmmodel key can be used to specify the language model to use, and the vectorstore key can be used to specify the vector store to use.</p>
+<p>The performance of the RagaAI-Catalyst library can be optimized by using the getresults and getschemamapping methods to retrieve the results of a query and the schema mapping of a dataset. The datasetmanager. listdatasets() method can be used to list all existing datasets, and the datasetmanager. createfromcsv() method can be used to create a new dataset from a CSV file.</p>
+<p>The Tracer class can be used to track the performance of a pipeline, and the Settings class can be used to configure the settings of the pipeline. The OpenAI class can be used to interact with the OpenAI API, and the OpenAIEmbedding class can be used to embed text using the OpenAI API.</p>
+<p>The RagaAI-Catalyst library does not provide a way to specify multiple language models in a single pipeline, which can limit the performance of the library. The tracertype parameter of the Tracer class can be used to specify the type of tracer to use, but the library does not provide a way to specify multiple tracers. The pipeline parameter of the Tracer class can be used to specify the pipeline to use, but the library does not provide a way to specify multiple pipelines. The llm_model parameter of the pipeline can be used to specify the language model to use, but the library does not provide a way to specify multiple language models.</p></div></section>
+<div class="book-footer"><strong>RagaAI-Catalyst: Engineering Handbook</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 21, 2026</div>
 </body>
 </html>
