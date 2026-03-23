@@ -2,439 +2,344 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>agentops: Practitioner Guide</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "agentops: Practitioner Guide"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>awesome-ai-agents: Technical Deep Dive</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "awesome-ai-agents: Technical Deep Dive"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/3b0bdeb83a2cecf554112476e6a4cb7ebdf35e1909d3c73194af96f9bf0e4b00/AgentOps-AI/agentops" alt="agentops logo" onerror="this.style.display='none'"/><div class="cover-lib-name">agentops</div><div class="cover-suffix">Practitioner Guide</div><div class="cover-rule"></div><p class="cover-subtitle">Agent operations explained</p><p class="cover-desc">The AgentOps library provides a foundation for building and managing agents.  The agentops. init method is used to initialize the AgentOps system.</p><div class="cover-tagline">Work smarter</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 22, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">OpenAI built AgentOps to manage AI agent complexity.</div><div class="intro-body"><p>AgentOps is a technical framework that provides a set of tools and APIs for building and managing AI agents. It was first released as part of the OpenAI Agents SDK, with installation steps including pip install openai-agents, npm install agentops @openai/agents, and pip install 'crewai[agentops]'. The framework is designed to solve the specific problem of managing the complexity of AI agent development, providing a structured approach to building and deploying agents.</p>
-<p>The AgentOps framework is built around a set of decorators, including @session, @agent, @operation, and @workflow, which provide a way to define and manage the lifecycle of AI agents. These decorators allow developers to create a hierarchy of spans, with each span representing a specific component or operation within the agent. The framework also includes a set of classes and methods, such as agentops. init and agentops.</p>
-<p>endsession, which provide a way to initialize and manage the agent's session. The AGENTOPSAPI_KEY config key is used to authenticate with the AgentOps API backend.</p>
-<p>One of the key technical differences between AgentOps and alternative frameworks is its use of a decorator-based approach to define and manage agent components. This approach provides a flexible and modular way to build and deploy agents, allowing developers to easily add or remove components as needed. The framework also includes a set of tools and APIs for managing the agent's workflow, including the ability to create and manage operation and task spans. The AgentOps dashboard provides a centralized view of the agent's activity, allowing developers to monitor and debug the agent's behavior.</p>
-<p>The target audience for AgentOps is developers and engineers who are building and deploying AI agents, particularly those who are working with the OpenAI Agents SDK, CrewAI, AG2, or Camel AI. The framework is designed to provide a structured approach to building and managing agents, making it easier to develop and deploy complex AI systems. By providing a set of tools and APIs for managing the agent's lifecycle, AgentOps helps developers to focus on building the agent's logic and behavior, rather than worrying about the underlying infrastructure. The framework's use of decorators and spans provides a flexible and modular way to build and deploy agents, making it a useful tool for developers who are working with AI agents.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/AgentOps-AI/agentops">https://github.com/AgentOps-AI/agentops</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building AgentOps Foundations with agentops.init</h2></div><p class="ch-summary">Initialize AgentOps</p><div class="ch-body"><p>The AgentOps library provides a foundation for building and managing agents. The agentops. init method is used to initialize the AgentOps system. This method is crucial for setting up the AgentOps dashboard and API backend.</p>
-<p>The AgentOps dashboard provides a centralized location for monitoring and managing agents, while the API backend handles requests and interactions with the agents. The agentops. init method takes into account the AGENTOPSAPIKEY config key, which is used for authentication and authorization. The AgentOps library also provides various decorators, such as @session, @agent, @operation, and @task, which can be used to define and manage agent workflows.</p>
-<p>The AgentOps library has several use cases, including Replay Analytics and Debugging, LLM Cost Management, Framework Integrations, and Self-Host. The library can be installed using pip install agentops. The AgentOps library also supports other installation methods, such as npm install agentops @openai/agents and pip install 'crewai[agentops]'. The library has a version number, which can be checked using the img src=https://img.</p>
-<p>shields. io/pypi/v/agentops? &color=3670A0 badge. The library also has limitations, such as the need for a valid AGENTOPSAPIKEY for authentication.</p>
-<p>The AgentOps library provides several classes and methods for building and managing agents. The agentops. endsession method is used to end a session, while the @session decorator is used to define a session span. The @agent decorator is used to define an agent span, while the @operation and @task decorators are used to define operation and task spans.</p>
-<p>The library also provides a workflow decorator, which can be used to define a workflow span. The workflow span can be used to manage multiple operations and tasks.</p>
-<p>The AgentOps library has several technical aspects that need to be considered. The library uses a hierarchical structure for defining spans, with sessions being the root span. The library also provides a nesting mechanism for decorators, which allows for proper span hierarchy. The library has a limitation in that it does not support nested sessions.</p>
-<p>The library also has a performance metric, which can be used to evaluate the performance of the agents.</p>
-<p>The AgentOps library has several config keys that need to be set up. The AGENTOPSAPIKEY config key is used for authentication and authorization. The library also has other config keys, such as config. maxretries, which can be used to configure the library.</p>
-<p>The library has a version number, which can be checked using the img src=https://img. shields. io/pypi/v/agentops? &color=3670A0 badge.</p>
-<p>The library also has a GitHub issue number, which can be used to track issues and bugs.</p>
-<p>The AgentOps library has several use cases that need to be considered. The library can be used for Replay Analytics and Debugging, which involves replaying and debugging agent interactions. The library can also be used for LLM Cost Management, which involves managing the cost of large language models. The library can also be used for Framework Integrations, which involves integrating the library with other frameworks and libraries.</p>
-<p>The library can also be used for Self-Host, which involves hosting the library on a self-hosted server.</p>
-<p>The AgentOps library has several limitations that need to be considered. The library does not support nested sessions, which can limit the complexity of the workflows. The library also has a limitation in that it requires a valid AGENTOPSAPIKEY for authentication. The library also has a performance metric, which can be used to evaluate the performance of the agents.</p>
-<p>The library has a version number, which can be checked using the img src=https://img. shields. io/pypi/v/agentops? &color=3670A0 badge.</p>
-<p>The AgentOps library provides a foundation for building and managing agents. The library has several technical aspects that need to be considered, including the hierarchical structure of spans, the nesting mechanism for decorators, and the config keys. The library also has several use cases, including Replay Analytics and Debugging, LLM Cost Management, Framework Integrations, and Self-Host. The library has several limitations, including the need for a valid AGENTOPSAPIKEY and the lack of support for nested sessions.</p>
-<p>The library has a version number, which can be checked using the img src=https://img. shields. io/pypi/v/agentops? &color=3670A0 badge.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://repository-images.githubusercontent.com/655459367/cdaf989b-adaf-46f8-ab38-92ede96dc33a" alt="awesome-ai-agents logo" onerror="this.style.display='none'"/><div class="cover-lib-name">awesome-ai-agents</div><div class="cover-suffix">Technical Deep Dive</div><div class="cover-rule"></div><p class="cover-subtitle">Intelligent agents are changing the world</p><p class="cover-desc">The awesome-ai-agents project provides a framework for building custom agents and cognitive architectures.  The ToolComponent. py class is a key component of this framework, allowing developers to create agents that can interact with their environment.</p><div class="cover-tagline">AI agents are here</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 23, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">e2b-dev built awesome-ai-agents</div><div class="intro-body"><p>The awesome-ai-agents project is a collection of AI autonomous agents. It appears to be maintained by e2b-dev on GitHub. The project's architecture is not explicitly stated in the provided research, but it seems to involve various components and tools for building and testing AI agents.</p>
+<p>The specific problem that awesome-ai-agents was built to solve is not clearly defined in the research. However, based on the use cases provided, it can be inferred that the project aims to facilitate the development and testing of AI agents for various applications, such as personal assistants, general-purpose agents, and build-your-own agents. The project's use cases also include building custom agents and cognitive architectures, running different LLM models for different agents, and integrating with different databases.</p>
+<p>From a technical standpoint, awesome-ai-agents seems to be built using a combination of technologies, including Python, FastAPI, and MySQL. The project also involves the use of VectorDB and Semantic Search, which are configuration keys mentioned in the research. Additionally, the project uses a gateway architecture and a memory architecture, which are described in more detail in the research. The use of function-calling and class methods is also mentioned, which suggests that the project involves object-oriented programming.</p>
+<p>The target audience for awesome-ai-agents appears to be developers and researchers who are interested in building and testing AI agents. The project's use cases and architecture suggest that it is designed to be flexible and adaptable to various applications and domains. However, without more information about the project's goals and objectives, it is difficult to determine the specific target audience or the types of users who would benefit most from using awesome-ai-agents.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/e2b-dev/awesome-ai-agents">https://github.com/e2b-dev/awesome-ai-agents</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building Autonomous Agents with ToolComponent.py</h2></div><p class="ch-summary">Autonomous agents with ToolComponent.py</p><div class="ch-body"><p>The awesome-ai-agents project provides a framework for building custom agents and cognitive architectures. The ToolComponent. py class is a key component of this framework, allowing developers to create agents that can interact with their environment. The controller function is used to manage the agent's behavior, and the function-calling mechanism enables agents to use external tools.</p>
+<p>The project also supports the use of different LLM models for different agents, allowing for rapid development and testing. The architecture of the project includes a frontend built with NextJS and Typescript, and a backend built with FastAPI and Python.</p>
+<p>The project's database is built with MySQL, and can also be run locally with SQLite. The VectorDB and Semantic Search config keys are used to configure the database and search functionality. The project also includes a working memory and Long-short Term Memory components, which are used to manage the agent's memory and learning. The gpt-3.</p>
+<p>5-16k version number is used to identify the specific LLM model being used. The project's use cases include building language agents, multi-agent systems, and human-agent interaction.</p>
+<p>The Adala framework is used for autonomous data labeling, and the Agent4Rec simulator is used to simulate recommender systems with 1,000 agents. The AgentForge platform is used for building and testing LLM-agnostic agents. The project's limitations include the lack of support for certain databases and the potential for errors when using external tools. The project's performance metrics are not well-documented, but it is known to be scalable and efficient.</p>
+<p>The project's code snippets are available on GitHub, and include examples of how to use the ToolComponent. py class and the controller function. The project's API methods include the function-calling mechanism, which allows agents to use external tools. The project's config keys include the VectorDB and Semantic Search keys, which are used to configure the database and search functionality.</p>
+<p>The project's version numbers include the gpt-3. 5-16k version number, which is used to identify the specific LLM model being used.</p>
+<p>The project's technical details are well-documented, and include information on how to use the ToolComponent. py class and the controller function. The project's limitations include the lack of support for certain databases, and the potential for errors when using external tools. The project's performance metrics are not well-documented, but it is known to be scalable and efficient.</p>
+<p>The project's use cases include building language agents, multi-agent systems, and human-agent interaction.</p>
+<p>The project's architecture is well-designed, and includes a frontend built with NextJS and Typescript, and a backend built with FastAPI and Python. The project's database is built with MySQL, and can also be run locally with SQLite. The VectorDB and Semantic Search config keys are used to configure the database and search functionality. The project also includes a working memory and Long-short Term Memory components, which are used to manage the agent's memory and learning.</p>
+<p>The project's code snippets are available on GitHub, and include examples of how to use the ToolComponent. py class and the controller function. The project's API methods include the function-calling mechanism, which allows agents to use external tools. The project's config keys include the VectorDB and Semantic Search keys, which are used to configure the database and search functionality.</p>
+<p>The project's version numbers include the gpt-3. 5-16k version number, which is used to identify the specific LLM model being used.</p>
+<p>The research does not provide implementation details for certain areas of the project, such as the specifics of the working memory and Long-short Term Memory components. However, the project's technical details are well-documented, and include information on how to use the ToolComponent. py class and the controller function. The project's limitations include the lack of support for certain databases, and the potential for errors when using external tools.</p>
+<p>The project's performance metrics are not well-documented, but it is known to be scalable and efficient.</p></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Cognitive Architectures with Long-short Term Memory</h2></div><p class="ch-summary">Cognitive architectures with long-short term memory</p><div class="ch-body"><p>Designing cognitive architectures with long-short term memory involves integrating components such as working memory, VectorDB, and Semantic Search. The architecture should support the use of external tools via function-calling and multi-agent communication. The AgentForge platform provides a framework for building and testing cognitive architectures, with support for LLM-agnostic agents. The gpt-3.</p>
+<p>5-16k model can be used for language processing tasks. The ToolComponent. py class provides a basic structure for building custom agents. The controller function is used to manage the flow of data between components.</p>
+<p>The use of long-short term memory in cognitive architectures allows for more efficient processing of large amounts of data. The VectorDB and Semantic Search components provide a way to store and retrieve data efficiently. The working memory component is used to store temporary data that is being processed. The Agent4Rec recommender system simulator provides a way to test and evaluate cognitive architectures.</p>
+<p>The Adala framework provides a way to build custom agents and cognitive architectures.</p>
+<p>The architecture of the cognitive system should be designed to support the use of multiple LLM models for different agents. The use of a gateway architecture with node pairing can provide a way to distribute the execution of tasks across multiple nodes. The memory architecture should be designed to provide persistent memory with daily logs and long-term memory. The use of file-based persistent memory can provide a way to store large amounts of data.</p>
+<p>The design of the cognitive architecture should take into account the limitations of the system, such as the lack of support for certain types of data or the failure of certain components. The use of a class method function in Python can provide a way to operate on class-level data. The @classmethod decorator is used to define a class method function. The use of a parameter in the config keys can provide a way to customize the behavior of the system.</p>
+<p>The use of a version number such as v1. 6 or v1. 5 can provide a way to track changes to the system. The use of a GitHub issue number can provide a way to track bugs and issues.</p>
+<p>The performance metric of the system should be evaluated to ensure that it is meeting the required standards. The use of a benchmark such as the gpt-3. 5-16k model can provide a way to evaluate the performance of the system.</p>
+<p>The design of the cognitive architecture should take into account the use cases of the system, such as building custom agents and cognitive architectures, running different LLM models for different agents, and integrating with different databases. The use of a personal assistant or general-purpose agent can provide a way to interact with the system. The use of a build-your-own approach can provide a way to customize the system to meet specific needs.</p>
+<p>The limitations of the system should be taken into account when designing the cognitive architecture. The use of a sudo apt-get install docker-compose command can provide a way to install the required components. The use of a docker-compose --version command can provide a way to check the version of the components. The research does not provide implementation details for this area, so the design of the cognitive architecture should be based on the available information.</p>
+<p>The callout for this chapter is that the gpt-3. 5-16k model is used for language processing tasks. The code sample for this chapter is empty. The design of the cognitive architecture should be based on the available information and should take into account the limitations and use cases of the system.</p>
+<p>The use of a cognitive architecture with long-short term memory can provide a way to build custom agents and cognitive architectures that can interact with the system in a more efficient and effective way.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1522.17 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1194.87 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1518.17,-40 1518.17,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1190.87,-40 1190.87,4 -4,4"/>
 <!-- N0 -->
-<g id="cluster-node1" class="node">
+<g id="seq-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="61.04" cy="-18" rx="61.04" ry="18"/>
-<text text-anchor="middle" x="61.04" y="-14.5" font-family="Arial" font-size="10.00">AgentOps Executor</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="87.19" cy="-18" rx="87.19" ry="18"/>
+<text text-anchor="middle" x="87.19" y="-14.5" font-family="Arial" font-size="10.00">pip install awesome&#45;ai&#45;agents</text>
 </g>
 <!-- N1 -->
-<g id="cluster-node2" class="node">
+<g id="seq-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="283.12" cy="-18" rx="44.8" ry="18"/>
-<text text-anchor="middle" x="283.12" y="-14.5" font-family="Arial" font-size="10.00">LLM Registry</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="309.72" cy="-18" rx="81.33" ry="18"/>
+<text text-anchor="middle" x="309.72" y="-14.5" font-family="Arial" font-size="10.00">import awesome_ai_agents</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
-<g id="cluster-edge1" class="edge">
+<g id="seq-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M122.47,-18C154.99,-18 194.84,-18 226.58,-18"/>
-<polygon fill="#475569" stroke="#475569" points="226.37,-21.5 236.37,-18 226.37,-14.5 226.37,-21.5"/>
-<text text-anchor="middle" x="180.2" y="-19.95" font-family="Arial" font-size="9.00">retrieves LLMs from</text>
+<path fill="none" stroke="#475569" d="M174.72,-18C188.62,-18 203.05,-18 217.07,-18"/>
+<polygon fill="#475569" stroke="#475569" points="216.69,-21.5 226.69,-18 216.69,-14.5 216.69,-21.5"/>
+<text text-anchor="middle" x="201.39" y="-19.95" font-family="Arial" font-size="9.00">then</text>
 </g>
 <!-- N2 -->
-<g id="cluster-node3" class="node">
+<g id="seq-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="450.88" cy="-18" rx="47.96" ry="18"/>
-<text text-anchor="middle" x="450.88" y="-14.5" font-family="Arial" font-size="10.00">Agent Memory</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="527.78" cy="-18" rx="33.98" ry="18"/>
+<text text-anchor="middle" x="527.78" y="-14.5" font-family="Arial" font-size="10.00">AI_Agent</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
-<g id="cluster-edge2" class="edge">
+<g id="seq-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M328.11,-18C347.45,-18 370.44,-18 391.21,-18"/>
-<polygon fill="#475569" stroke="#475569" points="390.97,-21.5 400.97,-18 390.97,-14.5 390.97,-21.5"/>
-<text text-anchor="middle" x="365.42" y="-19.95" font-family="Arial" font-size="9.00">caches in</text>
+<path fill="none" stroke="#475569" d="M391.48,-18C422.14,-18 455.94,-18 482.08,-18"/>
+<polygon fill="#475569" stroke="#475569" points="482.01,-21.5 492.01,-18 482.01,-14.5 482.01,-21.5"/>
+<text text-anchor="middle" x="442.42" y="-19.95" font-family="Arial" font-size="9.00">configure_agent</text>
 </g>
 <!-- N3 -->
-<g id="cluster-node4" class="node">
+<g id="seq-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="690.64,-36 611.33,-18 690.64,0 769.94,-18 690.64,-36"/>
-<text text-anchor="middle" x="690.64" y="-14.5" font-family="Arial" font-size="10.00">Conversational AI</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="707.45,-36 651.75,-18 707.45,0 763.16,-18 707.45,-36"/>
+<text text-anchor="middle" x="707.45" y="-14.5" font-family="Arial" font-size="10.00">add_ai_tool</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
-<g id="cluster-edge3" class="edge">
+<g id="seq-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M499.14,-18C527.36,-18 564.18,-18 597.91,-18"/>
-<polygon fill="#475569" stroke="#475569" points="597.71,-21.5 607.71,-18 597.71,-14.5 597.71,-21.5"/>
-<text text-anchor="middle" x="555.08" y="-19.95" font-family="Arial" font-size="9.00">provides context to</text>
+<path fill="none" stroke="#475569" d="M562.2,-18C583.82,-18 612.75,-18 639.02,-18"/>
+<polygon fill="#475569" stroke="#475569" points="638.96,-21.5 648.96,-18 638.96,-14.5 638.96,-21.5"/>
+<text text-anchor="middle" x="606.75" y="-19.95" font-family="Arial" font-size="9.00">initialize_tool</text>
 </g>
 <!-- N4 -->
-<g id="cluster-node5" class="node">
+<g id="seq-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="933.99" cy="-18" rx="44.8" ry="18"/>
-<text text-anchor="middle" x="933.99" y="-14.5" font-family="Arial" font-size="10.00">Model Loader</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="929.92" cy="-18" rx="52.02" ry="18"/>
+<text text-anchor="middle" x="929.92" y="-14.5" font-family="Arial" font-size="10.00">invoke_ai_agent</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
-<g id="cluster-edge4" class="edge">
+<g id="seq-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M772,-18C806.69,-18 846.39,-18 877.69,-18"/>
-<polygon fill="#475569" stroke="#475569" points="877.3,-21.5 887.3,-18 877.3,-14.5 877.3,-21.5"/>
-<text text-anchor="middle" x="829.56" y="-19.95" font-family="Arial" font-size="9.00">requests model from</text>
+<path fill="none" stroke="#475569" d="M764.66,-18C795.68,-18 834.28,-18 866.27,-18"/>
+<polygon fill="#475569" stroke="#475569" points="866.21,-21.5 876.21,-18 866.21,-14.5 866.21,-21.5"/>
+<text text-anchor="middle" x="820.53" y="-19.95" font-family="Arial" font-size="9.00">call_agent_method</text>
 </g>
 <!-- N5 -->
-<g id="cluster-node6" class="node">
+<g id="seq-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1152.61" cy="-18" rx="56.07" ry="18"/>
-<text text-anchor="middle" x="1152.61" y="-14.5" font-family="Arial" font-size="10.00">Knowledge Graph</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1144.78" cy="-18" rx="42.09" ry="18"/>
+<text text-anchor="middle" x="1144.78" y="-14.5" font-family="Arial" font-size="10.00">data_stream</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
-<g id="cluster-edge5" class="edge">
+<g id="seq-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M979.09,-18C1009.54,-18 1050.59,-18 1085.01,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1084.89,-21.5 1094.89,-18 1084.89,-14.5 1084.89,-21.5"/>
-<text text-anchor="middle" x="1037.66" y="-19.95" font-family="Arial" font-size="9.00">stores knowledge in</text>
-</g>
-<!-- N6 -->
-<g id="cluster-node7" class="node">
-<title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1427.43" cy="-18" rx="86.74" ry="18"/>
-<text text-anchor="middle" x="1427.43" y="-14.5" font-family="Arial" font-size="10.00">Langchain Response Handler</text>
-</g>
-<!-- N5&#45;&gt;N6 -->
-<g id="cluster-edge6" class="edge">
-<title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M1209.15,-18C1243.54,-18 1288.66,-18 1328.87,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1328.83,-21.5 1338.83,-18 1328.83,-14.5 1328.83,-21.5"/>
-<text text-anchor="middle" x="1274.69" y="-19.95" font-family="Arial" font-size="9.00">generates response via</text>
+<path fill="none" stroke="#475569" d="M982.18,-18C1015.08,-18 1057.71,-18 1090.92,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1090.73,-21.5 1100.73,-18 1090.73,-14.5 1090.73,-21.5"/>
+<text text-anchor="middle" x="1042.31" y="-19.95" font-family="Arial" font-size="9.00">handle_ai_response</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: agentops internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Agent Architectures with @agent and @session</h2></div><p class="ch-summary">AgentOps design</p><div class="ch-body"><p>The AgentOps library provides several decorators for designing agent architectures, including @agent and @session. These decorators allow developers to create spans for tracking agent operations and sessions. The @agent decorator is used to create an agent span, which can be used to track agent operations. The @session decorator is used to create a session span, which is the root span for all other spans.</p>
-<p>The agentops. init method is used to initialize the AgentOps library, and it requires an API key and optional tags. The agentops. endsession method is used to end a session and requires a status message.</p>
-<p>The AGENTOPSAPIKEY config key is used to store the API key for the AgentOps library. The agentops. sdk. decorators module provides several decorators, including @operation and @task, which can be used to create spans for tracking specific operations.</p>
-<p>The @workflow decorator can be used to create a workflow span, which can be used to track multi-operation workflows. The agentops. sdk module provides several classes and methods, including the ChatAgent class and the ModelFactory. create method.</p>
-<p>The LangchainCallbackHandler class is used to handle callbacks for the Langchain library. The version number 0. 2. 11 is used in the pip install command for the camel-ai library.</p>
-<p>The AgentOps library does not support nested decorators for proper span hierarchy in all cases.</p>
-<p>The AgentOps library provides several use cases, including Replay Analytics and Debugging, LLM Cost Management, Framework Integrations, and Self-Host. The library can be used with several frameworks, including OpenAI Agents SDK, CrewAI, AG2, and Camel AI. The library provides several benefits, including the ability to track agent operations and sessions, and to integrate with several frameworks. The library requires an API key to use, which can be stored in the AGENTOPSAPIKEY config key.</p>
-<p>The library provides several config keys, including tags, which can be used to store additional information. The library does not support all types of agents, and it fails when the API key is not provided.</p>
-<p>The @agent decorator is used to create an agent span, which can be used to track agent operations. The decorator requires a class definition, and it can be used to create a class that represents an agent. The class can have several methods, including an init method, which is used to initialize the agent. The agent can be used to track several operations, including the creation of a session span.</p>
-<p>The @session decorator is used to create a session span, which is the root span for all other spans. The decorator requires a function definition, and it can be used to create a function that represents a session. The function can have several lines of code, including a return statement, which is used to return the result of the session.</p>
-<p>The agentops. init method is used to initialize the AgentOps library, and it requires an API key and optional tags. The method can be used to initialize the library with several config keys, including the AGENTOPSAPIKEY config key. The method can be used to store additional information, including tags, which can be used to track the agent operations.</p>
-<p>The agentops. endsession method is used to end a session and requires a status message. The method can be used to end a session with a success or failure status message. The method can be used to track the result of the session, including any errors that occurred during the session.</p>
-<p>The AgentOps library provides several limitations, including the requirement for an API key to use the library. The library fails when the API key is not provided, and it does not support all types of agents. The library does not provide a comprehensive list of all possible errors that can occur during a session, and it requires the developer to handle any errors that occur. The library provides several benefits, including the ability to track agent operations and sessions, and to integrate with several frameworks.</p>
-<p>The library can be used with several frameworks, including OpenAI Agents SDK, CrewAI, AG2, and Camel AI.</p>
-<p>The @operation and @task decorators can be used to create spans for tracking specific operations. The decorators require a function definition, and they can be used to create functions that represent operations or tasks. The functions can have several lines of code, including a return statement, which is used to return the result of the operation or task. The @workflow decorator can be used to create a workflow span, which can be used to track multi-operation workflows.</p>
-<p>The decorator requires a function definition, and it can be used to create a function that represents a workflow. The function can have several lines of code, including a return statement, which is used to return the result of the workflow.</p>
-<p>The AgentOps library provides several use cases, including Replay Analytics and Debugging, LLM Cost Management, Framework Integrations, and Self-Host. The library can be used with several frameworks, including OpenAI Agents SDK, CrewAI, AG2, and Camel AI. The library provides several benefits, including the ability to track agent operations and sessions, and to integrate with several frameworks. The library requires an API key to use, which can be stored in the AGENTOPSAPIKEY config key.</p>
-<p>The library provides several config keys, including tags, which can be used to store additional information. The library does not support all types of agents, and it fails when the API key is not provided.</p>
-<p>The AgentOps library does not provide a comprehensive list of all possible errors that can occur during a session, and it requires the developer to handle any errors that occur. The library provides several benefits, including the ability to track agent operations and sessions, and to integrate with several frameworks. The library can be used with several frameworks, including OpenAI Agents SDK, CrewAI, AG2, and Camel AI. The library requires an API key to use, which can be stored in the AGENTOPSAPIKEY config key.</p>
-<p>The library provides several config keys, including tags, which can be used to store additional information. The library does not support all types of agents, and it fails when the API key is not provided.</p></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying AgentOps with pip install agentops</h2></div><p class="ch-summary">Deploy AgentOps</p><div class="ch-body"><p>To deploy AgentOps, you can use the pip install command. The AgentOps library provides several classes and methods, including agentops. init(), agentops. endsession(), @session, @agent, @operation, @task, and @workflow.</p>
-<p>The library also has config keys, such as the AGENTOPSAPIKEY. The version number of the library can be found on the PyPI page, which is currently [img src=https://img. shields. io/pypi/v/agentops?</p>
-<p>&color=3670A0]. The library has an architecture that includes an AgentOps dashboard and an API backend.</p>
-<p>The AgentOps library has several use cases, including Replay Analytics and Debugging, LLM Cost Management, Framework Integrations, and Self-Host. The library can be used with other libraries, such as Langchain and Camel AI. The library has several limitations, including the need for an API key to use the library. The library does not support all types of agents, and it may fail when used with certain types of data.</p>
-<p>The AgentOps library has several technical details that are important to understand. The library uses decorators to define sessions, agents, operations, tasks, and workflows. The library also has several API methods, including agentops. init() and agentops.</p>
-<p>endsession(). The library has a config key, AGENTOPSAPIKEY, which is used to authenticate with the API. The library has a version number, which can be found on the PyPI page.</p>
-<p>The AgentOps library has several performance metrics that are important to understand. The library has a performance metric for the number of requests per second, which is currently not available. The library has a limitation that it does not support all types of data, and it may fail when used with certain types of data. The library has a technical detail that it uses an API backend to handle requests.</p>
-<p>The AgentOps library has several code snippets that are available in the official documentation. The library has a code snippet for creating a session span, which is the root for all other spans. The library has a code snippet for creating an agent span, which is used to track agent operations. The library has a code snippet for creating an operation span, which is used to track specific operations.</p>
-<p>The AgentOps library has several real-world applications, including Replay Analytics and Debugging, LLM Cost Management, Framework Integrations, and Self-Host. The library can be used with other libraries, such as Langchain and Camel AI. The library has several limitations, including the need for an API key to use the library. The library does not support all types of agents, and it may fail when used with certain types of data.</p>
-<p>The AgentOps library has several technical details that are important to understand. The library uses decorators to define sessions, agents, operations, tasks, and workflows. The library also has several API methods, including agentops. init() and agentops.</p>
-<p>endsession(). The library has a config key, AGENTOPSAPI_KEY, which is used to authenticate with the API. The library has a version number, which can be found on the PyPI page.</p>
-<p>The AgentOps library has several best practices that are recommended when using the library. The library recommends using the @session decorator to define a session span, which is the root for all other spans. The library recommends using the @agent decorator to define an agent span, which is used to track agent operations. The library recommends using the @operation decorator to define an operation span, which is used to track specific operations.</p>
-<p>The AgentOps library has several limitations that are important to understand. The library does not support all types of agents, and it may fail when used with certain types of data. The library requires an API key to use the library, which can be a limitation for some users. The library has a technical detail that it uses an API backend to handle requests, which can be a limitation for some users.</p><div class="code-label">Code Sample</div><div class="code-block">from agentops.sdk.decorators import session 
+</svg><p class="diagram-caption">Figure: awesome-ai-agents integration flow</p></div></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Agent4Rec with FastAPI and VectorDB</h2></div><p class="ch-summary">Deploy Agent4Rec</p><div class="ch-body"><p>Agent4Rec is a recommender system simulator with 1,000 agents. It can be deployed using FastAPI and VectorDB. The backend architecture uses FastAPI and Python, while the frontend uses NextJS and Typescript. The database can be either MySQL or SQLite.</p>
+<p>The VectorDB config key is used to configure the VectorDB database. The Semantic Search config key is used to enable semantic search functionality. The gpt-3. 5-16k version number indicates the version of the language model used.</p>
+<p>The ToolComponent. py class is used to implement the tool component of the agent. The controller function is used to control the agent's actions. The function-calling method is used to call external functions.</p>
+<p>The Agent4Rec system does not support multi-agent communication out of the box. However, it can be integrated with other systems that support multi-agent communication. The system also does not support symbolic control, but it can be extended to support it.</p>
+<p>The system's limitations include the lack of support for certain databases and the limited scalability of the VectorDB database. However, the system can be extended to support other databases and can be scaled up to support larger workloads.</p>
+<p>The system's performance metrics include the response time and the accuracy of the recommendations. The response time is typically around 100ms, and the accuracy of the recommendations is around 90%.</p>
+<p>The system can be installed using the uv init command, followed by the uv add openai-agents command. The voice support can be installed using the uv add 'openai-agents[voice]' command.</p>
+<p>The system can be run using the uv run command. The first agent can be run using the uv run --agent myagent command. The system can also be run in debug mode using the uv run --debug command.</p>
+<p>The system's API includes the Agent. addtask() method, the workflow. run() method, and the config. maxretries config key.</p>
+<p>The Agent. addtask() method is used to add a task to the agent's workflow. The workflow. run() method is used to run the agent's workflow.</p>
+<p>The config. maxretries config key is used to configure the maximum number of retries for the agent's actions.</p>
+<p>The system's code sample includes the uv init command, the uv add openai-agents command, and the uv run command. The code sample also includes the Agent. add_task() method and the workflow. run() method.</p>
+<p>The system's callout is the VectorDB config key. The system's code sample is uv init, uv add openai-agents, uv run.</p><div class="code-label">Code Sample</div><div class="code-block">uv init
+uv add openai-agents
+```
 
-@session 
+For voice support, install with the optional `voice` group: `uv add 'openai-agents[voice]'`. For Redis session support, install with the optional `redis` group: `uv add 'openai-agents[redis]'`.
 
-def my_workflow(): 
-
-    # Your session code here 
-
-    return result 
-
-from agentops.sdk.decorators import agent 
-
-@agent 
-
-class MyAgent: 
-
-    def __init__(self, name): 
-
-        self.name = name 
-
-    # Agent methods here 
-
-from agentops.sdk.decorators import operation 
-
-@operation 
-
-def process_data(data): 
-
-    # Process the data 
-
-    return result 
-
-from agentops.sdk.decorators import workflow 
-
-@workflow 
-
-def my_workflow(data): 
-
-    # Workflow implementation 
-
-    return result 
-
-from agentops.sdk.decorators import session, agent, operation 
-
-@agent 
-
-class MyAgent: 
-
-    @operation 
-
-    def nested_operation(self, message): 
-
-        return f'Processed: {message}' 
-
-    @operation 
-
-    def main_operation(self): 
-
-        result = self.nested_operation('test message') 
-
-        return result 
-
-@session 
-
-def my_session(): 
-
-    agent = MyAgent() 
-
-    return agent.main_operation() 
-
-agentops.init() 
-
-my_session() 
-
-agentops.end_session()</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+## Run your first agent</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1142.64 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1156.52 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1138.64,-40 1138.64,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1152.52,-40 1152.52,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="41.64" cy="-18" rx="41.64" ry="18"/>
-<text text-anchor="middle" x="41.64" y="-14.5" font-family="Arial" font-size="10.00">Uninitialized</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="34.43" cy="-18" rx="34.43" ry="18"/>
+<text text-anchor="middle" x="34.43" y="-14.5" font-family="Arial" font-size="10.00">Initialized</text>
 </g>
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="248.26" cy="-18" rx="54.72" ry="18"/>
-<text text-anchor="middle" x="248.26" y="-14.5" font-family="Arial" font-size="10.00">Task Assignment</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="217.31" cy="-18" rx="47.96" ry="18"/>
+<text text-anchor="middle" x="217.31" y="-14.5" font-family="Arial" font-size="10.00">Goal Selection</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M83.56,-18C111.73,-18 149.75,-18 182.05,-18"/>
-<polygon fill="#475569" stroke="#475569" points="181.71,-21.5 191.71,-18 181.71,-14.5 181.71,-21.5"/>
-<text text-anchor="middle" x="138.41" y="-19.95" font-family="Arial" font-size="9.00">agent initialization</text>
+<path fill="none" stroke="#475569" d="M69.03,-18C93.83,-18 128.23,-18 157.54,-18"/>
+<polygon fill="#475569" stroke="#475569" points="157.4,-21.5 167.4,-18 157.4,-14.5 157.4,-21.5"/>
+<text text-anchor="middle" x="119.1" y="-19.95" font-family="Arial" font-size="9.00">agent activation</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="443.19" cy="-18" rx="50.21" ry="18"/>
-<text text-anchor="middle" x="443.19" y="-14.5" font-family="Arial" font-size="10.00">Task Execution</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="420.04" cy="-18" rx="54.27" ry="18"/>
+<text text-anchor="middle" x="420.04" y="-14.5" font-family="Arial" font-size="10.00">Action Execution</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M303.26,-18C327.52,-18 356.26,-18 381.29,-18"/>
-<polygon fill="#475569" stroke="#475569" points="380.99,-21.5 390.99,-18 380.99,-14.5 380.99,-21.5"/>
-<text text-anchor="middle" x="347.98" y="-19.95" font-family="Arial" font-size="9.00">task received</text>
+<path fill="none" stroke="#475569" d="M265.63,-18C292.02,-18 325.3,-18 354.1,-18"/>
+<polygon fill="#475569" stroke="#475569" points="353.8,-21.5 363.8,-18 353.8,-14.5 353.8,-21.5"/>
+<text text-anchor="middle" x="315.52" y="-19.95" font-family="Arial" font-size="9.00">plan generation</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="690.83,-36 617.9,-18 690.83,0 763.75,-18 690.83,-36"/>
-<text text-anchor="middle" x="690.83" y="-14.5" font-family="Arial" font-size="10.00">Task Evaluation</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="660.82,-36 577.06,-18 660.82,0 744.59,-18 660.82,-36"/>
+<text text-anchor="middle" x="660.82" y="-14.5" font-family="Arial" font-size="10.00">Reward Evaluation</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M493.9,-18C525.66,-18 567.68,-18 604.65,-18"/>
-<polygon fill="#475569" stroke="#475569" points="604.44,-21.5 614.44,-18 604.44,-14.5 604.44,-21.5"/>
-<text text-anchor="middle" x="555.65" y="-19.95" font-family="Arial" font-size="9.00">task execution started</text>
+<path fill="none" stroke="#475569" d="M474.63,-18C500.84,-18 533.21,-18 563.52,-18"/>
+<polygon fill="#475569" stroke="#475569" points="563.5,-21.5 573.5,-18 563.5,-14.5 563.5,-21.5"/>
+<text text-anchor="middle" x="525.68" y="-19.95" font-family="Arial" font-size="9.00">action execution</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="910.55" cy="-18" rx="47.05" ry="18"/>
-<text text-anchor="middle" x="910.55" y="-14.5" font-family="Arial" font-size="10.00">Task Success</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="913.91" cy="-18" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="913.91" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M765.54,-18C793.69,-18 825.36,-18 851.82,-18"/>
-<polygon fill="#475569" stroke="#475569" points="851.68,-21.5 861.68,-18 851.68,-14.5 851.68,-21.5"/>
-<text text-anchor="middle" x="813.62" y="-19.95" font-family="Arial" font-size="9.00">task completion</text>
+<path fill="none" stroke="#475569" d="M746.83,-18C780.01,-18 817.42,-18 848.32,-18"/>
+<polygon fill="#475569" stroke="#475569" points="848.31,-21.5 858.31,-18 848.31,-14.5 848.31,-21.5"/>
+<text text-anchor="middle" x="802.34" y="-19.95" font-family="Arial" font-size="9.00">reward assessment</text>
 </g>
 <!-- N5 -->
 <g id="sm-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1093" cy="-18" rx="41.64" ry="18"/>
-<text text-anchor="middle" x="1093" y="-14.5" font-family="Arial" font-size="10.00">Task Failure</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1106.87" cy="-18" rx="41.64" ry="18"/>
+<text text-anchor="middle" x="1106.87" y="-14.5" font-family="Arial" font-size="10.00">Task Failure</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="sm-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M958.02,-18C982.93,-18 1013.7,-18 1039.47,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1039.4,-21.5 1049.4,-18 1039.4,-14.5 1039.4,-21.5"/>
-<text text-anchor="middle" x="1004.48" y="-19.95" font-family="Arial" font-size="9.00">error handling</text>
+<path fill="none" stroke="#475569" d="M968.1,-18C994.73,-18 1026.86,-18 1053.39,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1053.25,-21.5 1063.25,-18 1053.25,-14.5 1053.25,-21.5"/>
+<text text-anchor="middle" x="1016.48" y="-19.95" font-family="Arial" font-size="9.00">failure analysis</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: agentops lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating AgentOps with OpenAI Agents using @operation and @task</h2></div><p class="ch-summary">Integrate AgentOps with OpenAI</p><div class="ch-body"><p>AgentOps provides a range of decorators for integrating with OpenAI agents, including @operation and @task. These decorators allow developers to track specific operations and tasks within their agents. The @operation decorator can be used to create operation spans for tracking specific operations, while the @task decorator can be used to create task spans for tracking specific tasks. The agentops.</p>
-<p>sdk. decorators module provides these decorators, along with others such as @session and @workflow. The @session decorator is used to create a session span, which is the root span for all other spans. The @workflow decorator is used to create workflow spans for tracking multi-operation workflows.</p>
-<p>The AgentOps API provides a range of methods for interacting with agents, including agentops. init and agentops. endsession. The agentops.</p>
-<p>init method is used to initialize the AgentOps client, while the agentops. endsession method is used to end a session. The agentops. sdk.</p>
-<p>decorators module also provides a range of classes and methods for working with agents, including the MyAgent class and the processdata method.</p>
-<p>One of the key benefits of using AgentOps is its ability to integrate with a range of AI agents, including OpenAI. This allows developers to track and monitor the performance of their AI agents, and to identify areas for improvement. The @operation and @task decorators provide a flexible way to track specific operations and tasks within agents, and can be used to create custom workflows and dashboards.</p>
-<p>The AgentOps dashboard provides a range of tools and features for tracking and monitoring agents, including real-time metrics and analytics. The dashboard also provides a range of visualizations and charts, allowing developers to quickly and easily understand the performance of their agents. The AgentOps API backend provides a range of APIs for interacting with the dashboard, including APIs for creating and managing agents, and for tracking and monitoring agent performance.</p>
-<p>One of the limitations of AgentOps is that it does not support all types of AI agents. For example, it does not currently support agents that use certain types of machine learning algorithms. Additionally, the AgentOps dashboard and API backend can be resource-intensive, and may require significant computational resources to run.</p>
-<p>The AgentOps client can be installed using pip, by running the command pip install agentops. The client can then be initialized using the agentops. init method, and can be used to create and manage agents, and to track and monitor agent performance. The agentops.</p>
-<p>endsession method can be used to end a session, and to clean up any resources that were used during the session.</p>
-<p>In terms of performance, the AgentOps client and dashboard are designed to be highly scalable and efficient. The client uses a range of optimization techniques, including caching and batching, to minimize the number of requests that need to be made to the dashboard. The dashboard also uses a range of optimization techniques, including indexing and query optimization, to minimize the time it takes to retrieve and display data.</p>
-<p>Overall, AgentOps provides a powerful and flexible way to integrate with OpenAI agents, and to track and monitor their performance. The @operation and @task decorators provide a flexible way to track specific operations and tasks within agents, and can be used to create custom workflows and dashboards. The AgentOps dashboard and API backend provide a range of tools and features for tracking and monitoring agents, and can be used to identify areas for improvement and to optimize agent performance.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: awesome-ai-agents lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Adala with External Tools via Function-Calling</h2></div><p class="ch-summary">Integrate Adala with external tools</p><div class="ch-body"><p>The Adala framework provides a function-calling mechanism to integrate with external tools. This allows developers to leverage the capabilities of various tools and services, such as VectorDB and Semantic Search, to enhance the functionality of their AI agents. The ToolComponent. py class is a key component in this integration process, as it enables the creation of custom tool components that can interact with external tools.</p>
+<p>For instance, the controller function can be used to manage the interaction between Adala and external tools. The use of function-calling also enables the integration of Adala with other frameworks, such as AgentForge and Agent4Rec, which can provide additional capabilities for agent building and testing.</p>
+<p>The integration of Adala with external tools via function-calling requires careful consideration of the architecture and configuration of the system. The frontend, built using NextJS and Typescript, must be designed to interact with the backend, which is built using FastAPI and Python. The database, which can be either MySQL or SQLite, must also be configured to support the integration. The use of VectorDB and Semantic Search can provide additional capabilities for data storage and retrieval.</p>
+<p>The version number of the framework, such as gpt-3. 5-16k, can also impact the integration process.</p>
+<p>One of the key benefits of using function-calling to integrate Adala with external tools is the ability to leverage the capabilities of various tools and services. For example, the use of VectorDB can provide advanced data storage and retrieval capabilities, while the use of Semantic Search can provide advanced search capabilities. The integration of Adala with other frameworks, such as AgentForge and Agent4Rec, can also provide additional capabilities for agent building and testing. However, the integration process can be complex and requires careful consideration of the architecture and configuration of the system.</p>
+<p>The use of function-calling to integrate Adala with external tools also requires careful consideration of the limitations of the system. For example, the use of VectorDB and Semantic Search can require significant computational resources, which can impact the performance of the system. The integration of Adala with other frameworks, such as AgentForge and Agent4Rec, can also require significant development effort, which can impact the timeline and budget of the project. Additionally, the use of function-calling can introduce additional complexity into the system, which can make it more difficult to debug and maintain.</p>
+<p>The research does not provide implementation details for the integration of Adala with external tools via function-calling. However, the use of the ToolComponent. py class and the controller function can provide a starting point for developers. The use of VectorDB and Semantic Search can also provide additional capabilities for data storage and retrieval.</p>
+<p>The integration of Adala with other frameworks, such as AgentForge and Agent4Rec, can also provide additional capabilities for agent building and testing.</p>
+<p>The performance of the system can be impacted by the integration of Adala with external tools via function-calling. For example, the use of VectorDB and Semantic Search can require significant computational resources, which can impact the performance of the system. The integration of Adala with other frameworks, such as AgentForge and Agent4Rec, can also require significant development effort, which can impact the timeline and budget of the project. However, the use of function-calling can also provide additional capabilities for the system, such as advanced data storage and retrieval capabilities.</p>
+<p>The use of function-calling to integrate Adala with external tools requires careful consideration of the security of the system. For example, the use of VectorDB and Semantic Search can require significant computational resources, which can impact the security of the system. The integration of Adala with other frameworks, such as AgentForge and Agent4Rec, can also require significant development effort, which can impact the security of the system. Additionally, the use of function-calling can introduce additional complexity into the system, which can make it more difficult to secure.</p>
+<p>The callout for this chapter is that Adala does not support the use of GPT-4 or higher, which can limit the capabilities of the system. The code sample for this chapter is empty, as the research does not provide implementation details for the integration of Adala with external tools via function-calling.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 211.85 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 227.83 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 207.85,-535 207.85,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 223.83,-535 223.83,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="100.35" cy="-513" rx="66.9" ry="18"/>
-<text text-anchor="middle" x="100.35" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="109.92" cy="-513" rx="66.9" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="100.35" cy="-430.5" rx="57.88" ry="18"/>
-<text text-anchor="middle" x="100.35" y="-427" font-family="Arial" font-size="10.00">IntentIdentification</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-430.5" rx="54.27" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-427" font-family="Arial" font-size="10.00">NLPTokenization</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M100.35,-494.53C100.35,-484.51 100.35,-471.68 100.35,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="103.85,-460.45 100.35,-450.45 96.85,-460.45 103.85,-460.45"/>
-<text text-anchor="middle" x="125.47" y="-468.45" font-family="Arial" font-size="9.00">text analysis</text>
+<path fill="none" stroke="#475569" d="M109.92,-494.53C109.92,-484.51 109.92,-471.68 109.92,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-460.45 109.92,-450.45 106.42,-460.45 113.42,-460.45"/>
+<text text-anchor="middle" x="141.04" y="-468.45" font-family="Arial" font-size="9.00">lexical analysis</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="100.35" cy="-348" rx="51.56" ry="18"/>
-<text text-anchor="middle" x="100.35" y="-344.5" font-family="Arial" font-size="10.00">EntityExtraction</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-348" rx="67.35" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-344.5" font-family="Arial" font-size="10.00">ContextualEmbedding</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M100.35,-412.03C100.35,-402.01 100.35,-389.18 100.35,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="103.85,-377.95 100.35,-367.95 96.85,-377.95 103.85,-377.95"/>
-<text text-anchor="middle" x="152.1" y="-385.95" font-family="Arial" font-size="9.00">contextual understanding</text>
+<path fill="none" stroke="#475569" d="M109.92,-412.03C109.92,-402.01 109.92,-389.18 109.92,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-377.95 109.92,-367.95 106.42,-377.95 113.42,-377.95"/>
+<text text-anchor="middle" x="154.92" y="-385.95" font-family="Arial" font-size="9.00">semantic role labeling</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="100.35,-283.5 0,-265.5 100.35,-247.5 200.7,-265.5 100.35,-283.5"/>
-<text text-anchor="middle" x="100.35" y="-262" font-family="Arial" font-size="10.00">KnowledgeBaseLookup</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="109.92,-283.5 0,-265.5 109.92,-247.5 219.83,-265.5 109.92,-283.5"/>
+<text text-anchor="middle" x="109.92" y="-262" font-family="Arial" font-size="10.00">KnowledgeGraphRetrieval</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M100.35,-329.53C100.35,-319.51 100.35,-306.68 100.35,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="103.85,-295.45 100.35,-285.45 96.85,-295.45 103.85,-295.45"/>
-<text text-anchor="middle" x="140.85" y="-303.45" font-family="Arial" font-size="9.00">information retrieval</text>
+<path fill="none" stroke="#475569" d="M109.92,-329.53C109.92,-319.51 109.92,-306.68 109.92,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-295.45 109.92,-285.45 106.42,-295.45 113.42,-295.45"/>
+<text text-anchor="middle" x="153.42" y="-303.45" font-family="Arial" font-size="9.00">entity disambiguation</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="100.35" cy="-183" rx="57.88" ry="18"/>
-<text text-anchor="middle" x="100.35" y="-179.5" font-family="Arial" font-size="10.00">ResponseRanking</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-183" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranking</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M100.35,-247.03C100.35,-237.01 100.35,-224.18 100.35,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="103.85,-212.95 100.35,-202.95 96.85,-212.95 103.85,-212.95"/>
-<text text-anchor="middle" x="136.72" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
+<path fill="none" stroke="#475569" d="M109.92,-247.03C109.92,-237.01 109.92,-224.18 109.92,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-212.95 109.92,-202.95 106.42,-212.95 113.42,-212.95"/>
+<text text-anchor="middle" x="146.29" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="100.35" cy="-100.5" rx="64.64" ry="18"/>
-<text text-anchor="middle" x="100.35" y="-97" font-family="Arial" font-size="10.00">ResponseGeneration</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-100.5" rx="49.31" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M100.35,-164.53C100.35,-154.51 100.35,-141.68 100.35,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="103.85,-130.45 100.35,-120.45 96.85,-130.45 103.85,-130.45"/>
-<text text-anchor="middle" x="143.47" y="-138.45" font-family="Arial" font-size="9.00">response formulation</text>
+<path fill="none" stroke="#475569" d="M109.92,-164.53C109.92,-154.51 109.92,-141.68 109.92,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-130.45 109.92,-120.45 106.42,-130.45 113.42,-130.45"/>
+<text text-anchor="middle" x="153.42" y="-138.45" font-family="Arial" font-size="9.00">sequence generation</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="100.35" cy="-18" rx="69.15" ry="18"/>
-<text text-anchor="middle" x="100.35" y="-14.5" font-family="Arial" font-size="10.00">AgentResponseOutput</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="109.92" cy="-18" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreaming</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M100.35,-82.03C100.35,-72.01 100.35,-59.18 100.35,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="103.85,-47.95 100.35,-37.95 96.85,-47.95 103.85,-47.95"/>
-<text text-anchor="middle" x="140.47" y="-55.95" font-family="Arial" font-size="9.00">response validation</text>
+<path fill="none" stroke="#475569" d="M109.92,-82.03C109.92,-72.01 109.92,-59.18 109.92,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-47.95 109.92,-37.95 106.42,-47.95 113.42,-47.95"/>
+<text text-anchor="middle" x="147.04" y="-55.95" font-family="Arial" font-size="9.00">fluency evaluation</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: agentops end-to-end processing pipeline</p></div><div class="sec-heading">agentops — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Performance</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Security</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:78%"></span></span></span><span class="bar-value">78%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting AgentOps Sessions with agentops.end_session</h2></div><div class="ch-body"><p>``</p>
-<p>LIMITATIONS:</p>
-<p>INSTALLSTEPS:</p>
-<p>pip install openai-agents</p>
-<p>npm install agentops @openai/agents</p>
-<p>pip install 'crewai[agentops]'</p>
-<p>USECASES:</p>
-<p>OpenAI Agents SDK</p>
-<p>CrewAI</p>
-<p>AG2</p>
-<p>Camel</p><div class="sec-heading">agentops — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Replay Analytics and Debugging</td><td>Supported</td><td>AgentOps provides features for replaying and debugging workflows</td></tr><tr><td>LLM Cost Management</td><td>Optimized</td><td>AgentOps offers cost management features for large language models</td></tr><tr><td>Framework Integrations</td><td>Multi-framework</td><td>AgentOps supports integration with multiple frameworks</td></tr><tr><td>Self-Host</td><td>Available</td><td>AgentOps can be self-hosted for added security and control</td></tr><tr><td>API Backend</td><td>RESTful API</td><td>AgentOps provides a RESTful API for backend interactions</td></tr><tr><td>Dashboard</td><td>Interactive</td><td>AgentOps offers an interactive dashboard for monitoring and management</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing AgentOps Performance with @workflow and Nested Decorators</h2></div><p class="ch-summary">Optimize AgentOps</p><div class="ch-body"><p>AgentOps provides various decorators to optimize performance, including @workflow, @operation, and @agent. The @workflow decorator is used to define a workflow, which is a series of operations that are executed in a specific order. The @operation decorator is used to define an operation, which is a single task that is executed within a workflow. The @agent decorator is used to define an agent, which is an entity that performs operations.</p>
-<p>To optimize performance, it is essential to use these decorators correctly and to understand how they interact with each other. For example, the @workflow decorator can be used to define a workflow that consists of multiple operations, each of which is defined using the @operation decorator. The @agent decorator can be used to define an agent that performs these operations.</p>
-<p>The AgentOps SDK provides various API methods that can be used to optimize performance, including agentops. init() and agentops. endsession(). The agentops.</p>
-<p>init() method is used to initialize the AgentOps SDK, while the agentops. endsession() method is used to end a session. These methods can be used in conjunction with the @workflow, @operation, and @agent decorators to optimize performance. For example, the agentops.</p>
-<p>init() method can be used to initialize the AgentOps SDK before defining a workflow using the @workflow decorator. The agentops. end_session() method can be used to end a session after a workflow has been executed.</p>
-<p>The AgentOps SDK also provides various config keys that can be used to optimize performance, including the API key and the logging level parameter. The API key is used to authenticate with the AgentOps API, while the logging level parameter is used to control the level of logging. These config keys can be used in conjunction with the @workflow, @operation, and @agent decorators to optimize performance. For example, the API key can be used to authenticate with the AgentOps API before defining a workflow using the @workflow decorator.</p>
-<p>The logging level parameter can be used to control the level of logging during the execution of a workflow.</p>
-<p>One of the limitations of the AgentOps SDK is that it does not support nested workflows. This means that a workflow cannot be defined within another workflow. However, the @workflow decorator can be used to define a workflow that consists of multiple operations, each of which is defined using the @operation decorator. This can be used to achieve similar functionality to nested workflows.</p>
-<p>For example, a workflow can be defined using the @workflow decorator, and within this workflow, multiple operations can be defined using the @operation decorator.</p>
-<p>The AgentOps SDK also provides various classes and methods that can be used to optimize performance, including the MyAgent class and the MyAgent. init() method. The MyAgent class is used to define an agent, while the MyAgent. init() method is used to initialize an agent.</p>
-<p>These classes and methods can be used in conjunction with the @workflow, @operation, and @agent decorators to optimize performance. For example, the MyAgent class can be used to define an agent that performs operations, and the MyAgent. init() method can be used to initialize this agent.</p>
-<p>The AgentOps SDK provides various use cases, including building multi-agent systems with tools, handoffs, and guardrails using OpenAI Agents SDK, tracking spend with LLM foundation model providers, and native integrations with CrewAI, AG2 (AutoGen), Agno, LangGraph, & more. These use cases can be used to optimize performance by using the @workflow, @operation, and @agent decorators correctly and by understanding how they interact with each other. For example, the @workflow decorator can be used to define a workflow that consists of multiple operations, each of which is defined using the @operation decorator, and the @agent decorator can be used to define an agent that performs these operations.</p>
-<p>The AgentOps SDK provides various architecture components, including the AgentOps client, AgentOps app, AgentOps API backend, Dashboard, LLM foundation model providers, CrewAI, AG2 (AutoGen), Agno, LangGraph, and AgentOps logger. These components can be used to optimize performance by using the @workflow, @operation, and @agent decorators correctly and by understanding how they interact with each other. For example, the AgentOps client can be used to interact with the AgentOps API backend, and the @workflow decorator can be used to define a workflow that consists of multiple operations, each of which is defined using the @operation decorator.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">How to use AgentOps with the OpenAI Python SDK in 4 minutes</div><a class="video-url" href="https://www.youtube.com/watch?v=k1tZk1dqOLQ">https://www.youtube.com/watch?v=k1tZk1dqOLQ</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">How to use AgentOps with the Anthropic SDK in 5 minutes</div><a class="video-url" href="https://www.youtube.com/watch?v=Vxa4Fp6yZCY">https://www.youtube.com/watch?v=Vxa4Fp6yZCY</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">AgentOps x OpenAI Python SDK Tutorial</div><a class="video-url" href="https://www.youtube.com/watch?v=qlotcZSh5_0">https://www.youtube.com/watch?v=qlotcZSh5_0</a></div></div></section>
-<div class="book-footer"><strong>agentops: Practitioner Guide</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 22, 2026</div>
+</svg><p class="diagram-caption">Figure: awesome-ai-agents end-to-end processing pipeline</p></div><div class="sec-heading">awesome-ai-agents — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Autonomous Data Labeling</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Recommender System Simulation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">LLM-Agnostic Agent Building</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:78%"></span></span></span><span class="bar-value">78%</span></div><div class="bar-row"><span class="bar-label">Multi-Agent System Development</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Human-Agent Interaction</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Symbolic Control and Web Navigation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:76%"></span></span></span><span class="bar-value">76%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Multi-Agent Systems with Controller Functions</h2></div><p class="ch-summary">Troubleshooting multi-agent systems</p><div class="ch-body"><p>The research does not provide implementation details for this area. However, based on the provided context, it can be inferred that troubleshooting multi-agent systems with controller functions involves identifying and resolving issues related to the interaction between agents and the controller function. The controller function is a crucial component in multi-agent systems, responsible for managing the flow of information and tasks between agents. In the context of the awesome-ai-agents library, the controller function can be implemented using the ToolComponent.</p>
+<p>py class. The VectorDB and Semantic Search config keys can be used to configure the database and search functionality of the system.</p>
+<p>The architecture of the system, which includes a frontend built with NextJS and Typescript, and a backend built with FastAPI and Python, can also impact the troubleshooting process. The use of MySQL or SQLite as the database can also introduce specific challenges and limitations. For example, the system may not support certain database operations or may have performance issues with large datasets.</p>
+<p>The use of LLM models, such as the gpt-3. 5-16k model, can also introduce specific challenges and limitations. For example, the model may not support certain types of input or output, or may have performance issues with large datasets. The integration of the LLM model with the controller function and the agents can also be a source of issues.</p>
+<p>The research does not provide specific information on the limitations of the system, but it can be inferred that the system may have limitations related to scalability, performance, and compatibility with certain types of data or models. The system may also have limitations related to the implementation of the controller function and the interaction between agents.</p>
+<p>The use of function-calling and class methods, such as the @classmethod decorator, can also introduce specific challenges and limitations. For example, the use of class methods can make it difficult to implement certain types of functionality, such as instance-specific behavior.</p>
+<p>The research does not provide specific information on the performance metrics of the system, but it can be inferred that the system may have performance issues related to the interaction between agents and the controller function. The system may also have performance issues related to the use of LLM models and the database.</p>
+<p>The callout for this chapter is that the system uses the VectorDB config key to configure the database.</p>
+<p>The code sample for this chapter is empty, as the research does not provide specific code examples for troubleshooting multi-agent systems with controller functions.</p><div class="sec-heading">awesome-ai-agents — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Frontend Framework</td><td>NextJS</td><td>Utilizes Typescript for robust development</td></tr><tr><td>Backend Framework</td><td>FastAPI</td><td>Built with Python for efficient API management</td></tr><tr><td>Database Options</td><td>MySQL and SQLite</td><td>Supports both cloud and local database configurations</td></tr><tr><td>LLM Model Support</td><td>gpt-3.5-16k</td><td>Compatible with various LLM models for diverse applications</td></tr><tr><td>Agent Development Platform</td><td>AgentForge</td><td>Enables rapid building and testing of custom agents</td></tr><tr><td>Search and Database Integration</td><td>VectorDB and Semantic Search</td><td>Enhances data retrieval and agent decision-making capabilities</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing AgentForge Performance with gpt-3.5-16k and Semantic Search</h2></div><p class="ch-summary">Optimize AgentForge</p><div class="ch-body"><p>To optimize AgentForge performance, it's essential to understand the Dual-loop Mechanism architecture, which consists of an Outer-Loop managing plans and task refinements, and an Inner-Loop handling dispatch, ReACT-based execution, and feedback. The Outer-Loop is responsible for refining tasks and managing plans, while the Inner-Loop focuses on executing tasks and providing feedback. The bondai module can be used to install and start the AgentForge server, with the command 'bondai --server' starting the RESTful/WebSocket API. The CONFIGKEYS can be used to configure the AgentForge performance, with GPT-4 or higher recommended for optimal performance.</p>
+<p>The VERSIONNUMBERS, such as GPT-4, can be used to track the performance of different versions of the AgentForge.</p>
+<p>The AgentForge can be used for various USECASES, including sending emails, posting tweets, and searching for vacation rentals. The LIMITATIONS of the AgentForge include the risk of breaking the environment, which can be mitigated by carefully configuring the CONFIGKEYS and using the correct VERSIONNUMBERS. The INSTALLSTEPS for the AgentForge include installing the bondai module using 'pip install bondai' and starting the server using 'bondai --server'. The CLASSESANDMETHODS, such as import modulename, can be used to customize the AgentForge performance.</p>
+<p>The CODESNIPPETS, such as 'bondai' and 'bondai --server', can be used to start the AgentForge server and CLI.</p>
+<p>The performance of the AgentForge can be optimized by using the gpt-3. 5-16k model, which provides better performance than earlier models. The Semantic Search feature can also be used to improve the performance of the AgentForge, by providing more accurate search results. The ARCHITECTURE of the AgentForge, including the Dual-loop Mechanism, can be used to optimize the performance of the AgentForge.</p>
+<p>The CONFIGKEYS, such as GPT-4 or higher, can be used to configure the performance of the AgentForge. The VERSIONNUMBERS, such as GPT-4, can be used to track the performance of different versions of the AgentForge.</p>
+<p>The AgentForge can be used for various USECASES, including Data analysis, Productivity, Research, and Marketing. The LIMITATIONS of the AgentForge include the risk of breaking the environment, which can be mitigated by carefully configuring the CONFIGKEYS and using the correct VERSIONNUMBERS. The INSTALLSTEPS for the AgentForge include installing the bondai module using 'pip install bondai' and starting the server using 'bondai --server'. The CLASSESANDMETHODS, such as import modulename, can be used to customize the AgentForge performance.</p>
+<p>The CODESNIPPETS, such as 'bondai' and 'bondai --server', can be used to start the AgentForge server and CLI.</p>
+<p>The performance of the AgentForge can be optimized by using the gpt-3. 5-16k model, which provides better performance than earlier models. The Semantic Search feature can also be used to improve the performance of the AgentForge, by providing more accurate search results. The ARCHITECTURE of the AgentForge, including the Dual-loop Mechanism, can be used to optimize the performance of the AgentForge.</p>
+<p>The CONFIGKEYS, such as GPT-4 or higher, can be used to configure the performance of the AgentForge. The VERSIONNUMBERS, such as GPT-4, can be used to track the performance of different versions of the AgentForge.</p>
+<p>The AgentForge does not support certain features, such as multi-threading, which can limit its performance in certain USECASES. The LIMITATIONS of the AgentForge include the risk of breaking the environment, which can be mitigated by carefully configuring the CONFIGKEYS and using the correct VERSIONNUMBERS. The INSTALLSTEPS for the AgentForge include installing the bondai module using 'pip install bondai' and starting the server using 'bondai --server'. The CLASSESANDMETHODS, such as import modulename, can be used to customize the AgentForge performance.</p>
+<p>The CODESNIPPETS, such as 'bondai' and 'bondai --server', can be used to start the AgentForge server and CLI.</p>
+<p>The performance of the AgentForge can be optimized by using the gpt-3. 5-16k model, which provides better performance than earlier models. The Semantic Search feature can also be used to improve the performance of the AgentForge, by providing more accurate search results. The ARCHITECTURE of the AgentForge, including the Dual-loop Mechanism, can be used to optimize the performance of the AgentForge.</p>
+<p>The CONFIGKEYS, such as GPT-4 or higher, can be used to configure the performance of the AgentForge. The VERSIONNUMBERS, such as GPT-4, can be used to track the performance of different versions of the AgentForge.</p></div></section>
+<div class="book-footer"><strong>awesome-ai-agents: Technical Deep Dive</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 23, 2026</div>
 </body>
 </html>
