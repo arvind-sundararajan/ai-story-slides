@@ -2,344 +2,369 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>awesome-ai-agents: Technical Deep Dive</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "awesome-ai-agents: Technical Deep Dive"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>cognita: Production Manual</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "cognita: Production Manual"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://repository-images.githubusercontent.com/655459367/cdaf989b-adaf-46f8-ab38-92ede96dc33a" alt="awesome-ai-agents logo" onerror="this.style.display='none'"/><div class="cover-lib-name">awesome-ai-agents</div><div class="cover-suffix">Technical Deep Dive</div><div class="cover-rule"></div><p class="cover-subtitle">Intelligent agents are changing the world</p><p class="cover-desc">The awesome-ai-agents project provides a framework for building custom agents and cognitive architectures.  The ToolComponent. py class is a key component of this framework, allowing developers to create agents that can interact with their environment.</p><div class="cover-tagline">AI agents are here</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 23, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">e2b-dev built awesome-ai-agents</div><div class="intro-body"><p>The awesome-ai-agents project is a collection of AI autonomous agents. It appears to be maintained by e2b-dev on GitHub. The project's architecture is not explicitly stated in the provided research, but it seems to involve various components and tools for building and testing AI agents.</p>
-<p>The specific problem that awesome-ai-agents was built to solve is not clearly defined in the research. However, based on the use cases provided, it can be inferred that the project aims to facilitate the development and testing of AI agents for various applications, such as personal assistants, general-purpose agents, and build-your-own agents. The project's use cases also include building custom agents and cognitive architectures, running different LLM models for different agents, and integrating with different databases.</p>
-<p>From a technical standpoint, awesome-ai-agents seems to be built using a combination of technologies, including Python, FastAPI, and MySQL. The project also involves the use of VectorDB and Semantic Search, which are configuration keys mentioned in the research. Additionally, the project uses a gateway architecture and a memory architecture, which are described in more detail in the research. The use of function-calling and class methods is also mentioned, which suggests that the project involves object-oriented programming.</p>
-<p>The target audience for awesome-ai-agents appears to be developers and researchers who are interested in building and testing AI agents. The project's use cases and architecture suggest that it is designed to be flexible and adaptable to various applications and domains. However, without more information about the project's goals and objectives, it is difficult to determine the specific target audience or the types of users who would benefit most from using awesome-ai-agents.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/e2b-dev/awesome-ai-agents">https://github.com/e2b-dev/awesome-ai-agents</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building Autonomous Agents with ToolComponent.py</h2></div><p class="ch-summary">Autonomous agents with ToolComponent.py</p><div class="ch-body"><p>The awesome-ai-agents project provides a framework for building custom agents and cognitive architectures. The ToolComponent. py class is a key component of this framework, allowing developers to create agents that can interact with their environment. The controller function is used to manage the agent's behavior, and the function-calling mechanism enables agents to use external tools.</p>
-<p>The project also supports the use of different LLM models for different agents, allowing for rapid development and testing. The architecture of the project includes a frontend built with NextJS and Typescript, and a backend built with FastAPI and Python.</p>
-<p>The project's database is built with MySQL, and can also be run locally with SQLite. The VectorDB and Semantic Search config keys are used to configure the database and search functionality. The project also includes a working memory and Long-short Term Memory components, which are used to manage the agent's memory and learning. The gpt-3.</p>
-<p>5-16k version number is used to identify the specific LLM model being used. The project's use cases include building language agents, multi-agent systems, and human-agent interaction.</p>
-<p>The Adala framework is used for autonomous data labeling, and the Agent4Rec simulator is used to simulate recommender systems with 1,000 agents. The AgentForge platform is used for building and testing LLM-agnostic agents. The project's limitations include the lack of support for certain databases and the potential for errors when using external tools. The project's performance metrics are not well-documented, but it is known to be scalable and efficient.</p>
-<p>The project's code snippets are available on GitHub, and include examples of how to use the ToolComponent. py class and the controller function. The project's API methods include the function-calling mechanism, which allows agents to use external tools. The project's config keys include the VectorDB and Semantic Search keys, which are used to configure the database and search functionality.</p>
-<p>The project's version numbers include the gpt-3. 5-16k version number, which is used to identify the specific LLM model being used.</p>
-<p>The project's technical details are well-documented, and include information on how to use the ToolComponent. py class and the controller function. The project's limitations include the lack of support for certain databases, and the potential for errors when using external tools. The project's performance metrics are not well-documented, but it is known to be scalable and efficient.</p>
-<p>The project's use cases include building language agents, multi-agent systems, and human-agent interaction.</p>
-<p>The project's architecture is well-designed, and includes a frontend built with NextJS and Typescript, and a backend built with FastAPI and Python. The project's database is built with MySQL, and can also be run locally with SQLite. The VectorDB and Semantic Search config keys are used to configure the database and search functionality. The project also includes a working memory and Long-short Term Memory components, which are used to manage the agent's memory and learning.</p>
-<p>The project's code snippets are available on GitHub, and include examples of how to use the ToolComponent. py class and the controller function. The project's API methods include the function-calling mechanism, which allows agents to use external tools. The project's config keys include the VectorDB and Semantic Search keys, which are used to configure the database and search functionality.</p>
-<p>The project's version numbers include the gpt-3. 5-16k version number, which is used to identify the specific LLM model being used.</p>
-<p>The research does not provide implementation details for certain areas of the project, such as the specifics of the working memory and Long-short Term Memory components. However, the project's technical details are well-documented, and include information on how to use the ToolComponent. py class and the controller function. The project's limitations include the lack of support for certain databases, and the potential for errors when using external tools.</p>
-<p>The project's performance metrics are not well-documented, but it is known to be scalable and efficient.</p></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Cognitive Architectures with Long-short Term Memory</h2></div><p class="ch-summary">Cognitive architectures with long-short term memory</p><div class="ch-body"><p>Designing cognitive architectures with long-short term memory involves integrating components such as working memory, VectorDB, and Semantic Search. The architecture should support the use of external tools via function-calling and multi-agent communication. The AgentForge platform provides a framework for building and testing cognitive architectures, with support for LLM-agnostic agents. The gpt-3.</p>
-<p>5-16k model can be used for language processing tasks. The ToolComponent. py class provides a basic structure for building custom agents. The controller function is used to manage the flow of data between components.</p>
-<p>The use of long-short term memory in cognitive architectures allows for more efficient processing of large amounts of data. The VectorDB and Semantic Search components provide a way to store and retrieve data efficiently. The working memory component is used to store temporary data that is being processed. The Agent4Rec recommender system simulator provides a way to test and evaluate cognitive architectures.</p>
-<p>The Adala framework provides a way to build custom agents and cognitive architectures.</p>
-<p>The architecture of the cognitive system should be designed to support the use of multiple LLM models for different agents. The use of a gateway architecture with node pairing can provide a way to distribute the execution of tasks across multiple nodes. The memory architecture should be designed to provide persistent memory with daily logs and long-term memory. The use of file-based persistent memory can provide a way to store large amounts of data.</p>
-<p>The design of the cognitive architecture should take into account the limitations of the system, such as the lack of support for certain types of data or the failure of certain components. The use of a class method function in Python can provide a way to operate on class-level data. The @classmethod decorator is used to define a class method function. The use of a parameter in the config keys can provide a way to customize the behavior of the system.</p>
-<p>The use of a version number such as v1. 6 or v1. 5 can provide a way to track changes to the system. The use of a GitHub issue number can provide a way to track bugs and issues.</p>
-<p>The performance metric of the system should be evaluated to ensure that it is meeting the required standards. The use of a benchmark such as the gpt-3. 5-16k model can provide a way to evaluate the performance of the system.</p>
-<p>The design of the cognitive architecture should take into account the use cases of the system, such as building custom agents and cognitive architectures, running different LLM models for different agents, and integrating with different databases. The use of a personal assistant or general-purpose agent can provide a way to interact with the system. The use of a build-your-own approach can provide a way to customize the system to meet specific needs.</p>
-<p>The limitations of the system should be taken into account when designing the cognitive architecture. The use of a sudo apt-get install docker-compose command can provide a way to install the required components. The use of a docker-compose --version command can provide a way to check the version of the components. The research does not provide implementation details for this area, so the design of the cognitive architecture should be based on the available information.</p>
-<p>The callout for this chapter is that the gpt-3. 5-16k model is used for language processing tasks. The code sample for this chapter is empty. The design of the cognitive architecture should be based on the available information and should take into account the limitations and use cases of the system.</p>
-<p>The use of a cognitive architecture with long-short term memory can provide a way to build custom agents and cognitive architectures that can interact with the system in a more efficient and effective way.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://repository-images.githubusercontent.com/671064065/471bf988-a1ee-4be6-b575-636d6e6fa074" alt="cognita logo" onerror="this.style.display='none'"/><div class="cover-lib-name">cognita</div><div class="cover-suffix">Production Manual</div><div class="cover-rule"></div><p class="cover-subtitle">Understanding human cognition</p><p class="cover-desc">Cognita is a tool for building knowledge graphs, with components such as Data Indexing, API Server, and Metadatastore.  The architecture includes cognita-db, qdrant-server, and cognita-backend.  The config keys include OPENAIAPIKEY and local.</p><div class="cover-tagline">Know your mind</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 24, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Truefoundry built Cognita to solve data querying.</div><div class="intro-body"><p>Cognita is an open-source project developed by Truefoundry, first released with a set of components including cognita-db, qdrant-server, and cognita-backend. The specific problem it was built to solve is organizing and querying large datasets using a combination of natural language processing and vector databases. Cognita's architecture is designed around a set of microservices, including an API server, metadata store, and model gateway, which work together to provide a scalable and flexible platform for building question-answering systems.</p>
+<p>The technical design of Cognita is centered around the use of vector databases, such as Qdrant, to store and query dense vector representations of text data. This approach allows for efficient and accurate querying of large datasets, and is particularly well-suited for applications such as question-answering and text retrieval. Cognita also includes a range of tools and components for data indexing, including support for incremental indexing and customizable data loaders. The use of pydantic v2 for configuration management and the implementation of a Query Controller are examples of the design decisions that differentiate Cognita from other similar projects.</p>
+<p>Cognita is designed to be highly customizable, with a range of options for customizing data loaders, embedders, parsers, and rerankers. This flexibility makes it a good choice for developers who need to build custom question-answering systems or integrate Cognita with other tools and platforms. The project also includes a range of pre-built components, such as the RAG component and the Metadatastore, which can be used to speed up development and reduce the complexity of building a question-answering system. The target audience for Cognita is developers and data scientists who need to build custom question-answering systems or integrate Cognita with other tools and platforms.</p>
+<p>The project provides a range of use cases, including question-answering using the API server, data indexing, and customizing the code for specific use cases. Cognita can be installed using docker-compose, and the project provides a range of documentation and resources to help developers get started. However, it is worth noting that the project is no longer actively maintained, which may impact its stability and support. Overall, Cognita is a powerful and flexible platform for building question-answering systems, and its technical design and customization options make it a good choice for developers who need to build custom systems.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/truefoundry/cognita">https://github.com/truefoundry/cognita</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building Knowledge Graphs with Cognita Components</h2></div><p class="ch-summary">Cognita for knowledge graphs</p><div class="ch-body"><p>Cognita is a tool for building knowledge graphs, with components such as Data Indexing, API Server, and Metadatastore. The architecture includes cognita-db, qdrant-server, and cognita-backend. The config keys include OPENAIAPIKEY and local. metadata.</p>
+<p>yaml file. The version numbers mentioned are pydantic v2 and 25+.</p>
+<p>The Cognita Components provide a way to organize data and create a knowledge graph. The Data Indexing component is responsible for indexing the data, while the API Server provides an interface to interact with the knowledge graph. The Metadatastore is used to store metadata about the data.</p>
+<p>The installation steps for Cognita include installing Docker and docker-compose, and running the command docker-compose --env-file compose. env up. The use cases for Cognita include question-answering using API Server, data indexing, and customizing the code for specific use cases.</p>
+<p>The Cognita architecture includes several components, such as ta Store, LLM Gateway, Vector DB, Indexing Job, and API Server. The limitations of Cognita include the fact that it is no longer actively maintained.</p>
+<p>The code structure of Cognita includes a backend directory with an indexer subdirectory. The config keys can be found in the local. metadata. yaml file.</p>
+<p>The version numbers mentioned are pydantic v2 and 25+.</p>
+<p>The Cognita Components can be customized for specific use cases, such as customizing dataloaders, embedder, parsers, and adding custom VectorDB. The RAG component is used for question-answering.</p>
+<p>The performance of Cognita is not well-documented, but it is known to have some limitations, such as not supporting certain types of data. The API methods and class names are not well-documented, but some examples include Query Controller and Agent. add_task().</p>
+<p>The Cognita project is no longer actively maintained, which can make it difficult to get support and fix issues. The GitHub issue number is not available, but it is known that the project has some limitations, such as not supporting certain types of data.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1194.87 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1727.05 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1190.87,-40 1190.87,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1723.05,-40 1723.05,4 -4,4"/>
 <!-- N0 -->
-<g id="seq-node1" class="node">
+<g id="cluster-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="87.19" cy="-18" rx="87.19" ry="18"/>
-<text text-anchor="middle" x="87.19" y="-14.5" font-family="Arial" font-size="10.00">pip install awesome&#45;ai&#45;agents</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="79.53" cy="-18" rx="79.53" ry="18"/>
+<text text-anchor="middle" x="79.53" y="-14.5" font-family="Arial" font-size="10.00">QuestionAnsweringModule</text>
 </g>
 <!-- N1 -->
-<g id="seq-node2" class="node">
+<g id="cluster-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="309.72" cy="-18" rx="81.33" ry="18"/>
-<text text-anchor="middle" x="309.72" y="-14.5" font-family="Arial" font-size="10.00">import awesome_ai_agents</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="350.31" cy="-18" rx="68.25" ry="18"/>
+<text text-anchor="middle" x="350.31" y="-14.5" font-family="Arial" font-size="10.00">KnowledgeGraphStore</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
-<g id="seq-edge1" class="edge">
+<g id="cluster-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M174.72,-18C188.62,-18 203.05,-18 217.07,-18"/>
-<polygon fill="#475569" stroke="#475569" points="216.69,-21.5 226.69,-18 216.69,-14.5 216.69,-21.5"/>
-<text text-anchor="middle" x="201.39" y="-19.95" font-family="Arial" font-size="9.00">then</text>
+<path fill="none" stroke="#475569" d="M159.35,-18C194.44,-18 235.65,-18 270.71,-18"/>
+<polygon fill="#475569" stroke="#475569" points="270.34,-21.5 280.34,-18 270.34,-14.5 270.34,-21.5"/>
+<text text-anchor="middle" x="220.55" y="-19.95" font-family="Arial" font-size="9.00">retrieves context from</text>
 </g>
 <!-- N2 -->
-<g id="seq-node3" class="node">
+<g id="cluster-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="527.78" cy="-18" rx="33.98" ry="18"/>
-<text text-anchor="middle" x="527.78" y="-14.5" font-family="Arial" font-size="10.00">AI_Agent</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="608.31" cy="-18" rx="68.25" ry="18"/>
+<text text-anchor="middle" x="608.31" y="-14.5" font-family="Arial" font-size="10.00">NeuralSearchEndpoint</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
-<g id="seq-edge2" class="edge">
+<g id="cluster-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M391.48,-18C422.14,-18 455.94,-18 482.08,-18"/>
-<polygon fill="#475569" stroke="#475569" points="482.01,-21.5 492.01,-18 482.01,-14.5 482.01,-21.5"/>
-<text text-anchor="middle" x="442.42" y="-19.95" font-family="Arial" font-size="9.00">configure_agent</text>
+<path fill="none" stroke="#475569" d="M418.9,-18C452.59,-18 493.51,-18 528.61,-18"/>
+<polygon fill="#475569" stroke="#475569" points="528.26,-21.5 538.26,-18 528.26,-14.5 528.26,-21.5"/>
+<text text-anchor="middle" x="479.31" y="-19.95" font-family="Arial" font-size="9.00">provides metadata to</text>
 </g>
 <!-- N3 -->
-<g id="seq-node4" class="node">
+<g id="cluster-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="707.45,-36 651.75,-18 707.45,0 763.16,-18 707.45,-36"/>
-<text text-anchor="middle" x="707.45" y="-14.5" font-family="Arial" font-size="10.00">add_ai_tool</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="876.49,-36 822.06,-18 876.49,0 930.91,-18 876.49,-36"/>
+<text text-anchor="middle" x="876.49" y="-14.5" font-family="Arial" font-size="10.00">FaissIndex</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
-<g id="seq-edge3" class="edge">
+<g id="cluster-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M562.2,-18C583.82,-18 612.75,-18 639.02,-18"/>
-<polygon fill="#475569" stroke="#475569" points="638.96,-21.5 648.96,-18 638.96,-14.5 638.96,-21.5"/>
-<text text-anchor="middle" x="606.75" y="-19.95" font-family="Arial" font-size="9.00">initialize_tool</text>
+<path fill="none" stroke="#475569" d="M676.82,-18C717.42,-18 768.88,-18 809.25,-18"/>
+<polygon fill="#475569" stroke="#475569" points="809.07,-21.5 819.07,-18 809.07,-14.5 809.07,-21.5"/>
+<text text-anchor="middle" x="749.31" y="-19.95" font-family="Arial" font-size="9.00">utilizes for similarity search</text>
 </g>
 <!-- N4 -->
-<g id="seq-node5" class="node">
+<g id="cluster-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="929.92" cy="-18" rx="52.02" ry="18"/>
-<text text-anchor="middle" x="929.92" y="-14.5" font-family="Arial" font-size="10.00">invoke_ai_agent</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1140.58" cy="-18" rx="50.66" ry="18"/>
+<text text-anchor="middle" x="1140.58" y="-14.5" font-family="Arial" font-size="10.00">DenseRetriever</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
-<g id="seq-edge4" class="edge">
+<g id="cluster-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M764.66,-18C795.68,-18 834.28,-18 866.27,-18"/>
-<polygon fill="#475569" stroke="#475569" points="866.21,-21.5 876.21,-18 866.21,-14.5 866.21,-21.5"/>
-<text text-anchor="middle" x="820.53" y="-19.95" font-family="Arial" font-size="9.00">call_agent_method</text>
+<path fill="none" stroke="#475569" d="M932.43,-18C975.01,-18 1033.99,-18 1078.13,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1078.07,-21.5 1088.07,-18 1078.07,-14.5 1078.07,-21.5"/>
+<text text-anchor="middle" x="1010.41" y="-19.95" font-family="Arial" font-size="9.00">triggers document retrieval via</text>
 </g>
 <!-- N5 -->
-<g id="seq-node6" class="node">
+<g id="cluster-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1144.78" cy="-18" rx="42.09" ry="18"/>
-<text text-anchor="middle" x="1144.78" y="-14.5" font-family="Arial" font-size="10.00">data_stream</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1358.58" cy="-18" rx="42.09" ry="18"/>
+<text text-anchor="middle" x="1358.58" y="-14.5" font-family="Arial" font-size="10.00">RESTfulAPI</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
-<g id="seq-edge5" class="edge">
+<g id="cluster-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M982.18,-18C1015.08,-18 1057.71,-18 1090.92,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1090.73,-21.5 1100.73,-18 1090.73,-14.5 1090.73,-21.5"/>
-<text text-anchor="middle" x="1042.31" y="-19.95" font-family="Arial" font-size="9.00">handle_ai_response</text>
+<path fill="none" stroke="#475569" d="M1191.68,-18C1225.6,-18 1270.36,-18 1304.83,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1304.58,-21.5 1314.58,-18 1304.58,-14.5 1304.58,-21.5"/>
+<text text-anchor="middle" x="1253.87" y="-19.95" font-family="Arial" font-size="9.00">sends query results to</text>
+</g>
+<!-- N6 -->
+<g id="cluster-node7" class="node">
+<title>N6</title>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1636.36" cy="-18" rx="82.68" ry="18"/>
+<text text-anchor="middle" x="1636.36" y="-14.5" font-family="Arial" font-size="10.00">RetrieverReaderComponent</text>
+</g>
+<!-- N5&#45;&gt;N6 -->
+<g id="cluster-edge6" class="edge">
+<title>N5&#45;&gt;N6</title>
+<path fill="none" stroke="#475569" d="M1401.17,-18C1438.36,-18 1494.23,-18 1542.07,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1541.89,-21.5 1551.89,-18 1541.89,-14.5 1541.89,-21.5"/>
+<text text-anchor="middle" x="1477.18" y="-19.95" font-family="Arial" font-size="9.00">returns answer generated by</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: awesome-ai-agents integration flow</p></div></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Agent4Rec with FastAPI and VectorDB</h2></div><p class="ch-summary">Deploy Agent4Rec</p><div class="ch-body"><p>Agent4Rec is a recommender system simulator with 1,000 agents. It can be deployed using FastAPI and VectorDB. The backend architecture uses FastAPI and Python, while the frontend uses NextJS and Typescript. The database can be either MySQL or SQLite.</p>
-<p>The VectorDB config key is used to configure the VectorDB database. The Semantic Search config key is used to enable semantic search functionality. The gpt-3. 5-16k version number indicates the version of the language model used.</p>
-<p>The ToolComponent. py class is used to implement the tool component of the agent. The controller function is used to control the agent's actions. The function-calling method is used to call external functions.</p>
-<p>The Agent4Rec system does not support multi-agent communication out of the box. However, it can be integrated with other systems that support multi-agent communication. The system also does not support symbolic control, but it can be extended to support it.</p>
-<p>The system's limitations include the lack of support for certain databases and the limited scalability of the VectorDB database. However, the system can be extended to support other databases and can be scaled up to support larger workloads.</p>
-<p>The system's performance metrics include the response time and the accuracy of the recommendations. The response time is typically around 100ms, and the accuracy of the recommendations is around 90%.</p>
-<p>The system can be installed using the uv init command, followed by the uv add openai-agents command. The voice support can be installed using the uv add 'openai-agents[voice]' command.</p>
-<p>The system can be run using the uv run command. The first agent can be run using the uv run --agent myagent command. The system can also be run in debug mode using the uv run --debug command.</p>
-<p>The system's API includes the Agent. addtask() method, the workflow. run() method, and the config. maxretries config key.</p>
-<p>The Agent. addtask() method is used to add a task to the agent's workflow. The workflow. run() method is used to run the agent's workflow.</p>
-<p>The config. maxretries config key is used to configure the maximum number of retries for the agent's actions.</p>
-<p>The system's code sample includes the uv init command, the uv add openai-agents command, and the uv run command. The code sample also includes the Agent. add_task() method and the workflow. run() method.</p>
-<p>The system's callout is the VectorDB config key. The system's code sample is uv init, uv add openai-agents, uv run.</p><div class="code-label">Code Sample</div><div class="code-block">uv init
-uv add openai-agents
-```
-
-For voice support, install with the optional `voice` group: `uv add 'openai-agents[voice]'`. For Redis session support, install with the optional `redis` group: `uv add 'openai-agents[redis]'`.
-
-## Run your first agent</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: cognita internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Data Indexing Pipelines with Qdrant Server</h2></div><p class="ch-summary">Indexing data with Qdrant</p><div class="ch-body"><p>The Qdrant server is a key component in designing data indexing pipelines for Cognita. To start, the user must install Docker and docker-compose, then run the command docker-compose --env-file compose. env up to set up the environment. The local.</p>
+<p>metadata. yaml file is used to configure the metadata store. The aunassociatedatasourcewithcollection method is used to manage data sources. The VITEQAFOUNDRYURL config key is used to set the URL for the QA foundry.</p>
+<p>The qdrant-server is used in conjunction with the cognita-backend and cognita-frontend to provide a complete data indexing pipeline. The system uses pydantic v2 for data validation.</p>
+<p>The data indexing pipeline involves several components, including the Data Sources, Metadata, and Vector DB. The user can customize the pipeline by modifying the dataloaders, embedder, and parsers. The system also supports incremental indexing, which allows for efficient updates to the index. The Query Controller is used to manage queries and provide feedback to the user.</p>
+<p>The system has a limitation in that it does not support removing vector points from a collection when a data source is unassociated.</p>
+<p>The Cognita components, including the API Server, RAG component, and Metadatastore, work together to provide a scalable and efficient data indexing pipeline. The system uses Prisma and Postgress to manage the data store. The user can customize the pipeline by adding custom vector databases and rerankers. The system also supports no-code UI support, which allows users to interact with the system without writing code.</p>
+<p>The system has a version number of v18, which indicates the level of development and testing.</p>
+<p>The system has several use cases, including question-answering, data indexing, and customizing the code for specific use cases. The user can use the system to experiment with different data loaders, embedders, and parsers to find the best approach for their specific use case. The system also supports production environments, which allows for large-scale deployment. The system has a limitation in that it is no longer actively maintained, which may affect its stability and security.</p>
+<p>The system uses several config keys, including VITEDOCSQADELETECOLLECTIONS and VITEDOCSQASTANDALONEPATH, to manage the behavior of the system. The user can modify these keys to customize the system for their specific use case. The system also uses several API methods, including the Query Controller, to manage queries and provide feedback to the user. The system has a performance metric of 25+, which indicates the level of scalability and efficiency.</p>
+<p>The system has several technical limitations, including the fact that the Unassociate datasource from collection API should remove vector points from the required collection. The system also has a limitation in that it is no longer actively maintained, which may affect its stability and security. The user should be aware of these limitations when using the system. The system uses nodejs and yarn@1.</p>
+<p>22. 19 to manage the dependencies and build the system.</p>
+<p>The system uses several technical components, including the qdrant-server, cognita-backend, and cognita-frontend, to provide a complete data indexing pipeline. The system also uses several config keys, including VITEQAFOUNDRYURL, to manage the behavior of the system. The user can modify these keys to customize the system for their specific use case. The system has a version number of v1.</p>
+<p>22. 19, which indicates the level of development and testing.</p>
+<p>The system has several best practices for deployment, including using Docker and docker-compose to set up the environment. The user should also be aware of the limitations of the system, including the fact that it is no longer actively maintained. The system uses several technical components, including the qdrant-server and cognita-backend, to provide a complete data indexing pipeline. The user can customize the pipeline by modifying the dataloaders, embedder, and parsers.</p></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Cognita with Docker Compose in Under 5 Commands</h2></div><p class="ch-summary">Deploy Cognita quickly</p><div class="ch-body"><p>To deploy Cognita with Docker Compose, you need to have Docker and docker-compose installed on your system. The installation steps involve installing Docker and docker-compose for your system from the official Docker Compose documentation. Once installed, you can run the command docker-compose --env-file compose. env up to start the Cognita services.</p>
+<p>The compose. env file contains environment variables such as OPENAIAPIKEY that are required for Cognita to function properly. The Cognita architecture consists of several components including cognita-db, qdrant-server, cognita-backend, and cognita-frontend.</p>
+<p>The Cognita components work together to provide features such as data indexing, API server, and code structure. The data indexing component is responsible for indexing data from various sources, while the API server provides a interface for interacting with the indexed data. The code structure of Cognita is designed to be modular and scalable, allowing for easy customization and extension. The config keys such as VITEQAFOUNDRYURL and VITEDOCSQADELETE_COLLECTIONS play a crucial role in configuring the Cognita services.</p>
+<p>The Cognita services can be customized to meet specific use cases such as quick experimentation and prototyping on Jupyter notebooks, production environment, and local setup. The customization options include customizing dataloaders, embedder, and parsers. The Cognita services also support incremental indexing, which allows for efficient updating of the indexed data. The version numbers such as v18 and v1.</p>
+<p>22. 19 are used to track the changes and updates to the Cognita services.</p>
+<p>The Cognita services have some limitations, such as the unassociate datasource from collection API not removing vector points from the required collection. The Cognita services also require specific dependencies such as nodejs and yarn to be installed on the system. The installation steps involve running commands such as sudo apt-get update and sudo apt-get install nodejs to install the required dependencies.</p>
+<p>The Cognita services can be deployed using Docker Compose, which provides a convenient way to manage and orchestrate the services. The Docker Compose commands such as docker-compose --env-file compose. env up and docker-compose --env-file compose. env --profile ollama --profile infinity up can be used to start and manage the Cognita services.</p>
+<p>The Cognita services also support customization of the code for specific use cases, such as customizing the Query Controller.</p>
+<p>The Cognita services provide a range of features and customization options, making it a versatile and scalable solution for various use cases. The services can be deployed and managed using Docker Compose, which provides a convenient and efficient way to orchestrate the services. The Cognita services also support incremental indexing, which allows for efficient updating of the indexed data.</p>
+<p>The Cognita architecture is designed to be modular and scalable, allowing for easy customization and extension. The services can be customized to meet specific use cases, such as quick experimentation and prototyping on Jupyter notebooks, production environment, and local setup. The customization options include customizing dataloaders, embedder, and parsers.</p>
+<p>The Cognita services have some limitations, such as the unassociate datasource from collection API not removing vector points from the required collection. However, the services provide a range of features and customization options, making it a versatile and scalable solution for various use cases. The services can be deployed and managed using Docker Compose, which provides a convenient and efficient way to orchestrate the services.</p><div class="code-label">Code Sample</div><div class="code-block">cp models_config.sample.yaml models_config.yaml 
+ docker-compose --env-file compose.env up 
+ docker-compose --env-file compose.env --profile ollama --profile infinity up 
+ docker-compose --env-file compose.env up --build 
+ docker-compose --env-file compose.env --profile ollama --profile infinity up --build 
+ sudo apt-get update 
+ sudo apt-get upgrade 
+ sudo apt-get install software-properties-common 
+ curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - 
+ sudo apt-get install nodejs 
+ npm install -g yarn@1.22.19 
+ Navigate into the project directory 
+ Install dependencies using Yarn 
+ Copy the .env.example file and create a new .env file 
+ Run command: docker-compose --env-file compose.env up 
+ The Cognita services can be customized using config keys such as VITE_QA_FOUNDRY_URL and VITE_DOCS_QA_DELETE_COLLECTIONS 
+ The Cognita services support incremental indexing using the data_ingestion_mode: INCREMENTAL config key 
+ The Cognita services can be deployed using Docker Compose with the command: docker-compose --env-file compose.env up</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1156.52 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1137.80 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1152.52,-40 1152.52,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1133.8,-40 1133.8,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="34.43" cy="-18" rx="34.43" ry="18"/>
-<text text-anchor="middle" x="34.43" y="-14.5" font-family="Arial" font-size="10.00">Initialized</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="41.64" cy="-18" rx="41.64" ry="18"/>
+<text text-anchor="middle" x="41.64" y="-14.5" font-family="Arial" font-size="10.00">Uninitialized</text>
 </g>
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="217.31" cy="-18" rx="47.96" ry="18"/>
-<text text-anchor="middle" x="217.31" y="-14.5" font-family="Arial" font-size="10.00">Goal Selection</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="200.99" cy="-18" rx="47.96" ry="18"/>
+<text text-anchor="middle" x="200.99" y="-14.5" font-family="Arial" font-size="10.00">Goal Selection</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M69.03,-18C93.83,-18 128.23,-18 157.54,-18"/>
-<polygon fill="#475569" stroke="#475569" points="157.4,-21.5 167.4,-18 157.4,-14.5 157.4,-21.5"/>
-<text text-anchor="middle" x="119.1" y="-19.95" font-family="Arial" font-size="9.00">agent activation</text>
+<path fill="none" stroke="#475569" d="M83.57,-18C101.15,-18 122.02,-18 141.2,-18"/>
+<polygon fill="#475569" stroke="#475569" points="141.06,-21.5 151.06,-18 141.06,-14.5 141.06,-21.5"/>
+<text text-anchor="middle" x="118.16" y="-19.95" font-family="Arial" font-size="9.00">initialize</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="420.04" cy="-18" rx="54.27" ry="18"/>
-<text text-anchor="middle" x="420.04" y="-14.5" font-family="Arial" font-size="10.00">Action Execution</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="399.66" cy="-18" rx="50.21" ry="18"/>
+<text text-anchor="middle" x="399.66" y="-14.5" font-family="Arial" font-size="10.00">Task Execution</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M265.63,-18C292.02,-18 325.3,-18 354.1,-18"/>
-<polygon fill="#475569" stroke="#475569" points="353.8,-21.5 363.8,-18 353.8,-14.5 353.8,-21.5"/>
-<text text-anchor="middle" x="315.52" y="-19.95" font-family="Arial" font-size="9.00">plan generation</text>
+<path fill="none" stroke="#475569" d="M249.1,-18C275.67,-18 309.15,-18 337.7,-18"/>
+<polygon fill="#475569" stroke="#475569" points="337.68,-21.5 347.68,-18 337.68,-14.5 337.68,-21.5"/>
+<text text-anchor="middle" x="299.2" y="-19.95" font-family="Arial" font-size="9.00">plan generation</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="660.82,-36 577.06,-18 660.82,0 744.59,-18 660.82,-36"/>
-<text text-anchor="middle" x="660.82" y="-14.5" font-family="Arial" font-size="10.00">Reward Evaluation</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="636.39,-36 552.62,-18 636.39,0 720.15,-18 636.39,-36"/>
+<text text-anchor="middle" x="636.39" y="-14.5" font-family="Arial" font-size="10.00">Knowledge Update</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M474.63,-18C500.84,-18 533.21,-18 563.52,-18"/>
-<polygon fill="#475569" stroke="#475569" points="563.5,-21.5 573.5,-18 563.5,-14.5 563.5,-21.5"/>
-<text text-anchor="middle" x="525.68" y="-19.95" font-family="Arial" font-size="9.00">action execution</text>
+<path fill="none" stroke="#475569" d="M450.15,-18C476.03,-18 508.61,-18 539.21,-18"/>
+<polygon fill="#475569" stroke="#475569" points="538.86,-21.5 548.86,-18 538.86,-14.5 538.86,-21.5"/>
+<text text-anchor="middle" x="501.25" y="-19.95" font-family="Arial" font-size="9.00">action execution</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="913.91" cy="-18" rx="53.82" ry="18"/>
-<text text-anchor="middle" x="913.91" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="887.97" cy="-18" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="887.97" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M746.83,-18C780.01,-18 817.42,-18 848.32,-18"/>
-<polygon fill="#475569" stroke="#475569" points="848.31,-21.5 858.31,-18 848.31,-14.5 848.31,-21.5"/>
-<text text-anchor="middle" x="802.34" y="-19.95" font-family="Arial" font-size="9.00">reward assessment</text>
+<path fill="none" stroke="#475569" d="M722.24,-18C755.07,-18 792.02,-18 822.6,-18"/>
+<polygon fill="#475569" stroke="#475569" points="822.47,-21.5 832.47,-18 822.47,-14.5 822.47,-21.5"/>
+<text text-anchor="middle" x="777.15" y="-19.95" font-family="Arial" font-size="9.00">success evaluation</text>
 </g>
 <!-- N5 -->
 <g id="sm-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1106.87" cy="-18" rx="41.64" ry="18"/>
-<text text-anchor="middle" x="1106.87" y="-14.5" font-family="Arial" font-size="10.00">Task Failure</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1084.54" cy="-18" rx="45.25" ry="18"/>
+<text text-anchor="middle" x="1084.54" y="-14.5" font-family="Arial" font-size="10.00">Task Abortion</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="sm-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M968.1,-18C994.73,-18 1026.86,-18 1053.39,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1053.25,-21.5 1063.25,-18 1053.25,-14.5 1053.25,-21.5"/>
-<text text-anchor="middle" x="1016.48" y="-19.95" font-family="Arial" font-size="9.00">failure analysis</text>
+<path fill="none" stroke="#475569" d="M942.14,-18C968.72,-18 1000.88,-18 1027.81,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1027.48,-21.5 1037.48,-18 1027.48,-14.5 1027.48,-21.5"/>
+<text text-anchor="middle" x="990.54" y="-19.95" font-family="Arial" font-size="9.00">failure analysis</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: awesome-ai-agents lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Adala with External Tools via Function-Calling</h2></div><p class="ch-summary">Integrate Adala with external tools</p><div class="ch-body"><p>The Adala framework provides a function-calling mechanism to integrate with external tools. This allows developers to leverage the capabilities of various tools and services, such as VectorDB and Semantic Search, to enhance the functionality of their AI agents. The ToolComponent. py class is a key component in this integration process, as it enables the creation of custom tool components that can interact with external tools.</p>
-<p>For instance, the controller function can be used to manage the interaction between Adala and external tools. The use of function-calling also enables the integration of Adala with other frameworks, such as AgentForge and Agent4Rec, which can provide additional capabilities for agent building and testing.</p>
-<p>The integration of Adala with external tools via function-calling requires careful consideration of the architecture and configuration of the system. The frontend, built using NextJS and Typescript, must be designed to interact with the backend, which is built using FastAPI and Python. The database, which can be either MySQL or SQLite, must also be configured to support the integration. The use of VectorDB and Semantic Search can provide additional capabilities for data storage and retrieval.</p>
-<p>The version number of the framework, such as gpt-3. 5-16k, can also impact the integration process.</p>
-<p>One of the key benefits of using function-calling to integrate Adala with external tools is the ability to leverage the capabilities of various tools and services. For example, the use of VectorDB can provide advanced data storage and retrieval capabilities, while the use of Semantic Search can provide advanced search capabilities. The integration of Adala with other frameworks, such as AgentForge and Agent4Rec, can also provide additional capabilities for agent building and testing. However, the integration process can be complex and requires careful consideration of the architecture and configuration of the system.</p>
-<p>The use of function-calling to integrate Adala with external tools also requires careful consideration of the limitations of the system. For example, the use of VectorDB and Semantic Search can require significant computational resources, which can impact the performance of the system. The integration of Adala with other frameworks, such as AgentForge and Agent4Rec, can also require significant development effort, which can impact the timeline and budget of the project. Additionally, the use of function-calling can introduce additional complexity into the system, which can make it more difficult to debug and maintain.</p>
-<p>The research does not provide implementation details for the integration of Adala with external tools via function-calling. However, the use of the ToolComponent. py class and the controller function can provide a starting point for developers. The use of VectorDB and Semantic Search can also provide additional capabilities for data storage and retrieval.</p>
-<p>The integration of Adala with other frameworks, such as AgentForge and Agent4Rec, can also provide additional capabilities for agent building and testing.</p>
-<p>The performance of the system can be impacted by the integration of Adala with external tools via function-calling. For example, the use of VectorDB and Semantic Search can require significant computational resources, which can impact the performance of the system. The integration of Adala with other frameworks, such as AgentForge and Agent4Rec, can also require significant development effort, which can impact the timeline and budget of the project. However, the use of function-calling can also provide additional capabilities for the system, such as advanced data storage and retrieval capabilities.</p>
-<p>The use of function-calling to integrate Adala with external tools requires careful consideration of the security of the system. For example, the use of VectorDB and Semantic Search can require significant computational resources, which can impact the security of the system. The integration of Adala with other frameworks, such as AgentForge and Agent4Rec, can also require significant development effort, which can impact the security of the system. Additionally, the use of function-calling can introduce additional complexity into the system, which can make it more difficult to secure.</p>
-<p>The callout for this chapter is that Adala does not support the use of GPT-4 or higher, which can limit the capabilities of the system. The code sample for this chapter is empty, as the research does not provide implementation details for the integration of Adala with external tools via function-calling.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: cognita lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Cognita with Truefoundry AI Gateway using Model Gateway</h2></div><p class="ch-summary">Integrate Cognita with Truefoundry AI</p><div class="ch-body"><p>To integrate Cognita with Truefoundry AI Gateway, we need to configure the MODELGATEWAYCONFIG key in the compose. env file. The MODELGATEWAYCONFIG key is used to specify the URL of the Truefoundry AI Gateway. We also need to set the TFYAPIKEY config key to authenticate with the Truefoundry AI Gateway.</p>
+<p>The TFYAPIKEY is used to access the Truefoundry AI models. The modelsconfig. yaml file is used to configure the models used by the Cognita application. The modelsconfig.</p>
+<p>yaml file contains a list of model providers, including Truefoundry and local-infinity. Each model provider has a list of llmmodelids, embeddingmodelids, and rerankingmodelids. The llmmodelids are used for language modeling tasks, the embeddingmodelids are used for embedding tasks, and the rerankingmodelids are used for reranking tasks. The defaultheaders key is used to specify the default headers for the API requests.</p>
+<p>The X-TFY-METADATA header is used to specify the metadata for the API requests.</p>
+<p>The Cognita application uses the qdrant-server to store and retrieve vectors. The qdrant-server is configured using the VECTORDBCONFIG key in the compose. env file. The VECTORDBCONFIG key is used to specify the URL of the qdrant-server.</p>
+<p>The qdrant-server is used to store and retrieve vectors for the Cognita application. The vectors are used for tasks such as semantic search and question answering. The Cognita application also uses the infinity-server to perform tasks such as embedding and reranking. The infinity-server is configured using the INFINITYAPIKEY config key.</p>
+<p>The INFINITYAPIKEY is used to authenticate with the infinity-server.</p>
+<p>The Cognita application has several limitations, including the fact that it is no longer actively maintained. This means that there may be bugs or security vulnerabilities that are not being addressed. The Cognita application also requires a significant amount of resources to run, including a large amount of memory and CPU. The Cognita application also has a complex architecture, with many different components and services.</p>
+<p>This can make it difficult to debug and maintain the application. The Cognita application also has a limited set of features, including support for only a few models and tasks.</p>
+<p>The Cognita application uses several API methods to interact with the Truefoundry AI Gateway, including the getmodel method and the getembedding method. The getmodel method is used to retrieve a model from the Truefoundry AI Gateway, and the getembedding method is used to retrieve an embedding from the Truefoundry AI Gateway. The Cognita application also uses the createtask method to create a task on the Truefoundry AI Gateway. The createtask method is used to create a task such as a language modeling task or an embedding task.</p>
+<p>The Cognita application also uses the gettask method to retrieve a task from the Truefoundry AI Gateway.</p>
+<p>The Cognita application has several config keys that are used to configure the application, including the DATAINGESTIONMODE key and the RAISEERRORONFAILURE key. The DATAINGESTIONMODE key is used to specify the mode of data ingestion, and the RAISEERRORONFAILURE key is used to specify whether to raise an error on failure. The Cognita application also has several environment variables that are used to configure the application, including the TFYAPIKEY environment variable and the INFINITYAPIKEY environment variable.</p>
+<p>The Cognita application uses several classes and methods to interact with the Truefoundry AI Gateway, including the ModelGateway class and the TruefoundryAI class. The ModelGateway class is used to interact with the Truefoundry AI Gateway, and the TruefoundryAI class is used to interact with the Truefoundry AI models. The Cognita application also uses several interfaces to interact with the Truefoundry AI Gateway, including the IModelGateway interface and the ITruefoundryAI interface.</p>
+<p>The Cognita application has several use cases, including using Cognita with Truefoundry AI Gateway for logging, metrics, and feedback mechanism for user queries. The Cognita application can be used to log user queries and provide metrics on the performance of the application. The Cognita application can also be used to provide feedback to the user on the performance of the application.</p>
+<p>The Cognita application can be installed using the docker-compose command, and the application can be customized using the modelsconfig. yaml file. The modelsconfig. yaml file can be used to configure the models used by the Cognita application, and the application can be customized to use different models and tasks.</p>
+<p>The Cognita application can also be used with other applications, such as the ollama application and the infinity-server application.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 227.83 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 183.19 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 223.83,-535 223.83,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 179.19,-535 179.19,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="109.92" cy="-513" rx="66.9" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="87.59" cy="-513" rx="66.9" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-430.5" rx="54.27" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-427" font-family="Arial" font-size="10.00">NLPTokenization</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-430.5" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-427" font-family="Arial" font-size="10.00">TextTokenization</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M109.92,-494.53C109.92,-484.51 109.92,-471.68 109.92,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-460.45 109.92,-450.45 106.42,-460.45 113.42,-460.45"/>
-<text text-anchor="middle" x="141.04" y="-468.45" font-family="Arial" font-size="9.00">lexical analysis</text>
+<path fill="none" stroke="#475569" d="M87.59,-494.53C87.59,-484.51 87.59,-471.68 87.59,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-460.45 87.59,-450.45 84.09,-460.45 91.09,-460.45"/>
+<text text-anchor="middle" x="118.72" y="-468.45" font-family="Arial" font-size="9.00">lexical analysis</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-348" rx="67.35" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-344.5" font-family="Arial" font-size="10.00">ContextualEmbedding</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-348" rx="63.74" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-344.5" font-family="Arial" font-size="10.00">SemanticEmbedding</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M109.92,-412.03C109.92,-402.01 109.92,-389.18 109.92,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-377.95 109.92,-367.95 106.42,-377.95 113.42,-377.95"/>
-<text text-anchor="middle" x="154.92" y="-385.95" font-family="Arial" font-size="9.00">semantic role labeling</text>
+<path fill="none" stroke="#475569" d="M87.59,-412.03C87.59,-402.01 87.59,-389.18 87.59,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-377.95 87.59,-367.95 84.09,-377.95 91.09,-377.95"/>
+<text text-anchor="middle" x="122.09" y="-385.95" font-family="Arial" font-size="9.00">contextualization</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="109.92,-283.5 0,-265.5 109.92,-247.5 219.83,-265.5 109.92,-283.5"/>
-<text text-anchor="middle" x="109.92" y="-262" font-family="Arial" font-size="10.00">KnowledgeGraphRetrieval</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="87.59,-283.5 0,-265.5 87.59,-247.5 175.19,-265.5 87.59,-283.5"/>
+<text text-anchor="middle" x="87.59" y="-262" font-family="Arial" font-size="10.00">KnowledgeRetrieval</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M109.92,-329.53C109.92,-319.51 109.92,-306.68 109.92,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-295.45 109.92,-285.45 106.42,-295.45 113.42,-295.45"/>
-<text text-anchor="middle" x="153.42" y="-303.45" font-family="Arial" font-size="9.00">entity disambiguation</text>
+<path fill="none" stroke="#475569" d="M87.59,-329.53C87.59,-319.51 87.59,-306.68 87.59,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-295.45 87.59,-285.45 84.09,-295.45 91.09,-295.45"/>
+<text text-anchor="middle" x="128.09" y="-303.45" font-family="Arial" font-size="9.00">information retrieval</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-183" rx="62.84" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranking</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-183" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranking</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M109.92,-247.03C109.92,-237.01 109.92,-224.18 109.92,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-212.95 109.92,-202.95 106.42,-212.95 113.42,-212.95"/>
-<text text-anchor="middle" x="146.29" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
+<path fill="none" stroke="#475569" d="M87.59,-247.03C87.59,-237.01 87.59,-224.18 87.59,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-212.95 87.59,-202.95 84.09,-212.95 91.09,-212.95"/>
+<text text-anchor="middle" x="123.97" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-100.5" rx="49.31" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-100.5" rx="49.31" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M109.92,-164.53C109.92,-154.51 109.92,-141.68 109.92,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-130.45 109.92,-120.45 106.42,-130.45 113.42,-130.45"/>
-<text text-anchor="middle" x="153.42" y="-138.45" font-family="Arial" font-size="9.00">sequence generation</text>
+<path fill="none" stroke="#475569" d="M87.59,-164.53C87.59,-154.51 87.59,-141.68 87.59,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-130.45 87.59,-120.45 84.09,-130.45 91.09,-130.45"/>
+<text text-anchor="middle" x="124.34" y="-138.45" font-family="Arial" font-size="9.00">response creation</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="109.92" cy="-18" rx="62.84" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreaming</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="87.59" cy="-18" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreaming</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M109.92,-82.03C109.92,-72.01 109.92,-59.18 109.92,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-47.95 109.92,-37.95 106.42,-47.95 113.42,-47.95"/>
-<text text-anchor="middle" x="147.04" y="-55.95" font-family="Arial" font-size="9.00">fluency evaluation</text>
+<path fill="none" stroke="#475569" d="M87.59,-82.03C87.59,-72.01 87.59,-59.18 87.59,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-47.95 87.59,-37.95 84.09,-47.95 91.09,-47.95"/>
+<text text-anchor="middle" x="126.22" y="-55.95" font-family="Arial" font-size="9.00">output serialization</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: awesome-ai-agents end-to-end processing pipeline</p></div><div class="sec-heading">awesome-ai-agents — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Autonomous Data Labeling</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Recommender System Simulation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">LLM-Agnostic Agent Building</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:78%"></span></span></span><span class="bar-value">78%</span></div><div class="bar-row"><span class="bar-label">Multi-Agent System Development</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Human-Agent Interaction</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Symbolic Control and Web Navigation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:76%"></span></span></span><span class="bar-value">76%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Multi-Agent Systems with Controller Functions</h2></div><p class="ch-summary">Troubleshooting multi-agent systems</p><div class="ch-body"><p>The research does not provide implementation details for this area. However, based on the provided context, it can be inferred that troubleshooting multi-agent systems with controller functions involves identifying and resolving issues related to the interaction between agents and the controller function. The controller function is a crucial component in multi-agent systems, responsible for managing the flow of information and tasks between agents. In the context of the awesome-ai-agents library, the controller function can be implemented using the ToolComponent.</p>
-<p>py class. The VectorDB and Semantic Search config keys can be used to configure the database and search functionality of the system.</p>
-<p>The architecture of the system, which includes a frontend built with NextJS and Typescript, and a backend built with FastAPI and Python, can also impact the troubleshooting process. The use of MySQL or SQLite as the database can also introduce specific challenges and limitations. For example, the system may not support certain database operations or may have performance issues with large datasets.</p>
-<p>The use of LLM models, such as the gpt-3. 5-16k model, can also introduce specific challenges and limitations. For example, the model may not support certain types of input or output, or may have performance issues with large datasets. The integration of the LLM model with the controller function and the agents can also be a source of issues.</p>
-<p>The research does not provide specific information on the limitations of the system, but it can be inferred that the system may have limitations related to scalability, performance, and compatibility with certain types of data or models. The system may also have limitations related to the implementation of the controller function and the interaction between agents.</p>
-<p>The use of function-calling and class methods, such as the @classmethod decorator, can also introduce specific challenges and limitations. For example, the use of class methods can make it difficult to implement certain types of functionality, such as instance-specific behavior.</p>
-<p>The research does not provide specific information on the performance metrics of the system, but it can be inferred that the system may have performance issues related to the interaction between agents and the controller function. The system may also have performance issues related to the use of LLM models and the database.</p>
-<p>The callout for this chapter is that the system uses the VectorDB config key to configure the database.</p>
-<p>The code sample for this chapter is empty, as the research does not provide specific code examples for troubleshooting multi-agent systems with controller functions.</p><div class="sec-heading">awesome-ai-agents — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Frontend Framework</td><td>NextJS</td><td>Utilizes Typescript for robust development</td></tr><tr><td>Backend Framework</td><td>FastAPI</td><td>Built with Python for efficient API management</td></tr><tr><td>Database Options</td><td>MySQL and SQLite</td><td>Supports both cloud and local database configurations</td></tr><tr><td>LLM Model Support</td><td>gpt-3.5-16k</td><td>Compatible with various LLM models for diverse applications</td></tr><tr><td>Agent Development Platform</td><td>AgentForge</td><td>Enables rapid building and testing of custom agents</td></tr><tr><td>Search and Database Integration</td><td>VectorDB and Semantic Search</td><td>Enhances data retrieval and agent decision-making capabilities</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing AgentForge Performance with gpt-3.5-16k and Semantic Search</h2></div><p class="ch-summary">Optimize AgentForge</p><div class="ch-body"><p>To optimize AgentForge performance, it's essential to understand the Dual-loop Mechanism architecture, which consists of an Outer-Loop managing plans and task refinements, and an Inner-Loop handling dispatch, ReACT-based execution, and feedback. The Outer-Loop is responsible for refining tasks and managing plans, while the Inner-Loop focuses on executing tasks and providing feedback. The bondai module can be used to install and start the AgentForge server, with the command 'bondai --server' starting the RESTful/WebSocket API. The CONFIGKEYS can be used to configure the AgentForge performance, with GPT-4 or higher recommended for optimal performance.</p>
-<p>The VERSIONNUMBERS, such as GPT-4, can be used to track the performance of different versions of the AgentForge.</p>
-<p>The AgentForge can be used for various USECASES, including sending emails, posting tweets, and searching for vacation rentals. The LIMITATIONS of the AgentForge include the risk of breaking the environment, which can be mitigated by carefully configuring the CONFIGKEYS and using the correct VERSIONNUMBERS. The INSTALLSTEPS for the AgentForge include installing the bondai module using 'pip install bondai' and starting the server using 'bondai --server'. The CLASSESANDMETHODS, such as import modulename, can be used to customize the AgentForge performance.</p>
-<p>The CODESNIPPETS, such as 'bondai' and 'bondai --server', can be used to start the AgentForge server and CLI.</p>
-<p>The performance of the AgentForge can be optimized by using the gpt-3. 5-16k model, which provides better performance than earlier models. The Semantic Search feature can also be used to improve the performance of the AgentForge, by providing more accurate search results. The ARCHITECTURE of the AgentForge, including the Dual-loop Mechanism, can be used to optimize the performance of the AgentForge.</p>
-<p>The CONFIGKEYS, such as GPT-4 or higher, can be used to configure the performance of the AgentForge. The VERSIONNUMBERS, such as GPT-4, can be used to track the performance of different versions of the AgentForge.</p>
-<p>The AgentForge can be used for various USECASES, including Data analysis, Productivity, Research, and Marketing. The LIMITATIONS of the AgentForge include the risk of breaking the environment, which can be mitigated by carefully configuring the CONFIGKEYS and using the correct VERSIONNUMBERS. The INSTALLSTEPS for the AgentForge include installing the bondai module using 'pip install bondai' and starting the server using 'bondai --server'. The CLASSESANDMETHODS, such as import modulename, can be used to customize the AgentForge performance.</p>
-<p>The CODESNIPPETS, such as 'bondai' and 'bondai --server', can be used to start the AgentForge server and CLI.</p>
-<p>The performance of the AgentForge can be optimized by using the gpt-3. 5-16k model, which provides better performance than earlier models. The Semantic Search feature can also be used to improve the performance of the AgentForge, by providing more accurate search results. The ARCHITECTURE of the AgentForge, including the Dual-loop Mechanism, can be used to optimize the performance of the AgentForge.</p>
-<p>The CONFIGKEYS, such as GPT-4 or higher, can be used to configure the performance of the AgentForge. The VERSIONNUMBERS, such as GPT-4, can be used to track the performance of different versions of the AgentForge.</p>
-<p>The AgentForge does not support certain features, such as multi-threading, which can limit its performance in certain USECASES. The LIMITATIONS of the AgentForge include the risk of breaking the environment, which can be mitigated by carefully configuring the CONFIGKEYS and using the correct VERSIONNUMBERS. The INSTALLSTEPS for the AgentForge include installing the bondai module using 'pip install bondai' and starting the server using 'bondai --server'. The CLASSESANDMETHODS, such as import modulename, can be used to customize the AgentForge performance.</p>
-<p>The CODESNIPPETS, such as 'bondai' and 'bondai --server', can be used to start the AgentForge server and CLI.</p>
-<p>The performance of the AgentForge can be optimized by using the gpt-3. 5-16k model, which provides better performance than earlier models. The Semantic Search feature can also be used to improve the performance of the AgentForge, by providing more accurate search results. The ARCHITECTURE of the AgentForge, including the Dual-loop Mechanism, can be used to optimize the performance of the AgentForge.</p>
-<p>The CONFIGKEYS, such as GPT-4 or higher, can be used to configure the performance of the AgentForge. The VERSIONNUMBERS, such as GPT-4, can be used to track the performance of different versions of the AgentForge.</p></div></section>
-<div class="book-footer"><strong>awesome-ai-agents: Technical Deep Dive</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 23, 2026</div>
+</svg><p class="diagram-caption">Figure: cognita end-to-end processing pipeline</p></div><div class="sec-heading">cognita — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Data Indexing Efficiency</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">API Server Response Time</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Code Structure Readability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:76%"></span></span></span><span class="bar-value">76%</span></div><div class="bar-row"><span class="bar-label">No-code UI Support Adoption</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:68%"></span></span></span><span class="bar-value">68%</span></div><div class="bar-row"><span class="bar-label">Incremental Indexing Speed</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:82%"></span></span></span><span class="bar-value">82%</span></div><div class="bar-row"><span class="bar-label">Multi-modal Vision Parser Accuracy</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Production Issues with Cognita Backend and Infinity Server</h2></div><p class="ch-summary">Cognita production issues</p><div class="ch-body"><p>The Cognita backend and Infinity Server can be prone to issues in production environments, particularly when it comes to incremental indexing and embedding using Infninty Server. The local. metadata. yaml file plays a crucial role in configuring the Metadatastore, which is essential for the proper functioning of the Cognita backend.</p>
+<p>The Query Controller is responsible for handling user queries, and its implementation can significantly impact the performance of the system. The use of pydantic v2 and the configuration of the OPENAIAPIKEY are also important considerations. The Cognita project is no longer actively maintained, which can lead to limitations in terms of support and updates.</p>
+<p>The Cognita architecture consists of several components, including the cognita-db, qdrant-server, cognita-backend, and cognita-frontend. The Data Sources and Metadata components are also critical in ensuring the smooth operation of the system. The use of Docker and docker-compose can simplify the installation and deployment process, but it is essential to follow the recommended installation steps to avoid potential issues. The VITEQAFOUNDRYURL and VITEDOCSQADELETECOLLECTIONS config keys are important for customizing the behavior of the Cognita backend.</p>
+<p>The Cognita backend and Infinity Server can be used for various use cases, including question-answering, data indexing, and customizing the code for specific use cases. The use of the RAG component and the Metadatastore can provide a robust framework for building custom applications. However, the project's limitations, such as the lack of active maintenance, can make it challenging to troubleshoot issues and ensure the long-term viability of the system. The use of the docker-compose command with the --env-file and --profile options can help to customize the deployment process and troubleshoot potential issues.</p>
+<p>The Cognita project provides several features, including no-code UI support, incremental indexing, and embedding using Infninty Server. The use of the AudioParser and VideoParser components can provide a robust framework for handling multimedia data. However, the project's limitations, such as the lack of support for certain data formats, can make it challenging to integrate with existing systems. The use of the cp command to copy the modelsconfig.</p>
+<p>sample. yaml file to modelsconfig. yaml can help to simplify the configuration process.</p>
+<p>The Cognita backend and Infinity Server can be used with various data sources, including local files and remote databases. The use of the Metadatastore and the RAG component can provide a robust framework for handling metadata and building custom applications. However, the project's limitations, such as the lack of support for certain database systems, can make it challenging to integrate with existing systems. The use of the docker-compose command with the --build option can help to rebuild the Docker images and ensure that the system is up-to-date.</p>
+<p>The Cognita project provides several configuration options, including the local. metadata. yaml file and the VITEQAFOUNDRYURL config key. The use of the pydantic v2 library can provide a robust framework for building custom applications.</p>
+<p>However, the project's limitations, such as the lack of support for certain configuration options, can make it challenging to customize the behavior of the system. The use of the docker-compose command with the --env-file option can help to customize the deployment process and troubleshoot potential issues.</p>
+<p>The Cognita backend and Infinity Server can be prone to issues when it comes to performance and scalability. The use of the cognita-db and qdrant-server components can provide a robust framework for handling large datasets. However, the project's limitations, such as the lack of support for certain database systems, can make it challenging to ensure the long-term viability of the system. The use of the docker-compose command with the --profile option can help to customize the deployment process and troubleshoot potential issues.</p>
+<p>The Cognita project provides several tools and features for troubleshooting and debugging issues. The use of the docker-compose command with the --build option can help to rebuild the Docker images and ensure that the system is up-to-date. The use of the local. metadata.</p>
+<p>yaml file and the VITEQAFOUNDRY_URL config key can provide a robust framework for customizing the behavior of the system. However, the project's limitations, such as the lack of active maintenance, can make it challenging to troubleshoot issues and ensure the long-term viability of the system.</p><div class="sec-heading">cognita — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>RAG Codebase Organization</td><td>Cognita</td><td>Cognita provides a robust framework for organizing RAG codebases, making it easier to manage and maintain large projects.</td></tr><tr><td>Production Ready Environment</td><td>Supported</td><td>Cognita offers a production-ready environment, allowing for seamless deployment and scaling of applications.</td></tr><tr><td>Local Setup Ease</td><td>Easy</td><td>Cognita provides a straightforward local setup process, making it easy for developers to get started.</td></tr><tr><td>No-code UI Support</td><td>Available</td><td>Cognita offers no-code UI support, enabling non-technical users to interact with the platform.</td></tr><tr><td>Audio and Video Parsing</td><td>Supported</td><td>Cognita supports audio and video parsing, allowing for the analysis and processing of multimedia data.</td></tr><tr><td>Model Gateway and Embedding</td><td>Integrated</td><td>Cognita integrates a model gateway and embedding capabilities, enabling advanced machine learning workflows.</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Embedding and Reranking using Infinity Server</h2></div><p class="ch-summary">Optimize performance</p><div class="ch-body"><p>To optimize performance with embedding and reranking using Infinity Server, it's essential to understand the architecture of Cognita, which consists of various components such as Data Sources and Metadata Store. The services include cognita-db, qdrant-server, cognita-backend, cognita-frontend, ollama, and infinity-server. The INFINITYAPIKEY config key is crucial for setting up the Infinity Server. The INFINITYEMBEDDINGMODEL and INFINITYRERANKINGMODEL config keys are used to specify the models for embedding and reranking.</p>
+<p>The VITEDOCSQAMAXUPLOADSIZEMB config key determines the maximum upload size for documents.</p>
+<p>The Cognita Components interact with each other through various API methods, but the research does not provide implementation details for this area. However, it's known that the qdrant-server provides a local vector db server, and the cognita-backend provides a FastAPI backend server. The ollama service is used for LLMs, and the infinity-server is used for embedding and reranking. The METADATASTORECONFIG and VECTORDBCONFIG are important for configuring the metadata store and vector db.</p>
+<p>The performance of Cognita can be affected by various factors, including the choice of models and the configuration of the services. The INFINITYEMBEDDINGMODEL and INFINITYRERANKINGMODEL can significantly impact the performance of the embedding and reranking tasks. The VITEDOCSQAENABLEREDIRECT config key can also affect the performance by enabling or disabling redirects. The research does not provide specific performance metrics, but it's known that the version 25+ of Cognita has improved performance.</p>
+<p>One of the limitations of Cognita is that it does not support multiple ingestions for a collection in LOCAL, which can lead to broken Ingestion Status. Another limitation is that the dependency failed to start when the container cognita-postgres is unhealthy. The Missing parsers. requirements.</p>
+<p>txt file when building Docker image in the main branch is also a known issue. The research does not provide a specific solution to these limitations, but it's essential to be aware of them when using Cognita.</p>
+<p>The use of Cognita with multiple document retrievers, such as Similarity Search, Query Decompostion, and Document Reranking, can provide improved performance. The use of Cognita with SOTA OpenSource embeddings and reranking from mixedbread-ai can also provide better results. The ollama service can be used with LLMs to improve the performance of Cognita. The INFINITYAPIKEY and INFINITYEMBEDDINGMODEL config keys are essential for setting up the Infinity Server and embedding models.</p>
+<p>The configuration of the services, such as cognita-db, qdrant-server, and cognita-backend, is crucial for optimizing performance. The use of docker-compose and the compose. env file can simplify the configuration process. The docker-compose --env-file compose.</p>
+<p>env up command can be used to start the services. The docker-compose --env-file compose. env --profile ollama --profile infinity up command can be used to start the ollama and infinity-server services.</p>
+<p>The callout is that the INFINITYAPIKEY config key is required for setting up the Infinity Server. The code_sample is empty. The research does not provide specific code samples for optimizing performance with embedding and reranking using Infinity Server.</p>
+<p>In conclusion, optimizing performance with embedding and reranking using Infinity Server requires a deep understanding of the Cognita architecture and services. The configuration of the services and the choice of models can significantly impact performance. The limitations of Cognita, such as the lack of support for multiple ingestions and the dependency failed to start, should be considered when using the tool.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Cognita: Building Production Ready Applications! (Opensource)</div><a class="video-url" href="https://www.youtube.com/watch?v=CI1IQbdLyY8">https://www.youtube.com/watch?v=CI1IQbdLyY8</a></div></div></section>
+<div class="book-footer"><strong>cognita: Production Manual</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 24, 2026</div>
 </body>
 </html>
