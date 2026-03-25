@@ -2,165 +2,152 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>cognita: Production Manual</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "cognita: Production Manual"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>openlit: Practitioner Guide</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "openlit: Practitioner Guide"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://repository-images.githubusercontent.com/671064065/471bf988-a1ee-4be6-b575-636d6e6fa074" alt="cognita logo" onerror="this.style.display='none'"/><div class="cover-lib-name">cognita</div><div class="cover-suffix">Production Manual</div><div class="cover-rule"></div><p class="cover-subtitle">Understanding human cognition</p><p class="cover-desc">Cognita is a tool for building knowledge graphs, with components such as Data Indexing, API Server, and Metadatastore.  The architecture includes cognita-db, qdrant-server, and cognita-backend.  The config keys include OPENAIAPIKEY and local.</p><div class="cover-tagline">Know your mind</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 24, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Truefoundry built Cognita to solve data querying.</div><div class="intro-body"><p>Cognita is an open-source project developed by Truefoundry, first released with a set of components including cognita-db, qdrant-server, and cognita-backend. The specific problem it was built to solve is organizing and querying large datasets using a combination of natural language processing and vector databases. Cognita's architecture is designed around a set of microservices, including an API server, metadata store, and model gateway, which work together to provide a scalable and flexible platform for building question-answering systems.</p>
-<p>The technical design of Cognita is centered around the use of vector databases, such as Qdrant, to store and query dense vector representations of text data. This approach allows for efficient and accurate querying of large datasets, and is particularly well-suited for applications such as question-answering and text retrieval. Cognita also includes a range of tools and components for data indexing, including support for incremental indexing and customizable data loaders. The use of pydantic v2 for configuration management and the implementation of a Query Controller are examples of the design decisions that differentiate Cognita from other similar projects.</p>
-<p>Cognita is designed to be highly customizable, with a range of options for customizing data loaders, embedders, parsers, and rerankers. This flexibility makes it a good choice for developers who need to build custom question-answering systems or integrate Cognita with other tools and platforms. The project also includes a range of pre-built components, such as the RAG component and the Metadatastore, which can be used to speed up development and reduce the complexity of building a question-answering system. The target audience for Cognita is developers and data scientists who need to build custom question-answering systems or integrate Cognita with other tools and platforms.</p>
-<p>The project provides a range of use cases, including question-answering using the API server, data indexing, and customizing the code for specific use cases. Cognita can be installed using docker-compose, and the project provides a range of documentation and resources to help developers get started. However, it is worth noting that the project is no longer actively maintained, which may impact its stability and support. Overall, Cognita is a powerful and flexible platform for building question-answering systems, and its technical design and customization options make it a good choice for developers who need to build custom systems.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/truefoundry/cognita">https://github.com/truefoundry/cognita</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building Knowledge Graphs with Cognita Components</h2></div><p class="ch-summary">Cognita for knowledge graphs</p><div class="ch-body"><p>Cognita is a tool for building knowledge graphs, with components such as Data Indexing, API Server, and Metadatastore. The architecture includes cognita-db, qdrant-server, and cognita-backend. The config keys include OPENAIAPIKEY and local. metadata.</p>
-<p>yaml file. The version numbers mentioned are pydantic v2 and 25+.</p>
-<p>The Cognita Components provide a way to organize data and create a knowledge graph. The Data Indexing component is responsible for indexing the data, while the API Server provides an interface to interact with the knowledge graph. The Metadatastore is used to store metadata about the data.</p>
-<p>The installation steps for Cognita include installing Docker and docker-compose, and running the command docker-compose --env-file compose. env up. The use cases for Cognita include question-answering using API Server, data indexing, and customizing the code for specific use cases.</p>
-<p>The Cognita architecture includes several components, such as ta Store, LLM Gateway, Vector DB, Indexing Job, and API Server. The limitations of Cognita include the fact that it is no longer actively maintained.</p>
-<p>The code structure of Cognita includes a backend directory with an indexer subdirectory. The config keys can be found in the local. metadata. yaml file.</p>
-<p>The version numbers mentioned are pydantic v2 and 25+.</p>
-<p>The Cognita Components can be customized for specific use cases, such as customizing dataloaders, embedder, parsers, and adding custom VectorDB. The RAG component is used for question-answering.</p>
-<p>The performance of Cognita is not well-documented, but it is known to have some limitations, such as not supporting certain types of data. The API methods and class names are not well-documented, but some examples include Query Controller and Agent. add_task().</p>
-<p>The Cognita project is no longer actively maintained, which can make it difficult to get support and fix issues. The GitHub issue number is not available, but it is known that the project has some limitations, such as not supporting certain types of data.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/a55d0be369e86db275e18f6ea02a42e4b33f8fff5f44763052c59dd884c54229/openlit/openlit" alt="openlit logo" onerror="this.style.display='none'"/><div class="cover-lib-name">openlit</div><div class="cover-suffix">Practitioner Guide</div><div class="cover-rule"></div><p class="cover-subtitle">Open source literature</p><p class="cover-desc">The OpenLIT SDK is a key component in the OpenLIT architecture, which also includes the OpenTelemetry Collector, ClickHouseDB, and OpenLITUI.  To get started with the OpenLIT SDK, users can install it via pip using the command pip install openlit.  The OpenLIT SDK can be initialized using the openlit.</p><div class="cover-tagline">Read free books</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 25, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">OpenLIT was built by the openlit organization.</div><div class="intro-body"><p>OpenLIT is an open-source project hosted on GitHub at github. com/openlit/openlit. git. The project provides a set of tools for observability in AI development workflows, including support for large language models, AI frameworks, and vector databases.</p>
+<p>The OpenLIT SDK is a key component, providing a simple way to instrument AI applications and send traces and metrics to the OpenTelemetry Collector for storage in ClickHouseDB.</p>
+<p>The specific problem that OpenLIT was built to solve is the lack of visibility into the performance and behavior of AI applications, particularly those using large language models. By providing a standardized way to collect and analyze observability data, OpenLIT aims to make it easier for developers to build, deploy, and manage AI applications. The project includes a number of components, including the OpenLIT SDK, OpenTelemetry Collector, ClickHouseDB, and OpenLIT_UI, which work together to provide a comprehensive observability platform.</p>
+<p>One of the key technical differences between OpenLIT and alternative observability platforms is its use of OpenTelemetry, a standardized protocol for collecting and exporting telemetry data. This allows OpenLIT to integrate seamlessly with a wide range of tools and platforms, including OpenAI, Anthropic, and Google AI Studio. Additionally, OpenLIT's use of ClickHouseDB provides a highly scalable and performant storage solution for observability data. The project also includes support for auto-instrumentation of 44+ LLM providers, AI frameworks, and vector databases, making it easier for developers to get started with observability.</p>
+<p>The target audience for OpenLIT is developers and operators of AI applications, particularly those using large language models. The project provides a range of tools and features that can help simplify the process of building, deploying, and managing AI applications, including support for Python and TypeScript SDKs, integrations with popular AI platforms, and a user-friendly UI for visualizing and analyzing observability data. By providing a comprehensive observability platform, OpenLIT aims to make it easier for developers to build and deploy reliable, scalable, and performant AI applications.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/openlit/openlit">https://github.com/openlit/openlit</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking Observability with OpenLIT SDK</h2></div><p class="ch-summary">OpenLIT SDK enables observability</p><div class="ch-body"><p>The OpenLIT SDK is a key component in the OpenLIT architecture, which also includes the OpenTelemetry Collector, ClickHouseDB, and OpenLITUI. To get started with the OpenLIT SDK, users can install it via pip using the command pip install openlit. The OpenLIT SDK can be initialized using the openlit. init() method, which can also take an otlpendpoint parameter to specify the OTLP endpoint.</p>
+<p>The otlpendpoint can also be set using the OTELEXPORTEROTLPENDPOINT environment variable. The OpenLIT SDK sends traces and metrics to the OpenTelemetry Collector, which then stores the data in ClickHouseDB.</p>
+<p>The OpenLIT SDK provides a simple way to integrate observability into AI applications, supporting auto-instrumentation of 44+ LLM providers, AI frameworks, and vector databases. The OpenLIT SDK also supports Python and TypeScript SDKs, making it a versatile tool for developers. However, if the otlpendpoint or OTELEXPORTEROTLPENDPOINT is not provided, the OpenLIT SDK will output traces directly to the console. The OpenLIT SDK can be used to integrate OpenLIT into AI applications, visualize and analyze observability data, and support for various LLM providers and AI frameworks.</p>
+<p>One of the key benefits of using the OpenLIT SDK is its ability to provide observability for AI development workflows, allowing developers to monitor and analyze the performance of their AI applications. The OpenLIT SDK can also be used to experiment with different LLMs, organize and version prompts, and securely handle API keys. Additionally, the OpenLIT SDK provides support for building AI features and applications, transitioning from testing to production, and monitoring AI application health and performance. The OpenLIT SDK can also be used to track costs for custom and fine-tuned models, monitor exceptions, and manage prompts and API keys.</p>
+<p>The OpenLIT SDK has several use cases, including integrating OpenLIT into AI applications, visualizing and analyzing observability data, and auto-instrumenting LLM providers and AI frameworks. The OpenLIT SDK can also be used to support various LLM providers and AI frameworks, such as OpenAI, Anthropic, and Cohere. However, the OpenLIT SDK does not provide support for all LLM providers and AI frameworks, and may require additional configuration or customization to work with certain providers. The OpenLIT SDK can also be used to support Fleet Hub for OpAMP management, providing a centralized way to manage and monitor AI applications.</p>
+<p>The OpenLIT SDK has several technical limitations, including the requirement for an otlpendpoint or OTELEXPORTEROTLPENDPOINT to be provided in order to send traces and metrics to the OpenTelemetry Collector. If this endpoint is not provided, the OpenLIT SDK will output traces directly to the console. The OpenLIT SDK also does not provide support for all LLM providers and AI frameworks, and may require additional configuration or customization to work with certain providers. The OpenLIT SDK can also be limited by the performance of the underlying infrastructure, such as the OpenTelemetry Collector and ClickHouseDB.</p>
+<p>The OpenLIT SDK provides several API methods and config keys that can be used to customize and extend its functionality. For example, the openlit. init() method can be used to initialize the OpenLIT SDK, and the otlpendpoint parameter can be used to specify the OTLP endpoint. The OTELEXPORTEROTLPENDPOINT environment variable can also be used to set the otlpendpoint.</p>
+<p>The OpenLIT SDK also provides support for several config keys, including otlpheaders and OTLPEXPORTEROTLPHEADERS. However, the OpenLIT SDK does not provide detailed documentation on all of its API methods and config keys, and may require additional research and experimentation to fully understand its capabilities.</p>
+<p>The OpenLIT SDK can be installed and configured using several different methods, including pip installation and Docker composition. The OpenLIT SDK can be installed via pip using the command pip install openlit, and can be configured using the openlit. init() method or the OTELEXPORTEROTLPENDPOINT environment variable. The OpenLIT SDK can also be self-hosted using Docker, providing a flexible and scalable way to deploy and manage the OpenLIT SDK.</p>
+<p>However, the OpenLIT SDK does not provide detailed documentation on all of its installation and configuration options, and may require additional research and experimentation to fully understand its capabilities.</p>
+<p>The OpenLIT SDK provides a powerful and flexible way to integrate observability into AI applications, supporting auto-instrumentation of LLM providers and AI frameworks, and providing a centralized way to manage and monitor AI applications. However, the OpenLIT SDK also has several technical limitations, including the requirement for an otlpendpoint or OTELEXPORTEROTLPENDPOINT to be provided, and limited support for certain LLM providers and AI frameworks. The OpenLIT SDK can be used to support a wide range of use cases, including integrating OpenLIT into AI applications, visualizing and analyzing observability data, and supporting Fleet Hub for OpAMP management. The OpenLIT SDK can be installed and configured using several different methods, including pip installation and Docker composition.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1727.05 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1227.85 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1723.05,-40 1723.05,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1223.85,-40 1223.85,4 -4,4"/>
 <!-- N0 -->
 <g id="cluster-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="79.53" cy="-18" rx="79.53" ry="18"/>
-<text text-anchor="middle" x="79.53" y="-14.5" font-family="Arial" font-size="10.00">QuestionAnsweringModule</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="47.96" cy="-18" rx="47.96" ry="18"/>
+<text text-anchor="middle" x="47.96" y="-14.5" font-family="Arial" font-size="10.00">OpenLIT_SDK</text>
 </g>
 <!-- N1 -->
 <g id="cluster-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="350.31" cy="-18" rx="68.25" ry="18"/>
-<text text-anchor="middle" x="350.31" y="-14.5" font-family="Arial" font-size="10.00">KnowledgeGraphStore</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="292.58" cy="-18" rx="75.92" ry="18"/>
+<text text-anchor="middle" x="292.58" y="-14.5" font-family="Arial" font-size="10.00">OpenTelemetry_Collector</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="cluster-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M159.35,-18C194.44,-18 235.65,-18 270.71,-18"/>
-<polygon fill="#475569" stroke="#475569" points="270.34,-21.5 280.34,-18 270.34,-14.5 270.34,-21.5"/>
-<text text-anchor="middle" x="220.55" y="-19.95" font-family="Arial" font-size="9.00">retrieves context from</text>
+<path fill="none" stroke="#475569" d="M96.31,-18C127.18,-18 168.38,-18 204.98,-18"/>
+<polygon fill="#475569" stroke="#475569" points="204.66,-21.5 214.66,-18 204.66,-14.5 204.66,-21.5"/>
+<text text-anchor="middle" x="156.29" y="-19.95" font-family="Arial" font-size="9.00">sends tracing data to</text>
 </g>
 <!-- N2 -->
 <g id="cluster-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="608.31" cy="-18" rx="68.25" ry="18"/>
-<text text-anchor="middle" x="608.31" y="-14.5" font-family="Arial" font-size="10.00">NeuralSearchEndpoint</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="518.61" cy="-18" rx="48.86" ry="18"/>
+<text text-anchor="middle" x="518.61" y="-14.5" font-family="Arial" font-size="10.00">ClickHouseDB</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="cluster-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M418.9,-18C452.59,-18 493.51,-18 528.61,-18"/>
-<polygon fill="#475569" stroke="#475569" points="528.26,-21.5 538.26,-18 528.26,-14.5 528.26,-21.5"/>
-<text text-anchor="middle" x="479.31" y="-19.95" font-family="Arial" font-size="9.00">provides metadata to</text>
+<path fill="none" stroke="#475569" d="M368.8,-18C397.83,-18 430.57,-18 457.93,-18"/>
+<polygon fill="#475569" stroke="#475569" points="457.79,-21.5 467.79,-18 457.79,-14.5 457.79,-21.5"/>
+<text text-anchor="middle" x="419.13" y="-19.95" font-family="Arial" font-size="9.00">writes metrics to</text>
 </g>
 <!-- N3 -->
 <g id="cluster-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="876.49,-36 822.06,-18 876.49,0 930.91,-18 876.49,-36"/>
-<text text-anchor="middle" x="876.49" y="-14.5" font-family="Arial" font-size="10.00">FaissIndex</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="730.61,-36 671.72,-18 730.61,0 789.5,-18 730.61,-36"/>
+<text text-anchor="middle" x="730.61" y="-14.5" font-family="Arial" font-size="10.00">OpenLIT_UI</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="cluster-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M676.82,-18C717.42,-18 768.88,-18 809.25,-18"/>
-<polygon fill="#475569" stroke="#475569" points="809.07,-21.5 819.07,-18 809.07,-14.5 809.07,-21.5"/>
-<text text-anchor="middle" x="749.31" y="-19.95" font-family="Arial" font-size="9.00">utilizes for similarity search</text>
+<path fill="none" stroke="#475569" d="M567.79,-18C594.74,-18 628.84,-18 658.78,-18"/>
+<polygon fill="#475569" stroke="#475569" points="658.51,-21.5 668.51,-18 658.51,-14.5 658.51,-21.5"/>
+<text text-anchor="middle" x="619.59" y="-19.95" font-family="Arial" font-size="9.00">provides data for</text>
 </g>
 <!-- N4 -->
 <g id="cluster-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1140.58" cy="-18" rx="50.66" ry="18"/>
-<text text-anchor="middle" x="1140.58" y="-14.5" font-family="Arial" font-size="10.00">DenseRetriever</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1000.18" cy="-18" rx="36.68" ry="18"/>
+<text text-anchor="middle" x="1000.18" y="-14.5" font-family="Arial" font-size="10.00">Fleet_Hub</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="cluster-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M932.43,-18C975.01,-18 1033.99,-18 1078.13,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1078.07,-21.5 1088.07,-18 1078.07,-14.5 1078.07,-21.5"/>
-<text text-anchor="middle" x="1010.41" y="-19.95" font-family="Arial" font-size="9.00">triggers document retrieval via</text>
+<path fill="none" stroke="#475569" d="M790.99,-18C839.47,-18 907.06,-18 951.92,-18"/>
+<polygon fill="#475569" stroke="#475569" points="951.86,-21.5 961.86,-18 951.86,-14.5 951.86,-21.5"/>
+<text text-anchor="middle" x="876.5" y="-19.95" font-family="Arial" font-size="9.00">sends management commands to</text>
 </g>
 <!-- N5 -->
 <g id="cluster-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1358.58" cy="-18" rx="42.09" ry="18"/>
-<text text-anchor="middle" x="1358.58" y="-14.5" font-family="Arial" font-size="10.00">RESTfulAPI</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1189.48" cy="-18" rx="30.37" ry="18"/>
+<text text-anchor="middle" x="1189.48" y="-14.5" font-family="Arial" font-size="10.00">OpAMP</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="cluster-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M1191.68,-18C1225.6,-18 1270.36,-18 1304.83,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1304.58,-21.5 1314.58,-18 1304.58,-14.5 1304.58,-21.5"/>
-<text text-anchor="middle" x="1253.87" y="-19.95" font-family="Arial" font-size="9.00">sends query results to</text>
-</g>
-<!-- N6 -->
-<g id="cluster-node7" class="node">
-<title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1636.36" cy="-18" rx="82.68" ry="18"/>
-<text text-anchor="middle" x="1636.36" y="-14.5" font-family="Arial" font-size="10.00">RetrieverReaderComponent</text>
-</g>
-<!-- N5&#45;&gt;N6 -->
-<g id="cluster-edge6" class="edge">
-<title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M1401.17,-18C1438.36,-18 1494.23,-18 1542.07,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1541.89,-21.5 1551.89,-18 1541.89,-14.5 1541.89,-21.5"/>
-<text text-anchor="middle" x="1477.18" y="-19.95" font-family="Arial" font-size="9.00">returns answer generated by</text>
+<path fill="none" stroke="#475569" d="M1037.3,-18C1068.73,-18 1114.28,-18 1147.16,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1147.14,-21.5 1157.14,-18 1147.14,-14.5 1147.14,-21.5"/>
+<text text-anchor="middle" x="1097.99" y="-19.95" font-family="Arial" font-size="9.00">configures policies in</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: cognita internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Data Indexing Pipelines with Qdrant Server</h2></div><p class="ch-summary">Indexing data with Qdrant</p><div class="ch-body"><p>The Qdrant server is a key component in designing data indexing pipelines for Cognita. To start, the user must install Docker and docker-compose, then run the command docker-compose --env-file compose. env up to set up the environment. The local.</p>
-<p>metadata. yaml file is used to configure the metadata store. The aunassociatedatasourcewithcollection method is used to manage data sources. The VITEQAFOUNDRYURL config key is used to set the URL for the QA foundry.</p>
-<p>The qdrant-server is used in conjunction with the cognita-backend and cognita-frontend to provide a complete data indexing pipeline. The system uses pydantic v2 for data validation.</p>
-<p>The data indexing pipeline involves several components, including the Data Sources, Metadata, and Vector DB. The user can customize the pipeline by modifying the dataloaders, embedder, and parsers. The system also supports incremental indexing, which allows for efficient updates to the index. The Query Controller is used to manage queries and provide feedback to the user.</p>
-<p>The system has a limitation in that it does not support removing vector points from a collection when a data source is unassociated.</p>
-<p>The Cognita components, including the API Server, RAG component, and Metadatastore, work together to provide a scalable and efficient data indexing pipeline. The system uses Prisma and Postgress to manage the data store. The user can customize the pipeline by adding custom vector databases and rerankers. The system also supports no-code UI support, which allows users to interact with the system without writing code.</p>
-<p>The system has a version number of v18, which indicates the level of development and testing.</p>
-<p>The system has several use cases, including question-answering, data indexing, and customizing the code for specific use cases. The user can use the system to experiment with different data loaders, embedders, and parsers to find the best approach for their specific use case. The system also supports production environments, which allows for large-scale deployment. The system has a limitation in that it is no longer actively maintained, which may affect its stability and security.</p>
-<p>The system uses several config keys, including VITEDOCSQADELETECOLLECTIONS and VITEDOCSQASTANDALONEPATH, to manage the behavior of the system. The user can modify these keys to customize the system for their specific use case. The system also uses several API methods, including the Query Controller, to manage queries and provide feedback to the user. The system has a performance metric of 25+, which indicates the level of scalability and efficiency.</p>
-<p>The system has several technical limitations, including the fact that the Unassociate datasource from collection API should remove vector points from the required collection. The system also has a limitation in that it is no longer actively maintained, which may affect its stability and security. The user should be aware of these limitations when using the system. The system uses nodejs and yarn@1.</p>
-<p>22. 19 to manage the dependencies and build the system.</p>
-<p>The system uses several technical components, including the qdrant-server, cognita-backend, and cognita-frontend, to provide a complete data indexing pipeline. The system also uses several config keys, including VITEQAFOUNDRYURL, to manage the behavior of the system. The user can modify these keys to customize the system for their specific use case. The system has a version number of v1.</p>
-<p>22. 19, which indicates the level of development and testing.</p>
-<p>The system has several best practices for deployment, including using Docker and docker-compose to set up the environment. The user should also be aware of the limitations of the system, including the fact that it is no longer actively maintained. The system uses several technical components, including the qdrant-server and cognita-backend, to provide a complete data indexing pipeline. The user can customize the pipeline by modifying the dataloaders, embedder, and parsers.</p></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Cognita with Docker Compose in Under 5 Commands</h2></div><p class="ch-summary">Deploy Cognita quickly</p><div class="ch-body"><p>To deploy Cognita with Docker Compose, you need to have Docker and docker-compose installed on your system. The installation steps involve installing Docker and docker-compose for your system from the official Docker Compose documentation. Once installed, you can run the command docker-compose --env-file compose. env up to start the Cognita services.</p>
-<p>The compose. env file contains environment variables such as OPENAIAPIKEY that are required for Cognita to function properly. The Cognita architecture consists of several components including cognita-db, qdrant-server, cognita-backend, and cognita-frontend.</p>
-<p>The Cognita components work together to provide features such as data indexing, API server, and code structure. The data indexing component is responsible for indexing data from various sources, while the API server provides a interface for interacting with the indexed data. The code structure of Cognita is designed to be modular and scalable, allowing for easy customization and extension. The config keys such as VITEQAFOUNDRYURL and VITEDOCSQADELETE_COLLECTIONS play a crucial role in configuring the Cognita services.</p>
-<p>The Cognita services can be customized to meet specific use cases such as quick experimentation and prototyping on Jupyter notebooks, production environment, and local setup. The customization options include customizing dataloaders, embedder, and parsers. The Cognita services also support incremental indexing, which allows for efficient updating of the indexed data. The version numbers such as v18 and v1.</p>
-<p>22. 19 are used to track the changes and updates to the Cognita services.</p>
-<p>The Cognita services have some limitations, such as the unassociate datasource from collection API not removing vector points from the required collection. The Cognita services also require specific dependencies such as nodejs and yarn to be installed on the system. The installation steps involve running commands such as sudo apt-get update and sudo apt-get install nodejs to install the required dependencies.</p>
-<p>The Cognita services can be deployed using Docker Compose, which provides a convenient way to manage and orchestrate the services. The Docker Compose commands such as docker-compose --env-file compose. env up and docker-compose --env-file compose. env --profile ollama --profile infinity up can be used to start and manage the Cognita services.</p>
-<p>The Cognita services also support customization of the code for specific use cases, such as customizing the Query Controller.</p>
-<p>The Cognita services provide a range of features and customization options, making it a versatile and scalable solution for various use cases. The services can be deployed and managed using Docker Compose, which provides a convenient and efficient way to orchestrate the services. The Cognita services also support incremental indexing, which allows for efficient updating of the indexed data.</p>
-<p>The Cognita architecture is designed to be modular and scalable, allowing for easy customization and extension. The services can be customized to meet specific use cases, such as quick experimentation and prototyping on Jupyter notebooks, production environment, and local setup. The customization options include customizing dataloaders, embedder, and parsers.</p>
-<p>The Cognita services have some limitations, such as the unassociate datasource from collection API not removing vector points from the required collection. However, the services provide a range of features and customization options, making it a versatile and scalable solution for various use cases. The services can be deployed and managed using Docker Compose, which provides a convenient and efficient way to orchestrate the services.</p><div class="code-label">Code Sample</div><div class="code-block">cp models_config.sample.yaml models_config.yaml 
- docker-compose --env-file compose.env up 
- docker-compose --env-file compose.env --profile ollama --profile infinity up 
- docker-compose --env-file compose.env up --build 
- docker-compose --env-file compose.env --profile ollama --profile infinity up --build 
- sudo apt-get update 
- sudo apt-get upgrade 
- sudo apt-get install software-properties-common 
- curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - 
- sudo apt-get install nodejs 
- npm install -g yarn@1.22.19 
- Navigate into the project directory 
- Install dependencies using Yarn 
- Copy the .env.example file and create a new .env file 
- Run command: docker-compose --env-file compose.env up 
- The Cognita services can be customized using config keys such as VITE_QA_FOUNDRY_URL and VITE_DOCS_QA_DELETE_COLLECTIONS 
- The Cognita services support incremental indexing using the data_ingestion_mode: INCREMENTAL config key 
- The Cognita services can be deployed using Docker Compose with the command: docker-compose --env-file compose.env up</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: openlit internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting OpenTelemetry Collector with OpenLIT</h2></div><p class="ch-summary">OpenLIT integrates with OpenTelemetry</p><div class="ch-body"><p>The OpenLIT SDK is designed to work seamlessly with the OpenTelemetry Collector, sending traces and metrics to the collector, which then stores the data in ClickHouseDB. This architecture allows for efficient data collection and storage, enabling users to analyze and visualize their observability data. The OpenLITUI component pulls data from ClickHouseDB, providing a user-friendly interface for users to interact with their data. The OpenLIT SDK uses the otlpendpoint config key to determine where to send the traces and metrics.</p>
+<p>If the otlpendpoint is not provided, the OpenLIT SDK will output traces directly to the console. The OpenLIT SDK also supports other config keys, such as otlpheaders and OTLPEXPORTEROTLPENDPOINT, which can be used to customize the behavior of the SDK.</p>
+<p>The OpenLIT SDK provides a simple and efficient way to integrate OpenLIT into AI applications, supporting auto-instrumentation of 44+ LLM providers, AI frameworks, and vector databases. The SDK also supports Python and TypeScript, making it easy to integrate with a wide range of applications. The OpenLITUI component provides a user-friendly interface for users to interact with their data, including features such as analytics dashboards, exceptions monitoring, and prompt management. The OpenLIT SDK also supports cost tracking for custom and fine-tuned models, as well as API keys and secrets management.</p>
+<p>The Fleet Hub component provides a centralized management interface for OpAMP, making it easy to manage and monitor AI applications.</p>
+<p>One of the key benefits of using OpenLIT is its ability to provide a unified view of observability data across multiple applications and services. The OpenLIT SDK provides a simple and efficient way to collect and store data, making it easy to analyze and visualize observability data. The OpenLITUI component provides a user-friendly interface for users to interact with their data, making it easy to identify trends and patterns. The OpenLIT SDK also supports a wide range of config keys and API methods, making it easy to customize the behavior of the SDK.</p>
+<p>For example, the openlit. init() method can be used to initialize the OpenLIT SDK, and the otlpendpoint config key can be used to determine where to send the traces and metrics.</p>
+<p>The OpenLIT SDK also provides a number of limitations and potential pitfalls that users should be aware of. For example, if the otlpendpoint or OTLPEXPORTEROTLPENDPOINT is not provided, the OpenLIT SDK will output traces directly to the console. This can be problematic in production environments, where console output may not be desirable. Additionally, the OpenLIT SDK does not support all config keys and API methods in all environments, so users should carefully review the documentation before using the SDK.</p>
+<p>The OpenLIT SDK also requires a number of dependencies to be installed, including the OpenTelemetry Collector and ClickHouseDB.</p>
+<p>In terms of performance, the OpenLIT SDK is designed to be efficient and scalable, making it suitable for use in large-scale applications. The SDK uses a number of optimization techniques, such as batching and caching, to minimize the overhead of data collection and storage. The OpenLITUI component also provides a number of features, such as data filtering and aggregation, to help users manage and analyze their data. However, the performance of the OpenLIT SDK can be affected by a number of factors, including the size and complexity of the data, as well as the configuration of the SDK and its dependencies.</p>
+<p>The OpenLIT SDK provides a number of API methods and config keys that can be used to customize its behavior. For example, the openlit. init() method can be used to initialize the OpenLIT SDK, and the otlpendpoint config key can be used to determine where to send the traces and metrics. The SDK also supports a number of other config keys, such as otlpheaders and OTLPEXPORTEROTLPENDPOINT, which can be used to customize the behavior of the SDK.</p>
+<p>The OpenLITUI component also provides a number of API methods, such as the openlit. ui() method, which can be used to interact with the user interface.</p>
+<p>The OpenLIT SDK is designed to be easy to use and integrate with a wide range of applications. The SDK provides a simple and efficient way to collect and store data, making it easy to analyze and visualize observability data. The OpenLITUI component provides a user-friendly interface for users to interact with their data, making it easy to identify trends and patterns. However, the OpenLIT SDK does require a number of dependencies to be installed, including the OpenTelemetry Collector and ClickHouseDB.</p>
+<p>The SDK also provides a number of limitations and potential pitfalls that users should be aware of, such as the requirement to provide an otlpendpoint or OTLPEXPORTEROTLPENDPOINT.</p>
+<p>Overall, the OpenLIT SDK provides a powerful and flexible way to integrate OpenLIT into AI applications. The SDK provides a simple and efficient way to collect and store data, making it easy to analyze and visualize observability data. The OpenLITUI component provides a user-friendly interface for users to interact with their data, making it easy to identify trends and patterns. However, the OpenLIT SDK does require a number of dependencies to be installed, and provides a number of limitations and potential pitfalls that users should be aware of.</p>
+<p>The callout is that the OpenLIT SDK uses the otlpendpoint config key to determine where to send the traces and metrics.</p></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Initializing OpenLIT with OTLP Endpoint</h2></div><p class="ch-summary">Initialize OpenLIT</p><div class="ch-body"><p>To initialize OpenLIT with an OTLP endpoint, you need to use the openlit. init() method and pass the otlpendpoint config key. The OpenLIT SDK sends traces and metrics to the OpenTelemetry Collector, which stores the data in ClickHouseDB. The OpenLITUI then pulls the data from ClickHouseDB.</p>
+<p>The openlit. init() method is a crucial step in setting up OpenLIT. The OTLPEXPORTEROTLPENDPOINT config key is also used to specify the OTLP endpoint.</p>
+<p>The OpenLIT SDK provides a simple way to instrument your application and send data to the OpenTelemetry Collector. The openlit. init() method takes an otlpendpoint parameter, which specifies the endpoint of the OpenTelemetry Collector. The OpenTelemetry Collector then stores the data in ClickHouseDB.</p>
+<p>The OpenLITUI provides a user-friendly interface to view the data stored in ClickHouseDB.</p>
+<p>The openlit. init() method returns an instance of the OpenLIT class, which provides methods to interact with the OpenLITUI and the OpenTelemetry Collector. The OpenLIT class also provides methods to configure the OpenLITSDK, such as setting the otlpheaders and otlpendpoint config keys. The openlit.</p>
+<p>init() method is a blocking call, meaning that it will wait for the OpenLITSDK to be fully initialized before returning.</p>
+<p>One of the limitations of the OpenLITSDK is that it does not support multiple OTLP endpoints. If you need to send data to multiple OpenTelemetry Collectors, you will need to create multiple instances of the OpenLIT class. The OpenLITSDK also does not provide a way to configure the OpenTelemetry Collector, such as setting the protocol or authentication method.</p>
+<p>The OpenLITUI provides a way to view the data stored in ClickHouseDB, but it does not provide a way to configure the OpenLITSDK or the OpenTelemetry Collector. The OpenLITUI is a separate component from the OpenLITSDK and is designed to provide a user-friendly interface to view the data. The OpenLITUI can be deployed separately from the OpenLITSDK, allowing you to scale the two components independently.</p>
+<p>The OpenLITSDK provides a way to instrument your application and send data to the OpenTelemetry Collector, but it does not provide a way to configure the OpenTelemetry Collector. The OpenTelemetry Collector is a separate component that is responsible for storing the data in ClickHouseDB. The OpenLITSDK provides a simple way to send data to the OpenTelemetry Collector, but it does not provide a way to configure the collector.</p>
+<p>The openlit. init() method is a crucial step in setting up OpenLIT, and it provides a way to initialize the OpenLITSDK and connect to the OpenTelemetry Collector. The openlit. init() method takes an otlpendpoint parameter, which specifies the endpoint of the OpenTelemetry Collector.</p>
+<p>The OpenLITSDK provides a simple way to instrument your application and send data to the OpenTelemetry Collector.</p>
+<p>The OpenLITSDK provides a way to interact with the OpenLITUI and the OpenTelemetry Collector, but it does not provide a way to configure the OpenTelemetry Collector. The OpenLITUI provides a user-friendly interface to view the data stored in ClickHouseDB, but it does not provide a way to configure the OpenLIT_SDK or the OpenTelemetry Collector.</p><div class="code-label">Code Sample</div><div class="code-block">openlit.init(otlp_endpoint='http://localhost:4317')
+openlit.init(otlp_endpoint='http://localhost:4317', otlp_headers={'Authorization': 'Bearer token'})
+pip install openlit
+git clone git@github.com:openlit/openlit.git
+docker compose up -d
+openlit.init(otlp_endpoint='http://localhost:4317', otlp_headers={'Authorization': 'Bearer token'})
+openlit.init(otlp_endpoint='http://localhost:4317')
+openlit.init(otlp_endpoint='http://localhost:4317', otlp_headers={'Authorization': 'Bearer token'})
+openlit.init(otlp_endpoint='http://localhost:4317')
+openlit.init(otlp_endpoint='http://localhost:4317', otlp_headers={'Authorization': 'Bearer token'})
+openlit.init(otlp_endpoint='http://localhost:4317')
+openlit.init(otlp_endpoint='http://localhost:4317', otlp_headers={'Authorization': 'Bearer token'})
+openlit.init(otlp_endpoint='http://localhost:4317')
+openlit.init(otlp_endpoint='http://localhost:4317', otlp_headers={'Authorization': 'Bearer token'})</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1137.80 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 913.85 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1133.8,-40 1133.8,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 909.85,-40 909.85,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
@@ -170,201 +157,192 @@
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="200.99" cy="-18" rx="47.96" ry="18"/>
-<text text-anchor="middle" x="200.99" y="-14.5" font-family="Arial" font-size="10.00">Goal Selection</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="225" cy="-18" rx="52.47" ry="18"/>
+<text text-anchor="middle" x="225" y="-14.5" font-family="Arial" font-size="10.00">Initializing Agent</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M83.57,-18C101.15,-18 122.02,-18 141.2,-18"/>
-<polygon fill="#475569" stroke="#475569" points="141.06,-21.5 151.06,-18 141.06,-14.5 141.06,-21.5"/>
-<text text-anchor="middle" x="118.16" y="-19.95" font-family="Arial" font-size="9.00">initialize</text>
+<path fill="none" stroke="#475569" d="M83.34,-18C106.18,-18 135.16,-18 160.88,-18"/>
+<polygon fill="#475569" stroke="#475569" points="160.53,-21.5 170.53,-18 160.53,-14.5 160.53,-21.5"/>
+<text text-anchor="middle" x="127.91" y="-19.95" font-family="Arial" font-size="9.00">agent startup</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="399.66" cy="-18" rx="50.21" ry="18"/>
-<text text-anchor="middle" x="399.66" y="-14.5" font-family="Arial" font-size="10.00">Task Execution</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="428.48" cy="-18" rx="49.76" ry="18"/>
+<text text-anchor="middle" x="428.48" y="-14.5" font-family="Arial" font-size="10.00">Executing Task</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M249.1,-18C275.67,-18 309.15,-18 337.7,-18"/>
-<polygon fill="#475569" stroke="#475569" points="337.68,-21.5 347.68,-18 337.68,-14.5 337.68,-21.5"/>
-<text text-anchor="middle" x="299.2" y="-19.95" font-family="Arial" font-size="9.00">plan generation</text>
+<path fill="none" stroke="#475569" d="M277.89,-18C305.15,-18 338.7,-18 367.12,-18"/>
+<polygon fill="#475569" stroke="#475569" points="367.03,-21.5 377.03,-18 367.03,-14.5 367.03,-21.5"/>
+<text text-anchor="middle" x="328.09" y="-19.95" font-family="Arial" font-size="9.00">task submission</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="636.39,-36 552.62,-18 636.39,0 720.15,-18 636.39,-36"/>
-<text text-anchor="middle" x="636.39" y="-14.5" font-family="Arial" font-size="10.00">Knowledge Update</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="650.83,-36 594.49,-18 650.83,0 707.17,-18 650.83,-36"/>
+<text text-anchor="middle" x="650.83" y="-14.5" font-family="Arial" font-size="10.00">Task Failed</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M450.15,-18C476.03,-18 508.61,-18 539.21,-18"/>
-<polygon fill="#475569" stroke="#475569" points="538.86,-21.5 548.86,-18 538.86,-14.5 538.86,-21.5"/>
-<text text-anchor="middle" x="501.25" y="-19.95" font-family="Arial" font-size="9.00">action execution</text>
+<path fill="none" stroke="#475569" d="M478.66,-18C508.95,-18 548.23,-18 581.52,-18"/>
+<polygon fill="#475569" stroke="#475569" points="581.51,-21.5 591.51,-18 581.51,-14.5 581.51,-21.5"/>
+<text text-anchor="middle" x="536.37" y="-19.95" font-family="Arial" font-size="9.00">task execution error</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="887.97" cy="-18" rx="53.82" ry="18"/>
-<text text-anchor="middle" x="887.97" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="853.39" cy="-18" rx="52.47" ry="18"/>
+<text text-anchor="middle" x="853.39" y="-14.5" font-family="Arial" font-size="10.00">Task Completed</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M722.24,-18C755.07,-18 792.02,-18 822.6,-18"/>
-<polygon fill="#475569" stroke="#475569" points="822.47,-21.5 832.47,-18 822.47,-14.5 822.47,-21.5"/>
-<text text-anchor="middle" x="777.15" y="-19.95" font-family="Arial" font-size="9.00">success evaluation</text>
-</g>
-<!-- N5 -->
-<g id="sm-node6" class="node">
-<title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1084.54" cy="-18" rx="45.25" ry="18"/>
-<text text-anchor="middle" x="1084.54" y="-14.5" font-family="Arial" font-size="10.00">Task Abortion</text>
-</g>
-<!-- N4&#45;&gt;N5 -->
-<g id="sm-edge5" class="edge">
-<title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M942.14,-18C968.72,-18 1000.88,-18 1027.81,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1027.48,-21.5 1037.48,-18 1027.48,-14.5 1027.48,-21.5"/>
-<text text-anchor="middle" x="990.54" y="-19.95" font-family="Arial" font-size="9.00">failure analysis</text>
+<path fill="none" stroke="#475569" d="M708.77,-18C733.88,-18 763.5,-18 789.29,-18"/>
+<polygon fill="#475569" stroke="#475569" points="788.94,-21.5 798.94,-18 788.94,-14.5 788.94,-21.5"/>
+<text text-anchor="middle" x="754.05" y="-19.95" font-family="Arial" font-size="9.00">error handling</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: cognita lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Cognita with Truefoundry AI Gateway using Model Gateway</h2></div><p class="ch-summary">Integrate Cognita with Truefoundry AI</p><div class="ch-body"><p>To integrate Cognita with Truefoundry AI Gateway, we need to configure the MODELGATEWAYCONFIG key in the compose. env file. The MODELGATEWAYCONFIG key is used to specify the URL of the Truefoundry AI Gateway. We also need to set the TFYAPIKEY config key to authenticate with the Truefoundry AI Gateway.</p>
-<p>The TFYAPIKEY is used to access the Truefoundry AI models. The modelsconfig. yaml file is used to configure the models used by the Cognita application. The modelsconfig.</p>
-<p>yaml file contains a list of model providers, including Truefoundry and local-infinity. Each model provider has a list of llmmodelids, embeddingmodelids, and rerankingmodelids. The llmmodelids are used for language modeling tasks, the embeddingmodelids are used for embedding tasks, and the rerankingmodelids are used for reranking tasks. The defaultheaders key is used to specify the default headers for the API requests.</p>
-<p>The X-TFY-METADATA header is used to specify the metadata for the API requests.</p>
-<p>The Cognita application uses the qdrant-server to store and retrieve vectors. The qdrant-server is configured using the VECTORDBCONFIG key in the compose. env file. The VECTORDBCONFIG key is used to specify the URL of the qdrant-server.</p>
-<p>The qdrant-server is used to store and retrieve vectors for the Cognita application. The vectors are used for tasks such as semantic search and question answering. The Cognita application also uses the infinity-server to perform tasks such as embedding and reranking. The infinity-server is configured using the INFINITYAPIKEY config key.</p>
-<p>The INFINITYAPIKEY is used to authenticate with the infinity-server.</p>
-<p>The Cognita application has several limitations, including the fact that it is no longer actively maintained. This means that there may be bugs or security vulnerabilities that are not being addressed. The Cognita application also requires a significant amount of resources to run, including a large amount of memory and CPU. The Cognita application also has a complex architecture, with many different components and services.</p>
-<p>This can make it difficult to debug and maintain the application. The Cognita application also has a limited set of features, including support for only a few models and tasks.</p>
-<p>The Cognita application uses several API methods to interact with the Truefoundry AI Gateway, including the getmodel method and the getembedding method. The getmodel method is used to retrieve a model from the Truefoundry AI Gateway, and the getembedding method is used to retrieve an embedding from the Truefoundry AI Gateway. The Cognita application also uses the createtask method to create a task on the Truefoundry AI Gateway. The createtask method is used to create a task such as a language modeling task or an embedding task.</p>
-<p>The Cognita application also uses the gettask method to retrieve a task from the Truefoundry AI Gateway.</p>
-<p>The Cognita application has several config keys that are used to configure the application, including the DATAINGESTIONMODE key and the RAISEERRORONFAILURE key. The DATAINGESTIONMODE key is used to specify the mode of data ingestion, and the RAISEERRORONFAILURE key is used to specify whether to raise an error on failure. The Cognita application also has several environment variables that are used to configure the application, including the TFYAPIKEY environment variable and the INFINITYAPIKEY environment variable.</p>
-<p>The Cognita application uses several classes and methods to interact with the Truefoundry AI Gateway, including the ModelGateway class and the TruefoundryAI class. The ModelGateway class is used to interact with the Truefoundry AI Gateway, and the TruefoundryAI class is used to interact with the Truefoundry AI models. The Cognita application also uses several interfaces to interact with the Truefoundry AI Gateway, including the IModelGateway interface and the ITruefoundryAI interface.</p>
-<p>The Cognita application has several use cases, including using Cognita with Truefoundry AI Gateway for logging, metrics, and feedback mechanism for user queries. The Cognita application can be used to log user queries and provide metrics on the performance of the application. The Cognita application can also be used to provide feedback to the user on the performance of the application.</p>
-<p>The Cognita application can be installed using the docker-compose command, and the application can be customized using the modelsconfig. yaml file. The modelsconfig. yaml file can be used to configure the models used by the Cognita application, and the application can be customized to use different models and tasks.</p>
-<p>The Cognita application can also be used with other applications, such as the ollama application and the infinity-server application.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: openlit lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating OpenLIT_UI with ClickHouseDB for Real-Time Insights</h2></div><p class="ch-summary">Integrate OpenLIT_UI with ClickHouseDB</p><div class="ch-body"><p>The OpenLITUI is designed to pull data from ClickHouseDB, which stores traces and metrics sent by the OpenLIT SDK through the OpenTelemetry Collector. The OpenLITSDK uses the init() method to initialize the connection with the OpenTelemetry Collector, which then sends the data to ClickHouseDB. The OpenLITUI can then pull this data from ClickHouseDB to provide real-time insights. The config key otlpEndpoint is used to specify the endpoint for the OpenTelemetry Collector.</p>
+<p>The OpenLITUI also uses the fireEvent() method to handle events and the runWidgetQuery() method to run queries on the data.</p>
+<p>The OpenLITSDK sends traces and metrics to the OpenTelemetry Collector, which then stores the data in ClickHouseDB. The OpenTelemetry Collector uses the OTLP protocol to send the data to ClickHouseDB. The OpenLITUI can then pull this data from ClickHouseDB to provide real-time insights. The config key OTLPEXPORTEROTLPENDPOINT is used to specify the endpoint for the OpenTelemetry Collector.</p>
+<p>The OpenLITUI also uses the POST(request: NextRequest) method to handle requests.</p>
+<p>The OpenLITUI provides real-time insights into the data stored in ClickHouseDB. The OpenLITUI uses the runWidgetQuery() method to run queries on the data and provide insights. The OpenLITUI also uses the fireEvent() method to handle events and provide notifications. The config key otlpheaders is used to specify the headers for the OpenTelemetry Collector.</p>
+<p>The OpenLITUI also uses the init() method to initialize the connection with the OpenTelemetry Collector.</p>
+<p>The OpenLITSDK has some limitations, such as not supporting certain types of data. The OpenLITUI also has some limitations, such as not being able to handle large amounts of data. The OpenTelemetry Collector has some limitations, such as not being able to handle certain types of protocols. The ClickHouseDB has some limitations, such as not being able to handle certain types of queries.</p>
+<p>The config key OPAMPENVIRONMENT is used to specify the environment for the OpAMP server.</p>
+<p>The OpenLITUI uses the OpenTelemetry Collector to collect data from the OpenLITSDK. The OpenTelemetry Collector uses the OTLP protocol to send the data to ClickHouseDB. The OpenLITUI can then pull this data from ClickHouseDB to provide real-time insights. The config key OPAMPTLSINSECURESKIPVERIFY is used to specify the TLS settings for the OpAMP server.</p>
+<p>The OpenLITUI also uses the fireEvent() method to handle events and provide notifications.</p>
+<p>The OpenLITSDK uses the init() method to initialize the connection with the OpenTelemetry Collector. The OpenLITUI uses the runWidgetQuery() method to run queries on the data and provide insights. The OpenLITUI also uses the POST(request: NextRequest) method to handle requests. The config key OPAMPTLSREQUIRECLIENTCERT is used to specify the TLS settings for the OpAMP server.</p>
+<p>The OpenLITUI also uses the fireEvent() method to handle events and provide notifications.</p>
+<p>The OpenLITUI provides real-time insights into the data stored in ClickHouseDB. The OpenLITUI uses the runWidgetQuery() method to run queries on the data and provide insights. The OpenLITUI also uses the fireEvent() method to handle events and provide notifications. The config key OPAMPLOGLEVEL is used to specify the log level for the OpAMP server.</p>
+<p>The OpenLITUI also uses the init() method to initialize the connection with the OpenTelemetry Collector.</p>
+<p>The OpenLITSDK has some limitations, such as not supporting certain types of data. The OpenLITUI also has some limitations, such as not being able to handle large amounts of data. The OpenTelemetry Collector has some limitations, such as not being able to handle certain types of protocols. The ClickHouseDB has some limitations, such as not being able to handle certain types of queries.</p>
+<p>The config key RIFY is used to specify the settings for the RIFY protocol.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 183.19 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 184.46 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 179.19,-535 179.19,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 180.46,-535 180.46,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="87.59" cy="-513" rx="66.9" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="88.23" cy="-513" rx="39.84" ry="18"/>
+<text text-anchor="middle" x="88.23" y="-509.5" font-family="Arial" font-size="10.00">PromptText</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-430.5" rx="53.82" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-427" font-family="Arial" font-size="10.00">TextTokenization</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-430.5" rx="46.15" ry="18"/>
+<text text-anchor="middle" x="88.23" y="-427" font-family="Arial" font-size="10.00">TextTokenizer</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M87.59,-494.53C87.59,-484.51 87.59,-471.68 87.59,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-460.45 87.59,-450.45 84.09,-460.45 91.09,-460.45"/>
-<text text-anchor="middle" x="118.72" y="-468.45" font-family="Arial" font-size="9.00">lexical analysis</text>
+<path fill="none" stroke="#475569" d="M88.23,-494.53C88.23,-484.51 88.23,-471.68 88.23,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.73,-460.45 88.23,-450.45 84.73,-460.45 91.73,-460.45"/>
+<text text-anchor="middle" x="105.48" y="-468.45" font-family="Arial" font-size="9.00">tokenize</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-348" rx="63.74" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-344.5" font-family="Arial" font-size="10.00">SemanticEmbedding</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-348" rx="60.58" ry="18"/>
+<text text-anchor="middle" x="88.23" y="-344.5" font-family="Arial" font-size="10.00">EmbeddingEncoder</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M87.59,-412.03C87.59,-402.01 87.59,-389.18 87.59,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-377.95 87.59,-367.95 84.09,-377.95 91.09,-377.95"/>
-<text text-anchor="middle" x="122.09" y="-385.95" font-family="Arial" font-size="9.00">contextualization</text>
+<path fill="none" stroke="#475569" d="M88.23,-412.03C88.23,-402.01 88.23,-389.18 88.23,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.73,-377.95 88.23,-367.95 84.73,-377.95 91.73,-377.95"/>
+<text text-anchor="middle" x="103.61" y="-385.95" font-family="Arial" font-size="9.00">encode</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="87.59,-283.5 0,-265.5 87.59,-247.5 175.19,-265.5 87.59,-283.5"/>
-<text text-anchor="middle" x="87.59" y="-262" font-family="Arial" font-size="10.00">KnowledgeRetrieval</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="88.23,-283.5 0,-265.5 88.23,-247.5 176.46,-265.5 88.23,-283.5"/>
+<text text-anchor="middle" x="88.23" y="-262" font-family="Arial" font-size="10.00">KnowledgeRetriever</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M87.59,-329.53C87.59,-319.51 87.59,-306.68 87.59,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-295.45 87.59,-285.45 84.09,-295.45 91.09,-295.45"/>
-<text text-anchor="middle" x="128.09" y="-303.45" font-family="Arial" font-size="9.00">information retrieval</text>
+<path fill="none" stroke="#475569" d="M88.23,-329.53C88.23,-319.51 88.23,-306.68 88.23,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.73,-295.45 88.23,-285.45 84.73,-295.45 91.73,-295.45"/>
+<text text-anchor="middle" x="120.86" y="-303.45" font-family="Arial" font-size="9.00">retrieve_context</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-183" rx="62.84" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranking</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-183" rx="60.13" ry="18"/>
+<text text-anchor="middle" x="88.23" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranker</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M87.59,-247.03C87.59,-237.01 87.59,-224.18 87.59,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-212.95 87.59,-202.95 84.09,-212.95 91.09,-212.95"/>
-<text text-anchor="middle" x="123.97" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
+<path fill="none" stroke="#475569" d="M88.23,-247.03C88.23,-237.01 88.23,-224.18 88.23,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.73,-212.95 88.23,-202.95 84.73,-212.95 91.73,-212.95"/>
+<text text-anchor="middle" x="103.61" y="-220.95" font-family="Arial" font-size="9.00">rescore</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-100.5" rx="49.31" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-100.5" rx="46.6" ry="18"/>
+<text text-anchor="middle" x="88.23" y="-97" font-family="Arial" font-size="10.00">TextGenerator</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M87.59,-164.53C87.59,-154.51 87.59,-141.68 87.59,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-130.45 87.59,-120.45 84.09,-130.45 91.09,-130.45"/>
-<text text-anchor="middle" x="124.34" y="-138.45" font-family="Arial" font-size="9.00">response creation</text>
+<path fill="none" stroke="#475569" d="M88.23,-164.53C88.23,-154.51 88.23,-141.68 88.23,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.73,-130.45 88.23,-120.45 84.73,-130.45 91.73,-130.45"/>
+<text text-anchor="middle" x="128.36" y="-138.45" font-family="Arial" font-size="9.00">generate_response</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="87.59" cy="-18" rx="62.84" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreaming</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="88.23" cy="-18" rx="60.13" ry="18"/>
+<text text-anchor="middle" x="88.23" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreamer</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M87.59,-82.03C87.59,-72.01 87.59,-59.18 87.59,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-47.95 87.59,-37.95 84.09,-47.95 91.09,-47.95"/>
-<text text-anchor="middle" x="126.22" y="-55.95" font-family="Arial" font-size="9.00">output serialization</text>
+<path fill="none" stroke="#475569" d="M88.23,-82.03C88.23,-72.01 88.23,-59.18 88.23,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.73,-47.95 88.23,-37.95 84.73,-47.95 91.73,-47.95"/>
+<text text-anchor="middle" x="123.86" y="-55.95" font-family="Arial" font-size="9.00">stream_response</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: cognita end-to-end processing pipeline</p></div><div class="sec-heading">cognita — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Data Indexing Efficiency</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">API Server Response Time</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Code Structure Readability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:76%"></span></span></span><span class="bar-value">76%</span></div><div class="bar-row"><span class="bar-label">No-code UI Support Adoption</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:68%"></span></span></span><span class="bar-value">68%</span></div><div class="bar-row"><span class="bar-label">Incremental Indexing Speed</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:82%"></span></span></span><span class="bar-value">82%</span></div><div class="bar-row"><span class="bar-label">Multi-modal Vision Parser Accuracy</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Production Issues with Cognita Backend and Infinity Server</h2></div><p class="ch-summary">Cognita production issues</p><div class="ch-body"><p>The Cognita backend and Infinity Server can be prone to issues in production environments, particularly when it comes to incremental indexing and embedding using Infninty Server. The local. metadata. yaml file plays a crucial role in configuring the Metadatastore, which is essential for the proper functioning of the Cognita backend.</p>
-<p>The Query Controller is responsible for handling user queries, and its implementation can significantly impact the performance of the system. The use of pydantic v2 and the configuration of the OPENAIAPIKEY are also important considerations. The Cognita project is no longer actively maintained, which can lead to limitations in terms of support and updates.</p>
-<p>The Cognita architecture consists of several components, including the cognita-db, qdrant-server, cognita-backend, and cognita-frontend. The Data Sources and Metadata components are also critical in ensuring the smooth operation of the system. The use of Docker and docker-compose can simplify the installation and deployment process, but it is essential to follow the recommended installation steps to avoid potential issues. The VITEQAFOUNDRYURL and VITEDOCSQADELETECOLLECTIONS config keys are important for customizing the behavior of the Cognita backend.</p>
-<p>The Cognita backend and Infinity Server can be used for various use cases, including question-answering, data indexing, and customizing the code for specific use cases. The use of the RAG component and the Metadatastore can provide a robust framework for building custom applications. However, the project's limitations, such as the lack of active maintenance, can make it challenging to troubleshoot issues and ensure the long-term viability of the system. The use of the docker-compose command with the --env-file and --profile options can help to customize the deployment process and troubleshoot potential issues.</p>
-<p>The Cognita project provides several features, including no-code UI support, incremental indexing, and embedding using Infninty Server. The use of the AudioParser and VideoParser components can provide a robust framework for handling multimedia data. However, the project's limitations, such as the lack of support for certain data formats, can make it challenging to integrate with existing systems. The use of the cp command to copy the modelsconfig.</p>
-<p>sample. yaml file to modelsconfig. yaml can help to simplify the configuration process.</p>
-<p>The Cognita backend and Infinity Server can be used with various data sources, including local files and remote databases. The use of the Metadatastore and the RAG component can provide a robust framework for handling metadata and building custom applications. However, the project's limitations, such as the lack of support for certain database systems, can make it challenging to integrate with existing systems. The use of the docker-compose command with the --build option can help to rebuild the Docker images and ensure that the system is up-to-date.</p>
-<p>The Cognita project provides several configuration options, including the local. metadata. yaml file and the VITEQAFOUNDRYURL config key. The use of the pydantic v2 library can provide a robust framework for building custom applications.</p>
-<p>However, the project's limitations, such as the lack of support for certain configuration options, can make it challenging to customize the behavior of the system. The use of the docker-compose command with the --env-file option can help to customize the deployment process and troubleshoot potential issues.</p>
-<p>The Cognita backend and Infinity Server can be prone to issues when it comes to performance and scalability. The use of the cognita-db and qdrant-server components can provide a robust framework for handling large datasets. However, the project's limitations, such as the lack of support for certain database systems, can make it challenging to ensure the long-term viability of the system. The use of the docker-compose command with the --profile option can help to customize the deployment process and troubleshoot potential issues.</p>
-<p>The Cognita project provides several tools and features for troubleshooting and debugging issues. The use of the docker-compose command with the --build option can help to rebuild the Docker images and ensure that the system is up-to-date. The use of the local. metadata.</p>
-<p>yaml file and the VITEQAFOUNDRY_URL config key can provide a robust framework for customizing the behavior of the system. However, the project's limitations, such as the lack of active maintenance, can make it challenging to troubleshoot issues and ensure the long-term viability of the system.</p><div class="sec-heading">cognita — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>RAG Codebase Organization</td><td>Cognita</td><td>Cognita provides a robust framework for organizing RAG codebases, making it easier to manage and maintain large projects.</td></tr><tr><td>Production Ready Environment</td><td>Supported</td><td>Cognita offers a production-ready environment, allowing for seamless deployment and scaling of applications.</td></tr><tr><td>Local Setup Ease</td><td>Easy</td><td>Cognita provides a straightforward local setup process, making it easy for developers to get started.</td></tr><tr><td>No-code UI Support</td><td>Available</td><td>Cognita offers no-code UI support, enabling non-technical users to interact with the platform.</td></tr><tr><td>Audio and Video Parsing</td><td>Supported</td><td>Cognita supports audio and video parsing, allowing for the analysis and processing of multimedia data.</td></tr><tr><td>Model Gateway and Embedding</td><td>Integrated</td><td>Cognita integrates a model gateway and embedding capabilities, enabling advanced machine learning workflows.</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Embedding and Reranking using Infinity Server</h2></div><p class="ch-summary">Optimize performance</p><div class="ch-body"><p>To optimize performance with embedding and reranking using Infinity Server, it's essential to understand the architecture of Cognita, which consists of various components such as Data Sources and Metadata Store. The services include cognita-db, qdrant-server, cognita-backend, cognita-frontend, ollama, and infinity-server. The INFINITYAPIKEY config key is crucial for setting up the Infinity Server. The INFINITYEMBEDDINGMODEL and INFINITYRERANKINGMODEL config keys are used to specify the models for embedding and reranking.</p>
-<p>The VITEDOCSQAMAXUPLOADSIZEMB config key determines the maximum upload size for documents.</p>
-<p>The Cognita Components interact with each other through various API methods, but the research does not provide implementation details for this area. However, it's known that the qdrant-server provides a local vector db server, and the cognita-backend provides a FastAPI backend server. The ollama service is used for LLMs, and the infinity-server is used for embedding and reranking. The METADATASTORECONFIG and VECTORDBCONFIG are important for configuring the metadata store and vector db.</p>
-<p>The performance of Cognita can be affected by various factors, including the choice of models and the configuration of the services. The INFINITYEMBEDDINGMODEL and INFINITYRERANKINGMODEL can significantly impact the performance of the embedding and reranking tasks. The VITEDOCSQAENABLEREDIRECT config key can also affect the performance by enabling or disabling redirects. The research does not provide specific performance metrics, but it's known that the version 25+ of Cognita has improved performance.</p>
-<p>One of the limitations of Cognita is that it does not support multiple ingestions for a collection in LOCAL, which can lead to broken Ingestion Status. Another limitation is that the dependency failed to start when the container cognita-postgres is unhealthy. The Missing parsers. requirements.</p>
-<p>txt file when building Docker image in the main branch is also a known issue. The research does not provide a specific solution to these limitations, but it's essential to be aware of them when using Cognita.</p>
-<p>The use of Cognita with multiple document retrievers, such as Similarity Search, Query Decompostion, and Document Reranking, can provide improved performance. The use of Cognita with SOTA OpenSource embeddings and reranking from mixedbread-ai can also provide better results. The ollama service can be used with LLMs to improve the performance of Cognita. The INFINITYAPIKEY and INFINITYEMBEDDINGMODEL config keys are essential for setting up the Infinity Server and embedding models.</p>
-<p>The configuration of the services, such as cognita-db, qdrant-server, and cognita-backend, is crucial for optimizing performance. The use of docker-compose and the compose. env file can simplify the configuration process. The docker-compose --env-file compose.</p>
-<p>env up command can be used to start the services. The docker-compose --env-file compose. env --profile ollama --profile infinity up command can be used to start the ollama and infinity-server services.</p>
-<p>The callout is that the INFINITYAPIKEY config key is required for setting up the Infinity Server. The code_sample is empty. The research does not provide specific code samples for optimizing performance with embedding and reranking using Infinity Server.</p>
-<p>In conclusion, optimizing performance with embedding and reranking using Infinity Server requires a deep understanding of the Cognita architecture and services. The configuration of the services and the choice of models can significantly impact performance. The limitations of Cognita, such as the lack of support for multiple ingestions and the dependency failed to start, should be considered when using the tool.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Cognita: Building Production Ready Applications! (Opensource)</div><a class="video-url" href="https://www.youtube.com/watch?v=CI1IQbdLyY8">https://www.youtube.com/watch?v=CI1IQbdLyY8</a></div></div></section>
-<div class="book-footer"><strong>cognita: Production Manual</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 24, 2026</div>
+</svg><p class="diagram-caption">Figure: openlit end-to-end processing pipeline</p></div><div class="sec-heading">openlit — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Setup</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Security</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:70%"></span></span></span><span class="bar-value">70%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Cost-Effectiveness</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting OTLP Endpoint Configuration in Production</h2></div><p class="ch-summary">OTLP endpoint issues</p><div class="ch-body"><p>The OpenLIT SDK requires a properly configured OTLP endpoint to function correctly. If the otlpendpoint or OTELEXPORTEROTLPENDPOINT is not provided, the SDK will output traces directly to the console. This can lead to issues in production environments where console output may not be desirable. The openlit.</p>
+<p>init() method can be used to specify the OTLP endpoint. The OTLP endpoint is typically configured using the OTELEXPORTEROTLPENDPOINT environment variable or the otlpendpoint parameter in the openlit. init() method.</p>
+<p>The OpenLIT SDK uses the OpenTelemetry protocol to send traces and metrics to the OTLP endpoint. The OpenTelemetry Collector is responsible for receiving and processing these traces and metrics. The ClickHouseDB is used to store the data. The OpenLITUI is used to visualize and analyze the data.</p>
+<p>The OpenLIT SDK provides several use cases, including observability for AI development workflow, experimenting with LLMs, and securely handling API keys. The SDK also provides support for Python and TypeScript. The OpenLIT SDK can be integrated into AI applications to provide visibility into the application's performance and behavior.</p>
+<p>One of the limitations of the OpenLIT SDK is that it does not support automatic instrumentation of all LLM providers and AI frameworks. The SDK requires manual configuration to instrument certain providers and frameworks. The OpenLIT SDK also does not provide support for all types of AI applications.</p>
+<p>The OpenLIT SDK provides several configuration keys, including otlpendpoint, OTLPEXPORTEROTLPENDPOINT, otlpheaders, and OTELEXPORTEROTLP_HEADERS. These configuration keys can be used to customize the behavior of the SDK. The SDK also provides several classes and methods, including openlit. init() and openlit.</p>
+<p>The OpenLIT SDK can be deployed and run using Docker. The SDK provides a Docker image that can be used to deploy the SDK in a containerized environment. The SDK also provides a git repository that can be used to clone and deploy the SDK.</p>
+<p>The OpenLIT SDK provides several benefits, including cost tracking for custom and fine-tuned models, exceptions monitoring, and prompt management. The SDK also provides support for experimenting with different LLMs and fleet hub for OpAMP management.</p>
+<p>The OpenLIT SDK has several technical requirements, including the need for a properly configured OTLP endpoint and a compatible OpenTelemetry Collector. The SDK also requires a compatible ClickHouseDB to store the data.</p><div class="sec-heading">openlit — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Architecture</td><td>OpenTelemetry Collector, ClickHouseDB, OpenLIT SDK, OpenLIT_UI, Fleet Hub, OpAMP</td><td>Microservices-based architecture for scalability and flexibility</td></tr><tr><td>Installation Steps</td><td>Git Clone, Docker Compose, Pip Install</td><td>Simple and straightforward installation process</td></tr><tr><td>Use Cases</td><td>AI Development Workflow, LLM Experimentation, Prompt Management, API Keys Management</td><td>Wide range of use cases for AI and machine learning applications</td></tr><tr><td>Limitations</td><td>Dependence on OpenTelemetry Collector, Limited Support for Non-OTLP Exporters</td><td>Some limitations in terms of compatibility and flexibility</td></tr><tr><td>Config Keys</td><td>otlp_endpoint, OTLP_EXPORTER_OTLP_ENDPOINT, otlp_headers</td><td>Important configuration keys for setting up OpenLIT</td></tr><tr><td>Classes and Methods</td><td>openlit, openlit.init(otlp_endpoint)</td><td>Simple and intuitive API for initializing and using OpenLIT</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with OpenLIT and OpenTelemetry</h2></div><p class="ch-summary">Optimize performance</p><div class="ch-body"><p>The OpenLIT library provides a range of features for optimizing performance, including support for OpenTelemetry and Auto Instrumentation. The otlpEndpoint config key is used to specify the OTLP endpoint for exporting telemetry data. The Openlit. init() method is used to initialize the OpenLIT library, while the runWidgetQuery() function is used to run widget queries.</p>
+<p>The POST(request: NextRequest) function is used to handle POST requests. The OpenLIT library also supports cost tracking for custom and fine-tuned models, as well as evaluation coverage and metrics gaps.</p>
+<p>The OpenTelemetry library provides a range of features for instrumentation, including the AgnoInstrumentor class and the instrument() method. The AgnoInstrumentor(). instrument() method is used to instrument the application, while the Agent. _arun method is used to run tasks.</p>
+<p>The OpenTelemetry library also supports OpenTelemetry Events API, which can be used to capture AI content. However, the Events API is not yet supported in JS, which can limit its use.</p>
+<p>The OpenLIT library has a number of use cases, including monitoring usage, performance, and cost for supported GenAI operations. It also supports OpenTelemetry instrumentation for Google ADK and Bee AI, as well as using OpenTelemetry Events API to capture AI content. The library can be installed using the install steps, and initialized using the Openlit. init() method.</p>
+<p>The library also supports a range of config keys, including otlpEndpoint and agno==2. 5. 3.</p>
+<p>The OpenTelemetry library has a number of limitations, including the fact that the Events API is not yet supported in JS. This can limit its use in certain applications. Additionally, the library has a number of version numbers, including 2. 5.</p>
+<p>3 and 8e92a53. The library also supports a range of API methods, including fireEvent() and runWidgetQuery().</p>
+<p>The OpenLIT library provides a range of features for optimizing performance, including support for OpenTelemetry and Auto Instrumentation. The library can be used to monitor usage, performance, and cost for supported GenAI operations, as well as to instrument the application using the AgnoInstrumentor class. The library also supports a range of config keys, including otlpEndpoint and agno==2. 5.</p>
+<p>3. However, the library has a number of limitations, including the fact that the Events API is not yet supported in JS.</p>
+<p>The OpenTelemetry library provides a range of features for instrumentation, including the AgnoInstrumentor class and the instrument() method. The library can be used to instrument the application, as well as to capture AI content using the OpenTelemetry Events API. The library also supports a range of API methods, including fireEvent() and runWidgetQuery(). However, the library has a number of limitations, including the fact that the Events API is not yet supported in JS.</p>
+<p>The OpenLIT library has a number of use cases, including monitoring usage, performance, and cost for supported GenAI operations. It also supports OpenTelemetry instrumentation for Google ADK and Bee AI, as well as using OpenTelemetry Events API to capture AI content. The library can be installed using the install steps, and initialized using the Openlit. init() method.</p>
+<p>The library also supports a range of config keys, including otlpEndpoint and agno==2. 5. 3. The version number of the library is 8e92a53, which can be used to track changes and updates.</p>
+<p>The OpenTelemetry library has a number of limitations, including the fact that the Events API is not yet supported in JS. This can limit its use in certain applications. Additionally, the library has a number of version numbers, including 2. 5.</p>
+<p>3 and 8e92a53. The library also supports a range of API methods, including fireEvent() and runWidgetQuery(). The library can be used to instrument the application, as well as to capture AI content using the OpenTelemetry Events API. The library also supports a range of config keys, including otlpEndpoint and agno==2.</p>
+<p>5. 3.</p>
+<p>The OpenLIT library provides a range of features for optimizing performance, including support for OpenTelemetry and Auto Instrumentation. The library can be used to monitor usage, performance, and cost for supported GenAI operations, as well as to instrument the application using the AgnoInstrumentor class. The library also supports a range of config keys, including otlpEndpoint and agno==2. 5.</p>
+<p>3. However, the library has a number of limitations, including the fact that the Events API is not yet supported in JS. The library has a version number of 8e92a53, which can be used to track changes and updates.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Install OpenLIT and Integrate with Ollama for Free LLM ...</div><a class="video-url" href="https://www.youtube.com/watch?v=ELLHIdg7P38">https://www.youtube.com/watch?v=ELLHIdg7P38</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Introduction to OpenLIT - Open source Platform for AI ...</div><a class="video-url" href="https://www.youtube.com/watch?v=xji3Q_zKynY">https://www.youtube.com/watch?v=xji3Q_zKynY</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Observability and Evals for LLMs with OpenLIT Locally ...</div><a class="video-url" href="https://www.youtube.com/watch?v=tO3NsndY_xU">https://www.youtube.com/watch?v=tO3NsndY_xU</a></div></div></section>
+<div class="book-footer"><strong>openlit: Practitioner Guide</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 25, 2026</div>
 </body>
 </html>
