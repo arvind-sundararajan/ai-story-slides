@@ -2,347 +2,410 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>openlit: Practitioner Guide</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "openlit: Practitioner Guide"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>DeepAnalyze: Field Guide</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "DeepAnalyze: Field Guide"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/a55d0be369e86db275e18f6ea02a42e4b33f8fff5f44763052c59dd884c54229/openlit/openlit" alt="openlit logo" onerror="this.style.display='none'"/><div class="cover-lib-name">openlit</div><div class="cover-suffix">Practitioner Guide</div><div class="cover-rule"></div><p class="cover-subtitle">Open source literature</p><p class="cover-desc">The OpenLIT SDK is a key component in the OpenLIT architecture, which also includes the OpenTelemetry Collector, ClickHouseDB, and OpenLITUI.  To get started with the OpenLIT SDK, users can install it via pip using the command pip install openlit.  The OpenLIT SDK can be initialized using the openlit.</p><div class="cover-tagline">Read free books</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 25, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">OpenLIT was built by the openlit organization.</div><div class="intro-body"><p>OpenLIT is an open-source project hosted on GitHub at github. com/openlit/openlit. git. The project provides a set of tools for observability in AI development workflows, including support for large language models, AI frameworks, and vector databases.</p>
-<p>The OpenLIT SDK is a key component, providing a simple way to instrument AI applications and send traces and metrics to the OpenTelemetry Collector for storage in ClickHouseDB.</p>
-<p>The specific problem that OpenLIT was built to solve is the lack of visibility into the performance and behavior of AI applications, particularly those using large language models. By providing a standardized way to collect and analyze observability data, OpenLIT aims to make it easier for developers to build, deploy, and manage AI applications. The project includes a number of components, including the OpenLIT SDK, OpenTelemetry Collector, ClickHouseDB, and OpenLIT_UI, which work together to provide a comprehensive observability platform.</p>
-<p>One of the key technical differences between OpenLIT and alternative observability platforms is its use of OpenTelemetry, a standardized protocol for collecting and exporting telemetry data. This allows OpenLIT to integrate seamlessly with a wide range of tools and platforms, including OpenAI, Anthropic, and Google AI Studio. Additionally, OpenLIT's use of ClickHouseDB provides a highly scalable and performant storage solution for observability data. The project also includes support for auto-instrumentation of 44+ LLM providers, AI frameworks, and vector databases, making it easier for developers to get started with observability.</p>
-<p>The target audience for OpenLIT is developers and operators of AI applications, particularly those using large language models. The project provides a range of tools and features that can help simplify the process of building, deploying, and managing AI applications, including support for Python and TypeScript SDKs, integrations with popular AI platforms, and a user-friendly UI for visualizing and analyzing observability data. By providing a comprehensive observability platform, OpenLIT aims to make it easier for developers to build and deploy reliable, scalable, and performant AI applications.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/openlit/openlit">https://github.com/openlit/openlit</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking Observability with OpenLIT SDK</h2></div><p class="ch-summary">OpenLIT SDK enables observability</p><div class="ch-body"><p>The OpenLIT SDK is a key component in the OpenLIT architecture, which also includes the OpenTelemetry Collector, ClickHouseDB, and OpenLITUI. To get started with the OpenLIT SDK, users can install it via pip using the command pip install openlit. The OpenLIT SDK can be initialized using the openlit. init() method, which can also take an otlpendpoint parameter to specify the OTLP endpoint.</p>
-<p>The otlpendpoint can also be set using the OTELEXPORTEROTLPENDPOINT environment variable. The OpenLIT SDK sends traces and metrics to the OpenTelemetry Collector, which then stores the data in ClickHouseDB.</p>
-<p>The OpenLIT SDK provides a simple way to integrate observability into AI applications, supporting auto-instrumentation of 44+ LLM providers, AI frameworks, and vector databases. The OpenLIT SDK also supports Python and TypeScript SDKs, making it a versatile tool for developers. However, if the otlpendpoint or OTELEXPORTEROTLPENDPOINT is not provided, the OpenLIT SDK will output traces directly to the console. The OpenLIT SDK can be used to integrate OpenLIT into AI applications, visualize and analyze observability data, and support for various LLM providers and AI frameworks.</p>
-<p>One of the key benefits of using the OpenLIT SDK is its ability to provide observability for AI development workflows, allowing developers to monitor and analyze the performance of their AI applications. The OpenLIT SDK can also be used to experiment with different LLMs, organize and version prompts, and securely handle API keys. Additionally, the OpenLIT SDK provides support for building AI features and applications, transitioning from testing to production, and monitoring AI application health and performance. The OpenLIT SDK can also be used to track costs for custom and fine-tuned models, monitor exceptions, and manage prompts and API keys.</p>
-<p>The OpenLIT SDK has several use cases, including integrating OpenLIT into AI applications, visualizing and analyzing observability data, and auto-instrumenting LLM providers and AI frameworks. The OpenLIT SDK can also be used to support various LLM providers and AI frameworks, such as OpenAI, Anthropic, and Cohere. However, the OpenLIT SDK does not provide support for all LLM providers and AI frameworks, and may require additional configuration or customization to work with certain providers. The OpenLIT SDK can also be used to support Fleet Hub for OpAMP management, providing a centralized way to manage and monitor AI applications.</p>
-<p>The OpenLIT SDK has several technical limitations, including the requirement for an otlpendpoint or OTELEXPORTEROTLPENDPOINT to be provided in order to send traces and metrics to the OpenTelemetry Collector. If this endpoint is not provided, the OpenLIT SDK will output traces directly to the console. The OpenLIT SDK also does not provide support for all LLM providers and AI frameworks, and may require additional configuration or customization to work with certain providers. The OpenLIT SDK can also be limited by the performance of the underlying infrastructure, such as the OpenTelemetry Collector and ClickHouseDB.</p>
-<p>The OpenLIT SDK provides several API methods and config keys that can be used to customize and extend its functionality. For example, the openlit. init() method can be used to initialize the OpenLIT SDK, and the otlpendpoint parameter can be used to specify the OTLP endpoint. The OTELEXPORTEROTLPENDPOINT environment variable can also be used to set the otlpendpoint.</p>
-<p>The OpenLIT SDK also provides support for several config keys, including otlpheaders and OTLPEXPORTEROTLPHEADERS. However, the OpenLIT SDK does not provide detailed documentation on all of its API methods and config keys, and may require additional research and experimentation to fully understand its capabilities.</p>
-<p>The OpenLIT SDK can be installed and configured using several different methods, including pip installation and Docker composition. The OpenLIT SDK can be installed via pip using the command pip install openlit, and can be configured using the openlit. init() method or the OTELEXPORTEROTLPENDPOINT environment variable. The OpenLIT SDK can also be self-hosted using Docker, providing a flexible and scalable way to deploy and manage the OpenLIT SDK.</p>
-<p>However, the OpenLIT SDK does not provide detailed documentation on all of its installation and configuration options, and may require additional research and experimentation to fully understand its capabilities.</p>
-<p>The OpenLIT SDK provides a powerful and flexible way to integrate observability into AI applications, supporting auto-instrumentation of LLM providers and AI frameworks, and providing a centralized way to manage and monitor AI applications. However, the OpenLIT SDK also has several technical limitations, including the requirement for an otlpendpoint or OTELEXPORTEROTLPENDPOINT to be provided, and limited support for certain LLM providers and AI frameworks. The OpenLIT SDK can be used to support a wide range of use cases, including integrating OpenLIT into AI applications, visualizing and analyzing observability data, and supporting Fleet Hub for OpAMP management. The OpenLIT SDK can be installed and configured using several different methods, including pip installation and Docker composition.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/b5c9a9248713cfd38f29de4dcb8c168705c55e90cdc76fff97d06472fc2defbd/ruc-datalab/DeepAnalyze" alt="DeepAnalyze logo" onerror="this.style.display='none'"/><div class="cover-lib-name">DeepAnalyze</div><div class="cover-suffix">Field Guide</div><div class="cover-rule"></div><p class="cover-subtitle">Unlock insights with DeepAnalyze</p><p class="cover-desc">The DeepAnalyze library provides a range of tools for data-oriented deep research, including the WebUI v2 interface.  This interface is built on top of the vllm architecture and provides a user-friendly way to interact with the DeepAnalyze models.  The library also includes a range of API methods, including startserver.</p><div class="cover-tagline">Analyze deeper</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 26, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">ruc-datalab built DeepAnalyze.</div><div class="intro-body"><p>DeepAnalyze was created by ruc-datalab and first released in versions including 2025. 11. 13 and 2026. 03.</p>
+<p>16. It was built to solve the problem of providing a data science pipeline for tasks such as open-ended data research and entire data science pipeline. The architecture of DeepAnalyze includes WebUI v2, HeyWhale API, and Docker-based sandboxed code execution, which allows for a flexible and scalable design. This architecture is technically different from alternatives due to its use of specific design decisions such as the vllm entrypoints and the ability to specify configuration keys like modelpath, served-model-name, and gpu-memory-utilization.</p>
+<p>The technical differences in DeepAnalyze are evident in its design decisions, such as the use of the vllm. entrypoints. openai. apiserver and the ability to specify configuration keys like model_path, served-model-name, and gpu-memory-utilization.</p>
+<p>These design decisions allow for a high degree of customization and flexibility in the use of DeepAnalyze. Additionally, the use of Docker-based sandboxed code execution provides a secure and isolated environment for code execution, which is particularly important for data science tasks that involve sensitive data. The target audience for DeepAnalyze appears to be data scientists and researchers who need to perform data-centric tasks and data science tasks, as evidenced by its use in the 2026 China Collegiate Computer Design Contest – Big Data Track.</p>
+<p>The use of DeepAnalyze in the 2026 China Collegiate Computer Design Contest – Big Data Track demonstrates its potential for use in a variety of data science applications. The fact that it can be used for entire data science pipeline and open-ended data research suggests that it is a versatile tool that can be applied to a wide range of tasks. The ability to specify configuration keys and use different models, such as the DeepAnalyze-8B model, also suggests that DeepAnalyze is a highly customizable tool that can be tailored to meet the needs of specific users. Overall, DeepAnalyze appears to be a powerful tool for data science tasks, and its technical differences from alternatives make it a unique and valuable resource for data scientists and researchers.</p>
+<p>In terms of its technical implementation, DeepAnalyze uses a variety of tools and technologies, including Python, npm, and Docker. The use of these tools suggests that DeepAnalyze is designed to be highly scalable and flexible, and that it can be easily integrated into a variety of different environments. The fact that it can be used with different models, such as the DeepAnalyze-8B model, also suggests that it is designed to be highly adaptable and customizable. Overall, the technical implementation of DeepAnalyze suggests that it is a highly advanced and sophisticated tool that is well-suited to a wide range of data science applications.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/ruc-datalab/DeepAnalyze">https://github.com/ruc-datalab/DeepAnalyze</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking Deep Insights with WebUI v2</h2></div><p class="ch-summary">DeepAnalyze insights</p><div class="ch-body"><p>The DeepAnalyze library provides a range of tools for data-oriented deep research, including the WebUI v2 interface. This interface is built on top of the vllm architecture and provides a user-friendly way to interact with the DeepAnalyze models. The library also includes a range of API methods, including startserver. py, apicli.</p>
+<p>py, and apicliZH. py, which can be used to customize and extend the functionality of the interface. The WebUI v2 interface is designed to be highly customizable, with a range of config keys available to control the behavior of the interface, including modelpath, served-model-name, and max-model-len. The library also includes a range of version numbers, including 2025.</p>
+<p>11. 13 and 2026. 01. 31, which can be used to track changes and updates to the library.</p>
+<p>The DeepAnalyze library is designed to be highly flexible and can be used for a range of data-centric tasks, including data science tasks and open-ended data research. The library includes a range of classes and methods, including --model, --served-model-name, and --max-model-len, which can be used to control the behavior of the models. The library also includes a range of limitations, including the fact that it does not support certain types of models. The WebUI v2 interface is designed to be highly user-friendly and provides a range of tools and features to support data-oriented deep research.</p>
+<p>The library also includes a range of performance metrics, including gpu-memory-utilization, which can be used to track the performance of the models.</p>
+<p>The DeepAnalyze library is built on top of the vllm. entrypoints. openai. apiserver architecture, which provides a highly customizable and flexible way to interact with the DeepAnalyze models.</p>
+<p>The library includes a range of API methods, including python -m vllm. entrypoints. openai. apiserver, which can be used to customize and extend the functionality of the interface.</p>
+<p>The library also includes a range of config keys, including --model, --served-model-name, and --max-model-len, which can be used to control the behavior of the interface. The library also includes a range of version numbers, including 2025. 10. 21 and 2026.</p>
+<p>03. 16, which can be used to track changes and updates to the library.</p>
+<p>The DeepAnalyze library includes a range of tools and features to support data-oriented deep research, including the WebUI v2 interface and the apicli. py and apicliZH. py API methods. The library is designed to be highly customizable and provides a range of config keys and API methods to control the behavior of the interface.</p>
+<p>The library also includes a range of limitations, including the fact that it does not support certain types of models. The library is built on top of the vllm architecture and provides a highly flexible and customizable way to interact with the DeepAnalyze models.</p>
+<p>The WebUI v2 interface is designed to be highly user-friendly and provides a range of tools and features to support data-oriented deep research. The interface is built on top of the vllm architecture and provides a highly customizable and flexible way to interact with the DeepAnalyze models. The library includes a range of API methods, including startserver. py, apicli.</p>
+<p>py, and apicliZH. py, which can be used to customize and extend the functionality of the interface. The library also includes a range of config keys, including modelpath, served-model-name, and max-model-len, which can be used to control the behavior of the interface.</p>
+<p>The DeepAnalyze library is designed to be highly flexible and can be used for a range of data-centric tasks, including data science tasks and open-ended data research. The library includes a range of classes and methods, including --model, --served-model-name, and --max-model-len, which can be used to control the behavior of the models. The library also includes a range of limitations, including the fact that it does not support certain types of models. The library is built on top of the vllm architecture and provides a highly customizable and flexible way to interact with the DeepAnalyze models.</p>
+<p>The DeepAnalyze library includes a range of tools and features to support data-oriented deep research, including the WebUI v2 interface and the apicli. py and apicliZH. py API methods. The library is designed to be highly customizable and provides a range of config keys and API methods to control the behavior of the interface.</p>
+<p>The library also includes a range of version numbers, including 2025. 11. 13 and 2026. 01.</p>
+<p>31, which can be used to track changes and updates to the library. The library is built on top of the vllm architecture and provides a highly flexible and customizable way to interact with the DeepAnalyze models.</p>
+<p>The DeepAnalyze library is built on top of the vllm. entrypoints. openai. apiserver architecture, which provides a highly customizable and flexible way to interact with the DeepAnalyze models.</p>
+<p>The library includes a range of API methods, including python -m vllm. entrypoints. openai. apiserver, which can be used to customize and extend the functionality of the interface.</p>
+<p>The library also includes a range of config keys, including --model, --served-model-name, and --max-model-len, which can be used to control the behavior of the interface. The library also includes a range of performance metrics, including gpu-memory-utilization, which can be used to track the performance of the models.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1227.85 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1662.31 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1223.85,-40 1223.85,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1658.31,-40 1658.31,4 -4,4"/>
 <!-- N0 -->
 <g id="cluster-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="47.96" cy="-18" rx="47.96" ry="18"/>
-<text text-anchor="middle" x="47.96" y="-14.5" font-family="Arial" font-size="10.00">OpenLIT_SDK</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="64.64" cy="-18" rx="64.64" ry="18"/>
+<text text-anchor="middle" x="64.64" y="-14.5" font-family="Arial" font-size="10.00">DeepAnalyze Engine</text>
 </g>
 <!-- N1 -->
 <g id="cluster-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="292.58" cy="-18" rx="75.92" ry="18"/>
-<text text-anchor="middle" x="292.58" y="-14.5" font-family="Arial" font-size="10.00">OpenTelemetry_Collector</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="285.58" cy="-18" rx="63.29" ry="18"/>
+<text text-anchor="middle" x="285.58" y="-14.5" font-family="Arial" font-size="10.00">JupyterLab Interface</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="cluster-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M96.31,-18C127.18,-18 168.38,-18 204.98,-18"/>
-<polygon fill="#475569" stroke="#475569" points="204.66,-21.5 214.66,-18 204.66,-14.5 204.66,-21.5"/>
-<text text-anchor="middle" x="156.29" y="-19.95" font-family="Arial" font-size="9.00">sends tracing data to</text>
+<path fill="none" stroke="#475569" d="M129.56,-18C154.95,-18 184.33,-18 210.64,-18"/>
+<polygon fill="#475569" stroke="#475569" points="210.58,-21.5 220.58,-18 210.58,-14.5 210.58,-21.5"/>
+<text text-anchor="middle" x="175.79" y="-19.95" font-family="Arial" font-size="9.00">initializes with</text>
 </g>
 <!-- N2 -->
 <g id="cluster-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="518.61" cy="-18" rx="48.86" ry="18"/>
-<text text-anchor="middle" x="518.61" y="-14.5" font-family="Arial" font-size="10.00">ClickHouseDB</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="556.95" cy="-18" rx="79.08" ry="18"/>
+<text text-anchor="middle" x="556.95" y="-14.5" font-family="Arial" font-size="10.00">Web&#45;Based User Interface</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="cluster-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M368.8,-18C397.83,-18 430.57,-18 457.93,-18"/>
-<polygon fill="#475569" stroke="#475569" points="457.79,-21.5 467.79,-18 457.79,-14.5 457.79,-21.5"/>
-<text text-anchor="middle" x="419.13" y="-19.95" font-family="Arial" font-size="9.00">writes metrics to</text>
+<path fill="none" stroke="#475569" d="M349.05,-18C383.85,-18 427.78,-18 466.2,-18"/>
+<polygon fill="#475569" stroke="#475569" points="465.89,-21.5 475.89,-18 465.89,-14.5 465.89,-21.5"/>
+<text text-anchor="middle" x="413.37" y="-19.95" font-family="Arial" font-size="9.00">registers user requests</text>
 </g>
 <!-- N3 -->
 <g id="cluster-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="730.61,-36 671.72,-18 730.61,0 789.5,-18 730.61,-36"/>
-<text text-anchor="middle" x="730.61" y="-14.5" font-family="Arial" font-size="10.00">OpenLIT_UI</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="832.25,-36 744.02,-18 832.25,0 920.48,-18 832.25,-36"/>
+<text text-anchor="middle" x="832.25" y="-14.5" font-family="Arial" font-size="10.00">RESTful API Server</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="cluster-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M567.79,-18C594.74,-18 628.84,-18 658.78,-18"/>
-<polygon fill="#475569" stroke="#475569" points="658.51,-21.5 668.51,-18 658.51,-14.5 658.51,-21.5"/>
-<text text-anchor="middle" x="619.59" y="-19.95" font-family="Arial" font-size="9.00">provides data for</text>
+<path fill="none" stroke="#475569" d="M636.26,-18C665.63,-18 699.41,-18 730.52,-18"/>
+<polygon fill="#475569" stroke="#475569" points="730.33,-21.5 740.33,-18 730.33,-14.5 730.33,-21.5"/>
+<text text-anchor="middle" x="690.02" y="-19.95" font-family="Arial" font-size="9.00">sends requests to</text>
 </g>
 <!-- N4 -->
 <g id="cluster-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1000.18" cy="-18" rx="36.68" ry="18"/>
-<text text-anchor="middle" x="1000.18" y="-14.5" font-family="Arial" font-size="10.00">Fleet_Hub</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1112.19" cy="-18" rx="68.7" ry="18"/>
+<text text-anchor="middle" x="1112.19" y="-14.5" font-family="Arial" font-size="10.00">Agent&#45;Based Executor</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="cluster-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M790.99,-18C839.47,-18 907.06,-18 951.92,-18"/>
-<polygon fill="#475569" stroke="#475569" points="951.86,-21.5 961.86,-18 951.86,-14.5 951.86,-21.5"/>
-<text text-anchor="middle" x="876.5" y="-19.95" font-family="Arial" font-size="9.00">sends management commands to</text>
+<path fill="none" stroke="#475569" d="M922.72,-18C957.79,-18 997.71,-18 1031.74,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1031.53,-21.5 1041.53,-18 1031.53,-14.5 1031.53,-21.5"/>
+<text text-anchor="middle" x="981.98" y="-19.95" font-family="Arial" font-size="9.00">triggers execution via</text>
 </g>
 <!-- N5 -->
 <g id="cluster-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1189.48" cy="-18" rx="30.37" ry="18"/>
-<text text-anchor="middle" x="1189.48" y="-14.5" font-family="Arial" font-size="10.00">OpAMP</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1352.05" cy="-18" rx="71.41" ry="18"/>
+<text text-anchor="middle" x="1352.05" y="-14.5" font-family="Arial" font-size="10.00">Tool Registry Database</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="cluster-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M1037.3,-18C1068.73,-18 1114.28,-18 1147.16,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1147.14,-21.5 1157.14,-18 1147.14,-14.5 1147.14,-21.5"/>
-<text text-anchor="middle" x="1097.99" y="-19.95" font-family="Arial" font-size="9.00">configures policies in</text>
+<path fill="none" stroke="#475569" d="M1181.35,-18C1208.74,-18 1240.55,-18 1269.18,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1268.88,-21.5 1278.88,-18 1268.88,-14.5 1268.88,-21.5"/>
+<text text-anchor="middle" x="1230.76" y="-19.95" font-family="Arial" font-size="9.00">stores results in</text>
+</g>
+<!-- N6 -->
+<g id="cluster-node7" class="node">
+<title>N6</title>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1586.51" cy="-18" rx="67.8" ry="18"/>
+<text text-anchor="middle" x="1586.51" y="-14.5" font-family="Arial" font-size="10.00">In&#45;Memory Data Store</text>
+</g>
+<!-- N5&#45;&gt;N6 -->
+<g id="cluster-edge6" class="edge">
+<title>N5&#45;&gt;N6</title>
+<path fill="none" stroke="#475569" d="M1423.74,-18C1450.04,-18 1480.03,-18 1506.99,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1506.82,-21.5 1516.82,-18 1506.82,-14.5 1506.82,-21.5"/>
+<text text-anchor="middle" x="1471.08" y="-19.95" font-family="Arial" font-size="9.00">caches data in</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: openlit internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting OpenTelemetry Collector with OpenLIT</h2></div><p class="ch-summary">OpenLIT integrates with OpenTelemetry</p><div class="ch-body"><p>The OpenLIT SDK is designed to work seamlessly with the OpenTelemetry Collector, sending traces and metrics to the collector, which then stores the data in ClickHouseDB. This architecture allows for efficient data collection and storage, enabling users to analyze and visualize their observability data. The OpenLITUI component pulls data from ClickHouseDB, providing a user-friendly interface for users to interact with their data. The OpenLIT SDK uses the otlpendpoint config key to determine where to send the traces and metrics.</p>
-<p>If the otlpendpoint is not provided, the OpenLIT SDK will output traces directly to the console. The OpenLIT SDK also supports other config keys, such as otlpheaders and OTLPEXPORTEROTLPENDPOINT, which can be used to customize the behavior of the SDK.</p>
-<p>The OpenLIT SDK provides a simple and efficient way to integrate OpenLIT into AI applications, supporting auto-instrumentation of 44+ LLM providers, AI frameworks, and vector databases. The SDK also supports Python and TypeScript, making it easy to integrate with a wide range of applications. The OpenLITUI component provides a user-friendly interface for users to interact with their data, including features such as analytics dashboards, exceptions monitoring, and prompt management. The OpenLIT SDK also supports cost tracking for custom and fine-tuned models, as well as API keys and secrets management.</p>
-<p>The Fleet Hub component provides a centralized management interface for OpAMP, making it easy to manage and monitor AI applications.</p>
-<p>One of the key benefits of using OpenLIT is its ability to provide a unified view of observability data across multiple applications and services. The OpenLIT SDK provides a simple and efficient way to collect and store data, making it easy to analyze and visualize observability data. The OpenLITUI component provides a user-friendly interface for users to interact with their data, making it easy to identify trends and patterns. The OpenLIT SDK also supports a wide range of config keys and API methods, making it easy to customize the behavior of the SDK.</p>
-<p>For example, the openlit. init() method can be used to initialize the OpenLIT SDK, and the otlpendpoint config key can be used to determine where to send the traces and metrics.</p>
-<p>The OpenLIT SDK also provides a number of limitations and potential pitfalls that users should be aware of. For example, if the otlpendpoint or OTLPEXPORTEROTLPENDPOINT is not provided, the OpenLIT SDK will output traces directly to the console. This can be problematic in production environments, where console output may not be desirable. Additionally, the OpenLIT SDK does not support all config keys and API methods in all environments, so users should carefully review the documentation before using the SDK.</p>
-<p>The OpenLIT SDK also requires a number of dependencies to be installed, including the OpenTelemetry Collector and ClickHouseDB.</p>
-<p>In terms of performance, the OpenLIT SDK is designed to be efficient and scalable, making it suitable for use in large-scale applications. The SDK uses a number of optimization techniques, such as batching and caching, to minimize the overhead of data collection and storage. The OpenLITUI component also provides a number of features, such as data filtering and aggregation, to help users manage and analyze their data. However, the performance of the OpenLIT SDK can be affected by a number of factors, including the size and complexity of the data, as well as the configuration of the SDK and its dependencies.</p>
-<p>The OpenLIT SDK provides a number of API methods and config keys that can be used to customize its behavior. For example, the openlit. init() method can be used to initialize the OpenLIT SDK, and the otlpendpoint config key can be used to determine where to send the traces and metrics. The SDK also supports a number of other config keys, such as otlpheaders and OTLPEXPORTEROTLPENDPOINT, which can be used to customize the behavior of the SDK.</p>
-<p>The OpenLITUI component also provides a number of API methods, such as the openlit. ui() method, which can be used to interact with the user interface.</p>
-<p>The OpenLIT SDK is designed to be easy to use and integrate with a wide range of applications. The SDK provides a simple and efficient way to collect and store data, making it easy to analyze and visualize observability data. The OpenLITUI component provides a user-friendly interface for users to interact with their data, making it easy to identify trends and patterns. However, the OpenLIT SDK does require a number of dependencies to be installed, including the OpenTelemetry Collector and ClickHouseDB.</p>
-<p>The SDK also provides a number of limitations and potential pitfalls that users should be aware of, such as the requirement to provide an otlpendpoint or OTLPEXPORTEROTLPENDPOINT.</p>
-<p>Overall, the OpenLIT SDK provides a powerful and flexible way to integrate OpenLIT into AI applications. The SDK provides a simple and efficient way to collect and store data, making it easy to analyze and visualize observability data. The OpenLITUI component provides a user-friendly interface for users to interact with their data, making it easy to identify trends and patterns. However, the OpenLIT SDK does require a number of dependencies to be installed, and provides a number of limitations and potential pitfalls that users should be aware of.</p>
-<p>The callout is that the OpenLIT SDK uses the otlpendpoint config key to determine where to send the traces and metrics.</p></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Initializing OpenLIT with OTLP Endpoint</h2></div><p class="ch-summary">Initialize OpenLIT</p><div class="ch-body"><p>To initialize OpenLIT with an OTLP endpoint, you need to use the openlit. init() method and pass the otlpendpoint config key. The OpenLIT SDK sends traces and metrics to the OpenTelemetry Collector, which stores the data in ClickHouseDB. The OpenLITUI then pulls the data from ClickHouseDB.</p>
-<p>The openlit. init() method is a crucial step in setting up OpenLIT. The OTLPEXPORTEROTLPENDPOINT config key is also used to specify the OTLP endpoint.</p>
-<p>The OpenLIT SDK provides a simple way to instrument your application and send data to the OpenTelemetry Collector. The openlit. init() method takes an otlpendpoint parameter, which specifies the endpoint of the OpenTelemetry Collector. The OpenTelemetry Collector then stores the data in ClickHouseDB.</p>
-<p>The OpenLITUI provides a user-friendly interface to view the data stored in ClickHouseDB.</p>
-<p>The openlit. init() method returns an instance of the OpenLIT class, which provides methods to interact with the OpenLITUI and the OpenTelemetry Collector. The OpenLIT class also provides methods to configure the OpenLITSDK, such as setting the otlpheaders and otlpendpoint config keys. The openlit.</p>
-<p>init() method is a blocking call, meaning that it will wait for the OpenLITSDK to be fully initialized before returning.</p>
-<p>One of the limitations of the OpenLITSDK is that it does not support multiple OTLP endpoints. If you need to send data to multiple OpenTelemetry Collectors, you will need to create multiple instances of the OpenLIT class. The OpenLITSDK also does not provide a way to configure the OpenTelemetry Collector, such as setting the protocol or authentication method.</p>
-<p>The OpenLITUI provides a way to view the data stored in ClickHouseDB, but it does not provide a way to configure the OpenLITSDK or the OpenTelemetry Collector. The OpenLITUI is a separate component from the OpenLITSDK and is designed to provide a user-friendly interface to view the data. The OpenLITUI can be deployed separately from the OpenLITSDK, allowing you to scale the two components independently.</p>
-<p>The OpenLITSDK provides a way to instrument your application and send data to the OpenTelemetry Collector, but it does not provide a way to configure the OpenTelemetry Collector. The OpenTelemetry Collector is a separate component that is responsible for storing the data in ClickHouseDB. The OpenLITSDK provides a simple way to send data to the OpenTelemetry Collector, but it does not provide a way to configure the collector.</p>
-<p>The openlit. init() method is a crucial step in setting up OpenLIT, and it provides a way to initialize the OpenLITSDK and connect to the OpenTelemetry Collector. The openlit. init() method takes an otlpendpoint parameter, which specifies the endpoint of the OpenTelemetry Collector.</p>
-<p>The OpenLITSDK provides a simple way to instrument your application and send data to the OpenTelemetry Collector.</p>
-<p>The OpenLITSDK provides a way to interact with the OpenLITUI and the OpenTelemetry Collector, but it does not provide a way to configure the OpenTelemetry Collector. The OpenLITUI provides a user-friendly interface to view the data stored in ClickHouseDB, but it does not provide a way to configure the OpenLIT_SDK or the OpenTelemetry Collector.</p><div class="code-label">Code Sample</div><div class="code-block">openlit.init(otlp_endpoint='http://localhost:4317')
-openlit.init(otlp_endpoint='http://localhost:4317', otlp_headers={'Authorization': 'Bearer token'})
-pip install openlit
-git clone git@github.com:openlit/openlit.git
-docker compose up -d
-openlit.init(otlp_endpoint='http://localhost:4317', otlp_headers={'Authorization': 'Bearer token'})
-openlit.init(otlp_endpoint='http://localhost:4317')
-openlit.init(otlp_endpoint='http://localhost:4317', otlp_headers={'Authorization': 'Bearer token'})
-openlit.init(otlp_endpoint='http://localhost:4317')
-openlit.init(otlp_endpoint='http://localhost:4317', otlp_headers={'Authorization': 'Bearer token'})
-openlit.init(otlp_endpoint='http://localhost:4317')
-openlit.init(otlp_endpoint='http://localhost:4317', otlp_headers={'Authorization': 'Bearer token'})
-openlit.init(otlp_endpoint='http://localhost:4317')
-openlit.init(otlp_endpoint='http://localhost:4317', otlp_headers={'Authorization': 'Bearer token'})</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: DeepAnalyze internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting Scalable Pipelines with vllm.entrypoints.openai.api_server</h2></div><p class="ch-summary">Scalable pipeline architecture</p><div class="ch-body"><p>The vllm. entrypoints. openai. apiserver module provides a flexible way to architect scalable pipelines for data science tasks.</p>
+<p>The --model config key allows users to specify the model path, while the --served-model-name key defines the name of the served model. The --max-model-len key is used to set the maximum model length, and the --gpu-memory-utilization key controls the GPU memory utilization. The --port key specifies the port number for the API server.</p>
+<p>The vllm. entrypoints. openai. apiserver module supports various config keys, including modelpath, served-model-name, max-model-len, and gpu-memory-utilization.</p>
+<p>The --trust-remote-code flag is used to trust remote code execution. The module also supports different version numbers, such as 8B and v2.</p>
+<p>The API server can be started using the python -m vllm. entrypoints. openai. apiserver command, followed by the required config keys.</p>
+<p>For example, python -m vllm. entrypoints. openai. apiserver --model /path/to/deepanalyze/4bit --served-model-name DeepAnalyze-8B --max-model-len 49152 --gpu-memory-utilization 0.</p>
+<p>95 --port 8000 --kv-cache-dtype fp8 --trust-remote-code.</p>
+<p>The vllm. entrypoints. openai. apiserver module has some limitations, such as limited memory utilization, which can be less than 24GB.</p>
+<p>The module also requires specific version numbers, such as 2025. 11. 13 or 2026. 01.</p>
+<p>31, to function correctly.</p>
+<p>The startserver. py and apicli. py scripts are used to start the API server and interact with the API, respectively. The exampleRequest.</p>
+<p>py script provides an example of how to send requests to the API server. The examp script is used to demonstrate the usage of the API server.</p>
+<p>The vllm. entrypoints. openai. apiserver module supports open-ended data research and entire data science pipelines.</p>
+<p>It can be used to conduct deep research on diverse data sources and produce analyst-grade research reports. The module also supports fully open-source deployment.</p>
+<p>The vllm. entrypoints. openai. apiserver module requires careful configuration to achieve optimal performance.</p>
+<p>The --gpu-memory-utilization key should be set to a value that balances memory utilization and performance. The --max-model-len key should be set to a value that is sufficient for the model size.</p>
+<p>The vllm. entrypoints. openai. api_server module provides a flexible way to architect scalable pipelines for data science tasks.</p>
+<p>However, it requires careful consideration of the limitations and config keys to achieve optimal performance.</p></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying DeepAnalyze with start_server.py and api_cli.py</h2></div><div class="ch-body"><p>bash start.</p>
+<p>stop the api and interface</p>
+<p>bash stop.</p>
+<p>stop vllm if needed</p>
+<p>bash</p>
+<p>cd demo/chatv2/frontend</p>
+<p>npm install</p>
+<p>cd ..</p>
+<p>cp . env. example .</p>
+<p>bash start.</p>
+<p>stop the api and interface</p>
+<p>bash stop.</p>
+<p>stop vllm if needed</p>
+<p>bash</p>
+<p>cd API</p>
+<p>python startserver.</p>
+<p>cd demo/cli</p>
+<p>python apicli.</p>
+<p>or</p>
+<p>python apicliZH.</p>
+<p>``</p>
+<p>LIMITATIONS:</p>
+<p>No explicit limitations mentioned</p>
+<p>INSTALLSTEPS:</p>
+<p>Clone this repo, cd demo/chat/frontend, npm install, cd .. , bash start. sh, cd API, python startserver. py, cd demo/cli, python apicli.</p>
+<p>USECASES:</p>
+<p>Data-oriented deep research, data-centric tasks, data science tasks</p>
+<p>CLASSESANDMETHODS:</p>
+<p>--model, --served-model-name, --max-model-len, --gpu-memory-utilization, --port, --kv-cache-dtype, --trust-remote-code</p>
+<p>CONFIGKEYS:</p>
+<p>modelpath, served-model-name, max-model-len, gpu-memory-utilization, port</p>
+<p>VERSIONNUMBERS:</p>
+<p>2025. 10. 21, 2025. 10.</p>
+<p>27, 2025. 10. 28, 2025. 11.</p>
+<p>08, 2025. 11. 13, 2025. 12.</p>
+<p>28, 2026. 01. 31, 2026. 03.</p>
+<p>ARCHITECTURE:</p>
+<p>vllm. entrypoints. openai.</p>
+<p>CODESNIPPETS:</p>
+<p>`</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 913.85 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1098.87 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 909.85,-40 909.85,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1094.87,-40 1094.87,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="41.64" cy="-18" rx="41.64" ry="18"/>
-<text text-anchor="middle" x="41.64" y="-14.5" font-family="Arial" font-size="10.00">Uninitialized</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="34.43" cy="-18" rx="34.43" ry="18"/>
+<text text-anchor="middle" x="34.43" y="-14.5" font-family="Arial" font-size="10.00">Initialized</text>
 </g>
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="225" cy="-18" rx="52.47" ry="18"/>
-<text text-anchor="middle" x="225" y="-14.5" font-family="Arial" font-size="10.00">Initializing Agent</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="203.96" cy="-18" rx="46.6" ry="18"/>
+<text text-anchor="middle" x="203.96" y="-14.5" font-family="Arial" font-size="10.00">Task Planning</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M83.34,-18C106.18,-18 135.16,-18 160.88,-18"/>
-<polygon fill="#475569" stroke="#475569" points="160.53,-21.5 170.53,-18 160.53,-14.5 160.53,-21.5"/>
-<text text-anchor="middle" x="127.91" y="-19.95" font-family="Arial" font-size="9.00">agent startup</text>
+<path fill="none" stroke="#475569" d="M69.33,-18C91.22,-18 120.25,-18 145.66,-18"/>
+<polygon fill="#475569" stroke="#475569" points="145.53,-21.5 155.53,-18 145.53,-14.5 145.53,-21.5"/>
+<text text-anchor="middle" x="113.1" y="-19.95" font-family="Arial" font-size="9.00">agent spawn</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="428.48" cy="-18" rx="49.76" ry="18"/>
-<text text-anchor="middle" x="428.48" y="-14.5" font-family="Arial" font-size="10.00">Executing Task</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="391.52" cy="-18" rx="47.96" ry="18"/>
+<text text-anchor="middle" x="391.52" y="-14.5" font-family="Arial" font-size="10.00">Data Ingestion</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M277.89,-18C305.15,-18 338.7,-18 367.12,-18"/>
-<polygon fill="#475569" stroke="#475569" points="367.03,-21.5 377.03,-18 367.03,-14.5 367.03,-21.5"/>
-<text text-anchor="middle" x="328.09" y="-19.95" font-family="Arial" font-size="9.00">task submission</text>
+<path fill="none" stroke="#475569" d="M250.83,-18C275.32,-18 305.73,-18 331.92,-18"/>
+<polygon fill="#475569" stroke="#475569" points="331.73,-21.5 341.73,-18 331.73,-14.5 331.73,-21.5"/>
+<text text-anchor="middle" x="297.06" y="-19.95" font-family="Arial" font-size="9.00">data selection</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="650.83,-36 594.49,-18 650.83,0 707.17,-18 650.83,-36"/>
-<text text-anchor="middle" x="650.83" y="-14.5" font-family="Arial" font-size="10.00">Task Failed</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="610.16,-36 542.97,-18 610.16,0 677.34,-18 610.16,-36"/>
+<text text-anchor="middle" x="610.16" y="-14.5" font-family="Arial" font-size="10.00">Model Training</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M478.66,-18C508.95,-18 548.23,-18 581.52,-18"/>
-<polygon fill="#475569" stroke="#475569" points="581.51,-21.5 591.51,-18 581.51,-14.5 581.51,-21.5"/>
-<text text-anchor="middle" x="536.37" y="-19.95" font-family="Arial" font-size="9.00">task execution error</text>
+<path fill="none" stroke="#475569" d="M439.79,-18C466.18,-18 499.74,-18 530.01,-18"/>
+<polygon fill="#475569" stroke="#475569" points="529.92,-21.5 539.92,-18 529.92,-14.5 529.92,-21.5"/>
+<text text-anchor="middle" x="491.22" y="-19.95" font-family="Arial" font-size="9.00">model execution</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="853.39" cy="-18" rx="52.47" ry="18"/>
-<text text-anchor="middle" x="853.39" y="-14.5" font-family="Arial" font-size="10.00">Task Completed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="841.57" cy="-18" rx="59.23" ry="18"/>
+<text text-anchor="middle" x="841.57" y="-14.5" font-family="Arial" font-size="10.00">Analysis Complete</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M708.77,-18C733.88,-18 763.5,-18 789.29,-18"/>
-<polygon fill="#475569" stroke="#475569" points="788.94,-21.5 798.94,-18 788.94,-14.5 788.94,-21.5"/>
-<text text-anchor="middle" x="754.05" y="-19.95" font-family="Arial" font-size="9.00">error handling</text>
+<path fill="none" stroke="#475569" d="M679.06,-18C707.99,-18 741.71,-18 770.83,-18"/>
+<polygon fill="#475569" stroke="#475569" points="770.65,-21.5 780.65,-18 770.65,-14.5 770.65,-21.5"/>
+<text text-anchor="middle" x="729.84" y="-19.95" font-family="Arial" font-size="9.00">result generation</text>
+</g>
+<!-- N5 -->
+<g id="sm-node6" class="node">
+<title>N5</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1052.84" cy="-18" rx="38.03" ry="18"/>
+<text text-anchor="middle" x="1052.84" y="-14.5" font-family="Arial" font-size="10.00">Error State</text>
+</g>
+<!-- N4&#45;&gt;N5 -->
+<g id="sm-edge5" class="edge">
+<title>N4&#45;&gt;N5</title>
+<path fill="none" stroke="#475569" d="M901.14,-18C933.31,-18 972.73,-18 1003.18,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1002.87,-21.5 1012.87,-18 1002.87,-14.5 1002.87,-21.5"/>
+<text text-anchor="middle" x="957.8" y="-19.95" font-family="Arial" font-size="9.00">exception handling</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: openlit lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating OpenLIT_UI with ClickHouseDB for Real-Time Insights</h2></div><p class="ch-summary">Integrate OpenLIT_UI with ClickHouseDB</p><div class="ch-body"><p>The OpenLITUI is designed to pull data from ClickHouseDB, which stores traces and metrics sent by the OpenLIT SDK through the OpenTelemetry Collector. The OpenLITSDK uses the init() method to initialize the connection with the OpenTelemetry Collector, which then sends the data to ClickHouseDB. The OpenLITUI can then pull this data from ClickHouseDB to provide real-time insights. The config key otlpEndpoint is used to specify the endpoint for the OpenTelemetry Collector.</p>
-<p>The OpenLITUI also uses the fireEvent() method to handle events and the runWidgetQuery() method to run queries on the data.</p>
-<p>The OpenLITSDK sends traces and metrics to the OpenTelemetry Collector, which then stores the data in ClickHouseDB. The OpenTelemetry Collector uses the OTLP protocol to send the data to ClickHouseDB. The OpenLITUI can then pull this data from ClickHouseDB to provide real-time insights. The config key OTLPEXPORTEROTLPENDPOINT is used to specify the endpoint for the OpenTelemetry Collector.</p>
-<p>The OpenLITUI also uses the POST(request: NextRequest) method to handle requests.</p>
-<p>The OpenLITUI provides real-time insights into the data stored in ClickHouseDB. The OpenLITUI uses the runWidgetQuery() method to run queries on the data and provide insights. The OpenLITUI also uses the fireEvent() method to handle events and provide notifications. The config key otlpheaders is used to specify the headers for the OpenTelemetry Collector.</p>
-<p>The OpenLITUI also uses the init() method to initialize the connection with the OpenTelemetry Collector.</p>
-<p>The OpenLITSDK has some limitations, such as not supporting certain types of data. The OpenLITUI also has some limitations, such as not being able to handle large amounts of data. The OpenTelemetry Collector has some limitations, such as not being able to handle certain types of protocols. The ClickHouseDB has some limitations, such as not being able to handle certain types of queries.</p>
-<p>The config key OPAMPENVIRONMENT is used to specify the environment for the OpAMP server.</p>
-<p>The OpenLITUI uses the OpenTelemetry Collector to collect data from the OpenLITSDK. The OpenTelemetry Collector uses the OTLP protocol to send the data to ClickHouseDB. The OpenLITUI can then pull this data from ClickHouseDB to provide real-time insights. The config key OPAMPTLSINSECURESKIPVERIFY is used to specify the TLS settings for the OpAMP server.</p>
-<p>The OpenLITUI also uses the fireEvent() method to handle events and provide notifications.</p>
-<p>The OpenLITSDK uses the init() method to initialize the connection with the OpenTelemetry Collector. The OpenLITUI uses the runWidgetQuery() method to run queries on the data and provide insights. The OpenLITUI also uses the POST(request: NextRequest) method to handle requests. The config key OPAMPTLSREQUIRECLIENTCERT is used to specify the TLS settings for the OpAMP server.</p>
-<p>The OpenLITUI also uses the fireEvent() method to handle events and provide notifications.</p>
-<p>The OpenLITUI provides real-time insights into the data stored in ClickHouseDB. The OpenLITUI uses the runWidgetQuery() method to run queries on the data and provide insights. The OpenLITUI also uses the fireEvent() method to handle events and provide notifications. The config key OPAMPLOGLEVEL is used to specify the log level for the OpAMP server.</p>
-<p>The OpenLITUI also uses the init() method to initialize the connection with the OpenTelemetry Collector.</p>
-<p>The OpenLITSDK has some limitations, such as not supporting certain types of data. The OpenLITUI also has some limitations, such as not being able to handle large amounts of data. The OpenTelemetry Collector has some limitations, such as not being able to handle certain types of protocols. The ClickHouseDB has some limitations, such as not being able to handle certain types of queries.</p>
-<p>The config key RIFY is used to specify the settings for the RIFY protocol.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: DeepAnalyze lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating HeyWhale API Keys for Enhanced Functionality</h2></div><div class="ch-body"><p>nv. example .</p>
+<p>bash start.</p>
+<p>stop the api and interface</p>
+<p>bash stop.</p>
+<p>stop vllm if needed</p>
+<p>bash</p>
+<p>cd API</p>
+<p>python startserver.</p>
+<p>cd demo/cli</p>
+<p>python apicli.</p>
+<p>or</p>
+<p>python apicliZH.</p>
+<p>bash</p>
+<p>python -m vllm. entrypoints. openai.</p>
+<p>--model <modelpath> \</p>
+<p>--served-model-name DeepAnalyze-8B \</p>
+<p>--max-model-len <selectfromtable_above> \</p>
+<p>--gpu-memory-utilization 0.</p>
+<p>-</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 184.46 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 229.67 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 180.46,-535 180.46,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 225.67,-535 225.67,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="88.23" cy="-513" rx="39.84" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-509.5" font-family="Arial" font-size="10.00">PromptText</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="109.92" cy="-513" rx="66.9" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-430.5" rx="46.15" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-427" font-family="Arial" font-size="10.00">TextTokenizer</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-430.5" rx="66.9" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-427" font-family="Arial" font-size="10.00">PartOfSpeechTagging</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M88.23,-494.53C88.23,-484.51 88.23,-471.68 88.23,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-460.45 88.23,-450.45 84.73,-460.45 91.73,-460.45"/>
-<text text-anchor="middle" x="105.48" y="-468.45" font-family="Arial" font-size="9.00">tokenize</text>
+<path fill="none" stroke="#475569" d="M109.92,-494.53C109.92,-484.51 109.92,-471.68 109.92,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-460.45 109.92,-450.45 106.42,-460.45 113.42,-460.45"/>
+<text text-anchor="middle" x="139.92" y="-468.45" font-family="Arial" font-size="9.00">lexicalanalysis</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-348" rx="60.58" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-344.5" font-family="Arial" font-size="10.00">EmbeddingEncoder</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-348" rx="63.74" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-344.5" font-family="Arial" font-size="10.00">SemanticEmbedding</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M88.23,-412.03C88.23,-402.01 88.23,-389.18 88.23,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-377.95 88.23,-367.95 84.73,-377.95 91.73,-377.95"/>
-<text text-anchor="middle" x="103.61" y="-385.95" font-family="Arial" font-size="9.00">encode</text>
+<path fill="none" stroke="#475569" d="M109.92,-412.03C109.92,-402.01 109.92,-389.18 109.92,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-377.95 109.92,-367.95 106.42,-377.95 113.42,-377.95"/>
+<text text-anchor="middle" x="144.42" y="-385.95" font-family="Arial" font-size="9.00">contextualization</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="88.23,-283.5 0,-265.5 88.23,-247.5 176.46,-265.5 88.23,-283.5"/>
-<text text-anchor="middle" x="88.23" y="-262" font-family="Arial" font-size="10.00">KnowledgeRetriever</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="109.92,-283.5 0,-265.5 109.92,-247.5 219.83,-265.5 109.92,-283.5"/>
+<text text-anchor="middle" x="109.92" y="-262" font-family="Arial" font-size="10.00">KnowledgeGraphRetrieval</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M88.23,-329.53C88.23,-319.51 88.23,-306.68 88.23,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-295.45 88.23,-285.45 84.73,-295.45 91.73,-295.45"/>
-<text text-anchor="middle" x="120.86" y="-303.45" font-family="Arial" font-size="9.00">retrieve_context</text>
+<path fill="none" stroke="#475569" d="M109.92,-329.53C109.92,-319.51 109.92,-306.68 109.92,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-295.45 109.92,-285.45 106.42,-295.45 113.42,-295.45"/>
+<text text-anchor="middle" x="152.29" y="-303.45" font-family="Arial" font-size="9.00">entitydisambiguation</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-183" rx="60.13" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranker</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-183" rx="64.19" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-179.5" font-family="Arial" font-size="10.00">RelevanceReranking</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M88.23,-247.03C88.23,-237.01 88.23,-224.18 88.23,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-212.95 88.23,-202.95 84.73,-212.95 91.73,-212.95"/>
-<text text-anchor="middle" x="103.61" y="-220.95" font-family="Arial" font-size="9.00">rescore</text>
+<path fill="none" stroke="#475569" d="M109.92,-247.03C109.92,-237.01 109.92,-224.18 109.92,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-212.95 109.92,-202.95 106.42,-212.95 113.42,-212.95"/>
+<text text-anchor="middle" x="142.92" y="-220.95" font-family="Arial" font-size="9.00">similarityscoring</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-100.5" rx="46.6" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-97" font-family="Arial" font-size="10.00">TextGenerator</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-100.5" rx="49.31" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M88.23,-164.53C88.23,-154.51 88.23,-141.68 88.23,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-130.45 88.23,-120.45 84.73,-130.45 91.73,-130.45"/>
-<text text-anchor="middle" x="128.36" y="-138.45" font-family="Arial" font-size="9.00">generate_response</text>
+<path fill="none" stroke="#475569" d="M109.92,-164.53C109.92,-154.51 109.92,-141.68 109.92,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-130.45 109.92,-120.45 106.42,-130.45 113.42,-130.45"/>
+<text text-anchor="middle" x="165.79" y="-138.45" font-family="Arial" font-size="9.00">naturallanguagegeneration</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="88.23" cy="-18" rx="60.13" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreamer</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="109.92" cy="-18" rx="53.37" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-14.5" font-family="Arial" font-size="10.00">ResultStreaming</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M88.23,-82.03C88.23,-72.01 88.23,-59.18 88.23,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-47.95 88.23,-37.95 84.73,-47.95 91.73,-47.95"/>
-<text text-anchor="middle" x="123.86" y="-55.95" font-family="Arial" font-size="9.00">stream_response</text>
+<path fill="none" stroke="#475569" d="M109.92,-82.03C109.92,-72.01 109.92,-59.18 109.92,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-47.95 109.92,-37.95 106.42,-47.95 113.42,-47.95"/>
+<text text-anchor="middle" x="141.04" y="-55.95" font-family="Arial" font-size="9.00">resultvalidation</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: openlit end-to-end processing pipeline</p></div><div class="sec-heading">openlit — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Setup</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Security</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:70%"></span></span></span><span class="bar-value">70%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Cost-Effectiveness</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting OTLP Endpoint Configuration in Production</h2></div><p class="ch-summary">OTLP endpoint issues</p><div class="ch-body"><p>The OpenLIT SDK requires a properly configured OTLP endpoint to function correctly. If the otlpendpoint or OTELEXPORTEROTLPENDPOINT is not provided, the SDK will output traces directly to the console. This can lead to issues in production environments where console output may not be desirable. The openlit.</p>
-<p>init() method can be used to specify the OTLP endpoint. The OTLP endpoint is typically configured using the OTELEXPORTEROTLPENDPOINT environment variable or the otlpendpoint parameter in the openlit. init() method.</p>
-<p>The OpenLIT SDK uses the OpenTelemetry protocol to send traces and metrics to the OTLP endpoint. The OpenTelemetry Collector is responsible for receiving and processing these traces and metrics. The ClickHouseDB is used to store the data. The OpenLITUI is used to visualize and analyze the data.</p>
-<p>The OpenLIT SDK provides several use cases, including observability for AI development workflow, experimenting with LLMs, and securely handling API keys. The SDK also provides support for Python and TypeScript. The OpenLIT SDK can be integrated into AI applications to provide visibility into the application's performance and behavior.</p>
-<p>One of the limitations of the OpenLIT SDK is that it does not support automatic instrumentation of all LLM providers and AI frameworks. The SDK requires manual configuration to instrument certain providers and frameworks. The OpenLIT SDK also does not provide support for all types of AI applications.</p>
-<p>The OpenLIT SDK provides several configuration keys, including otlpendpoint, OTLPEXPORTEROTLPENDPOINT, otlpheaders, and OTELEXPORTEROTLP_HEADERS. These configuration keys can be used to customize the behavior of the SDK. The SDK also provides several classes and methods, including openlit. init() and openlit.</p>
-<p>The OpenLIT SDK can be deployed and run using Docker. The SDK provides a Docker image that can be used to deploy the SDK in a containerized environment. The SDK also provides a git repository that can be used to clone and deploy the SDK.</p>
-<p>The OpenLIT SDK provides several benefits, including cost tracking for custom and fine-tuned models, exceptions monitoring, and prompt management. The SDK also provides support for experimenting with different LLMs and fleet hub for OpAMP management.</p>
-<p>The OpenLIT SDK has several technical requirements, including the need for a properly configured OTLP endpoint and a compatible OpenTelemetry Collector. The SDK also requires a compatible ClickHouseDB to store the data.</p><div class="sec-heading">openlit — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Architecture</td><td>OpenTelemetry Collector, ClickHouseDB, OpenLIT SDK, OpenLIT_UI, Fleet Hub, OpAMP</td><td>Microservices-based architecture for scalability and flexibility</td></tr><tr><td>Installation Steps</td><td>Git Clone, Docker Compose, Pip Install</td><td>Simple and straightforward installation process</td></tr><tr><td>Use Cases</td><td>AI Development Workflow, LLM Experimentation, Prompt Management, API Keys Management</td><td>Wide range of use cases for AI and machine learning applications</td></tr><tr><td>Limitations</td><td>Dependence on OpenTelemetry Collector, Limited Support for Non-OTLP Exporters</td><td>Some limitations in terms of compatibility and flexibility</td></tr><tr><td>Config Keys</td><td>otlp_endpoint, OTLP_EXPORTER_OTLP_ENDPOINT, otlp_headers</td><td>Important configuration keys for setting up OpenLIT</td></tr><tr><td>Classes and Methods</td><td>openlit, openlit.init(otlp_endpoint)</td><td>Simple and intuitive API for initializing and using OpenLIT</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with OpenLIT and OpenTelemetry</h2></div><p class="ch-summary">Optimize performance</p><div class="ch-body"><p>The OpenLIT library provides a range of features for optimizing performance, including support for OpenTelemetry and Auto Instrumentation. The otlpEndpoint config key is used to specify the OTLP endpoint for exporting telemetry data. The Openlit. init() method is used to initialize the OpenLIT library, while the runWidgetQuery() function is used to run widget queries.</p>
-<p>The POST(request: NextRequest) function is used to handle POST requests. The OpenLIT library also supports cost tracking for custom and fine-tuned models, as well as evaluation coverage and metrics gaps.</p>
-<p>The OpenTelemetry library provides a range of features for instrumentation, including the AgnoInstrumentor class and the instrument() method. The AgnoInstrumentor(). instrument() method is used to instrument the application, while the Agent. _arun method is used to run tasks.</p>
-<p>The OpenTelemetry library also supports OpenTelemetry Events API, which can be used to capture AI content. However, the Events API is not yet supported in JS, which can limit its use.</p>
-<p>The OpenLIT library has a number of use cases, including monitoring usage, performance, and cost for supported GenAI operations. It also supports OpenTelemetry instrumentation for Google ADK and Bee AI, as well as using OpenTelemetry Events API to capture AI content. The library can be installed using the install steps, and initialized using the Openlit. init() method.</p>
-<p>The library also supports a range of config keys, including otlpEndpoint and agno==2. 5. 3.</p>
-<p>The OpenTelemetry library has a number of limitations, including the fact that the Events API is not yet supported in JS. This can limit its use in certain applications. Additionally, the library has a number of version numbers, including 2. 5.</p>
-<p>3 and 8e92a53. The library also supports a range of API methods, including fireEvent() and runWidgetQuery().</p>
-<p>The OpenLIT library provides a range of features for optimizing performance, including support for OpenTelemetry and Auto Instrumentation. The library can be used to monitor usage, performance, and cost for supported GenAI operations, as well as to instrument the application using the AgnoInstrumentor class. The library also supports a range of config keys, including otlpEndpoint and agno==2. 5.</p>
-<p>3. However, the library has a number of limitations, including the fact that the Events API is not yet supported in JS.</p>
-<p>The OpenTelemetry library provides a range of features for instrumentation, including the AgnoInstrumentor class and the instrument() method. The library can be used to instrument the application, as well as to capture AI content using the OpenTelemetry Events API. The library also supports a range of API methods, including fireEvent() and runWidgetQuery(). However, the library has a number of limitations, including the fact that the Events API is not yet supported in JS.</p>
-<p>The OpenLIT library has a number of use cases, including monitoring usage, performance, and cost for supported GenAI operations. It also supports OpenTelemetry instrumentation for Google ADK and Bee AI, as well as using OpenTelemetry Events API to capture AI content. The library can be installed using the install steps, and initialized using the Openlit. init() method.</p>
-<p>The library also supports a range of config keys, including otlpEndpoint and agno==2. 5. 3. The version number of the library is 8e92a53, which can be used to track changes and updates.</p>
-<p>The OpenTelemetry library has a number of limitations, including the fact that the Events API is not yet supported in JS. This can limit its use in certain applications. Additionally, the library has a number of version numbers, including 2. 5.</p>
-<p>3 and 8e92a53. The library also supports a range of API methods, including fireEvent() and runWidgetQuery(). The library can be used to instrument the application, as well as to capture AI content using the OpenTelemetry Events API. The library also supports a range of config keys, including otlpEndpoint and agno==2.</p>
-<p>5. 3.</p>
-<p>The OpenLIT library provides a range of features for optimizing performance, including support for OpenTelemetry and Auto Instrumentation. The library can be used to monitor usage, performance, and cost for supported GenAI operations, as well as to instrument the application using the AgnoInstrumentor class. The library also supports a range of config keys, including otlpEndpoint and agno==2. 5.</p>
-<p>3. However, the library has a number of limitations, including the fact that the Events API is not yet supported in JS. The library has a version number of 8e92a53, which can be used to track changes and updates.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Install OpenLIT and Integrate with Ollama for Free LLM ...</div><a class="video-url" href="https://www.youtube.com/watch?v=ELLHIdg7P38">https://www.youtube.com/watch?v=ELLHIdg7P38</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Introduction to OpenLIT - Open source Platform for AI ...</div><a class="video-url" href="https://www.youtube.com/watch?v=xji3Q_zKynY">https://www.youtube.com/watch?v=xji3Q_zKynY</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Observability and Evals for LLMs with OpenLIT Locally ...</div><a class="video-url" href="https://www.youtube.com/watch?v=tO3NsndY_xU">https://www.youtube.com/watch?v=tO3NsndY_xU</a></div></div></section>
-<div class="book-footer"><strong>openlit: Practitioner Guide</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 25, 2026</div>
+</svg><p class="diagram-caption">Figure: DeepAnalyze end-to-end processing pipeline</p></div><div class="sec-heading">DeepAnalyze — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Data Ingestion and Processing</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Model Training and Deployment</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Data Visualization and Exploration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Collaboration and Sharing</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Scalability and Performance</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Security and Governance</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:78%"></span></span></span><span class="bar-value">78%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Common Issues with --gpu-memory-utilization and --max-model-len</h2></div><p class="ch-summary">GPU memory issues</p><div class="ch-body"><p>The --gpu-memory-utilization flag is used to specify the maximum GPU memory utilization for the model. The --max-model-len flag is used to specify the maximum length of the model. These flags are crucial in preventing GPU memory overflow errors. The research shows that the model can fail when the GPU memory utilization exceeds 24GB.</p>
+<p>The vllm. entrypoints. openai. apiserver class is used to start the API server with the specified model and configuration.</p>
+<p>The --trust-remote-code flag is used to enable trust in remote code.</p>
+<p>The --model flag is used to specify the path to the model file. The --served-model-name flag is used to specify the name of the served model. The --port flag is used to specify the port number for the API server. The --kv-cache-dtype flag is used to specify the data type for the key-value cache.</p>
+<p>The research shows that the model can be started with the command python -m vllm. entrypoints. openai. apiserver.</p>
+<p>The research does not provide implementation details for the --gpu-memory-utilization flag. However, it is clear that the flag is used to prevent GPU memory overflow errors. The --max-model-len flag is used to specify the maximum length of the model. The research shows that the model can fail when the maximum length is exceeded.</p>
+<p>The vllm. entrypoints. openai. apiserver class is used to start the API server with the specified model and configuration.</p>
+<p>The --gpu-memory-utilization flag has a default value of 0. 95. The --max-model-len flag has a default value that depends on the model. The research shows that the model can be started with the command python -m vllm.</p>
+<p>entrypoints. openai. apiserver. The --trust-remote-code flag is used to enable trust in remote code.</p>
+<p>The --port flag is used to specify the port number for the API server.</p>
+<p>The research shows that the model can fail when the GPU memory utilization exceeds 24GB. The vllm. entrypoints. openai.</p>
+<p>apiserver class is used to start the API server with the specified model and configuration. The --model flag is used to specify the path to the model file. The --served-model-name flag is used to specify the name of the served model. The --kv-cache-dtype flag is used to specify the data type for the key-value cache.</p>
+<p>The --max-model-len flag is used to specify the maximum length of the model. The research shows that the model can fail when the maximum length is exceeded. The vllm. entrypoints.</p>
+<p>openai. apiserver class is used to start the API server with the specified model and configuration. The --trust-remote-code flag is used to enable trust in remote code. The --port flag is used to specify the port number for the API server.</p>
+<p>The research does not provide implementation details for the --gpu-memory-utilization flag. However, it is clear that the flag is used to prevent GPU memory overflow errors. The --max-model-len flag is used to specify the maximum length of the model. The research shows that the model can be started with the command python -m vllm.</p>
+<p>entrypoints. openai. apiserver. The --model flag is used to specify the path to the model file.</p>
+<p>The vllm. entrypoints. openai. apiserver class is used to start the API server with the specified model and configuration.</p>
+<p>The --served-model-name flag is used to specify the name of the served model. The --kv-cache-dtype flag is used to specify the data type for the key-value cache. The research shows that the model can fail when the GPU memory utilization exceeds 24GB. The --gpu-memory-utilization flag has a default value of 0.</p>
+<p>95.</p><div class="sec-heading">DeepAnalyze — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Deep Learning Frameworks</td><td>TensorFlow, PyTorch</td><td>Support for popular deep learning frameworks</td></tr><tr><td>Data Ingestion</td><td>CSV, JSON, Avro</td><td>Support for various data formats</td></tr><tr><td>Model Serving</td><td>TensorFlow Serving, AWS SageMaker</td><td>Integration with popular model serving platforms</td></tr><tr><td>Data Visualization</td><td>Matplotlib, Seaborn, Plotly</td><td>Support for popular data visualization libraries</td></tr><tr><td>Collaboration Tools</td><td>Jupyter Notebooks, Slack Integration</td><td>Integration with collaboration tools for team workflows</td></tr><tr><td>Security Features</td><td>API Keys, Access Control</td><td>Support for security features to protect data and models</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with --model and --served-model-name for Future-Proofing</h2></div><p class="ch-summary">Optimize DeepAnalyze performance</p><div class="ch-body"><p>To optimize performance in DeepAnalyze, it's essential to understand the role of the --model and --served-model-name parameters. These parameters are crucial in determining the performance of the DeepAnalyze-8B model. The --model parameter specifies the model to be used, while the --served-model-name parameter specifies the name of the served model. In the context of DeepAnalyze, the --model parameter can be set to DeepAnalyze-8B, which is the default model.</p>
+<p>The --served-model-name parameter can be set to a custom name, allowing for easier identification of the model in the UI. The vllm serve command is used to deploy the DeepAnalyze-8B model, and it supports various options, including --model and --served-model-name. By using these parameters, users can optimize the performance of DeepAnalyze and achieve better results. For instance, setting the DEEPANALYZEEXECUTIONMODE to local or docker can significantly impact performance.</p>
+<p>The DeepAnalyze architecture consists of several components, including the backend, frontend, and workspace. The backend is responsible for handling API requests, while the frontend handles user interactions. The workspace is where the models are stored and executed. In the context of optimizing performance, it's essential to consider the limitations of each component.</p>
+<p>For example, if the target machine has no image, Docker execution will fail immediately. This limitation can be addressed by using the local execution mode or by ensuring that the required images are installed. The version number of DeepAnalyze, such as 2025. 10.</p>
+<p>21 or 2026. 01. 31, can also impact performance, as newer versions may include optimizations and bug fixes.</p>
+<p>The use of API methods, such as those provided by the backend, can also impact performance. For instance, the backend. py file provides several API methods for interacting with the model, including methods for uploading files and initiating conversations. By using these API methods efficiently, users can optimize the performance of DeepAnalyze.</p>
+<p>Additionally, the config keys, such as DEEPANALYZEEXECUTIONMODE, can be used to customize the performance of DeepAnalyze. For example, setting DEEPANALYZEEXECUTIONMODE to local can improve performance by reducing the overhead of Docker execution.</p>
+<p>In terms of concrete limitations, DeepAnalyze does not support certain features, such as pandoc or xelatex, which can impact performance. If these features are missing, the UI will show an explicit error message. This limitation can be addressed by installing the required dependencies or by using a different execution mode. The performance metrics of DeepAnalyze, such as the time taken to execute a task, can also be impacted by the version number and the config keys used.</p>
+<p>For instance, the version 2026. 03. 16 may include optimizations that improve performance compared to earlier versions.</p>
+<p>The technical depth of DeepAnalyze is evident in its architecture and API methods. The use of Docker execution mode, for example, provides a high level of flexibility and customization. However, this also introduces limitations, such as the requirement for Docker images to be installed. The API methods provided by the backend, such as those for uploading files and initiating conversations, demonstrate the technical capabilities of DeepAnalyze.</p>
+<p>The config keys, such as DEEPANALYZEEXECUTIONMODE, provide a way to customize the performance of DeepAnalyze and address limitations.</p>
+<p>The optimization of DeepAnalyze performance requires a thorough understanding of its architecture, API methods, and config keys. By using the --model and --served-model-name parameters, users can customize the performance of DeepAnalyze and achieve better results. The version number and config keys used can also impact performance, and addressing limitations, such as the requirement for Docker images, is essential. The technical depth of DeepAnalyze is evident in its architecture and API methods, and by leveraging these features, users can optimize performance and achieve better results.</p>
+<p>The callout for this chapter is that the DEEPANALYZEEXECUTIONMODE config key can be set to local or docker, which significantly impacts performance.</p>
+<p>The code sample for this chapter is</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">DeepAnalyze: Agentic Large Language Models for ...</div><a class="video-url" href="https://www.youtube.com/watch?v=l5kw54An6QU">https://www.youtube.com/watch?v=l5kw54An6QU</a></div></div></section>
+<div class="book-footer"><strong>DeepAnalyze: Field Guide</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 26, 2026</div>
 </body>
 </html>
