@@ -2,193 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>DeepAnalyze: Field Guide</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "DeepAnalyze: Field Guide"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>prompttools: Definitive Guide</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "prompttools: Definitive Guide"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/b5c9a9248713cfd38f29de4dcb8c168705c55e90cdc76fff97d06472fc2defbd/ruc-datalab/DeepAnalyze" alt="DeepAnalyze logo" onerror="this.style.display='none'"/><div class="cover-lib-name">DeepAnalyze</div><div class="cover-suffix">Field Guide</div><div class="cover-rule"></div><p class="cover-subtitle">Unlock insights with DeepAnalyze</p><p class="cover-desc">The DeepAnalyze library provides a range of tools for data-oriented deep research, including the WebUI v2 interface.  This interface is built on top of the vllm architecture and provides a user-friendly way to interact with the DeepAnalyze models.  The library also includes a range of API methods, including startserver.</p><div class="cover-tagline">Analyze deeper</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 26, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">ruc-datalab built DeepAnalyze.</div><div class="intro-body"><p>DeepAnalyze was created by ruc-datalab and first released in versions including 2025. 11. 13 and 2026. 03.</p>
-<p>16. It was built to solve the problem of providing a data science pipeline for tasks such as open-ended data research and entire data science pipeline. The architecture of DeepAnalyze includes WebUI v2, HeyWhale API, and Docker-based sandboxed code execution, which allows for a flexible and scalable design. This architecture is technically different from alternatives due to its use of specific design decisions such as the vllm entrypoints and the ability to specify configuration keys like modelpath, served-model-name, and gpu-memory-utilization.</p>
-<p>The technical differences in DeepAnalyze are evident in its design decisions, such as the use of the vllm. entrypoints. openai. apiserver and the ability to specify configuration keys like model_path, served-model-name, and gpu-memory-utilization.</p>
-<p>These design decisions allow for a high degree of customization and flexibility in the use of DeepAnalyze. Additionally, the use of Docker-based sandboxed code execution provides a secure and isolated environment for code execution, which is particularly important for data science tasks that involve sensitive data. The target audience for DeepAnalyze appears to be data scientists and researchers who need to perform data-centric tasks and data science tasks, as evidenced by its use in the 2026 China Collegiate Computer Design Contest – Big Data Track.</p>
-<p>The use of DeepAnalyze in the 2026 China Collegiate Computer Design Contest – Big Data Track demonstrates its potential for use in a variety of data science applications. The fact that it can be used for entire data science pipeline and open-ended data research suggests that it is a versatile tool that can be applied to a wide range of tasks. The ability to specify configuration keys and use different models, such as the DeepAnalyze-8B model, also suggests that DeepAnalyze is a highly customizable tool that can be tailored to meet the needs of specific users. Overall, DeepAnalyze appears to be a powerful tool for data science tasks, and its technical differences from alternatives make it a unique and valuable resource for data scientists and researchers.</p>
-<p>In terms of its technical implementation, DeepAnalyze uses a variety of tools and technologies, including Python, npm, and Docker. The use of these tools suggests that DeepAnalyze is designed to be highly scalable and flexible, and that it can be easily integrated into a variety of different environments. The fact that it can be used with different models, such as the DeepAnalyze-8B model, also suggests that it is designed to be highly adaptable and customizable. Overall, the technical implementation of DeepAnalyze suggests that it is a highly advanced and sophisticated tool that is well-suited to a wide range of data science applications.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/ruc-datalab/DeepAnalyze">https://github.com/ruc-datalab/DeepAnalyze</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking Deep Insights with WebUI v2</h2></div><p class="ch-summary">DeepAnalyze insights</p><div class="ch-body"><p>The DeepAnalyze library provides a range of tools for data-oriented deep research, including the WebUI v2 interface. This interface is built on top of the vllm architecture and provides a user-friendly way to interact with the DeepAnalyze models. The library also includes a range of API methods, including startserver. py, apicli.</p>
-<p>py, and apicliZH. py, which can be used to customize and extend the functionality of the interface. The WebUI v2 interface is designed to be highly customizable, with a range of config keys available to control the behavior of the interface, including modelpath, served-model-name, and max-model-len. The library also includes a range of version numbers, including 2025.</p>
-<p>11. 13 and 2026. 01. 31, which can be used to track changes and updates to the library.</p>
-<p>The DeepAnalyze library is designed to be highly flexible and can be used for a range of data-centric tasks, including data science tasks and open-ended data research. The library includes a range of classes and methods, including --model, --served-model-name, and --max-model-len, which can be used to control the behavior of the models. The library also includes a range of limitations, including the fact that it does not support certain types of models. The WebUI v2 interface is designed to be highly user-friendly and provides a range of tools and features to support data-oriented deep research.</p>
-<p>The library also includes a range of performance metrics, including gpu-memory-utilization, which can be used to track the performance of the models.</p>
-<p>The DeepAnalyze library is built on top of the vllm. entrypoints. openai. apiserver architecture, which provides a highly customizable and flexible way to interact with the DeepAnalyze models.</p>
-<p>The library includes a range of API methods, including python -m vllm. entrypoints. openai. apiserver, which can be used to customize and extend the functionality of the interface.</p>
-<p>The library also includes a range of config keys, including --model, --served-model-name, and --max-model-len, which can be used to control the behavior of the interface. The library also includes a range of version numbers, including 2025. 10. 21 and 2026.</p>
-<p>03. 16, which can be used to track changes and updates to the library.</p>
-<p>The DeepAnalyze library includes a range of tools and features to support data-oriented deep research, including the WebUI v2 interface and the apicli. py and apicliZH. py API methods. The library is designed to be highly customizable and provides a range of config keys and API methods to control the behavior of the interface.</p>
-<p>The library also includes a range of limitations, including the fact that it does not support certain types of models. The library is built on top of the vllm architecture and provides a highly flexible and customizable way to interact with the DeepAnalyze models.</p>
-<p>The WebUI v2 interface is designed to be highly user-friendly and provides a range of tools and features to support data-oriented deep research. The interface is built on top of the vllm architecture and provides a highly customizable and flexible way to interact with the DeepAnalyze models. The library includes a range of API methods, including startserver. py, apicli.</p>
-<p>py, and apicliZH. py, which can be used to customize and extend the functionality of the interface. The library also includes a range of config keys, including modelpath, served-model-name, and max-model-len, which can be used to control the behavior of the interface.</p>
-<p>The DeepAnalyze library is designed to be highly flexible and can be used for a range of data-centric tasks, including data science tasks and open-ended data research. The library includes a range of classes and methods, including --model, --served-model-name, and --max-model-len, which can be used to control the behavior of the models. The library also includes a range of limitations, including the fact that it does not support certain types of models. The library is built on top of the vllm architecture and provides a highly customizable and flexible way to interact with the DeepAnalyze models.</p>
-<p>The DeepAnalyze library includes a range of tools and features to support data-oriented deep research, including the WebUI v2 interface and the apicli. py and apicliZH. py API methods. The library is designed to be highly customizable and provides a range of config keys and API methods to control the behavior of the interface.</p>
-<p>The library also includes a range of version numbers, including 2025. 11. 13 and 2026. 01.</p>
-<p>31, which can be used to track changes and updates to the library. The library is built on top of the vllm architecture and provides a highly flexible and customizable way to interact with the DeepAnalyze models.</p>
-<p>The DeepAnalyze library is built on top of the vllm. entrypoints. openai. apiserver architecture, which provides a highly customizable and flexible way to interact with the DeepAnalyze models.</p>
-<p>The library includes a range of API methods, including python -m vllm. entrypoints. openai. apiserver, which can be used to customize and extend the functionality of the interface.</p>
-<p>The library also includes a range of config keys, including --model, --served-model-name, and --max-model-len, which can be used to control the behavior of the interface. The library also includes a range of performance metrics, including gpu-memory-utilization, which can be used to track the performance of the models.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/12e26e9b0f9bae09bc35398aab7b1add205408b5cdc047668902b7acf58c970f/hegelai/prompttools" alt="prompttools logo" onerror="this.style.display='none'"/><div class="cover-lib-name">prompttools</div><div class="cover-suffix">Definitive Guide</div><div class="cover-rule"></div><p class="cover-subtitle">Mastering prompttools</p><p class="cover-desc">The OpenAIChatExperiment class is a key component of the prompttools library, allowing users to test and experiment with prompts, LLMs, and vector databases.  The class takes in several parameters, including models, messages, and temperature, which can be configured using the models, messages, and temperature config keys.  The run method is used to execute the experiment, while the visualize method is used to visualize the results.</p><div class="cover-tagline">Build with ease</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 27, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Hegelai built prompttools to solve LLM experimentation challenges.</div><div class="intro-body"><p>Prompttools is a technical framework developed by hegelai, designed to facilitate experimentation and testing with large language models (LLMs) and vector databases. The primary problem it aims to solve is providing a structured approach to evaluating the performance of LLMs and vector databases in various scenarios, such as testing and experimenting with prompts. This is achieved through the use of specific classes and methods, including the OpenAIChatExperiment class, which allows users to define experiments with particular models, messages, and temperatures. The framework also includes methods for running and visualizing these experiments, making it easier to analyze and compare results.</p>
+<p>The technical design of prompttools is centered around its use of LLMs and vector databases, which are fundamental components of its architecture. The framework is built to work with specific models, such as gpt-3. 5-turbo and gpt-4, and allows users to configure experiments with different temperatures. This level of control enables users to fine-tune their experiments and evaluate the performance of LLMs and vector databases in a more precise manner.</p>
+<p>Furthermore, prompttools provides various interfaces for interacting with the framework, including code, notebooks, and a local playground, which cater to different user preferences and needs.</p>
+<p>One of the key aspects of prompttools is its focus on providing a flexible and adaptable framework for experimentation. The use of classes and methods, such as OpenAIChatExperiment, allows users to define and run experiments in a programmatic way, making it easier to automate and reproduce results. Additionally, the framework's support for exporting results to various formats, including CSV, JSON, and MongoDB, facilitates further analysis and integration with other tools and systems. The ability to work with familiar interfaces, such as Jupyter notebooks and Streamlit, also makes it more accessible to users who are already familiar with these environments.</p>
+<p>The target audience for prompttools appears to be developers and researchers who work with LLMs and vector databases, and are looking for a structured approach to testing and experimenting with these technologies. The framework's technical design and features suggest that it is intended for users who are already familiar with programming concepts and have a basic understanding of LLMs and vector databases. The use of specific models, temperatures, and interfaces also implies that the framework is designed for users who are interested in evaluating the performance of these technologies in a more precise and controlled manner.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/hegelai/prompttools">https://github.com/hegelai/prompttools</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking LLMs with OpenAIChatExperiment</h2></div><p class="ch-summary">Experimenting with LLMs</p><div class="ch-body"><p>The OpenAIChatExperiment class is a key component of the prompttools library, allowing users to test and experiment with prompts, LLMs, and vector databases. The class takes in several parameters, including models, messages, and temperature, which can be configured using the models, messages, and temperature config keys. The run method is used to execute the experiment, while the visualize method is used to visualize the results. The OpenAIChatExperiment class also supports various output formats, including CSV, JSON, and MongoDB.</p>
+<p>The tocsv, tojson, and tomongodb methods can be used to export the results to these formats.</p>
+<p>The prompttools library provides a range of tools and interfaces for evaluating LLMs and vector databases, including code, notebooks, and a local playground. The library can be installed using pip, and the GitHub repository provides a range of examples and notebooks to get started. The OpenAIChatExperiment class is a key part of this ecosystem, providing a flexible and customizable way to experiment with LLMs. The class supports multiple models, including gpt-3.</p>
+<p>5-turbo and gpt-4, and can be configured to use different temperatures and messages.</p>
+<p>One of the key benefits of the OpenAIChatExperiment class is its ability to support multiple models and temperatures, allowing users to compare and contrast the performance of different LLMs. The class also supports a range of output formats, making it easy to export and analyze the results. The library provides a range of examples and notebooks to get started, including the OpenAIChatExperiment. ipynb notebook, which demonstrates how to use the class to experiment with LLMs.</p>
+<p>The prompttools library has a number of limitations, including the fact that the hosted version does not support LlamaCpp. Additionally, the library may be subject to errors caused by negligence or out of date documentation. However, the library provides a range of tools and interfaces for evaluating LLMs and vector databases, making it a useful resource for researchers and developers. The OpenAIChatExperiment class is a key part of this ecosystem, providing a flexible and customizable way to experiment with LLMs.</p>
+<p>The OpenAIChatExperiment class provides a range of methods for configuring and executing the experiment, including the run and visualize methods. The class also supports various output formats, including CSV, JSON, and MongoDB. The tocsv, tojson, and tomongodb methods can be used to export the results to these formats. The library provides a range of examples and notebooks to get started, including the OpenAIChatExperiment.</p>
+<p>ipynb notebook, which demonstrates how to use the class to experiment with LLMs.</p>
+<p>The prompttools library is designed to be used with a range of LLMs and vector databases, including gpt-3. 5-turbo and gpt-4. The library provides a range of tools and interfaces for evaluating these models, including code, notebooks, and a local playground. The OpenAIChatExperiment class is a key part of this ecosystem, providing a flexible and customizable way to experiment with LLMs.</p>
+<p>The class supports multiple models and temperatures, and can be configured to use different messages and output formats.</p>
+<p>The OpenAIChatExperiment class is a powerful tool for experimenting with LLMs and vector databases. The class provides a range of methods for configuring and executing the experiment, including the run and visualize methods. The class also supports various output formats, including CSV, JSON, and MongoDB. The library provides a range of examples and notebooks to get started, including the OpenAIChatExperiment.</p>
+<p>ipynb notebook, which demonstrates how to use the class to experiment with LLMs.</p>
+<p>In terms of technical details, the OpenAIChatExperiment class uses the models, messages, and temperature config keys to configure the experiment. The class also supports various output formats, including CSV, JSON, and MongoDB. The tocsv, tojson, and tomongodb methods can be used to export the results to these formats. The library provides a range of examples and notebooks to get started, including the OpenAIChatExperiment.</p>
+<p>ipynb notebook, which demonstrates how to use the class to experiment with LLMs.</p>
+<p>The prompttools library provides a range of tools and interfaces for evaluating LLMs and vector databases. The OpenAIChatExperiment class is a key part of this ecosystem, providing a flexible and customizable way to experiment with LLMs. The class supports multiple models and temperatures, and can be configured to use different messages and output formats. The library provides a range of examples and notebooks to get started, including the OpenAIChatExperiment.</p>
+<p>ipynb notebook, which demonstrates how to use the class to experiment with LLMs.</p></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Experiments with OpenAIChatExperiment Architecture</h2></div><p class="ch-summary">Experiment design with OpenAIChatExperiment</p><div class="ch-body"><p>The OpenAIChatExperiment class is used to design experiments with LLMs and vector databases. It takes in models, messages, and temperature as parameters. The run method is used to execute the experiment, while the visualize method is used to visualize the results. The OpenAIChatExperiment class also has methods like tocsv, tojson, and tolorajson to export the results in different formats.</p>
+<p>The config keys for the OpenAIChatExperiment class include models, messages, and temperature. The SENTRYOPTOUT config key is used to opt out of sentry.</p>
+<p>The OpenAIChatExperiment class is part of the prompttools. experiment module. It is used to test and experiment with prompts, LLMs, and vector databases. The class has a simple architecture and is easy to use.</p>
+<p>The run method is used to execute the experiment, and the visualize method is used to visualize the results. The class also has methods to export the results in different formats. The limitations of the OpenAIChatExperiment class include the fact that the hosted version does not support LlamaCpp.</p>
+<p>The OpenAIChatExperiment class has several use cases, including testing and experimenting with prompts, LLMs, and vector databases. It can also be used to evaluate the retrieval accuracy of vector databases. The class is part of the prompttools library, which provides a simple and easy-to-use interface for designing experiments with LLMs and vector databases. The library has several other classes and methods, including the tocsv, tojson, and tolorajson methods.</p>
+<p>The OpenAIChatExperiment class has several technical advantages, including its simple architecture and ease of use. It is also highly customizable, with several config keys and methods that can be used to modify its behavior. The class is part of the prompttools library, which is highly customizable and has several other classes and methods that can be used to design experiments with LLMs and vector databases. The limitations of the OpenAIChatExperiment class include the fact that it does not support LlamaCpp.</p>
+<p>The OpenAIChatExperiment class can be used with several different LLMs, including gpt-3. 5-turbo and gpt-4. It can also be used with several different vector databases, including LLaMA and Anthropic. The class has several methods that can be used to export the results in different formats, including tocsv, tojson, and tolorajson.</p>
+<p>The limitations of the OpenAIChatExperiment class include the fact that it does not support LlamaCpp.</p>
+<p>The OpenAIChatExperiment class has several performance advantages, including its ability to handle large amounts of data. It is also highly customizable, with several config keys and methods that can be used to modify its behavior. The class is part of the prompttools library, which is highly customizable and has several other classes and methods that can be used to design experiments with LLMs and vector databases. The limitations of the OpenAIChatExperiment class include the fact that it does not support LlamaCpp.</p>
+<p>The OpenAIChatExperiment class can be installed using pip install prompttools. It can also be installed by cloning the prompttools repository from GitHub and running the installation script. The class is part of the prompttools library, which is highly customizable and has several other classes and methods that can be used to design experiments with LLMs and vector databases. The limitations of the OpenAIChatExperiment class include the fact that it does not support LlamaCpp.</p>
+<p>The OpenAIChatExperiment class has several limitations, including the fact that it does not support LlamaCpp. It also has several other limitations, including the fact that it can fail when used with certain LLMs or vector databases. The class is part of the prompttools library, which is highly customizable and has several other classes and methods that can be used to design experiments with LLMs and vector databases. The limitations of the OpenAIChatExperiment class can be overcome by using other classes and methods in the prompttools library.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1662.31 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 774.56 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1658.31,-40 1658.31,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 770.56,-40 770.56,4 -4,4"/>
 <!-- N0 -->
-<g id="cluster-node1" class="node">
+<g id="seq-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="64.64" cy="-18" rx="64.64" ry="18"/>
-<text text-anchor="middle" x="64.64" y="-14.5" font-family="Arial" font-size="10.00">DeepAnalyze Engine</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="66.9" cy="-18" rx="66.9" ry="18"/>
+<text text-anchor="middle" x="66.9" y="-14.5" font-family="Arial" font-size="10.00">pip install prompttools</text>
 </g>
 <!-- N1 -->
-<g id="cluster-node2" class="node">
+<g id="seq-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="285.58" cy="-18" rx="63.29" ry="18"/>
-<text text-anchor="middle" x="285.58" y="-14.5" font-family="Arial" font-size="10.00">JupyterLab Interface</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="239.65" cy="-18" rx="44.35" ry="18"/>
+<text text-anchor="middle" x="239.65" y="-14.5" font-family="Arial" font-size="10.00">PromptModel</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
-<g id="cluster-edge1" class="edge">
+<g id="seq-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M129.56,-18C154.95,-18 184.33,-18 210.64,-18"/>
-<polygon fill="#475569" stroke="#475569" points="210.58,-21.5 220.58,-18 210.58,-14.5 210.58,-21.5"/>
-<text text-anchor="middle" x="175.79" y="-19.95" font-family="Arial" font-size="9.00">initializes with</text>
+<path fill="none" stroke="#475569" d="M133.91,-18C150.38,-18 167.85,-18 183.72,-18"/>
+<polygon fill="#475569" stroke="#475569" points="183.43,-21.5 193.43,-18 183.43,-14.5 183.43,-21.5"/>
+<text text-anchor="middle" x="164.55" y="-19.95" font-family="Arial" font-size="9.00">import</text>
 </g>
 <!-- N2 -->
-<g id="cluster-node3" class="node">
+<g id="seq-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="556.95" cy="-18" rx="79.08" ry="18"/>
-<text text-anchor="middle" x="556.95" y="-14.5" font-family="Arial" font-size="10.00">Web&#45;Based User Interface</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="451.17" cy="-18" rx="32.17" ry="18"/>
+<text text-anchor="middle" x="451.17" y="-14.5" font-family="Arial" font-size="10.00">generate</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
-<g id="cluster-edge2" class="edge">
+<g id="seq-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M349.05,-18C383.85,-18 427.78,-18 466.2,-18"/>
-<polygon fill="#475569" stroke="#475569" points="465.89,-21.5 475.89,-18 465.89,-14.5 465.89,-21.5"/>
-<text text-anchor="middle" x="413.37" y="-19.95" font-family="Arial" font-size="9.00">registers user requests</text>
+<path fill="none" stroke="#475569" d="M284.31,-18C320.57,-18 371.82,-18 407.73,-18"/>
+<polygon fill="#475569" stroke="#475569" points="407.3,-21.5 417.3,-18 407.3,-14.5 407.3,-21.5"/>
+<text text-anchor="middle" x="351.49" y="-19.95" font-family="Arial" font-size="9.00">initialize PromptPipeline</text>
 </g>
 <!-- N3 -->
-<g id="cluster-node4" class="node">
+<g id="seq-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="832.25,-36 744.02,-18 832.25,0 920.48,-18 832.25,-36"/>
-<text text-anchor="middle" x="832.25" y="-14.5" font-family="Arial" font-size="10.00">RESTful API Server</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="721.7,-36 676.84,-18 721.7,0 766.56,-18 721.7,-36"/>
+<text text-anchor="middle" x="721.7" y="-14.5" font-family="Arial" font-size="10.00">evaluate</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
-<g id="cluster-edge3" class="edge">
+<g id="seq-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M636.26,-18C665.63,-18 699.41,-18 730.52,-18"/>
-<polygon fill="#475569" stroke="#475569" points="730.33,-21.5 740.33,-18 730.33,-14.5 730.33,-21.5"/>
-<text text-anchor="middle" x="690.02" y="-19.95" font-family="Arial" font-size="9.00">sends requests to</text>
-</g>
-<!-- N4 -->
-<g id="cluster-node5" class="node">
-<title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1112.19" cy="-18" rx="68.7" ry="18"/>
-<text text-anchor="middle" x="1112.19" y="-14.5" font-family="Arial" font-size="10.00">Agent&#45;Based Executor</text>
-</g>
-<!-- N3&#45;&gt;N4 -->
-<g id="cluster-edge4" class="edge">
-<title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M922.72,-18C957.79,-18 997.71,-18 1031.74,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1031.53,-21.5 1041.53,-18 1031.53,-14.5 1031.53,-21.5"/>
-<text text-anchor="middle" x="981.98" y="-19.95" font-family="Arial" font-size="9.00">triggers execution via</text>
-</g>
-<!-- N5 -->
-<g id="cluster-node6" class="node">
-<title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1352.05" cy="-18" rx="71.41" ry="18"/>
-<text text-anchor="middle" x="1352.05" y="-14.5" font-family="Arial" font-size="10.00">Tool Registry Database</text>
-</g>
-<!-- N4&#45;&gt;N5 -->
-<g id="cluster-edge5" class="edge">
-<title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M1181.35,-18C1208.74,-18 1240.55,-18 1269.18,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1268.88,-21.5 1278.88,-18 1268.88,-14.5 1268.88,-21.5"/>
-<text text-anchor="middle" x="1230.76" y="-19.95" font-family="Arial" font-size="9.00">stores results in</text>
-</g>
-<!-- N6 -->
-<g id="cluster-node7" class="node">
-<title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1586.51" cy="-18" rx="67.8" ry="18"/>
-<text text-anchor="middle" x="1586.51" y="-14.5" font-family="Arial" font-size="10.00">In&#45;Memory Data Store</text>
-</g>
-<!-- N5&#45;&gt;N6 -->
-<g id="cluster-edge6" class="edge">
-<title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M1423.74,-18C1450.04,-18 1480.03,-18 1506.99,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1506.82,-21.5 1516.82,-18 1506.82,-14.5 1506.82,-21.5"/>
-<text text-anchor="middle" x="1471.08" y="-19.95" font-family="Arial" font-size="9.00">caches data in</text>
+<path fill="none" stroke="#475569" d="M483.76,-18C528.16,-18 609.7,-18 664.56,-18"/>
+<polygon fill="#475569" stroke="#475569" points="664.33,-21.5 674.32,-18 664.32,-14.5 664.33,-21.5"/>
+<text text-anchor="middle" x="580.09" y="-19.95" font-family="Arial" font-size="9.00">calculate metrics with PromptEvaluator</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: DeepAnalyze internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting Scalable Pipelines with vllm.entrypoints.openai.api_server</h2></div><p class="ch-summary">Scalable pipeline architecture</p><div class="ch-body"><p>The vllm. entrypoints. openai. apiserver module provides a flexible way to architect scalable pipelines for data science tasks.</p>
-<p>The --model config key allows users to specify the model path, while the --served-model-name key defines the name of the served model. The --max-model-len key is used to set the maximum model length, and the --gpu-memory-utilization key controls the GPU memory utilization. The --port key specifies the port number for the API server.</p>
-<p>The vllm. entrypoints. openai. apiserver module supports various config keys, including modelpath, served-model-name, max-model-len, and gpu-memory-utilization.</p>
-<p>The --trust-remote-code flag is used to trust remote code execution. The module also supports different version numbers, such as 8B and v2.</p>
-<p>The API server can be started using the python -m vllm. entrypoints. openai. apiserver command, followed by the required config keys.</p>
-<p>For example, python -m vllm. entrypoints. openai. apiserver --model /path/to/deepanalyze/4bit --served-model-name DeepAnalyze-8B --max-model-len 49152 --gpu-memory-utilization 0.</p>
-<p>95 --port 8000 --kv-cache-dtype fp8 --trust-remote-code.</p>
-<p>The vllm. entrypoints. openai. apiserver module has some limitations, such as limited memory utilization, which can be less than 24GB.</p>
-<p>The module also requires specific version numbers, such as 2025. 11. 13 or 2026. 01.</p>
-<p>31, to function correctly.</p>
-<p>The startserver. py and apicli. py scripts are used to start the API server and interact with the API, respectively. The exampleRequest.</p>
-<p>py script provides an example of how to send requests to the API server. The examp script is used to demonstrate the usage of the API server.</p>
-<p>The vllm. entrypoints. openai. apiserver module supports open-ended data research and entire data science pipelines.</p>
-<p>It can be used to conduct deep research on diverse data sources and produce analyst-grade research reports. The module also supports fully open-source deployment.</p>
-<p>The vllm. entrypoints. openai. apiserver module requires careful configuration to achieve optimal performance.</p>
-<p>The --gpu-memory-utilization key should be set to a value that balances memory utilization and performance. The --max-model-len key should be set to a value that is sufficient for the model size.</p>
-<p>The vllm. entrypoints. openai. api_server module provides a flexible way to architect scalable pipelines for data science tasks.</p>
-<p>However, it requires careful consideration of the limitations and config keys to achieve optimal performance.</p></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying DeepAnalyze with start_server.py and api_cli.py</h2></div><div class="ch-body"><p>bash start.</p>
-<p>stop the api and interface</p>
-<p>bash stop.</p>
-<p>stop vllm if needed</p>
-<p>bash</p>
-<p>cd demo/chatv2/frontend</p>
-<p>npm install</p>
-<p>cd ..</p>
-<p>cp . env. example .</p>
-<p>bash start.</p>
-<p>stop the api and interface</p>
-<p>bash stop.</p>
-<p>stop vllm if needed</p>
-<p>bash</p>
-<p>cd API</p>
-<p>python startserver.</p>
-<p>cd demo/cli</p>
-<p>python apicli.</p>
-<p>or</p>
-<p>python apicliZH.</p>
-<p>``</p>
-<p>LIMITATIONS:</p>
-<p>No explicit limitations mentioned</p>
-<p>INSTALLSTEPS:</p>
-<p>Clone this repo, cd demo/chat/frontend, npm install, cd .. , bash start. sh, cd API, python startserver. py, cd demo/cli, python apicli.</p>
-<p>USECASES:</p>
-<p>Data-oriented deep research, data-centric tasks, data science tasks</p>
-<p>CLASSESANDMETHODS:</p>
-<p>--model, --served-model-name, --max-model-len, --gpu-memory-utilization, --port, --kv-cache-dtype, --trust-remote-code</p>
+</svg><p class="diagram-caption">Figure: prompttools integration flow</p></div></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Running OpenAIChatExperiment with Config Keys like models and temperature</h2></div><div class="ch-body"><p>CLASSESANDMETHODS:</p>
+<p>OpenAIChatExperiment</p>
+<p>tocsv</p>
+<p>tojson</p>
+<p>tolorajson</p>
+<p>tomongodb</p>
+<p>run</p>
+<p>visualize</p>
 <p>CONFIGKEYS:</p>
-<p>modelpath, served-model-name, max-model-len, gpu-memory-utilization, port</p>
+<p>SENTRYOPTOUT</p>
 <p>VERSIONNUMBERS:</p>
-<p>2025. 10. 21, 2025. 10.</p>
-<p>27, 2025. 10. 28, 2025. 11.</p>
-<p>08, 2025. 11. 13, 2025. 12.</p>
-<p>28, 2026. 01. 31, 2026. 03.</p>
 <p>ARCHITECTURE:</p>
-<p>vllm. entrypoints. openai.</p>
-<p>CODESNIPPETS:</p>
-<p>`</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<p>prompttools</p>
+<p>prompttools.</p>
+<p>prompttools.</p>
+<p>CODE_SNIPPETS:</p>
+<p>```</p>
+<p>from prompttools.</p>
+<p>messages = [</p>
+<p>[{"role": "user", "content": "Tell me a joke.</p>
+<p>[{"role": "user", "content": "Is 17077 a prime number?</p>
+<p>]</p>
+<p>models = ["gpt-3.</p><div class="code-label">Code Sample</div><div class="code-block">""")
+
+# execute the prompt
+out = program(description="A quick and nimble fighter.", valid_weapons=valid_weapons)
+-------------------------------------------------------------------------------------------------------
+
+
+It starts generating some output and then stops and just outputs the following: 
+=============================================================
+The following is a character profile for an RPG game in JSON format.</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1098.87 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1175.03 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1094.87,-40 1094.87,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1171.03,-40 1171.03,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
@@ -198,214 +139,202 @@
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="203.96" cy="-18" rx="46.6" ry="18"/>
-<text text-anchor="middle" x="203.96" y="-14.5" font-family="Arial" font-size="10.00">Task Planning</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="222.88" cy="-18" rx="58.78" ry="18"/>
+<text text-anchor="middle" x="222.88" y="-14.5" font-family="Arial" font-size="10.00">Prompt Generation</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M69.33,-18C91.22,-18 120.25,-18 145.66,-18"/>
-<polygon fill="#475569" stroke="#475569" points="145.53,-21.5 155.53,-18 145.53,-14.5 145.53,-21.5"/>
-<text text-anchor="middle" x="113.1" y="-19.95" font-family="Arial" font-size="9.00">agent spawn</text>
+<path fill="none" stroke="#475569" d="M69.19,-18C92.45,-18 124.17,-18 152.68,-18"/>
+<polygon fill="#475569" stroke="#475569" points="152.32,-21.5 162.32,-18 152.32,-14.5 152.32,-21.5"/>
+<text text-anchor="middle" x="116.48" y="-19.95" font-family="Arial" font-size="9.00">initialize agent</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="391.52" cy="-18" rx="47.96" ry="18"/>
-<text text-anchor="middle" x="391.52" y="-14.5" font-family="Arial" font-size="10.00">Data Ingestion</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="441.69" cy="-18" rx="56.53" ry="18"/>
+<text text-anchor="middle" x="441.69" y="-14.5" font-family="Arial" font-size="10.00">Prompt Execution</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M250.83,-18C275.32,-18 305.73,-18 331.92,-18"/>
-<polygon fill="#475569" stroke="#475569" points="331.73,-21.5 341.73,-18 331.73,-14.5 331.73,-21.5"/>
-<text text-anchor="middle" x="297.06" y="-19.95" font-family="Arial" font-size="9.00">data selection</text>
+<path fill="none" stroke="#475569" d="M281.98,-18C310.11,-18 344.04,-18 373.3,-18"/>
+<polygon fill="#475569" stroke="#475569" points="373.16,-21.5 383.16,-18 373.16,-14.5 373.16,-21.5"/>
+<text text-anchor="middle" x="333.41" y="-19.95" font-family="Arial" font-size="9.00">generate prompt</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="610.16,-36 542.97,-18 610.16,0 677.34,-18 610.16,-36"/>
-<text text-anchor="middle" x="610.16" y="-14.5" font-family="Arial" font-size="10.00">Model Training</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="677.91,-36 585.22,-18 677.91,0 770.61,-18 677.91,-36"/>
+<text text-anchor="middle" x="677.91" y="-14.5" font-family="Arial" font-size="10.00">Response Evaluation</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M439.79,-18C466.18,-18 499.74,-18 530.01,-18"/>
-<polygon fill="#475569" stroke="#475569" points="529.92,-21.5 539.92,-18 529.92,-14.5 529.92,-21.5"/>
-<text text-anchor="middle" x="491.22" y="-19.95" font-family="Arial" font-size="9.00">model execution</text>
+<path fill="none" stroke="#475569" d="M498.49,-18C520.32,-18 546.1,-18 571.18,-18"/>
+<polygon fill="#475569" stroke="#475569" points="571.12,-21.5 581.12,-18 571.12,-14.5 571.12,-21.5"/>
+<text text-anchor="middle" x="541.72" y="-19.95" font-family="Arial" font-size="9.00">send prompt</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="841.57" cy="-18" rx="59.23" ry="18"/>
-<text text-anchor="middle" x="841.57" y="-14.5" font-family="Arial" font-size="10.00">Analysis Complete</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="930.93" cy="-18" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="930.93" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M679.06,-18C707.99,-18 741.71,-18 770.83,-18"/>
-<polygon fill="#475569" stroke="#475569" points="770.65,-21.5 780.65,-18 770.65,-14.5 770.65,-21.5"/>
-<text text-anchor="middle" x="729.84" y="-19.95" font-family="Arial" font-size="9.00">result generation</text>
+<path fill="none" stroke="#475569" d="M773.1,-18C803.91,-18 837.41,-18 865.51,-18"/>
+<polygon fill="#475569" stroke="#475569" points="865.28,-21.5 875.28,-18 865.28,-14.5 865.28,-21.5"/>
+<text text-anchor="middle" x="823.86" y="-19.95" font-family="Arial" font-size="9.00">receive response</text>
 </g>
 <!-- N5 -->
 <g id="sm-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1052.84" cy="-18" rx="38.03" ry="18"/>
-<text text-anchor="middle" x="1052.84" y="-14.5" font-family="Arial" font-size="10.00">Error State</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1125.39" cy="-18" rx="41.64" ry="18"/>
+<text text-anchor="middle" x="1125.39" y="-14.5" font-family="Arial" font-size="10.00">Task Failure</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="sm-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M901.14,-18C933.31,-18 972.73,-18 1003.18,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1002.87,-21.5 1012.87,-18 1002.87,-14.5 1002.87,-21.5"/>
-<text text-anchor="middle" x="957.8" y="-19.95" font-family="Arial" font-size="9.00">exception handling</text>
+<path fill="none" stroke="#475569" d="M985.03,-18C1012.19,-18 1045.13,-18 1072.17,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1071.85,-21.5 1081.85,-18 1071.85,-14.5 1071.85,-21.5"/>
+<text text-anchor="middle" x="1034.25" y="-19.95" font-family="Arial" font-size="9.00">evaluate failure</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: DeepAnalyze lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating HeyWhale API Keys for Enhanced Functionality</h2></div><div class="ch-body"><p>nv. example .</p>
-<p>bash start.</p>
-<p>stop the api and interface</p>
-<p>bash stop.</p>
-<p>stop vllm if needed</p>
-<p>bash</p>
-<p>cd API</p>
-<p>python startserver.</p>
-<p>cd demo/cli</p>
-<p>python apicli.</p>
-<p>or</p>
-<p>python apicliZH.</p>
-<p>bash</p>
-<p>python -m vllm. entrypoints. openai.</p>
-<p>--model <modelpath> \</p>
-<p>--served-model-name DeepAnalyze-8B \</p>
-<p>--max-model-len <selectfromtable_above> \</p>
-<p>--gpu-memory-utilization 0.</p>
-<p>-</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: prompttools lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating OpenAIChatExperiment with Vector Databases for Real-World Applications</h2></div><p class="ch-summary">Integrate OpenAIChatExperiment with vector databases</p><div class="ch-body"><p>The OpenAIChatExperiment class in prompttools is designed to test and experiment with prompts, LLMs, and vector databases. The class has methods like run and visualize to execute and display the results of the experiment. To integrate OpenAIChatExperiment with vector databases, we need to use the tocsv, tojson, and tomongodb methods to store the results in a database. The SENTRYOPTOUT config key can be used to opt out of error tracking.</p>
+<p>The OpenAIChatExperiment class supports models like gpt-3. 5-turbo and gpt-4.</p>
+<p>The vector databases supported by prompttools include Weaviate, Qdrant, LanceDB, and Pinecone. These databases can be used to store and query the results of the OpenAIChatExperiment. The tolorajson method can be used to store the results in a format compatible with LLaMA. Cpp.</p>
+<p>The OpenAIChatExperiment class can be used to evaluate the retrieval accuracy of vector databases.</p>
+<p>The OpenAIChatExperiment class has a limitation that it does not support LlamaCpp in the hosted version. The class also has a limitation that it only supports the gpt2 model in the HuggingFaceHubExperiment. The class has methods like tocsv and tojson to store the results in a file. The results can be visualized using the visualize method.</p>
+<p>The prompttools library provides a playground to evaluate LLMs and vector databases using a local interface. The playground can be run using the streamlit run command. The library also provides a notebook to run the OpenAIChatExperiment using the jupyter notebook command. The notebook can be installed using the pip install notebook command.</p>
+<p>The OpenAIChatExperiment class can be used to test and experiment with prompts, LLMs, and vector databases. The class has methods like run and visualize to execute and display the results of the experiment. The class supports models like gpt-3. 5-turbo and gpt-4.</p>
+<p>The class can be used to evaluate the retrieval accuracy of vector databases.</p>
+<p>The prompttools library has a limitation that it does not support LanceDB in the hosted version. The library also has a limitation that it only supports the gpt2 model in the HuggingFaceHubExperiment. The library has methods like tocsv and tojson to store the results in a file. The results can be visualized using the visualize method.</p>
+<p>The OpenAIChatExperiment class can be used to integrate with other libraries like LangChain and MindsDB. The class has methods like tocsv and tojson to store the results in a file. The results can be visualized using the visualize method. The class supports models like gpt-3.</p>
+<p>5-turbo and gpt-4.</p>
+<p>The prompttools library provides a way to experiment with prompts, LLMs, and vector databases using a local interface. The library has a limitation that it does not support LlamaCpp in the hosted version. The library has methods like tocsv and tojson to store the results in a file. The results can be visualized using the visualize method.</p>
+<p>The OpenAIChatExperiment class has a callout that it supports the tolorajson method to store the results in a format compatible with LLaMA. Cpp.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 229.67 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 129.17 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 225.67,-535 225.67,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 125.17,-535 125.17,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="109.92" cy="-513" rx="66.9" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="60.58" cy="-513" rx="28.56" ry="18"/>
+<text text-anchor="middle" x="60.58" y="-509.5" font-family="Arial" font-size="10.00">Prompt</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-430.5" rx="66.9" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-427" font-family="Arial" font-size="10.00">PartOfSpeechTagging</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="60.58" cy="-430.5" rx="46.15" ry="18"/>
+<text text-anchor="middle" x="60.58" y="-427" font-family="Arial" font-size="10.00">TextTokenizer</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M109.92,-494.53C109.92,-484.51 109.92,-471.68 109.92,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-460.45 109.92,-450.45 106.42,-460.45 113.42,-460.45"/>
-<text text-anchor="middle" x="139.92" y="-468.45" font-family="Arial" font-size="9.00">lexicalanalysis</text>
+<path fill="none" stroke="#475569" d="M60.58,-494.53C60.58,-484.51 60.58,-471.68 60.58,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="64.08,-460.45 60.58,-450.45 57.08,-460.45 64.08,-460.45"/>
+<text text-anchor="middle" x="77.83" y="-468.45" font-family="Arial" font-size="9.00">tokenize</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-348" rx="63.74" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-344.5" font-family="Arial" font-size="10.00">SemanticEmbedding</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="60.58" cy="-348" rx="60.58" ry="18"/>
+<text text-anchor="middle" x="60.58" y="-344.5" font-family="Arial" font-size="10.00">EmbeddingEncoder</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M109.92,-412.03C109.92,-402.01 109.92,-389.18 109.92,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-377.95 109.92,-367.95 106.42,-377.95 113.42,-377.95"/>
-<text text-anchor="middle" x="144.42" y="-385.95" font-family="Arial" font-size="9.00">contextualization</text>
+<path fill="none" stroke="#475569" d="M60.58,-412.03C60.58,-402.01 60.58,-389.18 60.58,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="64.08,-377.95 60.58,-367.95 57.08,-377.95 64.08,-377.95"/>
+<text text-anchor="middle" x="75.96" y="-385.95" font-family="Arial" font-size="9.00">encode</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="109.92,-283.5 0,-265.5 109.92,-247.5 219.83,-265.5 109.92,-283.5"/>
-<text text-anchor="middle" x="109.92" y="-262" font-family="Arial" font-size="10.00">KnowledgeGraphRetrieval</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="60.58,-283.5 6.16,-265.5 60.58,-247.5 115.01,-265.5 60.58,-283.5"/>
+<text text-anchor="middle" x="60.58" y="-262" font-family="Arial" font-size="10.00">FaissIndex</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M109.92,-329.53C109.92,-319.51 109.92,-306.68 109.92,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-295.45 109.92,-285.45 106.42,-295.45 113.42,-295.45"/>
-<text text-anchor="middle" x="152.29" y="-303.45" font-family="Arial" font-size="9.00">entitydisambiguation</text>
+<path fill="none" stroke="#475569" d="M60.58,-329.53C60.58,-319.51 60.58,-306.68 60.58,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="64.08,-295.45 60.58,-285.45 57.08,-295.45 64.08,-295.45"/>
+<text text-anchor="middle" x="74.46" y="-303.45" font-family="Arial" font-size="9.00">search</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-183" rx="64.19" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-179.5" font-family="Arial" font-size="10.00">RelevanceReranking</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="60.58" cy="-183" rx="33.52" ry="18"/>
+<text text-anchor="middle" x="60.58" y="-179.5" font-family="Arial" font-size="10.00">Reranker</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M109.92,-247.03C109.92,-237.01 109.92,-224.18 109.92,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-212.95 109.92,-202.95 106.42,-212.95 113.42,-212.95"/>
-<text text-anchor="middle" x="142.92" y="-220.95" font-family="Arial" font-size="9.00">similarityscoring</text>
+<path fill="none" stroke="#475569" d="M60.58,-247.03C60.58,-237.01 60.58,-224.18 60.58,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="64.08,-212.95 60.58,-202.95 57.08,-212.95 64.08,-212.95"/>
+<text text-anchor="middle" x="75.96" y="-220.95" font-family="Arial" font-size="9.00">rescore</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-100.5" rx="49.31" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="60.58" cy="-100.5" rx="46.6" ry="18"/>
+<text text-anchor="middle" x="60.58" y="-97" font-family="Arial" font-size="10.00">TextGenerator</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M109.92,-164.53C109.92,-154.51 109.92,-141.68 109.92,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-130.45 109.92,-120.45 106.42,-130.45 113.42,-130.45"/>
-<text text-anchor="middle" x="165.79" y="-138.45" font-family="Arial" font-size="9.00">naturallanguagegeneration</text>
+<path fill="none" stroke="#475569" d="M60.58,-164.53C60.58,-154.51 60.58,-141.68 60.58,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="64.08,-130.45 60.58,-120.45 57.08,-130.45 64.08,-130.45"/>
+<text text-anchor="middle" x="83.08" y="-138.45" font-family="Arial" font-size="9.00">regenerate</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="109.92" cy="-18" rx="53.37" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-14.5" font-family="Arial" font-size="10.00">ResultStreaming</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="60.58" cy="-18" rx="55.17" ry="18"/>
+<text text-anchor="middle" x="60.58" y="-14.5" font-family="Arial" font-size="10.00">ResponseStream</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M109.92,-82.03C109.92,-72.01 109.92,-59.18 109.92,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-47.95 109.92,-37.95 106.42,-47.95 113.42,-47.95"/>
-<text text-anchor="middle" x="141.04" y="-55.95" font-family="Arial" font-size="9.00">resultvalidation</text>
+<path fill="none" stroke="#475569" d="M60.58,-82.03C60.58,-72.01 60.58,-59.18 60.58,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="64.08,-47.95 60.58,-37.95 57.08,-47.95 64.08,-47.95"/>
+<text text-anchor="middle" x="85.33" y="-55.95" font-family="Arial" font-size="9.00">postprocess</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: DeepAnalyze end-to-end processing pipeline</p></div><div class="sec-heading">DeepAnalyze — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Data Ingestion and Processing</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Model Training and Deployment</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Data Visualization and Exploration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Collaboration and Sharing</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Scalability and Performance</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Security and Governance</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:78%"></span></span></span><span class="bar-value">78%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Common Issues with --gpu-memory-utilization and --max-model-len</h2></div><p class="ch-summary">GPU memory issues</p><div class="ch-body"><p>The --gpu-memory-utilization flag is used to specify the maximum GPU memory utilization for the model. The --max-model-len flag is used to specify the maximum length of the model. These flags are crucial in preventing GPU memory overflow errors. The research shows that the model can fail when the GPU memory utilization exceeds 24GB.</p>
-<p>The vllm. entrypoints. openai. apiserver class is used to start the API server with the specified model and configuration.</p>
-<p>The --trust-remote-code flag is used to enable trust in remote code.</p>
-<p>The --model flag is used to specify the path to the model file. The --served-model-name flag is used to specify the name of the served model. The --port flag is used to specify the port number for the API server. The --kv-cache-dtype flag is used to specify the data type for the key-value cache.</p>
-<p>The research shows that the model can be started with the command python -m vllm. entrypoints. openai. apiserver.</p>
-<p>The research does not provide implementation details for the --gpu-memory-utilization flag. However, it is clear that the flag is used to prevent GPU memory overflow errors. The --max-model-len flag is used to specify the maximum length of the model. The research shows that the model can fail when the maximum length is exceeded.</p>
-<p>The vllm. entrypoints. openai. apiserver class is used to start the API server with the specified model and configuration.</p>
-<p>The --gpu-memory-utilization flag has a default value of 0. 95. The --max-model-len flag has a default value that depends on the model. The research shows that the model can be started with the command python -m vllm.</p>
-<p>entrypoints. openai. apiserver. The --trust-remote-code flag is used to enable trust in remote code.</p>
-<p>The --port flag is used to specify the port number for the API server.</p>
-<p>The research shows that the model can fail when the GPU memory utilization exceeds 24GB. The vllm. entrypoints. openai.</p>
-<p>apiserver class is used to start the API server with the specified model and configuration. The --model flag is used to specify the path to the model file. The --served-model-name flag is used to specify the name of the served model. The --kv-cache-dtype flag is used to specify the data type for the key-value cache.</p>
-<p>The --max-model-len flag is used to specify the maximum length of the model. The research shows that the model can fail when the maximum length is exceeded. The vllm. entrypoints.</p>
-<p>openai. apiserver class is used to start the API server with the specified model and configuration. The --trust-remote-code flag is used to enable trust in remote code. The --port flag is used to specify the port number for the API server.</p>
-<p>The research does not provide implementation details for the --gpu-memory-utilization flag. However, it is clear that the flag is used to prevent GPU memory overflow errors. The --max-model-len flag is used to specify the maximum length of the model. The research shows that the model can be started with the command python -m vllm.</p>
-<p>entrypoints. openai. apiserver. The --model flag is used to specify the path to the model file.</p>
-<p>The vllm. entrypoints. openai. apiserver class is used to start the API server with the specified model and configuration.</p>
-<p>The --served-model-name flag is used to specify the name of the served model. The --kv-cache-dtype flag is used to specify the data type for the key-value cache. The research shows that the model can fail when the GPU memory utilization exceeds 24GB. The --gpu-memory-utilization flag has a default value of 0.</p>
-<p>95.</p><div class="sec-heading">DeepAnalyze — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Deep Learning Frameworks</td><td>TensorFlow, PyTorch</td><td>Support for popular deep learning frameworks</td></tr><tr><td>Data Ingestion</td><td>CSV, JSON, Avro</td><td>Support for various data formats</td></tr><tr><td>Model Serving</td><td>TensorFlow Serving, AWS SageMaker</td><td>Integration with popular model serving platforms</td></tr><tr><td>Data Visualization</td><td>Matplotlib, Seaborn, Plotly</td><td>Support for popular data visualization libraries</td></tr><tr><td>Collaboration Tools</td><td>Jupyter Notebooks, Slack Integration</td><td>Integration with collaboration tools for team workflows</td></tr><tr><td>Security Features</td><td>API Keys, Access Control</td><td>Support for security features to protect data and models</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with --model and --served-model-name for Future-Proofing</h2></div><p class="ch-summary">Optimize DeepAnalyze performance</p><div class="ch-body"><p>To optimize performance in DeepAnalyze, it's essential to understand the role of the --model and --served-model-name parameters. These parameters are crucial in determining the performance of the DeepAnalyze-8B model. The --model parameter specifies the model to be used, while the --served-model-name parameter specifies the name of the served model. In the context of DeepAnalyze, the --model parameter can be set to DeepAnalyze-8B, which is the default model.</p>
-<p>The --served-model-name parameter can be set to a custom name, allowing for easier identification of the model in the UI. The vllm serve command is used to deploy the DeepAnalyze-8B model, and it supports various options, including --model and --served-model-name. By using these parameters, users can optimize the performance of DeepAnalyze and achieve better results. For instance, setting the DEEPANALYZEEXECUTIONMODE to local or docker can significantly impact performance.</p>
-<p>The DeepAnalyze architecture consists of several components, including the backend, frontend, and workspace. The backend is responsible for handling API requests, while the frontend handles user interactions. The workspace is where the models are stored and executed. In the context of optimizing performance, it's essential to consider the limitations of each component.</p>
-<p>For example, if the target machine has no image, Docker execution will fail immediately. This limitation can be addressed by using the local execution mode or by ensuring that the required images are installed. The version number of DeepAnalyze, such as 2025. 10.</p>
-<p>21 or 2026. 01. 31, can also impact performance, as newer versions may include optimizations and bug fixes.</p>
-<p>The use of API methods, such as those provided by the backend, can also impact performance. For instance, the backend. py file provides several API methods for interacting with the model, including methods for uploading files and initiating conversations. By using these API methods efficiently, users can optimize the performance of DeepAnalyze.</p>
-<p>Additionally, the config keys, such as DEEPANALYZEEXECUTIONMODE, can be used to customize the performance of DeepAnalyze. For example, setting DEEPANALYZEEXECUTIONMODE to local can improve performance by reducing the overhead of Docker execution.</p>
-<p>In terms of concrete limitations, DeepAnalyze does not support certain features, such as pandoc or xelatex, which can impact performance. If these features are missing, the UI will show an explicit error message. This limitation can be addressed by installing the required dependencies or by using a different execution mode. The performance metrics of DeepAnalyze, such as the time taken to execute a task, can also be impacted by the version number and the config keys used.</p>
-<p>For instance, the version 2026. 03. 16 may include optimizations that improve performance compared to earlier versions.</p>
-<p>The technical depth of DeepAnalyze is evident in its architecture and API methods. The use of Docker execution mode, for example, provides a high level of flexibility and customization. However, this also introduces limitations, such as the requirement for Docker images to be installed. The API methods provided by the backend, such as those for uploading files and initiating conversations, demonstrate the technical capabilities of DeepAnalyze.</p>
-<p>The config keys, such as DEEPANALYZEEXECUTIONMODE, provide a way to customize the performance of DeepAnalyze and address limitations.</p>
-<p>The optimization of DeepAnalyze performance requires a thorough understanding of its architecture, API methods, and config keys. By using the --model and --served-model-name parameters, users can customize the performance of DeepAnalyze and achieve better results. The version number and config keys used can also impact performance, and addressing limitations, such as the requirement for Docker images, is essential. The technical depth of DeepAnalyze is evident in its architecture and API methods, and by leveraging these features, users can optimize performance and achieve better results.</p>
-<p>The callout for this chapter is that the DEEPANALYZEEXECUTIONMODE config key can be set to local or docker, which significantly impacts performance.</p>
-<p>The code sample for this chapter is</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">DeepAnalyze: Agentic Large Language Models for ...</div><a class="video-url" href="https://www.youtube.com/watch?v=l5kw54An6QU">https://www.youtube.com/watch?v=l5kw54An6QU</a></div></div></section>
-<div class="book-footer"><strong>DeepAnalyze: Field Guide</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 26, 2026</div>
+</svg><p class="diagram-caption">Figure: prompttools end-to-end processing pipeline</p></div><div class="sec-heading">prompttools — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Installation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Ease of Use</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Documentation Quality</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:70%"></span></span></span><span class="bar-value">70%</span></div><div class="bar-row"><span class="bar-label">Customization Options</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:75%"></span></span></span><span class="bar-value">75%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Common Production Issues with SENTRY_OPT_OUT and Error Handling</h2></div><p class="ch-summary">Error handling in production</p><div class="ch-body"><p>The research highlights the importance of error handling in production environments, particularly when working with libraries like prompttools. The SENTRYOPTOUT config key plays a crucial role in this process, allowing developers to opt-out of certain error tracking features. When using the OpenAIChatExperiment class, it is essential to handle potential errors that may arise during the run or visualize methods. The tocsv, tojson, and tolorajson methods can also be affected by errors, and proper handling is necessary to ensure data integrity.</p>
+<p>The research notes that the hosted version does not support LlamaCpp, which can lead to errors if not properly accounted for.</p>
+<p>The OpenAIChatExperiment class provides a range of methods for experimenting with prompts and LLMs, including the run and visualize methods. These methods can be affected by errors, and proper handling is necessary to ensure that experiments are conducted successfully. The research highlights the importance of using try-except blocks to catch and handle potential errors. The models, messages, and temperature config keys can also impact error handling, and developers should be aware of their effects.</p>
+<p>The research does not provide specific details on error handling for the tomongodb method, which may require additional consideration.</p>
+<p>The prompttools library provides a range of tools for testing and experimenting with prompts, LLMs, and vector databases. The OpenAIChatExperiment class is a key component of this library, and its methods can be affected by errors. The research notes that the library does not support LlamaCpp, which can lead to errors if not properly accounted for. The SENTRYOPTOUT config key can be used to opt-out of certain error tracking features, but this may not be sufficient to handle all potential errors.</p>
+<p>Developers should be aware of the potential limitations of the library and take steps to ensure that their code is robust and error-free.</p>
+<p>The research highlights the importance of using familiar interfaces like code, notebooks, and a local playground to evaluate LLMs and vector databases. The prompttools library provides a range of tools for this purpose, including the OpenAIChatExperiment class. However, the library does not provide specific guidance on error handling for these interfaces, which may require additional consideration. The models, messages, and temperature config keys can impact error handling, and developers should be aware of their effects.</p>
+<p>The research notes that the hosted version does not support LlamaCpp, which can lead to errors if not properly accounted for.</p>
+<p>The prompttools library provides a range of config keys that can impact error handling, including the SENTRYOPTOUT key. This key allows developers to opt-out of certain error tracking features, but it may not be sufficient to handle all potential errors. The models, messages, and temperature config keys can also impact error handling, and developers should be aware of their effects. The research does not provide specific details on error handling for the tocsv, tojson, and tolorajson methods, which may require additional consideration.</p>
+<p>The library does not support LlamaCpp, which can lead to errors if not properly accounted for.</p>
+<p>The research notes that the prompttools library does not provide specific guidance on error handling for the tomongodb method. This method can be affected by errors, and proper handling is necessary to ensure data integrity. The SENTRYOPTOUT config key can be used to opt-out of certain error tracking features, but this may not be sufficient to handle all potential errors. The models, messages, and temperature config keys can impact error handling, and developers should be aware of their effects.</p>
+<p>The library does not support LlamaCpp, which can lead to errors if not properly accounted for.</p>
+<p>The prompttools library provides a range of tools for testing and experimenting with prompts, LLMs, and vector databases. However, the library does not provide specific guidance on error handling for these tools, which may require additional consideration. The OpenAIChatExperiment class provides a range of methods for experimenting with prompts and LLMs, including the run and visualize methods. These methods can be affected by errors, and proper handling is necessary to ensure that experiments are conducted successfully.</p>
+<p>The research highlights the importance of using try-except blocks to catch and handle potential errors.</p>
+<p>The research highlights the importance of error handling in production environments, particularly when working with libraries like prompttools. The SENTRYOPTOUT config key plays a crucial role in this process, allowing developers to opt-out of certain error tracking features. The prompttools library provides a range of tools for testing and experimenting with prompts, LLMs, and vector databases, but it does not provide specific guidance on error handling for these tools. The OpenAIChatExperiment class provides a range of methods for experimenting with prompts and LLMs, including the run and visualize methods, which can be affected by errors.</p>
+<p>The library does not support LlamaCpp, which can lead to errors if not properly accounted for.</p><div class="sec-heading">prompttools — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>LLM Support</td><td>Multiple models (e.g., gpt-3.5-turbo, gpt-4)</td><td>Supports various LLMs for experimentation</td></tr><tr><td>Vector Database Integration</td><td>Yes</td><td>Allows for evaluation of retrieval accuracy</td></tr><tr><td>Interface Options</td><td>Code, Notebooks, Local Playground</td><td>Caters to different user preferences</td></tr><tr><td>Output Formats</td><td>CSV, JSON, Lora JSON, MongoDB</td><td>Supports various output formats for data analysis</td></tr><tr><td>Limitations</td><td>Hosted version does not support LlamaCpp</td><td>Important consideration for specific use cases</td></tr><tr><td>Installation Methods</td><td>pip, git clone, streamlit</td><td>Offers multiple installation methods for flexibility</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance and Future-Proofing with to_csv, to_json, and to_lora_json Methods</h2></div><p class="ch-summary">Optimize performance</p><div class="ch-body"><p>The tocsv, tojson, and tolorajson methods in prompttools are used for data export and optimization. These methods allow for efficient data handling and future-proofing. The tocsv method is useful for exporting data to a comma-separated values file, while the tojson method exports data to a JSON file. The tolorajson method is specifically designed for exporting data to a JSON file compatible with the LLaMA model.</p>
+<p>When using these methods, it is essential to consider the potential limitations, such as the lack of server forwarding for LLM calls, which can lead to indirect and direct prompt injection risks. The prompttools library version 0. 0. 45 provides these methods, but it is crucial to be aware of the potential bugs and limitations, including the issue with HuggingFaceHubExperiment, which is unable to use models other than gpt2.</p>
+<p>The Experiment class in prompttools provides a framework for designing and running experiments. This class includes methods such as computesimilarityagainstmodel and autoevalscoring, which are useful for evaluating the performance of LLMs. However, the library does not provide direct support for server forwarding, which can lead to security risks. To mitigate these risks, it is recommended to use an intermediary server or a secure connection.</p>
+<p>The autoevalbinaryscoring method is also available, which can be used for binary classification tasks. The model class provides a basic structure for building and training LLMs, but it is limited by the lack of support for more advanced models.</p>
+<p>The tomongodb method is another option for data export, which allows for storing data in a MongoDB database. This method provides a flexible way to store and retrieve data, but it requires a MongoDB instance to be set up and configured. The SENTRYOPTOUT config key can be used to disable Sentry error tracking, which can be useful for development and testing purposes. However, it is essential to be aware of the potential limitations and bugs, such as the AttributeError: module 'openai' has no attribute 'types', which can occur when using certain OpenAI models.</p>
+<p>The prompttools library provides a range of tools and methods for working with LLMs, including the OpenAI Chat Experiment Example and the LLaMA model. These tools can be used for a variety of tasks, such as text generation, sentiment analysis, and language translation. However, the library is not without its limitations, including the lack of support for more advanced models and the potential security risks associated with indirect and direct prompt injection. The GoogleVertexChatExperiment.</p>
+<p>ipynb notebook is also available, but it does not work due to certain limitations.</p>
+<p>The use of prompttools requires careful consideration of the potential limitations and risks. The library provides a range of tools and methods for working with LLMs, but it is essential to be aware of the potential bugs and limitations. The tocsv, tojson, and tolorajson methods are useful for data export and optimization, but they must be used in conjunction with other security measures to mitigate the risks associated with indirect and direct prompt injection. The library version 0.</p>
+<p>0. 45 provides a range of features and tools, but it is crucial to stay up-to-date with the latest developments and updates to ensure optimal performance and security.</p>
+<p>The callout is that the library has a limitation where the GoogleVertexChatExperiment. ipynb notebook does not work. The code_sample is empty. The library provides a range of tools and methods for working with LLMs, including the OpenAI Chat Experiment Example and the LLaMA model.</p>
+<p>However, the library is not without its limitations, including the lack of support for more advanced models and the potential security risks associated with indirect and direct prompt injection. The use of prompttools requires careful consideration of the potential limitations and risks, as well as the implementation of additional security measures to mitigate these risks.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Introducing PromptTools: Simplify Language Model ...</div><a class="video-url" href="https://www.youtube.com/watch?v=lQeLEpTBYAI">https://www.youtube.com/watch?v=lQeLEpTBYAI</a></div></div></section>
+<div class="book-footer"><strong>prompttools: Definitive Guide</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 27, 2026</div>
 </body>
 </html>
