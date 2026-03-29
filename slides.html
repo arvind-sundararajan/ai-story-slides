@@ -2,134 +2,252 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>prompttools: Definitive Guide</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "prompttools: Definitive Guide"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>pipeshub-ai: Black Book</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "pipeshub-ai: Black Book"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/12e26e9b0f9bae09bc35398aab7b1add205408b5cdc047668902b7acf58c970f/hegelai/prompttools" alt="prompttools logo" onerror="this.style.display='none'"/><div class="cover-lib-name">prompttools</div><div class="cover-suffix">Definitive Guide</div><div class="cover-rule"></div><p class="cover-subtitle">Mastering prompttools</p><p class="cover-desc">The OpenAIChatExperiment class is a key component of the prompttools library, allowing users to test and experiment with prompts, LLMs, and vector databases.  The class takes in several parameters, including models, messages, and temperature, which can be configured using the models, messages, and temperature config keys.  The run method is used to execute the experiment, while the visualize method is used to visualize the results.</p><div class="cover-tagline">Build with ease</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 27, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Hegelai built prompttools to solve LLM experimentation challenges.</div><div class="intro-body"><p>Prompttools is a technical framework developed by hegelai, designed to facilitate experimentation and testing with large language models (LLMs) and vector databases. The primary problem it aims to solve is providing a structured approach to evaluating the performance of LLMs and vector databases in various scenarios, such as testing and experimenting with prompts. This is achieved through the use of specific classes and methods, including the OpenAIChatExperiment class, which allows users to define experiments with particular models, messages, and temperatures. The framework also includes methods for running and visualizing these experiments, making it easier to analyze and compare results.</p>
-<p>The technical design of prompttools is centered around its use of LLMs and vector databases, which are fundamental components of its architecture. The framework is built to work with specific models, such as gpt-3. 5-turbo and gpt-4, and allows users to configure experiments with different temperatures. This level of control enables users to fine-tune their experiments and evaluate the performance of LLMs and vector databases in a more precise manner.</p>
-<p>Furthermore, prompttools provides various interfaces for interacting with the framework, including code, notebooks, and a local playground, which cater to different user preferences and needs.</p>
-<p>One of the key aspects of prompttools is its focus on providing a flexible and adaptable framework for experimentation. The use of classes and methods, such as OpenAIChatExperiment, allows users to define and run experiments in a programmatic way, making it easier to automate and reproduce results. Additionally, the framework's support for exporting results to various formats, including CSV, JSON, and MongoDB, facilitates further analysis and integration with other tools and systems. The ability to work with familiar interfaces, such as Jupyter notebooks and Streamlit, also makes it more accessible to users who are already familiar with these environments.</p>
-<p>The target audience for prompttools appears to be developers and researchers who work with LLMs and vector databases, and are looking for a structured approach to testing and experimenting with these technologies. The framework's technical design and features suggest that it is intended for users who are already familiar with programming concepts and have a basic understanding of LLMs and vector databases. The use of specific models, temperatures, and interfaces also implies that the framework is designed for users who are interested in evaluating the performance of these technologies in a more precise and controlled manner.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/hegelai/prompttools">https://github.com/hegelai/prompttools</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking LLMs with OpenAIChatExperiment</h2></div><p class="ch-summary">Experimenting with LLMs</p><div class="ch-body"><p>The OpenAIChatExperiment class is a key component of the prompttools library, allowing users to test and experiment with prompts, LLMs, and vector databases. The class takes in several parameters, including models, messages, and temperature, which can be configured using the models, messages, and temperature config keys. The run method is used to execute the experiment, while the visualize method is used to visualize the results. The OpenAIChatExperiment class also supports various output formats, including CSV, JSON, and MongoDB.</p>
-<p>The tocsv, tojson, and tomongodb methods can be used to export the results to these formats.</p>
-<p>The prompttools library provides a range of tools and interfaces for evaluating LLMs and vector databases, including code, notebooks, and a local playground. The library can be installed using pip, and the GitHub repository provides a range of examples and notebooks to get started. The OpenAIChatExperiment class is a key part of this ecosystem, providing a flexible and customizable way to experiment with LLMs. The class supports multiple models, including gpt-3.</p>
-<p>5-turbo and gpt-4, and can be configured to use different temperatures and messages.</p>
-<p>One of the key benefits of the OpenAIChatExperiment class is its ability to support multiple models and temperatures, allowing users to compare and contrast the performance of different LLMs. The class also supports a range of output formats, making it easy to export and analyze the results. The library provides a range of examples and notebooks to get started, including the OpenAIChatExperiment. ipynb notebook, which demonstrates how to use the class to experiment with LLMs.</p>
-<p>The prompttools library has a number of limitations, including the fact that the hosted version does not support LlamaCpp. Additionally, the library may be subject to errors caused by negligence or out of date documentation. However, the library provides a range of tools and interfaces for evaluating LLMs and vector databases, making it a useful resource for researchers and developers. The OpenAIChatExperiment class is a key part of this ecosystem, providing a flexible and customizable way to experiment with LLMs.</p>
-<p>The OpenAIChatExperiment class provides a range of methods for configuring and executing the experiment, including the run and visualize methods. The class also supports various output formats, including CSV, JSON, and MongoDB. The tocsv, tojson, and tomongodb methods can be used to export the results to these formats. The library provides a range of examples and notebooks to get started, including the OpenAIChatExperiment.</p>
-<p>ipynb notebook, which demonstrates how to use the class to experiment with LLMs.</p>
-<p>The prompttools library is designed to be used with a range of LLMs and vector databases, including gpt-3. 5-turbo and gpt-4. The library provides a range of tools and interfaces for evaluating these models, including code, notebooks, and a local playground. The OpenAIChatExperiment class is a key part of this ecosystem, providing a flexible and customizable way to experiment with LLMs.</p>
-<p>The class supports multiple models and temperatures, and can be configured to use different messages and output formats.</p>
-<p>The OpenAIChatExperiment class is a powerful tool for experimenting with LLMs and vector databases. The class provides a range of methods for configuring and executing the experiment, including the run and visualize methods. The class also supports various output formats, including CSV, JSON, and MongoDB. The library provides a range of examples and notebooks to get started, including the OpenAIChatExperiment.</p>
-<p>ipynb notebook, which demonstrates how to use the class to experiment with LLMs.</p>
-<p>In terms of technical details, the OpenAIChatExperiment class uses the models, messages, and temperature config keys to configure the experiment. The class also supports various output formats, including CSV, JSON, and MongoDB. The tocsv, tojson, and tomongodb methods can be used to export the results to these formats. The library provides a range of examples and notebooks to get started, including the OpenAIChatExperiment.</p>
-<p>ipynb notebook, which demonstrates how to use the class to experiment with LLMs.</p>
-<p>The prompttools library provides a range of tools and interfaces for evaluating LLMs and vector databases. The OpenAIChatExperiment class is a key part of this ecosystem, providing a flexible and customizable way to experiment with LLMs. The class supports multiple models and temperatures, and can be configured to use different messages and output formats. The library provides a range of examples and notebooks to get started, including the OpenAIChatExperiment.</p>
-<p>ipynb notebook, which demonstrates how to use the class to experiment with LLMs.</p></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Experiments with OpenAIChatExperiment Architecture</h2></div><p class="ch-summary">Experiment design with OpenAIChatExperiment</p><div class="ch-body"><p>The OpenAIChatExperiment class is used to design experiments with LLMs and vector databases. It takes in models, messages, and temperature as parameters. The run method is used to execute the experiment, while the visualize method is used to visualize the results. The OpenAIChatExperiment class also has methods like tocsv, tojson, and tolorajson to export the results in different formats.</p>
-<p>The config keys for the OpenAIChatExperiment class include models, messages, and temperature. The SENTRYOPTOUT config key is used to opt out of sentry.</p>
-<p>The OpenAIChatExperiment class is part of the prompttools. experiment module. It is used to test and experiment with prompts, LLMs, and vector databases. The class has a simple architecture and is easy to use.</p>
-<p>The run method is used to execute the experiment, and the visualize method is used to visualize the results. The class also has methods to export the results in different formats. The limitations of the OpenAIChatExperiment class include the fact that the hosted version does not support LlamaCpp.</p>
-<p>The OpenAIChatExperiment class has several use cases, including testing and experimenting with prompts, LLMs, and vector databases. It can also be used to evaluate the retrieval accuracy of vector databases. The class is part of the prompttools library, which provides a simple and easy-to-use interface for designing experiments with LLMs and vector databases. The library has several other classes and methods, including the tocsv, tojson, and tolorajson methods.</p>
-<p>The OpenAIChatExperiment class has several technical advantages, including its simple architecture and ease of use. It is also highly customizable, with several config keys and methods that can be used to modify its behavior. The class is part of the prompttools library, which is highly customizable and has several other classes and methods that can be used to design experiments with LLMs and vector databases. The limitations of the OpenAIChatExperiment class include the fact that it does not support LlamaCpp.</p>
-<p>The OpenAIChatExperiment class can be used with several different LLMs, including gpt-3. 5-turbo and gpt-4. It can also be used with several different vector databases, including LLaMA and Anthropic. The class has several methods that can be used to export the results in different formats, including tocsv, tojson, and tolorajson.</p>
-<p>The limitations of the OpenAIChatExperiment class include the fact that it does not support LlamaCpp.</p>
-<p>The OpenAIChatExperiment class has several performance advantages, including its ability to handle large amounts of data. It is also highly customizable, with several config keys and methods that can be used to modify its behavior. The class is part of the prompttools library, which is highly customizable and has several other classes and methods that can be used to design experiments with LLMs and vector databases. The limitations of the OpenAIChatExperiment class include the fact that it does not support LlamaCpp.</p>
-<p>The OpenAIChatExperiment class can be installed using pip install prompttools. It can also be installed by cloning the prompttools repository from GitHub and running the installation script. The class is part of the prompttools library, which is highly customizable and has several other classes and methods that can be used to design experiments with LLMs and vector databases. The limitations of the OpenAIChatExperiment class include the fact that it does not support LlamaCpp.</p>
-<p>The OpenAIChatExperiment class has several limitations, including the fact that it does not support LlamaCpp. It also has several other limitations, including the fact that it can fail when used with certain LLMs or vector databases. The class is part of the prompttools library, which is highly customizable and has several other classes and methods that can be used to design experiments with LLMs and vector databases. The limitations of the OpenAIChatExperiment class can be overcome by using other classes and methods in the prompttools library.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://repository-images.githubusercontent.com/944080744/f6ced8bc-f508-425f-a438-df7aeeaa4fce" alt="pipeshub-ai logo" onerror="this.style.display='none'"/><div class="cover-lib-name">pipeshub-ai</div><div class="cover-suffix">Black Book</div><div class="cover-rule"></div><p class="cover-subtitle">Introducing pipeshub ai</p><p class="cover-desc">The PipesHub System Architecture is designed to support enterprise search, workflow automation, and natural language search.  The architecture consists of a Knowledge Graph Backbone, which provides a scalable and modular framework for integrating various data sources.  The system also includes a Page Ranking component, which enables efficient search and retrieval of relevant information.</p><div class="cover-tagline">AI made easy</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 29, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Pipeshub-ai was built to solve enterprise search and workflow automation problems.</div><div class="intro-body"><p>Pipeshub-ai is a technical system built around a modular and scalable architecture, incorporating various components such as a knowledge graph backbone, enterprise-grade connectors, and a vector similarity search engine. The system's architecture is designed to support a range of use cases, including enterprise search, workflow automation, natural language search, and custom apps. The use of a graph database, distributed event streaming platform, and in-memory caching, messaging, and key-value configuration store enables the system to efficiently handle complex data and workflows.</p>
+<p>The system's design is centered around a modular and scalable architecture, allowing for the integration of various components and services. The frontend, backend, and orchestration layer work together to provide a seamless user experience, while the message broker, connector service, and graph database enable efficient data processing and storage. The system also incorporates a state graph for LLM workflows, a vector similarity search engine, and a distributed task queue system, which provide advanced functionality for workflow automation and natural language search.</p>
+<p>The technical implementation of pipeshub-ai is characterized by the use of specific technologies and design decisions. For example, the system utilizes a BaseConnector class with standard methods for syncing, streaming content, and handling cleanup, which provides a foundation for integrating various data sources and services. The system also employs a range of technologies, including Qdrant, Neo4j, ArangoDB, Kafka, Redis, Celery, Docling, PyMuPDF, OCRmyPDF, pandas, etcd3, LangChain, LangGraph, FastAPI, React, TypeScript, Material UI, Zod, and React Hook Form, which provide a robust and scalable infrastructure for the system.</p>
+<p>The target audience for pipeshub-ai includes developers, IT professionals, and business users who require a flexible and scalable platform for building custom apps, automating workflows, and implementing natural language search and enterprise search capabilities. The system's No-Code interface and modular architecture make it accessible to a wide range of users, from non-technical business users to experienced developers. The system's support for various use cases, including Google Workspace, Microsoft 365, Slack, Jira, and Confluence, also makes it a versatile tool for integrating with existing workflows and systems.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/pipeshub-ai/pipeshub-ai">https://github.com/pipeshub-ai/pipeshub-ai</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking Enterprise Search with Knowledge Graphs</h2></div><p class="ch-summary">Enterprise search with knowledge graphs</p><div class="ch-body"><p>The PipesHub System Architecture is designed to support enterprise search, workflow automation, and natural language search. The architecture consists of a Knowledge Graph Backbone, which provides a scalable and modular framework for integrating various data sources. The system also includes a Page Ranking component, which enables efficient search and retrieval of relevant information. The use of knowledge graphs allows for more accurate and context-aware search results.</p>
+<p>The system can be integrated with various third-party applications, such as Google Workspace, Microsoft 365, and Slack.</p>
+<p>The Modular & Scalable Architecture of PipesHub allows for easy integration of new components and services, making it a flexible and adaptable solution for enterprise search and workflow automation. The system includes a range of connectors for integrating with different data sources, including databases, file systems, and cloud storage services. The connectors are built using a standard set of methods, including syncing, streaming content, and handling cleanup. The BaseConnector class provides a foundation for building custom connectors.</p>
+<p>The system also includes a range of APIs, including the Qdrant API, Neo4j API, and ArangoDB API, which provide access to the knowledge graph and other system components.</p>
+<p>The PipesHub system includes a range of tools and services for building custom apps and AI agents, including a No-Code interface, which allows users to create and deploy custom applications without requiring extensive programming knowledge. The system also includes a range of pre-built connectors and APIs, which can be used to integrate with various third-party services, such as Jira and Confluence. The system's architecture is designed to support a wide range of use cases, including enterprise search, workflow automation, and natural language search. The system's scalability and flexibility make it a suitable solution for large and complex enterprises.</p>
+<p>The PipesHub system includes a range of technologies, including Qdrant, Neo4j, ArangoDB, Kafka, Redis, Celery, Docling, PyMuPDF, OCRmyPDF, pandas, etcd3, LangChain, LangGraph, FastAPI, React, TypeScript, Material UI, Zod, and React Hook Form. These technologies provide a range of functionalities, including data storage, processing, and visualization, as well as machine learning and natural language processing capabilities. The system's architecture is designed to support a wide range of data sources and formats, including structured and unstructured data. The system's use of knowledge graphs and page ranking algorithms enables efficient and accurate search and retrieval of relevant information.</p>
+<p>The PipesHub system has a number of limitations, including the requirement for significant computational resources and expertise in order to deploy and manage the system. The system's complexity and scalability requirements can make it challenging to implement and maintain, particularly for smaller organizations. Additionally, the system's reliance on third-party services and APIs can introduce dependencies and potential points of failure. The system's performance and scalability can be affected by the quality and availability of the underlying data sources and services.</p>
+<p>The PipesHub system can be installed using Docker Compose, which provides a simple and efficient way to deploy and manage the system. The system's architecture is designed to support a wide range of deployment scenarios, including on-premises, cloud, and hybrid environments. The system's use of containerization and orchestration technologies, such as Kubernetes, enables efficient and scalable deployment and management of the system. The system's documentation and support resources, including the PipesHub GitHub repository, provide a range of information and tools for deploying and managing the system.</p>
+<p>The PipesHub system provides a range of benefits, including improved search and retrieval capabilities, increased efficiency and productivity, and enhanced decision-making capabilities. The system's use of knowledge graphs and page ranking algorithms enables more accurate and context-aware search results, which can help to improve the quality and relevance of search results. The system's scalability and flexibility make it a suitable solution for large and complex enterprises, and its range of APIs and connectors provide a range of opportunities for customization and integration with other systems and services.</p>
+<p>The PipesHub system's performance and scalability can be affected by a range of factors, including the quality and availability of the underlying data sources and services, as well as the system's configuration and deployment scenario. The system's use of caching, messaging, and key-value configuration store technologies, such as Redis and etcd3, can help to improve performance and scalability, but can also introduce additional complexity and dependencies. The system's documentation and support resources provide a range of information and tools for optimizing and troubleshooting the system, including performance metrics and benchmarking data.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 774.56 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1764.99 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 770.56,-40 770.56,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1760.99,-40 1760.99,4 -4,4"/>
 <!-- N0 -->
-<g id="seq-node1" class="node">
+<g id="cluster-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="66.9" cy="-18" rx="66.9" ry="18"/>
-<text text-anchor="middle" x="66.9" y="-14.5" font-family="Arial" font-size="10.00">pip install prompttools</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="59.23" cy="-18" rx="59.23" ry="18"/>
+<text text-anchor="middle" x="59.23" y="-14.5" font-family="Arial" font-size="10.00">Pipeline Connector</text>
 </g>
 <!-- N1 -->
-<g id="seq-node2" class="node">
+<g id="cluster-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="239.65" cy="-18" rx="44.35" ry="18"/>
-<text text-anchor="middle" x="239.65" y="-14.5" font-family="Arial" font-size="10.00">PromptModel</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="320.52" cy="-18" rx="72.31" ry="18"/>
+<text text-anchor="middle" x="320.52" y="-14.5" font-family="Arial" font-size="10.00">Model Serving Gateway</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
-<g id="seq-edge1" class="edge">
+<g id="cluster-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M133.91,-18C150.38,-18 167.85,-18 183.72,-18"/>
-<polygon fill="#475569" stroke="#475569" points="183.43,-21.5 193.43,-18 183.43,-14.5 183.43,-21.5"/>
-<text text-anchor="middle" x="164.55" y="-19.95" font-family="Arial" font-size="9.00">import</text>
+<path fill="none" stroke="#475569" d="M118.75,-18C153.55,-18 198.26,-18 236.64,-18"/>
+<polygon fill="#475569" stroke="#475569" points="236.3,-21.5 246.3,-18 236.3,-14.5 236.3,-21.5"/>
+<text text-anchor="middle" x="183.34" y="-19.95" font-family="Arial" font-size="9.00">establishes connection</text>
 </g>
 <!-- N2 -->
-<g id="seq-node3" class="node">
+<g id="cluster-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="451.17" cy="-18" rx="32.17" ry="18"/>
-<text text-anchor="middle" x="451.17" y="-14.5" font-family="Arial" font-size="10.00">generate</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="582.39" cy="-18" rx="49.31" ry="18"/>
+<text text-anchor="middle" x="582.39" y="-14.5" font-family="Arial" font-size="10.00">PipelineHub UI</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
-<g id="seq-edge2" class="edge">
+<g id="cluster-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M284.31,-18C320.57,-18 371.82,-18 407.73,-18"/>
-<polygon fill="#475569" stroke="#475569" points="407.3,-21.5 417.3,-18 407.3,-14.5 407.3,-21.5"/>
-<text text-anchor="middle" x="351.49" y="-19.95" font-family="Arial" font-size="9.00">initialize PromptPipeline</text>
+<path fill="none" stroke="#475569" d="M393.22,-18C433.52,-18 483.25,-18 521.46,-18"/>
+<polygon fill="#475569" stroke="#475569" points="521.41,-21.5 531.41,-18 521.41,-14.5 521.41,-21.5"/>
+<text text-anchor="middle" x="462.96" y="-19.95" font-family="Arial" font-size="9.00">sends pipeline definitions</text>
 </g>
 <!-- N3 -->
-<g id="seq-node4" class="node">
+<g id="cluster-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="721.7,-36 676.84,-18 721.7,0 766.56,-18 721.7,-36"/>
-<text text-anchor="middle" x="721.7" y="-14.5" font-family="Arial" font-size="10.00">evaluate</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="865.12,-36 736.7,-18 865.12,0 993.53,-18 865.12,-36"/>
+<text text-anchor="middle" x="865.12" y="-14.5" font-family="Arial" font-size="10.00">Workflow Orchestration Engine</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
-<g id="seq-edge3" class="edge">
+<g id="cluster-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M483.76,-18C528.16,-18 609.7,-18 664.56,-18"/>
-<polygon fill="#475569" stroke="#475569" points="664.33,-21.5 674.32,-18 664.32,-14.5 664.33,-21.5"/>
-<text text-anchor="middle" x="580.09" y="-19.95" font-family="Arial" font-size="9.00">calculate metrics with PromptEvaluator</text>
+<path fill="none" stroke="#475569" d="M631.97,-18C657.17,-18 689.4,-18 721.76,-18"/>
+<polygon fill="#475569" stroke="#475569" points="721.69,-21.5 731.69,-18 721.69,-14.5 721.69,-21.5"/>
+<text text-anchor="middle" x="684.2" y="-19.95" font-family="Arial" font-size="9.00">triggers workflow</text>
+</g>
+<!-- N4 -->
+<g id="cluster-node5" class="node">
+<title>N4</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1163.75" cy="-18" rx="52.47" ry="18"/>
+<text text-anchor="middle" x="1163.75" y="-14.5" font-family="Arial" font-size="10.00">Message Queue</text>
+</g>
+<!-- N3&#45;&gt;N4 -->
+<g id="cluster-edge4" class="edge">
+<title>N3&#45;&gt;N4</title>
+<path fill="none" stroke="#475569" d="M997.09,-18C1032.73,-18 1069.73,-18 1099.7,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1099.31,-21.5 1109.31,-18 1099.31,-14.5 1099.31,-21.5"/>
+<text text-anchor="middle" x="1052.41" y="-19.95" font-family="Arial" font-size="9.00">dispatches tasks via</text>
+</g>
+<!-- N5 -->
+<g id="cluster-node6" class="node">
+<title>N5</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1429.69" cy="-18" rx="79.98" ry="18"/>
+<text text-anchor="middle" x="1429.69" y="-14.5" font-family="Arial" font-size="10.00">Pipeline Execution Service</text>
+</g>
+<!-- N4&#45;&gt;N5 -->
+<g id="cluster-edge5" class="edge">
+<title>N4&#45;&gt;N5</title>
+<path fill="none" stroke="#475569" d="M1216.58,-18C1251.16,-18 1297.56,-18 1338.14,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1337.91,-21.5 1347.91,-18 1337.91,-14.5 1337.91,-21.5"/>
+<text text-anchor="middle" x="1282.96" y="-19.95" font-family="Arial" font-size="9.00">schedules pipeline runs</text>
+</g>
+<!-- N6 -->
+<g id="cluster-node7" class="node">
+<title>N6</title>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1695.96" cy="-18" rx="61.04" ry="18"/>
+<text text-anchor="middle" x="1695.96" y="-14.5" font-family="Arial" font-size="10.00">Metadata Database</text>
+</g>
+<!-- N5&#45;&gt;N6 -->
+<g id="cluster-edge6" class="edge">
+<title>N5&#45;&gt;N6</title>
+<path fill="none" stroke="#475569" d="M1509.98,-18C1546.06,-18 1588.43,-18 1623.52,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1623.12,-21.5 1633.12,-18 1623.12,-14.5 1623.12,-21.5"/>
+<text text-anchor="middle" x="1572.3" y="-19.95" font-family="Arial" font-size="9.00">stores pipeline results</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: prompttools integration flow</p></div></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Running OpenAIChatExperiment with Config Keys like models and temperature</h2></div><div class="ch-body"><p>CLASSESANDMETHODS:</p>
-<p>OpenAIChatExperiment</p>
-<p>tocsv</p>
-<p>tojson</p>
-<p>tolorajson</p>
-<p>tomongodb</p>
-<p>run</p>
-<p>visualize</p>
+</svg><p class="diagram-caption">Figure: pipeshub-ai internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Building Modular Architecture with BaseConnector Class</h2></div><div class="ch-body"><p>The extracted information is based on the available text and follows the given rules.</p>
+<p>CLASSESANDMETHODS:</p>
 <p>CONFIGKEYS:</p>
-<p>SENTRYOPTOUT</p>
 <p>VERSIONNUMBERS:</p>
 <p>ARCHITECTURE:</p>
-<p>prompttools</p>
-<p>prompttools.</p>
-<p>prompttools.</p>
-<p>CODE_SNIPPETS:</p>
-<p>```</p>
-<p>from prompttools.</p>
-<p>messages = [</p>
-<p>[{"role": "user", "content": "Tell me a joke.</p>
-<p>[{"role": "user", "content": "Is 17077 a prime number?</p>
-<p>]</p>
-<p>models = ["gpt-3.</p><div class="code-label">Code Sample</div><div class="code-block">""")
-
-# execute the prompt
-out = program(description="A quick and nimble fighter.", valid_weapons=valid_weapons)
--------------------------------------------------------------------------------------------------------
-
-
-It starts generating some output and then stops and just outputs the following: 
-=============================================================
-The following is a character profile for an RPG game in JSON format.</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<p>Qdrant</p>
+<p>Neo4j</p>
+<p>ArangoDB</p>
+<p>Kafka</p>
+<p>Redis</p>
+<p>Celery</p>
+<p>Docling</p>
+<p>PyMuPDF</p>
+<p>OCRmyPDF</p>
+<p>pandas</p>
+<p>etcd3</p>
+<p>LangChain</p>
+<p>LangGraph</p>
+<p>FastAPI</p>
+<p>React</p>
+<p>TypeScript</p>
+<p>Material UI</p>
+<p>Zod</p>
+<p>React Hook Form</p>
+<p>CODESNIPPETS:</p>
+<p>LIMITATIONS:</p>
+<p>INSTALLSTEPS:</p>
+<p>Docker Compose</p>
+<p>USECASES:</p>
+<p>Enterprise search</p>
+<p>Workflow automation</p>
+<p>Natural language search</p>
+<p>Custom apps</p>
+<p>AI agents</p>
+<p>No-Code interface</p>
+<p>Knowledge Graphs</p>
+<p>Page Ranking</p>
+<p>Google Workspace</p>
+<p>Microsoft 365</p>
+<p>Slack</p>
+<p>Jira</p>
+<p>Confluence</p>
+<p>CLASSESANDMETHODS:</p>
+<p>CONFIGKEYS:</p>
+<p>VERSION_NUMBERS:</p>
+<p>ARCHITECTURE:</p>
+<p>Frontend</p>
+<p>Backend</p>
+<p>Knowledge</p></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Pipeshub-AI with Docker Compose</h2></div><p class="ch-summary">Deploy Pipeshub-AI</p><div class="ch-body"><p>To deploy Pipeshub-AI with Docker Compose, you need to understand the architecture of the system, which includes a Modular & Scalable Architecture, Knowledge Graph Backbone, and Enterprise-Grade Connectors. The system uses various technologies such as FastAPI, LangChain, LangGraph, Qdrant, Neo4j/ArangoDB, Kafka, Redis, Celery, Docling, PyMuPDF, OCRmyPDF, pandas, etcd3, React, TypeScript, Material UI, Zod, and React Hook Form. The BaseConnector class provides standard methods for syncing, streaming content, and handling cleanup. The system also includes a No-Code interface for natural language search and custom apps.</p>
+<p>The version numbers of the system include 0. 1. 0-alpha, 0. 1.</p>
+<p>2-alpha, and 0. 1. 3-alpha.</p>
+<p>The system has various use cases, including OneDrive Connector, Gmail Connector, Confluence Connector, Jira Connector, and Slack Connector. The OneDrive Connector syncs files and folders from Microsoft OneDrive, while the Gmail Connector syncs emails and attachments from Gmail. The Confluence Connector syncs pages and spaces from Atlassian Confluence, and the Jira Connector syncs issues and comments from Atlassian Jira. The Slack Connector syncs messages and files from Slack channels.</p>
+<p>The system uses API methods such as @router. post('/api/v1/record/buffer/convert') to convert records. The system also uses config keys such as INCLUDEPATHS to configure the system. The system has limitations, such as not supporting certain file types.</p>
+<p>The system uses a distributed event streaming platform, in-memory caching, messaging, and key-value configuration store, and a distributed task queue system.</p>
+<p>The system uses a graph database and a state graph for LLM workflows. The system also uses a vector similarity search engine. The system has a User Interface, Orchestration Layer, Message Broker, Connector Service, and a Document parsing and extraction toolkit. The system uses technologies such as Node.</p>
+<p>js, React, and TypeScript.</p>
+<p>The system has a MCP Server and a User Interface. The system uses a Frontend and Backend architecture. The system has a MCP & SDKs and a Connector Service. The system uses a Message Broker and a Graph database.</p>
+<p>The system has a distributed architecture and uses a distributed task queue system.</p>
+<p>The research does not provide implementation details for certain areas of the system. However, the system uses a No-Code interface for natural language search and custom apps. The system has a version number of 0. 1.</p>
+<p>3-alpha. The system uses a Modular & Scalable Architecture and a Knowledge Graph Backbone.</p>
+<p>The system has a limitation where it does not support certain file types. The system uses a distributed event streaming platform and a vector similarity search engine. The system has a User Interface and an Orchestration Layer. The system uses a Message Broker and a Connector Service.</p>
+<p>The system uses a graph database and a state graph for LLM workflows. The system has a MCP Server and a User Interface. The system uses a Frontend and Backend architecture. The system has a MCP & SDKs and a Connector Service.</p>
+<p>The callout is that the system uses a @router. post('/api/v1/record/buffer/convert') API method.</p>
+<p>@router.</p>
+<p>async def getrecordstream(request: Request, file: UploadFile = File(...</p>
+<p>convert record</p>
+<p>record = await convertrecord(file)</p>
+<p>stream record</p>
+<p>return StreamingResponse(record, mediatype='application/octet-stream')</p>
+<p>@router.</p>
+<p>async def getrecordstream(request: Request, file: UploadFile = File(...</p>
+<p>convert record</p>
+<p>record = await convertrecord(file)</p>
+<p>stream record</p>
+<p>return StreamingResponse(record, mediatype='application/octet-stream')</p>
+<p>@router.</p>
+<p>async def getrecord(request: Request) -> JSONResponse:</p>
+<p>get record</p>
+<p>record = await getrecordfromdatabase()</p>
+<p>return record</p>
+<p>return JSONResponse(content=record, mediatype='application/json')</p>
+<p>@router.</p>
+<p>async def createrecord(request: Request) -> JSONResponse:</p>
+<p>create record</p>
+<p>record = await createrecordindatabase(request)</p>
+<p>return record</p>
+<p>return JSONResponse(content=record, mediatype='application/json')</p>
+<p>@router.</p>
+<p>async def updaterecord(request: Request) -> JSONResponse:</p>
+<p>update record</p>
+<p>record = await updaterecordindatabase(request)</p>
+<p>return record</p>
+<p>return JSONResponse(content=record, mediatype='application/json')</p>
+<p>@router.</p>
+<p>async def deleterecord(request: Request) -> JSONResponse:</p>
+<p>delete record</p>
+<p>record = await deleterecordfromdatabase(request)</p>
+<p>return record</p>
+<p>return JSONResponse(content=record, mediatype='application/json')</p><div class="code-label">Code Sample</div><div class="code-block">@router.post('/api/v1/record/buffer/convert')
+async def get_record_stream(request: Request, file: UploadFile = File(...)) -&gt; StreamingResponse:
+    # convert record
+    record = await convert_record(file)
+    # stream record
+    return StreamingResponse(record, media_type='application/octet-stream')
+@router.get('/api/v1/record')
+async def get_record(request: Request) -&gt; JSONResponse:
+    # get record
+    record = await get_record_from_database()
+    # return record
+    return JSONResponse(content=record, media_type='application/json')
+@router.post('/api/v1/record')
+async def create_record(request: Request) -&gt; JSONResponse:
+    # create record
+    record = await create_record_in_database(request)
+    # return record
+    return JSONResponse(content=record, media_type='application/json')
+@router.put('/api/v1/record')
+async def update_record(request: Request) -&gt; JSONResponse:
+    # update record
+    record = await update_record_in_database(request)
+    # return record
+    return JSONResponse(content=record, media_type='application/json')
+@router.delete('/api/v1/record')
+async def delete_record(request: Request) -&gt; JSONResponse:
+    # delete record
+    record = await delete_record_from_database(request)
+    # return record
+    return JSONResponse(content=record, media_type='application/json')</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1175.03 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1384.22 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1171.03,-40 1171.03,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1380.22,-40 1380.22,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
@@ -139,202 +257,220 @@ The following is a character profile for an RPG game in JSON format.</div><div c
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="222.88" cy="-18" rx="58.78" ry="18"/>
-<text text-anchor="middle" x="222.88" y="-14.5" font-family="Arial" font-size="10.00">Prompt Generation</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="204.71" cy="-18" rx="46.6" ry="18"/>
+<text text-anchor="middle" x="204.71" y="-14.5" font-family="Arial" font-size="10.00">Task Planning</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M69.19,-18C92.45,-18 124.17,-18 152.68,-18"/>
-<polygon fill="#475569" stroke="#475569" points="152.32,-21.5 162.32,-18 152.32,-14.5 152.32,-21.5"/>
-<text text-anchor="middle" x="116.48" y="-19.95" font-family="Arial" font-size="9.00">initialize agent</text>
+<path fill="none" stroke="#475569" d="M69.08,-18C91.12,-18 120.5,-18 146.18,-18"/>
+<polygon fill="#475569" stroke="#475569" points="146.17,-21.5 156.17,-18 146.17,-14.5 146.17,-21.5"/>
+<text text-anchor="middle" x="113.48" y="-19.95" font-family="Arial" font-size="9.00">agent startup</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="441.69" cy="-18" rx="56.53" ry="18"/>
-<text text-anchor="middle" x="441.69" y="-14.5" font-family="Arial" font-size="10.00">Prompt Execution</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="403.52" cy="-18" rx="50.21" ry="18"/>
+<text text-anchor="middle" x="403.52" y="-14.5" font-family="Arial" font-size="10.00">Task Execution</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M281.98,-18C310.11,-18 344.04,-18 373.3,-18"/>
-<polygon fill="#475569" stroke="#475569" points="373.16,-21.5 383.16,-18 373.16,-14.5 373.16,-21.5"/>
-<text text-anchor="middle" x="333.41" y="-19.95" font-family="Arial" font-size="9.00">generate prompt</text>
+<path fill="none" stroke="#475569" d="M251.35,-18C278.22,-18 312.54,-18 341.68,-18"/>
+<polygon fill="#475569" stroke="#475569" points="341.47,-21.5 351.47,-18 341.47,-14.5 341.47,-21.5"/>
+<text text-anchor="middle" x="302.31" y="-19.95" font-family="Arial" font-size="9.00">task assignment</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="677.91,-36 585.22,-18 677.91,0 770.61,-18 677.91,-36"/>
-<text text-anchor="middle" x="677.91" y="-14.5" font-family="Arial" font-size="10.00">Response Evaluation</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="637.47,-36 554.98,-18 637.47,0 719.97,-18 637.47,-36"/>
+<text text-anchor="middle" x="637.47" y="-14.5" font-family="Arial" font-size="10.00">Pending Feedback</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M498.49,-18C520.32,-18 546.1,-18 571.18,-18"/>
-<polygon fill="#475569" stroke="#475569" points="571.12,-21.5 581.12,-18 571.12,-14.5 571.12,-21.5"/>
-<text text-anchor="middle" x="541.72" y="-19.95" font-family="Arial" font-size="9.00">send prompt</text>
+<path fill="none" stroke="#475569" d="M454,-18C479.48,-18 511.43,-18 541.45,-18"/>
+<polygon fill="#475569" stroke="#475569" points="541.33,-21.5 551.33,-18 541.33,-14.5 541.33,-21.5"/>
+<text text-anchor="middle" x="504.36" y="-19.95" font-family="Arial" font-size="9.00">task submission</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="930.93" cy="-18" rx="53.82" ry="18"/>
-<text text-anchor="middle" x="930.93" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="907.63" cy="-18" rx="73.66" ry="18"/>
+<text text-anchor="middle" x="907.63" y="-14.5" font-family="Arial" font-size="10.00">Post&#45;Execution Analysis</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M773.1,-18C803.91,-18 837.41,-18 865.51,-18"/>
-<polygon fill="#475569" stroke="#475569" points="865.28,-21.5 875.28,-18 865.28,-14.5 865.28,-21.5"/>
-<text text-anchor="middle" x="823.86" y="-19.95" font-family="Arial" font-size="9.00">receive response</text>
+<path fill="none" stroke="#475569" d="M722.22,-18C754.11,-18 790.45,-18 822.38,-18"/>
+<polygon fill="#475569" stroke="#475569" points="821.97,-21.5 831.97,-18 821.97,-14.5 821.97,-21.5"/>
+<text text-anchor="middle" x="776.97" y="-19.95" font-family="Arial" font-size="9.00">feedback reception</text>
 </g>
 <!-- N5 -->
 <g id="sm-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1125.39" cy="-18" rx="41.64" ry="18"/>
-<text text-anchor="middle" x="1125.39" y="-14.5" font-family="Arial" font-size="10.00">Task Failure</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1138.61" cy="-18" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="1138.61" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="sm-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M985.03,-18C1012.19,-18 1045.13,-18 1072.17,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1071.85,-21.5 1081.85,-18 1071.85,-14.5 1071.85,-21.5"/>
-<text text-anchor="middle" x="1034.25" y="-19.95" font-family="Arial" font-size="9.00">evaluate failure</text>
+<path fill="none" stroke="#475569" d="M981.71,-18C1011.05,-18 1044.57,-18 1073,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1072.92,-21.5 1082.92,-18 1072.92,-14.5 1072.92,-21.5"/>
+<text text-anchor="middle" x="1033.04" y="-19.95" font-family="Arial" font-size="9.00">result evaluation</text>
+</g>
+<!-- N6 -->
+<g id="sm-node7" class="node">
+<title>N6</title>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1334.58" cy="-18" rx="41.64" ry="18"/>
+<text text-anchor="middle" x="1334.58" y="-14.5" font-family="Arial" font-size="10.00">Task Failure</text>
+</g>
+<!-- N5&#45;&gt;N6 -->
+<g id="sm-edge6" class="edge">
+<title>N5&#45;&gt;N6</title>
+<path fill="none" stroke="#475569" d="M1192.87,-18C1220.45,-18 1253.98,-18 1281.4,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1281.23,-21.5 1291.23,-18 1281.23,-14.5 1281.23,-21.5"/>
+<text text-anchor="middle" x="1242.68" y="-19.95" font-family="Arial" font-size="9.00">task termination</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: prompttools lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating OpenAIChatExperiment with Vector Databases for Real-World Applications</h2></div><p class="ch-summary">Integrate OpenAIChatExperiment with vector databases</p><div class="ch-body"><p>The OpenAIChatExperiment class in prompttools is designed to test and experiment with prompts, LLMs, and vector databases. The class has methods like run and visualize to execute and display the results of the experiment. To integrate OpenAIChatExperiment with vector databases, we need to use the tocsv, tojson, and tomongodb methods to store the results in a database. The SENTRYOPTOUT config key can be used to opt out of error tracking.</p>
-<p>The OpenAIChatExperiment class supports models like gpt-3. 5-turbo and gpt-4.</p>
-<p>The vector databases supported by prompttools include Weaviate, Qdrant, LanceDB, and Pinecone. These databases can be used to store and query the results of the OpenAIChatExperiment. The tolorajson method can be used to store the results in a format compatible with LLaMA. Cpp.</p>
-<p>The OpenAIChatExperiment class can be used to evaluate the retrieval accuracy of vector databases.</p>
-<p>The OpenAIChatExperiment class has a limitation that it does not support LlamaCpp in the hosted version. The class also has a limitation that it only supports the gpt2 model in the HuggingFaceHubExperiment. The class has methods like tocsv and tojson to store the results in a file. The results can be visualized using the visualize method.</p>
-<p>The prompttools library provides a playground to evaluate LLMs and vector databases using a local interface. The playground can be run using the streamlit run command. The library also provides a notebook to run the OpenAIChatExperiment using the jupyter notebook command. The notebook can be installed using the pip install notebook command.</p>
-<p>The OpenAIChatExperiment class can be used to test and experiment with prompts, LLMs, and vector databases. The class has methods like run and visualize to execute and display the results of the experiment. The class supports models like gpt-3. 5-turbo and gpt-4.</p>
-<p>The class can be used to evaluate the retrieval accuracy of vector databases.</p>
-<p>The prompttools library has a limitation that it does not support LanceDB in the hosted version. The library also has a limitation that it only supports the gpt2 model in the HuggingFaceHubExperiment. The library has methods like tocsv and tojson to store the results in a file. The results can be visualized using the visualize method.</p>
-<p>The OpenAIChatExperiment class can be used to integrate with other libraries like LangChain and MindsDB. The class has methods like tocsv and tojson to store the results in a file. The results can be visualized using the visualize method. The class supports models like gpt-3.</p>
-<p>5-turbo and gpt-4.</p>
-<p>The prompttools library provides a way to experiment with prompts, LLMs, and vector databases using a local interface. The library has a limitation that it does not support LlamaCpp in the hosted version. The library has methods like tocsv and tojson to store the results in a file. The results can be visualized using the visualize method.</p>
-<p>The OpenAIChatExperiment class has a callout that it supports the tolorajson method to store the results in a format compatible with LLaMA. Cpp.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: pipeshub-ai lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating AI Agents with LangChain and FastAPI</h2></div><p class="ch-summary">Integrate AI agents</p><div class="ch-body"><p>The research highlights the importance of integrating AI agents with LangChain and FastAPI for building custom apps and workflow automation. The LangChain library provides a flexible framework for creating AI-powered workflows, while FastAPI offers a high-performance API framework for building scalable applications. To integrate AI agents, developers can use the Agent. addtask() method to add tasks to the workflow, and the workflow.</p>
+<p>run() method to execute the workflow. The config. maxretries config key can be used to specify the maximum number of retries for failed tasks. In version 0.</p>
+<p>1. 3-alpha, the LangChain library introduced support for Qdrant and Neo4j/ArangoDB databases, which can be used to store and retrieve workflow data.</p>
+<p>The Qdrant database provides a scalable and efficient way to store and retrieve vector embeddings, while the Neo4j/ArangoDB databases provide a flexible way to store and retrieve graph data. The Kafka message broker can be used to handle workflow events and notifications, and the Redis cache can be used to improve workflow performance. However, the research notes that the Unauthenticated Arbitrary File Upload Path Traversal vulnerability in PipesHub can be exploited by remote attackers to write or overwrite files on the connector container. This limitation can be mitigated by using secure file upload protocols and validating user input.</p>
+<p>The research also highlights the importance of using secure protocols for file uploads and downloads. The @router. post(/api/v1/record/buffer/convert) API method can be used to convert files to different formats, and the os. path.</p>
+<p>join() function can be used to construct file paths. However, the research notes that the PipesHub API does not support PDF conversion for files larger than 100MB, which can be a limitation for large-scale workflows. In version 44. 0.</p>
+<p>1, the PipesHub API introduced support for Azure Blob and Azure Files, which can be used to store and retrieve large files.</p>
+<p>The research also discusses the use of No-Code interfaces for building custom apps and workflows. The React and TypeScript libraries can be used to build user interfaces, and the Material UI library can be used to build responsive and customizable UI components. The Zod library can be used to validate user input, and the React Hook Form library can be used to handle form submissions. However, the research notes that the PipesHub API does not support real-time updates for No-Code interfaces, which can be a limitation for real-time applications.</p>
+<p>The research highlights the importance of monitoring and logging workflow performance. The etcd3 library can be used to store and retrieve workflow metadata, and the Celery library can be used to handle workflow tasks and notifications. The Docling library can be used to generate documentation for workflows, and the PyMuPDF library can be used to handle PDF files. However, the research notes that the PipesHub API does not support logging for workflow tasks, which can be a limitation for debugging and troubleshooting.</p>
+<p>The research also discusses the use of AI agents for natural language search and workflow automation. The LangGraph library can be used to build knowledge graphs, and the FastAPI library can be used to build scalable APIs. The Qdrant library can be used to store and retrieve vector embeddings, and the Neo4j/ArangoDB libraries can be used to store and retrieve graph data. However, the research notes that the PipesHub API does not support natural language search for workflows, which can be a limitation for complex workflows.</p>
+<p>The research highlights the importance of security and authentication for workflow automation. The OAuth protocol can be used to authenticate users, and the JWT token can be used to authorize access to workflows. The PipesHub API supports authentication and authorization for workflows, but the research notes that the Unauthenticated Arbitrary File Upload Path Traversal vulnerability can be exploited by remote attackers to bypass authentication and authorization. This limitation can be mitigated by using secure file upload protocols and validating user input.</p>
+<p>The research concludes that integrating AI agents with LangChain and FastAPI can be a powerful way to build custom apps and workflow automation. However, the research notes that there are several limitations and vulnerabilities that need to be addressed, including the Unauthenticated Arbitrary File Upload Path Traversal vulnerability and the lack of support for real-time updates and logging. By using secure protocols and validating user input, developers can build scalable and secure workflows that integrate AI agents with LangChain and FastAPI. The callout is that the PipesHub API does not support PDF conversion for files larger than 100MB.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 129.17 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 227.83 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 125.17,-535 125.17,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 223.83,-535 223.83,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="60.58" cy="-513" rx="28.56" ry="18"/>
-<text text-anchor="middle" x="60.58" y="-509.5" font-family="Arial" font-size="10.00">Prompt</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="109.92" cy="-513" rx="66.9" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="60.58" cy="-430.5" rx="46.15" ry="18"/>
-<text text-anchor="middle" x="60.58" y="-427" font-family="Arial" font-size="10.00">TextTokenizer</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-430.5" rx="54.27" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-427" font-family="Arial" font-size="10.00">NLPTokenization</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M60.58,-494.53C60.58,-484.51 60.58,-471.68 60.58,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="64.08,-460.45 60.58,-450.45 57.08,-460.45 64.08,-460.45"/>
-<text text-anchor="middle" x="77.83" y="-468.45" font-family="Arial" font-size="9.00">tokenize</text>
+<path fill="none" stroke="#475569" d="M109.92,-494.53C109.92,-484.51 109.92,-471.68 109.92,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-460.45 109.92,-450.45 106.42,-460.45 113.42,-460.45"/>
+<text text-anchor="middle" x="139.92" y="-468.45" font-family="Arial" font-size="9.00">lexicalanalysis</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="60.58" cy="-348" rx="60.58" ry="18"/>
-<text text-anchor="middle" x="60.58" y="-344.5" font-family="Arial" font-size="10.00">EmbeddingEncoder</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-348" rx="67.35" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-344.5" font-family="Arial" font-size="10.00">EmbeddingGeneration</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M60.58,-412.03C60.58,-402.01 60.58,-389.18 60.58,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="64.08,-377.95 60.58,-367.95 57.08,-377.95 64.08,-377.95"/>
-<text text-anchor="middle" x="75.96" y="-385.95" font-family="Arial" font-size="9.00">encode</text>
+<path fill="none" stroke="#475569" d="M109.92,-412.03C109.92,-402.01 109.92,-389.18 109.92,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-377.95 109.92,-367.95 106.42,-377.95 113.42,-377.95"/>
+<text text-anchor="middle" x="145.17" y="-385.95" font-family="Arial" font-size="9.00">semanticanalysis</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="60.58,-283.5 6.16,-265.5 60.58,-247.5 115.01,-265.5 60.58,-283.5"/>
-<text text-anchor="middle" x="60.58" y="-262" font-family="Arial" font-size="10.00">FaissIndex</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="109.92,-283.5 0,-265.5 109.92,-247.5 219.83,-265.5 109.92,-283.5"/>
+<text text-anchor="middle" x="109.92" y="-262" font-family="Arial" font-size="10.00">KnowledgeGraphRetrieval</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M60.58,-329.53C60.58,-319.51 60.58,-306.68 60.58,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="64.08,-295.45 60.58,-285.45 57.08,-295.45 64.08,-295.45"/>
-<text text-anchor="middle" x="74.46" y="-303.45" font-family="Arial" font-size="9.00">search</text>
+<path fill="none" stroke="#475569" d="M109.92,-329.53C109.92,-319.51 109.92,-306.68 109.92,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-295.45 109.92,-285.45 106.42,-295.45 113.42,-295.45"/>
+<text text-anchor="middle" x="152.29" y="-303.45" font-family="Arial" font-size="9.00">entitydisambiguation</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="60.58" cy="-183" rx="33.52" ry="18"/>
-<text text-anchor="middle" x="60.58" y="-179.5" font-family="Arial" font-size="10.00">Reranker</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-183" rx="79.53" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-179.5" font-family="Arial" font-size="10.00">SemanticSearchReranking</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M60.58,-247.03C60.58,-237.01 60.58,-224.18 60.58,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="64.08,-212.95 60.58,-202.95 57.08,-212.95 64.08,-212.95"/>
-<text text-anchor="middle" x="75.96" y="-220.95" font-family="Arial" font-size="9.00">rescore</text>
+<path fill="none" stroke="#475569" d="M109.92,-247.03C109.92,-237.01 109.92,-224.18 109.92,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-212.95 109.92,-202.95 106.42,-212.95 113.42,-212.95"/>
+<text text-anchor="middle" x="145.54" y="-220.95" font-family="Arial" font-size="9.00">relevanceranking</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="60.58" cy="-100.5" rx="46.6" ry="18"/>
-<text text-anchor="middle" x="60.58" y="-97" font-family="Arial" font-size="10.00">TextGenerator</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-100.5" rx="49.31" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M60.58,-164.53C60.58,-154.51 60.58,-141.68 60.58,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="64.08,-130.45 60.58,-120.45 57.08,-130.45 64.08,-130.45"/>
-<text text-anchor="middle" x="83.08" y="-138.45" font-family="Arial" font-size="9.00">regenerate</text>
+<path fill="none" stroke="#475569" d="M109.92,-164.53C109.92,-154.51 109.92,-141.68 109.92,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-130.45 109.92,-120.45 106.42,-130.45 113.42,-130.45"/>
+<text text-anchor="middle" x="153.04" y="-138.45" font-family="Arial" font-size="9.00">contextualgeneration</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="60.58" cy="-18" rx="55.17" ry="18"/>
-<text text-anchor="middle" x="60.58" y="-14.5" font-family="Arial" font-size="10.00">ResponseStream</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="109.92" cy="-18" rx="72.31" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-14.5" font-family="Arial" font-size="10.00">RealtimeDataStreaming</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M60.58,-82.03C60.58,-72.01 60.58,-59.18 60.58,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="64.08,-47.95 60.58,-37.95 57.08,-47.95 64.08,-47.95"/>
-<text text-anchor="middle" x="85.33" y="-55.95" font-family="Arial" font-size="9.00">postprocess</text>
+<path fill="none" stroke="#475569" d="M109.92,-82.03C109.92,-72.01 109.92,-59.18 109.92,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-47.95 109.92,-37.95 106.42,-47.95 113.42,-47.95"/>
+<text text-anchor="middle" x="137.29" y="-55.95" font-family="Arial" font-size="9.00">qualitycontrol</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: prompttools end-to-end processing pipeline</p></div><div class="sec-heading">prompttools — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Installation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Ease of Use</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Documentation Quality</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:70%"></span></span></span><span class="bar-value">70%</span></div><div class="bar-row"><span class="bar-label">Customization Options</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:75%"></span></span></span><span class="bar-value">75%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Common Production Issues with SENTRY_OPT_OUT and Error Handling</h2></div><p class="ch-summary">Error handling in production</p><div class="ch-body"><p>The research highlights the importance of error handling in production environments, particularly when working with libraries like prompttools. The SENTRYOPTOUT config key plays a crucial role in this process, allowing developers to opt-out of certain error tracking features. When using the OpenAIChatExperiment class, it is essential to handle potential errors that may arise during the run or visualize methods. The tocsv, tojson, and tolorajson methods can also be affected by errors, and proper handling is necessary to ensure data integrity.</p>
-<p>The research notes that the hosted version does not support LlamaCpp, which can lead to errors if not properly accounted for.</p>
-<p>The OpenAIChatExperiment class provides a range of methods for experimenting with prompts and LLMs, including the run and visualize methods. These methods can be affected by errors, and proper handling is necessary to ensure that experiments are conducted successfully. The research highlights the importance of using try-except blocks to catch and handle potential errors. The models, messages, and temperature config keys can also impact error handling, and developers should be aware of their effects.</p>
-<p>The research does not provide specific details on error handling for the tomongodb method, which may require additional consideration.</p>
-<p>The prompttools library provides a range of tools for testing and experimenting with prompts, LLMs, and vector databases. The OpenAIChatExperiment class is a key component of this library, and its methods can be affected by errors. The research notes that the library does not support LlamaCpp, which can lead to errors if not properly accounted for. The SENTRYOPTOUT config key can be used to opt-out of certain error tracking features, but this may not be sufficient to handle all potential errors.</p>
-<p>Developers should be aware of the potential limitations of the library and take steps to ensure that their code is robust and error-free.</p>
-<p>The research highlights the importance of using familiar interfaces like code, notebooks, and a local playground to evaluate LLMs and vector databases. The prompttools library provides a range of tools for this purpose, including the OpenAIChatExperiment class. However, the library does not provide specific guidance on error handling for these interfaces, which may require additional consideration. The models, messages, and temperature config keys can impact error handling, and developers should be aware of their effects.</p>
-<p>The research notes that the hosted version does not support LlamaCpp, which can lead to errors if not properly accounted for.</p>
-<p>The prompttools library provides a range of config keys that can impact error handling, including the SENTRYOPTOUT key. This key allows developers to opt-out of certain error tracking features, but it may not be sufficient to handle all potential errors. The models, messages, and temperature config keys can also impact error handling, and developers should be aware of their effects. The research does not provide specific details on error handling for the tocsv, tojson, and tolorajson methods, which may require additional consideration.</p>
-<p>The library does not support LlamaCpp, which can lead to errors if not properly accounted for.</p>
-<p>The research notes that the prompttools library does not provide specific guidance on error handling for the tomongodb method. This method can be affected by errors, and proper handling is necessary to ensure data integrity. The SENTRYOPTOUT config key can be used to opt-out of certain error tracking features, but this may not be sufficient to handle all potential errors. The models, messages, and temperature config keys can impact error handling, and developers should be aware of their effects.</p>
-<p>The library does not support LlamaCpp, which can lead to errors if not properly accounted for.</p>
-<p>The prompttools library provides a range of tools for testing and experimenting with prompts, LLMs, and vector databases. However, the library does not provide specific guidance on error handling for these tools, which may require additional consideration. The OpenAIChatExperiment class provides a range of methods for experimenting with prompts and LLMs, including the run and visualize methods. These methods can be affected by errors, and proper handling is necessary to ensure that experiments are conducted successfully.</p>
-<p>The research highlights the importance of using try-except blocks to catch and handle potential errors.</p>
-<p>The research highlights the importance of error handling in production environments, particularly when working with libraries like prompttools. The SENTRYOPTOUT config key plays a crucial role in this process, allowing developers to opt-out of certain error tracking features. The prompttools library provides a range of tools for testing and experimenting with prompts, LLMs, and vector databases, but it does not provide specific guidance on error handling for these tools. The OpenAIChatExperiment class provides a range of methods for experimenting with prompts and LLMs, including the run and visualize methods, which can be affected by errors.</p>
-<p>The library does not support LlamaCpp, which can lead to errors if not properly accounted for.</p><div class="sec-heading">prompttools — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>LLM Support</td><td>Multiple models (e.g., gpt-3.5-turbo, gpt-4)</td><td>Supports various LLMs for experimentation</td></tr><tr><td>Vector Database Integration</td><td>Yes</td><td>Allows for evaluation of retrieval accuracy</td></tr><tr><td>Interface Options</td><td>Code, Notebooks, Local Playground</td><td>Caters to different user preferences</td></tr><tr><td>Output Formats</td><td>CSV, JSON, Lora JSON, MongoDB</td><td>Supports various output formats for data analysis</td></tr><tr><td>Limitations</td><td>Hosted version does not support LlamaCpp</td><td>Important consideration for specific use cases</td></tr><tr><td>Installation Methods</td><td>pip, git clone, streamlit</td><td>Offers multiple installation methods for flexibility</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance and Future-Proofing with to_csv, to_json, and to_lora_json Methods</h2></div><p class="ch-summary">Optimize performance</p><div class="ch-body"><p>The tocsv, tojson, and tolorajson methods in prompttools are used for data export and optimization. These methods allow for efficient data handling and future-proofing. The tocsv method is useful for exporting data to a comma-separated values file, while the tojson method exports data to a JSON file. The tolorajson method is specifically designed for exporting data to a JSON file compatible with the LLaMA model.</p>
-<p>When using these methods, it is essential to consider the potential limitations, such as the lack of server forwarding for LLM calls, which can lead to indirect and direct prompt injection risks. The prompttools library version 0. 0. 45 provides these methods, but it is crucial to be aware of the potential bugs and limitations, including the issue with HuggingFaceHubExperiment, which is unable to use models other than gpt2.</p>
-<p>The Experiment class in prompttools provides a framework for designing and running experiments. This class includes methods such as computesimilarityagainstmodel and autoevalscoring, which are useful for evaluating the performance of LLMs. However, the library does not provide direct support for server forwarding, which can lead to security risks. To mitigate these risks, it is recommended to use an intermediary server or a secure connection.</p>
-<p>The autoevalbinaryscoring method is also available, which can be used for binary classification tasks. The model class provides a basic structure for building and training LLMs, but it is limited by the lack of support for more advanced models.</p>
-<p>The tomongodb method is another option for data export, which allows for storing data in a MongoDB database. This method provides a flexible way to store and retrieve data, but it requires a MongoDB instance to be set up and configured. The SENTRYOPTOUT config key can be used to disable Sentry error tracking, which can be useful for development and testing purposes. However, it is essential to be aware of the potential limitations and bugs, such as the AttributeError: module 'openai' has no attribute 'types', which can occur when using certain OpenAI models.</p>
-<p>The prompttools library provides a range of tools and methods for working with LLMs, including the OpenAI Chat Experiment Example and the LLaMA model. These tools can be used for a variety of tasks, such as text generation, sentiment analysis, and language translation. However, the library is not without its limitations, including the lack of support for more advanced models and the potential security risks associated with indirect and direct prompt injection. The GoogleVertexChatExperiment.</p>
-<p>ipynb notebook is also available, but it does not work due to certain limitations.</p>
-<p>The use of prompttools requires careful consideration of the potential limitations and risks. The library provides a range of tools and methods for working with LLMs, but it is essential to be aware of the potential bugs and limitations. The tocsv, tojson, and tolorajson methods are useful for data export and optimization, but they must be used in conjunction with other security measures to mitigate the risks associated with indirect and direct prompt injection. The library version 0.</p>
-<p>0. 45 provides a range of features and tools, but it is crucial to stay up-to-date with the latest developments and updates to ensure optimal performance and security.</p>
-<p>The callout is that the library has a limitation where the GoogleVertexChatExperiment. ipynb notebook does not work. The code_sample is empty. The library provides a range of tools and methods for working with LLMs, including the OpenAI Chat Experiment Example and the LLaMA model.</p>
-<p>However, the library is not without its limitations, including the lack of support for more advanced models and the potential security risks associated with indirect and direct prompt injection. The use of prompttools requires careful consideration of the potential limitations and risks, as well as the implementation of additional security measures to mitigate these risks.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Introducing PromptTools: Simplify Language Model ...</div><a class="video-url" href="https://www.youtube.com/watch?v=lQeLEpTBYAI">https://www.youtube.com/watch?v=lQeLEpTBYAI</a></div></div></section>
-<div class="book-footer"><strong>prompttools: Definitive Guide</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 27, 2026</div>
+</svg><p class="diagram-caption">Figure: pipeshub-ai end-to-end processing pipeline</p></div><div class="sec-heading">pipeshub-ai — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Modular Architecture</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Knowledge Graph Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Natural Language Search</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Custom App Development</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">AI Agent Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Workflow Automation with Celery and Redis</h2></div><p class="ch-summary">Celery and Redis issues</p><div class="ch-body"><p>The research does not provide implementation details for this area. However, when using Celery and Redis for workflow automation, it's essential to monitor task queues and worker nodes. The BaseConnector class provides standard methods for syncing, streaming content, and handling cleanup. The distributed task queue system can be configured using various config keys.</p>
+<p>The vector similarity search engine can be used to optimize workflow automation.</p>
+<p>When dealing with workflow automation, it's crucial to handle failures and retries properly. The Agent. addtask() method can be used to add tasks to the queue, while the workflow. run() method can be used to run the workflow.</p>
+<p>However, the research does not provide information on how to handle failures and retries. The config. maxretries config key can be used to configure the maximum number of retries. The research does not provide information on the performance metrics of the workflow automation system.</p>
+<p>The research mentions the use of Kafka, Redis, and Celery for workflow automation. However, it does not provide information on how to troubleshoot issues with these systems. The Kafka - sync-events topic and Kafka - record-events topic can be used to monitor and troubleshoot issues with the workflow automation system. The research does not provide information on the limitations of the workflow automation system.</p>
+<p>The Node. js Server and KB Controllers can be used to handle workflow automation tasks.</p>
+<p>The research mentions the use of a No-Code interface for custom apps and AI agents. However, it does not provide information on how to troubleshoot issues with this interface. The research does not provide information on the technical details of the No-Code interface. The User Interface and Orchestration Layer can be used to handle custom apps and AI agents.</p>
+<p>The research does not provide information on the performance metrics of the No-Code interface.</p>
+<p>The research mentions the use of Qdrant, Neo4j, and ArangoDB for the knowledge graph backbone. However, it does not provide information on how to troubleshoot issues with these systems. The research does not provide information on the limitations of the knowledge graph backbone. The Graph database and State graph for LLM workflows can be used to optimize the knowledge graph backbone.</p>
+<p>The research does not provide information on the performance metrics of the knowledge graph backbone.</p>
+<p>The research mentions the use of Docker Compose for installation. However, it does not provide information on how to troubleshoot issues with the installation process. The research does not provide information on the technical details of the installation process. The research does not provide information on the limitations of the installation process.</p>
+<p>The MCP Server and User Interface can be used to handle installation tasks.</p>
+<p>The research does not provide information on the technical details of the workflow automation system. The research does not provide information on the performance metrics of the workflow automation system. The research does not provide information on the limitations of the workflow automation system. The research does not provide information on how to troubleshoot issues with the workflow automation system.</p>
+<p>The callout is: Celery has 5 worker nodes.</p><div class="sec-heading">pipeshub-ai — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Search Engine</td><td>Qdrant, Neo4j, ArangoDB</td><td>Supports multiple search engines for flexible data retrieval</td></tr><tr><td>Data Processing</td><td>Kafka, Celery, pandas</td><td>Utilizes distributed processing and data analysis libraries for efficient data handling</td></tr><tr><td>Frontend Framework</td><td>React, Material UI</td><td>Employs popular frontend frameworks for intuitive user interface design</td></tr><tr><td>Backend Framework</td><td>FastAPI, TypeScript</td><td>Leverages modern backend frameworks for robust and scalable server-side development</td></tr><tr><td>Integration</td><td>Google Workspace, Microsoft 365, Slack, Jira, Confluence</td><td>Supports integration with various third-party services for seamless workflow automation</td></tr><tr><td>No-Code Interface</td><td>Docling, PyMuPDF, OCRmyPDF</td><td>Provides a no-code interface for easy document processing and management</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Qdrant and ArangoDB</h2></div><p class="ch-summary">Optimize performance</p><div class="ch-body"><p>To optimize performance with Qdrant and ArangoDB, we need to consider the architecture of the system, including the backend/python and backend/nodejs/apps components. The config keys, such as 'to' and 'file', play a crucial role in determining the performance of the system. For instance, the 'to' config key is used in the CLASSNAME. METHODNAME(PARAMETERS) method to specify the output format, while the 'file' config key is used to specify the input file.</p>
+<p>The version numbers, such as 44. 0. 1 and 46. 0.</p>
+<p>6, also impact the performance of the system. The system's performance can be limited by the 500 Internal Server Error, which occurs when the PDF conversion fails.</p>
+<p>The USECASES, such as enterprise search and workflow automation, natural language search, and custom apps and AI agents using a No-Code interface, require efficient performance. The INSTALLSTEPS, including connecting PipesHub to any MCP-compatible client, are crucial for optimizing performance. The system's performance can be measured by the time it takes to complete a task, such as the time it takes to convert a file from one format to another. The CLASSNAME.</p>
+<p>METHODNAME(PARAMETERS) method, such as CLASSNAME. METHODNAME(PARAMETERS), can be used to optimize performance by reducing the number of requests made to the system.</p>
+<p>The system's architecture, including the /api/v1 and /backend/python components, plays a crucial role in determining its performance. The CODESNIPPETS, such as the curl command, can be used to test the system's performance. The LIMITATIONS, such as the PDF conversion failed - output file not found error, can impact the system's performance. The system's performance can be optimized by using the correct config keys and version numbers.</p>
+<p>The Agent. addtask() method can be used to add tasks to the system, while the workflow. run() method can be used to run workflows.</p>
+<p>The system's performance can be limited by the number of requests made to the system. The config. maxretries config key can be used to specify the maximum number of retries allowed. The system's performance can be measured by the number of successful requests made to the system.</p>
+<p>The CLASSNAME. METHODNAME(PARAMETERS) method, such as CLASSNAME. METHODNAME(PARAMETERS), can be used to optimize performance by reducing the number of requests made to the system. The version numbers, such as 0.</p>
+<p>1. 0 and 0. 2. 0, can impact the system's performance.</p>
+<p>The system's performance can be optimized by using the correct version numbers and config keys. The INSTALLSTEPS, including connecting PipesHub to any MCP-compatible client, are crucial for optimizing performance. The system's performance can be measured by the time it takes to complete a task, such as the time it takes to convert a file from one format to another. The CLASSNAME.</p>
+<p>METHODNAME(PARAMETERS) method, such as CLASSNAME. METHODNAME(PARAMETERS), can be used to optimize performance by reducing the number of requests made to the system. The LIMITATIONS, such as the 500 Internal Server Error, can impact the system's performance.</p>
+<p>The system's architecture, including the /api/v1 and /backend/python components, plays a crucial role in determining its performance. The CODESNIPPETS, such as the curl command, can be used to test the system's performance. The system's performance can be optimized by using the correct config keys and version numbers. The Agent.</p>
+<p>addtask() method can be used to add tasks to the system, while the workflow. run() method can be used to run workflows. The system's performance can be limited by the number of requests made to the system.</p>
+<p>The system's performance can be measured by the number of successful requests made to the system. The CLASSNAME. METHODNAME(PARAMETERS) method, such as CLASSNAME. METHODNAME(PARAMETERS), can be used to optimize performance by reducing the number of requests made to the system.</p>
+<p>The version numbers, such as 3. 9. 1 and 3. 9.</p>
+<p>4, can impact the system's performance. The system's performance can be optimized by using the correct version numbers and config keys. The INSTALLSTEPS, including connecting PipesHub to any MCP-compatible client, are crucial for optimizing performance.</p>
+<p>The system's performance can be limited by the PDF conversion failed - output file not found error. The config. keys, such as 'to' and 'file', play a crucial role in determining the performance of the system. The system's performance can be optimized by using the correct config keys and version numbers.</p>
+<p>The CLASSNAME. METHODNAME(PARAMETERS) method, such as CLASSNAME. METHOD_NAME(PARAMETERS), can be used to optimize performance by reducing the number of requests made to the system. The system's performance can be measured by the time it takes to complete a task, such as the time it takes to convert a file from one format to another.</p></div></section>
+<div class="book-footer"><strong>pipeshub-ai: Black Book</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 29, 2026</div>
 </body>
 </html>
