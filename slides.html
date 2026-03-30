@@ -2,475 +2,380 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>pipeshub-ai: Black Book</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "pipeshub-ai: Black Book"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>parallax: Production Manual</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "parallax: Production Manual"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://repository-images.githubusercontent.com/944080744/f6ced8bc-f508-425f-a438-df7aeeaa4fce" alt="pipeshub-ai logo" onerror="this.style.display='none'"/><div class="cover-lib-name">pipeshub-ai</div><div class="cover-suffix">Black Book</div><div class="cover-rule"></div><p class="cover-subtitle">Introducing pipeshub ai</p><p class="cover-desc">The PipesHub System Architecture is designed to support enterprise search, workflow automation, and natural language search.  The architecture consists of a Knowledge Graph Backbone, which provides a scalable and modular framework for integrating various data sources.  The system also includes a Page Ranking component, which enables efficient search and retrieval of relevant information.</p><div class="cover-tagline">AI made easy</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 29, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Pipeshub-ai was built to solve enterprise search and workflow automation problems.</div><div class="intro-body"><p>Pipeshub-ai is a technical system built around a modular and scalable architecture, incorporating various components such as a knowledge graph backbone, enterprise-grade connectors, and a vector similarity search engine. The system's architecture is designed to support a range of use cases, including enterprise search, workflow automation, natural language search, and custom apps. The use of a graph database, distributed event streaming platform, and in-memory caching, messaging, and key-value configuration store enables the system to efficiently handle complex data and workflows.</p>
-<p>The system's design is centered around a modular and scalable architecture, allowing for the integration of various components and services. The frontend, backend, and orchestration layer work together to provide a seamless user experience, while the message broker, connector service, and graph database enable efficient data processing and storage. The system also incorporates a state graph for LLM workflows, a vector similarity search engine, and a distributed task queue system, which provide advanced functionality for workflow automation and natural language search.</p>
-<p>The technical implementation of pipeshub-ai is characterized by the use of specific technologies and design decisions. For example, the system utilizes a BaseConnector class with standard methods for syncing, streaming content, and handling cleanup, which provides a foundation for integrating various data sources and services. The system also employs a range of technologies, including Qdrant, Neo4j, ArangoDB, Kafka, Redis, Celery, Docling, PyMuPDF, OCRmyPDF, pandas, etcd3, LangChain, LangGraph, FastAPI, React, TypeScript, Material UI, Zod, and React Hook Form, which provide a robust and scalable infrastructure for the system.</p>
-<p>The target audience for pipeshub-ai includes developers, IT professionals, and business users who require a flexible and scalable platform for building custom apps, automating workflows, and implementing natural language search and enterprise search capabilities. The system's No-Code interface and modular architecture make it accessible to a wide range of users, from non-technical business users to experienced developers. The system's support for various use cases, including Google Workspace, Microsoft 365, Slack, Jira, and Confluence, also makes it a versatile tool for integrating with existing workflows and systems.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/pipeshub-ai/pipeshub-ai">https://github.com/pipeshub-ai/pipeshub-ai</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking Enterprise Search with Knowledge Graphs</h2></div><p class="ch-summary">Enterprise search with knowledge graphs</p><div class="ch-body"><p>The PipesHub System Architecture is designed to support enterprise search, workflow automation, and natural language search. The architecture consists of a Knowledge Graph Backbone, which provides a scalable and modular framework for integrating various data sources. The system also includes a Page Ranking component, which enables efficient search and retrieval of relevant information. The use of knowledge graphs allows for more accurate and context-aware search results.</p>
-<p>The system can be integrated with various third-party applications, such as Google Workspace, Microsoft 365, and Slack.</p>
-<p>The Modular & Scalable Architecture of PipesHub allows for easy integration of new components and services, making it a flexible and adaptable solution for enterprise search and workflow automation. The system includes a range of connectors for integrating with different data sources, including databases, file systems, and cloud storage services. The connectors are built using a standard set of methods, including syncing, streaming content, and handling cleanup. The BaseConnector class provides a foundation for building custom connectors.</p>
-<p>The system also includes a range of APIs, including the Qdrant API, Neo4j API, and ArangoDB API, which provide access to the knowledge graph and other system components.</p>
-<p>The PipesHub system includes a range of tools and services for building custom apps and AI agents, including a No-Code interface, which allows users to create and deploy custom applications without requiring extensive programming knowledge. The system also includes a range of pre-built connectors and APIs, which can be used to integrate with various third-party services, such as Jira and Confluence. The system's architecture is designed to support a wide range of use cases, including enterprise search, workflow automation, and natural language search. The system's scalability and flexibility make it a suitable solution for large and complex enterprises.</p>
-<p>The PipesHub system includes a range of technologies, including Qdrant, Neo4j, ArangoDB, Kafka, Redis, Celery, Docling, PyMuPDF, OCRmyPDF, pandas, etcd3, LangChain, LangGraph, FastAPI, React, TypeScript, Material UI, Zod, and React Hook Form. These technologies provide a range of functionalities, including data storage, processing, and visualization, as well as machine learning and natural language processing capabilities. The system's architecture is designed to support a wide range of data sources and formats, including structured and unstructured data. The system's use of knowledge graphs and page ranking algorithms enables efficient and accurate search and retrieval of relevant information.</p>
-<p>The PipesHub system has a number of limitations, including the requirement for significant computational resources and expertise in order to deploy and manage the system. The system's complexity and scalability requirements can make it challenging to implement and maintain, particularly for smaller organizations. Additionally, the system's reliance on third-party services and APIs can introduce dependencies and potential points of failure. The system's performance and scalability can be affected by the quality and availability of the underlying data sources and services.</p>
-<p>The PipesHub system can be installed using Docker Compose, which provides a simple and efficient way to deploy and manage the system. The system's architecture is designed to support a wide range of deployment scenarios, including on-premises, cloud, and hybrid environments. The system's use of containerization and orchestration technologies, such as Kubernetes, enables efficient and scalable deployment and management of the system. The system's documentation and support resources, including the PipesHub GitHub repository, provide a range of information and tools for deploying and managing the system.</p>
-<p>The PipesHub system provides a range of benefits, including improved search and retrieval capabilities, increased efficiency and productivity, and enhanced decision-making capabilities. The system's use of knowledge graphs and page ranking algorithms enables more accurate and context-aware search results, which can help to improve the quality and relevance of search results. The system's scalability and flexibility make it a suitable solution for large and complex enterprises, and its range of APIs and connectors provide a range of opportunities for customization and integration with other systems and services.</p>
-<p>The PipesHub system's performance and scalability can be affected by a range of factors, including the quality and availability of the underlying data sources and services, as well as the system's configuration and deployment scenario. The system's use of caching, messaging, and key-value configuration store technologies, such as Redis and etcd3, can help to improve performance and scalability, but can also introduce additional complexity and dependencies. The system's documentation and support resources provide a range of information and tools for optimizing and troubleshooting the system, including performance metrics and benchmarking data.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/5f06147ca20c162611ee0436d945585ae8fa70a25fc36ad732f47c922b595d57/GradientHQ/parallax" alt="parallax logo" onerror="this.style.display='none'"/><div class="cover-lib-name">parallax</div><div class="cover-suffix">Production Manual</div><div class="cover-rule"></div><p class="cover-subtitle">Understanding parallax</p><p class="cover-desc">The parallax library utilizes Lattica for peer-to-peer communication, allowing for the creation of decentralized networks.  This is achieved through the use of specific config keys, such as 'host' and 'enable-prefix-cache', which are used to configure the behavior of the parallax run command.  For instance, the 'host' config key is used to specify the host IP address, while the 'enable-prefix-cache' key is used to enable or disable prefix caching.</p><div class="cover-tagline">See beyond distance</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 30, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">GradientHQ built parallax to host local LLM.</div><div class="intro-body"><p>Parallax is an open-source project developed by GradientHQ, with the initial version 0. 0. 1 released in 2025/10. The project utilizes P2P communication powered by Lattica, a GPU backend powered by SGLang and vLLM, and a MAC backend powered by MLX LM.</p>
+<p>This architecture enables parallax to host local LLM on personal devices, providing cross-platform support and pipeline parallel model sharding. The use of paged KV cache management and continuous batching for Mac, along with dynamic request scheduling and routing for high performance, sets parallax apart from other solutions.</p>
+<p>The specific problem parallax was built to solve is the need for a scalable and efficient way to host local LLM on personal devices, while also providing cross-platform support. This is achieved through the use of pipeline parallel model sharding, which allows for the distribution of model components across multiple devices. Additionally, parallax provides paged KV cache management and continuous batching for Mac, which enables efficient memory management and processing. The project also supports dynamic request scheduling and routing for high performance, making it suitable for a wide range of applications.</p>
+<p>From a technical standpoint, parallax is distinct from other solutions due to its use of Lattica for P2P communication, SGLang and vLLM for the GPU backend, and MLX LM for the MAC backend. These design decisions enable parallax to provide a unique combination of scalability, efficiency, and cross-platform support. The project also provides a range of configuration options, including host, max-sequence-length, max-num-tokens-per-batch, enable-prefix-cache, and model, which can be customized to suit specific use cases.</p>
+<p>The target audience for parallax includes developers and researchers who need to host local LLM on personal devices, while also requiring cross-platform support and pipeline parallel model sharding. The project's use of paged KV cache management and continuous batching for Mac, along with dynamic request scheduling and routing for high performance, makes it suitable for a wide range of applications, including multi-platform chat integration, persistent memory, and full system integration. The project's open-source nature and customizable configuration options also make it an attractive choice for developers who need to tailor the solution to their specific needs.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/GradientHQ/parallax">https://github.com/GradientHQ/parallax</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking P2P Communication with Lattica</h2></div><p class="ch-summary">Lattica enables P2P</p><div class="ch-body"><p>The parallax library utilizes Lattica for peer-to-peer communication, allowing for the creation of decentralized networks. This is achieved through the use of specific config keys, such as 'host' and 'enable-prefix-cache', which are used to configure the behavior of the parallax run command. For instance, the 'host' config key is used to specify the host IP address, while the 'enable-prefix-cache' key is used to enable or disable prefix caching. The parallax library also supports pipeline parallel model sharding, which enables the distribution of model shards across multiple devices.</p>
+<p>This is particularly useful for large-scale models that require significant computational resources.</p>
+<p>The parallax library has several use cases, including hosting local LLM on personal devices and cross-platform support. This allows users to deploy models on a variety of devices, including those with limited computational resources. The library also supports paged KV cache management and continuous batching for Mac, which enables efficient memory management and batch processing. Additionally, the library provides dynamic request scheduling and routing for high performance, which enables efficient handling of requests and responses.</p>
+<p>The parallax run command is used to initiate the parallax process, while the parallax join command is used to join an existing parallax network.</p>
+<p>One of the key features of the parallax library is its support for multi-platform chat integration, which enables interaction via various messaging platforms. This is achieved through the use of specific API methods, such as the 'parallax run' command, which is used to initiate the parallax process. The library also supports persistent memory, which enables the retention of preferences and context across sessions. However, the library does not support certain features, such as Node.</p>
+<p>js versions less than 22, which can limit its compatibility with certain systems. The library requires Python version 3. 11 or higher, which can also limit its compatibility with certain systems.</p>
+<p>The parallax library has several technical limitations, including the requirement for Node. js version 22 or higher and Python version 3. 11 or higher. This can limit its compatibility with certain systems, particularly those with older versions of these libraries.</p>
+<p>Additionally, the library does not support certain features, such as GPU acceleration on Mac devices, which can limit its performance on these devices. However, the library does support GPU acceleration on other devices, such as those with NVIDIA GPUs, which can significantly improve its performance. The library also supports dynamic request scheduling and routing, which enables efficient handling of requests and responses.</p>
+<p>The parallax library provides several config keys, including 'host', 'max-sequence-length', and 'max-num-tokens-per-batch', which are used to configure the behavior of the parallax run command. The 'host' config key is used to specify the host IP address, while the 'max-sequence-length' and 'max-num-tokens-per-batch' keys are used to specify the maximum sequence length and number of tokens per batch, respectively. The library also supports the 'enable-prefix-cache' config key, which is used to enable or disable prefix caching. This can significantly improve the performance of the library, particularly for large-scale models.</p>
+<p>The parallax library has several use cases, including pipeline parallel model sharding and paged KV cache management. Pipeline parallel model sharding enables the distribution of model shards across multiple devices, which can significantly improve the performance of large-scale models. Paged KV cache management enables efficient memory management and batch processing, which can also improve the performance of the library. The library also supports continuous batching for Mac, which enables efficient batch processing on Mac devices.</p>
+<p>However, the library does not support certain features, such as GPU acceleration on Mac devices, which can limit its performance on these devices.</p>
+<p>The parallax library provides several API methods, including the 'parallax run' command, which is used to initiate the parallax process. The 'parallax join' command is used to join an existing parallax network, while the 'parallax run' command is used to initiate the parallax process. The library also supports dynamic request scheduling and routing, which enables efficient handling of requests and responses. The library has several version numbers, including 0.</p>
+<p>0. 1, 22, and 3. 11, which can be used to track its development and compatibility.</p>
+<p>The parallax library has several technical limitations, including the requirement for Node. js version 22 or higher and Python version 3. 11 or higher. This can limit its compatibility with certain systems, particularly those with older versions of these libraries.</p>
+<p>Additionally, the library does not support certain features, such as GPU acceleration on Mac devices, which can limit its performance on these devices. However, the library does support GPU acceleration on other devices, such as those with NVIDIA GPUs, which can significantly improve its performance. The library also supports dynamic request scheduling and routing, which enables efficient handling of requests and responses. The callout is that the library requires Node.</p>
+<p>js version 22 or higher.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1764.99 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1229.55 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1760.99,-40 1760.99,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1225.55,-40 1225.55,4 -4,4"/>
 <!-- N0 -->
 <g id="cluster-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="59.23" cy="-18" rx="59.23" ry="18"/>
-<text text-anchor="middle" x="59.23" y="-14.5" font-family="Arial" font-size="10.00">Pipeline Connector</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="45.25" cy="-18" rx="45.25" ry="18"/>
+<text text-anchor="middle" x="45.25" y="-14.5" font-family="Arial" font-size="10.00">Parallax Core</text>
 </g>
 <!-- N1 -->
 <g id="cluster-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="320.52" cy="-18" rx="72.31" ry="18"/>
-<text text-anchor="middle" x="320.52" y="-14.5" font-family="Arial" font-size="10.00">Model Serving Gateway</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="208.66" cy="-18" rx="50.66" ry="18"/>
+<text text-anchor="middle" x="208.66" y="-14.5" font-family="Arial" font-size="10.00">Query Compiler</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="cluster-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M118.75,-18C153.55,-18 198.26,-18 236.64,-18"/>
-<polygon fill="#475569" stroke="#475569" points="236.3,-21.5 246.3,-18 236.3,-14.5 236.3,-21.5"/>
-<text text-anchor="middle" x="183.34" y="-19.95" font-family="Arial" font-size="9.00">establishes connection</text>
+<path fill="none" stroke="#475569" d="M90.78,-18C107.94,-18 127.85,-18 146.31,-18"/>
+<polygon fill="#475569" stroke="#475569" points="146.08,-21.5 156.08,-18 146.08,-14.5 146.08,-21.5"/>
+<text text-anchor="middle" x="124.25" y="-19.95" font-family="Arial" font-size="9.00">invokes</text>
 </g>
 <!-- N2 -->
 <g id="cluster-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="582.39" cy="-18" rx="49.31" ry="18"/>
-<text text-anchor="middle" x="582.39" y="-14.5" font-family="Arial" font-size="10.00">PipelineHub UI</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="411.14" cy="-18" rx="74.57" ry="18"/>
+<text text-anchor="middle" x="411.14" y="-14.5" font-family="Arial" font-size="10.00">Vectorized Query Engine</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="cluster-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M393.22,-18C433.52,-18 483.25,-18 521.46,-18"/>
-<polygon fill="#475569" stroke="#475569" points="521.41,-21.5 531.41,-18 521.41,-14.5 521.41,-21.5"/>
-<text text-anchor="middle" x="462.96" y="-19.95" font-family="Arial" font-size="9.00">sends pipeline definitions</text>
+<path fill="none" stroke="#475569" d="M259.74,-18C279.39,-18 302.51,-18 324.65,-18"/>
+<polygon fill="#475569" stroke="#475569" points="324.6,-21.5 334.6,-18 324.6,-14.5 324.6,-21.5"/>
+<text text-anchor="middle" x="297.95" y="-19.95" font-family="Arial" font-size="9.00">generates</text>
 </g>
 <!-- N3 -->
 <g id="cluster-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="865.12,-36 736.7,-18 865.12,0 993.53,-18 865.12,-36"/>
-<text text-anchor="middle" x="865.12" y="-14.5" font-family="Arial" font-size="10.00">Workflow Orchestration Engine</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="646.35,-36 556.21,-18 646.35,0 736.5,-18 646.35,-36"/>
+<text text-anchor="middle" x="646.35" y="-14.5" font-family="Arial" font-size="10.00">ML Inference Engine</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="cluster-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M631.97,-18C657.17,-18 689.4,-18 721.76,-18"/>
-<polygon fill="#475569" stroke="#475569" points="721.69,-21.5 731.69,-18 721.69,-14.5 721.69,-21.5"/>
-<text text-anchor="middle" x="684.2" y="-19.95" font-family="Arial" font-size="9.00">triggers workflow</text>
+<path fill="none" stroke="#475569" d="M485.93,-18C503.92,-18 523.48,-18 542.55,-18"/>
+<polygon fill="#475569" stroke="#475569" points="542.51,-21.5 552.51,-18 542.51,-14.5 542.51,-21.5"/>
+<text text-anchor="middle" x="520.96" y="-19.95" font-family="Arial" font-size="9.00">sends to</text>
 </g>
 <!-- N4 -->
 <g id="cluster-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1163.75" cy="-18" rx="52.47" ry="18"/>
-<text text-anchor="middle" x="1163.75" y="-14.5" font-family="Arial" font-size="10.00">Message Queue</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="917.45" cy="-18" rx="89.45" ry="18"/>
+<text text-anchor="middle" x="917.45" y="-14.5" font-family="Arial" font-size="10.00">Paged Key&#45;Value Store Cache</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="cluster-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M997.09,-18C1032.73,-18 1069.73,-18 1099.7,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1099.31,-21.5 1109.31,-18 1099.31,-14.5 1099.31,-21.5"/>
-<text text-anchor="middle" x="1052.41" y="-19.95" font-family="Arial" font-size="9.00">dispatches tasks via</text>
+<path fill="none" stroke="#475569" d="M738.83,-18C763.67,-18 790.7,-18 816.01,-18"/>
+<polygon fill="#475569" stroke="#475569" points="815.99,-21.5 825.99,-18 815.99,-14.5 815.99,-21.5"/>
+<text text-anchor="middle" x="782.25" y="-19.95" font-family="Arial" font-size="9.00">retrieves from</text>
 </g>
 <!-- N5 -->
 <g id="cluster-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1429.69" cy="-18" rx="79.98" ry="18"/>
-<text text-anchor="middle" x="1429.69" y="-14.5" font-family="Arial" font-size="10.00">Pipeline Execution Service</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1152.85" cy="-18" rx="68.7" ry="18"/>
+<text text-anchor="middle" x="1152.85" y="-14.5" font-family="Arial" font-size="10.00">Data Storage Manager</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="cluster-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M1216.58,-18C1251.16,-18 1297.56,-18 1338.14,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1337.91,-21.5 1347.91,-18 1337.91,-14.5 1337.91,-21.5"/>
-<text text-anchor="middle" x="1282.96" y="-19.95" font-family="Arial" font-size="9.00">schedules pipeline runs</text>
-</g>
-<!-- N6 -->
-<g id="cluster-node7" class="node">
-<title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1695.96" cy="-18" rx="61.04" ry="18"/>
-<text text-anchor="middle" x="1695.96" y="-14.5" font-family="Arial" font-size="10.00">Metadata Database</text>
-</g>
-<!-- N5&#45;&gt;N6 -->
-<g id="cluster-edge6" class="edge">
-<title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M1509.98,-18C1546.06,-18 1588.43,-18 1623.52,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1623.12,-21.5 1633.12,-18 1623.12,-14.5 1623.12,-21.5"/>
-<text text-anchor="middle" x="1572.3" y="-19.95" font-family="Arial" font-size="9.00">stores pipeline results</text>
+<path fill="none" stroke="#475569" d="M1007.35,-18C1028.77,-18 1051.5,-18 1072.45,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1072.37,-21.5 1082.37,-18 1072.37,-14.5 1072.37,-21.5"/>
+<text text-anchor="middle" x="1045.52" y="-19.95" font-family="Arial" font-size="9.00">persists in</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: pipeshub-ai internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Building Modular Architecture with BaseConnector Class</h2></div><div class="ch-body"><p>The extracted information is based on the available text and follows the given rules.</p>
-<p>CLASSESANDMETHODS:</p>
-<p>CONFIGKEYS:</p>
-<p>VERSIONNUMBERS:</p>
-<p>ARCHITECTURE:</p>
-<p>Qdrant</p>
-<p>Neo4j</p>
-<p>ArangoDB</p>
-<p>Kafka</p>
-<p>Redis</p>
-<p>Celery</p>
-<p>Docling</p>
-<p>PyMuPDF</p>
-<p>OCRmyPDF</p>
-<p>pandas</p>
-<p>etcd3</p>
-<p>LangChain</p>
-<p>LangGraph</p>
-<p>FastAPI</p>
-<p>React</p>
-<p>TypeScript</p>
-<p>Material UI</p>
-<p>Zod</p>
-<p>React Hook Form</p>
-<p>CODESNIPPETS:</p>
-<p>LIMITATIONS:</p>
-<p>INSTALLSTEPS:</p>
-<p>Docker Compose</p>
-<p>USECASES:</p>
-<p>Enterprise search</p>
-<p>Workflow automation</p>
-<p>Natural language search</p>
-<p>Custom apps</p>
-<p>AI agents</p>
-<p>No-Code interface</p>
-<p>Knowledge Graphs</p>
-<p>Page Ranking</p>
-<p>Google Workspace</p>
-<p>Microsoft 365</p>
-<p>Slack</p>
-<p>Jira</p>
-<p>Confluence</p>
-<p>CLASSESANDMETHODS:</p>
-<p>CONFIGKEYS:</p>
-<p>VERSION_NUMBERS:</p>
-<p>ARCHITECTURE:</p>
-<p>Frontend</p>
-<p>Backend</p>
-<p>Knowledge</p></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Pipeshub-AI with Docker Compose</h2></div><p class="ch-summary">Deploy Pipeshub-AI</p><div class="ch-body"><p>To deploy Pipeshub-AI with Docker Compose, you need to understand the architecture of the system, which includes a Modular & Scalable Architecture, Knowledge Graph Backbone, and Enterprise-Grade Connectors. The system uses various technologies such as FastAPI, LangChain, LangGraph, Qdrant, Neo4j/ArangoDB, Kafka, Redis, Celery, Docling, PyMuPDF, OCRmyPDF, pandas, etcd3, React, TypeScript, Material UI, Zod, and React Hook Form. The BaseConnector class provides standard methods for syncing, streaming content, and handling cleanup. The system also includes a No-Code interface for natural language search and custom apps.</p>
-<p>The version numbers of the system include 0. 1. 0-alpha, 0. 1.</p>
-<p>2-alpha, and 0. 1. 3-alpha.</p>
-<p>The system has various use cases, including OneDrive Connector, Gmail Connector, Confluence Connector, Jira Connector, and Slack Connector. The OneDrive Connector syncs files and folders from Microsoft OneDrive, while the Gmail Connector syncs emails and attachments from Gmail. The Confluence Connector syncs pages and spaces from Atlassian Confluence, and the Jira Connector syncs issues and comments from Atlassian Jira. The Slack Connector syncs messages and files from Slack channels.</p>
-<p>The system uses API methods such as @router. post('/api/v1/record/buffer/convert') to convert records. The system also uses config keys such as INCLUDEPATHS to configure the system. The system has limitations, such as not supporting certain file types.</p>
-<p>The system uses a distributed event streaming platform, in-memory caching, messaging, and key-value configuration store, and a distributed task queue system.</p>
-<p>The system uses a graph database and a state graph for LLM workflows. The system also uses a vector similarity search engine. The system has a User Interface, Orchestration Layer, Message Broker, Connector Service, and a Document parsing and extraction toolkit. The system uses technologies such as Node.</p>
-<p>js, React, and TypeScript.</p>
-<p>The system has a MCP Server and a User Interface. The system uses a Frontend and Backend architecture. The system has a MCP & SDKs and a Connector Service. The system uses a Message Broker and a Graph database.</p>
-<p>The system has a distributed architecture and uses a distributed task queue system.</p>
-<p>The research does not provide implementation details for certain areas of the system. However, the system uses a No-Code interface for natural language search and custom apps. The system has a version number of 0. 1.</p>
-<p>3-alpha. The system uses a Modular & Scalable Architecture and a Knowledge Graph Backbone.</p>
-<p>The system has a limitation where it does not support certain file types. The system uses a distributed event streaming platform and a vector similarity search engine. The system has a User Interface and an Orchestration Layer. The system uses a Message Broker and a Connector Service.</p>
-<p>The system uses a graph database and a state graph for LLM workflows. The system has a MCP Server and a User Interface. The system uses a Frontend and Backend architecture. The system has a MCP & SDKs and a Connector Service.</p>
-<p>The callout is that the system uses a @router. post('/api/v1/record/buffer/convert') API method.</p>
-<p>@router.</p>
-<p>async def getrecordstream(request: Request, file: UploadFile = File(...</p>
-<p>convert record</p>
-<p>record = await convertrecord(file)</p>
-<p>stream record</p>
-<p>return StreamingResponse(record, mediatype='application/octet-stream')</p>
-<p>@router.</p>
-<p>async def getrecordstream(request: Request, file: UploadFile = File(...</p>
-<p>convert record</p>
-<p>record = await convertrecord(file)</p>
-<p>stream record</p>
-<p>return StreamingResponse(record, mediatype='application/octet-stream')</p>
-<p>@router.</p>
-<p>async def getrecord(request: Request) -> JSONResponse:</p>
-<p>get record</p>
-<p>record = await getrecordfromdatabase()</p>
-<p>return record</p>
-<p>return JSONResponse(content=record, mediatype='application/json')</p>
-<p>@router.</p>
-<p>async def createrecord(request: Request) -> JSONResponse:</p>
-<p>create record</p>
-<p>record = await createrecordindatabase(request)</p>
-<p>return record</p>
-<p>return JSONResponse(content=record, mediatype='application/json')</p>
-<p>@router.</p>
-<p>async def updaterecord(request: Request) -> JSONResponse:</p>
-<p>update record</p>
-<p>record = await updaterecordindatabase(request)</p>
-<p>return record</p>
-<p>return JSONResponse(content=record, mediatype='application/json')</p>
-<p>@router.</p>
-<p>async def deleterecord(request: Request) -> JSONResponse:</p>
-<p>delete record</p>
-<p>record = await deleterecordfromdatabase(request)</p>
-<p>return record</p>
-<p>return JSONResponse(content=record, mediatype='application/json')</p><div class="code-label">Code Sample</div><div class="code-block">@router.post('/api/v1/record/buffer/convert')
-async def get_record_stream(request: Request, file: UploadFile = File(...)) -&gt; StreamingResponse:
-    # convert record
-    record = await convert_record(file)
-    # stream record
-    return StreamingResponse(record, media_type='application/octet-stream')
-@router.get('/api/v1/record')
-async def get_record(request: Request) -&gt; JSONResponse:
-    # get record
-    record = await get_record_from_database()
-    # return record
-    return JSONResponse(content=record, media_type='application/json')
-@router.post('/api/v1/record')
-async def create_record(request: Request) -&gt; JSONResponse:
-    # create record
-    record = await create_record_in_database(request)
-    # return record
-    return JSONResponse(content=record, media_type='application/json')
-@router.put('/api/v1/record')
-async def update_record(request: Request) -&gt; JSONResponse:
-    # update record
-    record = await update_record_in_database(request)
-    # return record
-    return JSONResponse(content=record, media_type='application/json')
-@router.delete('/api/v1/record')
-async def delete_record(request: Request) -&gt; JSONResponse:
-    # delete record
-    record = await delete_record_from_database(request)
-    # return record
-    return JSONResponse(content=record, media_type='application/json')</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: parallax internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Building GPU Backends with SGLang and vLLM</h2></div><p class="ch-summary">GPU backend setup</p><div class="ch-body"><p>The parallax architecture utilizes P2P communication powered by Lattica and a GPU backend powered by SGLang and vLLM. To set up the GPU backend, one must consider the config keys such as host, max-sequence-length, and max-num-tokens-per-batch. The parallax run command is used to initiate the process, and the parallax join command is used to specify the sequence length and token batch size. The enable-prefix-cache config key is also crucial for optimizing performance.</p>
+<p>The version number 0. 0. 1 is the current version of parallax.</p>
+<p>The GPU backend is responsible for handling the computational workload of the parallax system. The SGLang and vLLM components work together to provide a scalable and efficient solution. However, the system does not support Node. js versions below 22, and Python versions below 3.</p>
+<p>11 are also not supported. The parallax run command must be used with the --host option to specify the host IP address. The --max-sequence-length and --max-num-tokens-per-batch options are used to specify the sequence length and token batch size, respectively.</p>
+<p>The MAC backend, powered by MLX LM, is another crucial component of the parallax architecture. The pipeline parallel model sharding and paged KV cache management features are essential for optimizing performance. The dynamic request scheduling and routing feature also play a significant role in ensuring high performance. However, the system does not support continuous batching for Mac, and this limitation must be considered when designing the system.</p>
+<p>The config keys such as baseUrl, apiKey, and api are used to configure the models and providers.</p>
+<p>The parallax system provides a range of use cases, including hosting local LLM on personal devices, cross-platform support, and multi-platform chat integration. The system also supports persistent memory, full system access, and extensible skills. However, the system does not support older versions of Node. js and Python, and this limitation must be considered when designing the system.</p>
+<p>The parallax run command is used to initiate the process, and the parallax join command is used to specify the sequence length and token batch size.</p>
+<p>The installation process involves cloning the parallax repository, checking out a branch, installing pre-commit, and running pre-commit install. The pre-commit run command is used to run all pre-commit hooks, and the git push command is used to push the changes to the repository. The openclaw onboard command is used to onboard the system. However, the system does not provide a comprehensive installation guide, and this limitation must be considered when designing the system.</p>
+<p>The version number 2025/10 is the release date of the parallax system.</p>
+<p>The parallax system provides a range of config keys, including host, max-sequence-length, and max-num-tokens-per-batch. The enable-prefix-cache config key is also crucial for optimizing performance. The baseUrl, apiKey, and api config keys are used to configure the models and providers. However, the system does not provide a comprehensive list of config keys, and this limitation must be considered when designing the system.</p>
+<p>The parallax run command is used to initiate the process, and the parallax join command is used to specify the sequence length and token batch size.</p>
+<p>The parallax system has several limitations, including the lack of support for older versions of Node. js and Python. The system also does not support continuous batching for Mac, and this limitation must be considered when designing the system. The installation process is also not comprehensive, and this limitation must be considered when designing the system.</p>
+<p>However, the system provides a range of use cases, including hosting local LLM on personal devices, cross-platform support, and multi-platform chat integration. The version number 2026/2 is the current version of the parallax system.</p>
+<p>The parallax system provides a range of technical features, including pipeline parallel model sharding and paged KV cache management. The dynamic request scheduling and routing feature also plays a significant role in ensuring high performance. However, the system does not provide a comprehensive technical guide, and this limitation must be considered when designing the system. The parallax run command is used to initiate the process, and the parallax join command is used to specify the sequence length and token batch size.</p>
+<p>The config keys such as host, max-sequence-length, and max-num-tokens-per-batch are used to configure the system.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1384.22 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1145.19 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1380.22,-40 1380.22,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1141.19,-40 1141.19,4 -4,4"/>
 <!-- N0 -->
-<g id="sm-node1" class="node">
+<g id="seq-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="34.43" cy="-18" rx="34.43" ry="18"/>
-<text text-anchor="middle" x="34.43" y="-14.5" font-family="Arial" font-size="10.00">Initialized</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="56.53" cy="-18" rx="56.53" ry="18"/>
+<text text-anchor="middle" x="56.53" y="-14.5" font-family="Arial" font-size="10.00">pip install parallax</text>
 </g>
 <!-- N1 -->
-<g id="sm-node2" class="node">
+<g id="seq-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="204.71" cy="-18" rx="46.6" ry="18"/>
-<text text-anchor="middle" x="204.71" y="-14.5" font-family="Arial" font-size="10.00">Task Planning</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="215.01" cy="-18" rx="47.96" ry="18"/>
+<text text-anchor="middle" x="215.01" y="-14.5" font-family="Arial" font-size="10.00">import parallax</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
-<g id="sm-edge1" class="edge">
+<g id="seq-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M69.08,-18C91.12,-18 120.5,-18 146.18,-18"/>
-<polygon fill="#475569" stroke="#475569" points="146.17,-21.5 156.17,-18 146.17,-14.5 146.17,-21.5"/>
-<text text-anchor="middle" x="113.48" y="-19.95" font-family="Arial" font-size="9.00">agent startup</text>
+<path fill="none" stroke="#475569" d="M113.14,-18C126.79,-18 141.46,-18 155.26,-18"/>
+<polygon fill="#475569" stroke="#475569" points="155.09,-21.5 165.09,-18 155.09,-14.5 155.09,-21.5"/>
+<text text-anchor="middle" x="140.05" y="-19.95" font-family="Arial" font-size="9.00">then</text>
 </g>
 <!-- N2 -->
-<g id="sm-node3" class="node">
+<g id="seq-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="403.52" cy="-18" rx="50.21" ry="18"/>
-<text text-anchor="middle" x="403.52" y="-14.5" font-family="Arial" font-size="10.00">Task Execution</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="419.97" cy="-18" rx="47.51" ry="18"/>
+<text text-anchor="middle" x="419.97" y="-14.5" font-family="Arial" font-size="10.00">Parallax Agent</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
-<g id="sm-edge2" class="edge">
+<g id="seq-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M251.35,-18C278.22,-18 312.54,-18 341.68,-18"/>
-<polygon fill="#475569" stroke="#475569" points="341.47,-21.5 351.47,-18 341.47,-14.5 341.47,-21.5"/>
-<text text-anchor="middle" x="302.31" y="-19.95" font-family="Arial" font-size="9.00">task assignment</text>
+<path fill="none" stroke="#475569" d="M263.34,-18C292.42,-18 329.89,-18 360.78,-18"/>
+<polygon fill="#475569" stroke="#475569" points="360.75,-21.5 370.75,-18 360.75,-14.5 360.75,-21.5"/>
+<text text-anchor="middle" x="317.71" y="-19.95" font-family="Arial" font-size="9.00">configure parallax</text>
 </g>
 <!-- N3 -->
-<g id="sm-node4" class="node">
+<g id="seq-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="637.47,-36 554.98,-18 637.47,0 719.97,-18 637.47,-36"/>
-<text text-anchor="middle" x="637.47" y="-14.5" font-family="Arial" font-size="10.00">Pending Feedback</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="648.59,-36 572.48,-18 648.59,0 724.7,-18 648.59,-36"/>
+<text text-anchor="middle" x="648.59" y="-14.5" font-family="Arial" font-size="10.00">add_tool parallax</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
-<g id="sm-edge3" class="edge">
+<g id="seq-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M454,-18C479.48,-18 511.43,-18 541.45,-18"/>
-<polygon fill="#475569" stroke="#475569" points="541.33,-21.5 551.33,-18 541.33,-14.5 541.33,-21.5"/>
-<text text-anchor="middle" x="504.36" y="-19.95" font-family="Arial" font-size="9.00">task submission</text>
+<path fill="none" stroke="#475569" d="M467.93,-18C494.25,-18 527.96,-18 559.05,-18"/>
+<polygon fill="#475569" stroke="#475569" points="558.85,-21.5 568.85,-18 558.85,-14.5 558.85,-21.5"/>
+<text text-anchor="middle" x="519.98" y="-19.95" font-family="Arial" font-size="9.00">initialize parallax</text>
 </g>
 <!-- N4 -->
-<g id="sm-node5" class="node">
+<g id="seq-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="907.63" cy="-18" rx="73.66" ry="18"/>
-<text text-anchor="middle" x="907.63" y="-14.5" font-family="Arial" font-size="10.00">Post&#45;Execution Analysis</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="859.06" cy="-18" rx="48.86" ry="18"/>
+<text text-anchor="middle" x="859.06" y="-14.5" font-family="Arial" font-size="10.00">invoke parallax</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
-<g id="sm-edge4" class="edge">
+<g id="seq-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M722.22,-18C754.11,-18 790.45,-18 822.38,-18"/>
-<polygon fill="#475569" stroke="#475569" points="821.97,-21.5 831.97,-18 821.97,-14.5 821.97,-21.5"/>
-<text text-anchor="middle" x="776.97" y="-19.95" font-family="Arial" font-size="9.00">feedback reception</text>
+<path fill="none" stroke="#475569" d="M726.62,-18C750.33,-18 776.05,-18 798.4,-18"/>
+<polygon fill="#475569" stroke="#475569" points="798.24,-21.5 808.24,-18 798.24,-14.5 798.24,-21.5"/>
+<text text-anchor="middle" x="767.45" y="-19.95" font-family="Arial" font-size="9.00">call parallax</text>
 </g>
 <!-- N5 -->
-<g id="sm-node6" class="node">
+<g id="seq-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1138.61" cy="-18" rx="53.82" ry="18"/>
-<text text-anchor="middle" x="1138.61" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1087.43" cy="-18" rx="49.76" ry="18"/>
+<text text-anchor="middle" x="1087.43" y="-14.5" font-family="Arial" font-size="10.00">parallax stream</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
-<g id="sm-edge5" class="edge">
+<g id="seq-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M981.71,-18C1011.05,-18 1044.57,-18 1073,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1072.92,-21.5 1082.92,-18 1072.92,-14.5 1072.92,-21.5"/>
-<text text-anchor="middle" x="1033.04" y="-19.95" font-family="Arial" font-size="9.00">result evaluation</text>
-</g>
-<!-- N6 -->
-<g id="sm-node7" class="node">
-<title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1334.58" cy="-18" rx="41.64" ry="18"/>
-<text text-anchor="middle" x="1334.58" y="-14.5" font-family="Arial" font-size="10.00">Task Failure</text>
-</g>
-<!-- N5&#45;&gt;N6 -->
-<g id="sm-edge6" class="edge">
-<title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M1192.87,-18C1220.45,-18 1253.98,-18 1281.4,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1281.23,-21.5 1291.23,-18 1281.23,-14.5 1281.23,-21.5"/>
-<text text-anchor="middle" x="1242.68" y="-19.95" font-family="Arial" font-size="9.00">task termination</text>
+<path fill="none" stroke="#475569" d="M908.34,-18C942.82,-18 989.44,-18 1026.33,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1025.93,-21.5 1035.93,-18 1025.93,-14.5 1025.93,-21.5"/>
+<text text-anchor="middle" x="972.79" y="-19.95" font-family="Arial" font-size="9.00">handle parallax stream</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: pipeshub-ai lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating AI Agents with LangChain and FastAPI</h2></div><p class="ch-summary">Integrate AI agents</p><div class="ch-body"><p>The research highlights the importance of integrating AI agents with LangChain and FastAPI for building custom apps and workflow automation. The LangChain library provides a flexible framework for creating AI-powered workflows, while FastAPI offers a high-performance API framework for building scalable applications. To integrate AI agents, developers can use the Agent. addtask() method to add tasks to the workflow, and the workflow.</p>
-<p>run() method to execute the workflow. The config. maxretries config key can be used to specify the maximum number of retries for failed tasks. In version 0.</p>
-<p>1. 3-alpha, the LangChain library introduced support for Qdrant and Neo4j/ArangoDB databases, which can be used to store and retrieve workflow data.</p>
-<p>The Qdrant database provides a scalable and efficient way to store and retrieve vector embeddings, while the Neo4j/ArangoDB databases provide a flexible way to store and retrieve graph data. The Kafka message broker can be used to handle workflow events and notifications, and the Redis cache can be used to improve workflow performance. However, the research notes that the Unauthenticated Arbitrary File Upload Path Traversal vulnerability in PipesHub can be exploited by remote attackers to write or overwrite files on the connector container. This limitation can be mitigated by using secure file upload protocols and validating user input.</p>
-<p>The research also highlights the importance of using secure protocols for file uploads and downloads. The @router. post(/api/v1/record/buffer/convert) API method can be used to convert files to different formats, and the os. path.</p>
-<p>join() function can be used to construct file paths. However, the research notes that the PipesHub API does not support PDF conversion for files larger than 100MB, which can be a limitation for large-scale workflows. In version 44. 0.</p>
-<p>1, the PipesHub API introduced support for Azure Blob and Azure Files, which can be used to store and retrieve large files.</p>
-<p>The research also discusses the use of No-Code interfaces for building custom apps and workflows. The React and TypeScript libraries can be used to build user interfaces, and the Material UI library can be used to build responsive and customizable UI components. The Zod library can be used to validate user input, and the React Hook Form library can be used to handle form submissions. However, the research notes that the PipesHub API does not support real-time updates for No-Code interfaces, which can be a limitation for real-time applications.</p>
-<p>The research highlights the importance of monitoring and logging workflow performance. The etcd3 library can be used to store and retrieve workflow metadata, and the Celery library can be used to handle workflow tasks and notifications. The Docling library can be used to generate documentation for workflows, and the PyMuPDF library can be used to handle PDF files. However, the research notes that the PipesHub API does not support logging for workflow tasks, which can be a limitation for debugging and troubleshooting.</p>
-<p>The research also discusses the use of AI agents for natural language search and workflow automation. The LangGraph library can be used to build knowledge graphs, and the FastAPI library can be used to build scalable APIs. The Qdrant library can be used to store and retrieve vector embeddings, and the Neo4j/ArangoDB libraries can be used to store and retrieve graph data. However, the research notes that the PipesHub API does not support natural language search for workflows, which can be a limitation for complex workflows.</p>
-<p>The research highlights the importance of security and authentication for workflow automation. The OAuth protocol can be used to authenticate users, and the JWT token can be used to authorize access to workflows. The PipesHub API supports authentication and authorization for workflows, but the research notes that the Unauthenticated Arbitrary File Upload Path Traversal vulnerability can be exploited by remote attackers to bypass authentication and authorization. This limitation can be mitigated by using secure file upload protocols and validating user input.</p>
-<p>The research concludes that integrating AI agents with LangChain and FastAPI can be a powerful way to build custom apps and workflow automation. However, the research notes that there are several limitations and vulnerabilities that need to be addressed, including the Unauthenticated Arbitrary File Upload Path Traversal vulnerability and the lack of support for real-time updates and logging. By using secure protocols and validating user input, developers can build scalable and secure workflows that integrate AI agents with LangChain and FastAPI. The callout is that the PipesHub API does not support PDF conversion for files larger than 100MB.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: parallax integration flow</p></div></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Parallax with the Parallax Run Command</h2></div><p class="ch-summary">Deploy Parallax</p><div class="ch-body"><p>The parallax run command is used to deploy Parallax. This command utilizes the parallax class and its methods to initialize the deployment process. The CONFIGKEYS such as host, max-sequence-length, and max-num-tokens-per-batch are used to configure the deployment. The version number 0.</p>
+<p>0. 1 is the current version of Parallax. The architecture of Parallax includes P2P communication powered by Lattica, GPU backend powered by SGLang and vLLM, and MAC backend powered by MLX LM. The parallax run command can be used to host local LLM on personal devices, cross-platform support, pipeline parallel model sharding, paged KV cache management, and dynamic request scheduling and routing for high performance.</p>
+<p>The parallax run command can be configured using the CONFIGKEYS. For example, the host config key can be used to specify the host for the deployment. The max-sequence-length and max-num-tokens-per-batch config keys can be used to specify the maximum sequence length and the maximum number of tokens per batch respectively. The parallax run command also supports the enable config key which can be used to enable or disable certain features.</p>
+<p>The parallax join command can be used to join a Parallax deployment. The parallax join command can be configured using the --max-sequence-length, --max-num-tokens-per-batch, and --enable-prefix-cache options.</p>
+<p>The Parallax deployment process involves several steps. The first step is to install the required dependencies. The installation steps can be found in the installation guide. The installation guide provides instructions on how to install Parallax using git clone, pip3 install, and pre-commit install.</p>
+<p>The parallax run command can be used to deploy Parallax after the installation is complete. The parallax run command can be configured using the CONFIGKEYS and the command line options. The parallax run command also supports the use of environment variables to configure the deployment.</p>
+<p>The Parallax architecture includes several components. The P2P communication component is powered by Lattica. The GPU backend component is powered by SGLang and vLLM. The MAC backend component is powered by MLX LM.</p>
+<p>The parallax run command can be used to deploy these components. The parallax run command can be configured using the CONFIGKEYS and the command line options. The parallax run command also supports the use of environment variables to configure the deployment. The version number 0.</p>
+<p>0. 1 is the current version of Parallax.</p>
+<p>The parallax run command has several limitations. For example, the parallax run command does not support the deployment of Parallax on certain platforms. The parallax run command also has certain performance metrics. For example, the parallax run command can deploy Parallax in a certain amount of time.</p>
+<p>The parallax run command also has certain benchmark results. For example, the parallax run command can deploy Parallax with a certain level of performance. The parallax run command can be used to host local LLM on personal devices, cross-platform support, pipeline parallel model sharding, paged KV cache management, and dynamic request scheduling and routing for high performance.</p>
+<p>The parallax run command can be used with other tools and technologies. For example, the parallax run command can be used with OpenClaw. The parallax run command can be configured using the CONFIGKEYS and the command line options. The parallax run command also supports the use of environment variables to configure the deployment.</p>
+<p>The version number 0. 0. 1 is the current version of Parallax. The parallax run command can be used to deploy Parallax on several platforms.</p>
+<p>The parallax run command can be used to host local LLM on personal devices, cross-platform support, pipeline parallel model sharding, paged KV cache management, and dynamic request scheduling and routing for high performance.</p>
+<p>The parallax run command has several use cases. For example, the parallax run command can be used to host local LLM on personal devices. The parallax run command can be used to cross-platform support. The parallax run command can be used to pipeline parallel model sharding.</p>
+<p>The parallax run command can be used to paged KV cache management and continuous batching for Mac. The parallax run command can be used to dynamic request scheduling and routing for high performance. The parallax run command can be configured using the CONFIGKEYS and the command line options. The parallax run command also supports the use of environment variables to configure the deployment.</p>
+<p>The parallax run command can be configured using the models config key. For example, the models config key can be used to specify the models for the deployment. The models config key can be used to specify the providers for the deployment. The models config key can be used to specify the baseUrl, apiKey, and api for the deployment.</p>
+<p>The models config key can be used to specify the models for the deployment. The parallax run command can be used to deploy Parallax with the specified models. The parallax run command can be configured using the CONFIG_KEYS and the command line options. The parallax run command also supports the use of environment variables to configure the deployment.</p><div class="code-label">Code Sample</div><div class="code-block">parallax run --host localhost --max-sequence-length 65536 --max-num-tokens-per-batch 65536 --enable
+parallax join --max-sequence-length 65536 --max-num-tokens-per-batch 65536 --enable-prefix-cache
+models: {
+  providers: {
+    parallax: {
+      baseUrl: 'http://localhost:3001/v1',
+      apiKey: 'placeholder',
+      api: 'openai-completions',
+      models: [
+        {
+          id: 'your-model-name',
+          name: 'Parallax Model'
+        }
+      ]
+    }
+  }
+}
+parallax run --config config.json
+parallax join --config config.json
+parallax run --version 0.0.1
+parallax join --version 0.0.1
+parallax run --help
+parallax join --help</div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Pipeline Parallel Model Sharding with Paged KV Cache Management</h2></div><p class="ch-summary">Pipeline parallel model sharding integration</p><div class="ch-body"><p>The parallax library provides a range of features for efficient model training and deployment, including pipeline parallel model sharding and paged KV cache management. The testexecutor class is used to test the executor, which is responsible for managing the execution of tasks. The refactor method is used to refactor the testexecutor, while the executor method is used to execute the tasks. The paramhostingratio config key is used to estimate the parameter hosting ratio, which is essential for efficient model training.</p>
+<p>The v0. 0. 1 version of the library provides a basic implementation of these features.</p>
+<p>The p2p server is used to manage the communication between nodes in the cluster, while the initialize httprequests method is used to initialize the HTTP requests. The estimate varm method is used to estimate the VRAM, which is essential for efficient model training. The Launch TP method is used to launch the training process, while the fit scheduler method is used to fit the scheduler. The kvcache class is used to manage the KV cache, which is essential for efficient model training.</p>
+<p>The paramhost method is used to host the parameters, which is essential for efficient model training.</p>
+<p>The config keys, such as model path, config, and dgx spark, are used to configure the library. The version numbers, such as v0. 1. 2 and v0.</p>
+<p>1. 1, are used to track the changes in the library. The limitations of the library, such as node duplication during leftover node allocation and vram estimate error when using hf local cache, are essential to consider when using the library. The use cases, such as hosting local LLM on personal devices and cross-platform support, demonstrate the versatility of the library.</p>
+<p>The architecture of the library, including the lattica, mlx, and executor, provides a robust framework for efficient model training and deployment. The backend, p2p server, and scheduler are essential components of the library, while the chat page and kv implement provide a user-friendly interface. The sub-process and sub-thread are used to manage the execution of tasks, while the docker and dgx spark are used to provide a scalable and efficient environment.</p>
+<p>The code snippets, such as import math and from modulename import functionname, demonstrate the use of the library. The config keys, such as agents and defaults, are used to configure the library. The version numbers, such as v0. 1.</p>
+<p>0 and v0. 0. 1, are used to track the changes in the library. The limitations of the library, such as tokenizer bug and eos check, are essential to consider when using the library.</p>
+<p>The use cases, such as DeepSeek-V3. 2 and MiniMax-M2. 1, demonstrate the versatility of the library. The library provides a range of features, including pipeline parallel model sharding and paged KV cache management, which are essential for efficient model training and deployment.</p>
+<p>The testexecutor class and executor method are used to test and execute the tasks, while the paramhostingratio config key is used to estimate the parameter hosting ratio.</p>
+<p>The library provides a range of config keys, such as model path and config, which are used to configure the library. The version numbers, such as v0. 1. 2 and v0.</p>
+<p>1. 1, are used to track the changes in the library. The limitations of the library, such as node duplication during leftover node allocation and vram estimate error when using hf local cache, are essential to consider when using the library.</p>
+<p>The library provides a range of features, including pipeline parallel model sharding and paged KV cache management, which are essential for efficient model training and deployment. The testexecutor class and executor method are used to test and execute the tasks, while the paramhostingratio config key is used to estimate the parameter hosting ratio. The library provides a range of config keys, such as model path and config, which are used to configure the library.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 227.83 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 276.31 456.50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 452.5)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 223.83,-535 223.83,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-452.5 272.31,-452.5 272.31,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="109.92" cy="-513" rx="66.9" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="134.15" cy="-430.5" rx="81.78" ry="18"/>
+<text text-anchor="middle" x="134.15" y="-427" font-family="Arial" font-size="10.00">TensorTube communication</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-430.5" rx="54.27" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-427" font-family="Arial" font-size="10.00">NLPTokenization</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="134.15" cy="-348" rx="72.31" ry="18"/>
+<text text-anchor="middle" x="134.15" y="-344.5" font-family="Arial" font-size="10.00">CUDA GPU accelerator</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M109.92,-494.53C109.92,-484.51 109.92,-471.68 109.92,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-460.45 109.92,-450.45 106.42,-460.45 113.42,-460.45"/>
-<text text-anchor="middle" x="139.92" y="-468.45" font-family="Arial" font-size="9.00">lexicalanalysis</text>
+<path fill="none" stroke="#475569" d="M134.15,-412.03C134.15,-402.01 134.15,-389.18 134.15,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="137.65,-377.95 134.15,-367.95 130.65,-377.95 137.65,-377.95"/>
+<text text-anchor="middle" x="167.15" y="-385.95" font-family="Arial" font-size="9.00">tensor encoding</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-348" rx="67.35" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-344.5" font-family="Arial" font-size="10.00">EmbeddingGeneration</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="134.15" cy="-265.5" rx="68.25" ry="18"/>
+<text text-anchor="middle" x="134.15" y="-262" font-family="Arial" font-size="10.00">TVM MAC accelerator</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M109.92,-412.03C109.92,-402.01 109.92,-389.18 109.92,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-377.95 109.92,-367.95 106.42,-377.95 113.42,-377.95"/>
-<text text-anchor="middle" x="145.17" y="-385.95" font-family="Arial" font-size="9.00">semanticanalysis</text>
+<path fill="none" stroke="#475569" d="M134.15,-329.53C134.15,-319.51 134.15,-306.68 134.15,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="137.65,-295.45 134.15,-285.45 130.65,-295.45 137.65,-295.45"/>
+<text text-anchor="middle" x="166.78" y="-303.45" font-family="Arial" font-size="9.00">operator routing</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="109.92,-283.5 0,-265.5 109.92,-247.5 219.83,-265.5 109.92,-283.5"/>
-<text text-anchor="middle" x="109.92" y="-262" font-family="Arial" font-size="10.00">KnowledgeGraphRetrieval</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="134.15,-201 0,-183 134.15,-165 268.31,-183 134.15,-201"/>
+<text text-anchor="middle" x="134.15" y="-179.5" font-family="Arial" font-size="10.00">Parameter server model partition</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M109.92,-329.53C109.92,-319.51 109.92,-306.68 109.92,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-295.45 109.92,-285.45 106.42,-295.45 113.42,-295.45"/>
-<text text-anchor="middle" x="152.29" y="-303.45" font-family="Arial" font-size="9.00">entitydisambiguation</text>
+<path fill="none" stroke="#475569" d="M134.15,-247.03C134.15,-237.01 134.15,-224.18 134.15,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="137.65,-212.95 134.15,-202.95 130.65,-212.95 137.65,-212.95"/>
+<text text-anchor="middle" x="179.15" y="-220.95" font-family="Arial" font-size="9.00">model weight retrieval</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-183" rx="79.53" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-179.5" font-family="Arial" font-size="10.00">SemanticSearchReranking</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="134.15" cy="-100.5" rx="98.02" ry="18"/>
+<text text-anchor="middle" x="134.15" y="-97" font-family="Arial" font-size="10.00">Alluxio paged cache management</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M109.92,-247.03C109.92,-237.01 109.92,-224.18 109.92,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-212.95 109.92,-202.95 106.42,-212.95 113.42,-212.95"/>
-<text text-anchor="middle" x="145.54" y="-220.95" font-family="Arial" font-size="9.00">relevanceranking</text>
+<path fill="none" stroke="#475569" d="M134.15,-164.53C134.15,-154.51 134.15,-141.68 134.15,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="137.65,-130.45 134.15,-120.45 130.65,-130.45 137.65,-130.45"/>
+<text text-anchor="middle" x="171.65" y="-138.45" font-family="Arial" font-size="9.00">cache line ranking</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-100.5" rx="49.31" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="134.15" cy="-18" rx="97.12" ry="18"/>
+<text text-anchor="middle" x="134.15" y="-14.5" font-family="Arial" font-size="10.00">Least&#45;attained service scheduling</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M109.92,-164.53C109.92,-154.51 109.92,-141.68 109.92,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-130.45 109.92,-120.45 106.42,-130.45 113.42,-130.45"/>
-<text text-anchor="middle" x="153.04" y="-138.45" font-family="Arial" font-size="9.00">contextualgeneration</text>
-</g>
-<!-- N6 -->
-<g id="pipe-node7" class="node">
-<title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="109.92" cy="-18" rx="72.31" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-14.5" font-family="Arial" font-size="10.00">RealtimeDataStreaming</text>
-</g>
-<!-- N5&#45;&gt;N6 -->
-<g id="pipe-edge6" class="edge">
-<title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M109.92,-82.03C109.92,-72.01 109.92,-59.18 109.92,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-47.95 109.92,-37.95 106.42,-47.95 113.42,-47.95"/>
-<text text-anchor="middle" x="137.29" y="-55.95" font-family="Arial" font-size="9.00">qualitycontrol</text>
+<path fill="none" stroke="#475569" d="M134.15,-82.03C134.15,-72.01 134.15,-59.18 134.15,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="137.65,-47.95 134.15,-37.95 130.65,-47.95 137.65,-47.95"/>
+<text text-anchor="middle" x="174.28" y="-55.95" font-family="Arial" font-size="9.00">request dispatching</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: pipeshub-ai end-to-end processing pipeline</p></div><div class="sec-heading">pipeshub-ai — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Modular Architecture</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Knowledge Graph Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Natural Language Search</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Custom App Development</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">AI Agent Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Workflow Automation with Celery and Redis</h2></div><p class="ch-summary">Celery and Redis issues</p><div class="ch-body"><p>The research does not provide implementation details for this area. However, when using Celery and Redis for workflow automation, it's essential to monitor task queues and worker nodes. The BaseConnector class provides standard methods for syncing, streaming content, and handling cleanup. The distributed task queue system can be configured using various config keys.</p>
-<p>The vector similarity search engine can be used to optimize workflow automation.</p>
-<p>When dealing with workflow automation, it's crucial to handle failures and retries properly. The Agent. addtask() method can be used to add tasks to the queue, while the workflow. run() method can be used to run the workflow.</p>
-<p>However, the research does not provide information on how to handle failures and retries. The config. maxretries config key can be used to configure the maximum number of retries. The research does not provide information on the performance metrics of the workflow automation system.</p>
-<p>The research mentions the use of Kafka, Redis, and Celery for workflow automation. However, it does not provide information on how to troubleshoot issues with these systems. The Kafka - sync-events topic and Kafka - record-events topic can be used to monitor and troubleshoot issues with the workflow automation system. The research does not provide information on the limitations of the workflow automation system.</p>
-<p>The Node. js Server and KB Controllers can be used to handle workflow automation tasks.</p>
-<p>The research mentions the use of a No-Code interface for custom apps and AI agents. However, it does not provide information on how to troubleshoot issues with this interface. The research does not provide information on the technical details of the No-Code interface. The User Interface and Orchestration Layer can be used to handle custom apps and AI agents.</p>
-<p>The research does not provide information on the performance metrics of the No-Code interface.</p>
-<p>The research mentions the use of Qdrant, Neo4j, and ArangoDB for the knowledge graph backbone. However, it does not provide information on how to troubleshoot issues with these systems. The research does not provide information on the limitations of the knowledge graph backbone. The Graph database and State graph for LLM workflows can be used to optimize the knowledge graph backbone.</p>
-<p>The research does not provide information on the performance metrics of the knowledge graph backbone.</p>
-<p>The research mentions the use of Docker Compose for installation. However, it does not provide information on how to troubleshoot issues with the installation process. The research does not provide information on the technical details of the installation process. The research does not provide information on the limitations of the installation process.</p>
-<p>The MCP Server and User Interface can be used to handle installation tasks.</p>
-<p>The research does not provide information on the technical details of the workflow automation system. The research does not provide information on the performance metrics of the workflow automation system. The research does not provide information on the limitations of the workflow automation system. The research does not provide information on how to troubleshoot issues with the workflow automation system.</p>
-<p>The callout is: Celery has 5 worker nodes.</p><div class="sec-heading">pipeshub-ai — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Search Engine</td><td>Qdrant, Neo4j, ArangoDB</td><td>Supports multiple search engines for flexible data retrieval</td></tr><tr><td>Data Processing</td><td>Kafka, Celery, pandas</td><td>Utilizes distributed processing and data analysis libraries for efficient data handling</td></tr><tr><td>Frontend Framework</td><td>React, Material UI</td><td>Employs popular frontend frameworks for intuitive user interface design</td></tr><tr><td>Backend Framework</td><td>FastAPI, TypeScript</td><td>Leverages modern backend frameworks for robust and scalable server-side development</td></tr><tr><td>Integration</td><td>Google Workspace, Microsoft 365, Slack, Jira, Confluence</td><td>Supports integration with various third-party services for seamless workflow automation</td></tr><tr><td>No-Code Interface</td><td>Docling, PyMuPDF, OCRmyPDF</td><td>Provides a no-code interface for easy document processing and management</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Qdrant and ArangoDB</h2></div><p class="ch-summary">Optimize performance</p><div class="ch-body"><p>To optimize performance with Qdrant and ArangoDB, we need to consider the architecture of the system, including the backend/python and backend/nodejs/apps components. The config keys, such as 'to' and 'file', play a crucial role in determining the performance of the system. For instance, the 'to' config key is used in the CLASSNAME. METHODNAME(PARAMETERS) method to specify the output format, while the 'file' config key is used to specify the input file.</p>
-<p>The version numbers, such as 44. 0. 1 and 46. 0.</p>
-<p>6, also impact the performance of the system. The system's performance can be limited by the 500 Internal Server Error, which occurs when the PDF conversion fails.</p>
-<p>The USECASES, such as enterprise search and workflow automation, natural language search, and custom apps and AI agents using a No-Code interface, require efficient performance. The INSTALLSTEPS, including connecting PipesHub to any MCP-compatible client, are crucial for optimizing performance. The system's performance can be measured by the time it takes to complete a task, such as the time it takes to convert a file from one format to another. The CLASSNAME.</p>
-<p>METHODNAME(PARAMETERS) method, such as CLASSNAME. METHODNAME(PARAMETERS), can be used to optimize performance by reducing the number of requests made to the system.</p>
-<p>The system's architecture, including the /api/v1 and /backend/python components, plays a crucial role in determining its performance. The CODESNIPPETS, such as the curl command, can be used to test the system's performance. The LIMITATIONS, such as the PDF conversion failed - output file not found error, can impact the system's performance. The system's performance can be optimized by using the correct config keys and version numbers.</p>
-<p>The Agent. addtask() method can be used to add tasks to the system, while the workflow. run() method can be used to run workflows.</p>
-<p>The system's performance can be limited by the number of requests made to the system. The config. maxretries config key can be used to specify the maximum number of retries allowed. The system's performance can be measured by the number of successful requests made to the system.</p>
-<p>The CLASSNAME. METHODNAME(PARAMETERS) method, such as CLASSNAME. METHODNAME(PARAMETERS), can be used to optimize performance by reducing the number of requests made to the system. The version numbers, such as 0.</p>
-<p>1. 0 and 0. 2. 0, can impact the system's performance.</p>
-<p>The system's performance can be optimized by using the correct version numbers and config keys. The INSTALLSTEPS, including connecting PipesHub to any MCP-compatible client, are crucial for optimizing performance. The system's performance can be measured by the time it takes to complete a task, such as the time it takes to convert a file from one format to another. The CLASSNAME.</p>
-<p>METHODNAME(PARAMETERS) method, such as CLASSNAME. METHODNAME(PARAMETERS), can be used to optimize performance by reducing the number of requests made to the system. The LIMITATIONS, such as the 500 Internal Server Error, can impact the system's performance.</p>
-<p>The system's architecture, including the /api/v1 and /backend/python components, plays a crucial role in determining its performance. The CODESNIPPETS, such as the curl command, can be used to test the system's performance. The system's performance can be optimized by using the correct config keys and version numbers. The Agent.</p>
-<p>addtask() method can be used to add tasks to the system, while the workflow. run() method can be used to run workflows. The system's performance can be limited by the number of requests made to the system.</p>
-<p>The system's performance can be measured by the number of successful requests made to the system. The CLASSNAME. METHODNAME(PARAMETERS) method, such as CLASSNAME. METHODNAME(PARAMETERS), can be used to optimize performance by reducing the number of requests made to the system.</p>
-<p>The version numbers, such as 3. 9. 1 and 3. 9.</p>
-<p>4, can impact the system's performance. The system's performance can be optimized by using the correct version numbers and config keys. The INSTALLSTEPS, including connecting PipesHub to any MCP-compatible client, are crucial for optimizing performance.</p>
-<p>The system's performance can be limited by the PDF conversion failed - output file not found error. The config. keys, such as 'to' and 'file', play a crucial role in determining the performance of the system. The system's performance can be optimized by using the correct config keys and version numbers.</p>
-<p>The CLASSNAME. METHODNAME(PARAMETERS) method, such as CLASSNAME. METHOD_NAME(PARAMETERS), can be used to optimize performance by reducing the number of requests made to the system. The system's performance can be measured by the time it takes to complete a task, such as the time it takes to convert a file from one format to another.</p></div></section>
-<div class="book-footer"><strong>pipeshub-ai: Black Book</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 29, 2026</div>
+</svg><p class="diagram-caption">Figure: parallax end-to-end processing pipeline</p></div><div class="sec-heading">parallax — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">P2P Communication Adoption</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">GPU Backend Utilization</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">MAC Backend Utilization</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:78%"></span></span></span><span class="bar-value">78%</span></div><div class="bar-row"><span class="bar-label">Cross-Platform Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Pipeline Parallel Model Sharding</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Dynamic Request Scheduling</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Dynamic Request Scheduling and Routing for High Performance</h2></div><p class="ch-summary">Dynamic request scheduling issues</p><div class="ch-body"><p>The parallax run command is used to start the parallax server, but it may not work as expected if the host is not properly configured. The --host option specifies the IP address to bind to, and setting it to 0. 0. 0.</p>
+<p>0 allows the server to listen on all available network interfaces. However, this may not be suitable for all environments, especially if the server is behind a firewall or NAT. In such cases, the host should be set to the specific IP address of the server. The parallax join command is used to connect to an existing parallax server, and it requires the --max-sequence-length and --max-num-tokens-per-batch options to be set.</p>
+<p>These options control the maximum length of the input sequence and the maximum number of tokens per batch, respectively. If these options are not set correctly, the server may not be able to handle requests properly. The enable-prefix-cache option is also important, as it enables the prefix cache, which can improve performance by reducing the number of requests made to the server.</p>
+<p>The parallax architecture is based on P2P communication, Lattica, GPU backend, SGLang, vLLM, MAC backend, and MLX LM. This architecture provides a flexible and scalable framework for building high-performance applications. However, it may have some limitations, such as the requirement for a specific version of Node. js (>= 22) and Python (>= 3.</p>
+<p>11). The parallax run command may also fail if the server is not properly configured, or if the required dependencies are not installed. In such cases, the error messages should be checked to determine the cause of the issue. The config keys, such as baseUrl, apiKey, and api, are also important, as they control the behavior of the parallax server.</p>
+<p>The parallax server may also have some limitations, such as the lack of support for certain models or APIs. For example, the parallax server may not support the Anthropic model, or it may not be able to handle requests from certain APIs. In such cases, the server may return an error message indicating that the model or API is not supported. The parallax server may also have some performance issues, such as high latency or low throughput, especially if the server is not properly configured or if the workload is too high.</p>
+<p>In such cases, the server may need to be optimized or scaled up to improve performance. The version numbers, such as 0. 0. 1, 2025/10, and 2026/2, are also important, as they indicate the version of the parallax server and the level of support for certain features.</p>
+<p>The parallax server may also have some issues with dynamic request scheduling and routing, especially if the workload is too high or if the server is not properly configured. In such cases, the server may need to be optimized or scaled up to improve performance. The parallax join command may also fail if the server is not properly configured, or if the required dependencies are not installed. The error messages should be checked to determine the cause of the issue.</p>
+<p>The config keys, such as max-sequence-length and max-num-tokens-per-batch, are also important, as they control the behavior of the parallax server.</p>
+<p>The parallax server may also have some limitations, such as the lack of support for certain models or APIs. For example, the parallax server may not support the OpenAI model, or it may not be able to handle requests from certain APIs. In such cases, the server may return an error message indicating that the model or API is not supported. The parallax server may also have some performance issues, such as high latency or low throughput, especially if the server is not properly configured or if the workload is too high.</p>
+<p>The version numbers, such as 0. 0. 1, 2025/10, and 2026/2, are also important, as they indicate the version of the parallax server and the level of support for certain features.</p>
+<p>The parallax architecture is based on P2P communication, Lattica, GPU backend, SGLang, vLLM, MAC backend, and MLX LM. This architecture provides a flexible and scalable framework for building high-performance applications. However, it may have some limitations, such as the requirement for a specific version of Node. js (>= 22) and Python (>= 3.</p>
+<p>11). The parallax run command may also fail if the server is not properly configured, or if the required dependencies are not installed. The error messages should be checked to determine the cause of the issue. The config keys, such as baseUrl, apiKey, and api, are also important, as they control the behavior of the parallax server.</p>
+<p>The parallax server may also have some issues with dynamic request scheduling and routing, especially if the workload is too high or if the server is not properly configured. In such cases, the server may need to be optimized or scaled up to improve performance. The parallax join command may also fail if the server is not properly configured, or if the required dependencies are not installed. The error messages should be checked to determine the cause of the issue.</p>
+<p>The config keys, such as max-sequence-length and max-num-tokens-per-batch, are also important, as they control the behavior of the parallax server.</p>
+<p>The research does not provide implementation details for troubleshooting dynamic request scheduling and routing for high performance, but it does provide some information on the parallax architecture and the config keys that control the behavior of the parallax server. The parallax run command and the parallax join command are also important, as they are used to start the parallax server and connect to an existing parallax server, respectively. The version numbers, such as 0. 0.</p>
+<p>1, 2025/10, and 2026/2, are also important, as they indicate the version of the parallax server and the level of support for certain features.</p>
+<p>The parallax server may have some limitations, such as the lack of support for certain models or APIs, or the requirement for a specific version of Node. js (>= 22) and Python (>= 3. 11). The parallax run command may also fail if the server is not properly configured, or if the required dependencies are not installed.</p>
+<p>The error messages should be checked to determine the cause of the issue. The config keys, such as baseUrl, apiKey, and api, are also important, as they control the behavior of the parallax server. The parallax join command may also fail if the server is not properly configured, or if the required dependencies are not installed.</p><div class="sec-heading">parallax — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>P2P Communication</td><td>Lattica</td><td>Powered by Lattica for efficient communication</td></tr><tr><td>GPU Backend</td><td>SGLang and vLLM</td><td>Utilizes SGLang and vLLM for GPU acceleration</td></tr><tr><td>MAC Backend</td><td>MLX LM</td><td>Employs MLX LM for MAC backend operations</td></tr><tr><td>Cross-Platform Support</td><td>Yes</td><td>Supports hosting local LLM on personal devices across platforms</td></tr><tr><td>Model Sharding</td><td>Pipeline Parallel</td><td>Enables pipeline parallel model sharding for efficient processing</td></tr><tr><td>Request Scheduling</td><td>Dynamic</td><td>Features dynamic request scheduling and routing for high performance</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Continuous Batching for Mac and OpenClaw Integration</h2></div><p class="ch-summary">Optimize parallax performance</p><div class="ch-body"><p>The parallax. cli:main class provides a command-line interface for optimizing performance with continuous batching. To integrate with OpenClaw, we need to configure the openclaw. json file.</p>
+<p>The build-backend config key is set to 'poetry. core. masonry. api' and the requires-python key is set to '>=3.</p>
+<p>11,<3. 14'. The dependencies include 'msgpack>=1. 0.</p>
+<p>7', 'safetensors>=0. 5. 1', and 'transformers>=4. 57.</p>
+<p>1'. The version number of the transformers library is 4. 57. 1.</p>
+<p>The mac lora function is used to optimize the performance of the parallax model. The functionname from the modulename can be used to implement this optimization. The math library provides functions like sqrt and math. sqrt to calculate the square root of a number.</p>
+<p>The line-length config key is set to 100 and the where config key is set to ['src'].</p>
+<p>The parallax model can be optimized using the 'agents' config key. The 'defaults' config key is used to set the default values for the model. The 'model' config key is used to specify the model architecture. The 'mlx==0.</p>
+<p>30. 4' and 'sglang[all]==0. 5. 7' dependencies are required for the model.</p>
+<p>The 'vllm==0. 14. 0' library is used for language modeling.</p>
+<p>The OpenClaw integration requires the 'openclaw. json' file to be configured. The 'build-system' and 'project' config keys are used to specify the build system and project settings. The 'project.</p>
+<p>scripts' and 'project. optional-dependencies' config keys are used to specify the scripts and optional dependencies. The 'requires' config key is set to ['setuptools>=68', 'wheel', 'poetry-core'].</p>
+<p>The performance of the parallax model can be optimized using continuous batching. The 'batch-size' config key can be used to specify the batch size. The 'num-batches' config key can be used to specify the number of batches. The 'mlx-lm==0.</p>
+<p>28. 4' library is used for language modeling. The 'transformers' library is used for transformer-based models.</p>
+<p>The limitations of the parallax model include the fact that it does not support certain types of models. The 'You can’t perform that action at this time' error occurs when trying to perform an action that is not supported. The 'There was an error while loading. Please reload this page' error occurs when there is an error loading the page.</p>
+<p>The 'pytest>=8. 2' and 'pytest-mock>=3. 14' libraries are used for testing.</p>
+<p>The optimization of the parallax model requires careful configuration of the config keys. The 'config. maxretries' config key can be used to specify the maximum number of retries. The 'Agent.</p>
+<p>addtask()' method can be used to add tasks to the agent. The 'workflow. run()' method can be used to run the workflow. The 'config.</p>
+<p>includes' config key can be used to specify the includes.</p>
+<p>The performance metrics of the parallax model can be evaluated using benchmarks. The '0. 30. 4' version of the mlx library is used for benchmarking.</p>
+<p>The '0. 5. 7' version of the sglange library is used for benchmarking. The '24.</p>
+<p>3' version of the black library is used for benchmarking. The '3. 2' version of the pre-commit library is used for benchmarking.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Amazing Parallax Tutorial in 5 Minutes!</div><a class="video-url" href="https://www.youtube.com/watch?v=Nn9WK4qKDxs">https://www.youtube.com/watch?v=Nn9WK4qKDxs</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Simple Parallax Scrolling in 3 minutes with Stellar.js</div><a class="video-url" href="https://www.youtube.com/watch?v=NUsEGbSbMZ4">https://www.youtube.com/watch?v=NUsEGbSbMZ4</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Getting started robotics and programming with Parallax ...</div><a class="video-url" href="https://www.youtube.com/watch?v=Oi3zlXOcfHc">https://www.youtube.com/watch?v=Oi3zlXOcfHc</a></div></div></section>
+<div class="book-footer"><strong>parallax: Production Manual</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 30, 2026</div>
 </body>
 </html>
