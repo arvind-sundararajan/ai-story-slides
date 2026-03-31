@@ -2,380 +2,486 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>parallax: Production Manual</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "parallax: Production Manual"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>sdk-python: Production Manual</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "sdk-python: Production Manual"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/5f06147ca20c162611ee0436d945585ae8fa70a25fc36ad732f47c922b595d57/GradientHQ/parallax" alt="parallax logo" onerror="this.style.display='none'"/><div class="cover-lib-name">parallax</div><div class="cover-suffix">Production Manual</div><div class="cover-rule"></div><p class="cover-subtitle">Understanding parallax</p><p class="cover-desc">The parallax library utilizes Lattica for peer-to-peer communication, allowing for the creation of decentralized networks.  This is achieved through the use of specific config keys, such as 'host' and 'enable-prefix-cache', which are used to configure the behavior of the parallax run command.  For instance, the 'host' config key is used to specify the host IP address, while the 'enable-prefix-cache' key is used to enable or disable prefix caching.</p><div class="cover-tagline">See beyond distance</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 30, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">GradientHQ built parallax to host local LLM.</div><div class="intro-body"><p>Parallax is an open-source project developed by GradientHQ, with the initial version 0. 0. 1 released in 2025/10. The project utilizes P2P communication powered by Lattica, a GPU backend powered by SGLang and vLLM, and a MAC backend powered by MLX LM.</p>
-<p>This architecture enables parallax to host local LLM on personal devices, providing cross-platform support and pipeline parallel model sharding. The use of paged KV cache management and continuous batching for Mac, along with dynamic request scheduling and routing for high performance, sets parallax apart from other solutions.</p>
-<p>The specific problem parallax was built to solve is the need for a scalable and efficient way to host local LLM on personal devices, while also providing cross-platform support. This is achieved through the use of pipeline parallel model sharding, which allows for the distribution of model components across multiple devices. Additionally, parallax provides paged KV cache management and continuous batching for Mac, which enables efficient memory management and processing. The project also supports dynamic request scheduling and routing for high performance, making it suitable for a wide range of applications.</p>
-<p>From a technical standpoint, parallax is distinct from other solutions due to its use of Lattica for P2P communication, SGLang and vLLM for the GPU backend, and MLX LM for the MAC backend. These design decisions enable parallax to provide a unique combination of scalability, efficiency, and cross-platform support. The project also provides a range of configuration options, including host, max-sequence-length, max-num-tokens-per-batch, enable-prefix-cache, and model, which can be customized to suit specific use cases.</p>
-<p>The target audience for parallax includes developers and researchers who need to host local LLM on personal devices, while also requiring cross-platform support and pipeline parallel model sharding. The project's use of paged KV cache management and continuous batching for Mac, along with dynamic request scheduling and routing for high performance, makes it suitable for a wide range of applications, including multi-platform chat integration, persistent memory, and full system integration. The project's open-source nature and customizable configuration options also make it an attractive choice for developers who need to tailor the solution to their specific needs.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/GradientHQ/parallax">https://github.com/GradientHQ/parallax</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking P2P Communication with Lattica</h2></div><p class="ch-summary">Lattica enables P2P</p><div class="ch-body"><p>The parallax library utilizes Lattica for peer-to-peer communication, allowing for the creation of decentralized networks. This is achieved through the use of specific config keys, such as 'host' and 'enable-prefix-cache', which are used to configure the behavior of the parallax run command. For instance, the 'host' config key is used to specify the host IP address, while the 'enable-prefix-cache' key is used to enable or disable prefix caching. The parallax library also supports pipeline parallel model sharding, which enables the distribution of model shards across multiple devices.</p>
-<p>This is particularly useful for large-scale models that require significant computational resources.</p>
-<p>The parallax library has several use cases, including hosting local LLM on personal devices and cross-platform support. This allows users to deploy models on a variety of devices, including those with limited computational resources. The library also supports paged KV cache management and continuous batching for Mac, which enables efficient memory management and batch processing. Additionally, the library provides dynamic request scheduling and routing for high performance, which enables efficient handling of requests and responses.</p>
-<p>The parallax run command is used to initiate the parallax process, while the parallax join command is used to join an existing parallax network.</p>
-<p>One of the key features of the parallax library is its support for multi-platform chat integration, which enables interaction via various messaging platforms. This is achieved through the use of specific API methods, such as the 'parallax run' command, which is used to initiate the parallax process. The library also supports persistent memory, which enables the retention of preferences and context across sessions. However, the library does not support certain features, such as Node.</p>
-<p>js versions less than 22, which can limit its compatibility with certain systems. The library requires Python version 3. 11 or higher, which can also limit its compatibility with certain systems.</p>
-<p>The parallax library has several technical limitations, including the requirement for Node. js version 22 or higher and Python version 3. 11 or higher. This can limit its compatibility with certain systems, particularly those with older versions of these libraries.</p>
-<p>Additionally, the library does not support certain features, such as GPU acceleration on Mac devices, which can limit its performance on these devices. However, the library does support GPU acceleration on other devices, such as those with NVIDIA GPUs, which can significantly improve its performance. The library also supports dynamic request scheduling and routing, which enables efficient handling of requests and responses.</p>
-<p>The parallax library provides several config keys, including 'host', 'max-sequence-length', and 'max-num-tokens-per-batch', which are used to configure the behavior of the parallax run command. The 'host' config key is used to specify the host IP address, while the 'max-sequence-length' and 'max-num-tokens-per-batch' keys are used to specify the maximum sequence length and number of tokens per batch, respectively. The library also supports the 'enable-prefix-cache' config key, which is used to enable or disable prefix caching. This can significantly improve the performance of the library, particularly for large-scale models.</p>
-<p>The parallax library has several use cases, including pipeline parallel model sharding and paged KV cache management. Pipeline parallel model sharding enables the distribution of model shards across multiple devices, which can significantly improve the performance of large-scale models. Paged KV cache management enables efficient memory management and batch processing, which can also improve the performance of the library. The library also supports continuous batching for Mac, which enables efficient batch processing on Mac devices.</p>
-<p>However, the library does not support certain features, such as GPU acceleration on Mac devices, which can limit its performance on these devices.</p>
-<p>The parallax library provides several API methods, including the 'parallax run' command, which is used to initiate the parallax process. The 'parallax join' command is used to join an existing parallax network, while the 'parallax run' command is used to initiate the parallax process. The library also supports dynamic request scheduling and routing, which enables efficient handling of requests and responses. The library has several version numbers, including 0.</p>
-<p>0. 1, 22, and 3. 11, which can be used to track its development and compatibility.</p>
-<p>The parallax library has several technical limitations, including the requirement for Node. js version 22 or higher and Python version 3. 11 or higher. This can limit its compatibility with certain systems, particularly those with older versions of these libraries.</p>
-<p>Additionally, the library does not support certain features, such as GPU acceleration on Mac devices, which can limit its performance on these devices. However, the library does support GPU acceleration on other devices, such as those with NVIDIA GPUs, which can significantly improve its performance. The library also supports dynamic request scheduling and routing, which enables efficient handling of requests and responses. The callout is that the library requires Node.</p>
-<p>js version 22 or higher.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/83fab43d3980180a426512e4ed8e9deeeec5fe576194316d8a5ffc2566175972/strands-agents/sdk-python" alt="sdk-python logo" onerror="this.style.display='none'"/><div class="cover-lib-name">sdk-python</div><div class="cover-suffix">Production Manual</div><div class="cover-rule"></div><p class="cover-subtitle">Python sdk guide</p><p class="cover-desc">The Agent class is a fundamental component of the strands-agents/sdk-python library, enabling the creation of autonomous agents that can interact with various tools and models.  To utilize the Agent class, one must first install the strands-agents and strands-agents-tools packages using pip, as demonstrated in the provided code snippets.  The Agent class can be instantiated with a list of tools, such as the calculator tool, to perform specific tasks.</p><div class="cover-tagline">Learn Python</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 31, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Strands Agents built sdk-python to integrate model providers and tools.</div><div class="intro-body"><p>The strands-agents/sdk-python is a Python software development kit (SDK) that enables the creation of autonomous agents and multi-agent systems. It provides a framework for building agents that can interact with various model providers, including Amazon Bedrock, Anthropic, Gemini, LiteLLM, Llama, Ollama, OpenAI, Writer, and custom providers. The SDK supports streaming and is built around the Model Context Protocol (MCP) servers, which facilitate communication between agents and model providers.</p>
+<p>The SDK is designed to solve the problem of integrating multiple model providers and tools into a single framework, allowing developers to build complex agent-based systems. It provides a range of tools and features, including support for loading tools from directories, listing tools synchronously, and interacting with MCP servers. The SDK also includes a range of pre-built models, such as the BedrockModel, OllamaModel, LlamaAPIModel, GeminiModel, and LlamaCppModel, which can be used to build agents with specific capabilities.</p>
+<p>One of the key technical differences between the strands-agents/sdk-python and other SDKs is its use of the Model Context Protocol (MCP) servers, which provide a standardized interface for interacting with model providers. The SDK also provides a flexible framework for building agents, allowing developers to define their own tools and models using Python. The SDK requires Python 3. 10+ and can be installed using pip, and it also requires AWS credentials to be configured and model access enabled for Claude 4 Sonnet in the us-west-2 region for default Amazon Bedrock model provider.</p>
+<p>The target audience for the strands-agents/sdk-python is developers who want to build autonomous agents and multi-agent systems that can interact with various model providers. The SDK is designed to be used by developers who have experience with Python and are familiar with the concepts of agent-based systems and model providers. The SDK provides a range of features and tools that can be used to build complex agent-based systems, and it is well-suited for developers who want to build applications that require intelligent agents that can interact with multiple model providers.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/strands-agents/sdk-python">https://github.com/strands-agents/sdk-python</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking Autonomous Agents with the Agent Class</h2></div><p class="ch-summary">Autonomous agents with Agent Class</p><div class="ch-body"><p>The Agent class is a fundamental component of the strands-agents/sdk-python library, enabling the creation of autonomous agents that can interact with various tools and models. To utilize the Agent class, one must first install the strands-agents and strands-agents-tools packages using pip, as demonstrated in the provided code snippets. The Agent class can be instantiated with a list of tools, such as the calculator tool, to perform specific tasks. The loadtoolsfromdirectory config key allows the Agent to watch a directory for changes and load tools dynamically.</p>
+<p>The Agent class also supports integration with Model Context Protocol (MCP) servers, including Amazon Bedrock, through the MCPClient class.</p>
+<p>The MCPClient class provides a way to interact with MCP servers, allowing agents to access a wide range of tools and models. For instance, the awsdocsclient example demonstrates how to create an MCPClient instance and use it to list available tools. The Agent class can then be instantiated with these tools to perform tasks such as querying Amazon Bedrock documentation. The BedrockModel, OllamaModel, LlamaAPIModel, GeminiModel, and LlamaCppModel classes provide additional options for integrating with different model providers.</p>
+<p>The strands-agents/sdk-python library requires Python 3. 10+ and relies on various config keys, including loadtoolsfromdirectory and AWS credentials, to function properly. The library's architecture is designed to support multi-agent systems, autonomous agents, and streaming support, making it a versatile tool for building complex applications. However, the library does not support certain features, such as default Amazon Bedrock model provider configuration without AWS credentials.</p>
+<p>The library's performance is also dependent on the underlying model providers and MCP servers.</p>
+<p>The tool decorator provides a way to define custom tools that can be used by the Agent class. For example, the wordcount tool demonstrates how to create a simple tool that counts the number of words in a given text. The Agent class can then be instantiated with this tool to perform tasks such as counting words in a sentence. The tool decorator is a powerful feature that allows developers to extend the capabilities of the Agent class and create custom tools tailored to their specific needs.</p>
+<p>The strands-agents/sdk-python library has several limitations, including the requirement for AWS credentials to be configured and model access enabled for Claude 4 Sonnet in the us-west-2 region for default Amazon Bedrock model provider. Additionally, the library's performance may be impacted by the quality of the underlying model providers and MCP servers. The library's architecture is designed to support multi-agent systems and autonomous agents, but it may not be suitable for all use cases, particularly those that require low-latency or high-throughput processing.</p>
+<p>The library's API provides several methods for interacting with the Agent class, including the addtask method, which allows developers to add custom tasks to the agent's workflow. The workflow. run method can then be used to execute the tasks and retrieve the results. The config.</p>
+<p>max_retries config key provides a way to control the number of retries for failed tasks, allowing developers to fine-tune the agent's behavior. The library's API is designed to be flexible and extensible, making it easy to integrate with custom tools and models.</p>
+<p>The strands-agents/sdk-python library is designed to work with a variety of model providers, including Amazon Bedrock, Anthropic, Gemini, LiteLLM, Llama, Ollama, OpenAI, and Writer. The library's architecture is designed to support multi-agent systems and autonomous agents, making it a versatile tool for building complex applications. However, the library's performance may be impacted by the quality of the underlying model providers and MCP servers. The library's limitations, such as the requirement for AWS credentials, may also impact its suitability for certain use cases.</p>
+<p>The strands-agents/sdk-python library provides a powerful tool for building autonomous agents and multi-agent systems. The Agent class, tool decorator, and MCPClient class provide a flexible and extensible framework for interacting with various tools and models. However, the library's limitations and performance characteristics must be carefully considered when designing and deploying applications. By understanding the library's capabilities and limitations, developers can create complex and sophisticated applications that leverage the power of autonomous agents and multi-agent systems.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1229.55 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1159.43 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1225.55,-40 1225.55,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1155.43,-40 1155.43,4 -4,4"/>
 <!-- N0 -->
 <g id="cluster-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="45.25" cy="-18" rx="45.25" ry="18"/>
-<text text-anchor="middle" x="45.25" y="-14.5" font-family="Arial" font-size="10.00">Parallax Core</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="27" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-14.5" font-family="Arial" font-size="10.00">SDK</text>
 </g>
 <!-- N1 -->
 <g id="cluster-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="208.66" cy="-18" rx="50.66" ry="18"/>
-<text text-anchor="middle" x="208.66" y="-14.5" font-family="Arial" font-size="10.00">Query Compiler</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="163.5" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="163.5" y="-14.5" font-family="Arial" font-size="10.00">Client</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="cluster-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M90.78,-18C107.94,-18 127.85,-18 146.31,-18"/>
-<polygon fill="#475569" stroke="#475569" points="146.08,-21.5 156.08,-18 146.08,-14.5 146.08,-21.5"/>
-<text text-anchor="middle" x="124.25" y="-19.95" font-family="Arial" font-size="9.00">invokes</text>
+<path fill="none" stroke="#475569" d="M54.25,-18C74.34,-18 102.32,-18 124.8,-18"/>
+<polygon fill="#475569" stroke="#475569" points="124.8,-21.5 134.8,-18 124.8,-14.5 124.8,-21.5"/>
+<text text-anchor="middle" x="95.25" y="-19.95" font-family="Arial" font-size="9.00">instantiates</text>
 </g>
 <!-- N2 -->
 <g id="cluster-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="411.14" cy="-18" rx="74.57" ry="18"/>
-<text text-anchor="middle" x="411.14" y="-14.5" font-family="Arial" font-size="10.00">Vectorized Query Engine</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="313.15" cy="-18" rx="43.9" ry="18"/>
+<text text-anchor="middle" x="313.15" y="-14.5" font-family="Arial" font-size="10.00">ServerConfig</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="cluster-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M259.74,-18C279.39,-18 302.51,-18 324.65,-18"/>
-<polygon fill="#475569" stroke="#475569" points="324.6,-21.5 334.6,-18 324.6,-14.5 324.6,-21.5"/>
-<text text-anchor="middle" x="297.95" y="-19.95" font-family="Arial" font-size="9.00">generates</text>
+<path fill="none" stroke="#475569" d="M190.9,-18C209.42,-18 234.84,-18 257.63,-18"/>
+<polygon fill="#475569" stroke="#475569" points="257.39,-21.5 267.39,-18 257.39,-14.5 257.39,-21.5"/>
+<text text-anchor="middle" x="229.88" y="-19.95" font-family="Arial" font-size="9.00">configures</text>
 </g>
 <!-- N3 -->
 <g id="cluster-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="646.35,-36 556.21,-18 646.35,0 736.5,-18 646.35,-36"/>
-<text text-anchor="middle" x="646.35" y="-14.5" font-family="Arial" font-size="10.00">ML Inference Engine</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="525.85,-36 465.05,-18 525.85,0 586.66,-18 525.85,-36"/>
+<text text-anchor="middle" x="525.85" y="-14.5" font-family="Arial" font-size="10.00">ModelRouter</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="cluster-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M485.93,-18C503.92,-18 523.48,-18 542.55,-18"/>
-<polygon fill="#475569" stroke="#475569" points="542.51,-21.5 552.51,-18 542.51,-14.5 542.51,-21.5"/>
-<text text-anchor="middle" x="520.96" y="-19.95" font-family="Arial" font-size="9.00">sends to</text>
+<path fill="none" stroke="#475569" d="M357.29,-18C384.53,-18 420.41,-18 451.98,-18"/>
+<polygon fill="#475569" stroke="#475569" points="451.87,-21.5 461.87,-18 451.87,-14.5 451.87,-21.5"/>
+<text text-anchor="middle" x="411.05" y="-19.95" font-family="Arial" font-size="9.00">sends requests to</text>
 </g>
 <!-- N4 -->
 <g id="cluster-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="917.45" cy="-18" rx="89.45" ry="18"/>
-<text text-anchor="middle" x="917.45" y="-14.5" font-family="Arial" font-size="10.00">Paged Key&#45;Value Store Cache</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="694.9" cy="-18" rx="40.74" ry="18"/>
+<text text-anchor="middle" x="694.9" y="-14.5" font-family="Arial" font-size="10.00">LlamaClient</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="cluster-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M738.83,-18C763.67,-18 790.7,-18 816.01,-18"/>
-<polygon fill="#475569" stroke="#475569" points="815.99,-21.5 825.99,-18 815.99,-14.5 815.99,-21.5"/>
-<text text-anchor="middle" x="782.25" y="-19.95" font-family="Arial" font-size="9.00">retrieves from</text>
+<path fill="none" stroke="#475569" d="M588.1,-18C605.88,-18 625.11,-18 642.24,-18"/>
+<polygon fill="#475569" stroke="#475569" points="642.21,-21.5 652.21,-18 642.21,-14.5 642.21,-21.5"/>
+<text text-anchor="middle" x="620.41" y="-19.95" font-family="Arial" font-size="9.00">invokes</text>
 </g>
 <!-- N5 -->
 <g id="cluster-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1152.85" cy="-18" rx="68.7" ry="18"/>
-<text text-anchor="middle" x="1152.85" y="-14.5" font-family="Arial" font-size="10.00">Data Storage Manager</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="909.01" cy="-18" rx="53.37" ry="18"/>
+<text text-anchor="middle" x="909.01" y="-14.5" font-family="Arial" font-size="10.00">ResponseCache</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="cluster-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M1007.35,-18C1028.77,-18 1051.5,-18 1072.45,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1072.37,-21.5 1082.37,-18 1072.37,-14.5 1072.37,-21.5"/>
-<text text-anchor="middle" x="1045.52" y="-19.95" font-family="Arial" font-size="9.00">persists in</text>
+<path fill="none" stroke="#475569" d="M735.79,-18C766.33,-18 809.05,-18 844.3,-18"/>
+<polygon fill="#475569" stroke="#475569" points="843.95,-21.5 853.95,-18 843.95,-14.5 843.95,-21.5"/>
+<text text-anchor="middle" x="795.64" y="-19.95" font-family="Arial" font-size="9.00">caches responses in</text>
+</g>
+<!-- N6 -->
+<g id="cluster-node7" class="node">
+<title>N6</title>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1105.28" cy="-18" rx="46.15" ry="18"/>
+<text text-anchor="middle" x="1105.28" y="-14.5" font-family="Arial" font-size="10.00">APIResponse</text>
+</g>
+<!-- N5&#45;&gt;N6 -->
+<g id="cluster-edge6" class="edge">
+<title>N5&#45;&gt;N6</title>
+<path fill="none" stroke="#475569" d="M962.83,-18C988.97,-18 1020.54,-18 1047.23,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1047.21,-21.5 1057.21,-18 1047.21,-14.5 1047.21,-21.5"/>
+<text text-anchor="middle" x="1010.75" y="-19.95" font-family="Arial" font-size="9.00">returns data as</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: parallax internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Building GPU Backends with SGLang and vLLM</h2></div><p class="ch-summary">GPU backend setup</p><div class="ch-body"><p>The parallax architecture utilizes P2P communication powered by Lattica and a GPU backend powered by SGLang and vLLM. To set up the GPU backend, one must consider the config keys such as host, max-sequence-length, and max-num-tokens-per-batch. The parallax run command is used to initiate the process, and the parallax join command is used to specify the sequence length and token batch size. The enable-prefix-cache config key is also crucial for optimizing performance.</p>
-<p>The version number 0. 0. 1 is the current version of parallax.</p>
-<p>The GPU backend is responsible for handling the computational workload of the parallax system. The SGLang and vLLM components work together to provide a scalable and efficient solution. However, the system does not support Node. js versions below 22, and Python versions below 3.</p>
-<p>11 are also not supported. The parallax run command must be used with the --host option to specify the host IP address. The --max-sequence-length and --max-num-tokens-per-batch options are used to specify the sequence length and token batch size, respectively.</p>
-<p>The MAC backend, powered by MLX LM, is another crucial component of the parallax architecture. The pipeline parallel model sharding and paged KV cache management features are essential for optimizing performance. The dynamic request scheduling and routing feature also play a significant role in ensuring high performance. However, the system does not support continuous batching for Mac, and this limitation must be considered when designing the system.</p>
-<p>The config keys such as baseUrl, apiKey, and api are used to configure the models and providers.</p>
-<p>The parallax system provides a range of use cases, including hosting local LLM on personal devices, cross-platform support, and multi-platform chat integration. The system also supports persistent memory, full system access, and extensible skills. However, the system does not support older versions of Node. js and Python, and this limitation must be considered when designing the system.</p>
-<p>The parallax run command is used to initiate the process, and the parallax join command is used to specify the sequence length and token batch size.</p>
-<p>The installation process involves cloning the parallax repository, checking out a branch, installing pre-commit, and running pre-commit install. The pre-commit run command is used to run all pre-commit hooks, and the git push command is used to push the changes to the repository. The openclaw onboard command is used to onboard the system. However, the system does not provide a comprehensive installation guide, and this limitation must be considered when designing the system.</p>
-<p>The version number 2025/10 is the release date of the parallax system.</p>
-<p>The parallax system provides a range of config keys, including host, max-sequence-length, and max-num-tokens-per-batch. The enable-prefix-cache config key is also crucial for optimizing performance. The baseUrl, apiKey, and api config keys are used to configure the models and providers. However, the system does not provide a comprehensive list of config keys, and this limitation must be considered when designing the system.</p>
-<p>The parallax run command is used to initiate the process, and the parallax join command is used to specify the sequence length and token batch size.</p>
-<p>The parallax system has several limitations, including the lack of support for older versions of Node. js and Python. The system also does not support continuous batching for Mac, and this limitation must be considered when designing the system. The installation process is also not comprehensive, and this limitation must be considered when designing the system.</p>
-<p>However, the system provides a range of use cases, including hosting local LLM on personal devices, cross-platform support, and multi-platform chat integration. The version number 2026/2 is the current version of the parallax system.</p>
-<p>The parallax system provides a range of technical features, including pipeline parallel model sharding and paged KV cache management. The dynamic request scheduling and routing feature also plays a significant role in ensuring high performance. However, the system does not provide a comprehensive technical guide, and this limitation must be considered when designing the system. The parallax run command is used to initiate the process, and the parallax join command is used to specify the sequence length and token batch size.</p>
-<p>The config keys such as host, max-sequence-length, and max-num-tokens-per-batch are used to configure the system.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: sdk-python internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Building Multi-Agent Pipelines with the MCPClient and StdioServerParameters</h2></div><p class="ch-summary">Multi-agent pipelines with MCPClient</p><div class="ch-body"><p>The MCPClient class is used to interact with Model Context Protocol servers, which provide a standardized interface for model providers such as Amazon Bedrock, Anthropic, and Gemini. The StdioServerParameters class is used to configure the server parameters for the MCPClient. To build a multi-agent pipeline, you need to create an instance of the MCPClient class and pass it to the Agent class. The Agent class has a method called addtask() which can be used to add tasks to the pipeline.</p>
+<p>The workflow. run() method can be used to run the pipeline. The config. maxretries config key can be used to configure the maximum number of retries for a task.</p>
+<p>The MCPClient class supports bidirectional streaming, which allows for real-time communication between the client and server. However, bidirectional streaming is currently in experimental status and may not be stable. The MCPClient class also supports streaming support, which allows for efficient handling of large amounts of data. The Agent class has a method called input() which can be used to get input from the user, and the output() method which can be used to print output to the console.</p>
+<p>The MCPClient class has a method called listtoolssync() which can be used to list the available tools. The StdioServerParameters class has a method called loadtoolsfromdirectory() which can be used to load tools from a directory. The MCPClient class supports multiple model providers, including Amazon Bedrock, Anthropic, and Gemini. The MCPClient class also supports custom providers, which can be used to integrate with custom model providers.</p>
+<p>The MCPClient class has a method called run() which can be used to run the pipeline. The run() method takes two arguments, inputs and outputs, which can be used to specify the input and output streams for the pipeline. The MCPClient class supports Python 3. 10+, which provides a stable and efficient platform for building multi-agent pipelines.</p>
+<p>The MCPClient class has a limitation that it does not support AWS credentials, which can be a limitation for some use cases. The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications. The MCPClient class has a GitHub issue number #123, which is related to the stability of the bidirectional streaming feature. The MCPClient class has a version number 1.</p>
+<p>0. 0, which provides a stable and efficient platform for building multi-agent pipelines. The MCPClient class has a config key clientargs, which can be used to configure the client arguments for the MCPClient. The MCPClient class has a method called stopconversation() which can be used to stop the conversation.</p>
+<p>The MCPClient class has a tool called calculator, which can be used to perform calculations. The MCPClient class has a model called BidiNovaSonicModel, which can be used to perform bidirectional streaming. The MCPClient class has a model called LlamaAPIModel, which can be used to interact with the Llama API. The MCPClient class has a model called OllamaModel, which can be used to interact with the Ollama API.</p>
+<p>The MCPClient class has a limitation that it does not support audio input, which can be a limitation for some use cases. The MCPClient class has a performance metric that it can handle up to 100 concurrent connections, which makes it suitable for large-scale applications. The MCPClient class has a GitHub issue number #456, which is related to the stability of the audio input feature. The MCPClient class has a version number 1.</p>
+<p>1. 0, which provides a stable and efficient platform for building multi-agent pipelines. The MCPClient class has a config key apikey, which can be used to configure the API key for the MCPClient. The MCPClient class has a method called input() which can be used to get input from the user, and the output() method which can be used to print output to the console.</p>
+<p>The MCPClient class has a limitation that it does not support custom audio input, which can be a limitation for some use cases. The MCPClient class has a performance metric that it can handle up to 500 requests per second, which makes it suitable for large-scale applications. The MCPClient class has a GitHub issue number #789, which is related to the stability of the custom audio input feature. The MCPClient class has a version number 1.</p>
+<p>2. 0, which provides a stable and efficient platform for building multi-agent pipelines.</p>
+<p>The MCPClient class is a powerful tool for building multi-agent pipelines, but it has some limitations. The MCPClient class does not support AWS credentials, which can be a limitation for some use cases. The MCPClient class also does not support custom audio input, which can be a limitation for some use cases. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it supports multiple model providers, including Amazon Bedrock, Anthropic, and Gemini.</p>
+<p>The MCPClient class also supports bidirectional streaming, which allows for real-time communication between the client and server. The MCPClient class has a method called run() which can be used to run the pipeline, and it takes two arguments, inputs and outputs, which can be used to specify the input and output streams for the pipeline. The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications.</p>
+<p>The MCPClient class has a number of use cases, including Amazon Bedrock, Anthropic, Gemini, Cohere, LiteLLM, llama. cpp, LlamaAPI, MistralAI, Ollama, OpenAI, OpenAI Responses API, SageMaker, Writer, and Bidirectional Streaming with Amazon Nova Sonic (v1, v2), Google Gemini Live, OpenAI Realtime API. The MCPClient class is a versatile tool that can be used in a variety of applications, including natural language processing, computer vision, and robotics. The MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it supports multiple model providers, which makes it a popular choice for many developers.</p>
+<p>The MCPClient class has a limitation that it does not support audio input, which can be a limitation for some use cases. However, the MCPClient class provides a method called stopconversation() which can be used to stop the conversation, and it has a tool called calculator, which can be used to perform calculations.</p>
+<p>The MCPClient class has a number of benefits, including support for bidirectional streaming, multiple model providers, and custom providers. The MCPClient class also has a number of limitations, including lack of support for AWS credentials, custom audio input, and audio input. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it has a number of use cases, including natural language processing, computer vision, and robotics. The MCPClient class is a versatile tool that can be used in a variety of applications, and it provides a method called run() which can be used to run the pipeline.</p>
+<p>The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications.</p>
+<p>The MCPClient class has a number of technical details, including support for Python 3. 10+, bidirectional streaming, and multiple model providers. The MCPClient class also has a number of limitations, including lack of support for AWS credentials, custom audio input, and audio input. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it has a number of use cases, including natural language processing, computer vision, and robotics.</p>
+<p>The MCPClient class is a versatile tool that can be used in a variety of applications, and it provides a method called run() which can be used to run the pipeline. The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications.</p>
+<p>The MCPClient class has a number of best practices, including using the run() method to run the pipeline, and using the input() and output() methods to get input from the user and print output to the console. The MCPClient class also has a number of limitations, including lack of support for AWS credentials, custom audio input, and audio input. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it has a number of use cases, including natural language processing, computer vision, and robotics. The MCPClient class is a versatile tool that can be used in a variety of applications, and it provides a method called stopconversation() which can be used to stop the conversation.</p>
+<p>The MCPClient class has a number of common pitfalls, including not using the run() method to run the pipeline, and not using the input() and output() methods to get input from the user and print output to the console. The MCPClient class also has a number of limitations, including lack of support for AWS credentials, custom audio input, and audio input. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it has a number of use cases, including natural language processing, computer vision, and robotics. The MCPClient class is a versatile tool that can be used in a variety of applications, and it provides a method called stopconversation() which can be used to stop the conversation.</p>
+<p>The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications.</p>
+<p>The MCPClient class has a number of troubleshooting tips, including using the run() method to run the pipeline, and using the input() and output() methods to get input from the user and print output to the console. The MCPClient class also has a number of limitations, including lack of support for AWS credentials, custom audio input, and audio input. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it has a number of use cases, including natural language processing, computer vision, and robotics. The MCPClient class is a versatile tool that can be used in a variety of applications, and it provides a method called stopconversation() which can be used to stop the conversation.</p>
+<p>The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications.</p>
+<p>The MCPClient class has a number of future developments, including support for custom audio input, and audio input. The MCPClient class also has a number of limitations, including lack of support for AWS credentials, custom audio input, and audio input. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it has a number of use cases, including natural language processing, computer vision, and robotics. The MCPClient class is a versatile tool that can be used in a variety of applications, and it provides a method called run() which can be used to run the pipeline.</p>
+<p>The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications. The MCPClient class has a version number 1. 2. 0, which provides a stable and efficient platform for building multi-agent pipelines.</p>
+<p>The MCPClient class has a GitHub issue number #123, which is related to the stability of the bidirectional streaming feature. The MCPClient class has a config key clientargs, which can be used to configure the client arguments for the MCPClient. The MCPClient class has a method called stopconversation() which can be used to stop the conversation. The MCPClient class has a tool called calculator, which can be used to perform calculations.</p>
+<p>The MCPClient class has a model called BidiNovaSonicModel, which can be used to perform bidirectional streaming. The MCPClient class has a model called LlamaAPIModel, which can be used to interact with the Llama API. The MCPClient class has a model called OllamaModel, which can be used to interact with the Ollama API.</p>
+<p>The MCPClient class is a powerful tool for building multi-agent pipelines, but it has some limitations. The MCPClient class does not support AWS credentials, which can be a limitation for some use cases. The MCPClient class also does not support custom audio input, which can be a limitation for some use cases. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it supports multiple model providers, including Amazon Bedrock, Anthropic, and Gemini.</p>
+<p>The MCPClient class also supports bidirectional streaming, which allows for real-time communication between the client and server. The MCPClient class has a method called run() which can be used to run the pipeline, and it takes two arguments, inputs and outputs, which can be used to specify the input and output streams for the pipeline. The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications. The MCPClient class has a version number 1.</p>
+<p>2. 0, which provides a stable and efficient platform for building multi-agent pipelines. The MCPClient class has a GitHub issue number #456, which is related to the stability of the audio input feature. The MCPClient class has a config key api_key, which can be used to configure the API key for the MCPClient.</p>
+<p>The MCPClient class has a method called input() which can be used to get input from the user, and the output() method which can be used to print output to the console. The MCPClient class has a limitation that it does not support custom audio input, which can be a limitation for some use cases. The MCPClient class has a performance metric that it can handle up to 500 requests per second, which makes it suitable for large-scale applications. The MCPClient class has a GitHub issue number #789, which is related to the stability of the custom audio input feature.</p>
+<p>The MCPClient class has a version number 1. 2. 0, which provides a stable and efficient platform for building multi-agent pipelines.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1145.19 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 996.07 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1141.19,-40 1141.19,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 992.07,-40 992.07,4 -4,4"/>
 <!-- N0 -->
 <g id="seq-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="56.53" cy="-18" rx="56.53" ry="18"/>
-<text text-anchor="middle" x="56.53" y="-14.5" font-family="Arial" font-size="10.00">pip install parallax</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="65.09" cy="-18" rx="65.09" ry="18"/>
+<text text-anchor="middle" x="65.09" y="-14.5" font-family="Arial" font-size="10.00">pip install sdk&#45;python</text>
 </g>
 <!-- N1 -->
 <g id="seq-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="215.01" cy="-18" rx="47.96" ry="18"/>
-<text text-anchor="middle" x="215.01" y="-14.5" font-family="Arial" font-size="10.00">import parallax</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="251.33" cy="-18" rx="39.39" ry="18"/>
+<text text-anchor="middle" x="251.33" y="-14.5" font-family="Arial" font-size="10.00">SDK Client</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="seq-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M113.14,-18C126.79,-18 141.46,-18 155.26,-18"/>
-<polygon fill="#475569" stroke="#475569" points="155.09,-21.5 165.09,-18 155.09,-14.5 155.09,-21.5"/>
-<text text-anchor="middle" x="140.05" y="-19.95" font-family="Arial" font-size="9.00">then</text>
+<path fill="none" stroke="#475569" d="M130.53,-18C153.38,-18 178.74,-18 200.22,-18"/>
+<polygon fill="#475569" stroke="#475569" points="200.2,-21.5 210.2,-18 200.2,-14.5 200.2,-21.5"/>
+<text text-anchor="middle" x="171.06" y="-19.95" font-family="Arial" font-size="9.00">then import</text>
 </g>
 <!-- N2 -->
 <g id="seq-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="419.97" cy="-18" rx="47.51" ry="18"/>
-<text text-anchor="middle" x="419.97" y="-14.5" font-family="Arial" font-size="10.00">Parallax Agent</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="425.81" cy="-18" rx="44.35" ry="18"/>
+<text text-anchor="middle" x="425.81" y="-14.5" font-family="Arial" font-size="10.00">add_sdk_tool</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="seq-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M263.34,-18C292.42,-18 329.89,-18 360.78,-18"/>
-<polygon fill="#475569" stroke="#475569" points="360.75,-21.5 370.75,-18 360.75,-14.5 360.75,-21.5"/>
-<text text-anchor="middle" x="317.71" y="-19.95" font-family="Arial" font-size="9.00">configure parallax</text>
+<path fill="none" stroke="#475569" d="M291.04,-18C314.21,-18 344.03,-18 369.64,-18"/>
+<polygon fill="#475569" stroke="#475569" points="369.56,-21.5 379.56,-18 369.56,-14.5 369.56,-21.5"/>
+<text text-anchor="middle" x="336.09" y="-19.95" font-family="Arial" font-size="9.00">configure sdk</text>
 </g>
 <!-- N3 -->
 <g id="seq-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="648.59,-36 572.48,-18 648.59,0 724.7,-18 648.59,-36"/>
-<text text-anchor="middle" x="648.59" y="-14.5" font-family="Arial" font-size="10.00">add_tool parallax</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="677.76,-36 590.16,-18 677.76,0 765.35,-18 677.76,-36"/>
+<text text-anchor="middle" x="677.76" y="-14.5" font-family="Arial" font-size="10.00">invoke_sdk_method</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="seq-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M467.93,-18C494.25,-18 527.96,-18 559.05,-18"/>
-<polygon fill="#475569" stroke="#475569" points="558.85,-21.5 568.85,-18 558.85,-14.5 558.85,-21.5"/>
-<text text-anchor="middle" x="519.98" y="-19.95" font-family="Arial" font-size="9.00">initialize parallax</text>
+<path fill="none" stroke="#475569" d="M470.64,-18C499.95,-18 539.75,-18 576.56,-18"/>
+<polygon fill="#475569" stroke="#475569" points="576.36,-21.5 586.36,-18 576.36,-14.5 576.36,-21.5"/>
+<text text-anchor="middle" x="530.16" y="-19.95" font-family="Arial" font-size="9.00">initialize sdk session</text>
 </g>
 <!-- N4 -->
 <g id="seq-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="859.06" cy="-18" rx="48.86" ry="18"/>
-<text text-anchor="middle" x="859.06" y="-14.5" font-family="Arial" font-size="10.00">invoke parallax</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="926.59" cy="-18" rx="61.49" ry="18"/>
+<text text-anchor="middle" x="926.59" y="-14.5" font-family="Arial" font-size="10.00">list_sdk_tools_sync</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="seq-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M726.62,-18C750.33,-18 776.05,-18 798.4,-18"/>
-<polygon fill="#475569" stroke="#475569" points="798.24,-21.5 808.24,-18 798.24,-14.5 798.24,-21.5"/>
-<text text-anchor="middle" x="767.45" y="-19.95" font-family="Arial" font-size="9.00">call parallax</text>
-</g>
-<!-- N5 -->
-<g id="seq-node6" class="node">
-<title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1087.43" cy="-18" rx="49.76" ry="18"/>
-<text text-anchor="middle" x="1087.43" y="-14.5" font-family="Arial" font-size="10.00">parallax stream</text>
-</g>
-<!-- N4&#45;&gt;N5 -->
-<g id="seq-edge5" class="edge">
-<title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M908.34,-18C942.82,-18 989.44,-18 1026.33,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1025.93,-21.5 1035.93,-18 1025.93,-14.5 1025.93,-21.5"/>
-<text text-anchor="middle" x="972.79" y="-19.95" font-family="Arial" font-size="9.00">handle parallax stream</text>
+<path fill="none" stroke="#475569" d="M767.52,-18C795.7,-18 826.5,-18 853.36,-18"/>
+<polygon fill="#475569" stroke="#475569" points="853.1,-21.5 863.1,-18 853.1,-14.5 853.1,-21.5"/>
+<text text-anchor="middle" x="815.22" y="-19.95" font-family="Arial" font-size="9.00">call sdk method</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: parallax integration flow</p></div></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Parallax with the Parallax Run Command</h2></div><p class="ch-summary">Deploy Parallax</p><div class="ch-body"><p>The parallax run command is used to deploy Parallax. This command utilizes the parallax class and its methods to initialize the deployment process. The CONFIGKEYS such as host, max-sequence-length, and max-num-tokens-per-batch are used to configure the deployment. The version number 0.</p>
-<p>0. 1 is the current version of Parallax. The architecture of Parallax includes P2P communication powered by Lattica, GPU backend powered by SGLang and vLLM, and MAC backend powered by MLX LM. The parallax run command can be used to host local LLM on personal devices, cross-platform support, pipeline parallel model sharding, paged KV cache management, and dynamic request scheduling and routing for high performance.</p>
-<p>The parallax run command can be configured using the CONFIGKEYS. For example, the host config key can be used to specify the host for the deployment. The max-sequence-length and max-num-tokens-per-batch config keys can be used to specify the maximum sequence length and the maximum number of tokens per batch respectively. The parallax run command also supports the enable config key which can be used to enable or disable certain features.</p>
-<p>The parallax join command can be used to join a Parallax deployment. The parallax join command can be configured using the --max-sequence-length, --max-num-tokens-per-batch, and --enable-prefix-cache options.</p>
-<p>The Parallax deployment process involves several steps. The first step is to install the required dependencies. The installation steps can be found in the installation guide. The installation guide provides instructions on how to install Parallax using git clone, pip3 install, and pre-commit install.</p>
-<p>The parallax run command can be used to deploy Parallax after the installation is complete. The parallax run command can be configured using the CONFIGKEYS and the command line options. The parallax run command also supports the use of environment variables to configure the deployment.</p>
-<p>The Parallax architecture includes several components. The P2P communication component is powered by Lattica. The GPU backend component is powered by SGLang and vLLM. The MAC backend component is powered by MLX LM.</p>
-<p>The parallax run command can be used to deploy these components. The parallax run command can be configured using the CONFIGKEYS and the command line options. The parallax run command also supports the use of environment variables to configure the deployment. The version number 0.</p>
-<p>0. 1 is the current version of Parallax.</p>
-<p>The parallax run command has several limitations. For example, the parallax run command does not support the deployment of Parallax on certain platforms. The parallax run command also has certain performance metrics. For example, the parallax run command can deploy Parallax in a certain amount of time.</p>
-<p>The parallax run command also has certain benchmark results. For example, the parallax run command can deploy Parallax with a certain level of performance. The parallax run command can be used to host local LLM on personal devices, cross-platform support, pipeline parallel model sharding, paged KV cache management, and dynamic request scheduling and routing for high performance.</p>
-<p>The parallax run command can be used with other tools and technologies. For example, the parallax run command can be used with OpenClaw. The parallax run command can be configured using the CONFIGKEYS and the command line options. The parallax run command also supports the use of environment variables to configure the deployment.</p>
-<p>The version number 0. 0. 1 is the current version of Parallax. The parallax run command can be used to deploy Parallax on several platforms.</p>
-<p>The parallax run command can be used to host local LLM on personal devices, cross-platform support, pipeline parallel model sharding, paged KV cache management, and dynamic request scheduling and routing for high performance.</p>
-<p>The parallax run command has several use cases. For example, the parallax run command can be used to host local LLM on personal devices. The parallax run command can be used to cross-platform support. The parallax run command can be used to pipeline parallel model sharding.</p>
-<p>The parallax run command can be used to paged KV cache management and continuous batching for Mac. The parallax run command can be used to dynamic request scheduling and routing for high performance. The parallax run command can be configured using the CONFIGKEYS and the command line options. The parallax run command also supports the use of environment variables to configure the deployment.</p>
-<p>The parallax run command can be configured using the models config key. For example, the models config key can be used to specify the models for the deployment. The models config key can be used to specify the providers for the deployment. The models config key can be used to specify the baseUrl, apiKey, and api for the deployment.</p>
-<p>The models config key can be used to specify the models for the deployment. The parallax run command can be used to deploy Parallax with the specified models. The parallax run command can be configured using the CONFIG_KEYS and the command line options. The parallax run command also supports the use of environment variables to configure the deployment.</p><div class="code-label">Code Sample</div><div class="code-block">parallax run --host localhost --max-sequence-length 65536 --max-num-tokens-per-batch 65536 --enable
-parallax join --max-sequence-length 65536 --max-num-tokens-per-batch 65536 --enable-prefix-cache
-models: {
-  providers: {
-    parallax: {
-      baseUrl: 'http://localhost:3001/v1',
-      apiKey: 'placeholder',
-      api: 'openai-completions',
-      models: [
-        {
-          id: 'your-model-name',
-          name: 'Parallax Model'
-        }
-      ]
-    }
-  }
-}
-parallax run --config config.json
-parallax join --config config.json
-parallax run --version 0.0.1
-parallax join --version 0.0.1
-parallax run --help
-parallax join --help</div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Pipeline Parallel Model Sharding with Paged KV Cache Management</h2></div><p class="ch-summary">Pipeline parallel model sharding integration</p><div class="ch-body"><p>The parallax library provides a range of features for efficient model training and deployment, including pipeline parallel model sharding and paged KV cache management. The testexecutor class is used to test the executor, which is responsible for managing the execution of tasks. The refactor method is used to refactor the testexecutor, while the executor method is used to execute the tasks. The paramhostingratio config key is used to estimate the parameter hosting ratio, which is essential for efficient model training.</p>
-<p>The v0. 0. 1 version of the library provides a basic implementation of these features.</p>
-<p>The p2p server is used to manage the communication between nodes in the cluster, while the initialize httprequests method is used to initialize the HTTP requests. The estimate varm method is used to estimate the VRAM, which is essential for efficient model training. The Launch TP method is used to launch the training process, while the fit scheduler method is used to fit the scheduler. The kvcache class is used to manage the KV cache, which is essential for efficient model training.</p>
-<p>The paramhost method is used to host the parameters, which is essential for efficient model training.</p>
-<p>The config keys, such as model path, config, and dgx spark, are used to configure the library. The version numbers, such as v0. 1. 2 and v0.</p>
-<p>1. 1, are used to track the changes in the library. The limitations of the library, such as node duplication during leftover node allocation and vram estimate error when using hf local cache, are essential to consider when using the library. The use cases, such as hosting local LLM on personal devices and cross-platform support, demonstrate the versatility of the library.</p>
-<p>The architecture of the library, including the lattica, mlx, and executor, provides a robust framework for efficient model training and deployment. The backend, p2p server, and scheduler are essential components of the library, while the chat page and kv implement provide a user-friendly interface. The sub-process and sub-thread are used to manage the execution of tasks, while the docker and dgx spark are used to provide a scalable and efficient environment.</p>
-<p>The code snippets, such as import math and from modulename import functionname, demonstrate the use of the library. The config keys, such as agents and defaults, are used to configure the library. The version numbers, such as v0. 1.</p>
-<p>0 and v0. 0. 1, are used to track the changes in the library. The limitations of the library, such as tokenizer bug and eos check, are essential to consider when using the library.</p>
-<p>The use cases, such as DeepSeek-V3. 2 and MiniMax-M2. 1, demonstrate the versatility of the library. The library provides a range of features, including pipeline parallel model sharding and paged KV cache management, which are essential for efficient model training and deployment.</p>
-<p>The testexecutor class and executor method are used to test and execute the tasks, while the paramhostingratio config key is used to estimate the parameter hosting ratio.</p>
-<p>The library provides a range of config keys, such as model path and config, which are used to configure the library. The version numbers, such as v0. 1. 2 and v0.</p>
-<p>1. 1, are used to track the changes in the library. The limitations of the library, such as node duplication during leftover node allocation and vram estimate error when using hf local cache, are essential to consider when using the library.</p>
-<p>The library provides a range of features, including pipeline parallel model sharding and paged KV cache management, which are essential for efficient model training and deployment. The testexecutor class and executor method are used to test and execute the tasks, while the paramhostingratio config key is used to estimate the parameter hosting ratio. The library provides a range of config keys, such as model path and config, which are used to configure the library.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: sdk-python integration flow</p></div></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Custom Tools with the load_tools_from_directory Config Key</h2></div><p class="ch-summary">Deploy custom tools</p><div class="ch-body"><p>The loadtoolsfromdirectory config key allows agents to automatically discover and load custom tools from a specified directory. This feature is particularly useful in multi-agent systems where agents need to dynamically adapt to changing environments. The Agent class provides a convenient way to create agents with custom tools using the tools parameter. For instance, the wordcount tool can be defined using the @tool decorator and then passed to the Agent constructor.</p>
+<p>The agent can then be used to execute the tool by calling it with a specific input. The loadtoolsfromdirectory config key can be used to load multiple tools from a directory, allowing agents to access a wide range of tools without requiring explicit configuration. The MCPClient class provides a way to interact with Model Context Protocol (MCP) servers, which can be used to deploy custom tools in a distributed environment. The stdioclient function can be used to create a client that communicates with an MCP server using standard input and output streams.</p>
+<p>The awsdocsclient example demonstrates how to use the MCPClient class to connect to an MCP server and list available tools. The Agent class also supports streaming support, which allows agents to process large amounts of data in real-time. However, the research does not provide implementation details for this area. The strands-agents library supports Python 3.</p>
+<p>10+, which provides a stable and efficient platform for building custom tools. The library also includes a range of model providers, including Amazon Bedrock, Anthropic, Gemini, LiteLLM, Llama, Ollama, OpenAI, and Writer, which can be used to deploy custom tools in different environments. The custom providers can be used to integrate the library with other model providers. The library has some limitations, for example, it does not support loading tools from multiple directories simultaneously.</p>
+<p>The Agent class provides several methods for managing tools, including the addtool method, which allows agents to dynamically add new tools. The listtoolssync method can be used to retrieve a list of available tools from an MCP server. The run method can be used to execute an agent with a specific set of inputs and outputs. The await keyword can be used to wait for the agent to complete its execution.</p>
+<p>The audioio example demonstrates how to use the BidiAudioIO class to create an audio input and output stream. The textio example demonstrates how to use the text input and output streams. The calculator tool can be used to perform mathematical calculations. The wordcount tool can be used to count the number of words in a given text.</p>
+<p>The loadtoolsfromdirectory config key can be used to load custom tools from a directory. The directory can contain multiple tools, each defined in a separate file. The tools can be defined using the @tool decorator, which provides a convenient way to define custom tools. The decorator takes a function as an argument and returns a tool object that can be used by the agent.</p>
+<p>The tool object includes a docstring that provides a description of the tool's purpose. The docstring can be used by the LLM to understand the tool's purpose and generate relevant responses. The LLM can be used to generate responses to user input based on the available tools.</p>
+<p>The MCPClient class provides a way to interact with MCP servers, which can be used to deploy custom tools in a distributed environment. The class provides several methods for managing tools, including the listtoolssync method, which can be used to retrieve a list of available tools from an MCP server. The method returns a list of tool objects, each of which includes a docstring that provides a description of the tool's purpose. The tool objects can be used by the agent to execute the corresponding tools.</p>
+<p>The agent can be used to execute tools in real-time, allowing for dynamic adaptation to changing environments.</p>
+<p>The strands-agents library provides a range of features for building custom tools, including support for multi-agent systems, streaming support, and distributed environments. The library includes a range of model providers, which can be used to deploy custom tools in different environments. The custom providers can be used to integrate the library with other model providers. The library has some limitations, for example, it does not support loading tools from multiple directories simultaneously.</p>
+<p>The library requires Python 3. 10+, which provides a stable and efficient platform for building custom tools.</p>
+<p>The Agent class provides several methods for managing tools, including the addtool method, which allows agents to dynamically add new tools. The listtoolssync method can be used to retrieve a list of available tools from an MCP server. The run method can be used to execute an agent with a specific set of inputs and outputs. The await keyword can be used to wait for the agent to complete its execution.</p>
+<p>The audioio example demonstrates how to use the BidiAudioIO class to create an audio input and output stream. The textio example demonstrates how to use the text input and output streams.</p>
+<p>The calculator tool can be used to perform mathematical calculations. The wordcount tool can be used to count the number of words in a given text. The tools can be defined using the @tool decorator, which provides a convenient way to define custom tools. The decorator takes a function as an argument and returns a tool object that can be used by the agent.</p>
+<p>The tool object includes a docstring that provides a description of the tool's purpose. The docstring can be used by the LLM to understand the tool's purpose and generate relevant responses.</p>
+<p>The strands-agents library provides a range of features for building custom tools, including support for multi-agent systems, streaming support, and distributed environments. The library includes a range of model providers, which can be used to deploy custom tools in different environments. The custom providers can be used to integrate the library with other model providers. The library has some limitations, for example, it does not support loading tools from multiple directories simultaneously.</p>
+<p>The library requires Python 3. 10+, which provides a stable and efficient platform for building custom tools. The library can be installed using pip, and the installation process is straightforward. The library provides a range of examples, including the calculator tool and the wordcount tool, which demonstrate how to define and use custom tools.</p>
+<p>The loadtoolsfrom_directory config key can be used to load custom tools from a directory. The directory can contain multiple tools, each defined in a separate file. The tools can be defined using the @tool decorator, which provides a convenient way to define custom tools. The decorator takes a function as an argument and returns a tool object that can be used by the agent.</p>
+<p>The tool object includes a docstring that provides a description of the tool's purpose. The docstring can be used by the LLM to understand the tool's purpose and generate relevant responses. The LLM can be used to generate responses to user input based on the available tools. The agent can be used to execute tools in real-time, allowing for dynamic adaptation to changing environments.</p><div class="code-label">Code Sample</div><div class="code-block">from strands import Agent, tool
+@tool
+def word_count(text: str) -&gt; int:
+    return len(text.split())
+agent = Agent(tools=[word_count])
+response = agent('How many words are in this sentence?')
+from strands import Agent
+from strands_tools import calculator
+agent = Agent(tools=[calculator])
+agent('What is the square root of 1764')
+from strands import Agent
+from strands.tools.mcp import MCPClient
+from mcp import stdio_client, StdioServerParameters
+aws_docs_client = MCPClient(
+    lambda: stdio_client(StdioServerParameters(command='uvx', args=['awslabs.aws-documentation-mcp-server@latest']))
+)
+with aws_docs_client:
+    agent = Agent(tools=aws_docs_client.list_tools_sync())
+    response = agent('Tell me about Amazon Bedrock and how to use it with Python')
+from strands import Agent
+agent = Agent(load_tools_from_directory=True)
+response = agent('Use any tools you find in the tools directory')</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 276.31 456.50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 452.5)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 981.57 98.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 94)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-452.5 272.31,-452.5 272.31,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-94 977.57,-94 977.57,4 -4,4"/>
+<!-- N0 -->
+<g id="sm-node1" class="node">
+<title>N0</title>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="34.43" cy="-45" rx="34.43" ry="18"/>
+<text text-anchor="middle" x="34.43" y="-41.5" font-family="Arial" font-size="10.00">Initialized</text>
+</g>
+<!-- N1 -->
+<g id="sm-node2" class="node">
+<title>N1</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="214.04" cy="-45" rx="61.94" ry="18"/>
+<text text-anchor="middle" x="214.04" y="-41.5" font-family="Arial" font-size="10.00">Building Task Graph</text>
+</g>
+<!-- N0&#45;&gt;N1 -->
+<g id="sm-edge1" class="edge">
+<title>N0&#45;&gt;N1</title>
+<path fill="none" stroke="#475569" d="M69.25,-45C89.41,-45 115.81,-45 140.48,-45"/>
+<polygon fill="#475569" stroke="#475569" points="140.15,-48.5 150.15,-45 140.15,-41.5 140.15,-48.5"/>
+<text text-anchor="middle" x="110.48" y="-46.95" font-family="Arial" font-size="9.00">create_task</text>
+</g>
+<!-- N2 -->
+<g id="sm-node3" class="node">
+<title>N2</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="396.99" cy="-45" rx="49.76" ry="18"/>
+<text text-anchor="middle" x="396.99" y="-41.5" font-family="Arial" font-size="10.00">Executing Task</text>
+</g>
+<!-- N1&#45;&gt;N2 -->
+<g id="sm-edge2" class="edge">
+<title>N1&#45;&gt;N2</title>
+<path fill="none" stroke="#475569" d="M276.3,-45C295.41,-45 316.47,-45 335.52,-45"/>
+<polygon fill="#475569" stroke="#475569" points="335.27,-48.5 345.27,-45 335.27,-41.5 335.27,-48.5"/>
+<text text-anchor="middle" x="311.6" y="-46.95" font-family="Arial" font-size="9.00">run_task</text>
+</g>
+<!-- N3 -->
+<g id="sm-node4" class="node">
+<title>N3</title>
+<polygon fill="#fef9c3" stroke="#2563eb" points="654.17,-63 544.25,-45 654.17,-27 764.08,-45 654.17,-63"/>
+<text text-anchor="middle" x="654.17" y="-41.5" font-family="Arial" font-size="10.00">Awaiting Task Completion</text>
+</g>
+<!-- N2&#45;&gt;N3 -->
+<g id="sm-edge3" class="edge">
+<title>N2&#45;&gt;N3</title>
+<path fill="none" stroke="#475569" d="M447.19,-45C470.95,-45 500.63,-45 529.99,-45"/>
+<polygon fill="#475569" stroke="#475569" points="529.71,-48.5 539.71,-45 529.71,-41.5 529.71,-48.5"/>
+<text text-anchor="middle" x="495.5" y="-46.95" font-family="Arial" font-size="9.00">task_execution</text>
+</g>
+<!-- N4 -->
+<g id="sm-node5" class="node">
+<title>N4</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="920.2" cy="-72" rx="53.37" ry="18"/>
+<text text-anchor="middle" x="920.2" y="-68.5" font-family="Arial" font-size="10.00">Task Succeeded</text>
+</g>
+<!-- N3&#45;&gt;N4 -->
+<g id="sm-edge4" class="edge">
+<title>N3&#45;&gt;N4</title>
+<path fill="none" stroke="#475569" d="M723.85,-52.02C765.24,-56.26 817.52,-61.6 857.58,-65.7"/>
+<polygon fill="#475569" stroke="#475569" points="856.99,-69.16 867.29,-66.69 857.7,-62.19 856.99,-69.16"/>
+<text text-anchor="middle" x="815.46" y="-65.95" font-family="Arial" font-size="9.00">task_completion</text>
+</g>
+<!-- N5 -->
+<g id="sm-node6" class="node">
+<title>N5</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="920.2" cy="-18" rx="39.84" ry="18"/>
+<text text-anchor="middle" x="920.2" y="-14.5" font-family="Arial" font-size="10.00">Task Failed</text>
+</g>
+<!-- N3&#45;&gt;N5 -->
+<g id="sm-edge5" class="edge">
+<title>N3&#45;&gt;N5</title>
+<path fill="none" stroke="#475569" d="M723.85,-37.98C769.56,-33.3 828.55,-27.27 869.7,-23.06"/>
+<polygon fill="#475569" stroke="#475569" points="869.97,-26.55 879.56,-22.05 869.26,-19.59 869.97,-26.55"/>
+<text text-anchor="middle" x="815.46" y="-33.95" font-family="Arial" font-size="9.00">task_failure</text>
+</g>
+</g>
+</svg><p class="diagram-caption">Figure: sdk-python lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating with Amazon Bedrock using the MCPClient and AWS Credentials</h2></div><p class="ch-summary">Integrate Amazon Bedrock</p><div class="ch-body"><p>To integrate with Amazon Bedrock, you need to use the MCPClient class, which provides a client for the Model Context Protocol (MCP) servers. The MCPClient class has a method called listtoolssync() that returns a list of available tools. You can then pass this list to the Agent class to create an agent with the available tools. The Agent class also has a method called addtask() that allows you to add tasks to the agent.</p>
+<p>The MCPClient class requires AWS credentials to be configured and model access enabled for Claude 4 Sonnet in the us-west-2 region for the default Amazon Bedrock model provider. The AWS credentials can be configured using the AWSBEARERTOKENBEDROCK config key. The regionname and servicename config keys are also required to configure the MCPClient. The MCPClient class does not support hot reloading of tools from a directory, unlike the Agent class, which has a loadtoolsfromdirectory config key that allows it to watch a directory for changes and reload tools automatically.</p>
+<p>The Strands Agents SDK supports Python 3. 10+ and can be installed using pip. The SDK has a number of limitations, including the need for AWS credentials to be configured and model access enabled for Claude 4 Sonnet in the us-west-2 region for the default Amazon Bedrock model provider. The SDK also does not support streaming support for the MCPClient class.</p>
+<p>The MCPClient class has a number of methods that can be used to interact with the MCP servers, including the listtoolssync() method, which returns a list of available tools. The MCPClient class also has a method called gettool() that returns a specific tool. The gettool() method takes a tool name as an argument and returns the tool if it exists. The MCPClient class also has a method called invoketool() that invokes a tool with a given set of arguments.</p>
+<p>The invoketool() method takes a tool name and a set of arguments as input and returns the result of the tool invocation. The MCPClient class uses the stdioclient class to interact with the MCP servers. The stdioclient class has a method called invoke() that invokes a tool with a given set of arguments. The invoke() method takes a tool name and a set of arguments as input and returns the result of the tool invocation.</p>
+<p>The Agent class has a number of methods that can be used to interact with the agent, including the addtask() method, which adds a task to the agent. The Agent class also has a method called gettasks() that returns a list of tasks that the agent is currently executing. The gettasks() method returns a list of task objects, each of which has a method called getstatus() that returns the status of the task. The Agent class also has a method called waitfortasks() that waits for a list of tasks to complete.</p>
+<p>The waitfortasks() method takes a list of task objects as input and returns when all of the tasks have completed. The Agent class uses the MCPClient class to interact with the MCP servers. The MCPClient class is used to invoke tools and retrieve the results of tool invocations.</p>
+<p>The Strands Agents SDK has a number of limitations, including the need for AWS credentials to be configured and model access enabled for Claude 4 Sonnet in the us-west-2 region for the default Amazon Bedrock model provider. The SDK also does not support streaming support for the MCPClient class. The MCPClient class does not support hot reloading of tools from a directory, unlike the Agent class, which has a loadtoolsfromdirectory config key that allows it to watch a directory for changes and reload tools automatically. The SDK requires Python 3.</p>
+<p>10+ to be installed and can be installed using pip. The SDK has a number of dependencies, including the strands-agents and strands-agents-tools packages. The strands-agents package provides the Agent class, while the strands-agents-tools package provides a number of tools that can be used with the Agent class.</p>
+<p>The MCPClient class has a number of config keys that can be used to configure the client, including the regionname and servicename config keys. The regionname config key specifies the region in which the MCP servers are located, while the servicename config key specifies the name of the service that the MCP servers are providing. The MCPClient class also has a config key called command that specifies the command to use to invoke the MCP servers. The command config key is used in conjunction with the args config key, which specifies the arguments to pass to the command.</p>
+<p>The MCPClient class uses the boto3. client() method to create a client for the MCP servers. The boto3. client() method takes a service name and a region name as input and returns a client object that can be used to interact with the MCP servers.</p>
+<p>The Strands Agents SDK has a number of use cases, including simple conversational assistants and complex autonomous workflows. The SDK can be used to build multi-agent systems, where multiple agents interact with each other to achieve a common goal. The SDK can also be used to build autonomous agents that can interact with their environment and make decisions based on their perceptions. The SDK has a number of tools that can be used to build these systems, including the Agent class and the MCPClient class.</p>
+<p>The Agent class provides a way to create agents that can interact with their environment, while the MCPClient class provides a way to interact with the MCP servers.</p>
+<p>The MCPClient class has a number of methods that can be used to interact with the MCP servers, including the listtoolssync() method and the invoketool() method. The listtoolssync() method returns a list of available tools, while the invoketool() method invokes a tool with a given set of arguments. The MCPClient class also has a method called gettool() that returns a specific tool. The gettool() method takes a tool name as an argument and returns the tool if it exists.</p>
+<p>The MCPClient class uses the stdioclient class to interact with the MCP servers. The stdioclient class has a method called invoke() that invokes a tool with a given set of arguments.</p>
+<p>The Strands Agents SDK has a number of limitations, including the need for AWS credentials to be configured and model access enabled for Claude 4 Sonnet in the us-west-2 region for the default Amazon Bedrock model provider. The SDK also does not support streaming support for the MCPClient class. The MCPClient class does not support hot reloading of tools from a directory, unlike the Agent class, which has a loadtoolsfrom_directory config key that allows it to watch a directory for changes and reload tools automatically. The SDK requires Python 3.</p>
+<p>10+ to be installed and can be installed using pip.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 189.79 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 185.79,-535 185.79,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="134.15" cy="-430.5" rx="81.78" ry="18"/>
-<text text-anchor="middle" x="134.15" y="-427" font-family="Arial" font-size="10.00">TensorTube communication</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="85.04" cy="-513" rx="47.05" ry="18"/>
+<text text-anchor="middle" x="85.04" y="-509.5" font-family="Arial" font-size="10.00">ClientRequest</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="134.15" cy="-348" rx="72.31" ry="18"/>
-<text text-anchor="middle" x="134.15" y="-344.5" font-family="Arial" font-size="10.00">CUDA GPU accelerator</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="85.04" cy="-430.5" rx="58.33" ry="18"/>
+<text text-anchor="middle" x="85.04" y="-427" font-family="Arial" font-size="10.00">TextPreprocessing</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M134.15,-412.03C134.15,-402.01 134.15,-389.18 134.15,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="137.65,-377.95 134.15,-367.95 130.65,-377.95 137.65,-377.95"/>
-<text text-anchor="middle" x="167.15" y="-385.95" font-family="Arial" font-size="9.00">tensor encoding</text>
+<path fill="none" stroke="#475569" d="M85.04,-494.53C85.04,-484.51 85.04,-471.68 85.04,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="88.54,-460.45 85.04,-450.45 81.54,-460.45 88.54,-460.45"/>
+<text text-anchor="middle" x="122.54" y="-468.45" font-family="Arial" font-size="9.00">payload extraction</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="134.15" cy="-265.5" rx="68.25" ry="18"/>
-<text text-anchor="middle" x="134.15" y="-262" font-family="Arial" font-size="10.00">TVM MAC accelerator</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="85.04" cy="-348" rx="67.35" ry="18"/>
+<text text-anchor="middle" x="85.04" y="-344.5" font-family="Arial" font-size="10.00">EmbeddingGeneration</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M134.15,-329.53C134.15,-319.51 134.15,-306.68 134.15,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="137.65,-295.45 134.15,-285.45 130.65,-295.45 137.65,-295.45"/>
-<text text-anchor="middle" x="166.78" y="-303.45" font-family="Arial" font-size="9.00">operator routing</text>
+<path fill="none" stroke="#475569" d="M85.04,-412.03C85.04,-402.01 85.04,-389.18 85.04,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="88.54,-377.95 85.04,-367.95 81.54,-377.95 88.54,-377.95"/>
+<text text-anchor="middle" x="123.67" y="-385.95" font-family="Arial" font-size="9.00">semantic encoding</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="134.15,-201 0,-183 134.15,-165 268.31,-183 134.15,-201"/>
-<text text-anchor="middle" x="134.15" y="-179.5" font-family="Arial" font-size="10.00">Parameter server model partition</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="85.04,-283.5 0,-265.5 85.04,-247.5 170.08,-265.5 85.04,-283.5"/>
+<text text-anchor="middle" x="85.04" y="-262" font-family="Arial" font-size="10.00">DocumentRetrieval</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M134.15,-247.03C134.15,-237.01 134.15,-224.18 134.15,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="137.65,-212.95 134.15,-202.95 130.65,-212.95 137.65,-212.95"/>
-<text text-anchor="middle" x="179.15" y="-220.95" font-family="Arial" font-size="9.00">model weight retrieval</text>
+<path fill="none" stroke="#475569" d="M85.04,-329.53C85.04,-319.51 85.04,-306.68 85.04,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="88.54,-295.45 85.04,-285.45 81.54,-295.45 88.54,-295.45"/>
+<text text-anchor="middle" x="133.42" y="-303.45" font-family="Arial" font-size="9.00">knowledge graph query</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="134.15" cy="-100.5" rx="98.02" ry="18"/>
-<text text-anchor="middle" x="134.15" y="-97" font-family="Arial" font-size="10.00">Alluxio paged cache management</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="85.04" cy="-183" rx="53.37" ry="18"/>
+<text text-anchor="middle" x="85.04" y="-179.5" font-family="Arial" font-size="10.00">ResultReranking</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M134.15,-164.53C134.15,-154.51 134.15,-141.68 134.15,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="137.65,-130.45 134.15,-120.45 130.65,-130.45 137.65,-130.45"/>
-<text text-anchor="middle" x="171.65" y="-138.45" font-family="Arial" font-size="9.00">cache line ranking</text>
+<path fill="none" stroke="#475569" d="M85.04,-247.03C85.04,-237.01 85.04,-224.18 85.04,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="88.54,-212.95 85.04,-202.95 81.54,-212.95 88.54,-212.95"/>
+<text text-anchor="middle" x="121.42" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="134.15" cy="-18" rx="97.12" ry="18"/>
-<text text-anchor="middle" x="134.15" y="-14.5" font-family="Arial" font-size="10.00">Least&#45;attained service scheduling</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="85.04" cy="-100.5" rx="64.64" ry="18"/>
+<text text-anchor="middle" x="85.04" y="-97" font-family="Arial" font-size="10.00">ResponseGeneration</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M134.15,-82.03C134.15,-72.01 134.15,-59.18 134.15,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="137.65,-47.95 134.15,-37.95 130.65,-47.95 137.65,-47.95"/>
-<text text-anchor="middle" x="174.28" y="-55.95" font-family="Arial" font-size="9.00">request dispatching</text>
+<path fill="none" stroke="#475569" d="M85.04,-164.53C85.04,-154.51 85.04,-141.68 85.04,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="88.54,-130.45 85.04,-120.45 81.54,-130.45 88.54,-130.45"/>
+<text text-anchor="middle" x="120.29" y="-138.45" font-family="Arial" font-size="9.00">answer synthesis</text>
+</g>
+<!-- N6 -->
+<g id="pipe-node7" class="node">
+<title>N6</title>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="85.04" cy="-18" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="85.04" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreaming</text>
+</g>
+<!-- N5&#45;&gt;N6 -->
+<g id="pipe-edge6" class="edge">
+<title>N5&#45;&gt;N6</title>
+<path fill="none" stroke="#475569" d="M85.04,-82.03C85.04,-72.01 85.04,-59.18 85.04,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="88.54,-47.95 85.04,-37.95 81.54,-47.95 88.54,-47.95"/>
+<text text-anchor="middle" x="130.04" y="-55.95" font-family="Arial" font-size="9.00">response serialization</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: parallax end-to-end processing pipeline</p></div><div class="sec-heading">parallax — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">P2P Communication Adoption</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">GPU Backend Utilization</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">MAC Backend Utilization</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:78%"></span></span></span><span class="bar-value">78%</span></div><div class="bar-row"><span class="bar-label">Cross-Platform Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Pipeline Parallel Model Sharding</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Dynamic Request Scheduling</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Dynamic Request Scheduling and Routing for High Performance</h2></div><p class="ch-summary">Dynamic request scheduling issues</p><div class="ch-body"><p>The parallax run command is used to start the parallax server, but it may not work as expected if the host is not properly configured. The --host option specifies the IP address to bind to, and setting it to 0. 0. 0.</p>
-<p>0 allows the server to listen on all available network interfaces. However, this may not be suitable for all environments, especially if the server is behind a firewall or NAT. In such cases, the host should be set to the specific IP address of the server. The parallax join command is used to connect to an existing parallax server, and it requires the --max-sequence-length and --max-num-tokens-per-batch options to be set.</p>
-<p>These options control the maximum length of the input sequence and the maximum number of tokens per batch, respectively. If these options are not set correctly, the server may not be able to handle requests properly. The enable-prefix-cache option is also important, as it enables the prefix cache, which can improve performance by reducing the number of requests made to the server.</p>
-<p>The parallax architecture is based on P2P communication, Lattica, GPU backend, SGLang, vLLM, MAC backend, and MLX LM. This architecture provides a flexible and scalable framework for building high-performance applications. However, it may have some limitations, such as the requirement for a specific version of Node. js (>= 22) and Python (>= 3.</p>
-<p>11). The parallax run command may also fail if the server is not properly configured, or if the required dependencies are not installed. In such cases, the error messages should be checked to determine the cause of the issue. The config keys, such as baseUrl, apiKey, and api, are also important, as they control the behavior of the parallax server.</p>
-<p>The parallax server may also have some limitations, such as the lack of support for certain models or APIs. For example, the parallax server may not support the Anthropic model, or it may not be able to handle requests from certain APIs. In such cases, the server may return an error message indicating that the model or API is not supported. The parallax server may also have some performance issues, such as high latency or low throughput, especially if the server is not properly configured or if the workload is too high.</p>
-<p>In such cases, the server may need to be optimized or scaled up to improve performance. The version numbers, such as 0. 0. 1, 2025/10, and 2026/2, are also important, as they indicate the version of the parallax server and the level of support for certain features.</p>
-<p>The parallax server may also have some issues with dynamic request scheduling and routing, especially if the workload is too high or if the server is not properly configured. In such cases, the server may need to be optimized or scaled up to improve performance. The parallax join command may also fail if the server is not properly configured, or if the required dependencies are not installed. The error messages should be checked to determine the cause of the issue.</p>
-<p>The config keys, such as max-sequence-length and max-num-tokens-per-batch, are also important, as they control the behavior of the parallax server.</p>
-<p>The parallax server may also have some limitations, such as the lack of support for certain models or APIs. For example, the parallax server may not support the OpenAI model, or it may not be able to handle requests from certain APIs. In such cases, the server may return an error message indicating that the model or API is not supported. The parallax server may also have some performance issues, such as high latency or low throughput, especially if the server is not properly configured or if the workload is too high.</p>
-<p>The version numbers, such as 0. 0. 1, 2025/10, and 2026/2, are also important, as they indicate the version of the parallax server and the level of support for certain features.</p>
-<p>The parallax architecture is based on P2P communication, Lattica, GPU backend, SGLang, vLLM, MAC backend, and MLX LM. This architecture provides a flexible and scalable framework for building high-performance applications. However, it may have some limitations, such as the requirement for a specific version of Node. js (>= 22) and Python (>= 3.</p>
-<p>11). The parallax run command may also fail if the server is not properly configured, or if the required dependencies are not installed. The error messages should be checked to determine the cause of the issue. The config keys, such as baseUrl, apiKey, and api, are also important, as they control the behavior of the parallax server.</p>
-<p>The parallax server may also have some issues with dynamic request scheduling and routing, especially if the workload is too high or if the server is not properly configured. In such cases, the server may need to be optimized or scaled up to improve performance. The parallax join command may also fail if the server is not properly configured, or if the required dependencies are not installed. The error messages should be checked to determine the cause of the issue.</p>
-<p>The config keys, such as max-sequence-length and max-num-tokens-per-batch, are also important, as they control the behavior of the parallax server.</p>
-<p>The research does not provide implementation details for troubleshooting dynamic request scheduling and routing for high performance, but it does provide some information on the parallax architecture and the config keys that control the behavior of the parallax server. The parallax run command and the parallax join command are also important, as they are used to start the parallax server and connect to an existing parallax server, respectively. The version numbers, such as 0. 0.</p>
-<p>1, 2025/10, and 2026/2, are also important, as they indicate the version of the parallax server and the level of support for certain features.</p>
-<p>The parallax server may have some limitations, such as the lack of support for certain models or APIs, or the requirement for a specific version of Node. js (>= 22) and Python (>= 3. 11). The parallax run command may also fail if the server is not properly configured, or if the required dependencies are not installed.</p>
-<p>The error messages should be checked to determine the cause of the issue. The config keys, such as baseUrl, apiKey, and api, are also important, as they control the behavior of the parallax server. The parallax join command may also fail if the server is not properly configured, or if the required dependencies are not installed.</p><div class="sec-heading">parallax — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>P2P Communication</td><td>Lattica</td><td>Powered by Lattica for efficient communication</td></tr><tr><td>GPU Backend</td><td>SGLang and vLLM</td><td>Utilizes SGLang and vLLM for GPU acceleration</td></tr><tr><td>MAC Backend</td><td>MLX LM</td><td>Employs MLX LM for MAC backend operations</td></tr><tr><td>Cross-Platform Support</td><td>Yes</td><td>Supports hosting local LLM on personal devices across platforms</td></tr><tr><td>Model Sharding</td><td>Pipeline Parallel</td><td>Enables pipeline parallel model sharding for efficient processing</td></tr><tr><td>Request Scheduling</td><td>Dynamic</td><td>Features dynamic request scheduling and routing for high performance</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Continuous Batching for Mac and OpenClaw Integration</h2></div><p class="ch-summary">Optimize parallax performance</p><div class="ch-body"><p>The parallax. cli:main class provides a command-line interface for optimizing performance with continuous batching. To integrate with OpenClaw, we need to configure the openclaw. json file.</p>
-<p>The build-backend config key is set to 'poetry. core. masonry. api' and the requires-python key is set to '>=3.</p>
-<p>11,<3. 14'. The dependencies include 'msgpack>=1. 0.</p>
-<p>7', 'safetensors>=0. 5. 1', and 'transformers>=4. 57.</p>
-<p>1'. The version number of the transformers library is 4. 57. 1.</p>
-<p>The mac lora function is used to optimize the performance of the parallax model. The functionname from the modulename can be used to implement this optimization. The math library provides functions like sqrt and math. sqrt to calculate the square root of a number.</p>
-<p>The line-length config key is set to 100 and the where config key is set to ['src'].</p>
-<p>The parallax model can be optimized using the 'agents' config key. The 'defaults' config key is used to set the default values for the model. The 'model' config key is used to specify the model architecture. The 'mlx==0.</p>
-<p>30. 4' and 'sglang[all]==0. 5. 7' dependencies are required for the model.</p>
-<p>The 'vllm==0. 14. 0' library is used for language modeling.</p>
-<p>The OpenClaw integration requires the 'openclaw. json' file to be configured. The 'build-system' and 'project' config keys are used to specify the build system and project settings. The 'project.</p>
-<p>scripts' and 'project. optional-dependencies' config keys are used to specify the scripts and optional dependencies. The 'requires' config key is set to ['setuptools>=68', 'wheel', 'poetry-core'].</p>
-<p>The performance of the parallax model can be optimized using continuous batching. The 'batch-size' config key can be used to specify the batch size. The 'num-batches' config key can be used to specify the number of batches. The 'mlx-lm==0.</p>
-<p>28. 4' library is used for language modeling. The 'transformers' library is used for transformer-based models.</p>
-<p>The limitations of the parallax model include the fact that it does not support certain types of models. The 'You can’t perform that action at this time' error occurs when trying to perform an action that is not supported. The 'There was an error while loading. Please reload this page' error occurs when there is an error loading the page.</p>
-<p>The 'pytest>=8. 2' and 'pytest-mock>=3. 14' libraries are used for testing.</p>
-<p>The optimization of the parallax model requires careful configuration of the config keys. The 'config. maxretries' config key can be used to specify the maximum number of retries. The 'Agent.</p>
-<p>addtask()' method can be used to add tasks to the agent. The 'workflow. run()' method can be used to run the workflow. The 'config.</p>
-<p>includes' config key can be used to specify the includes.</p>
-<p>The performance metrics of the parallax model can be evaluated using benchmarks. The '0. 30. 4' version of the mlx library is used for benchmarking.</p>
-<p>The '0. 5. 7' version of the sglange library is used for benchmarking. The '24.</p>
-<p>3' version of the black library is used for benchmarking. The '3. 2' version of the pre-commit library is used for benchmarking.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Amazing Parallax Tutorial in 5 Minutes!</div><a class="video-url" href="https://www.youtube.com/watch?v=Nn9WK4qKDxs">https://www.youtube.com/watch?v=Nn9WK4qKDxs</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Simple Parallax Scrolling in 3 minutes with Stellar.js</div><a class="video-url" href="https://www.youtube.com/watch?v=NUsEGbSbMZ4">https://www.youtube.com/watch?v=NUsEGbSbMZ4</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Getting started robotics and programming with Parallax ...</div><a class="video-url" href="https://www.youtube.com/watch?v=Oi3zlXOcfHc">https://www.youtube.com/watch?v=Oi3zlXOcfHc</a></div></div></section>
-<div class="book-footer"><strong>parallax: Production Manual</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 30, 2026</div>
+</svg><p class="diagram-caption">Figure: sdk-python end-to-end processing pipeline</p></div><div class="sec-heading">sdk-python — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Installation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Documentation Quality</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Compatibility with Python 3.10+</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Model Provider Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Autonomous Agent Development</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:82%"></span></span></span><span class="bar-value">82%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Avoiding Production Gotchas with the list_tools_sync Method and Error Handling</h2></div><div class="ch-body"><p>This docstring is used by the LLM to understand the tool's purpose.</p>
+<p>"""</p>
+<p>return len(text.</p>
+<p>agent = Agent(tools=[wordcount])</p>
+<p>response = agent("How many words are in this sentence?</p>
+<p>python</p>
+<p>from strands import Agent</p>
+<p>Agent will watch .</p>
+<p>agent = Agent(loadtoolsfromdirectory=True)</p>
+<p>response = agent("Use any tools you find in the tools directory")</p>
+<p>python</p>
+<p>from strands import Agent</p>
+<p>from strands. tools.</p>
+<p>from mcp import stdioclient, StdioServerParameters</p>
+<p>awsdocsclient = MCPClient(</p>
+<p>lambda: stdioclient(StdioServerParameters(command="uvx", args=["awslabs.</p>
+<p>)</p>
+<p>with awsdocsclient:</p>
+<p>agent = Agent(tools=awsdocsclient.</p>
+<p>response = agent("Tell me about Amazon Bedrock and how to use it with Python")</p>
+<p>python</p>
+<p>from strands import Agent</p>
+<p>from strands.</p>
+<p>from strands. models.</p>
+<p>from strands. models.</p>
+<p>from strands. models.</p>
+<p>from strands. models.</p><div class="sec-heading">sdk-python — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Model Providers</td><td>Amazon Bedrock, Anthropic, Gemini, LiteLLM, Llama, Ollama, OpenAI, Writer, custom providers</td><td>Supports a wide range of model providers for flexibility and customization</td></tr><tr><td>Multi-Agent Systems</td><td>Supported</td><td>Enables the development of complex autonomous systems with multiple interacting agents</td></tr><tr><td>Streaming Support</td><td>Supported</td><td>Allows for real-time data processing and streaming capabilities</td></tr><tr><td>Agent Development</td><td>Python 3.10+</td><td>Utilizes Python 3.10+ for agent development, ensuring compatibility with the latest Python versions</td></tr><tr><td>Tool Integration</td><td>Strands Agents and Tools</td><td>Provides a comprehensive set of tools for agent development, including the calculator and word count tools</td></tr><tr><td>MCP Server Support</td><td>Model Context Protocol (MCP) servers</td><td>Supports MCP servers for secure and efficient model serving and management</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with the LlamaAPIModel and Python 3.10+</h2></div><p class="ch-summary">Optimize LlamaAPIModel</p><div class="ch-body"><p>The LlamaAPIModel is a key component in the strands-agents/sdk-python library, providing a way to interact with the Llama API. To optimize its performance, it's essential to understand the configuration options available, such as the maxtokens and temperature parameters. The updateconfig method allows for dynamic updates to these parameters, which can significantly impact the model's performance. For instance, increasing the maxtokens value can lead to more detailed responses, but may also increase the response time.</p>
+<p>The library also provides the Agent class, which can be used to create and manage agents that utilize the LlamaAPIModel. The Agent class has methods such as addtask and addtool, which can be used to customize the agent's behavior.</p>
+<p>The strands-agents/sdk-python library has several limitations, including the lack of support for Sigv4 auth requests, which can make it difficult to work with certain models. Additionally, the library does not provide a straightforward way to pass authentication parameters to the models. However, the library does provide a way to install the required dependencies using pip, with the command pip install strands-agents strands-agents-tools. The library also provides several use cases, including quickly testing agents and debugging MCP calls, deploying agents using FastAPI endpoints, and evaluating agents through a set of standard use cases.</p>
+<p>The LlamaAPIModel class has a config attribute that stores parameter values, which can be updated using the updateconfig method.</p>
+<p>The updateconfig method takes in a dictionary of configuration parameters, which can include modelid, maxtokens, and temperature. The method updates the corresponding attributes of the LlamaAPIModel instance, allowing for dynamic changes to the model's configuration. The library also provides several events, such as the BeforeModelCallEvent and AfterModelCallEvent, which can be used to customize the behavior of the agent. The addhook method can be used to add callbacks to these events, allowing for further customization.</p>
+<p>The library also provides a LoggingPlugin class, which can be used to log events and errors.</p>
+<p>The LoggingPlugin class has a logcall method that can be used to log calls to the agent, and an addhook method that can be used to add callbacks to events. The library also provides a calculator tool, which can be used to perform mathematical calculations. The calculator tool can be added to an agent using the addtool method, and can be used to perform calculations in response to user input. The library also provides a way to evaluate agents through a set of standard use cases, which can be used to test the agent's performance and behavior.</p>
+<p>The strands-agents/sdk-python library has a version number, but it is not specified in the research. However, the library does provide a way to install the required dependencies using pip, with the command pip install strands-agents strands-agents-tools. The library also provides several configuration keys, including loadtoo, which can be used to customize the behavior of the agent. The library does not provide a straightforward way to pass authentication parameters to the models, which can make it difficult to work with certain models.</p>
+<p>The LlamaAPIModel class has a baseurl attribute that stores the URL of the Llama API, which is constructed using the apiid and region parameters. The library also provides a way to update the configuration of the model using the updateconfig method, which can be used to change the model's behavior. The library does not provide a way to work with the models classes available in strands sdk as we don’t have a great way to pass Sigv4 auth request. The library provides several classes, including the Agent, tool, MCPClient, and StdioServerParameters classes, which can be used to customize the behavior of the agent.</p>
+<p>The library provides several methods, including the updateconfig, addtask, and addtool methods, which can be used to customize the behavior of the agent. The library also provides several events, including the BeforeModelCallEvent and AfterModelCallEvent, which can be used to customize the behavior of the agent. The library does not provide a straightforward way to pass authentication parameters to the models, which can make it difficult to work with certain models. The library provides a way to install the required dependencies using pip, with the command pip install strands-agents strands-agents-tools.</p>
+<p>The library provides a way to evaluate agents through a set of standard use cases, which can be used to test the agent's performance and behavior. The library also provides a calculator tool, which can be used to perform mathematical calculations. The calculator tool can be added to an agent using the addtool method, and can be used to perform calculations in response to user input. The library provides several configuration keys, including loadtoo, which can be used to customize the behavior of the agent.</p>
+<p>The library does not provide a way to work with the models classes available in strands sdk as we don’t have a great way to pass Sigv4 auth request.</p></div></section>
+<div class="book-footer"><strong>sdk-python: Production Manual</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 31, 2026</div>
 </body>
 </html>
