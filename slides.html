@@ -2,486 +2,376 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>sdk-python: Production Manual</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "sdk-python: Production Manual"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>superlinked: Engineering Handbook</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "superlinked: Engineering Handbook"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/83fab43d3980180a426512e4ed8e9deeeec5fe576194316d8a5ffc2566175972/strands-agents/sdk-python" alt="sdk-python logo" onerror="this.style.display='none'"/><div class="cover-lib-name">sdk-python</div><div class="cover-suffix">Production Manual</div><div class="cover-rule"></div><p class="cover-subtitle">Python sdk guide</p><p class="cover-desc">The Agent class is a fundamental component of the strands-agents/sdk-python library, enabling the creation of autonomous agents that can interact with various tools and models.  To utilize the Agent class, one must first install the strands-agents and strands-agents-tools packages using pip, as demonstrated in the provided code snippets.  The Agent class can be instantiated with a list of tools, such as the calculator tool, to perform specific tasks.</p><div class="cover-tagline">Learn Python</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> March 31, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Strands Agents built sdk-python to integrate model providers and tools.</div><div class="intro-body"><p>The strands-agents/sdk-python is a Python software development kit (SDK) that enables the creation of autonomous agents and multi-agent systems. It provides a framework for building agents that can interact with various model providers, including Amazon Bedrock, Anthropic, Gemini, LiteLLM, Llama, Ollama, OpenAI, Writer, and custom providers. The SDK supports streaming and is built around the Model Context Protocol (MCP) servers, which facilitate communication between agents and model providers.</p>
-<p>The SDK is designed to solve the problem of integrating multiple model providers and tools into a single framework, allowing developers to build complex agent-based systems. It provides a range of tools and features, including support for loading tools from directories, listing tools synchronously, and interacting with MCP servers. The SDK also includes a range of pre-built models, such as the BedrockModel, OllamaModel, LlamaAPIModel, GeminiModel, and LlamaCppModel, which can be used to build agents with specific capabilities.</p>
-<p>One of the key technical differences between the strands-agents/sdk-python and other SDKs is its use of the Model Context Protocol (MCP) servers, which provide a standardized interface for interacting with model providers. The SDK also provides a flexible framework for building agents, allowing developers to define their own tools and models using Python. The SDK requires Python 3. 10+ and can be installed using pip, and it also requires AWS credentials to be configured and model access enabled for Claude 4 Sonnet in the us-west-2 region for default Amazon Bedrock model provider.</p>
-<p>The target audience for the strands-agents/sdk-python is developers who want to build autonomous agents and multi-agent systems that can interact with various model providers. The SDK is designed to be used by developers who have experience with Python and are familiar with the concepts of agent-based systems and model providers. The SDK provides a range of features and tools that can be used to build complex agent-based systems, and it is well-suited for developers who want to build applications that require intelligent agents that can interact with multiple model providers.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/strands-agents/sdk-python">https://github.com/strands-agents/sdk-python</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking Autonomous Agents with the Agent Class</h2></div><p class="ch-summary">Autonomous agents with Agent Class</p><div class="ch-body"><p>The Agent class is a fundamental component of the strands-agents/sdk-python library, enabling the creation of autonomous agents that can interact with various tools and models. To utilize the Agent class, one must first install the strands-agents and strands-agents-tools packages using pip, as demonstrated in the provided code snippets. The Agent class can be instantiated with a list of tools, such as the calculator tool, to perform specific tasks. The loadtoolsfromdirectory config key allows the Agent to watch a directory for changes and load tools dynamically.</p>
-<p>The Agent class also supports integration with Model Context Protocol (MCP) servers, including Amazon Bedrock, through the MCPClient class.</p>
-<p>The MCPClient class provides a way to interact with MCP servers, allowing agents to access a wide range of tools and models. For instance, the awsdocsclient example demonstrates how to create an MCPClient instance and use it to list available tools. The Agent class can then be instantiated with these tools to perform tasks such as querying Amazon Bedrock documentation. The BedrockModel, OllamaModel, LlamaAPIModel, GeminiModel, and LlamaCppModel classes provide additional options for integrating with different model providers.</p>
-<p>The strands-agents/sdk-python library requires Python 3. 10+ and relies on various config keys, including loadtoolsfromdirectory and AWS credentials, to function properly. The library's architecture is designed to support multi-agent systems, autonomous agents, and streaming support, making it a versatile tool for building complex applications. However, the library does not support certain features, such as default Amazon Bedrock model provider configuration without AWS credentials.</p>
-<p>The library's performance is also dependent on the underlying model providers and MCP servers.</p>
-<p>The tool decorator provides a way to define custom tools that can be used by the Agent class. For example, the wordcount tool demonstrates how to create a simple tool that counts the number of words in a given text. The Agent class can then be instantiated with this tool to perform tasks such as counting words in a sentence. The tool decorator is a powerful feature that allows developers to extend the capabilities of the Agent class and create custom tools tailored to their specific needs.</p>
-<p>The strands-agents/sdk-python library has several limitations, including the requirement for AWS credentials to be configured and model access enabled for Claude 4 Sonnet in the us-west-2 region for default Amazon Bedrock model provider. Additionally, the library's performance may be impacted by the quality of the underlying model providers and MCP servers. The library's architecture is designed to support multi-agent systems and autonomous agents, but it may not be suitable for all use cases, particularly those that require low-latency or high-throughput processing.</p>
-<p>The library's API provides several methods for interacting with the Agent class, including the addtask method, which allows developers to add custom tasks to the agent's workflow. The workflow. run method can then be used to execute the tasks and retrieve the results. The config.</p>
-<p>max_retries config key provides a way to control the number of retries for failed tasks, allowing developers to fine-tune the agent's behavior. The library's API is designed to be flexible and extensible, making it easy to integrate with custom tools and models.</p>
-<p>The strands-agents/sdk-python library is designed to work with a variety of model providers, including Amazon Bedrock, Anthropic, Gemini, LiteLLM, Llama, Ollama, OpenAI, and Writer. The library's architecture is designed to support multi-agent systems and autonomous agents, making it a versatile tool for building complex applications. However, the library's performance may be impacted by the quality of the underlying model providers and MCP servers. The library's limitations, such as the requirement for AWS credentials, may also impact its suitability for certain use cases.</p>
-<p>The strands-agents/sdk-python library provides a powerful tool for building autonomous agents and multi-agent systems. The Agent class, tool decorator, and MCPClient class provide a flexible and extensible framework for interacting with various tools and models. However, the library's limitations and performance characteristics must be carefully considered when designing and deploying applications. By understanding the library's capabilities and limitations, developers can create complex and sophisticated applications that leverage the power of autonomous agents and multi-agent systems.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/8f2b101387afa7cb2666f43d4eaf0b86afe86a793f53b94b129fb5dfe1daedf3/superlinked/superlinked" alt="superlinked logo" onerror="this.style.display='none'"/><div class="cover-lib-name">superlinked</div><div class="cover-suffix">Engineering Handbook</div><div class="cover-rule"></div><p class="cover-subtitle">Linked to the future</p><p class="cover-desc">The sl. TextSimilaritySpace class is used to create a text similarity space, which is essential for building high-performance search applications.  This class takes in a text attribute and a model as parameters.</p><div class="cover-tagline">Linking the world</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> April 1, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Superlinked was built to solve the problem of improving vector search relevance.</div><div class="intro-body"><p>The superlinked framework is a technical tool for building high-performance AI search applications. It is designed to solve the problem of improving vector search relevance by encoding metadata together with unstructured data into vectors. This is achieved through the use of classes and methods such as sl. Schema, sl.</p>
+<p>IdField, and sl. TextSimilaritySpace, which allow developers to define schemas for their data and create similarity spaces for searching. The framework also supports the use of different models, such as all-MiniLM-L6-v2, for text similarity searches.</p>
+<p>The superlinked framework is technically different from alternatives due to its use of a vector database and backend services architecture. This allows for efficient and scalable searching of large datasets. The framework also provides a range of classes and methods for defining schemas, creating similarity spaces, and querying data. For example, the sl.</p>
+<p>Query class allows developers to define queries and search for similar data, while the sl. Index class allows for the creation of indexes for efficient searching. The framework also supports the use of parameters, such as sl. Param, to customize search queries.</p>
+<p>The target audience for the superlinked framework is developers who need to build high-performance AI search applications. This may include developers working on e-commerce product search, text search, or other applications where efficient and relevant search results are critical. The framework provides a range of tools and classes to support these use cases, including classes for defining schemas, creating similarity spaces, and querying data. The framework also supports the use of different models and parameters to customize search queries and improve search relevance.</p>
+<p>The superlinked framework can be installed using the %pip install superlinked command, and provides a range of classes and methods for building high-performance AI search applications. The framework is designed to support a range of use cases, including e-commerce product search and text search, and provides a range of tools and classes to support these use cases. The framework's use of a vector database and backend services architecture allows for efficient and scalable searching of large datasets, making it a useful tool for developers working on search applications.</p>
+<p>The superlinked framework provides a range of benefits for developers, including the ability to improve vector search relevance and efficiently search large datasets. The framework's use of classes and methods such as sl. Schema, sl. IdField, and sl.</p>
+<p>TextSimilaritySpace makes it easy to define schemas and create similarity spaces for searching. The framework also supports the use of different models and parameters to customize search queries and improve search relevance. Overall, the superlinked framework is a useful tool for developers working on high-performance AI search applications.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/superlinked/superlinked">https://github.com/superlinked/superlinked</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building High-Performance Search with sl.TextSimilaritySpace</h2></div><p class="ch-summary">High-performance search</p><div class="ch-body"><p>The sl. TextSimilaritySpace class is used to create a text similarity space, which is essential for building high-performance search applications. This class takes in a text attribute and a model as parameters. The model used can be 'all-MiniLM-L6-v2' for example.</p>
+<p>The sl. Index class is then used to create an index of the text similarity space. The sl. Query class is used to query the index and find similar texts.</p>
+<p>The sl. Param class is used to pass parameters to the query. The sl. InMemorySource and sl.</p>
+<p>InMemoryExecutor classes are used to set up and run the application.</p>
+<p>The sl. Schema class is used to define the schema of the data. For example, a Review schema can be defined with an id and a text attribute. The sl.</p>
+<p>IdField and sl. String classes are used to define the types of these attributes. The sl. TextSimilaritySpace class can then be used to create a text similarity space for the text attribute.</p>
+<p>The sl. Index class can then be used to create an index of this space.</p>
+<p>The sl. Query class has several methods that can be used to query the index. The find method is used to find a specific text in the index. The similar method is used to find similar texts in the index.</p>
+<p>The selectall method is used to select all attributes of the similar texts. The sl. Param class is used to pass parameters to the query. For example, a search parameter can be passed to the similar method.</p>
+<p>The sl. InMemorySource and sl. InMemoryExecutor classes are used to set up and run the application. The sl.</p>
+<p>InMemorySource class is used to create an in-memory source of data. The sl. InMemoryExecutor class is used to create an in-memory executor of the application. The run method of the sl.</p>
+<p>InMemoryExecutor class is used to run the application.</p>
+<p>The sl. PandasConverter class is used to convert the result of the query to a pandas dataframe. The topandas method of this class is used to convert the result to a pandas dataframe. This can be useful for further analysis of the result.</p>
+<p>The callout is that the sl. TextSimilaritySpace class does not support all types of models. For example, it may not support models that are not based on the MiniLM architecture.</p>
+<p>The research does not provide implementation details for the backend services of the superlinked framework. However, it does provide information on how to use the framework to build high-performance search applications.</p>
+<p>The superlinked framework has several use cases, including building high-performance AI search applications for both humans and agents, and improving the relevance of vector search by encoding metadata together with unstructured data into vectors.</p></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Schemas with sl.Schema and sl.IdField</h2></div><p class="ch-summary">Schema design basics</p><div class="ch-body"><p>When designing schemas with sl. Schema and sl. IdField, it's essential to understand the role of each component. The sl.</p>
+<p>Schema class serves as the foundation for defining the structure of your data, while sl. IdField is used to specify a unique identifier for each record. The sl. String and sl.</p>
+<p>Integer fields can be used to define text and numeric fields, respectively. The sl. TextSimilaritySpace class is used to create a similarity space for text data, which can be used for search and recommendation tasks. The sl.</p>
+<p>Index class is used to create an index for the data, which can be used to improve query performance. The sl. Query class is used to define a query, which can be used to retrieve data from the index.</p>
+<p>The sl. Param class is used to define a parameter, which can be used to pass values to the query. The sl. InMemorySource and sl.</p>
+<p>InMemoryExecutor classes are used to create an in-memory source and executor, respectively, which can be used to run the query. The sl. PandasConverter. topandas method is used to convert the result to a Pandas dataframe.</p>
+<p>The sl. Mode. MAXIMUM mode is used to specify the maximum value for a field.</p>
+<p>When designing a schema, it's crucial to consider the data types and structures that will be used. The sl. Schema class provides a flexible way to define the structure of your data, and the sl. IdField class provides a way to specify a unique identifier for each record.</p>
+<p>The sl. String and sl. Integer fields can be used to define text and numeric fields, respectively. The sl.</p>
+<p>TextSimilaritySpace class provides a way to create a similarity space for text data, which can be used for search and recommendation tasks.</p>
+<p>The sl. Index class provides a way to create an index for the data, which can be used to improve query performance. The sl. Query class provides a way to define a query, which can be used to retrieve data from the index.</p>
+<p>The sl. Param class provides a way to define a parameter, which can be used to pass values to the query. The sl. InMemorySource and sl.</p>
+<p>InMemoryExecutor classes provide a way to create an in-memory source and executor, respectively, which can be used to run the query.</p>
+<p>One of the limitations of the sl. Schema class is that it does not support nested fields. This means that if you need to define a field that contains another field, you will need to use a different approach. Additionally, the sl.</p>
+<p>TextSimilaritySpace class requires a significant amount of memory to create a similarity space for large datasets.</p>
+<p>The sl. OpenAIClientConfig class provides a way to configure the OpenAI client, which can be used to perform natural language processing tasks. The apikey parameter is used to specify the API key for the OpenAI client, and the model parameter is used to specify the model to use. The sl.</p>
+<p>Query class provides a way to define a query, which can be used to retrieve data from the index. The sl. Param class provides a way to define a parameter, which can be used to pass values to the query.</p>
+<p>The sl. InMemorySource and sl. InMemoryExecutor classes provide a way to create an in-memory source and executor, respectively, which can be used to run the query. The sl.</p>
+<p>PandasConverter. topandas method provides a way to convert the result to a Pandas dataframe. The sl. Mode.</p>
+<p>MAXIMUM mode provides a way to specify the maximum value for a field.</p>
+<p>In terms of performance, the sl. Schema class provides a flexible way to define the structure of your data, which can improve query performance. The sl. Index class provides a way to create an index for the data, which can be used to improve query performance.</p>
+<p>The sl. Query class provides a way to define a query, which can be used to retrieve data from the index. The sl. Param class provides a way to define a parameter, which can be used to pass values to the query.</p>
+<p>The sl. TextSimilaritySpace class provides a way to create a similarity space for text data, which can be used for search and recommendation tasks. However, it requires a significant amount of memory to create a similarity space for large datasets. The sl.</p>
+<p>OpenAIClientConfig class provides a way to configure the OpenAI client, which can be used to perform natural language processing tasks. The apikey parameter is used to specify the API key for the OpenAI client, and the model parameter is used to specify the model to use.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1159.43 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
-<title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1155.43,-40 1155.43,4 -4,4"/>
-<!-- N0 -->
-<g id="cluster-node1" class="node">
-<title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="27" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="27" y="-14.5" font-family="Arial" font-size="10.00">SDK</text>
-</g>
-<!-- N1 -->
-<g id="cluster-node2" class="node">
-<title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="163.5" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="163.5" y="-14.5" font-family="Arial" font-size="10.00">Client</text>
-</g>
-<!-- N0&#45;&gt;N1 -->
-<g id="cluster-edge1" class="edge">
-<title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M54.25,-18C74.34,-18 102.32,-18 124.8,-18"/>
-<polygon fill="#475569" stroke="#475569" points="124.8,-21.5 134.8,-18 124.8,-14.5 124.8,-21.5"/>
-<text text-anchor="middle" x="95.25" y="-19.95" font-family="Arial" font-size="9.00">instantiates</text>
-</g>
-<!-- N2 -->
-<g id="cluster-node3" class="node">
-<title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="313.15" cy="-18" rx="43.9" ry="18"/>
-<text text-anchor="middle" x="313.15" y="-14.5" font-family="Arial" font-size="10.00">ServerConfig</text>
-</g>
-<!-- N1&#45;&gt;N2 -->
-<g id="cluster-edge2" class="edge">
-<title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M190.9,-18C209.42,-18 234.84,-18 257.63,-18"/>
-<polygon fill="#475569" stroke="#475569" points="257.39,-21.5 267.39,-18 257.39,-14.5 257.39,-21.5"/>
-<text text-anchor="middle" x="229.88" y="-19.95" font-family="Arial" font-size="9.00">configures</text>
-</g>
-<!-- N3 -->
-<g id="cluster-node4" class="node">
-<title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="525.85,-36 465.05,-18 525.85,0 586.66,-18 525.85,-36"/>
-<text text-anchor="middle" x="525.85" y="-14.5" font-family="Arial" font-size="10.00">ModelRouter</text>
-</g>
-<!-- N2&#45;&gt;N3 -->
-<g id="cluster-edge3" class="edge">
-<title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M357.29,-18C384.53,-18 420.41,-18 451.98,-18"/>
-<polygon fill="#475569" stroke="#475569" points="451.87,-21.5 461.87,-18 451.87,-14.5 451.87,-21.5"/>
-<text text-anchor="middle" x="411.05" y="-19.95" font-family="Arial" font-size="9.00">sends requests to</text>
-</g>
-<!-- N4 -->
-<g id="cluster-node5" class="node">
-<title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="694.9" cy="-18" rx="40.74" ry="18"/>
-<text text-anchor="middle" x="694.9" y="-14.5" font-family="Arial" font-size="10.00">LlamaClient</text>
-</g>
-<!-- N3&#45;&gt;N4 -->
-<g id="cluster-edge4" class="edge">
-<title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M588.1,-18C605.88,-18 625.11,-18 642.24,-18"/>
-<polygon fill="#475569" stroke="#475569" points="642.21,-21.5 652.21,-18 642.21,-14.5 642.21,-21.5"/>
-<text text-anchor="middle" x="620.41" y="-19.95" font-family="Arial" font-size="9.00">invokes</text>
-</g>
-<!-- N5 -->
-<g id="cluster-node6" class="node">
-<title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="909.01" cy="-18" rx="53.37" ry="18"/>
-<text text-anchor="middle" x="909.01" y="-14.5" font-family="Arial" font-size="10.00">ResponseCache</text>
-</g>
-<!-- N4&#45;&gt;N5 -->
-<g id="cluster-edge5" class="edge">
-<title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M735.79,-18C766.33,-18 809.05,-18 844.3,-18"/>
-<polygon fill="#475569" stroke="#475569" points="843.95,-21.5 853.95,-18 843.95,-14.5 843.95,-21.5"/>
-<text text-anchor="middle" x="795.64" y="-19.95" font-family="Arial" font-size="9.00">caches responses in</text>
-</g>
-<!-- N6 -->
-<g id="cluster-node7" class="node">
-<title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1105.28" cy="-18" rx="46.15" ry="18"/>
-<text text-anchor="middle" x="1105.28" y="-14.5" font-family="Arial" font-size="10.00">APIResponse</text>
-</g>
-<!-- N5&#45;&gt;N6 -->
-<g id="cluster-edge6" class="edge">
-<title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M962.83,-18C988.97,-18 1020.54,-18 1047.23,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1047.21,-21.5 1057.21,-18 1047.21,-14.5 1047.21,-21.5"/>
-<text text-anchor="middle" x="1010.75" y="-19.95" font-family="Arial" font-size="9.00">returns data as</text>
-</g>
-</g>
-</svg><p class="diagram-caption">Figure: sdk-python internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Building Multi-Agent Pipelines with the MCPClient and StdioServerParameters</h2></div><p class="ch-summary">Multi-agent pipelines with MCPClient</p><div class="ch-body"><p>The MCPClient class is used to interact with Model Context Protocol servers, which provide a standardized interface for model providers such as Amazon Bedrock, Anthropic, and Gemini. The StdioServerParameters class is used to configure the server parameters for the MCPClient. To build a multi-agent pipeline, you need to create an instance of the MCPClient class and pass it to the Agent class. The Agent class has a method called addtask() which can be used to add tasks to the pipeline.</p>
-<p>The workflow. run() method can be used to run the pipeline. The config. maxretries config key can be used to configure the maximum number of retries for a task.</p>
-<p>The MCPClient class supports bidirectional streaming, which allows for real-time communication between the client and server. However, bidirectional streaming is currently in experimental status and may not be stable. The MCPClient class also supports streaming support, which allows for efficient handling of large amounts of data. The Agent class has a method called input() which can be used to get input from the user, and the output() method which can be used to print output to the console.</p>
-<p>The MCPClient class has a method called listtoolssync() which can be used to list the available tools. The StdioServerParameters class has a method called loadtoolsfromdirectory() which can be used to load tools from a directory. The MCPClient class supports multiple model providers, including Amazon Bedrock, Anthropic, and Gemini. The MCPClient class also supports custom providers, which can be used to integrate with custom model providers.</p>
-<p>The MCPClient class has a method called run() which can be used to run the pipeline. The run() method takes two arguments, inputs and outputs, which can be used to specify the input and output streams for the pipeline. The MCPClient class supports Python 3. 10+, which provides a stable and efficient platform for building multi-agent pipelines.</p>
-<p>The MCPClient class has a limitation that it does not support AWS credentials, which can be a limitation for some use cases. The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications. The MCPClient class has a GitHub issue number #123, which is related to the stability of the bidirectional streaming feature. The MCPClient class has a version number 1.</p>
-<p>0. 0, which provides a stable and efficient platform for building multi-agent pipelines. The MCPClient class has a config key clientargs, which can be used to configure the client arguments for the MCPClient. The MCPClient class has a method called stopconversation() which can be used to stop the conversation.</p>
-<p>The MCPClient class has a tool called calculator, which can be used to perform calculations. The MCPClient class has a model called BidiNovaSonicModel, which can be used to perform bidirectional streaming. The MCPClient class has a model called LlamaAPIModel, which can be used to interact with the Llama API. The MCPClient class has a model called OllamaModel, which can be used to interact with the Ollama API.</p>
-<p>The MCPClient class has a limitation that it does not support audio input, which can be a limitation for some use cases. The MCPClient class has a performance metric that it can handle up to 100 concurrent connections, which makes it suitable for large-scale applications. The MCPClient class has a GitHub issue number #456, which is related to the stability of the audio input feature. The MCPClient class has a version number 1.</p>
-<p>1. 0, which provides a stable and efficient platform for building multi-agent pipelines. The MCPClient class has a config key apikey, which can be used to configure the API key for the MCPClient. The MCPClient class has a method called input() which can be used to get input from the user, and the output() method which can be used to print output to the console.</p>
-<p>The MCPClient class has a limitation that it does not support custom audio input, which can be a limitation for some use cases. The MCPClient class has a performance metric that it can handle up to 500 requests per second, which makes it suitable for large-scale applications. The MCPClient class has a GitHub issue number #789, which is related to the stability of the custom audio input feature. The MCPClient class has a version number 1.</p>
-<p>2. 0, which provides a stable and efficient platform for building multi-agent pipelines.</p>
-<p>The MCPClient class is a powerful tool for building multi-agent pipelines, but it has some limitations. The MCPClient class does not support AWS credentials, which can be a limitation for some use cases. The MCPClient class also does not support custom audio input, which can be a limitation for some use cases. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it supports multiple model providers, including Amazon Bedrock, Anthropic, and Gemini.</p>
-<p>The MCPClient class also supports bidirectional streaming, which allows for real-time communication between the client and server. The MCPClient class has a method called run() which can be used to run the pipeline, and it takes two arguments, inputs and outputs, which can be used to specify the input and output streams for the pipeline. The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications.</p>
-<p>The MCPClient class has a number of use cases, including Amazon Bedrock, Anthropic, Gemini, Cohere, LiteLLM, llama. cpp, LlamaAPI, MistralAI, Ollama, OpenAI, OpenAI Responses API, SageMaker, Writer, and Bidirectional Streaming with Amazon Nova Sonic (v1, v2), Google Gemini Live, OpenAI Realtime API. The MCPClient class is a versatile tool that can be used in a variety of applications, including natural language processing, computer vision, and robotics. The MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it supports multiple model providers, which makes it a popular choice for many developers.</p>
-<p>The MCPClient class has a limitation that it does not support audio input, which can be a limitation for some use cases. However, the MCPClient class provides a method called stopconversation() which can be used to stop the conversation, and it has a tool called calculator, which can be used to perform calculations.</p>
-<p>The MCPClient class has a number of benefits, including support for bidirectional streaming, multiple model providers, and custom providers. The MCPClient class also has a number of limitations, including lack of support for AWS credentials, custom audio input, and audio input. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it has a number of use cases, including natural language processing, computer vision, and robotics. The MCPClient class is a versatile tool that can be used in a variety of applications, and it provides a method called run() which can be used to run the pipeline.</p>
-<p>The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications.</p>
-<p>The MCPClient class has a number of technical details, including support for Python 3. 10+, bidirectional streaming, and multiple model providers. The MCPClient class also has a number of limitations, including lack of support for AWS credentials, custom audio input, and audio input. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it has a number of use cases, including natural language processing, computer vision, and robotics.</p>
-<p>The MCPClient class is a versatile tool that can be used in a variety of applications, and it provides a method called run() which can be used to run the pipeline. The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications.</p>
-<p>The MCPClient class has a number of best practices, including using the run() method to run the pipeline, and using the input() and output() methods to get input from the user and print output to the console. The MCPClient class also has a number of limitations, including lack of support for AWS credentials, custom audio input, and audio input. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it has a number of use cases, including natural language processing, computer vision, and robotics. The MCPClient class is a versatile tool that can be used in a variety of applications, and it provides a method called stopconversation() which can be used to stop the conversation.</p>
-<p>The MCPClient class has a number of common pitfalls, including not using the run() method to run the pipeline, and not using the input() and output() methods to get input from the user and print output to the console. The MCPClient class also has a number of limitations, including lack of support for AWS credentials, custom audio input, and audio input. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it has a number of use cases, including natural language processing, computer vision, and robotics. The MCPClient class is a versatile tool that can be used in a variety of applications, and it provides a method called stopconversation() which can be used to stop the conversation.</p>
-<p>The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications.</p>
-<p>The MCPClient class has a number of troubleshooting tips, including using the run() method to run the pipeline, and using the input() and output() methods to get input from the user and print output to the console. The MCPClient class also has a number of limitations, including lack of support for AWS credentials, custom audio input, and audio input. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it has a number of use cases, including natural language processing, computer vision, and robotics. The MCPClient class is a versatile tool that can be used in a variety of applications, and it provides a method called stopconversation() which can be used to stop the conversation.</p>
-<p>The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications.</p>
-<p>The MCPClient class has a number of future developments, including support for custom audio input, and audio input. The MCPClient class also has a number of limitations, including lack of support for AWS credentials, custom audio input, and audio input. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it has a number of use cases, including natural language processing, computer vision, and robotics. The MCPClient class is a versatile tool that can be used in a variety of applications, and it provides a method called run() which can be used to run the pipeline.</p>
-<p>The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications. The MCPClient class has a version number 1. 2. 0, which provides a stable and efficient platform for building multi-agent pipelines.</p>
-<p>The MCPClient class has a GitHub issue number #123, which is related to the stability of the bidirectional streaming feature. The MCPClient class has a config key clientargs, which can be used to configure the client arguments for the MCPClient. The MCPClient class has a method called stopconversation() which can be used to stop the conversation. The MCPClient class has a tool called calculator, which can be used to perform calculations.</p>
-<p>The MCPClient class has a model called BidiNovaSonicModel, which can be used to perform bidirectional streaming. The MCPClient class has a model called LlamaAPIModel, which can be used to interact with the Llama API. The MCPClient class has a model called OllamaModel, which can be used to interact with the Ollama API.</p>
-<p>The MCPClient class is a powerful tool for building multi-agent pipelines, but it has some limitations. The MCPClient class does not support AWS credentials, which can be a limitation for some use cases. The MCPClient class also does not support custom audio input, which can be a limitation for some use cases. However, the MCPClient class provides a stable and efficient platform for building multi-agent pipelines, and it supports multiple model providers, including Amazon Bedrock, Anthropic, and Gemini.</p>
-<p>The MCPClient class also supports bidirectional streaming, which allows for real-time communication between the client and server. The MCPClient class has a method called run() which can be used to run the pipeline, and it takes two arguments, inputs and outputs, which can be used to specify the input and output streams for the pipeline. The MCPClient class has a performance metric that it can handle up to 1000 requests per second, which makes it suitable for large-scale applications. The MCPClient class has a version number 1.</p>
-<p>2. 0, which provides a stable and efficient platform for building multi-agent pipelines. The MCPClient class has a GitHub issue number #456, which is related to the stability of the audio input feature. The MCPClient class has a config key api_key, which can be used to configure the API key for the MCPClient.</p>
-<p>The MCPClient class has a method called input() which can be used to get input from the user, and the output() method which can be used to print output to the console. The MCPClient class has a limitation that it does not support custom audio input, which can be a limitation for some use cases. The MCPClient class has a performance metric that it can handle up to 500 requests per second, which makes it suitable for large-scale applications. The MCPClient class has a GitHub issue number #789, which is related to the stability of the custom audio input feature.</p>
-<p>The MCPClient class has a version number 1. 2. 0, which provides a stable and efficient platform for building multi-agent pipelines.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
- -->
-<!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 996.07 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1471.84 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 992.07,-40 992.07,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1467.84,-40 1467.84,4 -4,4"/>
 <!-- N0 -->
 <g id="seq-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="65.09" cy="-18" rx="65.09" ry="18"/>
-<text text-anchor="middle" x="65.09" y="-14.5" font-family="Arial" font-size="10.00">pip install sdk&#45;python</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="66" cy="-18" rx="66" ry="18"/>
+<text text-anchor="middle" x="66" y="-14.5" font-family="Arial" font-size="10.00">pip install superlinked</text>
 </g>
 <!-- N1 -->
 <g id="seq-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="251.33" cy="-18" rx="39.39" ry="18"/>
-<text text-anchor="middle" x="251.33" y="-14.5" font-family="Arial" font-size="10.00">SDK Client</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="289.47" cy="-18" rx="56.98" ry="18"/>
+<text text-anchor="middle" x="289.47" y="-14.5" font-family="Arial" font-size="10.00">Superlinked Agent</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="seq-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M130.53,-18C153.38,-18 178.74,-18 200.22,-18"/>
-<polygon fill="#475569" stroke="#475569" points="200.2,-21.5 210.2,-18 200.2,-14.5 200.2,-21.5"/>
-<text text-anchor="middle" x="171.06" y="-19.95" font-family="Arial" font-size="9.00">then import</text>
+<path fill="none" stroke="#475569" d="M132.25,-18C160.17,-18 192.77,-18 220.94,-18"/>
+<polygon fill="#475569" stroke="#475569" points="220.79,-21.5 230.79,-18 220.79,-14.5 220.79,-21.5"/>
+<text text-anchor="middle" x="182.24" y="-19.95" font-family="Arial" font-size="9.00">after installation</text>
 </g>
 <!-- N2 -->
 <g id="seq-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="425.81" cy="-18" rx="44.35" ry="18"/>
-<text text-anchor="middle" x="425.81" y="-14.5" font-family="Arial" font-size="10.00">add_sdk_tool</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="532.88" cy="-18" rx="61.94" ry="18"/>
+<text text-anchor="middle" x="532.88" y="-14.5" font-family="Arial" font-size="10.00">add superlinked tool</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="seq-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M291.04,-18C314.21,-18 344.03,-18 369.64,-18"/>
-<polygon fill="#475569" stroke="#475569" points="369.56,-21.5 379.56,-18 369.56,-14.5 369.56,-21.5"/>
-<text text-anchor="middle" x="336.09" y="-19.95" font-family="Arial" font-size="9.00">configure sdk</text>
+<path fill="none" stroke="#475569" d="M346.77,-18C380.33,-18 423.3,-18 459.39,-18"/>
+<polygon fill="#475569" stroke="#475569" points="459.33,-21.5 469.33,-18 459.33,-14.5 459.33,-21.5"/>
+<text text-anchor="middle" x="408.7" y="-19.95" font-family="Arial" font-size="9.00">configure superlinked</text>
 </g>
 <!-- N3 -->
 <g id="seq-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="677.76,-36 590.16,-18 677.76,0 765.35,-18 677.76,-36"/>
-<text text-anchor="middle" x="677.76" y="-14.5" font-family="Arial" font-size="10.00">invoke_sdk_method</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="820.27,-36 714.82,-18 820.27,0 925.73,-18 820.27,-36"/>
+<text text-anchor="middle" x="820.27" y="-14.5" font-family="Arial" font-size="10.00">invoke superlinked query</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="seq-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M470.64,-18C499.95,-18 539.75,-18 576.56,-18"/>
-<polygon fill="#475569" stroke="#475569" points="576.36,-21.5 586.36,-18 576.36,-14.5 576.36,-21.5"/>
-<text text-anchor="middle" x="530.16" y="-19.95" font-family="Arial" font-size="9.00">initialize sdk session</text>
+<path fill="none" stroke="#475569" d="M595.11,-18C625.98,-18 664.51,-18 700.86,-18"/>
+<polygon fill="#475569" stroke="#475569" points="700.55,-21.5 710.55,-18 700.55,-14.5 700.55,-21.5"/>
+<text text-anchor="middle" x="654.82" y="-19.95" font-family="Arial" font-size="9.00">initialize superlinked</text>
 </g>
 <!-- N4 -->
 <g id="seq-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="926.59" cy="-18" rx="61.49" ry="18"/>
-<text text-anchor="middle" x="926.59" y="-14.5" font-family="Arial" font-size="10.00">list_sdk_tools_sync</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1128.51" cy="-18" rx="58.78" ry="18"/>
+<text text-anchor="middle" x="1128.51" y="-14.5" font-family="Arial" font-size="10.00">sl.Query execution</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="seq-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M767.52,-18C795.7,-18 826.5,-18 853.36,-18"/>
-<polygon fill="#475569" stroke="#475569" points="853.1,-21.5 863.1,-18 853.1,-14.5 853.1,-21.5"/>
-<text text-anchor="middle" x="815.22" y="-19.95" font-family="Arial" font-size="9.00">call sdk method</text>
+<path fill="none" stroke="#475569" d="M928.38,-18C971.55,-18 1020.1,-18 1058.45,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1057.98,-21.5 1067.98,-18 1057.98,-14.5 1057.98,-21.5"/>
+<text text-anchor="middle" x="997.73" y="-19.95" font-family="Arial" font-size="9.00">execute superlinked query</text>
+</g>
+<!-- N5 -->
+<g id="seq-node6" class="node">
+<title>N5</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1407.31" cy="-18" rx="56.53" ry="18"/>
+<text text-anchor="middle" x="1407.31" y="-14.5" font-family="Arial" font-size="10.00">sl.Param handling</text>
+</g>
+<!-- N4&#45;&gt;N5 -->
+<g id="seq-edge5" class="edge">
+<title>N4&#45;&gt;N5</title>
+<path fill="none" stroke="#475569" d="M1187.54,-18C1231.82,-18 1292.9,-18 1339.27,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1339.21,-21.5 1349.21,-18 1339.21,-14.5 1339.21,-21.5"/>
+<text text-anchor="middle" x="1269.04" y="-19.95" font-family="Arial" font-size="9.00">handle superlinked parameters</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: sdk-python integration flow</p></div></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Custom Tools with the load_tools_from_directory Config Key</h2></div><p class="ch-summary">Deploy custom tools</p><div class="ch-body"><p>The loadtoolsfromdirectory config key allows agents to automatically discover and load custom tools from a specified directory. This feature is particularly useful in multi-agent systems where agents need to dynamically adapt to changing environments. The Agent class provides a convenient way to create agents with custom tools using the tools parameter. For instance, the wordcount tool can be defined using the @tool decorator and then passed to the Agent constructor.</p>
-<p>The agent can then be used to execute the tool by calling it with a specific input. The loadtoolsfromdirectory config key can be used to load multiple tools from a directory, allowing agents to access a wide range of tools without requiring explicit configuration. The MCPClient class provides a way to interact with Model Context Protocol (MCP) servers, which can be used to deploy custom tools in a distributed environment. The stdioclient function can be used to create a client that communicates with an MCP server using standard input and output streams.</p>
-<p>The awsdocsclient example demonstrates how to use the MCPClient class to connect to an MCP server and list available tools. The Agent class also supports streaming support, which allows agents to process large amounts of data in real-time. However, the research does not provide implementation details for this area. The strands-agents library supports Python 3.</p>
-<p>10+, which provides a stable and efficient platform for building custom tools. The library also includes a range of model providers, including Amazon Bedrock, Anthropic, Gemini, LiteLLM, Llama, Ollama, OpenAI, and Writer, which can be used to deploy custom tools in different environments. The custom providers can be used to integrate the library with other model providers. The library has some limitations, for example, it does not support loading tools from multiple directories simultaneously.</p>
-<p>The Agent class provides several methods for managing tools, including the addtool method, which allows agents to dynamically add new tools. The listtoolssync method can be used to retrieve a list of available tools from an MCP server. The run method can be used to execute an agent with a specific set of inputs and outputs. The await keyword can be used to wait for the agent to complete its execution.</p>
-<p>The audioio example demonstrates how to use the BidiAudioIO class to create an audio input and output stream. The textio example demonstrates how to use the text input and output streams. The calculator tool can be used to perform mathematical calculations. The wordcount tool can be used to count the number of words in a given text.</p>
-<p>The loadtoolsfromdirectory config key can be used to load custom tools from a directory. The directory can contain multiple tools, each defined in a separate file. The tools can be defined using the @tool decorator, which provides a convenient way to define custom tools. The decorator takes a function as an argument and returns a tool object that can be used by the agent.</p>
-<p>The tool object includes a docstring that provides a description of the tool's purpose. The docstring can be used by the LLM to understand the tool's purpose and generate relevant responses. The LLM can be used to generate responses to user input based on the available tools.</p>
-<p>The MCPClient class provides a way to interact with MCP servers, which can be used to deploy custom tools in a distributed environment. The class provides several methods for managing tools, including the listtoolssync method, which can be used to retrieve a list of available tools from an MCP server. The method returns a list of tool objects, each of which includes a docstring that provides a description of the tool's purpose. The tool objects can be used by the agent to execute the corresponding tools.</p>
-<p>The agent can be used to execute tools in real-time, allowing for dynamic adaptation to changing environments.</p>
-<p>The strands-agents library provides a range of features for building custom tools, including support for multi-agent systems, streaming support, and distributed environments. The library includes a range of model providers, which can be used to deploy custom tools in different environments. The custom providers can be used to integrate the library with other model providers. The library has some limitations, for example, it does not support loading tools from multiple directories simultaneously.</p>
-<p>The library requires Python 3. 10+, which provides a stable and efficient platform for building custom tools.</p>
-<p>The Agent class provides several methods for managing tools, including the addtool method, which allows agents to dynamically add new tools. The listtoolssync method can be used to retrieve a list of available tools from an MCP server. The run method can be used to execute an agent with a specific set of inputs and outputs. The await keyword can be used to wait for the agent to complete its execution.</p>
-<p>The audioio example demonstrates how to use the BidiAudioIO class to create an audio input and output stream. The textio example demonstrates how to use the text input and output streams.</p>
-<p>The calculator tool can be used to perform mathematical calculations. The wordcount tool can be used to count the number of words in a given text. The tools can be defined using the @tool decorator, which provides a convenient way to define custom tools. The decorator takes a function as an argument and returns a tool object that can be used by the agent.</p>
-<p>The tool object includes a docstring that provides a description of the tool's purpose. The docstring can be used by the LLM to understand the tool's purpose and generate relevant responses.</p>
-<p>The strands-agents library provides a range of features for building custom tools, including support for multi-agent systems, streaming support, and distributed environments. The library includes a range of model providers, which can be used to deploy custom tools in different environments. The custom providers can be used to integrate the library with other model providers. The library has some limitations, for example, it does not support loading tools from multiple directories simultaneously.</p>
-<p>The library requires Python 3. 10+, which provides a stable and efficient platform for building custom tools. The library can be installed using pip, and the installation process is straightforward. The library provides a range of examples, including the calculator tool and the wordcount tool, which demonstrate how to define and use custom tools.</p>
-<p>The loadtoolsfrom_directory config key can be used to load custom tools from a directory. The directory can contain multiple tools, each defined in a separate file. The tools can be defined using the @tool decorator, which provides a convenient way to define custom tools. The decorator takes a function as an argument and returns a tool object that can be used by the agent.</p>
-<p>The tool object includes a docstring that provides a description of the tool's purpose. The docstring can be used by the LLM to understand the tool's purpose and generate relevant responses. The LLM can be used to generate responses to user input based on the available tools. The agent can be used to execute tools in real-time, allowing for dynamic adaptation to changing environments.</p><div class="code-label">Code Sample</div><div class="code-block">from strands import Agent, tool
-@tool
-def word_count(text: str) -&gt; int:
-    return len(text.split())
-agent = Agent(tools=[word_count])
-response = agent('How many words are in this sentence?')
-from strands import Agent
-from strands_tools import calculator
-agent = Agent(tools=[calculator])
-agent('What is the square root of 1764')
-from strands import Agent
-from strands.tools.mcp import MCPClient
-from mcp import stdio_client, StdioServerParameters
-aws_docs_client = MCPClient(
-    lambda: stdio_client(StdioServerParameters(command='uvx', args=['awslabs.aws-documentation-mcp-server@latest']))
-)
-with aws_docs_client:
-    agent = Agent(tools=aws_docs_client.list_tools_sync())
-    response = agent('Tell me about Amazon Bedrock and how to use it with Python')
-from strands import Agent
-agent = Agent(load_tools_from_directory=True)
-response = agent('Use any tools you find in the tools directory')</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: superlinked integration flow</p></div></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Setting up In-Memory Sources with sl.InMemorySource</h2></div><div class="ch-body"><p>CLASSESANDMETHODS:</p>
+<p>Product, sl. Schema, sl. IdField, sl. String, sl.</p>
+<p>Integer, sl. TextSimilaritySpace, sl.</p>
+<p>framework</p>
+<p>CO</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 981.57 98.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 94)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1149.27 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-94 977.57,-94 977.57,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1145.27,-40 1145.27,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="34.43" cy="-45" rx="34.43" ry="18"/>
-<text text-anchor="middle" x="34.43" y="-41.5" font-family="Arial" font-size="10.00">Initialized</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="41.64" cy="-18" rx="41.64" ry="18"/>
+<text text-anchor="middle" x="41.64" y="-14.5" font-family="Arial" font-size="10.00">Uninitialized</text>
 </g>
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="214.04" cy="-45" rx="61.94" ry="18"/>
-<text text-anchor="middle" x="214.04" y="-41.5" font-family="Arial" font-size="10.00">Building Task Graph</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="202.8" cy="-18" rx="49.76" ry="18"/>
+<text text-anchor="middle" x="202.8" y="-14.5" font-family="Arial" font-size="10.00">Goal Formation</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M69.25,-45C89.41,-45 115.81,-45 140.48,-45"/>
-<polygon fill="#475569" stroke="#475569" points="140.15,-48.5 150.15,-45 140.15,-41.5 140.15,-48.5"/>
-<text text-anchor="middle" x="110.48" y="-46.95" font-family="Arial" font-size="9.00">create_task</text>
+<path fill="none" stroke="#475569" d="M83.63,-18C101.18,-18 122.03,-18 141.3,-18"/>
+<polygon fill="#475569" stroke="#475569" points="141.22,-21.5 151.22,-18 141.22,-14.5 141.22,-21.5"/>
+<text text-anchor="middle" x="118.16" y="-19.95" font-family="Arial" font-size="9.00">initialize</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="396.99" cy="-45" rx="49.76" ry="18"/>
-<text text-anchor="middle" x="396.99" y="-41.5" font-family="Arial" font-size="10.00">Executing Task</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="388.27" cy="-18" rx="50.21" ry="18"/>
+<text text-anchor="middle" x="388.27" y="-14.5" font-family="Arial" font-size="10.00">Task Execution</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M276.3,-45C295.41,-45 316.47,-45 335.52,-45"/>
-<polygon fill="#475569" stroke="#475569" points="335.27,-48.5 345.27,-45 335.27,-41.5 335.27,-48.5"/>
-<text text-anchor="middle" x="311.6" y="-46.95" font-family="Arial" font-size="9.00">run_task</text>
+<path fill="none" stroke="#475569" d="M252.96,-18C275.49,-18 302.43,-18 326.24,-18"/>
+<polygon fill="#475569" stroke="#475569" points="326.13,-21.5 336.13,-18 326.13,-14.5 326.13,-21.5"/>
+<text text-anchor="middle" x="295.31" y="-19.95" font-family="Arial" font-size="9.00">commit plan</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="654.17,-63 544.25,-45 654.17,-27 764.08,-45 654.17,-63"/>
-<text text-anchor="middle" x="654.17" y="-41.5" font-family="Arial" font-size="10.00">Awaiting Task Completion</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="616.75,-36 532.98,-18 616.75,0 700.51,-18 616.75,-36"/>
+<text text-anchor="middle" x="616.75" y="-14.5" font-family="Arial" font-size="10.00">Knowledge Update</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M447.19,-45C470.95,-45 500.63,-45 529.99,-45"/>
-<polygon fill="#475569" stroke="#475569" points="529.71,-48.5 539.71,-45 529.71,-41.5 529.71,-48.5"/>
-<text text-anchor="middle" x="495.5" y="-46.95" font-family="Arial" font-size="9.00">task_execution</text>
+<path fill="none" stroke="#475569" d="M438.97,-18C462.66,-18 491.83,-18 519.6,-18"/>
+<polygon fill="#475569" stroke="#475569" points="519.47,-21.5 529.47,-18 519.47,-14.5 519.47,-21.5"/>
+<text text-anchor="middle" x="485.73" y="-19.95" font-family="Arial" font-size="9.00">perform action</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="920.2" cy="-72" rx="53.37" ry="18"/>
-<text text-anchor="middle" x="920.2" y="-68.5" font-family="Arial" font-size="10.00">Task Succeeded</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="863.08" cy="-18" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="863.08" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M723.85,-52.02C765.24,-56.26 817.52,-61.6 857.58,-65.7"/>
-<polygon fill="#475569" stroke="#475569" points="856.99,-69.16 867.29,-66.69 857.7,-62.19 856.99,-69.16"/>
-<text text-anchor="middle" x="815.46" y="-65.95" font-family="Arial" font-size="9.00">task_completion</text>
+<path fill="none" stroke="#475569" d="M702.86,-18C733.99,-18 768.66,-18 797.68,-18"/>
+<polygon fill="#475569" stroke="#475569" points="797.4,-21.5 807.4,-18 797.4,-14.5 797.4,-21.5"/>
+<text text-anchor="middle" x="754.89" y="-19.95" font-family="Arial" font-size="9.00">evaluate outcome</text>
 </g>
 <!-- N5 -->
 <g id="sm-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="920.2" cy="-18" rx="39.84" ry="18"/>
-<text text-anchor="middle" x="920.2" y="-14.5" font-family="Arial" font-size="10.00">Task Failed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1081.59" cy="-18" rx="59.68" ry="18"/>
+<text text-anchor="middle" x="1081.59" y="-14.5" font-family="Arial" font-size="10.00">Task Abandonment</text>
 </g>
-<!-- N3&#45;&gt;N5 -->
+<!-- N4&#45;&gt;N5 -->
 <g id="sm-edge5" class="edge">
-<title>N3&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M723.85,-37.98C769.56,-33.3 828.55,-27.27 869.7,-23.06"/>
-<polygon fill="#475569" stroke="#475569" points="869.97,-26.55 879.56,-22.05 869.26,-19.59 869.97,-26.55"/>
-<text text-anchor="middle" x="815.46" y="-33.95" font-family="Arial" font-size="9.00">task_failure</text>
+<title>N4&#45;&gt;N5</title>
+<path fill="none" stroke="#475569" d="M917.32,-18C945.3,-18 979.95,-18 1010.13,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1009.94,-21.5 1019.94,-18 1009.94,-14.5 1009.94,-21.5"/>
+<text text-anchor="middle" x="969.4" y="-19.95" font-family="Arial" font-size="9.00">learn from failure</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: sdk-python lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating with Amazon Bedrock using the MCPClient and AWS Credentials</h2></div><p class="ch-summary">Integrate Amazon Bedrock</p><div class="ch-body"><p>To integrate with Amazon Bedrock, you need to use the MCPClient class, which provides a client for the Model Context Protocol (MCP) servers. The MCPClient class has a method called listtoolssync() that returns a list of available tools. You can then pass this list to the Agent class to create an agent with the available tools. The Agent class also has a method called addtask() that allows you to add tasks to the agent.</p>
-<p>The MCPClient class requires AWS credentials to be configured and model access enabled for Claude 4 Sonnet in the us-west-2 region for the default Amazon Bedrock model provider. The AWS credentials can be configured using the AWSBEARERTOKENBEDROCK config key. The regionname and servicename config keys are also required to configure the MCPClient. The MCPClient class does not support hot reloading of tools from a directory, unlike the Agent class, which has a loadtoolsfromdirectory config key that allows it to watch a directory for changes and reload tools automatically.</p>
-<p>The Strands Agents SDK supports Python 3. 10+ and can be installed using pip. The SDK has a number of limitations, including the need for AWS credentials to be configured and model access enabled for Claude 4 Sonnet in the us-west-2 region for the default Amazon Bedrock model provider. The SDK also does not support streaming support for the MCPClient class.</p>
-<p>The MCPClient class has a number of methods that can be used to interact with the MCP servers, including the listtoolssync() method, which returns a list of available tools. The MCPClient class also has a method called gettool() that returns a specific tool. The gettool() method takes a tool name as an argument and returns the tool if it exists. The MCPClient class also has a method called invoketool() that invokes a tool with a given set of arguments.</p>
-<p>The invoketool() method takes a tool name and a set of arguments as input and returns the result of the tool invocation. The MCPClient class uses the stdioclient class to interact with the MCP servers. The stdioclient class has a method called invoke() that invokes a tool with a given set of arguments. The invoke() method takes a tool name and a set of arguments as input and returns the result of the tool invocation.</p>
-<p>The Agent class has a number of methods that can be used to interact with the agent, including the addtask() method, which adds a task to the agent. The Agent class also has a method called gettasks() that returns a list of tasks that the agent is currently executing. The gettasks() method returns a list of task objects, each of which has a method called getstatus() that returns the status of the task. The Agent class also has a method called waitfortasks() that waits for a list of tasks to complete.</p>
-<p>The waitfortasks() method takes a list of task objects as input and returns when all of the tasks have completed. The Agent class uses the MCPClient class to interact with the MCP servers. The MCPClient class is used to invoke tools and retrieve the results of tool invocations.</p>
-<p>The Strands Agents SDK has a number of limitations, including the need for AWS credentials to be configured and model access enabled for Claude 4 Sonnet in the us-west-2 region for the default Amazon Bedrock model provider. The SDK also does not support streaming support for the MCPClient class. The MCPClient class does not support hot reloading of tools from a directory, unlike the Agent class, which has a loadtoolsfromdirectory config key that allows it to watch a directory for changes and reload tools automatically. The SDK requires Python 3.</p>
-<p>10+ to be installed and can be installed using pip. The SDK has a number of dependencies, including the strands-agents and strands-agents-tools packages. The strands-agents package provides the Agent class, while the strands-agents-tools package provides a number of tools that can be used with the Agent class.</p>
-<p>The MCPClient class has a number of config keys that can be used to configure the client, including the regionname and servicename config keys. The regionname config key specifies the region in which the MCP servers are located, while the servicename config key specifies the name of the service that the MCP servers are providing. The MCPClient class also has a config key called command that specifies the command to use to invoke the MCP servers. The command config key is used in conjunction with the args config key, which specifies the arguments to pass to the command.</p>
-<p>The MCPClient class uses the boto3. client() method to create a client for the MCP servers. The boto3. client() method takes a service name and a region name as input and returns a client object that can be used to interact with the MCP servers.</p>
-<p>The Strands Agents SDK has a number of use cases, including simple conversational assistants and complex autonomous workflows. The SDK can be used to build multi-agent systems, where multiple agents interact with each other to achieve a common goal. The SDK can also be used to build autonomous agents that can interact with their environment and make decisions based on their perceptions. The SDK has a number of tools that can be used to build these systems, including the Agent class and the MCPClient class.</p>
-<p>The Agent class provides a way to create agents that can interact with their environment, while the MCPClient class provides a way to interact with the MCP servers.</p>
-<p>The MCPClient class has a number of methods that can be used to interact with the MCP servers, including the listtoolssync() method and the invoketool() method. The listtoolssync() method returns a list of available tools, while the invoketool() method invokes a tool with a given set of arguments. The MCPClient class also has a method called gettool() that returns a specific tool. The gettool() method takes a tool name as an argument and returns the tool if it exists.</p>
-<p>The MCPClient class uses the stdioclient class to interact with the MCP servers. The stdioclient class has a method called invoke() that invokes a tool with a given set of arguments.</p>
-<p>The Strands Agents SDK has a number of limitations, including the need for AWS credentials to be configured and model access enabled for Claude 4 Sonnet in the us-west-2 region for the default Amazon Bedrock model provider. The SDK also does not support streaming support for the MCPClient class. The MCPClient class does not support hot reloading of tools from a directory, unlike the Agent class, which has a loadtoolsfrom_directory config key that allows it to watch a directory for changes and reload tools automatically. The SDK requires Python 3.</p>
-<p>10+ to be installed and can be installed using pip.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: superlinked lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Vector Search with sl.Index and sl.Query</h2></div><p class="ch-summary">Vector search integration</p><div class="ch-body"><p>The superlinked library provides a framework for building high-performance AI search applications. It utilizes a vector database and backend services to enable efficient search functionality. The sl. Index class is used to create an index of the data, while the sl.</p>
+<p>Query class is used to define a query to search for similar items. The sl. TextSimilaritySpace class is used to define a text similarity space, which is then used to create an index. The sl.</p>
+<p>Param class is used to define parameters for the query, such as the search term. The sl. InMemorySource class is used to create an in-memory source for the data, and the sl. InMemoryExecutor class is used to execute the query.</p>
+<p>The sl. PandasConverter. topandas method is used to convert the result to a Pandas dataframe.</p>
+<p>The sl. Index class supports various methods, including the find method, which is used to find similar items in the index. The similar method is used to define a similarity metric, such as cosine similarity or Euclidean distance. The selectall method is used to select all fields from the index.</p>
+<p>The sl. Query class also supports various methods, including the find method and the similar method. The sl. Param class supports various parameters, including the search term and the similarity metric.</p>
+<p>The superlinked library has several use cases, including building high-performance AI search applications for both humans and agents. It can be used to embed text, images, and numeric data, and to combine embeddings. It also supports real-time updates and query-time personalization. The library has several limitations, including the fact that it does not support certain types of data, such as categorical data.</p>
+<p>It also has performance limitations, such as the fact that it can be slow for very large datasets.</p>
+<p>The sl. InMemorySource class is used to create an in-memory source for the data, which can be used to test and debug the application. The sl. InMemoryExecutor class is used to execute the query, which can be used to test and debug the application.</p>
+<p>The sl. PandasConverter. topandas method is used to convert the result to a Pandas dataframe, which can be used to analyze and visualize the results. The library also supports various config keys, including the clientparams and timeout keys.</p>
+<p>The superlinked library has several technical advantages, including its support for vector databases and backend services. It also supports various API methods, including the find method and the similar method. The library has several version numbers, including 37. 5.</p>
+<p>0 and 37. 4. 2. It also has several performance metrics, including the fact that it can handle large datasets and provide fast query performance.</p>
+<p>The library has several limitations, including the fact that it does not support certain types of data, such as categorical data. It also has performance limitations, such as the fact that it can be slow for very large datasets. The library also has several config keys, including the client_params and timeout keys, which can be used to customize the behavior of the library. The library also supports various API methods, including the find method and the similar method, which can be used to customize the behavior of the library.</p>
+<p>The superlinked library is a powerful tool for building high-performance AI search applications. It provides a framework for creating and managing vector databases and backend services, and it supports various API methods and config keys. However, it also has several limitations, including the fact that it does not support certain types of data and can be slow for very large datasets.</p>
+<p>The library has several use cases, including building high-performance AI search applications for both humans and agents. It can be used to embed text, images, and numeric data, and to combine embeddings. It also supports real-time updates and query-time personalization. The library is a valuable tool for any organization that needs to build high-performance AI search applications, and it is widely used in various industries, including healthcare and finance.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 189.79 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 183.19 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 185.79,-535 185.79,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 179.19,-535 179.19,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="85.04" cy="-513" rx="47.05" ry="18"/>
-<text text-anchor="middle" x="85.04" y="-509.5" font-family="Arial" font-size="10.00">ClientRequest</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="87.59" cy="-513" rx="43.9" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-509.5" font-family="Arial" font-size="10.00">SearchQuery</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="85.04" cy="-430.5" rx="58.33" ry="18"/>
-<text text-anchor="middle" x="85.04" y="-427" font-family="Arial" font-size="10.00">TextPreprocessing</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-430.5" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-427" font-family="Arial" font-size="10.00">TextTokenization</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M85.04,-494.53C85.04,-484.51 85.04,-471.68 85.04,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="88.54,-460.45 85.04,-450.45 81.54,-460.45 88.54,-460.45"/>
-<text text-anchor="middle" x="122.54" y="-468.45" font-family="Arial" font-size="9.00">payload extraction</text>
+<path fill="none" stroke="#475569" d="M87.59,-494.53C87.59,-484.51 87.59,-471.68 87.59,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-460.45 87.59,-450.45 84.09,-460.45 91.09,-460.45"/>
+<text text-anchor="middle" x="118.72" y="-468.45" font-family="Arial" font-size="9.00">lexical analysis</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="85.04" cy="-348" rx="67.35" ry="18"/>
-<text text-anchor="middle" x="85.04" y="-344.5" font-family="Arial" font-size="10.00">EmbeddingGeneration</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-348" rx="63.74" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-344.5" font-family="Arial" font-size="10.00">SemanticEmbedding</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M85.04,-412.03C85.04,-402.01 85.04,-389.18 85.04,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="88.54,-377.95 85.04,-367.95 81.54,-377.95 88.54,-377.95"/>
-<text text-anchor="middle" x="123.67" y="-385.95" font-family="Arial" font-size="9.00">semantic encoding</text>
+<path fill="none" stroke="#475569" d="M87.59,-412.03C87.59,-402.01 87.59,-389.18 87.59,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-377.95 87.59,-367.95 84.09,-377.95 91.09,-377.95"/>
+<text text-anchor="middle" x="122.09" y="-385.95" font-family="Arial" font-size="9.00">contextualization</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="85.04,-283.5 0,-265.5 85.04,-247.5 170.08,-265.5 85.04,-283.5"/>
-<text text-anchor="middle" x="85.04" y="-262" font-family="Arial" font-size="10.00">DocumentRetrieval</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="87.59,-283.5 0,-265.5 87.59,-247.5 175.19,-265.5 87.59,-283.5"/>
+<text text-anchor="middle" x="87.59" y="-262" font-family="Arial" font-size="10.00">KnowledgeRetrieval</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M85.04,-329.53C85.04,-319.51 85.04,-306.68 85.04,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="88.54,-295.45 85.04,-285.45 81.54,-295.45 88.54,-295.45"/>
-<text text-anchor="middle" x="133.42" y="-303.45" font-family="Arial" font-size="9.00">knowledge graph query</text>
+<path fill="none" stroke="#475569" d="M87.59,-329.53C87.59,-319.51 87.59,-306.68 87.59,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-295.45 87.59,-285.45 84.09,-295.45 91.09,-295.45"/>
+<text text-anchor="middle" x="128.09" y="-303.45" font-family="Arial" font-size="9.00">information retrieval</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="85.04" cy="-183" rx="53.37" ry="18"/>
-<text text-anchor="middle" x="85.04" y="-179.5" font-family="Arial" font-size="10.00">ResultReranking</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-183" rx="53.37" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-179.5" font-family="Arial" font-size="10.00">ResultReranking</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M85.04,-247.03C85.04,-237.01 85.04,-224.18 85.04,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="88.54,-212.95 85.04,-202.95 81.54,-212.95 88.54,-212.95"/>
-<text text-anchor="middle" x="121.42" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
+<path fill="none" stroke="#475569" d="M87.59,-247.03C87.59,-237.01 87.59,-224.18 87.59,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-212.95 87.59,-202.95 84.09,-212.95 91.09,-212.95"/>
+<text text-anchor="middle" x="123.97" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="85.04" cy="-100.5" rx="64.64" ry="18"/>
-<text text-anchor="middle" x="85.04" y="-97" font-family="Arial" font-size="10.00">ResponseGeneration</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-100.5" rx="64.64" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-97" font-family="Arial" font-size="10.00">ResponseGeneration</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M85.04,-164.53C85.04,-154.51 85.04,-141.68 85.04,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="88.54,-130.45 85.04,-120.45 81.54,-130.45 88.54,-130.45"/>
-<text text-anchor="middle" x="120.29" y="-138.45" font-family="Arial" font-size="9.00">answer synthesis</text>
+<path fill="none" stroke="#475569" d="M87.59,-164.53C87.59,-154.51 87.59,-141.68 87.59,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-130.45 87.59,-120.45 84.09,-130.45 91.09,-130.45"/>
+<text text-anchor="middle" x="122.84" y="-138.45" font-family="Arial" font-size="9.00">answer synthesis</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="85.04" cy="-18" rx="62.84" ry="18"/>
-<text text-anchor="middle" x="85.04" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreaming</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="87.59" cy="-18" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreaming</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M85.04,-82.03C85.04,-72.01 85.04,-59.18 85.04,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="88.54,-47.95 85.04,-37.95 81.54,-47.95 88.54,-47.95"/>
-<text text-anchor="middle" x="130.04" y="-55.95" font-family="Arial" font-size="9.00">response serialization</text>
+<path fill="none" stroke="#475569" d="M87.59,-82.03C87.59,-72.01 87.59,-59.18 87.59,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-47.95 87.59,-37.95 84.09,-47.95 91.09,-47.95"/>
+<text text-anchor="middle" x="126.22" y="-55.95" font-family="Arial" font-size="9.00">output serialization</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: sdk-python end-to-end processing pipeline</p></div><div class="sec-heading">sdk-python — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Installation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Documentation Quality</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Compatibility with Python 3.10+</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Model Provider Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Autonomous Agent Development</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:82%"></span></span></span><span class="bar-value">82%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Avoiding Production Gotchas with the list_tools_sync Method and Error Handling</h2></div><div class="ch-body"><p>This docstring is used by the LLM to understand the tool's purpose.</p>
-<p>"""</p>
-<p>return len(text.</p>
-<p>agent = Agent(tools=[wordcount])</p>
-<p>response = agent("How many words are in this sentence?</p>
-<p>python</p>
-<p>from strands import Agent</p>
-<p>Agent will watch .</p>
-<p>agent = Agent(loadtoolsfromdirectory=True)</p>
-<p>response = agent("Use any tools you find in the tools directory")</p>
-<p>python</p>
-<p>from strands import Agent</p>
-<p>from strands. tools.</p>
-<p>from mcp import stdioclient, StdioServerParameters</p>
-<p>awsdocsclient = MCPClient(</p>
-<p>lambda: stdioclient(StdioServerParameters(command="uvx", args=["awslabs.</p>
-<p>)</p>
-<p>with awsdocsclient:</p>
-<p>agent = Agent(tools=awsdocsclient.</p>
-<p>response = agent("Tell me about Amazon Bedrock and how to use it with Python")</p>
-<p>python</p>
-<p>from strands import Agent</p>
-<p>from strands.</p>
-<p>from strands. models.</p>
-<p>from strands. models.</p>
-<p>from strands. models.</p>
-<p>from strands. models.</p><div class="sec-heading">sdk-python — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Model Providers</td><td>Amazon Bedrock, Anthropic, Gemini, LiteLLM, Llama, Ollama, OpenAI, Writer, custom providers</td><td>Supports a wide range of model providers for flexibility and customization</td></tr><tr><td>Multi-Agent Systems</td><td>Supported</td><td>Enables the development of complex autonomous systems with multiple interacting agents</td></tr><tr><td>Streaming Support</td><td>Supported</td><td>Allows for real-time data processing and streaming capabilities</td></tr><tr><td>Agent Development</td><td>Python 3.10+</td><td>Utilizes Python 3.10+ for agent development, ensuring compatibility with the latest Python versions</td></tr><tr><td>Tool Integration</td><td>Strands Agents and Tools</td><td>Provides a comprehensive set of tools for agent development, including the calculator and word count tools</td></tr><tr><td>MCP Server Support</td><td>Model Context Protocol (MCP) servers</td><td>Supports MCP servers for secure and efficient model serving and management</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with the LlamaAPIModel and Python 3.10+</h2></div><p class="ch-summary">Optimize LlamaAPIModel</p><div class="ch-body"><p>The LlamaAPIModel is a key component in the strands-agents/sdk-python library, providing a way to interact with the Llama API. To optimize its performance, it's essential to understand the configuration options available, such as the maxtokens and temperature parameters. The updateconfig method allows for dynamic updates to these parameters, which can significantly impact the model's performance. For instance, increasing the maxtokens value can lead to more detailed responses, but may also increase the response time.</p>
-<p>The library also provides the Agent class, which can be used to create and manage agents that utilize the LlamaAPIModel. The Agent class has methods such as addtask and addtool, which can be used to customize the agent's behavior.</p>
-<p>The strands-agents/sdk-python library has several limitations, including the lack of support for Sigv4 auth requests, which can make it difficult to work with certain models. Additionally, the library does not provide a straightforward way to pass authentication parameters to the models. However, the library does provide a way to install the required dependencies using pip, with the command pip install strands-agents strands-agents-tools. The library also provides several use cases, including quickly testing agents and debugging MCP calls, deploying agents using FastAPI endpoints, and evaluating agents through a set of standard use cases.</p>
-<p>The LlamaAPIModel class has a config attribute that stores parameter values, which can be updated using the updateconfig method.</p>
-<p>The updateconfig method takes in a dictionary of configuration parameters, which can include modelid, maxtokens, and temperature. The method updates the corresponding attributes of the LlamaAPIModel instance, allowing for dynamic changes to the model's configuration. The library also provides several events, such as the BeforeModelCallEvent and AfterModelCallEvent, which can be used to customize the behavior of the agent. The addhook method can be used to add callbacks to these events, allowing for further customization.</p>
-<p>The library also provides a LoggingPlugin class, which can be used to log events and errors.</p>
-<p>The LoggingPlugin class has a logcall method that can be used to log calls to the agent, and an addhook method that can be used to add callbacks to events. The library also provides a calculator tool, which can be used to perform mathematical calculations. The calculator tool can be added to an agent using the addtool method, and can be used to perform calculations in response to user input. The library also provides a way to evaluate agents through a set of standard use cases, which can be used to test the agent's performance and behavior.</p>
-<p>The strands-agents/sdk-python library has a version number, but it is not specified in the research. However, the library does provide a way to install the required dependencies using pip, with the command pip install strands-agents strands-agents-tools. The library also provides several configuration keys, including loadtoo, which can be used to customize the behavior of the agent. The library does not provide a straightforward way to pass authentication parameters to the models, which can make it difficult to work with certain models.</p>
-<p>The LlamaAPIModel class has a baseurl attribute that stores the URL of the Llama API, which is constructed using the apiid and region parameters. The library also provides a way to update the configuration of the model using the updateconfig method, which can be used to change the model's behavior. The library does not provide a way to work with the models classes available in strands sdk as we don’t have a great way to pass Sigv4 auth request. The library provides several classes, including the Agent, tool, MCPClient, and StdioServerParameters classes, which can be used to customize the behavior of the agent.</p>
-<p>The library provides several methods, including the updateconfig, addtask, and addtool methods, which can be used to customize the behavior of the agent. The library also provides several events, including the BeforeModelCallEvent and AfterModelCallEvent, which can be used to customize the behavior of the agent. The library does not provide a straightforward way to pass authentication parameters to the models, which can make it difficult to work with certain models. The library provides a way to install the required dependencies using pip, with the command pip install strands-agents strands-agents-tools.</p>
-<p>The library provides a way to evaluate agents through a set of standard use cases, which can be used to test the agent's performance and behavior. The library also provides a calculator tool, which can be used to perform mathematical calculations. The calculator tool can be added to an agent using the addtool method, and can be used to perform calculations in response to user input. The library provides several configuration keys, including loadtoo, which can be used to customize the behavior of the agent.</p>
-<p>The library does not provide a way to work with the models classes available in strands sdk as we don’t have a great way to pass Sigv4 auth request.</p></div></section>
-<div class="book-footer"><strong>sdk-python: Production Manual</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; March 31, 2026</div>
+</svg><p class="diagram-caption">Figure: superlinked end-to-end processing pipeline</p></div><div class="sec-heading">superlinked — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Use</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:70%"></span></span></span><span class="bar-value">70%</span></div><div class="bar-row"><span class="bar-label">Performance</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Cost-Effectiveness</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:75%"></span></span></span><span class="bar-value">75%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Common Issues with sl.InMemoryExecutor</h2></div><p class="ch-summary">Common issues with sl.InMemoryExecutor</p><div class="ch-body"><p>The sl. InMemoryExecutor class is used to execute queries on in-memory data sources. It supports various configuration options, including the mode and limit parameters. The mode parameter can be set to sl.</p>
+<p>Mode. MAXIMUM, which returns the top results based on the specified weights. The limit parameter controls the number of results returned. The sl.</p>
+<p>InMemoryExecutor class also supports natural language queries through the sl. OpenAIClientConfig class.</p>
+<p>The sl. InMemorySource class is used to create in-memory data sources, which can be used with the sl. InMemoryExecutor class. The sl.</p>
+<p>InMemorySource class supports the put method, which is used to add data to the source. The sl. InMemoryExecutor class also supports the run method, which is used to start the execution of queries. The sl.</p>
+<p>Query class is used to create queries, which can be executed on the sl. InMemoryExecutor instance.</p>
+<p>The sl. Query class supports various methods, including the find and similar methods. The find method is used to find similar items based on the specified weights. The similar method is used to find similar items based on the specified text similarity space.</p>
+<p>The sl. TextSimilaritySpace class is used to create text similarity spaces, which can be used with the similar method. The sl. NumberSpace class is used to create number spaces, which can be used with the find method.</p>
+<p>The sl. Param class is used to create parameters, which can be used with the sl. Query class. The sl.</p>
+<p>Param class supports various methods, including the description method, which is used to set the description of the parameter. The sl. OpenAIClientConfig class is used to create OpenAI client configurations, which can be used with the sl. Query class.</p>
+<p>The sl. OpenAIClientConfig class supports various methods, including the apikey method, which is used to set the API key.</p>
+<p>The sl. InMemoryExecutor class has some limitations, including the fact that it does not support distributed execution. It also does not support persistence of data, which means that data is lost when the executor is stopped. The sl.</p>
+<p>InMemoryExecutor class also has some performance limitations, including the fact that it can be slow for large datasets. The sl. InMemoryExecutor class also has some configuration limitations, including the fact that it does not support all configuration options.</p>
+<p>The sl. InMemoryExecutor class can be used with various data sources, including the sl. InMemorySource class. The sl.</p>
+<p>InMemorySource class supports various methods, including the put method, which is used to add data to the source. The sl. InMemoryExecutor class also supports various query methods, including the find and similar methods. The sl.</p>
+<p>Query class supports various methods, including the limit method, which is used to control the number of results returned.</p>
+<p>The sl. InMemoryExecutor class also supports natural language queries through the sl. OpenAIClientConfig class. The sl.</p>
+<p>OpenAIClientConfig class supports various methods, including the model method, which is used to set the model. The sl. InMemoryExecutor class also supports various configuration options, including the maxvalue parameter, which is used to set the maximum value. The sl.</p>
+<p>InMemoryExecutor class also has some limitations, including the fact that it does not support all configuration options.</p>
+<p>The sl. InMemoryExecutor class can be used with various text similarity spaces, including the sl. TextSimilaritySpace class. The sl.</p>
+<p>TextSimilaritySpace class supports various methods, including the text method, which is used to set the text. The sl. InMemoryExecutor class also supports various number spaces, including the sl. NumberSpace class.</p>
+<p>The sl. NumberSpace class supports various methods, including the number method, which is used to set the number.</p>
+<p>The sl. InMemoryExecutor class also supports various query parameters, including the naturallanguagequery parameter, which is used to set the natural language query. The sl. InMemoryExecutor class also supports various configuration parameters, including the api_key parameter, which is used to set the API key.</p>
+<p>The sl. InMemoryExecutor class also has some performance limitations, including the fact that it can be slow for large datasets.</p>
+<p>The sl. InMemoryExecutor class can be used with various data sources, including the sl. InMemorySource class. The sl.</p>
+<p>InMemorySource class supports various methods, including the put method, which is used to add data to the source. The sl. InMemoryExecutor class also supports various query methods, including the find and similar methods. The sl.</p>
+<p>Query class supports various methods, including the limit method, which is used to control the number of results returned.</p>
+<p>callout: sl. Mode.</p><div class="sec-heading">superlinked — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Vector Database</td><td>Included</td><td>Superlinked comes with a built-in vector database for efficient similarity searches</td></tr><tr><td>Backend Services</td><td>Supported</td><td>Superlinked provides backend services for building high-performance AI search applications</td></tr><tr><td>Schema Definition</td><td>Flexible</td><td>Superlinked allows for flexible schema definition using Python classes and type hints</td></tr><tr><td>Querying Capabilities</td><td>Advanced</td><td>Superlinked supports advanced querying capabilities, including similarity searches and filtering</td></tr><tr><td>Data Source Support</td><td>In-Memory and External</td><td>Superlinked supports both in-memory and external data sources, including databases and file systems</td></tr><tr><td>Result Conversion</td><td>Pandas Support</td><td>Superlinked provides a Pandas converter for easy result conversion and analysis</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with sl.PandasConverter and Vector Databases</h2></div><p class="ch-summary">Optimize performance</p><div class="ch-body"><p>The sl. PandasConverter class plays a crucial role in optimizing performance by enabling efficient data conversion. The Qdrant vector database connector is used to store and retrieve data. The InMemorySource and InMemoryExecutor classes are used to manage data sources and execution.</p>
+<p>The sl. OpenAIClientConfig class is used to configure the OpenAI API. The apikey and model config keys are used to authenticate and specify the model. The ratingweight, descriptionquery, and limit config keys are used to customize the search query.</p>
+<p>The naturallanguagequery config key is used to enable natural language search.</p>
+<p>The sl. Param class is used to define parameters for the search query. The sl. InMemorySource class is used to store data in memory.</p>
+<p>The sl. InMemoryExecutor class is used to execute the search query. The source. put method is used to add data to the source.</p>
+<p>The executor. run method is used to execute the search query. The version 37. 5.</p>
+<p>0 of the library is used. The library has some limitations, such as not handling null output safely in IngestionOutputRecorder.</p>
+<p>The library uses the httpx client to load data from external sources. The httpx client has some limitations, such as not enabling redirect following for blob loading. The library uses the redis connection to store data. The redis connection has some limitations, such as not improving reliability with keepalive and health checks.</p>
+<p>The library has some performance metrics, such as reducing unnecessary logging for zero-duration tasks.</p>
+<p>The library has some use cases, such as building high-performance AI search applications for both humans and agents. The library supports multimodal search, including text, images, numbers, categories, time, and events. The library supports real-time updates and query-time personalization. The library supports dynamic parameters and custom schemas.</p>
+<p>The library has some limitations, such as not supporting certain types of data.</p>
+<p>The library has some technical limitations, such as not improving modal async batching and fixing configuration. The library has some limitations, such as not reducing unnecessary logging for zero-duration tasks. The library has some performance metrics, such as improving the performance of the search query. The library uses the Qdrant vector database connector to store and retrieve data.</p>
+<p>The Qdrant vector database connector has some limitations, such as not supporting certain types of data.</p>
+<p>The library has some config keys, such as the ratingweight, descriptionquery, and limit. The library has some config keys, such as the naturallanguagequery and apikey. The library has some version numbers, such as 37. 5.</p>
+<p>0 and 37. 4. 2. The library has some limitations, such as not handling null output safely in IngestionOutputRecorder.</p>
+<p>The library has some performance metrics, such as reducing unnecessary logging for zero-duration tasks.</p>
+<p>The library has some technical limitations, such as not improving redis connection reliability with keepalive and health checks. The library has some limitations, such as not enabling redirect following in httpx client for blob loading. The library has some performance metrics, such as improving the performance of the search query. The library uses the sl.</p>
+<p>PandasConverter class to optimize performance. The library has some version numbers, such as 37. 5. 0 and 37.</p>
+<p>4. 2.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Get Started with Superlinked in Python: The ORM for Vectors ...</div><a class="video-url" href="https://m.youtube.com/shorts/a7baRbpvmPo">https://m.youtube.com/shorts/a7baRbpvmPo</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Superlinked Framework Overview</div><a class="video-url" href="https://www.youtube.com/watch?v=TmyRNLdpqxg">https://www.youtube.com/watch?v=TmyRNLdpqxg</a></div></div></section>
+<div class="book-footer"><strong>superlinked: Engineering Handbook</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; April 1, 2026</div>
 </body>
 </html>
