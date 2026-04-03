@@ -2,246 +2,240 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>beeai-framework: Field Guide</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "beeai-framework: Field Guide"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>parallax: Complete Reference</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "parallax: Complete Reference"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/3824fa3bac4dfc4d32d4d2a17d4073e5a9a0a1013e0f51aec0b80bbbd3b7e915/i-am-bee/beeai-framework" alt="beeai-framework logo" onerror="this.style.display='none'"/><div class="cover-lib-name">beeai-framework</div><div class="cover-suffix">Field Guide</div><div class="cover-rule"></div><p class="cover-subtitle">Introducing beeai framework</p><p class="cover-desc">The beeai-framework provides a robust set of tools for building autonomous agents, including the RequirementAgent class, which enables the creation of intelligent agents that can reason and take actions.  The RequirementAgent class can be used in conjunction with other classes, such as ConditionalRequirement, to create complex decision-making processes.  The FrameworkError class is used to handle errors that may occur during the execution of the agent.</p><div class="cover-tagline">Learn beeai</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> April 2, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">i-am-bee built beeai-framework to solve complex problems</div><div class="intro-body"><p>The beeai-framework is a technical framework that was created to solve complex problems by building intelligent, autonomous agents and multi-agent systems. It provides a set of tools and classes, such as RequirementAgent, ConditionalRequirement, and ChatModel, to create agents that can reason, take actions, and collaborate. The framework also includes a range of middleware and tools, including GlobalTrajectoryMiddleware, HandoffTool, WikipediaTool, and ThinkTool, which can be used to extend the functionality of the agents. The framework is designed to be flexible and extensible, with support for multiple protocols and the ability to save and load agent state for persistence across sessions.</p>
-<p>The beeai-framework is built around a number of key technical concepts, including agents, backend, tools, and workflows. The framework uses a modular architecture, with each component designed to be independent and reusable. The agents are the core of the framework, and are responsible for making decisions and taking actions. The backend provides the infrastructure for the agents to operate, including support for multiple protocols and the ability to save and load agent state.</p>
-<p>The tools provide additional functionality, such as web search and code execution, and can be used to extend the capabilities of the agents. The workflows provide a way to orchestrate the execution of multiple agents and tools, and can be used to create complex execution flows.</p>
-<p>One of the key technical differences between the beeai-framework and other frameworks is its use of a modular architecture and its support for multiple protocols. The framework is also designed to be highly extensible, with a range of tools and middleware available to extend its functionality. The use of classes and methods, such as RequirementAgent and ChatModel, provides a high degree of flexibility and customizability, and allows developers to create complex and sophisticated agents and workflows. The framework also includes a range of features, such as intelligent caching and robust error handling, which are designed to optimize performance and reduce costs.</p>
-<p>The target audience for the beeai-framework is developers who want to build intelligent, autonomous agents and multi-agent systems. The framework is designed to be highly flexible and extensible, and can be used to create a wide range of applications, from simple chatbots to complex multi-agent systems. The framework is also designed to be highly scalable, and can be used to create systems that operate at a large scale. The use of a modular architecture and support for multiple protocols makes it easy to integrate the framework with other systems and tools, and the range of features and functionality provided by the framework make it an ideal choice for developers who want to create complex and sophisticated agents and workflows.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/i-am-bee/beeai-framework">https://github.com/i-am-bee/beeai-framework</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building Autonomous Agents with RequirementAgent</h2></div><p class="ch-summary">Autonomous agents with RequirementAgent</p><div class="ch-body"><p>The beeai-framework provides a robust set of tools for building autonomous agents, including the RequirementAgent class, which enables the creation of intelligent agents that can reason and take actions. The RequirementAgent class can be used in conjunction with other classes, such as ConditionalRequirement, to create complex decision-making processes. The FrameworkError class is used to handle errors that may occur during the execution of the agent. The GlobalTrajectoryMiddleware class is used to manage the trajectory of the agent.</p>
-<p>The agent's behavior can be controlled using various config keys, including the llm key, which specifies the language model to be used. The tools key is used to specify the tools that the agent can use, such as the ThinkTool or WikipediaTool.</p>
-<p>The beeai-framework also provides a range of tools that can be used to extend the functionality of the agent, including the HandoffTool, which enables the agent to hand off tasks to other agents or services. The WikipediaTool is used to search for information on Wikipedia, while the ThinkTool is used to generate text based on a given prompt. The OpenMeteoTool is used to retrieve weather data. The agent's performance can be optimized using various techniques, such as caching, which can reduce the time it takes for the agent to respond to requests.</p>
-<p>The beeai-framework provides a flexible architecture that enables the creation of complex multi-agent systems. The Agents component is responsible for managing the agents, while the Backend component is responsible for managing the backend services. The Tools component is responsible for managing the tools that the agents can use. The RAG component is responsible for managing the retrieval-augmented generation systems.</p>
-<p>The Templates component is used to manage the templates that are used to generate text. The Memory component is used to manage the memory of the agent, while the Observability component is used to monitor the behavior of the agent.</p>
-<p>The beeai-framework provides a range of APIs that can be used to interact with the agent, including the ChatModel. fromname method, which is used to create a new chat model. The ThinkTool class has a range of methods that can be used to generate text, including the think method, which generates text based on a given prompt. The WikipediaTool class has a range of methods that can be used to search for information on Wikipedia, including the search method, which searches for a given topic.</p>
-<p>The HandoffTool class has a range of methods that can be used to hand off tasks to other agents or services, including the handoff method, which hands off a task to another agent.</p>
-<p>The beeai-framework has a number of limitations, including the fact that it does not support all language models. The FrameworkError class is used to handle errors that may occur during the execution of the agent, but it does not provide detailed information about the error. The agent's performance can be affected by the quality of the language model that is used, as well as the complexity of the tasks that the agent is required to perform. The beeai-framework does not provide a built-in mechanism for managing the state of the agent, which can make it difficult to persist the agent's state across sessions.</p>
-<p>The beeai-framework can be installed using pip or npm, and it provides a range of examples that demonstrate how to use the framework to build autonomous agents. The multi-agent example demonstrates how to create a complex multi-agent system, while the competitive analysis workflow example demonstrates how to use the framework to analyze the competitive landscape. The framework provides a range of config keys that can be used to customize the behavior of the agent, including the llm key, which specifies the language model to be used.</p>
-<p>The beeai-framework provides a range of features that make it suitable for building complex autonomous agents, including support for multiple language models, a range of tools that can be used to extend the functionality of the agent, and a flexible architecture that enables the creation of complex multi-agent systems. The framework also provides a range of APIs that can be used to interact with the agent, including the ChatModel. fromname method and the ThinkTool class. However, the framework has a number of limitations, including the fact that it does not support all language models and the fact that it does not provide detailed information about errors that may occur during the execution of the agent.</p>
-<p>The beeai-framework is a powerful tool for building autonomous agents, but it requires careful consideration of the limitations and potential pitfalls. The framework provides a range of features that make it suitable for building complex autonomous agents, but it also has a number of limitations that must be taken into account. The framework's performance can be affected by the quality of the language model that is used, as well as the complexity of the tasks that the agent is required to perform. The framework's architecture is flexible and enables the creation of complex multi-agent systems, but it can be difficult to manage the state of the agent across sessions.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/7c2da84ab9649a7f9f0b3152c4c8b07d7413091f8dfe318ab4537452ce4ed46a/GradientHQ/parallax" alt="parallax logo" onerror="this.style.display='none'"/><div class="cover-lib-name">parallax</div><div class="cover-suffix">Complete Reference</div><div class="cover-rule"></div><p class="cover-subtitle">Understanding parallax</p><p class="cover-desc">The parallax library utilizes Lattica for peer-to-peer communication, enabling features like pipeline parallel model sharding and dynamic request scheduling.  This architecture allows for efficient data transfer and processing.  The library also supports cross-platform compatibility, making it accessible on various devices.</p><div class="cover-tagline">See beyond</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> April 3, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">GradientHQ built Parallax to host local LLM on devices.</div><div class="intro-body"><p>Parallax is a technical solution developed by GradientHQ, with the initial version 0. 0. 1 released in 2025/10. The specific problem it was built to solve is hosting local LLM on personal devices, which requires efficient pipeline parallel model sharding, paged KV cache management, and dynamic request scheduling and routing.</p>
+<p>The architecture of Parallax is based on P2P communication powered by Lattica, with a GPU backend powered by SGLang and vLLM, and a MAC backend powered by MLX LM. This design allows for cross-platform support and high-performance capabilities. The use of Lattica for P2P communication enables efficient data transfer between nodes, while the GPU backend powered by SGLang and vLLM provides accelerated processing capabilities.</p>
+<p>Parallax is technically different from alternatives due to its use of pipeline parallel model sharding, which allows for efficient processing of large models, and paged KV cache management, which enables continuous batching for Mac devices. Additionally, the dynamic request scheduling and routing capabilities of Parallax enable high-performance processing. The configuration keys for Parallax include host, max-sequence-length, max-num-tokens-per-batch, and enable-prefix-cache, which provide flexibility in customizing the solution for specific use cases.</p>
+<p>The target audience for Parallax includes developers and researchers who require a high-performance solution for hosting local LLM on personal devices, with cross-platform support and efficient processing capabilities. The installation steps for Parallax include running the parallax run command, joining the network with the parallax join command, and installing the required dependencies, including Node. js and Python. The use cases for Parallax include hosting local LLM on personal devices, pipeline parallel model sharding, paged KV cache management, and dynamic request scheduling and routing for high performance.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/GradientHQ/parallax">https://github.com/GradientHQ/parallax</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building P2P Networks with Lattica</h2></div><p class="ch-summary">Lattica powers P2P communication</p><div class="ch-body"><p>The parallax library utilizes Lattica for peer-to-peer communication, enabling features like pipeline parallel model sharding and dynamic request scheduling. This architecture allows for efficient data transfer and processing. The library also supports cross-platform compatibility, making it accessible on various devices. The parallax run and parallax join methods are used to initiate and connect to P2P networks.</p>
+<p>The host config key is set to 0. 0. 0. 0 by default, allowing for local hosting.</p>
+<p>The GPU backend, powered by SGLang and vLLM, provides accelerated processing capabilities. In contrast, the MAC backend relies on MLX LM for its operations. The library's version 0. 0.</p>
+<p>1 demonstrates its early stages of development. The max-sequence-length and max-num-tokens-per-batch config keys are set to 65536, limiting the input size.</p>
+<p>The parallax library does not support older versions of Node. js and Python, requiring at least Node. js 22 and Python 3. 11.</p>
+<p>This limitation may pose issues for users with outdated environments. The library's performance is influenced by the enable-prefix-cache config key, which can be enabled for improved caching.</p>
+<p>The P2P communication powered by Lattica enables features like paged KV cache management and continuous batching for Mac. This allows for efficient data storage and retrieval. The dynamic request scheduling and routing feature contribute to high-performance processing.</p>
+<p>The parallax library provides a range of use cases, including hosting local LLM on personal devices and working with OpenClaw. The pipeline parallel model sharding feature enables efficient model processing. However, the library's limitations, such as the lack of support for older Node. js and Python versions, may hinder its adoption.</p>
+<p>The research does not provide implementation details for the SGLang and vLLM GPU backend architecture. The MLX LM MAC backend also lacks detailed documentation. The parallax library's architecture is designed to support various use cases, but its technical implementation is not fully disclosed.</p>
+<p>The library's config keys, such as host and max-sequence-length, play a crucial role in determining its behavior. The parallax run and parallax join methods are used to control the P2P network. The library's version 0. 0.</p>
+<p>1 indicates its early stages of development, and its limitations, such as the lack of support for older Node. js and Python versions, may pose issues for users.</p>
+<p>The callout is that the max-sequence-length config key is set to 65536.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1871.41 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1166.26 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1867.41,-40 1867.41,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1162.26,-40 1162.26,4 -4,4"/>
 <!-- N0 -->
 <g id="cluster-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="68.25" cy="-18" rx="68.25" ry="18"/>
-<text text-anchor="middle" x="68.25" y="-14.5" font-family="Arial" font-size="10.00">BeeAIRequestHandler</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="27.21" cy="-18" rx="27.21" ry="18"/>
+<text text-anchor="middle" x="27.21" y="-14.5" font-family="Arial" font-size="10.00">Lattice</text>
 </g>
 <!-- N1 -->
 <g id="cluster-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="353.53" cy="-18" rx="56.53" ry="18"/>
-<text text-anchor="middle" x="353.53" y="-14.5" font-family="Arial" font-size="10.00">LLaMAChatModel</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="233.14" cy="-18" rx="96.21" ry="18"/>
+<text text-anchor="middle" x="233.14" y="-14.5" font-family="Arial" font-size="10.00">Safecoin Programming Language</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="cluster-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M136.74,-18C181.61,-18 240.29,-18 285.13,-18"/>
-<polygon fill="#475569" stroke="#475569" points="285,-21.5 295,-18 285,-14.5 285,-21.5"/>
-<text text-anchor="middle" x="216.75" y="-19.95" font-family="Arial" font-size="9.00">initializes conversation context</text>
+<path fill="none" stroke="#475569" d="M54.87,-18C73.29,-18 99.12,-18 125.38,-18"/>
+<polygon fill="#475569" stroke="#475569" points="125.12,-21.5 135.12,-18 125.12,-14.5 125.12,-21.5"/>
+<text text-anchor="middle" x="95.67" y="-19.95" font-family="Arial" font-size="9.00">compiles to</text>
 </g>
 <!-- N2 -->
 <g id="cluster-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="588.96" cy="-18" rx="46.15" ry="18"/>
-<text text-anchor="middle" x="588.96" y="-14.5" font-family="Arial" font-size="10.00">BeeAIToolbox</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="476.35" cy="-18" rx="66" ry="18"/>
+<text text-anchor="middle" x="476.35" y="-14.5" font-family="Arial" font-size="10.00">Verified Lattice Model</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="cluster-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M410.44,-18C446.95,-18 494.48,-18 531.17,-18"/>
-<polygon fill="#475569" stroke="#475569" points="531.16,-21.5 541.16,-18 531.16,-14.5 531.16,-21.5"/>
-<text text-anchor="middle" x="476.43" y="-19.95" font-family="Arial" font-size="9.00">registers available tools</text>
+<path fill="none" stroke="#475569" d="M329.81,-18C352.78,-18 377,-18 398.95,-18"/>
+<polygon fill="#475569" stroke="#475569" points="398.69,-21.5 408.69,-18 398.69,-14.5 398.69,-21.5"/>
+<text text-anchor="middle" x="369.85" y="-19.95" font-family="Arial" font-size="9.00">deploys on</text>
 </g>
 <!-- N3 -->
 <g id="cluster-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="853.69,-36 773.11,-18 853.69,0 934.27,-18 853.69,-36"/>
-<text text-anchor="middle" x="853.69" y="-14.5" font-family="Arial" font-size="10.00">BeeAIHandoffTool</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="714.72,-36 631.59,-18 714.72,0 797.85,-18 714.72,-36"/>
+<text text-anchor="middle" x="714.72" y="-14.5" font-family="Arial" font-size="10.00">MLX Lattice Model</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="cluster-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M635.42,-18C669.53,-18 717.39,-18 759.51,-18"/>
-<polygon fill="#475569" stroke="#475569" points="759.42,-21.5 769.42,-18 759.42,-14.5 759.42,-21.5"/>
-<text text-anchor="middle" x="704.11" y="-19.95" font-family="Arial" font-size="9.00">routes to handoff handler</text>
+<path fill="none" stroke="#475569" d="M542.56,-18C566.01,-18 592.97,-18 618.45,-18"/>
+<polygon fill="#475569" stroke="#475569" points="618.14,-21.5 628.14,-18 618.14,-14.5 618.14,-21.5"/>
+<text text-anchor="middle" x="586.97" y="-19.95" font-family="Arial" font-size="9.00">interacts with</text>
 </g>
 <!-- N4 -->
 <g id="cluster-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1139.9" cy="-18" rx="62.39" ry="18"/>
-<text text-anchor="middle" x="1139.9" y="-14.5" font-family="Arial" font-size="10.00">BeeAIWikipediaTool</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1033.18" cy="-18" rx="125.08" ry="18"/>
+<text text-anchor="middle" x="1033.18" y="-14.5" font-family="Arial" font-size="10.00">Paged Key&#45;Value Store Cache Management</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="cluster-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M936.51,-18C977.26,-18 1026.12,-18 1065.63,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1065.53,-21.5 1075.53,-18 1065.53,-14.5 1065.53,-21.5"/>
-<text text-anchor="middle" x="1005.89" y="-19.95" font-family="Arial" font-size="9.00">executes via wikipedia api</text>
-</g>
-<!-- N5 -->
-<g id="cluster-node6" class="node">
-<title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1431.76" cy="-18" rx="52.47" ry="18"/>
-<text text-anchor="middle" x="1431.76" y="-14.5" font-family="Arial" font-size="10.00">BeeAITHinkTool</text>
-</g>
-<!-- N4&#45;&gt;N5 -->
-<g id="cluster-edge5" class="edge">
-<title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M1202.73,-18C1251.37,-18 1318.87,-18 1367.8,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1367.68,-21.5 1377.68,-18 1367.68,-14.5 1367.68,-21.5"/>
-<text text-anchor="middle" x="1290.79" y="-19.95" font-family="Arial" font-size="9.00">stores response in think tool cache</text>
-</g>
-<!-- N6 -->
-<g id="cluster-node7" class="node">
-<title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1764.95" cy="-18" rx="98.47" ry="18"/>
-<text text-anchor="middle" x="1764.95" y="-14.5" font-family="Arial" font-size="10.00">BeeAIGlobalTrajectoryMiddleware</text>
-</g>
-<!-- N5&#45;&gt;N6 -->
-<g id="cluster-edge6" class="edge">
-<title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M1484.51,-18C1529.96,-18 1597.59,-18 1654.94,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1654.74,-21.5 1664.74,-18 1654.74,-14.5 1654.74,-21.5"/>
-<text text-anchor="middle" x="1575.35" y="-19.95" font-family="Arial" font-size="9.00">returns response to global trajectory</text>
+<path fill="none" stroke="#475569" d="M800.11,-18C829.67,-18 863.67,-18 896.36,-18"/>
+<polygon fill="#475569" stroke="#475569" points="896.35,-21.5 906.35,-18 896.35,-14.5 896.35,-21.5"/>
+<text text-anchor="middle" x="852.97" y="-19.95" font-family="Arial" font-size="9.00">utilizes for storage</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: beeai-framework internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting Multi-Agent Workflows with GlobalTrajectoryMiddleware</h2></div><p class="ch-summary">Multi-agent workflow architecture</p><div class="ch-body"><p>The beeai-framework provides a flexible architecture for building multi-agent workflows, leveraging the GlobalTrajectoryMiddleware to manage complex execution flows. This middleware enables the creation of predictable, controlled behavior across different LLMs by setting rules the agent must follow. The RequirementAgent class plays a crucial role in this architecture, allowing developers to define specific requirements for each agent. The ChatModel class provides a range of LLMs that can be used with the framework, including the ollama:granite3.</p>
-<p>3:8b model. The FrameworkError class is used to handle errors that may occur during workflow execution.</p>
-<p>The GlobalTrajectoryMiddleware is responsible for managing the workflow execution, ensuring that each agent completes its tasks in the correct order. This middleware also provides support for multiple protocols, including A2A and MCP, allowing agents to communicate with each other seamlessly. The HandoffTool class is used to enable handoffs between agents, allowing them to collaborate on complex tasks. The ThinkTool and WikipediaTool classes provide additional functionality for agents, enabling them to reason and retrieve information from external sources.</p>
-<p>The beeai-framework also supports intelligent caching, reducing costs and optimizing performance.</p>
-<p>The beeai-framework provides a range of tools for building and managing multi-agent workflows, including the RequirementAgent, ChatModel, and GlobalTrajectoryMiddleware classes. The FrameworkError class is used to handle errors that may occur during workflow execution, providing detailed information about the error and its cause. The framework also supports multiple version numbers, including 2025/08/25 and 3. 3, ensuring that developers can choose the version that best suits their needs.</p>
-<p>The beeai-framework does not support certain features, such as automatic workflow optimization, which must be implemented manually by the developer.</p>
-<p>The beeai-framework architecture is designed to support complex multi-agent workflows, with a focus on flexibility and scalability. The GlobalTrajectoryMiddleware plays a key role in this architecture, enabling the creation of predictable, controlled behavior across different LLMs. The RequirementAgent class provides a flexible way to define agent requirements, while the ChatModel class offers a range of LLMs that can be used with the framework. The framework also supports multiple protocols, including A2A and MCP, allowing agents to communicate with each other seamlessly.</p>
-<p>One of the key limitations of the beeai-framework is that it does not support automatic workflow optimization, which must be implemented manually by the developer. Additionally, the framework may fail when dealing with very large workflows, due to performance limitations. The FrameworkError class is used to handle errors that may occur during workflow execution, providing detailed information about the error and its cause. The beeai-framework also supports intelligent caching, reducing costs and optimizing performance.</p>
-<p>The beeai-framework provides a range of API methods for building and managing multi-agent workflows, including the add_task() method and the run() method. The framework also supports multiple config keys, including llm and tools, allowing developers to customize the workflow execution. The beeai-framework does not provide detailed performance metrics, but it does support intelligent caching, reducing costs and optimizing performance. The framework also supports multiple version numbers, including 2025/08/25 and 3.</p>
-<p>3.</p>
-<p>The beeai-framework is designed to support complex multi-agent workflows, with a focus on flexibility and scalability. The GlobalTrajectoryMiddleware plays a key role in this architecture, enabling the creation of predictable, controlled behavior across different LLMs. The RequirementAgent class provides a flexible way to define agent requirements, while the ChatModel class offers a range of LLMs that can be used with the framework. The framework also supports multiple protocols, including A2A and MCP, allowing agents to communicate with each other seamlessly.</p>
-<p>The beeai-framework provides a range of tools for building and managing multi-agent workflows, including the RequirementAgent, ChatModel, and GlobalTrajectoryMiddleware classes. The FrameworkError class is used to handle errors that may occur during workflow execution, providing detailed information about the error and its cause. The framework also supports multiple version numbers, including 2025/08/25 and 3. 3, ensuring that developers can choose the version that best suits their needs.</p>
-<p>The beeai-framework does not support certain features, such as automatic workflow optimization, which must be implemented manually by the developer.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: parallax internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting GPU Backends with SGLang and vLLM</h2></div><p class="ch-summary">GPU backend architecture</p><div class="ch-body"><p>The parallax architecture utilizes P2P communication powered by Lattica, and features a GPU backend powered by SGLang and vLLM, as well as a MAC backend powered by MLX LM. The GPU backend is a critical component of the parallax system, enabling high-performance processing of complex workloads. The SGLang and vLLM technologies are used to optimize the GPU backend for maximum efficiency. The parallax run command is used to initiate the GPU backend, while the parallax join command is used to configure the backend for specific workloads.</p>
+<p>The max-sequence-length and max-num-tokens-per-batch config keys are used to fine-tune the backend's performance.</p>
+<p>The parallax system also features a range of config keys that can be used to customize the behavior of the GPU backend. For example, the enable-prefix-cache config key can be used to enable or disable prefix caching, which can significantly impact performance. The model config key is used to specify the model to be used with the GPU backend, and can be set to a custom value using the parallax/your-model-name syntax. The host config key is used to specify the host IP address for the GPU backend, and can be set to a custom value using the 0.</p>
+<p>0. 0. 0 syntax.</p>
+<p>In terms of performance, the parallax system has been optimized for high-throughput processing of large workloads. The system features a range of technologies designed to maximize performance, including pipeline parallel model sharding and paged KV cache management. The dynamic request scheduling and routing system is also designed to optimize performance, by dynamically allocating resources to meet changing workload demands. However, the system does not support certain features, such as multi-GPU processing, which can limit its performance in certain scenarios.</p>
+<p>The parallax system also features a range of API methods that can be used to interact with the GPU backend. For example, the parallax run command can be used to initiate the GPU backend, while the parallax join command can be used to configure the backend for specific workloads. The system also features a range of config keys that can be used to customize the behavior of the GPU backend, such as the max-sequence-length and max-num-tokens-per-batch config keys. However, the system does not provide a comprehensive API for customizing the behavior of the GPU backend, which can limit its flexibility in certain scenarios.</p>
+<p>In terms of limitations, the parallax system does not support certain features, such as multi-GPU processing, which can limit its performance in certain scenarios. The system also does not provide a comprehensive API for customizing the behavior of the GPU backend, which can limit its flexibility in certain scenarios. Additionally, the system requires a minimum of Node. js >= 22 and Python >= 3.</p>
+<p>11 to function, which can limit its compatibility with certain systems. However, the system does provide a range of features and technologies designed to maximize performance and flexibility, such as pipeline parallel model sharding and paged KV cache management.</p>
+<p>The parallax system has been optimized for version 0. 0. 1, and features a range of technologies designed to maximize performance and flexibility. The system features a range of config keys that can be used to customize the behavior of the GPU backend, such as the enable-prefix-cache config key.</p>
+<p>The system also features a range of API methods that can be used to interact with the GPU backend, such as the parallax run command. However, the system does not provide a comprehensive API for customizing the behavior of the GPU backend, which can limit its flexibility in certain scenarios.</p>
+<p>The parallax system features a range of technologies designed to maximize performance and flexibility, such as pipeline parallel model sharding and paged KV cache management. The system also features a range of config keys that can be used to customize the behavior of the GPU backend, such as the max-sequence-length and max-num-tokens-per-batch config keys. However, the system does not support certain features, such as multi-GPU processing, which can limit its performance in certain scenarios. The system requires a minimum of Node.</p>
+<p>js >= 22 and Python >= 3. 11 to function, which can limit its compatibility with certain systems.</p>
+<p>The parallax system has been designed to provide high-performance processing of complex workloads, and features a range of technologies designed to maximize performance and flexibility. The system features a range of config keys that can be used to customize the behavior of the GPU backend, such as the enable-prefix-cache config key. The system also features a range of API methods that can be used to interact with the GPU backend, such as the parallax run command. However, the system does not provide a comprehensive API for customizing the behavior of the GPU backend, which can limit its flexibility in certain scenarios.</p>
+<p>The system has been optimized for version 0. 0. 1, and requires a minimum of Node. js >= 22 and Python >= 3.</p>
+<p>11 to function.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1423.29 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1145.19 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1419.29,-40 1419.29,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1141.19,-40 1141.19,4 -4,4"/>
 <!-- N0 -->
 <g id="seq-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="79.53" cy="-18" rx="79.53" ry="18"/>
-<text text-anchor="middle" x="79.53" y="-14.5" font-family="Arial" font-size="10.00">pip install beeai&#45;framework</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="56.53" cy="-18" rx="56.53" ry="18"/>
+<text text-anchor="middle" x="56.53" y="-14.5" font-family="Arial" font-size="10.00">pip install parallax</text>
 </g>
 <!-- N1 -->
 <g id="seq-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="285.36" cy="-18" rx="72.31" ry="18"/>
-<text text-anchor="middle" x="285.36" y="-14.5" font-family="Arial" font-size="10.00">import beeai_framework</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="215.01" cy="-18" rx="47.96" ry="18"/>
+<text text-anchor="middle" x="215.01" y="-14.5" font-family="Arial" font-size="10.00">import parallax</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="seq-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M159.34,-18C173.08,-18 187.41,-18 201.26,-18"/>
-<polygon fill="#475569" stroke="#475569" points="201.25,-21.5 211.25,-18 201.25,-14.5 201.25,-21.5"/>
-<text text-anchor="middle" x="186.05" y="-19.95" font-family="Arial" font-size="9.00">then</text>
+<path fill="none" stroke="#475569" d="M113.14,-18C126.79,-18 141.46,-18 155.26,-18"/>
+<polygon fill="#475569" stroke="#475569" points="155.09,-21.5 165.09,-18 155.09,-14.5 155.09,-21.5"/>
+<text text-anchor="middle" x="140.05" y="-19.95" font-family="Arial" font-size="9.00">then</text>
 </g>
 <!-- N2 -->
 <g id="seq-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="533.13" cy="-18" rx="47.96" ry="18"/>
-<text text-anchor="middle" x="533.13" y="-14.5" font-family="Arial" font-size="10.00">import asyncio</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="419.97" cy="-18" rx="47.51" ry="18"/>
+<text text-anchor="middle" x="419.97" y="-14.5" font-family="Arial" font-size="10.00">Parallax Agent</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="seq-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M358.11,-18C394.77,-18 438.82,-18 473.43,-18"/>
-<polygon fill="#475569" stroke="#475569" points="473.27,-21.5 483.27,-18 473.27,-14.5 473.27,-21.5"/>
-<text text-anchor="middle" x="421.43" y="-19.95" font-family="Arial" font-size="9.00">configure environment</text>
+<path fill="none" stroke="#475569" d="M263.34,-18C292.42,-18 329.89,-18 360.78,-18"/>
+<polygon fill="#475569" stroke="#475569" points="360.75,-21.5 370.75,-18 360.75,-14.5 360.75,-21.5"/>
+<text text-anchor="middle" x="317.71" y="-19.95" font-family="Arial" font-size="9.00">configure parallax</text>
 </g>
 <!-- N3 -->
 <g id="seq-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="785.93,-36 729.59,-18 785.93,0 842.27,-18 785.93,-36"/>
-<text text-anchor="middle" x="785.93" y="-14.5" font-family="Arial" font-size="10.00">asyncio.run</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="648.59,-36 572.48,-18 648.59,0 724.7,-18 648.59,-36"/>
+<text text-anchor="middle" x="648.59" y="-14.5" font-family="Arial" font-size="10.00">add_tool parallax</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="seq-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M581.31,-18C619.52,-18 673.87,-18 716.81,-18"/>
-<polygon fill="#475569" stroke="#475569" points="716.79,-21.5 726.79,-18 716.79,-14.5 716.79,-21.5"/>
-<text text-anchor="middle" x="655.34" y="-19.95" font-family="Arial" font-size="9.00">initialize asyncio event loop</text>
+<path fill="none" stroke="#475569" d="M467.93,-18C494.25,-18 527.96,-18 559.05,-18"/>
+<polygon fill="#475569" stroke="#475569" points="558.85,-21.5 568.85,-18 558.85,-14.5 558.85,-21.5"/>
+<text text-anchor="middle" x="519.98" y="-19.95" font-family="Arial" font-size="9.00">initialize parallax</text>
 </g>
 <!-- N4 -->
 <g id="seq-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1058.1" cy="-18" rx="58.33" ry="18"/>
-<text text-anchor="middle" x="1058.1" y="-14.5" font-family="Arial" font-size="10.00">RequirementAgent</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="859.06" cy="-18" rx="48.86" ry="18"/>
+<text text-anchor="middle" x="859.06" y="-14.5" font-family="Arial" font-size="10.00">invoke parallax</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="seq-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M843.9,-18C885.91,-18 943.28,-18 987.93,-18"/>
-<polygon fill="#475569" stroke="#475569" points="987.77,-21.5 997.77,-18 987.77,-14.5 987.77,-21.5"/>
-<text text-anchor="middle" x="921.02" y="-19.95" font-family="Arial" font-size="9.00">instantiate RequirementAgent</text>
+<path fill="none" stroke="#475569" d="M726.62,-18C750.33,-18 776.05,-18 798.4,-18"/>
+<polygon fill="#475569" stroke="#475569" points="798.24,-21.5 808.24,-18 798.24,-14.5 798.24,-21.5"/>
+<text text-anchor="middle" x="767.45" y="-19.95" font-family="Arial" font-size="9.00">call parallax</text>
 </g>
 <!-- N5 -->
 <g id="seq-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1334.86" cy="-18" rx="80.43" ry="18"/>
-<text text-anchor="middle" x="1334.86" y="-14.5" font-family="Arial" font-size="10.00">ChatModel.from_pretrained</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1087.43" cy="-18" rx="49.76" ry="18"/>
+<text text-anchor="middle" x="1087.43" y="-14.5" font-family="Arial" font-size="10.00">parallax stream</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="seq-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M1116.7,-18C1153.17,-18 1201.11,-18 1242.68,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1242.42,-21.5 1252.42,-18 1242.42,-14.5 1242.42,-21.5"/>
-<text text-anchor="middle" x="1185.43" y="-19.95" font-family="Arial" font-size="9.00">load ChatModel instance</text>
+<path fill="none" stroke="#475569" d="M908.34,-18C942.82,-18 989.44,-18 1026.33,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1025.93,-21.5 1035.93,-18 1025.93,-14.5 1025.93,-21.5"/>
+<text text-anchor="middle" x="972.79" y="-19.95" font-family="Arial" font-size="9.00">handle parallax stream</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: beeai-framework integration flow</p></div></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying ChatModel with pip install beeai-framework</h2></div><p class="ch-summary">Deploy ChatModel</p><div class="ch-body"><p>The beeai-framework can be installed using pip install beeai-framework. This command installs the necessary packages for the framework to function. The framework consists of various components, including Agents, Backend, Tools, and Workflows. The Agents component includes classes such as RequirementAgent and ConditionalRequirement.</p>
-<p>The Backend component includes the ChatModel class, which is used to create chat models. The Tools component includes various tools such as ThinkTool, WikipediaTool, and HandoffTool. The Workflows component is used to manage the workflow of the agents.</p>
-<p>The ChatModel class is used to create chat models, and it has methods such as fromname, which is used to create a chat model from a given name. The RequirementAgent class is used to create requirement agents, and it has methods such as run, which is used to run the agent. The ConditionalRequirement class is used to create conditional requirements, and it has methods such as forceatstep, which is used to force the requirement at a given step.</p>
-<p>The framework also includes a GlobalTrajectoryMiddleware class, which is used to log all tool calls to the console for easier debugging. The framework uses a middleware-based architecture, which allows for easy extension and modification of the framework. The framework also includes a FrameworkError class, which is used to handle errors that occur during the execution of the framework.</p>
-<p>The framework can be used to build intelligent, autonomous agents and multi-agent systems. It can also be used to create agents that can reason, take actions, and collaborate to solve complex problems. The framework provides a flexible and extensible architecture, which allows developers to easily add new components and modify existing ones.</p>
-<p>One of the limitations of the framework is that it does not support parallel execution of agents. This means that agents are executed sequentially, which can lead to performance issues for large-scale applications. Another limitation is that the framework does not provide a built-in mechanism for load balancing, which can lead to performance issues when dealing with a large number of agents.</p>
-<p>The framework provides a range of tools and components that can be used to build complex applications. For example, the ThinkTool class can be used to create agents that can reason and take actions. The WikipediaTool class can be used to create agents that can retrieve information from Wikipedia. The HandoffTool class can be used to create agents that can hand off tasks to other agents.</p>
-<p>The framework also provides a range of APIs and methods that can be used to interact with the agents and tools. For example, the Agent. addtask method can be used to add tasks to an agent. The workflow.</p>
-<p>run method can be used to run a workflow. The config. max_retries method can be used to set the maximum number of retries for a task.</p>
-<p>The framework is designed to be highly extensible and flexible, which allows developers to easily add new components and modify existing ones. However, this flexibility can also lead to complexity, which can make it difficult to use and maintain the framework. Therefore, it is essential to carefully evaluate the framework and its components before using it for a project.</p><div class="code-label">Code Sample</div><div class="code-block">import asyncio 
-from beeai_framework.agents.requirement import RequirementAgent 
-from beeai_framework.agents.requirement.requirements.conditional import ConditionalRequirement 
-from beeai_framework.backend import ChatModel 
-from beeai_framework.errors import FrameworkError 
-from beeai_framework.middleware.trajectory import GlobalTrajectoryMiddleware 
-from beeai_framework.tools import Tool 
-from beeai_framework.tools.handoff import HandoffTool 
-from beeai_framework.tools.search.wikipedia import WikipediaTool 
-from beeai_framework.tools.think import ThinkTool 
-async def main() -&gt; None: 
-    knowledge_agent = RequirementAgent(llm=ChatModel.from_name('ollama:granite3.3:8b'), tools=[ThinkTool(), WikipediaTool()]) 
-    weather_agent = RequirementAgent(llm=ChatModel.from_name('ollama:granite3.3:8b'), tools=[OpenMeteoTool()]) 
-    main_agent = RequirementAgent(name='MainAgent', llm=ChatModel.from_name('ollama:granite3.3:8b'), tools=[ThinkTool(), HandoffTool(knowledge_agent), HandoffTool(weather_agent)]) 
-    question = 'If I travel to Rome next weekend, what should I expect in terms of weather, and also tell me one famous historical landmark there?' 
-    try: 
-        response = await main_agent.run(question) 
-        print('Agent:', response.last_message.text) 
-    except FrameworkError as err: 
-        print('Error:', err.explain())</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: parallax integration flow</p></div></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Parallax with parallax run and parallax join</h2></div><p class="ch-summary">Parallax deployment</p><div class="ch-body"><p>To deploy Parallax, you can use the parallax run command, which starts the Parallax server. The parallax join command is used to connect to an existing Parallax server. The parallax run command takes a --host option, which specifies the host IP address to bind to. For example, parallax run --host 0.</p>
+<p>0. 0. 0 will start the Parallax server on all available network interfaces. The parallax join command takes several options, including --max-sequence-length, --max-num-tokens-per-batch, and --enable-prefix-cache.</p>
+<p>These options control the behavior of the Parallax client.</p>
+<p>The Parallax server uses a P2P communication protocol powered by Lattica, which allows for efficient communication between nodes. The server also uses a GPU backend powered by SGLang and vLLM, which provides high-performance computing capabilities. Additionally, the server uses a MAC backend powered by MLX LM, which provides a high-performance computing platform for machine learning workloads.</p>
+<p>The Parallax client uses a configuration file to specify the settings for the client. The configuration file includes options such as the host IP address, max sequence length, and max num tokens per batch. The client also uses a API key to authenticate with the Parallax server. The API key is specified in the configuration file.</p>
+<p>The Parallax server has several use cases, including hosting local LLM on personal devices, cross-platform support, pipeline parallel model sharding, paged KV cache management, and dynamic request scheduling and routing for high performance. The server also supports multi-platform chat integration, persistent memory, full system access, extensible skills, and model flexibility.</p>
+<p>One of the limitations of the Parallax server is that it does not support all types of machine learning models. For example, it does not support models that require a large amount of memory or compute resources. Additionally, the server has a maximum sequence length and maximum number of tokens per batch, which can limit the size of the input data.</p>
+<p>The Parallax client has several API methods that can be used to interact with the server. For example, the parallax join command can be used to connect to an existing Parallax server. The parallax run command can be used to start a new Parallax server. The client also has a configuration file that can be used to specify the settings for the client.</p>
+<p>The Parallax server has a version number of 0. 0. 1, which indicates that it is a early release of the software. The server also has a performance metric of 65536, which indicates the maximum sequence length and maximum number of tokens per batch.</p>
+<p>The Parallax client has a code sample that demonstrates how to use the parallax run and parallax join commands. The code sample includes the following lines: parallax run --host 0. 0. 0.</p>
+<p>0, parallax join --max-sequence-length 65536 --max-num-tokens-per-batch 65536 --enable-prefix-cache, curl -fsSL https://openclaw. ai/install. sh | bash -s -- --no-onboard, Node. js: >= 22, Python: >=3.</p><div class="code-label">Code Sample</div><div class="code-block">parallax run --host 0.0.0.0 
+
+parallax join --max-sequence-length 65536 --max-num-tokens-per-batch 65536 --enable-prefix-cache 
+
+curl -fsSL https://openclaw.ai/install.sh | bash -s -- --no-onboard 
+
+Node.js: &gt;= 22 
+
+Python: &gt;=3.11 
+
+parallax join --max-sequence-length 65536 
+
+parallax run --host 0.0.0.0 
+
+parallax join --max-num-tokens-per-batch 65536 
+
+parallax run --host 0.0.0.0 
+
+parallax join --enable-prefix-cache 
+
+parallax run --host 0.0.0.0 
+
+parallax join --max-sequence-length 65536 
+
+parallax run --host 0.0.0.0 
+
+parallax join --max-num-tokens-per-batch 65536 
+
+parallax run --host 0.0.0.0 
+
+parallax join --enable-prefix-cache 
+
+parallax run --host 0.0.0.0 
+
+parallax join --max-sequence-length 65536 
+
+parallax run --host 0.0.0.0</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1127.90 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1053.28 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1123.9,-40 1123.9,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1049.28,-40 1049.28,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
@@ -251,206 +245,206 @@ async def main() -&gt; None:
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="209.06" cy="-18" rx="47.96" ry="18"/>
-<text text-anchor="middle" x="209.06" y="-14.5" font-family="Arial" font-size="10.00">TaskAllocation</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="203.96" cy="-18" rx="46.6" ry="18"/>
+<text text-anchor="middle" x="203.96" y="-14.5" font-family="Arial" font-size="10.00">Task Planning</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M69.12,-18C91.96,-18 122.75,-18 149.53,-18"/>
-<polygon fill="#475569" stroke="#475569" points="149.22,-21.5 159.22,-18 149.22,-14.5 149.22,-21.5"/>
-<text text-anchor="middle" x="114.98" y="-19.95" font-family="Arial" font-size="9.00">agent_started</text>
+<path fill="none" stroke="#475569" d="M69.33,-18C91.22,-18 120.25,-18 145.66,-18"/>
+<polygon fill="#475569" stroke="#475569" points="145.53,-21.5 155.53,-18 145.53,-14.5 145.53,-21.5"/>
+<text text-anchor="middle" x="113.1" y="-19.95" font-family="Arial" font-size="9.00">initialize task</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="400.67" cy="-18" rx="48.41" ry="18"/>
-<text text-anchor="middle" x="400.67" y="-14.5" font-family="Arial" font-size="10.00">TaskExecution</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="393.77" cy="-18" rx="50.21" ry="18"/>
+<text text-anchor="middle" x="393.77" y="-14.5" font-family="Arial" font-size="10.00">Task Execution</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M257.42,-18C282.66,-18 313.95,-18 340.75,-18"/>
-<polygon fill="#475569" stroke="#475569" points="340.42,-21.5 350.42,-18 340.42,-14.5 340.42,-21.5"/>
-<text text-anchor="middle" x="304.64" y="-19.95" font-family="Arial" font-size="9.00">task_assigned</text>
+<path fill="none" stroke="#475569" d="M250.9,-18C275.31,-18 305.62,-18 331.96,-18"/>
+<polygon fill="#475569" stroke="#475569" points="331.84,-21.5 341.84,-18 331.84,-14.5 331.84,-21.5"/>
+<text text-anchor="middle" x="297.06" y="-19.95" font-family="Arial" font-size="9.00">generate plan</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="644.04,-36 544.33,-18 644.04,0 743.76,-18 644.04,-36"/>
-<text text-anchor="middle" x="644.04" y="-14.5" font-family="Arial" font-size="10.00">PostExecutionAnalysis</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="603.27,-36 530.98,-18 603.27,0 675.56,-18 603.27,-36"/>
+<text text-anchor="middle" x="603.27" y="-14.5" font-family="Arial" font-size="10.00">Task Monitoring</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M449.36,-18C472.65,-18 501.74,-18 530.25,-18"/>
-<polygon fill="#475569" stroke="#475569" points="530.04,-21.5 540.04,-18 530.04,-14.5 530.04,-21.5"/>
-<text text-anchor="middle" x="496.71" y="-19.95" font-family="Arial" font-size="9.00">task_executed</text>
+<path fill="none" stroke="#475569" d="M444.47,-18C466.41,-18 492.82,-18 517.71,-18"/>
+<polygon fill="#475569" stroke="#475569" points="517.5,-21.5 527.5,-18 517.5,-14.5 517.5,-21.5"/>
+<text text-anchor="middle" x="487.48" y="-19.95" font-family="Arial" font-size="9.00">execute task</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="898.67" cy="-18" rx="50.66" ry="18"/>
-<text text-anchor="middle" x="898.67" y="-14.5" font-family="Arial" font-size="10.00">TaskCompleted</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="827.77" cy="-18" rx="52.47" ry="18"/>
+<text text-anchor="middle" x="827.77" y="-14.5" font-family="Arial" font-size="10.00">Task Completed</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M746.34,-18C776.85,-18 809.38,-18 836.44,-18"/>
-<polygon fill="#475569" stroke="#475569" points="836.16,-21.5 846.16,-18 836.16,-14.5 836.16,-21.5"/>
-<text text-anchor="middle" x="795.88" y="-19.95" font-family="Arial" font-size="9.00">result_evaluated</text>
+<path fill="none" stroke="#475569" d="M677.43,-18C705.36,-18 736.93,-18 763.83,-18"/>
+<polygon fill="#475569" stroke="#475569" points="763.53,-21.5 773.53,-18 763.53,-14.5 763.53,-21.5"/>
+<text text-anchor="middle" x="725.43" y="-19.95" font-family="Arial" font-size="9.00">task succeeded</text>
 </g>
 <!-- N5 -->
 <g id="sm-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1081.87" cy="-18" rx="38.03" ry="18"/>
-<text text-anchor="middle" x="1081.87" y="-14.5" font-family="Arial" font-size="10.00">TaskFailed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1001.39" cy="-18" rx="43.9" ry="18"/>
+<text text-anchor="middle" x="1001.39" y="-14.5" font-family="Arial" font-size="10.00">Task Aborted</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="sm-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M949.66,-18C975.37,-18 1006.58,-18 1032.1,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1031.88,-21.5 1041.88,-18 1031.88,-14.5 1031.88,-21.5"/>
-<text text-anchor="middle" x="996.58" y="-19.95" font-family="Arial" font-size="9.00">error_handled</text>
+<path fill="none" stroke="#475569" d="M880.73,-18C901.37,-18 925.13,-18 946,-18"/>
+<polygon fill="#475569" stroke="#475569" points="945.75,-21.5 955.75,-18 945.75,-14.5 945.75,-21.5"/>
+<text text-anchor="middle" x="918.86" y="-19.95" font-family="Arial" font-size="9.00">task failed</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: beeai-framework lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating WikipediaTool with ConditionalRequirement for Real-World Applications</h2></div><p class="ch-summary">Integrate WikipediaTool</p><div class="ch-body"><p>The beeai-framework provides a range of tools and classes to support the development of intelligent agents, including the WikipediaTool and ConditionalRequirement classes. To integrate WikipediaTool with ConditionalRequirement, developers can leverage the RequirementAgent class, which provides a flexible framework for defining and managing requirements. The GlobalTrajectoryMiddleware class can also be used to manage the flow of tasks and ensure that the WikipediaTool is used in conjunction with the ConditionalRequirement. The FrameworkError class provides a way to handle errors that may occur during the integration process.</p>
-<p>The beeai-framework has undergone several updates, with version 3. 3 being the latest, and has been updated as recently as 2025/08/25. The architecture of the framework includes a range of components, including Backend, Agents, and Tools, which provide a solid foundation for building complex applications. The WikipediaTool can be used to retrieve information from Wikipedia, while the ConditionalRequirement class can be used to define conditional requirements that must be met before a task is executed.</p>
-<p>The ConditionalRequirement class provides a flexible way to define requirements that must be met before a task is executed, and can be used in conjunction with the WikipediaTool to retrieve information from Wikipedia. The RequirementAgent class provides a way to manage requirements and ensure that they are met before a task is executed. The ChatModel class provides a way to interact with the agent and retrieve information, while the ThinkTool class provides a way to reason about the information retrieved. The HandoffTool class provides a way to hand off tasks to other agents or tools, while the Tool class provides a way to define custom tools.</p>
-<p>The beeai-framework has a range of limitations, including the potential for FrameworkError, which can occur when the framework is used in a way that is not supported.</p>
-<p>The beeai-framework provides a range of API methods that can be used to integrate the WikipediaTool with the ConditionalRequirement class, including the addtask method of the Agent class, which can be used to add tasks to an agent, and the run method of the workflow class, which can be used to execute a workflow. The config. maxretries config key can be used to specify the maximum number of retries that should be attempted when a task fails. The beeai-framework has a range of performance metrics, including the time it takes to execute a task, which can be used to optimize the performance of the framework.</p>
-<p>The framework has undergone several updates, with version 3. 3 being the latest, and has been updated as recently as 2025/08/25.</p>
-<p>The WikipediaTool can be used to retrieve information from Wikipedia, while the ConditionalRequirement class can be used to define conditional requirements that must be met before a task is executed. The RequirementAgent class provides a way to manage requirements and ensure that they are met before a task is executed. The ChatModel class provides a way to interact with the agent and retrieve information, while the ThinkTool class provides a way to reason about the information retrieved. The beeai-framework has a range of limitations, including the potential for FrameworkError, which can occur when the framework is used in a way that is not supported.</p>
-<p>The framework does not support the use of certain tools or classes in conjunction with the WikipediaTool and ConditionalRequirement class.</p>
-<p>The beeai-framework provides a range of tools and classes to support the development of intelligent agents, including the WikipediaTool and ConditionalRequirement classes. To integrate WikipediaTool with ConditionalRequirement, developers can leverage the RequirementAgent class, which provides a flexible framework for defining and managing requirements. The GlobalTrajectoryMiddleware class can also be used to manage the flow of tasks and ensure that the WikipediaTool is used in conjunction with the ConditionalRequirement. The FrameworkError class provides a way to handle errors that may occur during the integration process.</p>
-<p>The beeai-framework has undergone several updates, with version 3. 3 being the latest, and has been updated as recently as 2025/08/25.</p>
-<p>The ConditionalRequirement class provides a flexible way to define requirements that must be met before a task is executed, and can be used in conjunction with the WikipediaTool to retrieve information from Wikipedia. The RequirementAgent class provides a way to manage requirements and ensure that they are met before a task is executed. The ChatModel class provides a way to interact with the agent and retrieve information, while the ThinkTool class provides a way to reason about the information retrieved. The HandoffTool class provides a way to hand off tasks to other agents or tools, while the Tool class provides a way to define custom tools.</p>
-<p>The beeai-framework has a range of limitations, including the potential for FrameworkError, which can occur when the framework is used in a way that is not supported.</p>
-<p>The beeai-framework provides a range of API methods that can be used to integrate the WikipediaTool with the ConditionalRequirement class, including the addtask method of the Agent class, which can be used to add tasks to an agent, and the run method of the workflow class, which can be used to execute a workflow. The config. maxretries config key can be used to specify the maximum number of retries that should be attempted when a task fails. The beeai-framework has a range of performance metrics, including the time it takes to execute a task, which can be used to optimize the performance of the framework.</p>
-<p>The framework has undergone several updates, with version 3. 3 being the latest, and has been updated as recently as 2025/08/25.</p>
-<p>The WikipediaTool can be used to retrieve information from Wikipedia, while the ConditionalRequirement class can be used to define conditional requirements that must be met before a task is executed. The RequirementAgent class provides a way to manage requirements and ensure that they are met before a task is executed. The ChatModel class provides a way to interact with the agent and retrieve information, while the ThinkTool class provides a way to reason about the information retrieved. The beeai-framework has a range of limitations, including the potential for FrameworkError, which can occur when the framework is used in a way that is not supported.</p>
-<p>The framework does not support the use of certain tools or classes in conjunction with the WikipediaTool and ConditionalRequirement class.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: parallax lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Pipeline Parallel Model Sharding with Paged KV Cache Management</h2></div><p class="ch-summary">Integrate pipeline parallel model sharding</p><div class="ch-body"><p>The parallax library provides a unique approach to integrating pipeline parallel model sharding with paged KV cache management. This is achieved through the use of the --kv-cache-memory-fraction config key, which allows users to control the amount of memory allocated to the KV cache. The library also supports various backend architectures, including the p2p server and relay server. In version v0.</p>
+<p>1. 1, the library introduced support for Kimi-K2, DeepSeek, MiniMax, GLM, and gpt-oss-safeguard. The parallax run and parallax join classes and methods are used to manage the pipeline parallel model sharding process.</p>
+<p>The parallax library has a number of use cases, including hosting local LLMs on personal devices, cross-platform support, and dynamic request scheduling and routing for high performance. The library also supports continuous batching for Mac and working with OpenClaw. The baseUrl, apiKey, and api config keys are used to configure the library's API settings. The models config key is used to specify the models that the library will use.</p>
+<p>In version 2025/10, the library introduced support for pipeline parallel model sharding and paged KV cache management.</p>
+<p>One of the key limitations of the parallax library is that it does not support explicit limitations, which can make it difficult to debug and optimize the library's performance. The library also has a number of installation steps, including pip3 install pre-commit, pre-commit install, and git clone https://github. com/<yourgithubusername>/parallax. git.</p>
+<p>The library's architecture is based on the Lattica and SGLang frameworks, which provide a scalable and efficient platform for building and deploying machine learning models.</p>
+<p>The parallax library has a number of technical aspects that are worth noting. For example, the library uses the git checkout, git clone, and git push commands to manage its source code. The library also uses the pre-commit install and pre-commit run commands to manage its dependencies. In version v0.</p>
+<p>1. 2, the library introduced support for the feat/add-mock-support and feat/switch-model features. The library's performance metrics are not well-documented, but it is known to have a high level of scalability and efficiency.</p>
+<p>The parallax library's API is based on a number of config keys, including host, max-ser, and Extensible skills. The library also supports a number of API methods, including parallax run and parallax join. The library's backend architecture is based on the p2p server and relay server frameworks, which provide a scalable and efficient platform for building and deploying machine learning models. In version 2026/2, the library introduced support for the feat/add-mock-support and feat/switch-model features.</p>
+<p>The parallax library has a number of use cases that are worth noting. For example, the library can be used to host local LLMs on personal devices, which can provide a high level of security and privacy. The library can also be used to support cross-platform development, which can provide a high level of flexibility and scalability. The library's support for continuous batching for Mac and working with OpenClaw also makes it a popular choice for developers who need to build and deploy machine learning models on a variety of platforms.</p>
+<p>The parallax library's technical aspects are also worth noting. For example, the library uses the pip3 install pre-commit command to install its dependencies. The library also uses the pre-commit install and pre-commit run commands to manage its dependencies. In version v0.</p>
+<p>1. 1, the library introduced support for the feat/add-mock-support and feat/switch-model features. The library's performance metrics are not well-documented, but it is known to have a high level of scalability and efficiency.</p>
+<p>The parallax library has a number of limitations that are worth noting. For example, the library does not support explicit limitations, which can make it difficult to debug and optimize the library's performance. The library also has a number of installation steps, including pip3 install pre-commit, pre-commit install, and git clone https://github. com/<yourgithubusername>/parallax.</p>
+<p>git. The library's architecture is based on the Lattica and SGLang frameworks, which provide a scalable and efficient platform for building and deploying machine learning models.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 141.80 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 203.59 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 137.8,-535 137.8,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 199.59,-535 199.59,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="66.9" cy="-513" rx="66.9" ry="18"/>
-<text text-anchor="middle" x="66.9" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="87.59" cy="-513" rx="66.9" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="66.9" cy="-430.5" rx="45.7" ry="18"/>
-<text text-anchor="middle" x="66.9" y="-427" font-family="Arial" font-size="10.00">BertTokenizer</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-430.5" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-427" font-family="Arial" font-size="10.00">TextTokenization</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M66.9,-494.53C66.9,-484.51 66.9,-471.68 66.9,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="70.4,-460.45 66.9,-450.45 63.4,-460.45 70.4,-460.45"/>
-<text text-anchor="middle" x="84.15" y="-468.45" font-family="Arial" font-size="9.00">tokenize</text>
+<path fill="none" stroke="#475569" d="M87.59,-494.53C87.59,-484.51 87.59,-471.68 87.59,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-460.45 87.59,-450.45 84.09,-460.45 91.09,-460.45"/>
+<text text-anchor="middle" x="118.72" y="-468.45" font-family="Arial" font-size="9.00">lexical analysis</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="66.9" cy="-348" rx="66.9" ry="18"/>
-<text text-anchor="middle" x="66.9" y="-344.5" font-family="Arial" font-size="10.00">SentenceEmbeddings</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-348" rx="63.74" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-344.5" font-family="Arial" font-size="10.00">SemanticEmbedding</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M66.9,-412.03C66.9,-402.01 66.9,-389.18 66.9,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="70.4,-377.95 66.9,-367.95 63.4,-377.95 70.4,-377.95"/>
-<text text-anchor="middle" x="81.15" y="-385.95" font-family="Arial" font-size="9.00">embed</text>
+<path fill="none" stroke="#475569" d="M87.59,-412.03C87.59,-402.01 87.59,-389.18 87.59,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-377.95 87.59,-367.95 84.09,-377.95 91.09,-377.95"/>
+<text text-anchor="middle" x="141.59" y="-385.95" font-family="Arial" font-size="9.00">contextualized embedding</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="66.9,-283.5 12.47,-265.5 66.9,-247.5 121.33,-265.5 66.9,-283.5"/>
-<text text-anchor="middle" x="66.9" y="-262" font-family="Arial" font-size="10.00">FaissIndex</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="87.59,-283.5 0,-265.5 87.59,-247.5 175.19,-265.5 87.59,-283.5"/>
+<text text-anchor="middle" x="87.59" y="-262" font-family="Arial" font-size="10.00">KnowledgeRetrieval</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M66.9,-329.53C66.9,-319.51 66.9,-306.68 66.9,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="70.4,-295.45 66.9,-285.45 63.4,-295.45 70.4,-295.45"/>
-<text text-anchor="middle" x="80.77" y="-303.45" font-family="Arial" font-size="9.00">search</text>
+<path fill="none" stroke="#475569" d="M87.59,-329.53C87.59,-319.51 87.59,-306.68 87.59,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-295.45 87.59,-285.45 84.09,-295.45 91.09,-295.45"/>
+<text text-anchor="middle" x="128.09" y="-303.45" font-family="Arial" font-size="9.00">information retrieval</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="66.9" cy="-183" rx="50.66" ry="18"/>
-<text text-anchor="middle" x="66.9" y="-179.5" font-family="Arial" font-size="10.00">DenseRetriever</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-183" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranking</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M66.9,-247.03C66.9,-237.01 66.9,-224.18 66.9,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="70.4,-212.95 66.9,-202.95 63.4,-212.95 70.4,-212.95"/>
-<text text-anchor="middle" x="91.27" y="-220.95" font-family="Arial" font-size="9.00">retrieverank</text>
+<path fill="none" stroke="#475569" d="M87.59,-247.03C87.59,-237.01 87.59,-224.18 87.59,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-212.95 87.59,-202.95 84.09,-212.95 91.09,-212.95"/>
+<text text-anchor="middle" x="123.97" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="66.9" cy="-100.5" rx="42.09" ry="18"/>
-<text text-anchor="middle" x="66.9" y="-97" font-family="Arial" font-size="10.00">T5Generator</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-100.5" rx="49.31" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M66.9,-164.53C66.9,-154.51 66.9,-141.68 66.9,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="70.4,-130.45 66.9,-120.45 63.4,-130.45 70.4,-130.45"/>
-<text text-anchor="middle" x="100.27" y="-138.45" font-family="Arial" font-size="9.00">generateanswer</text>
+<path fill="none" stroke="#475569" d="M87.59,-164.53C87.59,-154.51 87.59,-141.68 87.59,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-130.45 87.59,-120.45 84.09,-130.45 91.09,-130.45"/>
+<text text-anchor="middle" x="131.09" y="-138.45" font-family="Arial" font-size="9.00">sequence generation</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="66.9" cy="-18" rx="55.17" ry="18"/>
-<text text-anchor="middle" x="66.9" y="-14.5" font-family="Arial" font-size="10.00">ResponseStream</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="87.59" cy="-18" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="87.59" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreaming</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M66.9,-82.03C66.9,-72.01 66.9,-59.18 66.9,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="70.4,-47.95 66.9,-37.95 63.4,-47.95 70.4,-47.95"/>
-<text text-anchor="middle" x="91.65" y="-55.95" font-family="Arial" font-size="9.00">postprocess</text>
+<path fill="none" stroke="#475569" d="M87.59,-82.03C87.59,-72.01 87.59,-59.18 87.59,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="91.09,-47.95 87.59,-37.95 84.09,-47.95 91.09,-47.95"/>
+<text text-anchor="middle" x="127.72" y="-55.95" font-family="Arial" font-size="9.00">response validation</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: beeai-framework end-to-end processing pipeline</p></div><div class="sec-heading">beeai-framework — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Installation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Agent Customization</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Workflow Management</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Error Handling</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:70%"></span></span></span><span class="bar-value">70%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:75%"></span></span></span><span class="bar-value">75%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:60%"></span></span></span><span class="bar-value">60%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting FrameworkError in Production Environments</h2></div><p class="ch-summary">Fix FrameworkError</p><div class="ch-body"><p>The FrameworkError is a limitation of the beeai-framework that can occur in production environments. To troubleshoot this error, it is essential to understand the architecture of the framework, which includes Agents, Backend, Tools, RAG, Templates, Memory, Observability, Serve, Cache, Serialization, and Workflows. The RequirementAgent class and the ChatModel. fromname method can be used to create agents that can reason and take actions.</p>
-<p>The ThinkTool and WikipediaTool can be used to extend the functionality of the agents. The GlobalTrajectoryMiddleware can be used to manage the execution flow of the agents.</p>
-<p>The FrameworkError can occur when the agent is not properly configured or when the tools are not correctly installed. The pip install beeai-framework and npm install beeai-framework commands can be used to install the framework and its dependencies. The version number 3. 3 can be used to specify the version of the framework to install.</p>
-<p>The FrameworkError. explain method can be used to get more information about the error.</p>
-<p>The beeai-framework has several use cases, including building intelligent, autonomous agents and multi-agent systems, creating agents that can reason, take actions, and collaborate to solve complex problems, and creating predictable, controlled behavior across different LLMs. The framework can be used to host agents in servers with support for multiple protocols such as A2A and MCP. The framework can also be used to orchestrate multi-agent systems with complex execution flows.</p>
-<p>The framework has several limitations, including the FrameworkError, which can occur when the agent is not properly configured or when the tools are not correctly installed. The framework does not support some features, such as automatic error handling, and the user must implement these features manually. The framework requires a good understanding of the architecture and the classes and methods provided by the framework.</p>
-<p>The asyncio. run method can be used to run the agents asynchronously, and the async def main() -> None: function can be used to define the main function of the agent. The knowledgeagent = RequirementAgent method can be used to create a new agent, and the tools = [ThinkTool(), WikipediaTool()] method can be used to specify the tools to use. The requireme = [ConditionalRequirement()] method can be used to specify the requirements of the agent.</p>
-<p>The framework provides several config keys, including llm, tools, requirements, role, instructions, name, description, expectedoutput, and included. These config keys can be used to configure the agent and the framework. The framework also provides several classes and methods, including RequirementAgent, ChatModel. fromname, ThinkTool, WikipediaTool, and GlobalTrajectoryMiddleware.</p>
-<p>The framework has several version numbers, including 2025/08/25, 2025/06/03, and 3. 3. These version numbers can be used to specify the version of the framework to use. The framework also has several performance metrics, such as the time it takes to execute a task, and the user can use these metrics to optimize the performance of the framework.</p>
-<p>The framework provides several tools, including ThinkTool, WikipediaTool, and HandoffTool. These tools can be used to extend the functionality of the agents and to provide additional features. The framework also provides several templates, including the RAG template, which can be used to create new agents. The framework provides several memory strategies, which can be used to manage the memory of the agents.</p>
-<p>The callout is FrameworkError.</p><div class="sec-heading">beeai-framework — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Agent Architecture</td><td>Modular, multi-agent</td><td>Supports various agent types, including RequirementAgent and ConditionalRequirement</td></tr><tr><td>Backend Integration</td><td>ChatModel, GlobalTrajectoryMiddleware</td><td>Enables seamless communication and trajectory management</td></tr><tr><td>Tooling and Extensions</td><td>HandoffTool, WikipediaTool, ThinkTool</td><td>Provides a range of tools for tasks like handoffs, research, and critical thinking</td></tr><tr><td>Error Handling</td><td>FrameworkError</td><td>Centralized error handling mechanism for robust error management</td></tr><tr><td>Installation and Setup</td><td>pip install, npm install</td><td>Supports both Python and JavaScript installations for flexibility</td></tr><tr><td>Use Cases</td><td>Multi-Agent Example, Competitive Analysis Workflow</td><td>Covers a range of applications, from autonomous agents to business workflows</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Cache and Serialization in beeai-framework</h2></div><p class="ch-summary">Optimize beeai-framework performance</p><div class="ch-body"><p>The beeai-framework is designed to work with various models, including Ollama, Groq, OpenAI, and watsonx. ai, with Python and Typescript language bindings. To optimize performance, it's essential to understand the architecture, which includes a container system with Compose support, using Docker, Rancher, or Podman. The framework also utilizes an LLM Provider, which can be an external WatsonX or a local Ollama.</p>
-<p>The RequirementAgent class in the eaiframework. agents. requirement module plays a crucial role in managing requirements. The framework's performance can be improved by using cache and serialization, but the research does not provide implementation details for this area.</p>
-<p>The beeai-framework has several limitations, including the need for extensive Python code for configuration and the lack of a declarative way to define relationships between components.</p>
-<p>The beeai-framework's architecture is based on a container system, which allows for easy deployment and management of models. The framework supports various models, including granite3. 3:8b, which can be pulled using the ollama pull command. The uv sync command can be used to synchronize the framework's components.</p>
-<p>The framework's performance can be optimized by using the right combination of models and configuration. The SandboxTool class provides a way to test and debug the framework's components. The getriddle() method can be used to retrieve a riddle, which can be used to test the framework's performance.</p>
-<p>The beeai-framework has several use cases, including normalizing how agents, workflows, and chat models are invoked, as mentioned in Runnables #982. The framework can also be used to export BeeAI docs to RAG corpus. The framework's performance can be optimized by using the right combination of models and configuration. The framework's limitations, including the need for extensive Python code for configuration, can be addressed by using a more declarative approach.</p>
-<p>The lack of a declarative way to define relationships between components can be addressed by using a more modular approach.</p>
-<p>The beeai-framework's performance can be optimized by using cache and serialization. The framework's architecture is designed to support caching and serialization, but the research does not provide implementation details for this area. The RequirementAgent class can be used to manage requirements, which can help optimize performance. The framework's limitations, including the lack of support for easily sharing settings across projects or environments, can be addressed by using a more modular approach.</p>
-<p>The framework's performance can be optimized by using the right combination of models and configuration.</p>
-<p>The beeai-framework has several technical limitations, including the need for extensive Python code for configuration and the lack of a declarative way to define relationships between components. The framework's performance can be optimized by using the right combination of models and configuration. The framework's limitations, including the difficulty in managing different configurations for dev/staging/prod, can be addressed by using a more modular approach. The framework's performance can be optimized by using cache and serialization, but the research does not provide implementation details for this area.</p>
-<p>The framework's version is Alpha, which indicates that it is still in the early stages of development.</p>
-<p>The beeai-framework's performance can be optimized by using the right combination of models and configuration. The framework supports various models, including granite3. 3:8b, which can be pulled using the ollama pull command. The uv sync command can be used to synchronize the framework's components.</p>
-<p>The framework's performance can be optimized by using cache and serialization, but the research does not provide implementation details for this area. The framework's limitations, including the lack of support for easily sharing settings across projects or environments, can be addressed by using a more modular approach.</p>
-<p>The beeai-framework has several use cases, including normalizing how agents, workflows, and chat models are invoked, as mentioned in Runnables #982. The framework can also be used to export BeeAI docs to RAG corpus. The framework's performance can be optimized by using the right combination of models and configuration. The framework's limitations, including the need for extensive Python code for configuration, can be addressed by using a more declarative approach.</p>
-<p>The lack of a declarative way to define relationships between components can be addressed by using a more modular approach. The framework's version is Alpha, which indicates that it is still in the early stages of development.</p>
-<p>The beeai-framework's performance can be optimized by using cache and serialization, but the research does not provide implementation details for this area. The framework's architecture is designed to support caching and serialization, but the research does not provide implementation details for this area. The RequirementAgent class can be used to manage requirements, which can help optimize performance. The framework's limitations, including the lack of support for easily sharing settings across projects or environments, can be addressed by using a more modular approach.</p>
-<p>The framework's performance can be optimized by using the right combination of models and configuration.</p></div></section>
-<div class="book-footer"><strong>beeai-framework: Field Guide</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; April 2, 2026</div>
+</svg><p class="diagram-caption">Figure: parallax end-to-end processing pipeline</p></div><div class="sec-heading">parallax — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">P2P Communication Adoption</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">GPU Backend Adoption</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:78%"></span></span></span><span class="bar-value">78%</span></div><div class="bar-row"><span class="bar-label">MAC Backend Adoption</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Cross-Platform Support Adoption</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Pipeline Parallel Model Sharding Adoption</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:76%"></span></span></span><span class="bar-value">76%</span></div><div class="bar-row"><span class="bar-label">Dynamic Request Scheduling Adoption</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Dynamic Request Scheduling and Routing for High Performance</h2></div><p class="ch-summary">Troubleshooting parallax</p><div class="ch-body"><p>The parallax library provides a dynamic request scheduling and routing system for high performance, but it can be challenging to troubleshoot issues that arise from this system. One potential problem is that the max-sequence-length config key may not be set correctly, leading to errors when processing long sequences. The parallax run command can be used to start the server with a specific host, and the parallax join command can be used to join a node to the cluster with specific sequence length and batch size settings. The enable-prefix-cache config key can also be used to improve performance by caching frequently accessed data.</p>
+<p>The library does not support all types of models, and the model config key must be set to a compatible model, such as parallax/your-model-name.</p>
+<p>The architecture of the parallax library is based on P2P communication, Lattica, GPU backend, SGLang, vLLM, MAC backend, and MLX LM, which can make it difficult to identify the source of issues. The pipeline parallel model sharding and paged KV cache management features can also introduce complexity and potential bugs. The library has several config keys, including host, max-sequence-length, max-num-tokens-per-batch, and enable-prefix-cache, which must be set correctly for optimal performance. The Node.</p>
+<p>js and Python versions must also be compatible, with Node. js >= 22 and Python >= 3. 11 required. The library has several use cases, including hosting local LLM on personal devices, cross-platform support, and multi-platform chat integration.</p>
+<p>The parallax library has several limitations, including the requirement for a compatible model and the need for specific Node. js and Python versions. The library also does not support all types of devices, and the MAC backend is only compatible with MLX LM. The dynamic request scheduling and routing system can also be affected by the settings of the max-sequence-length and max-num-tokens-per-batch config keys.</p>
+<p>The library has several classes and methods, including parallax run and parallax join, which can be used to start the server and join a node to the cluster. The library also has several version numbers, including 0. 0. 1, 2025/10, and 2026/2.</p>
+<p>The performance of the parallax library can be affected by several factors, including the settings of the config keys and the compatibility of the model and devices. The library has several benchmarks and performance metrics, but they are not publicly available. The library has several GitHub issues, but they are not publicly available. The library has several limitations, including the requirement for a compatible model and the need for specific Node.</p>
+<p>js and Python versions. The library also does not support all types of devices, and the MAC backend is only compatible with MLX LM.</p>
+<p>The parallax library has several config keys that must be set correctly for optimal performance, including host, max-sequence-length, max-num-tokens-per-batch, and enable-prefix-cache. The library also has several classes and methods, including parallax run and parallax join, which can be used to start the server and join a node to the cluster. The library has several version numbers, including 0. 0.</p>
+<p>1, 2025/10, and 2026/2. The library has several use cases, including hosting local LLM on personal devices, cross-platform support, and multi-platform chat integration. The library also has several limitations, including the requirement for a compatible model and the need for specific Node. js and Python versions.</p>
+<p>The parallax library can be used for several use cases, including hosting local LLM on personal devices, cross-platform support, and multi-platform chat integration. The library has several features, including pipeline parallel model sharding and paged KV cache management, which can improve performance and reduce memory usage. The library also has several config keys that must be set correctly for optimal performance, including host, max-sequence-length, max-num-tokens-per-batch, and enable-prefix-cache. The library has several classes and methods, including parallax run and parallax join, which can be used to start the server and join a node to the cluster.</p>
+<p>The library has several version numbers, including 0. 0. 1, 2025/10, and 2026/2.</p>
+<p>The parallax library has several limitations, including the requirement for a compatible model and the need for specific Node. js and Python versions. The library also does not support all types of devices, and the MAC backend is only compatible with MLX LM. The dynamic request scheduling and routing system can also be affected by the settings of the max-sequence-length and max-num-tokens-per-batch config keys.</p>
+<p>The library has several classes and methods, including parallax run and parallax join, which can be used to start the server and join a node to the cluster. The library has several version numbers, including 0. 0. 1, 2025/10, and 2026/2.</p>
+<p>The parallax library can be used for several use cases, including hosting local LLM on personal devices, cross-platform support, and multi-platform chat integration. The library has several features, including pipeline parallel model sharding and paged KV cache management, which can improve performance and reduce memory usage. The library also has several config keys that must be set correctly for optimal performance, including host, max-sequence-length, max-num-tokens-per-batch, and enable-prefix-cache. The library has several classes and methods, including parallax run and parallax join, which can be used to start the server and join a node to the cluster.</p>
+<p>The library has several version numbers, including 0. 0. 1, 2025/10, and 2026/2.</p><div class="sec-heading">parallax — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>P2P Communication</td><td>Lattica</td><td>Enables efficient data transfer between devices</td></tr><tr><td>GPU Backend</td><td>SGLang and vLLM</td><td>Provides high-performance computing capabilities</td></tr><tr><td>MAC Backend</td><td>MLX LM</td><td>Optimizes performance for Mac devices</td></tr><tr><td>Cross-Platform Support</td><td>Yes</td><td>Supports various operating systems</td></tr><tr><td>Pipeline Parallel Model Sharding</td><td>Yes</td><td>Enhances model training efficiency</td></tr><tr><td>Dynamic Request Scheduling</td><td>Yes</td><td>Improves overall system performance and responsiveness</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Config Keys like enable-prefix-cache and max-sequence-length</h2></div><p class="ch-summary">Optimize parallax performance</p><div class="ch-body"><p>The parallax library provides several configuration keys to optimize its performance, including enable-prefix-cache and max-sequence-length. These keys can be used to fine-tune the library's behavior and improve its efficiency. For example, the --kv-cache-memory-fraction key can be used to control the amount of memory allocated to the cache. The library also supports various versions, including v0.</p>
+<p>1. 1, v0. 1. 0, and v0.</p>
+<p>1. 2. However, it does not support certain Apple silicon chips, such as the M5 Max, which can cause a RuntimeError.</p>
+<p>The parallax library has several use cases, including support for Kimi-K2, DeepSeek, MiniMax, GLM, and gpt-oss-safeguard. It also provides a chat command to run a chat page server and supports switching models in the chat page. Additionally, it can host LLMs across devices sharing GPU to improve performance. However, it may encounter an OOM error or AttributeError when using certain features, such as the Scheduler class.</p>
+<p>The library's architecture includes a backend architecture, p2p server, relay server, and executor.</p>
+<p>The CONFIGKEYS, such as --kv-cache-memory-fraction, play a crucial role in optimizing the library's performance. The VERSIONNUMBERS, including v0. 1. 1, v0.</p>
+<p>1. 0, and v0. 1. 2, indicate the library's evolution and improvement over time.</p>
+<p>The CLASSESANDMETHODS, including the Scheduler class, provide a way to interact with the library and customize its behavior. However, the library has limitations, such as not supporting certain Apple silicon chips, which can cause errors.</p>
+<p>The parallax library can be installed using pip3 install pre-commit, and then running pre-commit install. It can also be cloned from GitHub using git clone https://github. com/<yourgithubusername>/parallax. git.</p>
+<p>However, the library may encounter errors, such as libc++abi: terminating due to uncaught exception of type std::runtime_error, when using certain features or configurations. The library's performance can be improved by optimizing the config keys and using the correct version.</p>
+<p>The library's performance can be benchmarked using various metrics, such as the time it takes to complete a task or the amount of memory it uses. However, the research does not provide specific benchmark results or performance metrics. The library's architecture, including the backend architecture, p2p server, relay server, and executor, can be customized and optimized to improve its performance.</p>
+<p>The parallax library has several technical limitations, including not supporting certain Apple silicon chips, which can cause a RuntimeError. It also may encounter an OOM error or AttributeError when using certain features, such as the Scheduler class. The library's config keys, such as --kv-cache-memory-fraction, can be used to optimize its performance, but the research does not provide specific guidelines or recommendations for their use.</p>
+<p>The library's use cases, including support for Kimi-K2, DeepSeek, MiniMax, GLM, and gpt-oss-safeguard, demonstrate its versatility and flexibility. However, the library's limitations and potential errors, such as the OOM error or AttributeError, must be carefully considered when using it. The library's architecture, including the backend architecture, p2p server, relay server, and executor, can be customized and optimized to improve its performance, but the research does not provide specific details or guidelines for this process.</p>
+<p>The parallax library provides a way to optimize its performance using config keys, such as enable-prefix-cache and max-sequence-length. However, the research does not provide specific guidelines or recommendations for their use, and the library's limitations and potential errors must be carefully considered. The library's architecture, including the backend architecture, p2p server, relay server, and executor, can be customized and optimized to improve its performance, but the research does not provide specific details or guidelines for this process.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Python Arcade library - 05 - creating a parallax scrolling starfield</div><a class="video-url" href="https://www.youtube.com/watch?v=HIJ38pdrq4Y">https://www.youtube.com/watch?v=HIJ38pdrq4Y</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Dynamic Leaves, Particles, and Parallax - Python/Pygame ...</div><a class="video-url" href="https://www.youtube.com/watch?v=7A7yeIm_278">https://www.youtube.com/watch?v=7A7yeIm_278</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Mastering Parallax Maker: Create Stunning 2.5D Animations ...</div><a class="video-url" href="https://www.youtube.com/watch?v=Hki9EQyTUP0">https://www.youtube.com/watch?v=Hki9EQyTUP0</a></div></div></section>
+<div class="book-footer"><strong>parallax: Complete Reference</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; April 3, 2026</div>
 </body>
 </html>
