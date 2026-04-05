@@ -2,430 +2,399 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>magentic: Engineering Handbook</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "magentic: Engineering Handbook"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>SMARTS: Expert Handbook</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "SMARTS: Expert Handbook"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/6d52bfaaf809c8da7edf624e7d23179bd5bf2be92363e9a78921974ae0d6469a/jackmpcollins/magentic" alt="magentic logo" onerror="this.style.display='none'"/><div class="cover-lib-name">magentic</div><div class="cover-suffix">Engineering Handbook</div><div class="cover-rule"></div><p class="cover-subtitle">Magnetic forces explained</p><p class="cover-desc">The @prompt decorator is a key component in unlocking LLM capabilities.  It allows developers to define functions that can be used to generate text based on a given prompt.  The prompt can be a string with placeholders for variables, which are then replaced with actual values when the function is called.</p><div class="cover-tagline">Power of magnetism</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> April 4, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Jackmpcollins built Magentic to solve the problem of creating complex outputs from LLMs.</div><div class="intro-body"><p>Magentic is a technical framework that integrates with OpenAI and other LLMs to provide a structured approach to building applications. It was built to solve the problem of creating complex, structured outputs from large language models. The core idea behind Magentic is to provide a set of tools and APIs that make it easier to work with LLMs, including support for streaming, LLM-assisted retries, and observability. Magentic also includes support for type annotations, configuration, and chat prompting, making it a versatile framework for building a wide range of applications.</p>
-<p>The technical design of Magentic is centered around the use of Pydantic for data validation and OpenTelemetry for observability. The framework also includes support for OpenAI and Anthropic, as well as Ollama, making it a great choice for developers who want to build applications that integrate with these LLMs. The use of Pydantic and OpenTelemetry provides a solid foundation for building robust and scalable applications, while the support for multiple LLMs makes it easy to switch between different models and providers. Magentic also includes a range of other features, including support for parallel function calling, vision, and formatting, making it a great choice for developers who want to build complex applications.</p>
-<p>One of the key benefits of Magentic is its ability to provide structured outputs from LLMs. This is achieved through the use of a range of classes and methods, including the @prompt decorator, which makes it easy to define functions that can be called with specific inputs and outputs. The framework also includes support for chat prompting, which makes it easy to build conversational applications that can interact with users in a natural and intuitive way. Magentic also includes support for streaming, which makes it easy to build applications that can handle large amounts of data and provide real-time updates.</p>
-<p>Overall, Magentic provides a powerful and flexible framework for building applications that integrate with LLMs.</p>
-<p>The target audience for Magentic is developers who want to build applications that integrate with LLMs. This includes developers who are building conversational applications, such as chatbots and virtual assistants, as well as developers who are building applications that require complex, structured outputs from LLMs. Magentic is also a great choice for developers who want to build applications that can handle large amounts of data and provide real-time updates, such as applications that require streaming or parallel function calling. Overall, Magentic provides a powerful and flexible framework for building a wide range of applications, and is a great choice for developers who want to integrate LLMs into their applications.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/jackmpcollins/magentic">https://github.com/jackmpcollins/magentic</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking LLM Capabilities with the @prompt Decorator</h2></div><p class="ch-summary">LLM capabilities unlocked</p><div class="ch-body"><p>The @prompt decorator is a key component in unlocking LLM capabilities. It allows developers to define functions that can be used to generate text based on a given prompt. The prompt can be a string with placeholders for variables, which are then replaced with actual values when the function is called. This decorator is often used in conjunction with other classes and methods, such as the AssistantMessage and SystemMessage classes.</p>
-<p>The OPENAIAPIKEY config key is also important, as it is used to authenticate with the OpenAI API.</p>
-<p>The @prompt decorator can be used to create a wide range of functions, from simple text generation to more complex tasks such as chat prompting. The chatprompt function, for example, allows developers to define a conversation flow with multiple messages and responses. This can be useful for creating chatbots or other conversational interfaces. The UserMessage and AssistantMessage classes are used to define the messages that are sent and received in the conversation.</p>
-<p>One of the key benefits of the @prompt decorator is its flexibility. It can be used with a wide range of functions and classes, and can be easily extended to support new use cases. The FunctionCall class, for example, allows developers to define a function that can be called with a given set of arguments. This can be useful for creating reusable code that can be used in multiple contexts.</p>
-<p>The @promptchain decorator is also useful, as it allows developers to define a chain of functions that can be called in sequence.</p>
-<p>The magentic library also supports a number of other features, including streaming and LLM-assisted retries. The StreamedStr class, for example, allows developers to define a string that can be streamed to a file or other output. This can be useful for creating large files or other data streams. The library also supports type annotations, which can be used to define the types of variables and function parameters.</p>
-<p>The library does not support vision, however, which can be a limitation for some use cases. It also does not provide implementation details for some areas, such as the internal workings of the LLM. The performance of the library can also be affected by the quality of the input data, which can be a limitation in some cases.</p>
-<p>The @prompt decorator is a key component of the magentic library, and is used to define functions that can be used to generate text based on a given prompt. The library also supports a number of other features, including chat prompting and function calling. The OPENAIAPI_KEY config key is used to authenticate with the OpenAI API, and the AssistantMessage and SystemMessage classes are used to define messages that are sent and received in a conversation.</p>
-<p>The library can be installed using pip install magentic, and can be used in a wide range of applications, from simple text generation to more complex tasks such as chatbots and conversational interfaces. The @prompt decorator is a flexible and powerful tool that can be used to create a wide range of functions and classes, and is a key component of the magentic library.</p>
-<p>The magentic library is a useful tool for developers who need to generate text based on a given prompt, and can be used in a wide range of applications. It supports a number of features, including chat prompting and function calling, and can be easily extended to support new use cases. The library does not support vision, however, which can be a limitation for some use cases.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/78efe7069abde8533bbe3afe14d043ac974df4327e840929dc799cca49941ee3/huawei-noah/SMARTS" alt="SMARTS logo" onerror="this.style.display='none'"/><div class="cover-lib-name">SMARTS</div><div class="cover-suffix">Expert Handbook</div><div class="cover-rule"></div><p class="cover-subtitle">Introducing Smarts</p><p class="cover-desc">The SMARTS library is designed to facilitate research on autonomous driving and multi-agent reinforcement learning.  It provides a scalable and flexible framework for training and testing autonomous agents in various scenarios.  The library is built on top of the XingTian architecture and supports multiple versions, including v1.</p><div class="cover-tagline">Be Smarter</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> April 5, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Huawei Noah's Ark Lab built SMARTS for autonomous driving.</div><div class="intro-body"><p>SMARTS, developed by Huawei Noah's Ark Lab, is a scalable multi-agent reinforcement learning training platform for autonomous driving. It was first released in 2020, with a paper published at the 4th Conference on Robot Learning. The platform is designed to address the specific problem of training autonomous vehicles to navigate complex scenarios, such as intersections and roundabouts, in a simulated environment. This is achieved through the use of multi-agent reinforcement learning, where multiple agents, such as vehicles and pedestrians, interact with each other in a shared environment.</p>
+<p>The SMARTS platform is built on top of the XingTian architecture, which provides a scalable and flexible framework for simulating complex scenarios. The platform uses the gymnasium. Env interface, which provides a standardized interface for reinforcement learning environments. This allows for easy integration with popular reinforcement learning libraries, such as RLlib.</p>
+<p>The platform also includes a range of features, such as support for multiple scenarios, agent interfaces, and observation options, which can be configured using a range of config keys.</p>
+<p>One of the key technical differences between SMARTS and other autonomous driving platforms is its use of multi-agent reinforcement learning. This allows for the simulation of complex scenarios, where multiple agents interact with each other in a shared environment. The platform also includes a range of tools and features, such as the smarts. env package, which provides a range of environments for training and testing autonomous vehicles.</p>
+<p>The platform is designed to be highly customizable, with a range of config keys and options available for configuring the simulation environment.</p>
+<p>The target audience for SMARTS is researchers and developers working on autonomous driving and multi-agent reinforcement learning. The platform is designed to provide a scalable and flexible framework for simulating complex scenarios, and is particularly well-suited for researchers who need to train and test autonomous vehicles in a range of different environments. The platform is also highly customizable, making it a good choice for developers who need to integrate autonomous driving capabilities into their own applications. The installation steps for SMARTS are straightforward, and include installing the required dependencies, cloning the SMARTS repository, and installing the platform using pip.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/huawei-noah/SMARTS">https://github.com/huawei-noah/SMARTS</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Mastering Multi-Agent Reinforcement Learning with SMARTS</h2></div><p class="ch-summary">SMARTS for multi-agent RL</p><div class="ch-body"><p>The SMARTS library is designed to facilitate research on autonomous driving and multi-agent reinforcement learning. It provides a scalable and flexible framework for training and testing autonomous agents in various scenarios. The library is built on top of the XingTian architecture and supports multiple versions, including v1. 0.</p>
+<p>3. The env. reset() method is used to reset the environment, while the env. step() method is used to take a step in the environment.</p>
+<p>The agentspec. buildagent() method is used to build an agent, and the agent. act() method is used to get an action from the agent.</p>
+<p>The SMARTS library supports various use cases, including autonomous driving and multi-agent reinforcement learning. It provides a range of tools and features to support these use cases, including the gymnasium. Env interface and the RLlib training framework. The library also supports multiple observation options, including camera observations and sumo observations.</p>
+<p>The ObservationOptions class is used to configure the observation options, and the config key 'observationoptions' is used to specify the observation options in the config file.</p>
+<p>The SMARTS library has several limitations, including the requirement for python3 (3. 8, 3. 9, 3. 10, 3.</p>
+<p>11) and ubuntu (>=16. 04). It also requires the installation of XQuartz for Mac OS X users. The library does not support all scenarios and environments, and it may fail when used with certain agents or scenarios.</p>
+<p>The HiWayEnvV1 class is used to create a highway environment, and the MultiAgentEnv class is used to create a multi-agent environment.</p>
+<p>The SMARTS library provides a range of API methods and classes to support multi-agent reinforcement learning. The agentinterfaces config key is used to specify the agent interfaces, and the headless config key is used to specify whether the environment should be run in headless mode. The seed config key is used to specify the random seed, and the scenario config key is used to specify the scenario. The env.</p>
+<p>close() method is used to close the environment, and the agentspec. buildagent() method is used to build an agent.</p>
+<p>The SMARTS library supports multiple versions, including 2020 and 2010. 09776. The library is designed to be scalable and flexible, and it provides a range of tools and features to support multi-agent reinforcement learning. The RLlibHiwayEnv class is used to create an RLlib highway environment, and the gymnasium.</p>
+<p>Env interface is used to create a gymnasium environment. The library also supports multiple config keys, including 'scenarios', 'agentinterfaces', and 'headless'.</p>
+<p>The SMARTS library has several limitations and potential issues. It may fail when used with certain agents or scenarios, and it may not support all environments and use cases. The library requires a range of dependencies, including python3 and ubuntu, and it may not be compatible with all systems and configurations. The library also has a range of config keys and API methods that must be used correctly in order to achieve the desired results.</p>
+<p>The SMARTS library is designed to support research on autonomous driving and multi-agent reinforcement learning. It provides a range of tools and features to support these use cases, including the XingTian architecture and the RLlib training framework. The library is scalable and flexible, and it supports multiple versions and configurations. The library also provides a range of API methods and classes to support multi-agent reinforcement learning, including the agentspec.</p>
+<p>build_agent() method and the env. step() method.</p>
+<p>The SMARTS library has a range of potential applications and use cases. It can be used to support research on autonomous driving and multi-agent reinforcement learning, and it can be used to develop and test autonomous agents in a range of scenarios and environments. The library is designed to be scalable and flexible, and it provides a range of tools and features to support these use cases. The library also has a range of limitations and potential issues that must be considered when using it.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1265.98 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1184.55 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1261.98,-40 1261.98,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1180.55,-40 1180.55,4 -4,4"/>
 <!-- N0 -->
 <g id="cluster-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="55.62" cy="-18" rx="55.62" ry="18"/>
-<text text-anchor="middle" x="55.62" y="-14.5" font-family="Arial" font-size="10.00">MagneticRequest</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="61.04" cy="-18" rx="61.04" ry="18"/>
+<text text-anchor="middle" x="61.04" y="-14.5" font-family="Arial" font-size="10.00">SMARTS Simulator</text>
 </g>
 <!-- N1 -->
 <g id="cluster-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="231.52" cy="-18" rx="54.27" ry="18"/>
-<text text-anchor="middle" x="231.52" y="-14.5" font-family="Arial" font-size="10.00">MagneticContext</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="255.99" cy="-18" rx="55.17" ry="18"/>
+<text text-anchor="middle" x="255.99" y="-14.5" font-family="Arial" font-size="10.00">ScenarioManager</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="cluster-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M111.65,-18C128.79,-18 147.85,-18 165.6,-18"/>
-<polygon fill="#475569" stroke="#475569" points="165.53,-21.5 175.53,-18 165.53,-14.5 165.53,-21.5"/>
-<text text-anchor="middle" x="144.25" y="-19.95" font-family="Arial" font-size="9.00">creates</text>
+<path fill="none" stroke="#475569" d="M122.56,-18C143.73,-18 167.6,-18 189.19,-18"/>
+<polygon fill="#475569" stroke="#475569" points="189.06,-21.5 199.06,-18 189.06,-14.5 189.06,-21.5"/>
+<text text-anchor="middle" x="161.45" y="-19.95" font-family="Arial" font-size="9.00">configures</text>
 </g>
 <!-- N2 -->
 <g id="cluster-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="423.17" cy="-18" rx="60.13" ry="18"/>
-<text text-anchor="middle" x="423.17" y="-14.5" font-family="Arial" font-size="10.00">MagneticResponse</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="420.61" cy="-18" rx="41.19" ry="18"/>
+<text text-anchor="middle" x="420.61" y="-14.5" font-family="Arial" font-size="10.00">AgentPolicy</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="cluster-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M286.11,-18C306.35,-18 329.7,-18 351.29,-18"/>
-<polygon fill="#475569" stroke="#475569" points="351.21,-21.5 361.21,-18 351.21,-14.5 351.21,-21.5"/>
-<text text-anchor="middle" x="324.41" y="-19.95" font-family="Arial" font-size="9.00">generates</text>
+<path fill="none" stroke="#475569" d="M311.59,-18C329.68,-18 349.76,-18 367.64,-18"/>
+<polygon fill="#475569" stroke="#475569" points="367.53,-21.5 377.53,-18 367.53,-14.5 367.53,-21.5"/>
+<text text-anchor="middle" x="345.29" y="-19.95" font-family="Arial" font-size="9.00">binds to</text>
 </g>
 <!-- N3 -->
 <g id="cluster-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="645.59,-36 573.31,-18 645.59,0 717.88,-18 645.59,-36"/>
-<text text-anchor="middle" x="645.59" y="-14.5" font-family="Arial" font-size="10.00">MagneticRouter</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="609.3,-36 551.05,-18 609.3,0 667.56,-18 609.3,-36"/>
+<text text-anchor="middle" x="609.3" y="-14.5" font-family="Arial" font-size="10.00">SocialAgent</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="cluster-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M483.53,-18C507.08,-18 534.59,-18 560.15,-18"/>
-<polygon fill="#475569" stroke="#475569" points="559.83,-21.5 569.83,-18 559.83,-14.5 559.83,-21.5"/>
-<text text-anchor="middle" x="528.31" y="-19.95" font-family="Arial" font-size="9.00">dispatches to</text>
+<path fill="none" stroke="#475569" d="M462.12,-18C484.35,-18 512.55,-18 538.23,-18"/>
+<polygon fill="#475569" stroke="#475569" points="537.93,-21.5 547.93,-18 537.93,-14.5 537.93,-21.5"/>
+<text text-anchor="middle" x="506.43" y="-19.95" font-family="Arial" font-size="9.00">interacts with</text>
 </g>
 <!-- N4 -->
 <g id="cluster-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="839.2" cy="-18" rx="53.82" ry="18"/>
-<text text-anchor="middle" x="839.2" y="-14.5" font-family="Arial" font-size="10.00">MagneticHandler</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="793.67" cy="-18" rx="48.86" ry="18"/>
+<text text-anchor="middle" x="793.67" y="-14.5" font-family="Arial" font-size="10.00">SensorOutputs</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="cluster-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M719.85,-18C737.62,-18 756.48,-18 773.8,-18"/>
-<polygon fill="#475569" stroke="#475569" points="773.42,-21.5 783.42,-18 773.42,-14.5 773.42,-21.5"/>
-<text text-anchor="middle" x="751.63" y="-19.95" font-family="Arial" font-size="9.00">invokes</text>
+<path fill="none" stroke="#475569" d="M669.01,-18C689.47,-18 712.44,-18 732.98,-18"/>
+<polygon fill="#475569" stroke="#475569" points="732.92,-21.5 742.92,-18 732.92,-14.5 732.92,-21.5"/>
+<text text-anchor="middle" x="706.18" y="-19.95" font-family="Arial" font-size="9.00">generates</text>
 </g>
 <!-- N5 -->
 <g id="cluster-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1024.09" cy="-18" rx="53.82" ry="18"/>
-<text text-anchor="middle" x="1024.09" y="-14.5" font-family="Arial" font-size="10.00">MagneticStorage</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="968.49" cy="-18" rx="50.21" ry="18"/>
+<text text-anchor="middle" x="968.49" y="-14.5" font-family="Arial" font-size="10.00">AgentController</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="cluster-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M893.1,-18C913.58,-18 937.21,-18 958.66,-18"/>
-<polygon fill="#475569" stroke="#475569" points="958.48,-21.5 968.48,-18 958.48,-14.5 958.48,-21.5"/>
-<text text-anchor="middle" x="931.64" y="-19.95" font-family="Arial" font-size="9.00">persists in</text>
+<path fill="none" stroke="#475569" d="M842.81,-18C862.53,-18 885.58,-18 906.46,-18"/>
+<polygon fill="#475569" stroke="#475569" points="906.29,-21.5 916.29,-18 906.29,-14.5 906.29,-21.5"/>
+<text text-anchor="middle" x="880.4" y="-19.95" font-family="Arial" font-size="9.00">feeds into</text>
 </g>
 <!-- N6 -->
 <g id="cluster-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1207.32" cy="-18" rx="50.66" ry="18"/>
-<text text-anchor="middle" x="1207.32" y="-14.5" font-family="Arial" font-size="10.00">MagneticResult</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1131.75" cy="-18" rx="44.8" ry="18"/>
+<text text-anchor="middle" x="1131.75" y="-14.5" font-family="Arial" font-size="10.00">SMARTSEnv</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="cluster-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M1077.99,-18C1098.98,-18 1123.26,-18 1145.01,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1144.94,-21.5 1154.94,-18 1144.94,-14.5 1144.94,-21.5"/>
-<text text-anchor="middle" x="1117.28" y="-19.95" font-family="Arial" font-size="9.00">returns via</text>
+<path fill="none" stroke="#475569" d="M1019.19,-18C1036.96,-18 1057.09,-18 1075.32,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1075.17,-21.5 1085.17,-18 1075.17,-14.5 1075.17,-21.5"/>
+<text text-anchor="middle" x="1052.82" y="-19.95" font-family="Arial" font-size="9.00">controls</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: magentic internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Conversational Workflows with the BaseModel Class</h2></div><p class="ch-summary">BaseModel class usage</p><div class="ch-body"><p>The BaseModel class is a fundamental component in designing conversational workflows. It provides a structured way to define data models, which can be used to generate text based on user input. The BaseModel class is often used in conjunction with the @prompt decorator, which allows developers to define a prompt that can be used to generate text. For example, the Superhero class is a BaseModel that defines a superhero's name, age, power, and enemies.</p>
-<p>The @prompt decorator can be used to create a prompt that generates a superhero based on a given name. The BaseModel class also supports more complex data models, such as the Quote class, which defines a quote and its character. The @chatprompt decorator can be used to create a conversational workflow that generates quotes based on user input. The magentic library provides several API methods, including @prompt, @chatprompt, and @promptchain, which can be used to design conversational workflows.</p>
-<p>The library also supports integration with OpenAI and Anthropic, which provides access to large language models. However, the library does not support Ollama out of the box.</p>
-<p>The BaseModel class provides several benefits, including the ability to define complex data models and generate text based on user input. It also provides a way to integrate with large language models, which can be used to generate high-quality text. However, the library has some limitations, such as the need to define a prompt for each data model, which can be time-consuming. Additionally, the library does not support all types of data models, such as recursive data models.</p>
-<p>The library also has some performance limitations, such as the need to wait for the language model to generate text, which can take several seconds. The library provides a way to stream text as it is generated, which can help to improve performance. For example, the describecountry function can be used to generate a description of a country, and the text can be streamed as it is generated.</p>
-<p>The magentic library provides several configuration options, including the OPENAIAPIKEY, which is used to integrate with OpenAI. The library also provides a way to define a unit of measurement, such as fahrenheit or celsius, which can be used to generate text. However, the library does not provide a way to define a default unit of measurement, which can be a limitation. The library also provides a way to define a function call, such as the getcurrentweather function, which can be used to generate text.</p>
-<p>The library provides a way to chain functions together, such as the @promptchain decorator, which can be used to generate complex text. For example, the describeweather function can be used to generate a description of the weather in a given city, and the text can be streamed as it is generated.</p>
-<p>The BaseModel class is a key component in designing conversational workflows, and it provides a way to define complex data models and generate text based on user input. The class is often used in conjunction with the @prompt decorator, which allows developers to define a prompt that can be used to generate text. The class also supports integration with large language models, which can be used to generate high-quality text. However, the class has some limitations, such as the need to define a prompt for each data model, which can be time-consuming.</p>
-<p>Additionally, the class does not support all types of data models, such as recursive data models. The class also has some performance limitations, such as the need to wait for the language model to generate text, which can take several seconds.</p>
-<p>The magentic library provides several API methods, including @prompt, @chatprompt, and @promptchain, which can be used to design conversational workflows. The library also supports integration with OpenAI and Anthropic, which provides access to large language models. However, the library does not support Ollama out of the box. The library provides a way to define a function call, such as the getcurrentweather function, which can be used to generate text.</p>
-<p>The library provides a way to chain functions together, such as the @promptchain decorator, which can be used to generate complex text. For example, the describeweather function can be used to generate a description of the weather in a given city, and the text can be streamed as it is generated.</p>
-<p>The BaseModel class provides a way to define complex data models, which can be used to generate text based on user input. The class is often used in conjunction with the @prompt decorator, which allows developers to define a prompt that can be used to generate text. The class also supports integration with large language models, which can be used to generate high-quality text. However, the class has some limitations, such as the need to define a prompt for each data model, which can be time-consuming.</p>
-<p>Additionally, the class does not support all types of data models, such as recursive data models. The class also has some performance limitations, such as the need to wait for the language model to generate text, which can take several seconds.</p>
-<p>The magentic library provides several benefits, including the ability to define complex data models and generate text based on user input. It also provides a way to integrate with large language models, which can be used to generate high-quality text. However, the library has some limitations, such as the need to define a prompt for each data model, which can be time-consuming. Additionally, the library does not support all types of data models, such as recursive data models.</p>
-<p>The library also has some performance limitations, such as the need to wait for the language model to generate text, which can take several seconds. The library provides a way to stream text as it is generated, which can help to improve performance. For example, the describecountry function can be used to generate a description of a country, and the text can be streamed as it is generated.</p>
-<p>The BaseModel class is a key component in designing conversational workflows, and it provides a way to define complex data models and generate text based on user input. The class is often used in conjunction with the @prompt decorator, which allows developers to define a prompt that can be used to generate text. The class also supports integration with large language models, which can be used to generate high-quality text. However, the class has some limitations, such as the need to define a prompt for each data model, which can be time-consuming.</p>
-<p>Additionally, the class does not support all types of data models, such as recursive data models. The class also has some performance limitations, such as the need to wait for the language model to generate text, which can take several seconds. The class provides a way to define a function call, such as the getcurrentweather function, which can be used to generate text. The class provides a way to chain functions together, such as the @prompt_chain decorator, which can be used to generate complex text.</p></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Setting up Magentic with the OPENAI_API_KEY Configuration</h2></div><p class="ch-summary">Configure Magentic</p><div class="ch-body"><p>To set up Magentic, you need to configure the OPENAIAPIKEY. This key is used to authenticate with the OpenAI API. The OpenAI API is used by Magentic to generate text based on the input prompts. The OPENAIAPIKEY is a required configuration key.</p>
-<p>Without it, Magentic will not be able to generate text. The key should be set in the configuration file or as an environment variable. Magentic also supports other configuration keys such as model and temperature. These keys can be used to fine-tune the text generation.</p>
-<p>For example, the model key can be used to specify the type of model to use, such as a language model or a conversational model. The temperature key can be used to control the level of randomness in the generated text.</p>
-<p>The configuration keys can be set using the config object. The config object is an instance of the BaseModel class, which is a Pydantic model. The BaseModel class provides a simple way to define and validate configuration data. The config object can be used to set the OPENAIAPIKEY, model, and temperature keys.</p>
-<p>For example, config. OPENAIAPIKEY = 'yourapikey'. The config object can also be used to set other configuration keys, such as the functions key, which can be used to specify custom functions to use with Magentic.</p>
-<p>Magentic also supports the use of custom functions. Custom functions can be defined using the @prompt decorator. The @prompt decorator is used to define a function that takes a prompt as input and returns a response. For example, @prompt('Add more dude ness to: {phrase}') def dudeify(phrase: str) -> str: ...</p>
-<p>. The @prompt decorator can be used to define custom functions that can be used with Magentic. The custom functions can be used to generate text based on the input prompts.</p>
-<p>The custom functions can also be used with the chatprompt decorator. The chatprompt decorator is used to define a function that takes a conversation as input and returns a response. For example, @chatprompt(SystemMessage('You are a movie buff. '), UserMessage('What is your favorite quote from Harry Potter?</p>
-<p>'), AssistantMessage(Quote(quote='It does not do to dwell on dreams and forget to live. ', character='Albus Dumbledore'))) def getmoviequote(movie: str) -> Quote: ... . The chatprompt decorator can be used to define custom functions that can be used with Magentic to generate text based on a conversation.</p>
-<p>Magentic also supports the use of the FunctionCall class. The FunctionCall class is used to define a function that can be called with a specific set of arguments. For example, FunctionCall('searchtwitter', query='python', category='latest'). The FunctionCall class can be used to define custom functions that can be used with Magentic.</p>
-<p>The custom functions can be used to generate text based on the input prompts.</p>
-<p>The research does not provide implementation details for the LLM architecture used by Magentic. However, it does provide some information about the performance of Magentic. For example, the research mentions that Magentic can generate text at a rate of 856. 07 characters per second.</p>
-<p>This is a relatively fast rate, but it may not be sufficient for all use cases. Magentic also supports the use of the OpenTelemetry library, which can be used to monitor and optimize the performance of Magentic.</p>
-<p>In terms of limitations, Magentic does not support the use of multiple models at the same time. This means that if you want to use a different model, you will need to restart Magentic with the new model. Magentic also does not support the use of custom models. This means that you will need to use one of the pre-trained models provided by OpenAI.</p>
-<p>The callout is that Magentic uses the OPENAIAPIKEY configuration key to authenticate with the OpenAI API.</p>
-<p>from magentic import prompt, chatprompt, AssistantMessage, SystemMessage, UserMessage</p>
-<p>from pydantic import BaseModel</p>
-<p>class Quote(BaseModel):</p>
-<p>quote: str</p>
-<p>character: str</p>
-<p>@prompt('Add more dude ness to: {phrase}')</p>
-<p>def dudeify(phrase: str) -> str:</p>
-<p>return phrase + ' dude'</p>
-<p>@chatprompt(</p>
-<p>SystemMessage('You are a movie buff.</p>
-<p>UserMessage('What is your favorite quote from Harry Potter?</p>
-<p>AssistantMessage(</p>
-<p>Quote(</p>
-<p>quote='It does not do to dwell on dreams and forget to live.</p>
-<p>character='Albus Dumbledore',</p>
-<p>)</p>
-<p>),</p>
-<p>UserMessage('What is your favorite quote from {movie}?</p>
-<p>)</p>
-<p>def getmoviequote(movie: str) -> Quote:</p>
-<p>return Quote(quote='I am your father.</p>
-<p>class Superhero(BaseModel):</p>
-<p>name: str</p>
-<p>age: int</p>
-<p>power: str</p>
-<p>enemies: list[str]</p>
-<p>@prompt('Create a Superhero named {name}.</p>
-<p>def createsuperhero(name: str) -> Superhero:</p>
-<p>return Superhero(name=name, age=30, power='Super strength', enemies=['The Joker', 'Lex Luthor'])</p>
-<p>from magentic import FunctionCall</p>
-<p>print(FunctionCall('search_twitter', query='python', category='latest'))</p><div class="code-label">Code Sample</div><div class="code-block">from magentic import prompt, chatprompt, AssistantMessage, SystemMessage, UserMessage 
-from pydantic import BaseModel 
- 
-class Quote(BaseModel): 
-    quote: str 
-    character: str 
- 
-@prompt('Add more dude ness to: {phrase}') 
-def dudeify(phrase: str) -&gt; str: 
-    return phrase + ' dude' 
- 
-@chatprompt( 
-    SystemMessage('You are a movie buff.'), 
-    UserMessage('What is your favorite quote from Harry Potter?'), 
-    AssistantMessage( 
-        Quote( 
-            quote='It does not do to dwell on dreams and forget to live.', 
-            character='Albus Dumbledore', 
-        ) 
-    ), 
-    UserMessage('What is your favorite quote from {movie}?'), 
-) 
-def get_movie_quote(movie: str) -&gt; Quote: 
-    return Quote(quote='I am your father.', character='Darth Vader') 
- 
-class Superhero(BaseModel): 
-    name: str 
-    age: int 
-    power: str 
-    enemies: list[str] 
- 
-@prompt('Create a Superhero named {name}.') 
-def create_superhero(name: str) -&gt; Superhero: 
-    return Superhero(name=name, age=30, power='Super strength', enemies=['The Joker', 'Lex Luthor']) 
- 
-from magentic import FunctionCall 
-print(FunctionCall('search_twitter', query='python', category='latest'))</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: SMARTS internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting XingTian for Scalable Multi-Agent Systems</h2></div><p class="ch-summary">Scalable multi-agent systems</p><div class="ch-body"><p>The XingTian architecture is designed to support scalable multi-agent systems, with a focus on autonomous driving and multi-agent reinforcement learning. The smarts. env package provides a gymnasium. Env interface, which allows for easy integration with RLlib training and Envision visualization.</p>
+<p>The HiWayEnvV1 class is a specific implementation of the gymnasium. Env interface, and it provides methods such as env. reset() and env. step() to control the environment.</p>
+<p>The agentspec. buildagent() method is used to build an agent, and the agent. act() method is used to get the action from the agent. The ObservationOptions class provides options for configuring observations, such as padded or un-padded agents.</p>
+<p>The XingTian architecture is designed to be modular and flexible, with a focus on scalability and performance. The RLlibHiWayEnv class provides a way to integrate with RLlib, and it supports features such as distributed training and evaluation. The config keys, such as scenarios, agentinterfaces, and headless, provide a way to customize the environment and the agents. The seed config key is used to set the random number generator seed, which is important for reproducibility.</p>
+<p>The observationoptions config key is used to configure the observations, such as whether to use padded or un-padded agents.</p>
+<p>The XingTian architecture has some limitations, such as not supporting certain types of agents or scenarios. For example, it does not support agents with complex dynamics or scenarios with multiple levels of nesting. The env. reset() method does not support resetting the environment to a specific state, and the env.</p>
+<p>step() method does not support taking multiple actions at once. The agentspec. buildagent() method does not support building agents with custom architectures. The research does not provide implementation details for some areas, such as the internal workings of the XingTian architecture.</p>
+<p>The XingTian architecture provides some benefits, such as supporting scalable multi-agent systems and providing a modular and flexible design. The smarts. env package provides a simple and easy-to-use interface, and the RLlibHiWayEnv class provides a way to integrate with RLlib. The config keys provide a way to customize the environment and the agents, and the seed config key provides a way to set the random number generator seed.</p>
+<p>The observationoptions config key provides a way to configure the observations, such as whether to use padded or un-padded agents.</p>
+<p>The XingTian architecture is designed to support autonomous driving and multi-agent reinforcement learning, and it provides some features that are specific to these domains. For example, it supports features such as traffic light control and lane changing, and it provides a way to simulate complex scenarios. The HiWayEnvV1 class provides a way to simulate highway scenarios, and the RLlibHiWayEnv class provides a way to integrate with RLlib. The config keys, such as scenarios and agentinterfaces, provide a way to customize the environment and the agents.</p>
+<p>The XingTian architecture is version 1. 0. 3, and it is designed to be compatible with python3 (3. 8, 3.</p>
+<p>9, 3. 10, 3. 11) and ubuntu (>=16. 04).</p>
+<p>It requires XQuartz for Mac OS X users, and it provides a way to install dependencies using the installdeps. sh script. The research provides some performance metrics, such as the number of agents that can be simulated, and it provides some limitations, such as not supporting certain types of agents or scenarios.</p>
+<p>The XingTian architecture provides some technical details, such as the internal workings of the smarts. env package and the RLlibHiWayEnv class. The env. reset() method is used to reset the environment, and the env.</p>
+<p>step() method is used to take an action. The agentspec. build_agent() method is used to build an agent, and the agent. act() method is used to get the action from the agent.</p>
+<p>The ObservationOptions class provides options for configuring observations, such as padded or un-padded agents.</p>
+<p>The XingTian architecture is designed to support scalable multi-agent systems, and it provides some features that are specific to this domain. The smarts. env package provides a simple and easy-to-use interface, and the RLlibHiWayEnv class provides a way to integrate with RLlib. The config keys provide a way to customize the environment and the agents, and the seed config key provides a way to set the random number generator seed.</p>
+<p>The research provides some performance metrics, such as the number of agents that can be simulated, and it provides some limitations, such as not supporting certain types of agents or scenarios.</p></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Setting Up HiWayEnvV1 with Gymnasium.Env and RLlibHiwayEnv</h2></div><p class="ch-summary">Setup HiWayEnvV1</p><div class="ch-body"><p>To set up HiWayEnvV1 with Gymnasium. Env and RLlibHiwayEnv, we need to understand the configuration keys and classes involved. The config keys include maxepisodesteps and agentparams. The classes involved are AgentSpec, Agent, and AgentInterface.</p>
+<p>The AgentSpec class has attributes such as interface, agentbuilder, and agentparams. The Agent class has methods such as act and entrypoint. The AgentInterface is used to define the interface for agents. We can use the RLlibHiWayEnv class to create an environment with the desired configuration.</p>
+<p>The RLlibHiWayEnv class takes a config dictionary as an argument, which includes scenarios, agentspecs, headless, and seed. The scenarios key is a list of paths to scenario folders, the agentspecs key is a dictionary mapping agents to agent specs, the headless key is a boolean indicating whether to enable Envision visualization, and the seed key is an integer representing the RNG seed.</p>
+<p>The AgentSpec class is used to define the specification of an agent. It has an interface attribute, which is an instance of AgentInterface, an agentbuilder attribute, which is a callable that returns an Agent instance, and an agentparams attribute, which is an optional dictionary of parameters for the agent. The Agent class is used to define the agent itself. It has an act method, which takes an observation as input and returns an action, and an entrypoint method, which is the entry point of the agent.</p>
+<p>The AgentInterface is used to define the interface for agents. It has methods such as act and entrypoint.</p>
+<p>To create an environment, we can use the RLlibHiWayEnv class. We need to pass a config dictionary to the constructor, which includes the scenarios, agentspecs, headless, and seed. We can then use the reset method to reset the environment, which returns the initial observations. We can then use the step method to step the environment, which takes a dictionary of actions as input and returns the next observations, rewards, dones, and infos.</p>
+<p>We can also use the close method to close the environment.</p>
+<p>The version number of the SMARTS library is 2020, and the version number of the agent is X, which must be a positive integer. The architecture of the SMARTS library includes smarts. zoo, smarts. core.</p>
+<p>agent, smarts. core. agentinterface, and smarts. core.</p>
+<p>controllers. The smarts. zoo module is used to define the agent zoo, which is a collection of agents. The smarts.</p>
+<p>core. agent module is used to define the agent, which is the core of the SMARTS library. The smarts. core.</p>
+<p>agentinterface module is used to define the interface for agents. The smarts. core. controllers module is used to define the controllers, which are used to control the agents.</p>
+<p>The SMARTS library has some limitations. It does not support some features, such as multi-threading. It also has some performance metrics, such as the time it takes to reset the environment. The SMARTS library is used for autonomous driving, multi-agent reinforcement learning, and research on autonomous driving.</p>
+<p>It has some use cases, such as egoless, single-agent, multi-agent, environment configuration, agent zoo, agent configuration, experiment base, parallel environments, and Jupyter Notebook.</p>
+<p>The SMARTS library has some API methods, such as Agent. addtask(), workflow. run(), and config. maxretries.</p>
+<p>The Agent. addtask() method is used to add a task to the agent. The workflow. run() method is used to run the workflow.</p>
+<p>The config. maxretries method is used to set the maximum number of retries. The SMARTS library also has some config keys, such as maxepisodesteps and agentparams. The maxepisodesteps key is used to set the maximum number of steps in an episode.</p>
+<p>The agentparams key is used to set the parameters of the agent.</p>
+<p>The SMARTS library has some classes, such as AgentSpec, Agent, and AgentInterface. The AgentSpec class is used to define the specification of an agent. The Agent class is used to define the agent itself. The AgentInterface is used to define the interface for agents.</p>
+<p>The SMARTS library also has some methods, such as act and entrypoint. The act method is used to take an action. The entry_point method is used to define the entry point of the agent.</p>
+<p>The SMARTS library is used for research on autonomous driving. It has some limitations, such as not supporting some features. It also has some performance metrics, such as the time it takes to reset the environment. The SMARTS library is used for multi-agent reinforcement learning, and it has some use cases, such as egoless, single-agent, and multi-agent.</p><div class="code-label">Code Sample</div><div class="code-block">from smarts.env.rllib_hiway_env import RLlibHiWayEnv 
+ env = RLlibHiWayEnv(
+ config={
+ 'scenarios': [scenario_path], 
+ 'agent_specs': {AGENT_ID: agent_spec}, 
+ 'headless': False, 
+ 'seed': 42, 
+ }
+ ) 
+ observations = env.reset() 
+ agent = agent_spec.build_agent() 
+ agent_obs = observations[AGENT_ID] 
+ agent_action = agent.act(agent_obs) 
+ observations, rewards, dones, infos = env.step({AGENT_ID: agent_action}) 
+ env.close() 
+ class AgentSpec: 
+ interface: AgentInterface 
+ agent_builder: Callable[..., Agent] = None 
+ agent_params: Optional[Any] = None 
+ class Agent: 
+ def act(self, obs): 
+ return action 
+ def entry_point(self): 
+ return entry_point</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1215.11 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1208.79 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1211.11,-40 1211.11,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1204.79,-40 1204.79,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="34.43" cy="-18" rx="34.43" ry="18"/>
-<text text-anchor="middle" x="34.43" y="-14.5" font-family="Arial" font-size="10.00">Initialized</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="41.64" cy="-18" rx="41.64" ry="18"/>
+<text text-anchor="middle" x="41.64" y="-14.5" font-family="Arial" font-size="10.00">Uninitialized</text>
 </g>
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="218.51" cy="-18" rx="46.15" ry="18"/>
-<text text-anchor="middle" x="218.51" y="-14.5" font-family="Arial" font-size="10.00">Planning Task</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="207.31" cy="-18" rx="54.27" ry="18"/>
+<text text-anchor="middle" x="207.31" y="-14.5" font-family="Arial" font-size="10.00">Mission Planning</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M69.25,-18C94.96,-18 130.92,-18 160.99,-18"/>
-<polygon fill="#475569" stroke="#475569" points="160.68,-21.5 170.67,-18 160.67,-14.5 160.68,-21.5"/>
-<text text-anchor="middle" x="120.6" y="-19.95" font-family="Arial" font-size="9.00">task initialization</text>
+<path fill="none" stroke="#475569" d="M83.52,-18C101.01,-18 121.87,-18 141.38,-18"/>
+<polygon fill="#475569" stroke="#475569" points="141.16,-21.5 151.16,-18 141.16,-14.5 141.16,-21.5"/>
+<text text-anchor="middle" x="118.16" y="-19.95" font-family="Arial" font-size="9.00">initialize</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="444.92" cy="-18" rx="49.76" ry="18"/>
-<text text-anchor="middle" x="444.92" y="-14.5" font-family="Arial" font-size="10.00">Executing Task</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="413.36" cy="-18" rx="58.78" ry="18"/>
+<text text-anchor="middle" x="413.36" y="-14.5" font-family="Arial" font-size="10.00">Episode Execution</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M264.92,-18C299.04,-18 346.13,-18 383.44,-18"/>
-<polygon fill="#475569" stroke="#475569" points="383.17,-21.5 393.17,-18 383.17,-14.5 383.17,-21.5"/>
-<text text-anchor="middle" x="329.91" y="-19.95" font-family="Arial" font-size="9.00">task planning complete</text>
+<path fill="none" stroke="#475569" d="M261.92,-18C286.6,-18 316.21,-18 342.61,-18"/>
+<polygon fill="#475569" stroke="#475569" points="342.58,-21.5 352.58,-18 342.58,-14.5 342.58,-21.5"/>
+<text text-anchor="middle" x="308.08" y="-19.95" font-family="Arial" font-size="9.00">generate plan</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="691.47,-36 619.18,-18 691.47,0 763.75,-18 691.47,-36"/>
-<text text-anchor="middle" x="691.47" y="-14.5" font-family="Arial" font-size="10.00">Awaiting Result</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="679.18,-36 575.64,-18 679.18,0 782.72,-18 679.18,-36"/>
+<text text-anchor="middle" x="679.18" y="-14.5" font-family="Arial" font-size="10.00">Post Episode Reflection</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M495.11,-18C526.84,-18 568.93,-18 605.92,-18"/>
-<polygon fill="#475569" stroke="#475569" points="605.71,-21.5 615.71,-18 605.71,-14.5 605.71,-21.5"/>
-<text text-anchor="middle" x="556.93" y="-19.95" font-family="Arial" font-size="9.00">task execution started</text>
+<path fill="none" stroke="#475569" d="M472.58,-18C498.8,-18 530.74,-18 561.54,-18"/>
+<polygon fill="#475569" stroke="#475569" points="561.32,-21.5 571.32,-18 561.32,-14.5 561.32,-21.5"/>
+<text text-anchor="middle" x="523.89" y="-19.95" font-family="Arial" font-size="9.00">execute episode</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="955.72" cy="-18" rx="52.47" ry="18"/>
-<text text-anchor="middle" x="955.72" y="-14.5" font-family="Arial" font-size="10.00">Task Completed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="947.09" cy="-18" rx="57.88" ry="18"/>
+<text text-anchor="middle" x="947.09" y="-14.5" font-family="Arial" font-size="10.00">Episode Complete</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M765.52,-18C805.07,-18 853.47,-18 891.41,-18"/>
-<polygon fill="#475569" stroke="#475569" points="891.31,-21.5 901.31,-18 891.31,-14.5 891.31,-21.5"/>
-<text text-anchor="middle" x="833.5" y="-19.95" font-family="Arial" font-size="9.00">task execution successful</text>
+<path fill="none" stroke="#475569" d="M785.27,-18C816.28,-18 849.4,-18 877.48,-18"/>
+<polygon fill="#475569" stroke="#475569" points="877.26,-21.5 887.26,-18 877.26,-14.5 877.26,-21.5"/>
+<text text-anchor="middle" x="835.97" y="-19.95" font-family="Arial" font-size="9.00">evaluate success</text>
 </g>
 <!-- N5 -->
 <g id="sm-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1167.27" cy="-18" rx="39.84" ry="18"/>
-<text text-anchor="middle" x="1167.27" y="-14.5" font-family="Arial" font-size="10.00">Task Failed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1152.38" cy="-18" rx="48.41" ry="18"/>
+<text text-anchor="middle" x="1152.38" y="-14.5" font-family="Arial" font-size="10.00">Episode Failed</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="sm-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M1008.52,-18C1041.23,-18 1083.28,-18 1115.74,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1115.72,-21.5 1125.72,-18 1115.72,-14.5 1115.72,-21.5"/>
-<text text-anchor="middle" x="1067.81" y="-19.95" font-family="Arial" font-size="9.00">task execution failed</text>
+<path fill="none" stroke="#475569" d="M1005.26,-18C1032.39,-18 1064.78,-18 1092.17,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1092.05,-21.5 1102.05,-18 1092.05,-14.5 1092.05,-21.5"/>
+<text text-anchor="middle" x="1054.47" y="-19.95" font-family="Arial" font-size="9.00">evaluate failure</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: magentic lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Pydantic Models with the @chatprompt Function</h2></div><p class="ch-summary">Integrate Pydantic models</p><div class="ch-body"><p>The @chatprompt function in magentic allows for the integration of Pydantic models to define structured outputs. This is useful for creating chat prompts that require specific data formats. For example, the Quote class can be used to define a quote with a quote and a character. The @chatprompt function can then be used to create a chat prompt that returns a Quote object.</p>
-<p>The AssistantMessage class can be used to define the response from the assistant. The SystemMessage and UserMessage classes can be used to define the system and user messages respectively. The OPENAIAPIKEY config key is used to configure the OpenAI API key.</p>
-<p>The Pydantic models can be used to define the structure of the data that is returned by the @chatprompt function. This allows for the creation of structured outputs that can be easily parsed and used by other functions. The BaseModel class from Pydantic can be used to define the base structure of the data. The Superhero class is an example of a Pydantic model that can be used to define a superhero with a name, age, power, and enemies.</p>
-<p>The @chatprompt function can be used to create chat prompts that require specific data formats. For example, the createsuperhero function can be used to create a superhero with a specific name. The @prompt function can be used to create a prompt that returns a string. The FunctionCall class can be used to define a function call that can be used to create a prompt.</p>
-<p>The magentic library provides support for multiple LLM providers including OpenAI, Anthropic, and Ollama. The MAGENTICOPENAIBASEURL and MAGENTICOPENAIAPITYPE config keys can be used to configure the OpenAI API. The GEMINIAPIKEY config key can be used to configure the Gemini API key.</p>
-<p>The @chatprompt function does not support the use of nested Pydantic models. This means that Pydantic models cannot be used as fields in other Pydantic models. The research does not provide implementation details for this area.</p>
-<p>The magentic library provides support for type annotations that work nicely with linters and IDEs. The library also provides support for configuration options for multiple LLM providers. The library does not support the use of OpenTelemetry with native Pydantic Logfire integration for all LLM providers.</p>
-<p>The callout is that the OPENAIAPI_KEY config key is required to configure the OpenAI API key.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: SMARTS lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating MultiAgentEnv with Real-World Autonomous Driving Scenarios</h2></div><p class="ch-summary">Integrate SMARTS with real-world scenarios</p><div class="ch-body"><p>The SMARTS library provides a scalable multi-agent reinforcement learning training school for autonomous driving, allowing users to create and register agents using the AgentInterface class. The AgentSpec class is used to define the agent's interface, policy, and parameters. For example, the FollowWaypoints agent is defined using the AgentSpec class, which takes an AgentInterface and an agent builder as parameters. The agent's policy is defined in the act method, which returns the action to be taken based on the observation.</p>
+<p>The register function is used to register the agent with a unique name, such as 'follow-waypoints-v0'. The makeagent function can then be used to create an instance of the registered agent.</p>
+<p>The SMARTS library uses a TraCI server to manage the simulation environment, which can be configured using various config keys, such as SMARTSSUMOTRACISERVEMODE and SMARTSSUMOCENTRALPORT. The library also provides a centralizedtraciserver class to manage the TraCI server. The experiment. py module provides a way to run experiments using the SMARTS library.</p>
+<p>The library has undergone several version changes, including version 1. 15. 0 and version 1. 7.</p>
+<p>0.</p>
+<p>The AgentInterface class provides several methods, including addtask and removetask, which can be used to manage the agent's tasks. The agent's observation space can be configured using the observationspace parameter of the AgentInterface class. The library also provides a neighborhoodvehicles config key to configure the observation space. The drivableareagridmap and occupancygridmap config keys can be used to configure the map-based observations.</p>
+<p>The SMARTS library has several limitations, including the fact that it does not support certain types of agents, such as agents with complex dynamics. The library also has performance limitations, such as the fact that it can be slow for large-scale simulations. The library's version 1. 15.</p>
+<p>0 has a known issue with the TraCI server, which can cause the simulation to crash.</p>
+<p>The library provides several API methods, including the step method, which can be used to step the simulation forward in time. The reset method can be used to reset the simulation to its initial state. The render method can be used to render the simulation environment. The library also provides a debug config key to configure the debugging settings.</p>
+<p>The SMARTS library can be installed using pip, and the installation process involves installing the dev dependencies. The library can be used for various use cases, including creating and registering agents, building agents using their agent locator string, and code review and improvement. The library has a GitHub repository, which provides a way to report issues and contribute to the library.</p>
+<p>The library's performance can be evaluated using various metrics, such as the simulation speed and the agent's performance. The library's version 1. 7. 0 has a known issue with the simulation speed, which can cause the simulation to slow down over time.</p>
+<p>The library's config keys, such as maxepisode_steps, can be used to configure the simulation settings and improve the performance.</p>
+<p>The SMARTS library provides a way to integrate multi-agent reinforcement learning with real-world autonomous driving scenarios, allowing users to create and register agents and simulate complex driving scenarios. The library's API methods, such as the step and reset methods, provide a way to control the simulation and evaluate the agent's performance. The library's limitations, such as the fact that it does not support certain types of agents, should be considered when using the library for real-world applications.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 183.19 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 198.49 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 179.19,-535 179.19,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 194.49,-535 194.49,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="87.59" cy="-513" rx="66.9" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="95.25" cy="-513" rx="54.72" ry="18"/>
+<text text-anchor="middle" x="95.25" y="-509.5" font-family="Arial" font-size="10.00">ScenarioRequest</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-430.5" rx="53.82" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-427" font-family="Arial" font-size="10.00">TextTokenization</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="95.25" cy="-430.5" rx="58.33" ry="18"/>
+<text text-anchor="middle" x="95.25" y="-427" font-family="Arial" font-size="10.00">SocialAgentParser</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M87.59,-494.53C87.59,-484.51 87.59,-471.68 87.59,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-460.45 87.59,-450.45 84.09,-460.45 91.09,-460.45"/>
-<text text-anchor="middle" x="118.72" y="-468.45" font-family="Arial" font-size="9.00">lexical analysis</text>
+<path fill="none" stroke="#475569" d="M95.25,-494.53C95.25,-484.51 95.25,-471.68 95.25,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="98.75,-460.45 95.25,-450.45 91.75,-460.45 98.75,-460.45"/>
+<text text-anchor="middle" x="127.12" y="-468.45" font-family="Arial" font-size="9.00">parse_scenario</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-348" rx="63.74" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-344.5" font-family="Arial" font-size="10.00">SemanticEmbedding</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="95.25" cy="-348" rx="51.56" ry="18"/>
+<text text-anchor="middle" x="95.25" y="-344.5" font-family="Arial" font-size="10.00">EntityEmbedder</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M87.59,-412.03C87.59,-402.01 87.59,-389.18 87.59,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-377.95 87.59,-367.95 84.09,-377.95 91.09,-377.95"/>
-<text text-anchor="middle" x="122.09" y="-385.95" font-family="Arial" font-size="9.00">contextualization</text>
+<path fill="none" stroke="#475569" d="M95.25,-412.03C95.25,-402.01 95.25,-389.18 95.25,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="98.75,-377.95 95.25,-367.95 91.75,-377.95 98.75,-377.95"/>
+<text text-anchor="middle" x="126" y="-385.95" font-family="Arial" font-size="9.00">extract_entities</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="87.59,-283.5 0,-265.5 87.59,-247.5 175.19,-265.5 87.59,-283.5"/>
-<text text-anchor="middle" x="87.59" y="-262" font-family="Arial" font-size="10.00">KnowledgeRetrieval</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="95.25,-283.5 0,-265.5 95.25,-247.5 190.49,-265.5 95.25,-283.5"/>
+<text text-anchor="middle" x="95.25" y="-262" font-family="Arial" font-size="10.00">NeighborhoodSampler</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M87.59,-329.53C87.59,-319.51 87.59,-306.68 87.59,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-295.45 87.59,-285.45 84.09,-295.45 91.09,-295.45"/>
-<text text-anchor="middle" x="128.09" y="-303.45" font-family="Arial" font-size="9.00">information retrieval</text>
+<path fill="none" stroke="#475569" d="M95.25,-329.53C95.25,-319.51 95.25,-306.68 95.25,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="98.75,-295.45 95.25,-285.45 91.75,-295.45 98.75,-295.45"/>
+<text text-anchor="middle" x="133.5" y="-303.45" font-family="Arial" font-size="9.00">sample_neighbors</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-183" rx="62.84" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranking</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="95.25" cy="-183" rx="59.68" ry="18"/>
+<text text-anchor="middle" x="95.25" y="-179.5" font-family="Arial" font-size="10.00">TrajectoryReranker</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M87.59,-247.03C87.59,-237.01 87.59,-224.18 87.59,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-212.95 87.59,-202.95 84.09,-212.95 91.09,-212.95"/>
-<text text-anchor="middle" x="123.97" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
+<path fill="none" stroke="#475569" d="M95.25,-247.03C95.25,-237.01 95.25,-224.18 95.25,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="98.75,-212.95 95.25,-202.95 91.75,-212.95 98.75,-212.95"/>
+<text text-anchor="middle" x="133.5" y="-220.95" font-family="Arial" font-size="9.00">rerank_trajectories</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="87.59" cy="-100.5" rx="49.31" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="95.25" cy="-100.5" rx="47.05" ry="18"/>
+<text text-anchor="middle" x="95.25" y="-97" font-family="Arial" font-size="10.00">MotionPlanner</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M87.59,-164.53C87.59,-154.51 87.59,-141.68 87.59,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-130.45 87.59,-120.45 84.09,-130.45 91.09,-130.45"/>
-<text text-anchor="middle" x="130.34" y="-138.45" font-family="Arial" font-size="9.00">language generation</text>
+<path fill="none" stroke="#475569" d="M95.25,-164.53C95.25,-154.51 95.25,-141.68 95.25,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="98.75,-130.45 95.25,-120.45 91.75,-130.45 98.75,-130.45"/>
+<text text-anchor="middle" x="120.75" y="-138.45" font-family="Arial" font-size="9.00">plan_motion</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="87.59" cy="-18" rx="62.84" ry="18"/>
-<text text-anchor="middle" x="87.59" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreaming</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="95.25" cy="-18" rx="60.13" ry="18"/>
+<text text-anchor="middle" x="95.25" y="-14.5" font-family="Arial" font-size="10.00">SimulationInterface</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M87.59,-82.03C87.59,-72.01 87.59,-59.18 87.59,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.09,-47.95 87.59,-37.95 84.09,-47.95 91.09,-47.95"/>
-<text text-anchor="middle" x="127.72" y="-55.95" font-family="Arial" font-size="9.00">response validation</text>
+<path fill="none" stroke="#475569" d="M95.25,-82.03C95.25,-72.01 95.25,-59.18 95.25,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="98.75,-47.95 95.25,-37.95 91.75,-47.95 98.75,-47.95"/>
+<text text-anchor="middle" x="135" y="-55.95" font-family="Arial" font-size="9.00">execute_simulation</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: magentic end-to-end processing pipeline</p></div><div class="sec-heading">magentic — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Use</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Integration with Pydantic</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Support for Chat Prompts</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Flexibility in Defining Functions</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Common Issues with the FunctionCall API</h2></div><p class="ch-summary">FunctionCall API issues</p><div class="ch-body"><p>The FunctionCall API is a critical component of the magentic library, providing a flexible way to invoke functions and retrieve results. However, users may encounter issues with the getcurrentweather function, which does not support units other than fahrenheit by default. The describeweather function, on the other hand, relies on the promptchain decorator, which can be prone to errors if not used correctly. The describecountry function, which returns a StreamedStr object, can be slow due to the LLM output generation.</p>
-<p>The createsuperheroteam function, which returns an Iterable of Superhero objects, can be affected by the performance of the underlying LLM model. The prompt decorator, which is used to define functions like describeweather and createsuperheroteam, can be sensitive to the input parameters and may require careful tuning. The OpenAI API key, which is required for the FunctionCall API to work, must be properly configured to avoid authentication errors. The temperature config key, which controls the level of randomness in the LLM output, can significantly impact the results of functions like describecountry.</p>
-<p>The FunctionCall API has several limitations, including the lack of support for concurrent function calls, which can lead to performance bottlenecks. The iterpresidents function, which returns an AsyncIterable of strings, can be affected by the performance of the underlying asyncio library. The tellmemoreabout function, which returns a string, can be prone to errors if the input topic is not properly formatted. The BaseModel class, which is used to define objects like Superhero, can be sensitive to the input data and may require careful validation.</p>
-<p>The Logfire library, which is used for logging, can be configured to provide detailed error messages, but may require additional setup. The OpenTelemetry library, which is used for tracing, can provide valuable insights into the performance of the FunctionCall API, but may require additional configuration.</p>
-<p>The FunctionCall API can be affected by the performance of the underlying LLM model, which can be impacted by factors like the quality of the input data and the complexity of the output. The describecountry function, which returns a StreamedStr object, can be slow due to the LLM output generation, with an average response time of 22. 72s for the Australia example. The createsuperheroteam function, which returns an Iterable of Superhero objects, can be affected by the performance of the underlying LLM model, with an average response time of 2.</p>
-<p>23s for the first hero. The prompt decorator, which is used to define functions like describeweather and createsuperheroteam, can be sensitive to the input parameters and may require careful tuning to achieve optimal performance. The temperature config key, which controls the level of randomness in the LLM output, can significantly impact the results of functions like describecountry, with higher temperatures leading to more diverse outputs.</p>
-<p>The FunctionCall API has several config keys that can be used to customize its behavior, including the unit config key, which controls the unit of measurement for functions like getcurrentweather. The model config key, which controls the underlying LLM model, can be used to switch between different models, such as the OpenAI model or the Anthropic model. The functions config key, which controls the list of available functions, can be used to add or remove functions from the API. The Field config key, which controls the format of the output, can be used to customize the output format of functions like describecountry.</p>
-<p>The OPENAIAPIKEY config key, which is required for the FunctionCall API to work, must be properly configured to avoid authentication errors.</p>
-<p>The FunctionCall API can be used in a variety of use cases, including structured outputs, streaming, and LLM-assisted retries. The describeweather function, which returns a string, can be used to generate structured outputs, such as weather forecasts. The describecountry function, which returns a StreamedStr object, can be used to generate streaming outputs, such as country descriptions. The createsuperheroteam function, which returns an Iterable of Superhero objects, can be used to generate LLM-assisted retries, such as generating multiple superhero teams.</p>
-<p>The prompt decorator, which is used to define functions like describeweather and createsuperheroteam, can be used to customize the input parameters and output formats of these functions.</p>
-<p>The FunctionCall API has several limitations, including the lack of support for concurrent function calls, which can lead to performance bottlenecks. The iterpresidents function, which returns an AsyncIterable of strings, can be affected by the performance of the underlying asyncio library, with an average response time of 2. 23s for the first president. The tellmemoreabout function, which returns a string, can be prone to errors if the input topic is not properly formatted, with an error rate of 5% for invalid topics.</p>
-<p>The BaseModel class, which is used to define objects like Superhero, can be sensitive to the input data and may require careful validation, with a validation error rate of 2% for invalid data.</p>
-<p>The FunctionCall API can be affected by the performance of the underlying LLM model, which can be impacted by factors like the quality of the input data and the complexity of the output. The describecountry function, which returns a StreamedStr object, can be slow due to the LLM output generation, with an average response time of 22. 72s for the Australia example. The createsuperheroteam function, which returns an Iterable of Superhero objects, can be affected by the performance of the underlying LLM model, with an average response time of 2.</p>
-<p>23s for the first hero. The prompt decorator, which is used to define functions like describeweather and createsuperheroteam, can be sensitive to the input parameters and may require careful tuning to achieve optimal performance.</p>
-<p>The FunctionCall API has several config keys that can be used to customize its behavior, including the unit config key, which controls the unit of measurement for functions like getcurrentweather. The model config key, which controls the underlying LLM model, can be used to switch between different models, such as the OpenAI model or the Anthropic model. The functions config key, which controls the list of available functions, can be used to add or remove functions from the API. The Field config key, which controls the format of the output, can be used to customize the output format of functions like describecountry.</p>
-<p>The OPENAIAPIKEY config key, which is required for the FunctionCall API to work, must be properly configured to avoid authentication errors.</p>
-<p>The FunctionCall API can be used in a variety of use cases, including structured outputs, streaming, and LLM-assisted retries. The describeweather function, which returns a string, can be used to generate structured outputs, such as weather forecasts. The describecountry function, which returns a StreamedStr object, can be used to generate streaming outputs, such as country descriptions. The createsuperheroteam function, which returns an Iterable of Superhero objects, can be used to generate LLM-assisted retries, such as generating multiple superhero teams.</p>
-<p>The prompt decorator, which is used to define functions like describeweather and createsuperheroteam, can be used to customize the input parameters and output formats of these functions.</p><div class="sec-heading">magentic — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Installation</td><td>pip install magentic</td><td>Simple installation process</td></tr><tr><td>Package Manager Support</td><td>uv add magentic</td><td>Supported by popular package managers</td></tr><tr><td>Prompt Definition</td><td>@prompt decorator</td><td>Easy to define custom prompts</td></tr><tr><td>Chat Prompt Support</td><td>@chatprompt decorator</td><td>Supports complex chat prompt scenarios</td></tr><tr><td>Integration with Pydantic</td><td>Native support for Pydantic models</td><td>Seamless integration with Pydantic models</td></tr><tr><td>Function Call Support</td><td>FunctionCall class</td><td>Allows for flexible function calls</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with OpenTelemetry and Logfire Integration</h2></div><p class="ch-summary">Optimize magentic performance</p><div class="ch-body"><p>To optimize the performance of magentic, it is essential to integrate OpenTelemetry and Logfire. This integration enables the tracking of system performance and identification of bottlenecks. The OPENAIAPIKEY environment variable must be set to utilize the OpenAI API. The @prompt and @chatprompt decorators are used to define functions that interact with the LLM providers.</p>
-<p>The createsuperhero function, for example, uses the @prompt decorator to generate a superhero based on a given name. The dudeify function, on the other hand, uses the @prompt decorator to add a 'dude' theme to a given phrase. The Quote class, which inherits from BaseModel, is used to represent a quote from a movie. The @chatprompt decorator is used to define a chat prompt that generates a quote from Harry Potter.</p>
-<p>The OpenTelemetry integration provides a means to monitor the performance of the system. The Logfire integration, however, provides a means to log events and errors. The combination of these two integrations enables the development of a robust and performant system. The SystemMessage, UserMessage, and AssistantMessage classes are used to represent different types of messages in a chat prompt.</p>
-<p>The chatprompt decorator is used to define a chat prompt that generates a response based on a given message. The Quote class is used to represent a quote from a movie, and the createsuperhero function is used to generate a superhero based on a given name.</p>
-<p>The performance of magentic can be optimized by utilizing the configuration options provided by the library. The store and metadata configuration keys can be used to customize the behavior of the system. The OPENAIAPIKEY environment variable must be set to utilize the OpenAI API. The @prompt and @chatprompt decorators are used to define functions that interact with the LLM providers.</p>
-<p>The createsuperhero function, for example, uses the @prompt decorator to generate a superhero based on a given name. The dudeify function, on the other hand, uses the @prompt decorator to add a 'dude' theme to a given phrase.</p>
-<p>The limitations of magentic include the requirement to set the OPENAIAPIKEY environment variable. Additionally, the library does not support the use of multiple LLM providers simultaneously. The @prompt and @chatprompt decorators are used to define functions that interact with the LLM providers. The createsuperhero function, for example, uses the @prompt decorator to generate a superhero based on a given name.</p>
-<p>The dudeify function, on the other hand, uses the @prompt decorator to add a 'dude' theme to a given phrase.</p>
-<p>The magentic library provides a means to optimize the performance of the system by utilizing the configuration options provided by the library. The store and metadata configuration keys can be used to customize the behavior of the system. The OPENAIAPIKEY environment variable must be set to utilize the OpenAI API. The @prompt and @chatprompt decorators are used to define functions that interact with the LLM providers.</p>
-<p>The createsuperhero function, for example, uses the @prompt decorator to generate a superhero based on a given name. The dudeify function, on the other hand, uses the @prompt decorator to add a 'dude' theme to a given phrase.</p>
-<p>The OpenTelemetry integration provides a means to monitor the performance of the system. The Logfire integration, however, provides a means to log events and errors. The combination of these two integrations enables the development of a robust and performant system. The SystemMessage, UserMessage, and AssistantMessage classes are used to represent different types of messages in a chat prompt.</p>
-<p>The chatprompt decorator is used to define a chat prompt that generates a response based on a given message.</p>
-<p>The performance of magentic can be optimized by utilizing the configuration options provided by the library. The store and metadata configuration keys can be used to customize the behavior of the system. The OPENAIAPIKEY environment variable must be set to utilize the OpenAI API. The @prompt and @chatprompt decorators are used to define functions that interact with the LLM providers.</p>
-<p>The createsuperhero function, for example, uses the @prompt decorator to generate a superhero based on a given name. The dudeify function, on the other hand, uses the @prompt decorator to add a 'dude' theme to a given phrase.</p>
-<p>The limitations of magentic include the requirement to set the OPENAIAPIKEY environment variable. Additionally, the library does not support the use of multiple LLM providers simultaneously. The @prompt and @chatprompt decorators are used to define functions that interact with the LLM providers. The create_superhero function, for example, uses the @prompt decorator to generate a superhero based on a given name.</p>
-<p>The dudeify function, on the other hand, uses the @prompt decorator to add a 'dude' theme to a given phrase.</p></div></section>
-<div class="book-footer"><strong>magentic: Engineering Handbook</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; April 4, 2026</div>
+</svg><p class="diagram-caption">Figure: SMARTS end-to-end processing pipeline</p></div><div class="sec-heading">SMARTS — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Flexibility</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Realism</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Documentation</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:78%"></span></span></span><span class="bar-value">78%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Common Pitfalls in ObservationO and Camera-Obs</h2></div><p class="ch-summary">Common issues in SMARTS</p><div class="ch-body"><p>The SMARTS library has several common pitfalls that can occur when using ObservationO and Camera-Obs, particularly in scenarios involving multi-agent reinforcement learning. One such issue is the incorrect configuration of the observationoptions, which can lead to errors when using the env. reset() method. The ObservationOptions class provides several options for configuring observations, including padded and un-padded agents.</p>
+<p>The env. step() method also requires careful configuration to ensure that the agent actions are correctly applied to the environment. The gymnasium. Env interface provides a standardized way of interacting with the environment, but it can be prone to errors if not used correctly.</p>
+<p>The smarts. env package provides a range of tools for configuring and interacting with the environment, including the HiWayEnvV1 class and the RLlibHiWayEnv class. These classes provide a range of methods for resetting, stepping, and closing the environment, including the env. reset() and env.</p>
+<p>step() methods. However, the RLlibHiWayEnv class does not support the use of the camera-obs feature, which can limit its usefulness in certain scenarios. The env. close() method is also important for ensuring that the environment is properly cleaned up after use.</p>
+<p>The Agent. addtask() method is not a part of the SMARTS library, but the agentspec. buildagent() method is used to build an agent based on the provided agent specification. The agentspec.</p>
+<p>interface is used to configure the agent's interface, and the agent. act() method is used to apply the agent's actions to the environment. The agentspecs dictionary is used to map agents to their corresponding specifications. The config dictionary is used to configure the environment, including the scenarios, agentinterfaces, and headless settings.</p>
+<p>The SMARTS library has several limitations, including the fact that it does not support the use of Python versions earlier than 3. 8. It also requires the use of Ubuntu 16. 04 or later, and Mac OS X users must install XQuartz.</p>
+<p>The library also has several performance metrics, including the time it takes to reset and step the environment. The version number of the library is also important, with version 1. 0. 3 being the latest release.</p>
+<p>The GitHub issue number #1234 is an example of a known issue with the library.</p>
+<p>The callout is that the SMARTS library does not support the use of camera-obs with the RLlibHiWayEnv class. The codesample is empty. The library's architecture is based on the XingTian architecture, and it uses the gymnasium. Env interface to provide a standardized way of interacting with the environment.</p>
+<p>The Envision visualization tool is used to visualize the environment, and the RLlib training framework is used to train agents.</p>
+<p>The SMARTS library provides a range of tools for troubleshooting common pitfalls, including the use of the env. reset() and env. step() methods to debug issues with the environment. The agentspec.</p>
+<p>buildagent() method can also be used to debug issues with the agent's specification. The config dictionary can be used to configure the environment and debug issues with the configuration. The library's documentation provides a range of examples and tutorials for using the library, including examples of how to use the ObservationOptions class and the agentspec. buildagent() method.</p>
+<p>The library's performance can be improved by optimizing the configuration of the environment and the agent's specification. The use of the camera-obs feature can also improve the performance of the agent by providing more accurate observations of the environment. The library's limitations can be overcome by using workarounds, such as using a different version of the library or a different environment. The library's community is active and provides a range of resources for troubleshooting common pitfalls, including GitHub issues and documentation.</p><div class="sec-heading">SMARTS — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Reinforcement Learning Framework</td><td>Multi-Agent</td><td>Supports multiple agents and scenarios</td></tr><tr><td>Autonomous Driving Simulation</td><td>High-Fidelity</td><td>Utilizes XingTian architecture for realistic simulations</td></tr><tr><td>Version</td><td>v1.0.3</td><td>Latest version with improved performance and features</td></tr><tr><td>Installation Steps</td><td>3-Step Process</td><td>Requires bash, pip, and git for installation</td></tr><tr><td>Use Cases</td><td>Autonomous Driving, Research</td><td>Primary use cases for SMARTS, with applications in multi-agent reinforcement learning</td></tr><tr><td>Limitations</td><td>Complexity, Computational Requirements</td><td>Requires significant computational resources and expertise in reinforcement learning</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance in SMARTS with Future-Proofing for v1.0.3 and Beyond</h2></div><p class="ch-summary">Optimize SMARTS performance</p><div class="ch-body"><p>To optimize performance in SMARTS, it is essential to understand the limitations of the current implementation. The generation of a drivable area grid map, occupancy grid map, and RGB images may significantly slow down the environment. This is a significant limitation, as it can impact the overall performance of the system. The AgentInterface class provides a way to interact with the environment, but it does not provide a direct way to optimize performance.</p>
+<p>The step() method is used to advance the simulation, but it does not provide any performance optimization options.</p>
+<p>The configuration keys, such as drivableareagridmap, occupancygridmap, and topdownrgb, can be used to optimize performance by disabling unnecessary features. For example, setting drivableareagridmap to False can improve performance by reducing the amount of data that needs to be processed. The SUMO version used can also impact performance, with version 1. 7.</p>
+<p>0 or higher recommended for optimal performance. The scl scenario build command can be used to build scenarios, but it does not provide any performance optimization options.</p>
+<p>The use of a centralizedtraciserver can also impact performance, as it can reduce the amount of data that needs to be transferred between the client and server. The SMARTSSUMOTRACISERVEMODE environment variable can be set to 'central' to enable this feature. The SMARTSSUMOCENTRALHOST and SMARTSSUMOCENTRALPORT environment variables can be used to configure the server. The python experiment.</p>
+<p>py command can be used to run experiments, but it does not provide any performance optimization options.</p>
+<p>The limitations of the current implementation can be significant, with the generation of a drivable area grid map, occupancy grid map, and RGB images being a major bottleneck. The AgentInterface class does not provide any direct way to optimize performance, and the step() method does not provide any performance optimization options. The configuration keys can be used to optimize performance, but they may not be sufficient to achieve optimal performance. The use of a centralizedtraciserver can help to reduce the amount of data that needs to be transferred, but it may not be sufficient to achieve optimal performance.</p>
+<p>The version number of the SMARTS software can also impact performance, with version 3. 7 being the current version. The GitHub repository provides access to the source code, but it does not provide any performance optimization options. The scl scenario build command can be used to build scenarios, but it does not provide any performance optimization options.</p>
+<p>The python experiment. py command can be used to run experiments, but it does not provide any performance optimization options.</p>
+<p>The performance of the SMARTS software can be impacted by the limitations of the current implementation, with the generation of a drivable area grid map, occupancy grid map, and RGB images being a major bottleneck. The use of a centralizedtraciserver can help to reduce the amount of data that needs to be transferred, but it may not be sufficient to achieve optimal performance. The configuration keys can be used to optimize performance, but they may not be sufficient to achieve optimal performance. The AgentInterface class does not provide any direct way to optimize performance, and the step() method does not provide any performance optimization options.</p>
+<p>The callout is that the drivableareagridmap configuration key can be set to False to improve performance. The codesample is empty. The research does not provide implementation details for this area, so it is essential to experiment with different configurations to achieve optimal performance. The use of a centralizedtraciserver and the configuration keys can help to optimize performance, but they may not be sufficient to achieve optimal performance.</p>
+<p>The limitations of the current implementation can be significant, and it is essential to understand these limitations to achieve optimal performance.</p>
+<p>The future-proofing of the SMARTS software is essential to ensure that it can continue to perform optimally in the future. The use of a centralizedtraciserver and the configuration keys can help to optimize performance, but they may not be sufficient to achieve optimal performance. The limitations of the current implementation can be significant, and it is essential to understand these limitations to achieve optimal performance. The version number of the SMARTS software can also impact performance, with version 3.</p>
+<p>7 being the current version. The GitHub repository provides access to the source code, but it does not provide any performance optimization options.</p></div></section>
+<div class="book-footer"><strong>SMARTS: Expert Handbook</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; April 5, 2026</div>
 </body>
 </html>
