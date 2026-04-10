@@ -2,407 +2,422 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>julep: Practitioner Guide</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "julep: Practitioner Guide"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>cognita: Field Guide</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "cognita: Field Guide"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/9c551e92687e1e4b98b697d185a7702184f6c2b194e8155d449cc245c087e137/julep-ai/julep" alt="julep logo" onerror="this.style.display='none'"/><div class="cover-lib-name">julep</div><div class="cover-suffix">Practitioner Guide</div><div class="cover-rule"></div><p class="cover-subtitle">A refreshing drink</p><p class="cover-desc">The Julep SDK is used to build agent-based AI workflows, which can be used to orchestrate complex, multi-step processes with Large Language Models (LLMs) and tools.  The SDK provides a workflow engine that can handle branching logic, loops, parallel execution, and integration of external APIs.  To get started, users need to sign up on the Julep Dashboard to obtain an API key, then install the SDK using pip install julep for Python or npm install @julep/sdk for Node.</p><div class="cover-tagline">Taste the classic</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> April 9, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Julep was built to solve the problem of building AI workflows.</div><div class="intro-body"><p>Julep is an agent-based AI workflow platform that enables the creation of complex, multi-step processes with Large Language Models (LLMs) and tools. The platform is designed to solve the problem of building AI workflows that can remember past interactions and handle sophisticated tasks with branching logic, loops, parallel execution, and integration of external APIs. Julep provides a workflow engine that allows users to define and execute tasks using a variety of tools and APIs, making it a versatile solution for a range of use cases, including Retrieval-Augmented Generation and building data pipelines.</p>
-<p>The Julep platform consists of several components, including the Julep Dashboard, Julep CLI, Julep SDK, and REST API, which provide a comprehensive set of tools for building, deploying, and managing AI workflows. The platform is designed to be extensible, allowing users to integrate their own tools and APIs into their workflows. Julep also provides a self-hosting option, which allows users to run the platform on their own infrastructure, providing greater control and flexibility. To get started with Julep, users can sign up for an API key on the Julep Dashboard and install the Julep SDK for their preferred language, such as Python or Node.</p>
-<p>js.</p>
-<p>One of the key technical differences between Julep and other AI workflow platforms is its use of an agent-based architecture, which allows for more complex and dynamic workflows. Julep's workflow engine is designed to handle tasks with branching logic, loops, and parallel execution, making it well-suited for tasks that require a high degree of flexibility and adaptability. Additionally, Julep's integration with Large Language Models (LLMs) provides a powerful tool for natural language processing and generation tasks. The platform's use of a workflow engine and agent-based architecture also makes it well-suited for tasks that require a high degree of autonomy and decision-making, such as building AI agents that can handle complex tasks and remember past interactions.</p>
-<p>The target audience for Julep includes developers, researchers, and data scientists who are interested in building AI workflows and agent-based systems. The platform is designed to be accessible to users with a range of technical backgrounds, from beginners to experienced developers. Julep provides a range of documentation and resources, including tutorials, API documentation, and community support, to help users get started with the platform. Overall, Julep provides a powerful and flexible platform for building AI workflows and agent-based systems, and is well-suited for a range of use cases, from Retrieval-Augmented Generation to building data pipelines and creating AI agents that can handle complex tasks.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/julep-ai/julep">https://github.com/julep-ai/julep</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building Agent-Based AI Workflows with the Julep SDK</h2></div><p class="ch-summary">Julep SDK for AI workflows</p><div class="ch-body"><p>The Julep SDK is used to build agent-based AI workflows, which can be used to orchestrate complex, multi-step processes with Large Language Models (LLMs) and tools. The SDK provides a workflow engine that can handle branching logic, loops, parallel execution, and integration of external APIs. To get started, users need to sign up on the Julep Dashboard to obtain an API key, then install the SDK using pip install julep for Python or npm install @julep/sdk for Node. js.</p>
-<p>The Julep platform also provides a dashboard and CLI for managing workflows. The SDK is licensed under the Apache 2. 0 License, and the Julep backend and dashboard will shut down on December 31, 2025.</p>
-<p>The Julep SDK supports various use cases, including building data pipelines, creating AI workflows, and building an AI agent that can handle complex tasks, remember past interactions, and use other tools or APIs. The SDK also supports Retrieval-Augmented Generation, which can be used to generate text based on a given prompt. To define an agent and its task workflow, users can use the SDK or YAML. The workflow engine can be invoked through the SDK to execute the task.</p>
-<p>The Julep Platform provides a storage system for storing workflow data, and an execution engine for running workflows.</p>
-<p>One of the key features of the Julep SDK is its ability to handle complex workflows with multiple tasks and dependencies. The SDK provides a range of API methods, including Agent. addtask(), workflow. run(), and config.</p>
-<p>maxretries, which can be used to define and execute workflows. The SDK also supports parallel execution, which can be used to speed up workflow execution. However, the Julep SDK does not support real-time workflow monitoring, which can make it difficult to debug workflows. The SDK is available in version @julep/sdk, and the Julep platform is licensed under the Apache 2.</p>
-<p>0 License.</p>
-<p>The Julep SDK provides a range of configuration options, including DEMOAPIKEY and DEMO*, which can be used to customize workflow execution. The SDK also provides a range of API methods, including workflow. getstatus() and workflow. cancel(), which can be used to manage workflows.</p>
-<p>However, the Julep SDK does not support workflow versioning, which can make it difficult to manage different versions of a workflow. The SDK is available for Python and Node. js, and can be installed using pip install julep or npm install @julep/sdk.</p>
-<p>The Julep Platform provides a range of tools and features for building and managing AI workflows, including a dashboard, CLI, and workflow engine. The platform also provides a storage system for storing workflow data, and an execution engine for running workflows. However, the Julep backend and dashboard will shut down on December 31, 2025, which can make it difficult to manage workflows in the long term. The platform is licensed under the Apache 2.</p>
-<p>0 License, and the SDK is available in version @julep/sdk.</p>
-<p>The Julep SDK can be used to build a range of AI applications, including chatbots, research agents, and trip-planning assistants. The SDK provides a range of API methods, including Agent. add_task() and workflow. run(), which can be used to define and execute workflows.</p>
-<p>The SDK also supports Retrieval-Augmented Generation, which can be used to generate text based on a given prompt. However, the Julep SDK does not support real-time workflow monitoring, which can make it difficult to debug workflows. The SDK is available for Python and Node. js, and can be installed using pip install julep or npm install @julep/sdk.</p>
-<p>The Julep Platform provides a range of benefits for building and managing AI workflows, including the ability to handle complex workflows with multiple tasks and dependencies, and the ability to integrate with external APIs. The platform also provides a range of tools and features, including a dashboard, CLI, and workflow engine. However, the Julep backend and dashboard will shut down on December 31, 2025, which can make it difficult to manage workflows in the long term. The platform is licensed under the Apache 2.</p>
-<p>0 License, and the SDK is available in version @julep/sdk.</p>
-<p>In terms of performance, the Julep SDK can handle large workflows with multiple tasks and dependencies. The SDK also supports parallel execution, which can be used to speed up workflow execution. However, the Julep SDK does not support real-time workflow monitoring, which can make it difficult to debug workflows. The SDK is available for Python and Node.</p>
-<p>js, and can be installed using pip install julep or npm install @julep/sdk. The Julep platform is licensed under the Apache 2. 0 License, and the SDK is available in version @julep/sdk.</p></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting Large Language Models with the Julep Workflow Engine</h2></div><p class="ch-summary">Julep workflow engine</p><div class="ch-body"><p>The Julep workflow engine is designed to architect large language models with agent-based AI workflows. It supports Retrieval-Augmented Generation and allows for the creation of AI agents that remember past interactions. The engine provides a flexible way to define workflows using the SDK or YAML. The Julep platform consists of the Julep Dashboard, Julep CLI, Julep SDK, and REST API.</p>
-<p>The Julep SDK can be installed using pip install julep for Python or npm install @julep/sdk for Node. js.</p>
-<p>The workflow engine enables the orchestration of complex, multi-step processes with Large Language Models and tools. It allows for the integration of external APIs and supports branching logic, loops, and parallel execution. The engine also provides a way to define agents and their task workflows using the SDK or YAML. The Julep platform has a limitation that the backend and dashboard will shut down on December 31, 2025.</p>
-<p>The Julep SDK provides a way to define workflows and execute tasks using the workflow engine.</p>
-<p>The Julep workflow engine provides a way to create AI agents that can handle sophisticated tasks. It supports the use of custom knowledge and allows for the creation of AI agents that can remember past interactions. The engine also provides a way to integrate external APIs and supports branching logic, loops, and parallel execution. The Julep platform has a limitation that it does not support the use of certain APIs in production.</p>
-<p>The Julep SDK provides a way to define workflows and execute tasks using the workflow engine.</p>
-<p>The Julep platform consists of the Julep Dashboard, Julep CLI, Julep SDK, and REST API. The Julep SDK can be installed using pip install julep for Python or npm install @julep/sdk for Node. js. The Julep workflow engine provides a way to define workflows using the SDK or YAML.</p>
-<p>It supports the use of custom knowledge and allows for the creation of AI agents that can remember past interactions. The engine also provides a way to integrate external APIs and supports branching logic, loops, and parallel execution.</p>
-<p>The Julep workflow engine has a limitation that it does not support the use of certain APIs in production. The Julep SDK provides a way to define workflows and execute tasks using the workflow engine. The engine also provides a way to define agents and their task workflows using the SDK or YAML. The Julep platform has a limitation that the backend and dashboard will shut down on December 31, 2025.</p>
-<p>The Julep SDK provides a way to define workflows and execute tasks using the workflow engine.</p>
-<p>The Julep platform provides a way to create AI agents that can handle complex tasks. It supports the use of custom knowledge and allows for the creation of AI agents that can remember past interactions. The Julep workflow engine provides a way to define workflows using the SDK or YAML. It supports the use of external APIs and provides a way to integrate them into the workflow.</p>
-<p>The engine also provides a way to define agents and their task workflows using the SDK or YAML.</p>
-<p>The Julep workflow engine provides a way to orchestrate complex, multi-step processes with Large Language Models and tools. It supports the use of custom knowledge and allows for the creation of AI agents that can remember past interactions. The engine also provides a way to integrate external APIs and supports branching logic, loops, and parallel execution. The Julep platform has a limitation that it does not support the use of certain APIs in production.</p>
-<p>The Julep SDK provides a way to define workflows and execute tasks using the workflow engine.</p>
-<p>The Julep platform has a limitation that the backend and dashboard will shut down on December 31, 2025. The Julep SDK provides a way to define workflows and execute tasks using the workflow engine. The engine also provides a way to define agents and their task workflows using the SDK or YAML. The Julep workflow engine provides a way to create AI agents that can handle sophisticated tasks.</p>
-<p>It supports the use of custom knowledge and allows for the creation of AI agents that can remember past interactions.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://repository-images.githubusercontent.com/671064065/471bf988-a1ee-4be6-b575-636d6e6fa074" alt="cognita logo" onerror="this.style.display='none'"/><div class="cover-lib-name">cognita</div><div class="cover-suffix">Field Guide</div><div class="cover-rule"></div><p class="cover-subtitle">Understanding human cognition</p><p class="cover-desc">-compose
+USECASES: 
+RAG customizations 
+production ready environment 
+local setup 
+no-code UI support 
+incremental indexing 
+AudioParser 
+VideoParser 
+Metadatastore 
+Embedding and Reranking using Infninty Server 
+multi-modal vision parser using GPT-4
+
+CLASSESANDMETHODS: 
+CONFIGKEYS: 
+OPENAIAPIKEY
+compose. env
+VERSIONNUMBERS: 
+25+
+ARCHITECTURE: 
+cognita-db
+qdrant-server
+cognita-backend
+cognita-frontend
+ollama
+infinity-server
+Data Sources
+Metadata
+CODESNIPPETS: 
+
+LIMITATIONS: 
+INSTALLSTEPS: 
+Install Docker and docker-compose for your system from: Docker Compose
+Run the following command to start the services: docker-compose --env-file compose.</p><div class="cover-tagline">Know your mind</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> April 10, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">TrueFoundry built Cognita for document retrieval.</div><div class="intro-body"><p>Cognita is an open-source project developed by TrueFoundry, first released with a set of features to support multiple document retrievers and incremental indexing. The specific problem it was built to solve is the efficient retrieval of documents based on similarity search, query decomposition, and document reranking. This is achieved through the use of various components such as the API server, data indexing, and the LLM gateway, which work together to provide a production-ready environment for document retrieval.</p>
+<p>The architecture of Cognita is technically different from alternatives due to its use of a vector database, indexing job, and model gateway. These components enable Cognita to support state-of-the-art open-source embeddings and reranking, as well as the use of large language models. The project also utilizes a metadata store to keep track of already indexed documents and prevent re-indexing, reducing the compute burden. Additionally, Cognita supports incremental indexing, which allows for the ingestion of entire documents in batches.</p>
+<p>Cognita is designed to be used in various environments, including local setups and production-ready environments. It offers no-code UI support, making it accessible to a wide range of users. The project also supports multiple use cases, such as RAG customizations, audio and video parsing, and multi-modal vision parsing using GPT-4. The use of Docker and docker-compose for installation and deployment makes it easy to set up and manage Cognita in different environments.</p>
+<p>The target audience for Cognita includes developers and users who need to efficiently retrieve documents based on various criteria. The project's support for multiple document retrievers, incremental indexing, and state-of-the-art embeddings and reranking makes it a useful tool for a wide range of applications. However, it is worth noting that the project is no longer actively maintained, which may impact its future development and support. Despite this, Cognita remains a valuable resource for those looking to build efficient document retrieval systems.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/truefoundry/cognita">https://github.com/truefoundry/cognita</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking Cognita with Query Controller</h2></div><div class="ch-body"><p>-compose</p>
+<p>USECASES:</p>
+<p>RAG customizations</p>
+<p>production ready environment</p>
+<p>local setup</p>
+<p>no-code UI support</p>
+<p>incremental indexing</p>
+<p>AudioParser</p>
+<p>VideoParser</p>
+<p>Metadatastore</p>
+<p>Embedding and Reranking using Infninty Server</p>
+<p>multi-modal vision parser using GPT-4</p>
+<p>CLASSESANDMETHODS:</p>
+<p>CONFIGKEYS:</p>
+<p>OPENAIAPIKEY</p>
+<p>compose.</p>
+<p>VERSIONNUMBERS:</p>
+<p>25+</p>
+<p>ARCHITECTURE:</p>
+<p>cognita-db</p>
+<p>qdrant-server</p>
+<p>cognita-backend</p>
+<p>cognita-frontend</p>
+<p>ollama</p>
+<p>infinity-server</p>
+<p>Data Sources</p>
+<p>Metadata</p>
+<p>CODESNIPPETS:</p>
+<p>LIMITATIONS:</p>
+<p>INSTALLSTEPS:</p>
+<p>Install Docker and docker-compose for your system from: Docker Compose</p>
+<p>Run the following command to start the services: docker-compose --env-file compose.</p>
+<p>USECASES:</p>
+<p>Support for multiple</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1497.52 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1578.88 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1493.52,-40 1493.52,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1574.88,-40 1574.88,4 -4,4"/>
 <!-- N0 -->
-<g id="seq-node1" class="node">
+<g id="cluster-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="85.39" cy="-18" rx="85.39" ry="18"/>
-<text text-anchor="middle" x="85.39" y="-14.5" font-family="Arial" font-size="10.00">Obtain Julep API Credentials</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="80.43" cy="-18" rx="80.43" ry="18"/>
+<text text-anchor="middle" x="80.43" y="-14.5" font-family="Arial" font-size="10.00">QuestionAnsweringService</text>
 </g>
 <!-- N1 -->
-<g id="seq-node2" class="node">
+<g id="cluster-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="319.19" cy="-18" rx="94.41" ry="18"/>
-<text text-anchor="middle" x="319.19" y="-14.5" font-family="Arial" font-size="10.00">Install Julep SDK via npm or pip</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="352.11" cy="-18" rx="68.25" ry="18"/>
+<text text-anchor="middle" x="352.11" y="-14.5" font-family="Arial" font-size="10.00">KnowledgeGraphStore</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
-<g id="seq-edge1" class="edge">
+<g id="cluster-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M171.06,-18C184.73,-18 199.04,-18 213.12,-18"/>
-<polygon fill="#475569" stroke="#475569" points="212.84,-21.5 222.84,-18 212.84,-14.5 212.84,-21.5"/>
-<text text-anchor="middle" x="197.78" y="-19.95" font-family="Arial" font-size="9.00">then</text>
+<path fill="none" stroke="#475569" d="M161.25,-18C196.42,-18 237.63,-18 272.65,-18"/>
+<polygon fill="#475569" stroke="#475569" points="272.28,-21.5 282.28,-18 272.28,-14.5 272.28,-21.5"/>
+<text text-anchor="middle" x="222.36" y="-19.95" font-family="Arial" font-size="9.00">retrieves context from</text>
 </g>
 <!-- N2 -->
-<g id="seq-node3" class="node">
+<g id="cluster-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="583.61" cy="-18" rx="95.76" ry="18"/>
-<text text-anchor="middle" x="583.61" y="-14.5" font-family="Arial" font-size="10.00">Define Julep Agent Configuration</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="610.56" cy="-18" rx="68.7" ry="18"/>
+<text text-anchor="middle" x="610.56" y="-14.5" font-family="Arial" font-size="10.00">ModelServiceGateway</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
-<g id="seq-edge2" class="edge">
+<g id="cluster-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M413.82,-18C434.06,-18 455.61,-18 476.3,-18"/>
-<polygon fill="#475569" stroke="#475569" points="476.18,-21.5 486.18,-18 476.18,-14.5 476.18,-21.5"/>
-<text text-anchor="middle" x="450.73" y="-19.95" font-family="Arial" font-size="9.00">configure</text>
+<path fill="none" stroke="#475569" d="M420.83,-18C454.44,-18 495.24,-18 530.3,-18"/>
+<polygon fill="#475569" stroke="#475569" points="529.96,-21.5 539.95,-18 529.95,-14.5 529.96,-21.5"/>
+<text text-anchor="middle" x="481.11" y="-19.95" font-family="Arial" font-size="9.00">provides metadata to</text>
 </g>
 <!-- N3 -->
-<g id="seq-node4" class="node">
+<g id="cluster-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="887.11,-36 749.13,-18 887.11,0 1025.09,-18 887.11,-36"/>
-<text text-anchor="middle" x="887.11" y="-14.5" font-family="Arial" font-size="10.00">Trigger Julep Workflow Execution</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="864.77,-36 775.27,-18 864.77,0 954.28,-18 864.77,-36"/>
+<text text-anchor="middle" x="864.77" y="-14.5" font-family="Arial" font-size="10.00">NeuralSearchEngine</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
-<g id="seq-edge3" class="edge">
+<g id="cluster-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M679.59,-18C696.89,-18 715.32,-18 733.79,-18"/>
-<polygon fill="#475569" stroke="#475569" points="733.77,-21.5 743.77,-18 733.77,-14.5 733.77,-21.5"/>
-<text text-anchor="middle" x="714.25" y="-19.95" font-family="Arial" font-size="9.00">initialize</text>
+<path fill="none" stroke="#475569" d="M679.48,-18C704.75,-18 734,-18 761.65,-18"/>
+<polygon fill="#475569" stroke="#475569" points="761.46,-21.5 771.46,-18 761.46,-14.5 761.46,-21.5"/>
+<text text-anchor="middle" x="727.27" y="-19.95" font-family="Arial" font-size="9.00">sends query to</text>
 </g>
 <!-- N4 -->
-<g id="seq-node5" class="node">
+<g id="cluster-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1154.41" cy="-18" rx="79.08" ry="18"/>
-<text text-anchor="middle" x="1154.41" y="-14.5" font-family="Arial" font-size="10.00">Invoke Julep API Endpoint</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1145.77" cy="-18" rx="38.49" ry="18"/>
+<text text-anchor="middle" x="1145.77" y="-14.5" font-family="Arial" font-size="10.00">FaissIndex</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
-<g id="seq-edge4" class="edge">
+<g id="cluster-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M1028.92,-18C1040.82,-18 1052.64,-18 1063.99,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1063.64,-21.5 1073.64,-18 1063.64,-14.5 1063.64,-21.5"/>
-<text text-anchor="middle" x="1050.21" y="-19.95" font-family="Arial" font-size="9.00">call</text>
+<path fill="none" stroke="#475569" d="M956.74,-18C1003,-18 1057.39,-18 1095.74,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1095.59,-21.5 1105.59,-18 1095.59,-14.5 1095.59,-21.5"/>
+<text text-anchor="middle" x="1030.78" y="-19.95" font-family="Arial" font-size="9.00">performs similarity search on</text>
 </g>
 <!-- N5 -->
-<g id="seq-node6" class="node">
+<g id="cluster-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1393.75" cy="-18" rx="95.76" ry="18"/>
-<text text-anchor="middle" x="1393.75" y="-14.5" font-family="Arial" font-size="10.00">Deploy Self&#45;Hosted Julep Server</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1332.1" cy="-18" rx="44.35" ry="18"/>
+<text text-anchor="middle" x="1332.1" y="-14.5" font-family="Arial" font-size="10.00">IndexingTask</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
-<g id="seq-edge5" class="edge">
+<g id="cluster-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M1233.78,-18C1250.51,-18 1268.45,-18 1286.03,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1286,-21.5 1296,-18 1286,-14.5 1286,-21.5"/>
-<text text-anchor="middle" x="1265.74" y="-19.95" font-family="Arial" font-size="9.00">handle</text>
+<path fill="none" stroke="#475569" d="M1184.51,-18C1210.92,-18 1246.62,-18 1276.17,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1276.07,-21.5 1286.07,-18 1276.07,-14.5 1276.07,-21.5"/>
+<text text-anchor="middle" x="1236" y="-19.95" font-family="Arial" font-size="9.00">updates index in</text>
+</g>
+<!-- N6 -->
+<g id="cluster-node7" class="node">
+<title>N6</title>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1531.04" cy="-18" rx="39.84" ry="18"/>
+<text text-anchor="middle" x="1531.04" y="-14.5" font-family="Arial" font-size="10.00">CognitaAPI</text>
+</g>
+<!-- N5&#45;&gt;N6 -->
+<g id="cluster-edge6" class="edge">
+<title>N5&#45;&gt;N6</title>
+<path fill="none" stroke="#475569" d="M1376.81,-18C1407.19,-18 1447.76,-18 1479.53,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1479.28,-21.5 1489.28,-18 1479.28,-14.5 1479.28,-21.5"/>
+<text text-anchor="middle" x="1433.82" y="-19.95" font-family="Arial" font-size="9.00">returns response to</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: julep integration flow</p></div></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Installing and Configuring the Julep CLI with API Keys</h2></div><p class="ch-summary">Configure Julep CLI</p><div class="ch-body"><p>To start using the Julep CLI, you need to install it and configure it with your API keys. The installation process involves signing up on the Julep Dashboard to obtain your API key. Once you have the API key, you can install the Julep SDK for your preferred language, such as Python or Node. js.</p>
-<p>The Julep SDK provides a workflow engine that allows you to define and execute agent-based AI workflows. The workflow engine supports Large Language Models (LLMs) and tools, enabling you to create complex workflows. The Julep CLI also provides a REST API for interacting with the workflow engine.</p>
-<p>The Julep CLI configuration involves setting up environment variables, such as the DEMOAPIKEY, to authenticate with the Julep Dashboard. You can also define your agent and its task workflow using the SDK or YAML. The Julep CLI provides a self-hosting guide for running Julep on your own infrastructure. The self-hosting guide involves cloning the repository, navigating to the root directory, setting up environment variables, creating a Docker volume for backup, and running the project using Docker Compose.</p>
-<p>The Julep CLI also provides a set of API methods for interacting with the workflow engine, such as Agent. addtask() and workflow. run(). The Julep CLI also supports configuration keys, such as config.</p>
-<p>maxretries, to customize the workflow engine. The Julep CLI has a limitation that the Julep backend and dashboard will shut down on December 31, 2025. The Julep CLI also has a weak default secrets key in production, which can be a security risk.</p>
-<p>The Julep CLI provides a set of use cases, such as building data pipelines, creating AI workflows, and building an AI agent that can handle complex tasks. The Julep CLI also supports Retrieval-Augmented Generation, which enables you to create AI agents that can remember past interactions and use other tools or APIs. The Julep CLI provides a set of tools, such as the Open Responses API and Gemini models, to support Retrieval-Augmented Generation.</p>
-<p>The Julep CLI has a version number of @julep/sdk, which provides a set of features and bug fixes. The Julep CLI also has a set of performance metrics, such as the time it takes to execute a workflow. The Julep CLI provides a set of benchmarks, such as the time it takes to execute a workflow, to measure its performance.</p>
-<p>The Julep CLI provides a set of limitations, such as the fallback for DEMO_* placeholder credentials, which can be a security risk. The Julep CLI also has a limitation that it does not support cardinality violations in SQL queries, which can cause errors. The Julep CLI provides a set of error handling mechanisms, such as try-except blocks, to handle errors.</p>
-<p>The Julep CLI provides a set of best practices, such as setting up environment variables and creating a Docker volume for backup, to ensure reliable execution. The Julep CLI also provides a set of tools, such as the OpenAPI model and TyeSpecs, to support task execution and error handling. The Julep CLI provides a set of community pages and cookbooks to provide documentation and support.</p>
-<p>The Julep CLI provides a set of advanced features, such as modular workflows and tool orchestration, to support complex workflows. The Julep CLI also provides a set of features, such as parallel and scalable execution, to support large-scale workflows. The Julep CLI provides a set of limitations, such as the weak default secrets key in production, which can be a security risk.</p><div class="code-label">Code Sample</div><div class="code-block">pip install julep 
-
-import julep 
-
-julep.Agent.add_task('task1') 
-
-julep.workflow.run() 
-
-julep.config.max_retries = 5 
-
-julep.Agent.add_task('task2') 
-
-julep.workflow.run() 
-
-julep.config.max_retries = 10 
-
-print(julep.config.max_retries) 
-
-julep.Agent.add_task('task3') 
-
-julep.workflow.run() 
-
-julep.config.max_retries = 15 
-
-print(julep.config.max_retries) 
-
-npm install @julep/sdk 
-
-const julep = require('@julep/sdk') 
-
-julep.Agent.addTask('task1') 
-
-julep.workflow.run() 
-
-julep.config.maxRetries = 5 
-
-julep.Agent.addTask('task2') 
-
-julep.workflow.run() 
-
-julep.config.maxRetries = 10 
-
-console.log(julep.config.maxRetries) 
-
-yarn add @julep/sdk 
-
-const julep = require('@julep/sdk') 
-
-julep.Agent.addTask('task1') 
-
-julep.workflow.run() 
-
-julep.config.maxRetries = 5 
-
-julep.Agent.addTask('task2') 
-
-julep.workflow.run() 
-
-julep.config.maxRetries = 10 
-
-console.log(julep.config.maxRetries)</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: cognita internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Scalable Architectures with Cognita Components</h2></div><p class="ch-summary">Scalable architecture design</p><div class="ch-body"><p>Designing scalable architectures with Cognita components involves understanding the various components that make up the Cognita system, including the API Server, Metadatastore, and Data Indexing. The Cognita system uses a modular architecture, with each component designed to be highly scalable and flexible. The use of Docker and docker-compose allows for easy deployment and management of the various components. The Cognita system also supports incremental indexing, which reduces the compute burden by ingesting entire documents in batches and preventing re-indexing of already indexed documents.</p>
+<p>The system also supports multi-modal vision parser using GPT-4 and embedding and reranking using Infninty Server.</p>
+<p>The Cognita system provides a production-ready environment along with no-code UI support, making it easy to deploy and manage. The system also supports customization of dataloaders, embedders, and parsers, allowing developers to tailor the system to their specific needs. The use of pydantic v2 provides a robust and flexible framework for building and deploying the Cognita system. The system also supports hosting services for variety embeddings and reranking services available on Hugging Face.</p>
+<p>One of the key limitations of the Cognita system is that it is no longer actively maintained, which can make it difficult to resolve issues or add new features. The system also does not support certain features, such as real-time indexing, which can be a limitation for certain use cases. The use of Docker and docker-compose can also be a limitation for certain environments, such as those with limited resources. The Cognita system also requires a significant amount of configuration and setup, which can be time-consuming and require significant expertise.</p>
+<p>The Cognita system provides a number of API methods and config keys that can be used to customize and extend the system. For example, the aunassociatedatasourcewithcollection method can be used to associate a data source with a collection. The local. metadata.</p>
+<p>yaml config key can be used to configure the metadata store. The system also provides a number of other API methods and config keys, such as the Query Controller and the OPENAIAPIKEY config key.</p>
+<p>The Cognita system has a number of use cases, including quick experimentation and prototyping on Jupyter notebooks, production environments, and local setups. The system also supports no-code UI support, incremental indexing, and multi-modal vision parser using GPT-4. The system also supports embedding and reranking using Infninty Server and hosting services for variety embeddings and reranking services available on Hugging Face. The system can be used for a variety of applications, including natural language processing, computer vision, and recommender systems.</p>
+<p>The Cognita system uses a number of technologies, including Docker, docker-compose, and pydantic v2. The system also uses a number of other technologies, such as PostgreSQL and Prisma. The system is designed to be highly scalable and flexible, and can be deployed on a variety of environments, including local machines, cloud providers, and container orchestration platforms. The system also provides a number of tools and APIs for monitoring and managing the system, including the API Server and the Metadatastore.</p>
+<p>The Cognita system has a number of performance metrics, including the time it takes to index a document and the accuracy of the embedding and reranking models. The system also provides a number of benchmarks, including the time it takes to train a model and the accuracy of the model on a test dataset. The system also provides a number of other performance metrics, including the number of documents that can be indexed per second and the number of queries that can be processed per second.</p>
+<p>In terms of limitations, the Cognita system does not support real-time indexing, which can be a limitation for certain use cases. The system also requires a significant amount of configuration and setup, which can be time-consuming and require significant expertise. The system also has a number of other limitations, including the fact that it is no longer actively maintained, which can make it difficult to resolve issues or add new features. The system also does not support certain features, such as support for multiple document retrievers that use similarity search, query decomposition, and document reranking.</p></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Setting Up Local Environments with Docker-Compose</h2></div><div class="ch-body"><p>RE:</p>
+<p>cognita-db</p>
+<p>qdrant-server</p>
+<p>cognita-backend</p>
+<p>cognita-frontend</p>
+<p>ollama</p>
+<p>infinity-server</p>
+<p>Data Sources</p>
+<p>Metadata</p>
+<p>CODESNIPPETS:</p>
+<p>LIMITATIONS:</p>
+<p>INSTALLSTEPS:</p>
+<p>Install Docker and docker-compose for your system from: Docker Compose</p>
+<p>Run the following command to start the services: docker-compose --env-file compose.</p>
+<p>USE_CASES:</p>
+<p>Support for multiple document retrievers that use Similarity Search, Query Decompostion, Document Reranking, etc</p>
+<p>Support for SOTA OpenSource embeddings and reranking from mixedbread-ai</p>
+<p>Support for using LLMs using ollama</p>
+<p>Support for incremental indexing that ingests entire documents in batches (reduces compute burden), keeps track of already indexed documents and prevents re-indexing of those do</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 930.76 98.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 94)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1156.98 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-94 926.76,-94 926.76,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1152.98,-40 1152.98,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="34.43" cy="-45" rx="34.43" ry="18"/>
-<text text-anchor="middle" x="34.43" y="-41.5" font-family="Arial" font-size="10.00">Initialized</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="34.43" cy="-18" rx="34.43" ry="18"/>
+<text text-anchor="middle" x="34.43" y="-14.5" font-family="Arial" font-size="10.00">Initialized</text>
 </g>
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="215.96" cy="-45" rx="46.6" ry="18"/>
-<text text-anchor="middle" x="215.96" y="-41.5" font-family="Arial" font-size="10.00">Task Planning</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="224.06" cy="-18" rx="47.96" ry="18"/>
+<text text-anchor="middle" x="224.06" y="-14.5" font-family="Arial" font-size="10.00">Goal Selection</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M69.19,-45C94.12,-45 128.64,-45 157.83,-45"/>
-<polygon fill="#475569" stroke="#475569" points="157.63,-48.5 167.63,-45 157.63,-41.5 157.63,-48.5"/>
-<text text-anchor="middle" x="119.1" y="-46.95" font-family="Arial" font-size="9.00">agent activation</text>
+<path fill="none" stroke="#475569" d="M68.97,-18C95.45,-18 133.03,-18 164.44,-18"/>
+<polygon fill="#475569" stroke="#475569" points="164.19,-21.5 174.19,-18 164.19,-14.5 164.19,-21.5"/>
+<text text-anchor="middle" x="122.48" y="-19.95" font-family="Arial" font-size="9.00">cognita activation</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="413.27" cy="-45" rx="50.21" ry="18"/>
-<text text-anchor="middle" x="413.27" y="-41.5" font-family="Arial" font-size="10.00">Task Execution</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="426.79" cy="-18" rx="54.27" ry="18"/>
+<text text-anchor="middle" x="426.79" y="-14.5" font-family="Arial" font-size="10.00">Action Execution</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M262.75,-45C289.11,-45 322.57,-45 351.16,-45"/>
-<polygon fill="#475569" stroke="#475569" points="351.15,-48.5 361.15,-45 351.15,-41.5 351.15,-48.5"/>
-<text text-anchor="middle" x="312.81" y="-46.95" font-family="Arial" font-size="9.00">plan generation</text>
+<path fill="none" stroke="#475569" d="M272.38,-18C298.77,-18 332.05,-18 360.85,-18"/>
+<polygon fill="#475569" stroke="#475569" points="360.55,-21.5 370.55,-18 360.55,-14.5 360.55,-21.5"/>
+<text text-anchor="middle" x="322.27" y="-19.95" font-family="Arial" font-size="9.00">plan generation</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="630.91,-63 557.98,-45 630.91,-27 703.83,-45 630.91,-63"/>
-<text text-anchor="middle" x="630.91" y="-41.5" font-family="Arial" font-size="10.00">Task Evaluation</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="669.82,-36 586.06,-18 669.82,0 753.59,-18 669.82,-36"/>
+<text text-anchor="middle" x="669.82" y="-14.5" font-family="Arial" font-size="10.00">Knowledge Update</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M463.74,-45C487.79,-45 517.37,-45 544.88,-45"/>
-<polygon fill="#475569" stroke="#475569" points="544.59,-48.5 554.59,-45 544.59,-41.5 544.59,-48.5"/>
-<text text-anchor="middle" x="510.73" y="-46.95" font-family="Arial" font-size="9.00">task execution</text>
+<path fill="none" stroke="#475569" d="M481.28,-18C508.09,-18 541.38,-18 572.44,-18"/>
+<polygon fill="#475569" stroke="#475569" points="572.25,-21.5 582.25,-18 572.25,-14.5 572.25,-21.5"/>
+<text text-anchor="middle" x="533.56" y="-19.95" font-family="Arial" font-size="9.00">action invocation</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="870.3" cy="-72" rx="52.47" ry="18"/>
-<text text-anchor="middle" x="870.3" y="-68.5" font-family="Arial" font-size="10.00">Task Completed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="910.91" cy="-18" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="910.91" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M682.54,-50.76C719.48,-54.96 769.69,-60.67 808.74,-65.11"/>
-<polygon fill="#475569" stroke="#475569" points="808.13,-68.56 818.46,-66.22 808.92,-61.61 808.13,-68.56"/>
-<text text-anchor="middle" x="760.83" y="-65.95" font-family="Arial" font-size="9.00">evaluation success</text>
+<path fill="none" stroke="#475569" d="M755.79,-18C785.27,-18 817.82,-18 845.37,-18"/>
+<polygon fill="#475569" stroke="#475569" points="845.34,-21.5 855.34,-18 845.34,-14.5 845.34,-21.5"/>
+<text text-anchor="middle" x="805.34" y="-19.95" font-family="Arial" font-size="9.00">result evaluation</text>
 </g>
 <!-- N5 -->
 <g id="sm-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="870.3" cy="-18" rx="39.84" ry="18"/>
-<text text-anchor="middle" x="870.3" y="-14.5" font-family="Arial" font-size="10.00">Task Failed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1103.73" cy="-18" rx="45.25" ry="18"/>
+<text text-anchor="middle" x="1103.73" y="-14.5" font-family="Arial" font-size="10.00">Task Abortion</text>
 </g>
-<!-- N3&#45;&gt;N5 -->
+<!-- N4&#45;&gt;N5 -->
 <g id="sm-edge5" class="edge">
-<title>N3&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M682.54,-39.24C723.07,-34.63 779.58,-28.2 819.81,-23.63"/>
-<polygon fill="#475569" stroke="#475569" points="820.17,-27.11 829.71,-22.5 819.38,-20.16 820.17,-27.11"/>
-<text text-anchor="middle" x="760.83" y="-36.95" font-family="Arial" font-size="9.00">evaluation failure</text>
+<title>N4&#45;&gt;N5</title>
+<path fill="none" stroke="#475569" d="M965.06,-18C990.5,-18 1020.96,-18 1046.76,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1046.73,-21.5 1056.73,-18 1046.73,-14.5 1046.73,-21.5"/>
+<text text-anchor="middle" x="1011.61" y="-19.95" font-family="Arial" font-size="9.00">error handling</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: julep lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating External APIs with Julep Agents using Retrieval-Augmented Generation</h2></div><p class="ch-summary">Integrate APIs with Julep</p><div class="ch-body"><p>To integrate external APIs with Julep agents, you can use the Retrieval-Augmented Generation feature, which allows agents to remember past interactions and handle sophisticated tasks. The Julep platform provides a workflow engine that enables the orchestration of complex, multi-step processes with Large Language Models (LLMs) and tools. The agents-api module provides methods such as validatepyexpression to validate Python expressions. The integrations-service module connects to external services and tools.</p>
-<p>The memory-store module provides persistent storage with PostgreSQL and vector capabilities. The scheduler module is based on Temporal and provides a workflow engine for execution.</p>
-<p>The Julep SDK provides a simple way to define agents and their task workflows. The SDK can be installed using pip install julep for Python or npm install @julep/sdk for Node. js. The Julep Dashboard provides a user interface to manage agents and workflows.</p>
-<p>The Julep CLI provides a command-line interface to interact with the Julep platform. The REST API provides a programmatic interface to interact with the Julep platform.</p>
-<p>The Julep platform has some limitations, such as the Julep backend and dashboard will shut down on December 31, 2025. The DEMO* placeholder credentials have a fallback, but the default secrets key is weak in production. The cardinality violations in SQL queries can cause issues. Blocking the event loop can also cause problems.</p>
-<p>The Julep platform does not support some features, such as parallel execution of tasks.</p>
-<p>The Julep platform provides some configuration keys, such as PYTHONPATH, to customize the behavior of the platform. The pyproject. toml, . ruff.</p>
-<p>toml, and . pre-commit-config. yaml files can be used to configure the platform. The Julep platform uses a versioning system, with version numbers in the format MAJOR.</p>
-<p>MINOR. PATCH. The Julep platform has some performance metrics, such as the number of tasks executed per second.</p>
-<p>The Julep platform provides some API methods, such as Agent. addtask() and workflow. run(), to interact with agents and workflows. The config.</p>
-<p>maxretries configuration key can be used to customize the number of retries for failed tasks. The Julep platform provides some classes, such as MyClass, with methods such as mymethod(). The Julep platform uses a modular architecture, with modules such as agents-api, julep-cli, and integrations-service.</p>
-<p>The Julep platform provides some tools, such as poe, to manage consistency and formatting of code. The Julep platform uses a code formatting tool, such as ruff, to format code. The Julep platform provides some scripts, such as src/scripts/generate, to generate code. The Julep platform uses a virtual environment, such as .</p>
-<p>venv, to manage dependencies.</p>
-<p>The Julep platform provides some use cases, such as building AI workflows and agents, orchestrating complex AI operations, and managing state across interactions. The Julep platform can be used to integrate with existing data infrastructure and tools. The Julep platform provides some features, such as Persistent Memory, Modular Workflows, and Tool Orchestration, to support these use cases.</p>
-<p>The Julep platform has some future plans, such as supporting parallel and scalable execution of tasks. The Julep platform plans to improve the performance and reliability of the platform. The Julep platform plans to add more features, such as support for more programming languages and integration with more tools and services.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: cognita lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Ollama and Infinity Server for Enhanced Reranking</h2></div><p class="ch-summary">Enhance reranking with Ollama and Infinity Server</p><div class="ch-body"><p>To integrate Ollama and Infinity Server for enhanced reranking, we need to understand the architecture of Cognita Components, which includes Data Indexing, Question-Answering using API Server, and Code Structure. The research highlights the use of docker-compose for local setup and production-ready environment. We can use the docker-compose --env-file compose. env up command to start the services.</p>
+<p>The modelsconfig. yaml file is used to configure the models, and the embedderconfig is used to configure the embedder. The provider config key is used to specify the provider for the embedder.</p>
+<p>The Cognita Components include Data Indexing, which is responsible for indexing the data, and Question-Answering using API Server, which is responsible for answering questions based on the indexed data. The Code Structure includes the use of payload. py for payload management. The research also mentions the use of getdevicename() function to get the device name, which can be mps, cuda, npu, hpu, or cpu.</p>
+<p>The research highlights the use of ainvoke, agetrelevantdocuments, aretrievedocuments, and agetrelevantdocuments methods for answering questions. The ainvoke method is used to invoke the agent, while the agetrelevantdocuments method is used to get the relevant documents. The aretrievedocuments method is used to retrieve the documents, and the agetrelevantdocuments method is used to get the relevant documents.</p>
+<p>The use of docker-compose --env-file compose. env --profile ollama --profile infinity up command is highlighted in the research for integrating Ollama and Infinity Server. The --profile ollama and --profile infinity flags are used to specify the profiles for Ollama and Infinity Server respectively. The research also mentions the use of pydantic v2 for payload management.</p>
+<p>The research mentions the limitation that the aunassociatedatasourcewithcollection function in prismastore. py removes only the data source from the collection but does not remove the associated data points ingested in the vector DB. This limitation can cause issues with data consistency.</p>
+<p>The use of multi-modal vision parser using GPT-4 is highlighted in the research for parsing multi-modal data. The research also mentions the use of AudioParser and VideoParser for parsing audio and video data respectively. The Metadatastore is used to store the metadata for the data.</p>
+<p>The research highlights the use of incremental indexing for indexing the data incrementally. The RAG component is used for reranking the answers. The RAG component uses the Similarity Search, Query Decompostion, and Document Reranking methods for reranking the answers.</p>
+<p>The callout is that the operation 'signoutmps()' does not support input type 'int64' in MPS backend which is a limitation of the MPS backend.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 184.46 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 227.83 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 180.46,-535 180.46,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 223.83,-535 223.83,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="88.23" cy="-513" rx="66.9" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="109.92" cy="-513" rx="66.9" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-430.5" rx="48.86" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-427" font-family="Arial" font-size="10.00">JulepTokenizer</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-430.5" rx="54.27" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-427" font-family="Arial" font-size="10.00">NLPTokenization</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M88.23,-494.53C88.23,-484.51 88.23,-471.68 88.23,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-460.45 88.23,-450.45 84.73,-460.45 91.73,-460.45"/>
-<text text-anchor="middle" x="105.48" y="-468.45" font-family="Arial" font-size="9.00">tokenize</text>
+<path fill="none" stroke="#475569" d="M109.92,-494.53C109.92,-484.51 109.92,-471.68 109.92,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-460.45 109.92,-450.45 106.42,-460.45 113.42,-460.45"/>
+<text text-anchor="middle" x="141.04" y="-468.45" font-family="Arial" font-size="9.00">lexical analysis</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-348" rx="60.58" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-344.5" font-family="Arial" font-size="10.00">EmbeddingEncoder</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-348" rx="63.74" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-344.5" font-family="Arial" font-size="10.00">SemanticEmbedding</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M88.23,-412.03C88.23,-402.01 88.23,-389.18 88.23,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-377.95 88.23,-367.95 84.73,-377.95 91.73,-377.95"/>
-<text text-anchor="middle" x="103.61" y="-385.95" font-family="Arial" font-size="9.00">encode</text>
+<path fill="none" stroke="#475569" d="M109.92,-412.03C109.92,-402.01 109.92,-389.18 109.92,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-377.95 109.92,-367.95 106.42,-377.95 113.42,-377.95"/>
+<text text-anchor="middle" x="163.92" y="-385.95" font-family="Arial" font-size="9.00">contextualized embedding</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="88.23,-283.5 0,-265.5 88.23,-247.5 176.46,-265.5 88.23,-283.5"/>
-<text text-anchor="middle" x="88.23" y="-262" font-family="Arial" font-size="10.00">KnowledgeRetriever</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="109.92,-283.5 0,-265.5 109.92,-247.5 219.83,-265.5 109.92,-283.5"/>
+<text text-anchor="middle" x="109.92" y="-262" font-family="Arial" font-size="10.00">KnowledgeGraphRetrieval</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M88.23,-329.53C88.23,-319.51 88.23,-306.68 88.23,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-295.45 88.23,-285.45 84.73,-295.45 91.73,-295.45"/>
-<text text-anchor="middle" x="103.61" y="-303.45" font-family="Arial" font-size="9.00">retrieve</text>
+<path fill="none" stroke="#475569" d="M109.92,-329.53C109.92,-319.51 109.92,-306.68 109.92,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-295.45 109.92,-285.45 106.42,-295.45 113.42,-295.45"/>
+<text text-anchor="middle" x="153.42" y="-303.45" font-family="Arial" font-size="9.00">entity disambiguation</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-183" rx="60.13" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranker</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-183" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranking</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M88.23,-247.03C88.23,-237.01 88.23,-224.18 88.23,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-212.95 88.23,-202.95 84.73,-212.95 91.73,-212.95"/>
-<text text-anchor="middle" x="101.36" y="-220.95" font-family="Arial" font-size="9.00">rerank</text>
+<path fill="none" stroke="#475569" d="M109.92,-247.03C109.92,-237.01 109.92,-224.18 109.92,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-212.95 109.92,-202.95 106.42,-212.95 113.42,-212.95"/>
+<text text-anchor="middle" x="146.29" y="-220.95" font-family="Arial" font-size="9.00">relevance scoring</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-100.5" rx="46.6" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-97" font-family="Arial" font-size="10.00">TextGenerator</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-100.5" rx="49.31" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M88.23,-164.53C88.23,-154.51 88.23,-141.68 88.23,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-130.45 88.23,-120.45 84.73,-130.45 91.73,-130.45"/>
-<text text-anchor="middle" x="106.61" y="-138.45" font-family="Arial" font-size="9.00">generate</text>
+<path fill="none" stroke="#475569" d="M109.92,-164.53C109.92,-154.51 109.92,-141.68 109.92,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-130.45 109.92,-120.45 106.42,-130.45 113.42,-130.45"/>
+<text text-anchor="middle" x="153.04" y="-138.45" font-family="Arial" font-size="9.00">response formulation</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="88.23" cy="-18" rx="55.17" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-14.5" font-family="Arial" font-size="10.00">ResponseStream</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="109.92" cy="-18" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreaming</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M88.23,-82.03C88.23,-72.01 88.23,-59.18 88.23,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-47.95 88.23,-37.95 84.73,-47.95 91.73,-47.95"/>
-<text text-anchor="middle" x="112.98" y="-55.95" font-family="Arial" font-size="9.00">postprocess</text>
+<path fill="none" stroke="#475569" d="M109.92,-82.03C109.92,-72.01 109.92,-59.18 109.92,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-47.95 109.92,-37.95 106.42,-47.95 113.42,-47.95"/>
+<text text-anchor="middle" x="150.04" y="-55.95" font-family="Arial" font-size="9.00">response validation</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: julep end-to-end processing pipeline</p></div><div class="sec-heading">julep — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:70%"></span></span></span><span class="bar-value">70%</span></div><div class="bar-row"><span class="bar-label">Documentation Quality</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Overall Satisfaction</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Avoiding Production Gotchas with Julep SDK Version Management and Self-Hosting</h2></div><p class="ch-summary">Manage Julep SDK versions</p><div class="ch-body"><p>To avoid production gotchas with Julep SDK, it's essential to manage versions correctly. The Julep backend and dashboard will shut down on December 31, 2025, which means that users need to self-host Julep to continue using it. The Self-Hosting Guide provides steps to run Julep on your own infrastructure. One crucial step is to install the Julep SDK for your preferred language, such as Python using pip install julep or Node.</p>
-<p>js using npm install @julep/sdk. The SDK provides methods like Agent. addtask() and workflow. run() to define and execute tasks.</p>
-<p>The Julep Platform consists of agents, workflows, storage, and an execution engine. The workflow engine is responsible for executing tasks, and it's essential to configure it correctly to avoid errors. The config keys like API key and DEMOAPIKEY are used to authenticate and authorize requests. However, the DEMO* placeholder credentials are only a fallback and should not be used in production.</p>
-<p>The Julep SDK provides a way to define agents and their task workflows using YAML or the SDK itself. The Agent class has methods like add_task() and run() to execute tasks. The workflow class has methods like run() and stop() to control the workflow. The Julep Platform also provides a REST API to interact with the platform.</p>
-<p>One of the limitations of Julep is that it does not support cardinality violations in SQL queries, which can lead to errors. Additionally, blocking the event loop can cause performance issues. The Julep SDK provides a way to handle errors using try-catch blocks and error callbacks.</p>
-<p>The Self-Hosting Guide provides steps to self-host Julep, including cloning the repository, navigating to the root directory, setting up environment variables, creating a Docker volume for backup, and running the project using Docker Compose. The guide also provides information on how to configure the Julep Platform, including setting up the workflow engine and storage.</p>
-<p>The Julep Platform provides a way to build data pipelines, create AI workflows, and build AI agents that can handle complex tasks. The platform also provides a way to integrate with other tools and APIs using the workflow engine. However, the platform has limitations, such as the shutdown of the Julep backend and dashboard on December 31, 2025.</p>
-<p>The Julep SDK provides a way to create AI agents that can remember past interactions and handle sophisticated tasks with branching logic, loops, parallel execution, and integration of external APIs. The SDK also provides a way to use Retrieval-Augmented Generation to generate text based on a given prompt.</p>
-<p>The Julep Platform provides a way to build agent-based AI workflows, orchestrate complex, multi-step processes with Large Language Models (LLMs) and tools. The platform also provides a way to create AI agents that can handle complex tasks, remember past interactions, and use other tools or APIs.</p><div class="sec-heading">julep — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Architecture</td><td>Agent-based AI workflows, Large Language Models (LLMs), workflow engine</td><td>Julep platform, Julep Dashboard, Julep CLI, Julep SDK, REST API</td></tr><tr><td>Installation Steps</td><td>Sign Up &amp; API Key, Install SDK (pip install julep or npm install @julep/sdk)</td><td>Self-Host Julep: Follow the Self-Hosting Guide to run Julep on your own infrastructure</td></tr><tr><td>Use Cases</td><td>Research agent, Trip-planning assistant, Chatbot with custom knowledge</td><td>Building agent-based AI workflows, orchestrate complex processes with LLMs and tools</td></tr><tr><td>Limitations</td><td>Julep backend and dashboard will shut down on December 31, 2025</td><td>Apache 2.0 License</td></tr><tr><td>Version Numbers</td><td>@julep/sdk, julep</td><td>December 31, 2025</td></tr><tr><td>Code Snippets</td><td>pip install julep, npm install @julep/sdk, yarn add @julep/sdk</td><td>Install the Julep SDK for your preferred language</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance and Future-Proofing with Julep's REST API and Apache 2.0 License</h2></div><p class="ch-summary">Optimize Julep performance</p><div class="ch-body"><p>To optimize performance in Julep, it's essential to understand the architecture, which includes components like agents-api, julep-cli, and integrations-service. The src/scheduler directory contains a Temporal-based workflow engine for execution, while src/integrations-service handles connectors to external services and tools. The src/ directory organizes all core service modules, making it easier to navigate and maintain the codebase. The validatepyexpression method is a crucial part of the agents-api, responsible for validating Python expressions.</p>
-<p>The PYTHONPATH config key plays a significant role in configuring the environment.</p>
-<p>The Julep architecture is designed to support building AI workflows and agents, orchestrating complex AI operations, and managing state across interactions. The integrations-service enables integration with existing data infrastructure and tools, making it a versatile tool for various use cases. The poe format and ruff format are used for formatting and linting, respectively, ensuring consistency throughout the codebase. The poe tasks are used for consistency, and the poe lint is used for linting.</p>
-<p>The Julep REST API is licensed under Apache 2. 0, providing a flexible and permissive license for users. The API methods, such as validatepyexpression, are essential for building and integrating AI workflows. The src/scheduler directory contains a Temporal-based workflow engine, which is responsible for executing workflows.</p>
-<p>The memory-store and blob-store components handle data storage, while the gateway and llm-proxy handle API requests and interactions with large language models.</p>
-<p>The Julep architecture has some limitations, such as the lack of security in fetching the API, which can be a significant concern for users. Additionally, the research does not provide implementation details for some areas, making it challenging to optimize performance in those specific cases. The version numbers, such as MAJOR. MINOR.</p>
-<p>PATCH, are used to track changes and updates to the codebase. The bash src/scripts/generateopenapicode. sh script is used to generate OpenAPI code, making it easier to integrate with other tools and services.</p>
-<p>To optimize performance, it's essential to understand the performance metrics and benchmarks. The research does not provide specific performance metrics, but it's crucial to monitor and analyze performance to identify bottlenecks and areas for improvement. The poe test --search patterntomatch command is used to run tests, and the poe test --fail-limit 1 --search patterntomatch command is used to run tests with a fail limit. The source .</p>
-<p>venv/bin/activate command is used to activate the virtual environment, and the PYTHONPATH=$PWD python -c ... command is used to configure the environment.</p>
-<p>The Julep architecture is designed to support various use cases, such as building AI workflows and agents, orchestrating complex AI operations, and managing state across interactions. The integrations-service enables integration with existing data infrastructure and tools, making it a versatile tool for various use cases. The validatepyexpression method is a crucial part of the agents-api, responsible for validating Python expressions. The callout is that the Julep REST API does not support security in fetching the API.</p>
-<p>The Julep codebase is organized into several components, including agents-api, julep-cli, and integrations-service. The src/ directory organizes all core service modules, making it easier to navigate and maintain the codebase. The poe format and ruff format are used for formatting and linting, respectively, ensuring consistency throughout the codebase. The poe tasks are used for consistency, and the poe lint is used for linting.</p>
-<p>The research does not provide specific technical details for some areas, making it challenging to optimize performance in those specific cases.</p>
-<p>In conclusion, optimizing performance in Julep requires a deep understanding of the architecture, components, and limitations. The Julep REST API, licensed under Apache 2. 0, provides a flexible and permissive license for users. The API methods, such as validatepyexpression, are essential for building and integrating AI workflows.</p>
-<p>The src/scheduler directory contains a Temporal-based workflow engine, which is responsible for executing workflows. The memory-store and blob-store components handle data storage, while the gateway and llm-proxy handle API requests and interactions with large language models.</p></div></section>
-<div class="book-footer"><strong>julep: Practitioner Guide</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; April 9, 2026</div>
+</svg><p class="diagram-caption">Figure: cognita end-to-end processing pipeline</p></div><div class="sec-heading">cognita — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Data Indexing Efficiency</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">API Server Response Time</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Code Structure Readability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:76%"></span></span></span><span class="bar-value">76%</span></div><div class="bar-row"><span class="bar-label">RAG Customization Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">No-Code UI Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:82%"></span></span></span><span class="bar-value">82%</span></div><div class="bar-row"><span class="bar-label">Multi-Modal Vision Parser Accuracy</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:89%"></span></span></span><span class="bar-value">89%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Navigating Production Challenges with Qdrant Server and Cognita Backend</h2></div><p class="ch-summary">Production challenges</p><div class="ch-body"><p>The Cognita backend is designed to work seamlessly with the Qdrant server, providing a production-ready environment for various use cases, including incremental indexing and no-code UI support. The system utilizes a Metadatastore to keep track of indexed documents, preventing re-indexing and reducing the compute burden. The use of Docker and docker-compose enables easy deployment and management of the services. However, the project is no longer actively maintained, which may lead to compatibility issues with newer versions of dependencies, such as pydantic v2.</p>
+<p>The local. metadata. yaml file plays a crucial role in configuring the system, but its limitations may require manual adjustments for custom use cases. The system's architecture includes components like the RAG component, API Server, and Model gateway, which work together to provide features like Embedding and Reranking using Infninty Server.</p>
+<p>The support for multi-modal vision parser using GPT-4 is a notable feature, but its performance may vary depending on the specific use case. The system's ability to customize Dataloaders, Embedder, and Parsers provides flexibility, but may also introduce complexity.</p>
+<p>The Cognita backend provides a range of features, including support for multiple document retrievers, SOTA OpenSource embeddings, and reranking from mixedbread-ai. The use of LLMs via ollama provides additional capabilities, but may require careful configuration to achieve optimal results. The system's support for incremental indexing reduces the compute burden, but may require careful monitoring to ensure optimal performance. The use of Qdrant server provides a scalable and efficient solution for similarity search and query decomposition.</p>
+<p>However, the system's limitations, such as the lack of active maintenance, may require careful consideration when deploying in a production environment. The system's architecture includes a Vector DB, Indexing Job, and API Server, which work together to provide a seamless experience.</p>
+<p>The system's performance may vary depending on the specific use case and configuration. The use of pydantic v2 provides a robust and efficient solution for data validation, but may require careful consideration when working with complex data models. The system's support for customization provides flexibility, but may also introduce complexity and require careful testing to ensure optimal results. The use of Docker and docker-compose provides a convenient and efficient way to deploy and manage the services, but may require careful consideration when working with complex dependencies.</p>
+<p>The system's limitations, such as the lack of active maintenance, may require careful consideration when deploying in a production environment.</p>
+<p>The Cognita backend provides a range of features and capabilities, including support for multiple document retrievers, SOTA OpenSource embeddings, and reranking from mixedbread-ai. The use of LLMs via ollama provides additional capabilities, but may require careful configuration to achieve optimal results. The system's support for incremental indexing reduces the compute burden, but may require careful monitoring to ensure optimal performance. The use of Qdrant server provides a scalable and efficient solution for similarity search and query decomposition.</p>
+<p>However, the system's limitations, such as the lack of active maintenance, may require careful consideration when deploying in a production environment.</p>
+<p>The system's architecture includes a range of components, including the RAG component, API Server, and Model gateway, which work together to provide features like Embedding and Reranking using Infninty Server. The support for multi-modal vision parser using GPT-4 is a notable feature, but its performance may vary depending on the specific use case. The system's ability to customize Dataloaders, Embedder, and Parsers provides flexibility, but may also introduce complexity. The use of pydantic v2 provides a robust and efficient solution for data validation, but may require careful consideration when working with complex data models.</p>
+<p>The Cognita backend provides a production-ready environment for various use cases, including incremental indexing and no-code UI support. The system utilizes a Metadatastore to keep track of indexed documents, preventing re-indexing and reducing the compute burden. However, the project is no longer actively maintained, which may lead to compatibility issues with newer versions of dependencies, such as pydantic v2. The local.</p>
+<p>metadata. yaml file plays a crucial role in configuring the system, but its limitations may require manual adjustments for custom use cases.</p>
+<p>The system's performance may vary depending on the specific use case and configuration. The use of Qdrant server provides a scalable and efficient solution for similarity search and query decomposition. The system's support for customization provides flexibility, but may also introduce complexity and require careful testing to ensure optimal results. The use of Docker and docker-compose provides a convenient and efficient way to deploy and manage the services, but may require careful consideration when working with complex dependencies.</p>
+<p>The system's limitations, such as the lack of active maintenance, may require careful consideration when deploying in a production environment. The system's architecture includes a range of components, including the RAG component, API Server, and Model gateway, which work together to provide features like Embedding and Reranking using Infninty Server. The support for multi-modal vision parser using GPT-4 is a notable feature, but its performance may vary depending on the specific use case. The system's ability to customize Dataloaders, Embedder, and Parsers provides flexibility, but may also introduce complexity.</p>
+<p>The use of pydantic v2 provides a robust and efficient solution for data validation, but may require careful consideration when working with complex data models.</p><div class="sec-heading">cognita — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Document Retrieval Method</td><td>Similarity Search, Query Decomposition, Document Reranking</td><td>Supports multiple retrievers with customizable parameters</td></tr><tr><td>Supported Data Sources</td><td>Text, Audio, Video, Metadata</td><td>Utilizes parsers for audio and video data, and a metadata store for efficient data management</td></tr><tr><td>Backend Architecture</td><td>Cognita-Backend, Qdrant-Server, Infinity-Server</td><td>Distributed architecture for efficient data processing and retrieval</td></tr><tr><td>Frontend Support</td><td>Cognita-Frontend, No-Code UI</td><td>Provides a user-friendly interface for easy interaction with the system</td></tr><tr><td>Customization Options</td><td>RAG Customizations, Configurable Retrieval Parameters</td><td>Allows for fine-grained control over the retrieval process and system configuration</td></tr><tr><td>Scalability and Performance</td><td>Distributed Architecture, Docker-Compose Support</td><td>Designed for production-ready environments with easy deployment and scaling</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Incremental Indexing and Vector DB</h2></div><div class="ch-body"><p>CLASSESANDMETHODS:</p>
+<p>Query Controller</p>
+<p>CONFIGKEYS:</p>
+<p>local. metadata.</p>
+<p>VERSIONNUMBERS:</p>
+<p>pydantic v2</p>
+<p>ARCHITECTURE:</p>
+<p>ta Store</p>
+<p>LLM Gateway</p>
+<p>Vector DB</p>
+<p>Indexing Job</p>
+<p>API Server</p>
+<p>Metadatastore</p>
+<p>Model gateway</p>
+<p>CODESNIPPETS:</p>
+<p>LIMITATIONS:</p>
+<p>This project is no longer actively maintained.</p>
+<p>INSTALLSTEPS:</p>
+<p>docker-compose</p>
+<p>https://cognita. truefoundry.</p>
+<p>https://github.</p>
+<p>USE_CASES:</p>
+<p>Cognita can be used easily in a local setup</p>
+<p>Cognita offers you a production read</p></div></section>
+<div class="book-footer"><strong>cognita: Field Guide</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; April 10, 2026</div>
 </body>
 </html>
