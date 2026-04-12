@@ -2,383 +2,474 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>openlit: Complete Reference</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "openlit: Complete Reference"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>awesome-ai-agents: Technical Deep Dive</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "awesome-ai-agents: Technical Deep Dive"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://opengraph.githubassets.com/b0083f8615a54439b737f610eb89311307a7f4663ae994ab311b372ad8c027a7/openlit/openlit" alt="openlit logo" onerror="this.style.display='none'"/><div class="cover-lib-name">openlit</div><div class="cover-suffix">Complete Reference</div><div class="cover-rule"></div><p class="cover-subtitle">Open source literature</p><p class="cover-desc">The OpenLIT SDK is a key component in the OpenLIT architecture, which includes the OpenTelemetry Collector, ClickHouse, and OpenLITUI.  The OpenLITSDK sends traces and metrics to the OpenTelemetry Collector, which then stores the data in ClickHouse.  This allows for efficient data storage and retrieval.</p><div class="cover-tagline">Read free books</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> April 11, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">OpenLIT was built by the openlit organization to solve AI observability.</div><div class="intro-body"><p>OpenLIT is an open-source project that provides OpenTelemetry-native observability for large language models (LLMs) and AI development workflows. The project is built around the OpenTelemetry Collector, ClickHouse, and the OpenLIT SDK, which sends traces and metrics to the OpenTelemetry Collector for storage in ClickHouse. This architecture allows for efficient data collection and analysis, enabling developers to monitor and optimize their AI models. The OpenLIT UI pulls data from ClickHouse, providing a user-friendly interface for exploring and visualizing the collected data.</p>
-<p>The specific problem that OpenLIT was built to solve is the lack of observability in AI development workflows, particularly when working with LLMs. As AI models become increasingly complex and widespread, it is essential to have tools that provide insights into their performance, latency, and other key metrics. OpenLIT addresses this need by providing a scalable and flexible observability platform that can handle the unique demands of AI workloads. By leveraging OpenTelemetry and ClickHouse, OpenLIT offers a robust and efficient solution for monitoring and analyzing AI models.</p>
-<p>One of the key technical differences between OpenLIT and alternative solutions is its use of OpenTelemetry and ClickHouse. OpenTelemetry provides a standardized framework for collecting and exporting telemetry data, while ClickHouse offers a highly scalable and performant database for storing and analyzing large amounts of data. This combination enables OpenLIT to handle high-volume and high-velocity data streams, making it well-suited for AI workloads that generate vast amounts of data. Additionally, OpenLIT's architecture is designed to be modular and extensible, allowing developers to easily integrate it with other tools and platforms.</p>
-<p>The target audience for OpenLIT is developers and data scientists working on AI and machine learning projects, particularly those using LLMs and other complex AI models. This includes researchers, engineers, and data analysts who need to monitor and optimize their models, as well as DevOps teams responsible for deploying and managing AI-powered applications. OpenLIT is also relevant to organizations that provide AI services and platforms, such as Google AI Studio, Together AI, and AWS Bedrock, as it can help them improve the performance and reliability of their offerings.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/openlit/openlit">https://github.com/openlit/openlit</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Unlocking Observability with OpenLIT SDK</h2></div><p class="ch-summary">OpenLIT SDK enables observability</p><div class="ch-body"><p>The OpenLIT SDK is a key component in the OpenLIT architecture, which includes the OpenTelemetry Collector, ClickHouse, and OpenLITUI. The OpenLITSDK sends traces and metrics to the OpenTelemetry Collector, which then stores the data in ClickHouse. This allows for efficient data storage and retrieval. The OpenLITUI can then pull data from ClickHouse for display.</p>
-<p>The OpenLITSDK uses the otlpendpoint config key to determine where to send the traces and metrics.</p>
-<p>The OpenLIT SDK provides a simple way to initialize the OpenLIT system using the openlit. init method. This method takes several config keys, including otlpendpoint and otlpheaders, which are used to configure the OpenTelemetry Collector. The openlit.</p>
-<p>init method is a crucial step in setting up the OpenLIT system. The OpenLIT SDK also supports environment variables, such as OTELEXPORTEROTLPENDPOINT, which can be used to configure the OpenTelemetry Collector.</p>
-<p>One of the key benefits of the OpenLIT SDK is its support for OpenTelemetry-native observability. This allows developers to use the OpenTelemetry API to instrument their applications and send traces and metrics to the OpenTelemetry Collector. The OpenLIT SDK also supports other features, such as rule engine, guardrails, and prompts. The OpenLITSDK does not support some features, such as automatic prompt management, which must be implemented separately.</p>
-<p>The OpenLIT SDK has several use cases, including evaluations, rule engine, and cost tracking. It can be used with a variety of AI frameworks and vector databases, including OpenAI, Anthropic, and Cohere. The OpenLIT SDK also supports experiment with different LLMs and Fleet Hub for OpAMP management. The OpenLITSDK is limited in its support for some AI frameworks, such as Groq, which requires additional configuration.</p>
-<p>The OpenLIT SDK has several technical limitations, including the requirement for a separate OpenTelemetry Collector and ClickHouse instance. The OpenLITSDK also requires a significant amount of configuration, including setting up the otlpendpoint and otlpheaders config keys. The OpenLITSDK does not provide automatic scaling or high availability, which must be implemented separately.</p>
-<p>The OpenLIT SDK provides several API methods, including openlit. init, which is used to initialize the OpenLIT system. The OpenLITSDK also provides several config keys, including otlpendpoint and otlpheaders, which are used to configure the OpenTelemetry Collector. The OpenLITSDK does not provide a built-in method for prompt management, which must be implemented separately using the OpenLITUI.</p>
-<p>The OpenLIT SDK has several performance metrics, including the number of traces and metrics sent to the OpenTelemetry Collector. The OpenLITSDK also provides several benchmarks, including the time it takes to initialize the OpenLIT system. The OpenLITSDK does not provide automatic monitoring or alerting, which must be implemented separately using the OpenLITUI.</p>
-<p>The OpenLIT SDK is a key component in the OpenLIT architecture, providing a simple way to initialize the OpenLIT system and send traces and metrics to the OpenTelemetry Collector. The OpenLITSDK has several use cases, including evaluations, rule engine, and cost tracking, and supports a variety of AI frameworks and vector databases. The OpenLITSDK has several technical limitations, including the requirement for a separate OpenTelemetry Collector and ClickHouse instance, and requires significant configuration and implementation of additional features, such as prompt management and scaling.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://repository-images.githubusercontent.com/655459367/cdaf989b-adaf-46f8-ab38-92ede96dc33a" alt="awesome-ai-agents logo" onerror="this.style.display='none'"/><div class="cover-lib-name">awesome-ai-agents</div><div class="cover-suffix">Technical Deep Dive</div><div class="cover-rule"></div><p class="cover-subtitle">Intelligent agents are here</p><p class="cover-desc">The awesome-ai-agents library provides a framework for building custom agents and cognitive architectures.  The ToolComponent. py class is a key component in this framework, allowing for the creation of complex agent systems.</p><div class="cover-tagline">AI made easy</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> April 12, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">e2b-dev built awesome-ai-agents to solve AI agent development issues.</div><div class="intro-body"><p>The awesome-ai-agents project was created by e2b-dev. It was designed to solve the problem of building and testing custom AI agents. The project provides a platform for rapid development and testing of AI agents, allowing users to integrate with different databases and build language agents.</p>
+<p>The architecture of awesome-ai-agents is based on a frontend built with NextJS and Typescript, and a backend built with FastAPI and Python. The database options include MySQL and SQLite, with the option to run MySQL through Docker or SQLite locally. The project also utilizes VectorDB and Semantic Search, as well as Long-short Term Memory and LLM.</p>
+<p>One of the key technical differences of awesome-ai-agents is its use of function-calling and the ToolComponent. py class. The project also provides a range of configuration keys, including VectorDB, Semantic Search, LLM, and MySQL. The use of these configuration keys allows users to customize the behavior of their AI agents and integrate with different tools and services.</p>
+<p>The target audience for awesome-ai-agents includes developers and researchers who want to build and test custom AI agents. The project provides a range of use cases, including building custom agents and cognitive architectures, running different LLM models for different agents, and integrating with different databases. The project also supports multi-agent systems, human-agent interaction, and symbolic control, making it a versatile tool for a range of applications.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/e2b-dev/awesome-ai-agents">https://github.com/e2b-dev/awesome-ai-agents</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building Multi-Agent Systems with ToolComponent.py</h2></div><p class="ch-summary">Building multi-agent systems</p><div class="ch-body"><p>The awesome-ai-agents library provides a framework for building custom agents and cognitive architectures. The ToolComponent. py class is a key component in this framework, allowing for the creation of complex agent systems. The library supports various databases, including MySQL and SQLite, and provides a range of configuration options, such as VectorDB and Semantic Search.</p>
+<p>The LLM-agnostic platform allows for the integration of different LLM models, including gpt-3. 5-16k. The library also supports multi-agent communication and human-agent interaction.</p>
+<p>The architecture of the library is based on a frontend built with NextJS and Typescript, and a backend built with FastAPI and Python. The DB is supported by MySQL through docker, with the option of running SQLite locally. The library also utilizes Long-short Term Memory and VectorDB + Semantic Search. The use of function-calling allows for the integration of external tools, enabling the creation of complex agent systems.</p>
+<p>One of the key features of the library is its support for building multi-agent systems. This is achieved through the use of classes and methods, such as ToolComponent. py, which provides a range of functionality for creating and managing agent systems. The library also supports the use of different LLM models, allowing for the creation of customized agent systems.</p>
+<p>The configuration options, such as LLM and VectorDB, provide a high degree of flexibility in the creation of agent systems.</p>
+<p>The library has a range of use cases, including building custom agents and cognitive architectures, running different LLM models for different agents, and rapid development and testing. The library also supports integration with different databases, building language agents, and human-agent interaction. The use of external tools via function-calling enables the creation of complex agent systems, and the library supports multi-agent communication and web navigation.</p>
+<p>The library has some limitations, including the lack of support for certain databases and LLM models. For example, the library does not support the use of PostgreSQL, and the LLM models are limited to gpt-3. 5-16k. The library also has some performance limitations, with a maximum of 1000 agents supported in the recommender system simulator.</p>
+<p>In terms of technical details, the library provides a range of API methods and class names, including ToolComponent. py and function-calling. The library also supports configuration options, such as VectorDB and Semantic Search, and provides a range of version numbers, including v1. 5 and v1.</p>
+<p>6. The library has a range of performance metrics, including a maximum of 1000 agents supported in the recommender system simulator.</p>
+<p>The library has some specific technical limitations, including the fact that it does not support the use of certain databases, such as PostgreSQL. The library also has some performance limitations, including a maximum of 1000 agents supported in the recommender system simulator. The library has a range of configuration options, including LLM and VectorDB, which provide a high degree of flexibility in the creation of agent systems.</p>
+<p>The library provides a range of use cases, including building custom agents and cognitive architectures, running different LLM models for different agents, and rapid development and testing. The library also supports integration with different databases, building language agents, and human-agent interaction. The use of external tools via function-calling enables the creation of complex agent systems, and the library supports multi-agent communication and web navigation.</p>
+<p>The library has a range of technical details, including the use of MCP servers, MCP Discovery API, Language Server Protocol (LSP), and VSCode API. The library also provides a range of code snippets, including @pthieu and @2214962083. The library has a range of version numbers, including v1. 5 and v1.</p>
+<p>6, and provides a range of performance metrics, including a maximum of 1000 agents supported in the recommender system simulator.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1582.80 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1534.93 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1578.8,-40 1578.8,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1530.93,-40 1530.93,4 -4,4"/>
 <!-- N0 -->
 <g id="cluster-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="47.96" cy="-18" rx="47.96" ry="18"/>
-<text text-anchor="middle" x="47.96" y="-14.5" font-family="Arial" font-size="10.00">OpenLIT_SDK</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="54.27" cy="-18" rx="54.27" ry="18"/>
+<text text-anchor="middle" x="54.27" y="-14.5" font-family="Arial" font-size="10.00">AgentFramework</text>
 </g>
 <!-- N1 -->
 <g id="cluster-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="304.81" cy="-18" rx="41.64" ry="18"/>
-<text text-anchor="middle" x="304.81" y="-14.5" font-family="Arial" font-size="10.00">OpenLIT_UI</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="238.1" cy="-18" rx="47.05" ry="18"/>
+<text text-anchor="middle" x="238.1" y="-14.5" font-family="Arial" font-size="10.00">AgentRuntime</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="cluster-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M96.29,-18C140.39,-18 206,-18 251.6,-18"/>
-<polygon fill="#475569" stroke="#475569" points="251.51,-21.5 261.51,-18 251.51,-14.5 251.51,-21.5"/>
-<text text-anchor="middle" x="179.54" y="-19.95" font-family="Arial" font-size="9.00">initializes OpenLIT configuration</text>
+<path fill="none" stroke="#475569" d="M108.84,-18C130.96,-18 156.66,-18 179.21,-18"/>
+<polygon fill="#475569" stroke="#475569" points="179.17,-21.5 189.17,-18 179.17,-14.5 179.17,-21.5"/>
+<text text-anchor="middle" x="149.79" y="-19.95" font-family="Arial" font-size="9.00">instantiates</text>
 </g>
 <!-- N2 -->
 <g id="cluster-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="585.12" cy="-18" rx="75.92" ry="18"/>
-<text text-anchor="middle" x="585.12" y="-14.5" font-family="Arial" font-size="10.00">OpenTelemetry_Collector</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="415.92" cy="-18" rx="54.27" ry="18"/>
+<text text-anchor="middle" x="415.92" y="-14.5" font-family="Arial" font-size="10.00">KnowledgeGraph</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="cluster-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M346.87,-18C386.37,-18 447.33,-18 497.56,-18"/>
-<polygon fill="#475569" stroke="#475569" points="497.25,-21.5 507.25,-18 497.25,-14.5 497.25,-21.5"/>
-<text text-anchor="middle" x="427.82" y="-19.95" font-family="Arial" font-size="9.00">registers OpenTelemetry spans</text>
+<path fill="none" stroke="#475569" d="M285.29,-18C305.04,-18 328.45,-18 349.9,-18"/>
+<polygon fill="#475569" stroke="#475569" points="349.73,-21.5 359.73,-18 349.73,-14.5 349.73,-21.5"/>
+<text text-anchor="middle" x="323.4" y="-19.95" font-family="Arial" font-size="9.00">populates</text>
 </g>
 <!-- N3 -->
 <g id="cluster-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="850.88,-36 781.79,-18 850.88,0 919.98,-18 850.88,-36"/>
-<text text-anchor="middle" x="850.88" y="-14.5" font-family="Arial" font-size="10.00">ClickHouseDB</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="688.92,-36 613.44,-18 688.92,0 764.39,-18 688.92,-36"/>
+<text text-anchor="middle" x="688.92" y="-14.5" font-family="Arial" font-size="10.00">EmbeddingIndex</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="cluster-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M661.35,-18C694.87,-18 734.41,-18 768.6,-18"/>
-<polygon fill="#475569" stroke="#475569" points="768.47,-21.5 778.47,-18 768.47,-14.5 768.47,-21.5"/>
-<text text-anchor="middle" x="721.41" y="-19.95" font-family="Arial" font-size="9.00">sends tracing data to</text>
+<path fill="none" stroke="#475569" d="M470.46,-18C507.42,-18 557.41,-18 600.13,-18"/>
+<polygon fill="#475569" stroke="#475569" points="599.89,-21.5 609.89,-18 599.89,-14.5 599.89,-21.5"/>
+<text text-anchor="middle" x="541.82" y="-19.95" font-family="Arial" font-size="9.00">generates embeddings for</text>
 </g>
 <!-- N4 -->
 <g id="cluster-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1113.85" cy="-18" rx="30.37" ry="18"/>
-<text text-anchor="middle" x="1113.85" y="-14.5" font-family="Arial" font-size="10.00">OpAMP</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="988.2" cy="-18" rx="72.31" ry="18"/>
+<text text-anchor="middle" x="988.2" y="-14.5" font-family="Arial" font-size="10.00">NearestNeighborSearch</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="cluster-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M921.82,-18C969.67,-18 1031.49,-18 1071.64,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1071.6,-21.5 1081.6,-18 1071.6,-14.5 1071.6,-21.5"/>
-<text text-anchor="middle" x="1001.73" y="-19.95" font-family="Arial" font-size="9.00">executes OpAMP workflows via</text>
+<path fill="none" stroke="#475569" d="M766.48,-18C808.64,-18 861.02,-18 904.17,-18"/>
+<polygon fill="#475569" stroke="#475569" points="903.99,-21.5 913.99,-18 903.99,-14.5 903.99,-21.5"/>
+<text text-anchor="middle" x="840.14" y="-19.95" font-family="Arial" font-size="9.00">enables similarity search via</text>
 </g>
 <!-- N5 -->
 <g id="cluster-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1307.21" cy="-18" rx="43" ry="18"/>
-<text text-anchor="middle" x="1307.21" y="-14.5" font-family="Arial" font-size="10.00">Rule_Engine</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1220.99" cy="-18" rx="56.98" ry="18"/>
+<text text-anchor="middle" x="1220.99" y="-14.5" font-family="Arial" font-size="10.00">TransformerModel</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="cluster-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M1144.33,-18C1173.06,-18 1217.4,-18 1252.42,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1252.39,-21.5 1262.39,-18 1252.39,-14.5 1252.39,-21.5"/>
-<text text-anchor="middle" x="1204.21" y="-19.95" font-family="Arial" font-size="9.00">stores alert results in</text>
+<path fill="none" stroke="#475569" d="M1060.96,-18C1090.16,-18 1123.74,-18 1152.49,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1152.15,-21.5 1162.15,-18 1152.15,-14.5 1152.15,-21.5"/>
+<text text-anchor="middle" x="1112.26" y="-19.95" font-family="Arial" font-size="9.00">provides input to</text>
 </g>
 <!-- N6 -->
 <g id="cluster-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1532.25" cy="-18" rx="42.54" ry="18"/>
-<text text-anchor="middle" x="1532.25" y="-14.5" font-family="Arial" font-size="10.00">OpenGround</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1467.7" cy="-18" rx="59.23" ry="18"/>
+<text text-anchor="middle" x="1467.7" y="-14.5" font-family="Arial" font-size="10.00">MetadataDatabase</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="cluster-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M1350.69,-18C1386.85,-18 1438.97,-18 1477.93,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1477.8,-21.5 1487.8,-18 1477.8,-14.5 1477.8,-21.5"/>
-<text text-anchor="middle" x="1419.96" y="-19.95" font-family="Arial" font-size="9.00">returns incident reports to</text>
+<path fill="none" stroke="#475569" d="M1278.44,-18C1313.62,-18 1359.15,-18 1396.63,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1396.47,-21.5 1406.47,-18 1396.47,-14.5 1396.47,-21.5"/>
+<text text-anchor="middle" x="1343.22" y="-19.95" font-family="Arial" font-size="9.00">synchronizes state with</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: openlit internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting OpenTelemetry Collector with ClickHouse</h2></div><p class="ch-summary">OpenTelemetry integration</p><div class="ch-body"><p>The OpenLIT SDK sends traces and metrics to the OpenTelemetry Collector, which stores the data in ClickHouse. This architecture allows for efficient data processing and analysis. The OpenLIT UI pulls data from ClickHouse, providing a user-friendly interface for observability and evaluations. The OpenTelemetry Collector is a crucial component, as it enables the collection and processing of telemetry data.</p>
-<p>The otlpendpoint config key is used to specify the endpoint for the OpenTelemetry Collector.</p>
-<p>The OpenLIT SDK provides a simple way to integrate with the OpenTelemetry Collector, using the openlit. init() method to initialize the SDK. The OpenLIT UI provides a user-friendly interface for pulling data from ClickHouse, allowing users to easily access and analyze their data. The OpenTelemetry Collector supports multiple data formats, including OTLP, which is used by the OpenLIT SDK.</p>
-<p>The OTELEXPORTEROTLPENDPOINT config key is used to specify the endpoint for the OpenTelemetry Collector.</p>
-<p>The OpenTelemetry Collector is designed to handle large amounts of data, making it suitable for large-scale applications. The ClickHouse database is used to store the collected data, providing a scalable and efficient storage solution. The OpenLIT UI provides a range of features, including evaluations and rule engine, which allow users to analyze and act on their data. The OpenLIT SDK provides a range of config keys, including otlpheaders, which can be used to customize the behavior of the SDK.</p>
-<p>One of the limitations of the OpenLIT SDK is that it only supports the public OpenAI API format, which prevents integration with local solutions like Ollama. This limitation can be overcome by using a custom API format, but this requires additional development effort. The OpenTelemetry Collector provides a range of features, including support for multiple data formats and protocols, which makes it a versatile tool for collecting and processing telemetry data. The OpenLIT UI provides a range of features, including prompt management and API keys and secrets management, which allow users to manage their data and applications.</p>
-<p>The OpenLIT SDK provides a range of benefits, including easy integration with the OpenTelemetry Collector and support for multiple data formats. The OpenTelemetry Collector provides a range of benefits, including scalable and efficient data processing and support for multiple data formats and protocols. The ClickHouse database provides a range of benefits, including scalable and efficient storage and support for large amounts of data. The OpenLIT UI provides a range of benefits, including a user-friendly interface and support for a range of features, including evaluations and rule engine.</p>
-<p>The OpenTelemetry Collector is designed to be highly scalable, making it suitable for large-scale applications. The ClickHouse database is designed to be highly efficient, making it suitable for large amounts of data. The OpenLIT SDK is designed to be easy to use, making it suitable for developers who want to integrate with the OpenTelemetry Collector. The OpenLIT UI is designed to be user-friendly, making it suitable for users who want to access and analyze their data.</p>
-<p>The OpenLIT SDK provides a range of config keys, including otlpendpoint and otlpheaders, which can be used to customize the behavior of the SDK. The OpenTelemetry Collector provides a range of features, including support for multiple data formats and protocols, which makes it a versatile tool for collecting and processing telemetry data. The ClickHouse database provides a range of benefits, including scalable and efficient storage and support for large amounts of data. The OpenLIT UI provides a range of features, including prompt management and API keys and secrets management, which allow users to manage their data and applications.</p>
-<p>The OpenLIT SDK is designed to be highly customizable, making it suitable for developers who want to integrate with the OpenTelemetry Collector. The OpenTelemetry Collector is designed to be highly scalable, making it suitable for large-scale applications. The ClickHouse database is designed to be highly efficient, making it suitable for large amounts of data. The OpenLIT UI is designed to be user-friendly, making it suitable for users who want to access and analyze their data.</p>
-<p>The OpenTelemetry Collector provides a range of benefits, including support for multiple data formats and protocols, which makes it a versatile tool for collecting and processing telemetry data. The ClickHouse database provides a range of benefits, including scalable and efficient storage and support for large amounts of data. The OpenLIT UI provides a range of features, including evaluations and rule engine, which allow users to analyze and act on their data. The OpenLIT SDK provides a range of config keys, including otlpendpoint and otlp_headers, which can be used to customize the behavior of the SDK.</p></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Initializing OpenLIT with OpenLIT_UI and OpAMP</h2></div><p class="ch-summary">OpenLIT setup</p><div class="ch-body"><p>The OpenLIT platform utilizes the OpenTelemetry Collector, ClickHouse, OpenLIT SDK, OpenLITUI, and OpAMP to provide observability and evaluations features. To initialize OpenLIT, the openlit. init() method is used. The OpenLITUI pulls data from ClickHouse, which is stored by the OpenTelemetry Collector.</p>
-<p>The OpenLIT SDK sends traces and metrics to the OpenTelemetry Collector. The OpAMP server and supervisors are used to manage the OpenLIT platform. The OPAMPENVIRONMENT config key is used to set the environment to production or development. The OPAMPTLSINSECURESKIPVERIFY config key is used to skip TLS verification.</p>
-<p>The OpenLIT platform has several use cases, including evaluations, rule engine, guardrails, prompts, vault, playground, and fleet hub. The OpenLITUI provides a user interface for these features. The OpenLIT SDK provides a programmatic interface for interacting with the OpenLIT platform. The OpAMP server and supervisors provide a management interface for the OpenLIT platform.</p>
-<p>The OpenTelemetry Collector provides a way to collect and store data from the OpenLIT platform. The ClickHouse database provides a way to store and query data from the OpenLIT platform.</p>
-<p>The OpenLIT platform has several limitations, including not supporting local solutions like Ollama. The OpenLIT platform only supports the public OpenAI API format. The OpenLIT platform does not support custom API endpoint URLs to connect to the Ollama API. The OpenLIT platform does not support Azure OpenAI.</p>
-<p>The OpenLIT platform does not support using OpenTelemetry Events API to capture AI content.</p>
-<p>The OpenLIT platform provides several config keys, including otlpendpoint, OTELEXPORTEROTLPENDPOINT, otlpheaders, and OTELEXPORTEROTLPHEADERS. The OpenLIT platform provides several API methods, including openlit. init(). The OpenLIT platform provides a way to install and run the platform using docker compose up -d.</p>
-<p>The OpenLIT platform provides a way to install the OpenLIT SDK using pip install openlit.</p>
-<p>The OpenLIT platform provides a way to manage the OpAMP server and supervisors using the OPAMPENVIRONMENT config key. The OpenLIT platform provides a way to manage the OpAMP server and supervisors using the OPAMPTLSINSECURESKIPVERIFY config key. The OpenLIT platform provides a way to manage the OpAMP server and supervisors using the OPAMPTLSREQUIRECLIENTCERT config key. The OpenLIT platform provides a way to manage the OpAMP server and supervisors using the OPAMPTLSMINVERSION config key.</p>
-<p>The OpenLIT platform provides a way to manage the OpAMP server and supervisors using the OPAMPTLSMAXVERSION config key. The OpenLIT platform provides a way to manage the OpAMP server and supervisors using the OPAMPLOGLEVEL config key. The OpenLIT platform provides a way to manage the Fleet Hub using the OpenLITUI. The OpenLIT platform provides a way to manage the Fleet Hub using the OpenLIT SDK.</p>
-<p>The OpenLIT platform provides a way to evaluate models using the evaluations feature. The OpenLIT platform provides a way to evaluate models using the rule engine feature. The OpenLIT platform provides a way to evaluate models using the guardrails feature. The OpenLIT platform provides a way to evaluate models using the prompts feature.</p>
-<p>The OpenLIT platform provides a way to evaluate models using the vault feature.</p>
-<p>The OpenLIT platform provides a way to experiment with different LLMs using the playground feature. The OpenLIT platform provides a way to experiment with different LLMs using the Fleet Hub feature. The OpenLIT platform provides a way to manage API keys and secrets using the vault feature. The OpenLIT platform provides a way to manage API keys and secrets using the OpenLITUI.</p>
-<p>The OpenLIT platform provides a way to manage API keys and secrets using the OpenLIT SDK.</p>
-<p>The OpenLIT platform provides a way to transition smoothly from testing to production using the Fleet Hub feature. The OpenLIT platform provides a way to transition smoothly from testing to production using the OpenLITUI. The OpenLIT platform provides a way to transition smoothly from testing to production using the OpenLIT SDK. The OpenLIT platform provides a way to integrate with on-premise models using the evaluations feature.</p>
-<p>The OpenLIT platform provides a way to integrate with on-premise models using the rule engine feature.</p><div class="code-label">Code Sample</div><div class="code-block">import openlit 
- openlit.init() 
- import os 
- os.environ['OPAMP_ENVIRONMENT'] = 'production' 
- os.environ['OPAMP_TLS_INSECURE_SKIP_VERIFY'] = 'false' 
- os.environ['OPAMP_TLS_REQUIRE_CLIENT_CERT'] = 'true' 
- os.environ['OPAMP_TLS_MIN_VERSION'] = '1.2' 
- os.environ['OPAMP_TLS_MAX_VERSION'] = '1.3' 
- os.environ['OPAMP_LOG_LEVEL'] = 'info' 
- git clone https://github.com/openlit/openlit.git 
- cd openlit 
- cp env.example .env 
- export OPAMP_ENVIRONMENT=production 
- export OPAMP_TLS_INSECURE_SKIP_VERIFY=false 
- export OPAMP_TLS_REQUIRE_CLIENT_CERT=true 
- docker-compose up -d 
- pip install openlit 
- openlit.init()</div><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: awesome-ai-agents internal system architecture</p></div></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Core Architectures with FastAPI and VectorDB</h2></div><p class="ch-summary">FastAPI and VectorDB integration</p><div class="ch-body"><p>The architecture of awesome-ai-agents utilizes FastAPI as the backend framework, providing a solid foundation for building scalable and efficient AI agent systems. The use of VectorDB enables efficient semantic search capabilities, allowing agents to quickly retrieve relevant information. The config keys, such as VectorDB and Semantic Search, play a crucial role in configuring the system. The system's architecture is designed to support various use cases, including building custom agents and cognitive architectures.</p>
+<p>The ToolComponent. py class is used to integrate external tools via function-calling.</p>
+<p>The system's backend is built using FastAPI, which provides a flexible and modular framework for building AI agent systems. The use of FastAPI enables developers to create scalable and efficient systems, with support for various databases, including MySQL and SQLite. The system's database configuration is managed through config keys, such as MySQL and SQLite. The system's performance is critical, and the use of FastAPI helps to ensure that the system can handle a large number of agents and tasks.</p>
+<p>The system's version numbers, such as v1. 5 and v1. 6, indicate the evolution of the system's architecture.</p>
+<p>The use of VectorDB in the system enables efficient semantic search capabilities, allowing agents to quickly retrieve relevant information. The VectorDB config key is used to configure the VectorDB instance, and the Semantic Search config key is used to enable semantic search capabilities. The system's architecture is designed to support various use cases, including building custom agents and cognitive architectures. The system's limitations, such as the lack of support for certain databases, must be considered when designing the system.</p>
+<p>The system's performance metrics, such as latency and uptime, are critical in ensuring the system's efficiency.</p>
+<p>The system's architecture is designed to support various use cases, including building custom agents and cognitive architectures. The use of ToolComponent. py class enables developers to integrate external tools via function-calling, providing a flexible and modular framework for building AI agent systems. The system's config keys, such as LLM and gpt-3.</p>
+<p>5-16k, play a crucial role in configuring the system's language models. The system's version numbers, such as v1. 5 and v1. 6, indicate the evolution of the system's architecture.</p>
+<p>The system's performance metrics, such as latency and uptime, are critical in ensuring the system's efficiency.</p>
+<p>The system's limitations, such as the lack of support for certain databases, must be considered when designing the system. The system's architecture is designed to support various use cases, including building custom agents and cognitive architectures. The use of FastAPI and VectorDB enables developers to create scalable and efficient systems, with support for various databases and semantic search capabilities. The system's config keys, such as MySQL and SQLite, play a crucial role in configuring the system's database.</p>
+<p>The system's performance metrics, such as latency and uptime, are critical in ensuring the system's efficiency.</p>
+<p>The system's use cases, such as building custom agents and cognitive architectures, require a flexible and modular framework. The use of ToolComponent. py class enables developers to integrate external tools via function-calling, providing a flexible and modular framework for building AI agent systems. The system's config keys, such as LLM and gpt-3.</p>
+<p>5-16k, play a crucial role in configuring the system's language models. The system's version numbers, such as v1. 5 and v1. 6, indicate the evolution of the system's architecture.</p>
+<p>The system's performance metrics, such as latency and uptime, are critical in ensuring the system's efficiency.</p>
+<p>The system's architecture is designed to support various use cases, including building custom agents and cognitive architectures. The use of FastAPI and VectorDB enables developers to create scalable and efficient systems, with support for various databases and semantic search capabilities. The system's config keys, such as MySQL and SQLite, play a crucial role in configuring the system's database. The system's limitations, such as the lack of support for certain databases, must be considered when designing the system.</p>
+<p>The system's performance metrics, such as latency and uptime, are critical in ensuring the system's efficiency.</p>
+<p>The system's performance metrics, such as latency and uptime, are critical in ensuring the system's efficiency. The use of FastAPI and VectorDB enables developers to create scalable and efficient systems, with support for various databases and semantic search capabilities. The system's config keys, such as LLM and gpt-3. 5-16k, play a crucial role in configuring the system's language models.</p>
+<p>The system's version numbers, such as v1. 5 and v1. 6, indicate the evolution of the system's architecture. The system's use cases, such as building custom agents and cognitive architectures, require a flexible and modular framework.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 878.85 98.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 94)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1499.08 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-94 874.85,-94 874.85,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1495.08,-40 1495.08,4 -4,4"/>
+<!-- N0 -->
+<g id="seq-node1" class="node">
+<title>N0</title>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="87.19" cy="-18" rx="87.19" ry="18"/>
+<text text-anchor="middle" x="87.19" y="-14.5" font-family="Arial" font-size="10.00">pip install awesome&#45;ai&#45;agents</text>
+</g>
+<!-- N1 -->
+<g id="seq-node2" class="node">
+<title>N1</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="312.66" cy="-18" rx="56.53" ry="18"/>
+<text text-anchor="middle" x="312.66" y="-14.5" font-family="Arial" font-size="10.00">AI Agent Instance</text>
+</g>
+<!-- N0&#45;&gt;N1 -->
+<g id="seq-edge1" class="edge">
+<title>N0&#45;&gt;N1</title>
+<path fill="none" stroke="#475569" d="M174.59,-18C197.81,-18 222.57,-18 244.57,-18"/>
+<polygon fill="#475569" stroke="#475569" points="244.28,-21.5 254.28,-18 244.28,-14.5 244.28,-21.5"/>
+<text text-anchor="middle" x="215.26" y="-19.95" font-family="Arial" font-size="9.00">then import</text>
+</g>
+<!-- N2 -->
+<g id="seq-node3" class="node">
+<title>N2</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="531.61" cy="-18" rx="52.92" ry="18"/>
+<text text-anchor="middle" x="531.61" y="-14.5" font-family="Arial" font-size="10.00">add ai agent tool</text>
+</g>
+<!-- N1&#45;&gt;N2 -->
+<g id="seq-edge2" class="edge">
+<title>N1&#45;&gt;N2</title>
+<path fill="none" stroke="#475569" d="M369.53,-18C399.26,-18 435.93,-18 466.77,-18"/>
+<polygon fill="#475569" stroke="#475569" points="466.77,-21.5 476.77,-18 466.77,-14.5 466.77,-21.5"/>
+<text text-anchor="middle" x="423.94" y="-19.95" font-family="Arial" font-size="9.00">configure ai agent</text>
+</g>
+<!-- N3 -->
+<g id="seq-node4" class="node">
+<title>N3</title>
+<polygon fill="#fef9c3" stroke="#2563eb" points="794.48,-36 707.52,-18 794.48,0 881.44,-18 794.48,-36"/>
+<text text-anchor="middle" x="794.48" y="-14.5" font-family="Arial" font-size="10.00">invoke ai agent skill</text>
+</g>
+<!-- N2&#45;&gt;N3 -->
+<g id="seq-edge3" class="edge">
+<title>N2&#45;&gt;N3</title>
+<path fill="none" stroke="#475569" d="M584.77,-18C615.97,-18 656.64,-18 693.79,-18"/>
+<polygon fill="#475569" stroke="#475569" points="693.67,-21.5 703.67,-18 693.67,-14.5 693.67,-21.5"/>
+<text text-anchor="middle" x="646.02" y="-19.95" font-family="Arial" font-size="9.00">initialize ai agent skill</text>
+</g>
+<!-- N4 -->
+<g id="seq-node5" class="node">
+<title>N4</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1089.04" cy="-18" rx="69.6" ry="18"/>
+<text text-anchor="middle" x="1089.04" y="-14.5" font-family="Arial" font-size="10.00">copy ai agent skill files</text>
+</g>
+<!-- N3&#45;&gt;N4 -->
+<g id="seq-edge4" class="edge">
+<title>N3&#45;&gt;N4</title>
+<path fill="none" stroke="#475569" d="M883.65,-18C923.16,-18 969.42,-18 1007.93,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1007.58,-21.5 1017.58,-18 1007.58,-14.5 1007.58,-21.5"/>
+<text text-anchor="middle" x="950.44" y="-19.95" font-family="Arial" font-size="9.00">call ai agent skill function</text>
+</g>
+<!-- N5 -->
+<g id="seq-node6" class="node">
+<title>N5</title>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1415.61" cy="-18" rx="75.47" ry="18"/>
+<text text-anchor="middle" x="1415.61" y="-14.5" font-family="Arial" font-size="10.00">MCP AI Agent Discovery</text>
+</g>
+<!-- N4&#45;&gt;N5 -->
+<g id="seq-edge5" class="edge">
+<title>N4&#45;&gt;N5</title>
+<path fill="none" stroke="#475569" d="M1158.87,-18C1208.28,-18 1275.22,-18 1328.22,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1328.14,-21.5 1338.14,-18 1328.14,-14.5 1328.14,-21.5"/>
+<text text-anchor="middle" x="1249.4" y="-19.95" font-family="Arial" font-size="9.00">handle ai agent discovery response</text>
+</g>
+</g>
+</svg><p class="diagram-caption">Figure: awesome-ai-agents integration flow</p></div></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Setting Up Autonomous Agents with LLM and Semantic Search</h2></div><div class="ch-body"><p>QLite locally</p>
+<p>Long-short Term Memory</p>
+<p>VectorDB + Semantic Search</p>
+<p>LLM</p>
+<p>CODESNIPPETS:</p>
+<p>LIMITATIONS:</p>
+<p>INSTALLSTEPS:</p>
+<p>USECASES:</p>
+<p>Building custom agents and cognitive architectures</p>
+<p>Running different LLM models for different agents</p>
+<p>Rapid development and testing</p>
+<p>Integration with different databases</p>
+<p>Building language agents</p>
+<p>Building multi-agent systems</p>
+<p>Human-Agent interaction</p>
+<p>Symbolic Control</p>
+<p>Using external tools via function-calling</p>
+<p>Web Navigation</p>
+<p>Multi-agent Communication</p>
+<p>CLASSESANDMETHODS:</p>
+<p>CONFIGKEYS:</p>
+<p>VERSIONNUMBERS:</p>
+<p>ARCHITECTURE:</p>
+<p>CODESNIPPETS:</p>
+<p>LIMITATIONS:</p>
+<p>INSTALLSTEPS:</p>
+<p>USECASES: Multi-agent task-solving, simulation, coding, build-your-own agents, autonomous agent collaboration, Vedic astrology calculation, financial exchange for AI agents, AI-native asset registry</p>
+<p>CLASSESANDMETHODS:</p>
+<p>@classmethod, cls</p>
+<p>CONFIGKEYS:</p>
+<p>None</p>
+<p>VERSIONNUMBERS:</p>
+<p>v1. 5, v1.</p>
+<p>ARCHITECTURE:</p>
+<p>MCP servers, MCP Discovery API, Language Server Protocol (LSP), VSCode API</p>
+<p>CODE_SNIPPETS:</p>
+<p>``</p>
+<p>747 | + - Blinky leverages the VSCode API, Language Server Protocol (LSP), and print statement debugging t</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1316.79 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1312.79,-40 1312.79,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="41.64" cy="-45" rx="41.64" ry="18"/>
-<text text-anchor="middle" x="41.64" y="-41.5" font-family="Arial" font-size="10.00">Uninitialized</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="41.64" cy="-18" rx="41.64" ry="18"/>
+<text text-anchor="middle" x="41.64" y="-14.5" font-family="Arial" font-size="10.00">Uninitialized</text>
 </g>
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="220.33" cy="-45" rx="42.54" ry="18"/>
-<text text-anchor="middle" x="220.33" y="-41.5" font-family="Arial" font-size="10.00">TaskQueued</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="200.99" cy="-18" rx="47.96" ry="18"/>
+<text text-anchor="middle" x="200.99" y="-14.5" font-family="Arial" font-size="10.00">Goal Selection</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M83.62,-45C108.13,-45 139.55,-45 165.98,-45"/>
-<polygon fill="#475569" stroke="#475569" points="165.83,-48.5 175.83,-45 165.83,-41.5 165.83,-48.5"/>
-<text text-anchor="middle" x="130.54" y="-46.95" font-family="Arial" font-size="9.00">enqueue_task</text>
+<path fill="none" stroke="#475569" d="M83.57,-18C101.15,-18 122.02,-18 141.2,-18"/>
+<polygon fill="#475569" stroke="#475569" points="141.06,-21.5 151.06,-18 141.06,-14.5 141.06,-21.5"/>
+<text text-anchor="middle" x="118.16" y="-19.95" font-family="Arial" font-size="9.00">initialize</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="392.27" cy="-45" rx="43.9" ry="18"/>
-<text text-anchor="middle" x="392.27" y="-41.5" font-family="Arial" font-size="10.00">TaskRunning</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="390.22" cy="-18" rx="54.27" ry="18"/>
+<text text-anchor="middle" x="390.22" y="-14.5" font-family="Arial" font-size="10.00">Action Execution</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M263.34,-45C285.47,-45 312.88,-45 336.64,-45"/>
-<polygon fill="#475569" stroke="#475569" points="336.46,-48.5 346.46,-45 336.46,-41.5 336.46,-48.5"/>
-<text text-anchor="middle" x="305.62" y="-46.95" font-family="Arial" font-size="9.00">launch_task</text>
+<path fill="none" stroke="#475569" d="M249.24,-18C271.96,-18 299.56,-18 324.23,-18"/>
+<polygon fill="#475569" stroke="#475569" points="324.19,-21.5 334.19,-18 324.19,-14.5 324.19,-21.5"/>
+<text text-anchor="middle" x="292.45" y="-19.95" font-family="Arial" font-size="9.00">select action</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="605.32,-63 533.67,-45 605.32,-27 676.97,-45 605.32,-63"/>
-<text text-anchor="middle" x="605.32" y="-41.5" font-family="Arial" font-size="10.00">TaskCompleted</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="622.76,-36 538.99,-18 622.76,0 706.52,-18 622.76,-36"/>
+<text text-anchor="middle" x="622.76" y="-14.5" font-family="Arial" font-size="10.00">Reward Evaluation</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M436.49,-45C460.66,-45 491.62,-45 520.35,-45"/>
-<polygon fill="#475569" stroke="#475569" points="520.14,-48.5 530.14,-45 520.14,-41.5 520.14,-48.5"/>
-<text text-anchor="middle" x="484.92" y="-46.95" font-family="Arial" font-size="9.00">task_execution</text>
+<path fill="none" stroke="#475569" d="M444.98,-18C468.95,-18 497.94,-18 525.45,-18"/>
+<polygon fill="#475569" stroke="#475569" points="525.21,-21.5 535.21,-18 525.21,-14.5 525.21,-21.5"/>
+<text text-anchor="middle" x="491.74" y="-19.95" font-family="Arial" font-size="9.00">perform action</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="819.28" cy="-72" rx="51.56" ry="18"/>
-<text text-anchor="middle" x="819.28" y="-68.5" font-family="Arial" font-size="10.00">TaskSucceeded</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="869.09" cy="-18" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="869.09" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M654.42,-51.13C685.45,-55.08 726.03,-60.25 759.04,-64.45"/>
-<polygon fill="#475569" stroke="#475569" points="758.51,-67.91 768.87,-65.71 759.39,-60.97 758.51,-67.91"/>
-<text text-anchor="middle" x="722.34" y="-63.95" font-family="Arial" font-size="9.00">task_success</text>
+<path fill="none" stroke="#475569" d="M708.87,-18C740,-18 774.67,-18 803.69,-18"/>
+<polygon fill="#475569" stroke="#475569" points="803.41,-21.5 813.41,-18 803.41,-14.5 803.41,-21.5"/>
+<text text-anchor="middle" x="760.9" y="-19.95" font-family="Arial" font-size="9.00">evaluate outcome</text>
 </g>
 <!-- N5 -->
 <g id="sm-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="819.28" cy="-18" rx="38.03" ry="18"/>
-<text text-anchor="middle" x="819.28" y="-14.5" font-family="Arial" font-size="10.00">TaskFailed</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="1089.8" cy="-18" rx="41.64" ry="18"/>
+<text text-anchor="middle" x="1089.8" y="-14.5" font-family="Arial" font-size="10.00">Task Failure</text>
 </g>
-<!-- N3&#45;&gt;N5 -->
+<!-- N4&#45;&gt;N5 -->
 <g id="sm-edge5" class="edge">
-<title>N3&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M654.42,-38.87C689.31,-34.43 736.29,-28.44 771,-24.02"/>
-<polygon fill="#475569" stroke="#475569" points="771.28,-27.52 780.76,-22.78 770.4,-20.57 771.28,-27.52"/>
-<text text-anchor="middle" x="722.34" y="-35.95" font-family="Arial" font-size="9.00">task_failure</text>
+<title>N4&#45;&gt;N5</title>
+<path fill="none" stroke="#475569" d="M923.32,-18C957.74,-18 1002.34,-18 1036.56,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1036.23,-21.5 1046.23,-18 1036.23,-14.5 1036.23,-21.5"/>
+<text text-anchor="middle" x="985.54" y="-19.95" font-family="Arial" font-size="9.00">learn from experience</text>
+</g>
+<!-- N6 -->
+<g id="sm-node7" class="node">
+<title>N6</title>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1266.24" cy="-18" rx="42.54" ry="18"/>
+<text text-anchor="middle" x="1266.24" y="-14.5" font-family="Arial" font-size="10.00">Agent Crash</text>
+</g>
+<!-- N5&#45;&gt;N6 -->
+<g id="sm-edge6" class="edge">
+<title>N5&#45;&gt;N6</title>
+<path fill="none" stroke="#475569" d="M1131.7,-18C1155.63,-18 1186.11,-18 1211.91,-18"/>
+<polygon fill="#475569" stroke="#475569" points="1211.88,-21.5 1221.88,-18 1211.88,-14.5 1211.88,-21.5"/>
+<text text-anchor="middle" x="1177.57" y="-19.95" font-family="Arial" font-size="9.00">handle failure</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: openlit lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating OpenLIT with OpenTelemetry-native Observability SDKs</h2></div><div class="ch-body"><p>development workflow, Generative AI, LLMs, OpenTelemetry-native observability, Analytics Dashboard, OpenTelemetry-native Observability SDKs, Evaluation Types, Rule Engine, Cost Tracking, Exceptions Monitoring Dashboard, Prompt Management, API Keys and Secrets Management, Experiment with different LLMs, Fleet Hub for OpAMP Management</p>
-<p>CLASSESANDMETHODS:</p>
-<p>openlit.</p>
-<p>CONFIGKEYS:</p>
-<p>otlpendpoint, OTELEXPORTEROTLPENDPOINT, otlpheaders, OTELEXPORTEROTLPHEADERS</p>
-<p>VERSIONNUMBERS:</p>
-<p>ARCHITECTURE:</p>
-<p>Docker, Kubernetes, Helm, OpenTelemetry</p>
-<p>CODESNIPPETS:</p>
-<p>LIMITATIONS:</p>
-<p>INSTALLSTEPS:</p>
-<p>docker compose up -d, pip install openlit</p>
-<p>USECASES:</p>
-<p>OpenAI, Anthropic, Cohere, Mistral AI, Groq, 50+ LLM providers, AI frameworks, and vector databases</p>
-<p>CLASSESANDMETHODS:</p>
-<p>CONFIGKEYS:</p>
-<p>VERSIONNUMBERS:</p>
-<p>ARCHITECTURE: OpenTelemetry Collector, ClickHouseDB, OpenLIT SDK, OpAMP, Open Agent Management Protocol</p>
-<p>CODESNIPPETS:</p>
-<p>L</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+</svg><p class="diagram-caption">Figure: awesome-ai-agents lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Agents with MySQL and SQLite through Docker</h2></div><p class="ch-summary">Integrate agents with databases</p><div class="ch-body"><p>The research highlights the importance of integrating agents with databases, specifically MySQL and SQLite, through Docker. This allows for a flexible and scalable architecture, enabling the use of different databases depending on the requirements of the project. The architecture internals module components flow involves data processing and autonomous learning, with modules handling custom data tasks and evolving through observations. The use of Docker enables easy deployment and management of the database containers.</p>
+<p>The research mentions the use of VectorDB and Semantic Search, but does not provide implementation details for this area.</p>
+<p>The use of MySQL through Docker provides a reliable and efficient way to store and retrieve data, with the option of running SQLite locally for development and testing purposes. The research does not provide specific details on the configuration of MySQL or SQLite, but mentions the use of config keys such as VectorDB and Semantic Search. The architecture of the system involves a frontend built with NextJS and Typescript, and a backend built with FastAPI and Python. The research highlights the importance of using external tools via function-calling, but does not provide specific examples of how this is implemented.</p>
+<p>The research mentions the use of LLM-agnostic platforms for agent building and testing, but does not provide specific details on how this is achieved. The use of LLMs such as gpt-3. 5-16k is mentioned, but the research does not provide information on how to integrate these models with the agents. The research highlights the importance of building custom agents and cognitive architectures, but does not provide specific examples of how this is done.</p>
+<p>The use of ToolComponent. py is mentioned, but the research does not provide details on how this is used in the context of the project.</p>
+<p>The research highlights the importance of rapid development and testing, with the use of Docker enabling easy deployment and management of the database containers. The research mentions the use of squads and docker-compose, with version numbers such as v2. 18. 0 mentioned.</p>
+<p>The research does not provide specific details on the installation steps, but mentions the use of npm install and sudo curl. The use of API gateways and schedulers is mentioned, but the research does not provide specific examples of how these are used.</p>
+<p>The research mentions the use of Blinky, an open-source AI debugging agent for VSCode, which uses LLMs to help identify and fix backend code errors. The research highlights the importance of using external tools via function-calling, but does not provide specific examples of how this is implemented. The use of MCP Discovery is mentioned, which enables agents to search for tools using natural language and get performance metrics. The research does not provide specific details on how this is achieved, but mentions the use of config keys such as default value = 'default'.</p>
+<p>The research highlights the limitations of AI agents, including production issues due to hallucinations, security vulnerabilities, and latency. The use of safety kernels and workflow engines is mentioned, but the research does not provide specific examples of how these are used. The research mentions the use of context engines and MCP servers, but does not provide details on how these are implemented. The use of CLI is mentioned, but the research does not provide specific examples of how this is used.</p>
+<p>The research does not provide implementation details for the integration of agents with MySQL and SQLite through Docker, but highlights the importance of using Docker for easy deployment and management of the database containers. The use of VectorDB and Semantic Search is mentioned, but the research does not provide specific details on how these are used. The research mentions the use of LLM-agnostic platforms for agent building and testing, but does not provide specific examples of how this is achieved. The use of ToolComponent.</p>
+<p>py is mentioned, but the research does not provide details on how this is used in the context of the project.</p>
+<p>The research highlights the importance of building custom agents and cognitive architectures, with the use of external tools via function-calling enabling the integration of different tools and models. The use of API gateways and schedulers is mentioned, but the research does not provide specific examples of how these are used. The research mentions the use of Blinky, an open-source AI debugging agent for VSCode, which uses LLMs to help identify and fix backend code errors. The research does not provide specific details on the installation steps, but mentions the use of npm install and sudo curl.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 184.46 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 227.83 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 180.46,-535 180.46,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535 223.83,-535 223.83,4 -4,4"/>
 <!-- N0 -->
 <g id="pipe-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="88.23" cy="-513" rx="39.84" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-509.5" font-family="Arial" font-size="10.00">PromptText</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="109.92" cy="-513" rx="66.9" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
 </g>
 <!-- N1 -->
 <g id="pipe-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-430.5" rx="46.15" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-427" font-family="Arial" font-size="10.00">TextTokenizer</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-430.5" rx="54.27" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-427" font-family="Arial" font-size="10.00">NLPTokenization</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="pipe-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M88.23,-494.53C88.23,-484.51 88.23,-471.68 88.23,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-460.45 88.23,-450.45 84.73,-460.45 91.73,-460.45"/>
-<text text-anchor="middle" x="105.48" y="-468.45" font-family="Arial" font-size="9.00">tokenize</text>
+<path fill="none" stroke="#475569" d="M109.92,-494.53C109.92,-484.51 109.92,-471.68 109.92,-460.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-460.45 109.92,-450.45 106.42,-460.45 113.42,-460.45"/>
+<text text-anchor="middle" x="147.42" y="-468.45" font-family="Arial" font-size="9.00">text preprocessing</text>
 </g>
 <!-- N2 -->
 <g id="pipe-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-348" rx="60.58" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-344.5" font-family="Arial" font-size="10.00">EmbeddingEncoder</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-348" rx="67.35" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-344.5" font-family="Arial" font-size="10.00">ContextualEmbedding</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="pipe-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M88.23,-412.03C88.23,-402.01 88.23,-389.18 88.23,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-377.95 88.23,-367.95 84.73,-377.95 91.73,-377.95"/>
-<text text-anchor="middle" x="103.61" y="-385.95" font-family="Arial" font-size="9.00">encode</text>
+<path fill="none" stroke="#475569" d="M109.92,-412.03C109.92,-402.01 109.92,-389.18 109.92,-377.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-377.95 109.92,-367.95 106.42,-377.95 113.42,-377.95"/>
+<text text-anchor="middle" x="148.54" y="-385.95" font-family="Arial" font-size="9.00">semantic encoding</text>
 </g>
 <!-- N3 -->
 <g id="pipe-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="88.23,-283.5 0,-265.5 88.23,-247.5 176.46,-265.5 88.23,-283.5"/>
-<text text-anchor="middle" x="88.23" y="-262" font-family="Arial" font-size="10.00">KnowledgeRetriever</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="109.92,-283.5 0,-265.5 109.92,-247.5 219.83,-265.5 109.92,-283.5"/>
+<text text-anchor="middle" x="109.92" y="-262" font-family="Arial" font-size="10.00">KnowledgeGraphRetrieval</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="pipe-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M88.23,-329.53C88.23,-319.51 88.23,-306.68 88.23,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-295.45 88.23,-285.45 84.73,-295.45 91.73,-295.45"/>
-<text text-anchor="middle" x="103.61" y="-303.45" font-family="Arial" font-size="9.00">retrieve</text>
+<path fill="none" stroke="#475569" d="M109.92,-329.53C109.92,-319.51 109.92,-306.68 109.92,-295.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-295.45 109.92,-285.45 106.42,-295.45 113.42,-295.45"/>
+<text text-anchor="middle" x="150.42" y="-303.45" font-family="Arial" font-size="9.00">information retrieval</text>
 </g>
 <!-- N4 -->
 <g id="pipe-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-183" rx="60.13" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranker</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-183" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranking</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="pipe-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M88.23,-247.03C88.23,-237.01 88.23,-224.18 88.23,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-212.95 88.23,-202.95 84.73,-212.95 91.73,-212.95"/>
-<text text-anchor="middle" x="101.36" y="-220.95" font-family="Arial" font-size="9.00">rerank</text>
+<path fill="none" stroke="#475569" d="M109.92,-247.03C109.92,-237.01 109.92,-224.18 109.92,-212.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-212.95 109.92,-202.95 106.42,-212.95 113.42,-212.95"/>
+<text text-anchor="middle" x="146.67" y="-220.95" font-family="Arial" font-size="9.00">candidate ranking</text>
 </g>
 <!-- N5 -->
 <g id="pipe-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="88.23" cy="-100.5" rx="46.6" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-97" font-family="Arial" font-size="10.00">TextGenerator</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-100.5" rx="49.31" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
 </g>
 <!-- N4&#45;&gt;N5 -->
 <g id="pipe-edge5" class="edge">
 <title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M88.23,-164.53C88.23,-154.51 88.23,-141.68 88.23,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-130.45 88.23,-120.45 84.73,-130.45 91.73,-130.45"/>
-<text text-anchor="middle" x="106.61" y="-138.45" font-family="Arial" font-size="9.00">generate</text>
+<path fill="none" stroke="#475569" d="M109.92,-164.53C109.92,-154.51 109.92,-141.68 109.92,-130.21"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-130.45 109.92,-120.45 106.42,-130.45 113.42,-130.45"/>
+<text text-anchor="middle" x="146.67" y="-138.45" font-family="Arial" font-size="9.00">response creation</text>
 </g>
 <!-- N6 -->
 <g id="pipe-node7" class="node">
 <title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="88.23" cy="-18" rx="60.13" ry="18"/>
-<text text-anchor="middle" x="88.23" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreamer</text>
+<ellipse fill="#bbf7d0" stroke="#2563eb" cx="109.92" cy="-18" rx="62.84" ry="18"/>
+<text text-anchor="middle" x="109.92" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreaming</text>
 </g>
 <!-- N5&#45;&gt;N6 -->
 <g id="pipe-edge6" class="edge">
 <title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M88.23,-82.03C88.23,-72.01 88.23,-59.18 88.23,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="91.73,-47.95 88.23,-37.95 84.73,-47.95 91.73,-47.95"/>
-<text text-anchor="middle" x="102.11" y="-55.95" font-family="Arial" font-size="9.00">stream</text>
+<path fill="none" stroke="#475569" d="M109.92,-82.03C109.92,-72.01 109.92,-59.18 109.92,-47.71"/>
+<polygon fill="#475569" stroke="#475569" points="113.42,-47.95 109.92,-37.95 106.42,-47.95 113.42,-47.95"/>
+<text text-anchor="middle" x="144.04" y="-55.95" font-family="Arial" font-size="9.00">output formatting</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: openlit end-to-end processing pipeline</p></div><div class="sec-heading">openlit — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:70%"></span></span></span><span class="bar-value">70%</span></div><div class="bar-row"><span class="bar-label">Documentation Quality</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Overall Satisfaction</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting OpenLIT with OTEL_EXPORTER_OTLP_ENDPOINT and otlp_headers</h2></div><p class="ch-summary">OpenLIT troubleshooting</p><div class="ch-body"><p>The OpenLIT library provides several configuration options to customize its behavior, including the otlpendpoint and otlpheaders config keys. These keys can be used to specify the endpoint and headers for the OpenTelemetry protocol. The openlit. init() method can be used to initialize the OpenLIT library with these config keys.</p>
-<p>For example, openlit. init(otlpendpoint='http://127. 0. 0.</p>
-<p>1:4318') can be used to set the otlpendpoint. The OTELEXPORTEROTLPENDPOINT environment variable can also be used to set the otlpendpoint.</p>
-<p>The OpenLIT library uses the OpenTelemetry Collector to collect and store data. The ClickHouseDB is used as the storage backend for the OpenLIT library. The OpenLIT SDK provides a simple API for sending traces and metrics to the OpenTelemetry Collector. The OpenLIT UI provides a web-based interface for visualizing the data stored in the ClickHouseDB.</p>
-<p>The OpenLIT library provides several use cases, including experimenting with LLMs, organizing and versioning prompts, and securely handling API keys. The library also provides a Rule Engine for building AI features and applications. The OpAMP protocol is used for agent management. The OpenLIT library does not support multiple storage backends, which can be a limitation for some use cases.</p>
-<p>The OpenLIT library uses the OpenTelemetry-native observability SDKs to provide observability features. The library also provides an Analytics Dashboard for visualizing the data. The Exceptions Monitoring Dashboard provides a way to monitor and debug exceptions. The library also provides a Prompt Management feature for managing prompts.</p>
-<p>The OpenLIT library provides several config keys, including otlpendpoint and otlpheaders. The OTELEXPORTEROTLPENDPOINT environment variable can be used to set the otlpendpoint. The library also provides several API methods, including openlit. init() and openlit.</p>
-<p>addtask(). The library does not provide a way to customize the storage backend, which can be a limitation for some use cases.</p>
-<p>The OpenLIT library uses the Docker and Kubernetes architectures to provide a scalable and reliable deployment. The Helm chart provides a way to deploy the OpenLIT library on a Kubernetes cluster. The library also provides a way to deploy on a single machine using the docker compose up -d command. The library does not provide a way to deploy on a cloud provider, which can be a limitation for some use cases.</p>
-<p>The OpenLIT library provides several limitations, including the lack of support for multiple storage backends and the lack of customization options for the storage backend. The library also does not provide a way to deploy on a cloud provider. The library provides several use cases, including experimenting with LLMs and securely handling API keys. The library also provides several API methods, including openlit.</p>
-<p>init() and openlit. addtask().</p>
-<p>The OpenLIT library provides a way to troubleshoot issues using the OpenTelemetry Collector and the ClickHouseDB. The library also provides a way to monitor and debug exceptions using the Exceptions Monitoring Dashboard. The library does not provide a way to customize the logging level, which can be a limitation for some use cases. The library provides several config keys, including otlpendpoint and otlpheaders.</p>
-<p>The OTELEXPORTEROTLPENDPOINT environment variable can be used to set the otlpendpoint.</p>
-<p>The OpenLIT library provides a simple API for sending traces and metrics to the OpenTelemetry Collector. The library also provides a web-based interface for visualizing the data stored in the ClickHouseDB. The library does not provide a way to customize the visualization options, which can be a limitation for some use cases. The library provides several use cases, including experimenting with LLMs and securely handling API keys.</p>
-<p>The library also provides several API methods, including openlit. init() and openlit. add_task().</p><div class="sec-heading">openlit — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Observability</td><td>OpenTelemetry-native</td><td>Supports OpenTelemetry protocol for seamless integration</td></tr><tr><td>Data Storage</td><td>ClickHouse</td><td>Column-store database for efficient data processing</td></tr><tr><td>SDK</td><td>OpenLIT SDK</td><td>Provides a simple API for sending traces and metrics</td></tr><tr><td>UI</td><td>OpenLIT_UI</td><td>Offers a user-friendly interface for data visualization and analysis</td></tr><tr><td>Architecture</td><td>Microservices-based</td><td>Utilizes Docker, Kubernetes, and Helm for containerization and orchestration</td></tr><tr><td>Installation</td><td>pip install openlit</td><td>Simple installation process via pip package manager</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with OpenLIT and Open Agent Management Protocol</h2></div><p class="ch-summary">Optimize OpenLIT performance</p><div class="ch-body"><p>The OpenLIT library provides several configuration options to optimize performance, including the OPENLITURL and OPENLITAPIKEY config keys. The AgnoInstrumentor class can be used to instrument code and measure performance. The Agent class provides methods such as run and arun to manage tasks. The openlit.</p>
-<p>instrumentation. agno module provides the AgnoIn class. The PostHogServer class can be used to track events, such as SERVEREVENTS. DASHBOARDQUERYRUNSUCCESS.</p>
-<p>The next-auth library is used for authentication, with version 4. 24. 7. The posthog-js library is used for event tracking, with version 1.</p>
-<p>261. 7.</p>
-<p>The OpenLIT library has several dependencies, including next-themes and react. The openai library is used for AI-related tasks, with version 4. 50. 0.</p>
-<p>The react-beautiful-dnd library is used for drag-and-drop functionality, with version 13. 1. 1. The react-day-picker library is used for date picking, with version 8.</p>
-<p>10. 1.</p>
-<p>The OpenLIT library uses the OpenTelemetry protocol for distributed tracing. The BeeAI library is used for AI-related tasks. The Agno library is used for instrumentation, with version 2. 5.</p>
-<p>3. The Agent class provides methods such as addtask to manage tasks.</p>
-<p>The OpenLIT library has several limitations, including the fact that it does not support certain types of queries. The PostHogServer class can be used to track events, but it requires a valid API key. The AgnoInstrumentor class can be used to instrument code, but it requires a valid configuration.</p>
-<p>The OpenLIT library provides several API methods, including the fireEvent method of the PostHogServer class. The Agent class provides methods such as run and arun to manage tasks. The openlit. instrumentation.</p>
-<p>agno module provides the AgnoIn class. The next-auth library provides methods such as getSession to manage authentication sessions.</p>
-<p>The OpenLIT library has several performance metrics, including the time it takes to run a query. The posthog-js library provides methods such as captureEvent to track events. The react-beautiful-dnd library provides methods such as DragDropContext to manage drag-and-drop functionality.</p>
-<p>The OpenLIT library has several technical limitations, including the fact that it does not support certain types of queries. The AgnoInstrumentor class can be used to instrument code, but it requires a valid configuration. The PostHogServer class can be used to track events, but it requires a valid API key.</p>
-<p>The OpenLIT library provides several configuration options to optimize performance, including the OPENLITURL and OPENLITAPIKEY config keys. The Agent class provides methods such as addtask to manage tasks. The openlit. instrumentation.</p>
-<p>agno module provides the AgnoIn class.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Install OpenLIT and Integrate with Ollama for Free LLM ...</div><a class="video-url" href="https://www.youtube.com/watch?v=ELLHIdg7P38">https://www.youtube.com/watch?v=ELLHIdg7P38</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Observability and Evals for LLMs with OpenLIT Locally ...</div><a class="video-url" href="https://www.youtube.com/watch?v=tO3NsndY_xU">https://www.youtube.com/watch?v=tO3NsndY_xU</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Introduction to OpenLIT - Open source Platform for AI ...</div><a class="video-url" href="https://www.youtube.com/watch?v=xji3Q_zKynY">https://www.youtube.com/watch?v=xji3Q_zKynY</a></div></div></section>
-<div class="book-footer"><strong>openlit: Complete Reference</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; April 11, 2026</div>
+</svg><p class="diagram-caption">Figure: awesome-ai-agents end-to-end processing pipeline</p></div><div class="sec-heading">awesome-ai-agents — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Use</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Performance</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Cost-Effectiveness</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:78%"></span></span></span><span class="bar-value">78%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Avoiding Production Gotchas with Function-Calling and MCP Servers</h2></div><p class="ch-summary">MCP server issues</p><div class="ch-body"><p>When working with MCP servers, it's essential to consider the potential pitfalls that can arise from function-calling. The research highlights the importance of using the MCP Discovery API to search for tools and get performance metrics. For instance, the MCP Discovery lets agents search for tools using natural language and compare options. The VSCode API and Language Server Protocol (LSP) are also crucial in identifying and fixing backend code errors.</p>
+<p>The Blinky agent, which uses LLMs to help identify and fix backend code errors, is a notable example of this.</p>
+<p>The function-calling method is a key aspect of the awesome-ai-agents library, allowing for the integration of external tools. However, it's crucial to note that the library does not provide implementation details for this area, and users must rely on external documentation. The ToolComponent. py class is a relevant example of how function-calling can be implemented.</p>
+<p>The CONFIGKEYS such as VectorDB, Semantic Search, and LLM are also important to consider when working with MCP servers.</p>
+<p>In terms of architecture, the awesome-ai-agents library uses a combination of Frontend: NextJS + Typescript and Backend: FastAPI + Python. The DB is handled by MySQL through docker, with the option of running SQLite locally. The Long-short Term Memory and VectorDB + Semantic Search are also key components of the architecture. The LLM is used in conjunction with the MCP server to provide a scalable and efficient solution.</p>
+<p>The research highlights several use cases for the awesome-ai-agents library, including building custom agents and cognitive architectures, running different LLM models for different agents, and rapid development and testing. The library also supports integration with different databases, building language agents, and building multi-agent systems. The MCP Discovery API is a critical component of this, allowing agents to search for tools and get performance metrics. The Blinky agent is a notable example of how this can be used to identify and fix backend code errors.</p>
+<p>One of the limitations of the awesome-ai-agents library is that it does not support certain features, such as automatic error handling. The LIMITATIONS section of the research highlights this, noting that there was an error while loading the page. The INSTALLSTEPS section provides guidance on how to install the library, including copying skill files directly into the . claude/skills/ directory.</p>
+<p>The USECASES section highlights the various use cases for the library, including MCP Discovery and Blinky.</p>
+<p>The research also highlights the importance of considering version numbers when working with the awesome-ai-agents library. The VERSIONNUMBERS section notes that the library is currently at version v1. 5 and v1. 6.</p>
+<p>The CONFIGKEYS such as VectorDB, Semantic Search, and LLM are also important to consider when working with MCP servers. The CODESNIPPETS section provides examples of how to use the library, including the @pthieu and @2214962083 snippets.</p>
+<p>In terms of technical depth, the research highlights the importance of using specific API methods, such as Agent. addtask() and workflow. run(). The config.</p>
+<p>maxretries config key is also important to consider when working with MCP servers. The research notes that the library does not support certain features, such as automatic error handling, and that the MCP Discovery API is a critical component of the library. The Blinky agent is a notable example of how this can be used to identify and fix backend code errors.</p>
+<p>The research also highlights the importance of considering performance metrics when working with the awesome-ai-agents library. The MCP Discovery API provides performance metrics, such as latency and uptime, which can be used to compare options and pick the best one. The Blinky agent is a notable example of how this can be used to identify and fix backend code errors. The research notes that the library does not provide implementation details for this area, and users must rely on external documentation.</p><div class="sec-heading">awesome-ai-agents — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Recommender System</td><td>1,000 agents</td><td>Simulator for testing agent interactions</td></tr><tr><td>Autonomous Data Agent</td><td>Labeling framework</td><td>Supports LLM-agnostic platform</td></tr><tr><td>LLM Model Support</td><td>gpt-3.5-16k</td><td>Compatible with multiple LLM models</td></tr><tr><td>Database Options</td><td>MySQL, SQLite, VectorDB</td><td>Flexible database integration</td></tr><tr><td>Frontend Framework</td><td>NextJS + Typescript</td><td>Supports rapid development and testing</td></tr><tr><td>Backend Framework</td><td>FastAPI + Python</td><td>High-performance backend support</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Long-Short Term Memory and LLM-Agnostic Platforms</h2></div><p class="ch-summary">Optimize AI agent performance</p><div class="ch-body"><p>The research does not provide implementation details for this area, however, we can discuss the general concept of optimizing performance with Long-Short Term Memory (LSTM) and LLM-Agnostic Platforms. LSTM is a type of Recurrent Neural Network (RNN) that can learn long-term dependencies in data. LLM-Agnostic Platforms, on the other hand, are designed to work with various Large Language Models (LLMs) without being specific to any one model. To optimize performance, developers can use techniques such as hyperparameter tuning and model pruning.</p>
+<p>The squads npm package can be used to manage and deploy AI agents.</p>
+<p>The use of LLMs in AI agents has become increasingly popular, with agents such as Blinky and Devon using LLMs to improve their performance. Blinky is an open-source AI debugging agent for VSCode that uses LLMs to help identify and fix backend code errors. Devon, previously known as Gilfoyle, aims to perfect code correction for fill-in-the-middle, bug spotting, and completion tasks. The DJD Agent Score is an on-chain reputation scoring API for AI agent wallets on Base L2.</p>
+<p>The E2B Sandbox offers secure cloud environments tailored for AI agents and apps, while AgentOps aims to improve AI agent development with tools for observability, evaluations, and replay analytics. The use of these platforms and tools can help optimize the performance of AI agents. However, AI agents often face production issues due to hallucinations, security vulnerabilities, and latency. The research does not provide specific details on how to address these issues.</p>
+<p>In terms of technical details, the research mentions the use of docker-compose and npm install -g squads to install and manage AI agents. The version number of docker-compose mentioned is v2. 18. 0.</p>
+<p>The research does not provide information on the architecture or configuration keys used in the AI agents. The use of LLMs in AI agents can be beneficial, but it also introduces limitations such as the need for large amounts of training data and computational resources.</p>
+<p>The use of LLM-Agnostic Platforms can help address some of these limitations by providing a flexible and scalable architecture for AI agents. The platforms can be used to deploy and manage AI agents, and can provide tools for monitoring and evaluating their performance. The research does not provide specific details on the classes and methods used in the AI agents, but it mentions the use of autonomous learning and data processing modules.</p>
+<p>The use of TEPS and other performance metrics can help evaluate the performance of AI agents and identify areas for optimization. The research does not provide specific details on the performance metrics used, but it mentions the importance of optimizing performance to improve the overall efficiency and effectiveness of AI agents. The use of LLMs and LLM-Agnostic Platforms can help improve the performance of AI agents, but it also introduces new challenges and limitations that need to be addressed.</p>
+<p>The research does not provide specific details on the code snippets or configuration keys used in the AI agents, but it mentions the importance of using secure and scalable architectures to deploy and manage AI agents. The use of docker-compose and npm install -g squads can help simplify the process of installing and managing AI agents, but it also introduces new dependencies and potential security vulnerabilities that need to be addressed.</p>
+<p>In conclusion, optimizing the performance of AI agents with Long-Short Term Memory and LLM-Agnostic Platforms requires a deep understanding of the technical details and limitations of the AI agents and platforms used. The research provides some general information on the use of LLMs and LLM-Agnostic Platforms, but it does not provide specific details on the implementation and optimization of AI agents. Further research is needed to provide more detailed information on the technical aspects of optimizing AI agent performance.</p></div></section>
+<div class="book-footer"><strong>awesome-ai-agents: Technical Deep Dive</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; April 12, 2026</div>
 </body>
 </html>
