@@ -2,474 +2,253 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>awesome-ai-agents: Technical Deep Dive</title>
-<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "awesome-ai-agents: Technical Deep Dive"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
+<title>flyte: Technical Deep Dive</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body { background: #ffffff; color: #111111; font-family: Georgia, "Times New Roman", serif; line-height: 1.7; width: 100%; }a { color: #cc0000; text-decoration: none; }@page { size: A4 portrait; margin: 18mm 16mm 18mm 16mm; @top-center { content: "flyte: Technical Deep Dive"; font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: Arial, sans-serif; font-size: 7.5pt; color: #888888; } }@page cover-page { margin: 0; @top-center { content: none; } @bottom-right { content: none; } }.cover { page: cover-page; width: 210mm; height: 297mm; background: #ffffff; border: 6px solid #cc0000; padding: 0; text-align: center; page-break-after: always; display: table; table-layout: fixed; }.cover-top { display: table-row; height: 50%; }.cover-inner { display: table-cell; vertical-align: middle; padding: 44px 44px 24px; text-align: center; }.cover-bottom { display: table-row; height: 50%; }.cover-wallpaper { display: table-cell; vertical-align: bottom; padding: 0; overflow: hidden; }.cover-wallpaper svg { width: 100%; height: 100%; display: block; }.cover-logo { max-height: 48px; max-width: 140px; object-fit: contain; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }.cover-logo-placeholder { width: 52px; height: 52px; border: 3px solid #cc0000; border-radius: 50%; display: block; margin: 0 auto 20px; line-height: 52px; font-size: 22px; font-weight: 900; color: #cc0000; text-align: center; }.cover-lib-name { font-size: 42pt; font-weight: 900; color: #cc0000; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 8px; font-family: Georgia, serif; }.cover-suffix { font-size: 13pt; font-weight: 700; color: #111111; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; }.cover-rule { width: 80px; height: 4px; background: #cc0000; margin: 16px auto; }.cover-subtitle { font-size: 12pt; color: #333333; font-style: italic; margin: 0 auto 12px; line-height: 1.5; max-width: 420px; }.cover-desc { font-size: 11pt; color: #222222; margin: 0 auto 20px; line-height: 1.65; max-width: 440px; text-align: center; }.cover-tagline { font-size: 11pt; color: #111111; border: 2px solid #cc0000; display: inline-block; padding: 7px 20px; margin-bottom: 24px; letter-spacing: 0.5px; }.cover-meta { font-size: 10pt; color: #555555; border-top: 1px solid #cc0000; padding-top: 14px; margin-top: 8px; }.cover-meta strong { color: #111111; }.chapter { background: #ffffff; padding: 0 0 20px; page-break-before: always; }.ch-banner { background: #cc0000; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.ch-num { font-family: Arial, sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; opacity: 0.85; display: block; margin-bottom: 4px; }.ch-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.ch-summary { font-size: 10.5pt; color: #333333; font-style: italic; border-left: 4px solid #cc0000; padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }.ch-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.callout { border-left: 5px solid #cc0000; background: #fff5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.code-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 6px; }.code-block { background: #111111; border-radius: 3px; padding: 14px 18px; margin: 14px 0; font-family: "Courier New", monospace; font-size: 9.5pt; color: #f5f5f5; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }.sec-heading { font-family: Arial, sans-serif; font-size: 11pt; font-weight: 700; color: #cc0000; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #cc0000; padding-bottom: 4px; margin: 22px 0 12px; }.diagram-box { border: 1.5px solid #cc0000; border-radius: 3px; padding: 14px 12px 10px; margin: 14px 0; background: #ffffff; text-align: center; }.diagram-box svg { width: 100%; max-height: 130mm; height: auto; display: block; margin: 0 auto; }.diagram-caption { font-family: Arial, sans-serif; font-size: 8pt; color: #666666; margin-top: 8px; font-style: italic; }.diagram-grid { display: table; width: 100%; margin: 14px 0; border-spacing: 12px; }.diagram-col { display: table-cell; width: 50%; vertical-align: top; }.diagram-col .diagram-box { margin: 0; }.bar-section { margin: 14px 0; }.bar-row { display: table; width: 100%; margin-bottom: 7px; }.bar-label { display: table-cell; width: 160px; text-align: right; padding-right: 10px; font-family: Arial, sans-serif; font-size: 9pt; color: #333333; vertical-align: middle; }.bar-track { display: table-cell; vertical-align: middle; }.bar-inner { background: #eeeeee; border-radius: 2px; height: 16px; width: 100%; }.bar-fill { height: 16px; border-radius: 2px; background: #cc0000; display: block; }.bar-value { display: table-cell; width: 44px; padding-left: 8px; font-family: Arial, sans-serif; font-size: 8.5pt; color: #666666; vertical-align: middle; }table.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; font-family: Arial, sans-serif; }table.data-table thead { background: #cc0000; color: #ffffff; }table.data-table th { padding: 9px 12px; text-align: left; font-weight: 700; font-size: 9pt; letter-spacing: 0.3px; }table.data-table td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; color: #222222; }table.data-table tbody tr:nth-child(even) { background: #fafafa; }.video-card { border: 1px solid #cc0000; border-radius: 3px; padding: 10px 14px; margin: 8px 0; }.video-label { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #cc0000; margin-bottom: 4px; }.video-title { font-size: 11pt; font-weight: 700; color: #111111; margin-bottom: 3px; line-height: 1.4; }.video-url { font-size: 9pt; color: #cc0000; word-break: break-all; display: block; }.book-footer { border-top: 3px solid #cc0000; padding: 14px 0; font-family: Arial, sans-serif; font-size: 9.5pt; color: #555555; text-align: center; margin-top: 24px; }.book-footer strong { color: #111111; }.intro-section { page-break-before: always; padding: 0 0 20px; }.intro-banner { background: #111111; color: #ffffff; padding: 18px 24px 14px; margin-bottom: 20px; }.intro-banner h2 { font-size: 20pt; font-weight: 900; line-height: 1.15; margin: 0; }.intro-body p { font-size: 11pt; line-height: 1.75; color: #222222; text-align: justify; margin-bottom: 13px; }.intro-callout { border-left: 5px solid #111111; background: #f5f5f5; padding: 12px 18px; margin: 16px 0; font-size: 10.5pt; font-style: italic; color: #111111; line-height: 1.55; }.intro-repo { font-family: Arial, sans-serif; font-size: 9.5pt; color: #cc0000; margin-top: 14px; }.intro-repo a { color: #cc0000; word-break: break-all; }@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }</style>
 </head>
 <body>
-<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://repository-images.githubusercontent.com/655459367/cdaf989b-adaf-46f8-ab38-92ede96dc33a" alt="awesome-ai-agents logo" onerror="this.style.display='none'"/><div class="cover-lib-name">awesome-ai-agents</div><div class="cover-suffix">Technical Deep Dive</div><div class="cover-rule"></div><p class="cover-subtitle">Intelligent agents are here</p><p class="cover-desc">The awesome-ai-agents library provides a framework for building custom agents and cognitive architectures.  The ToolComponent. py class is a key component in this framework, allowing for the creation of complex agent systems.</p><div class="cover-tagline">AI made easy</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> April 12, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
-<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">e2b-dev built awesome-ai-agents to solve AI agent development issues.</div><div class="intro-body"><p>The awesome-ai-agents project was created by e2b-dev. It was designed to solve the problem of building and testing custom AI agents. The project provides a platform for rapid development and testing of AI agents, allowing users to integrate with different databases and build language agents.</p>
-<p>The architecture of awesome-ai-agents is based on a frontend built with NextJS and Typescript, and a backend built with FastAPI and Python. The database options include MySQL and SQLite, with the option to run MySQL through Docker or SQLite locally. The project also utilizes VectorDB and Semantic Search, as well as Long-short Term Memory and LLM.</p>
-<p>One of the key technical differences of awesome-ai-agents is its use of function-calling and the ToolComponent. py class. The project also provides a range of configuration keys, including VectorDB, Semantic Search, LLM, and MySQL. The use of these configuration keys allows users to customize the behavior of their AI agents and integrate with different tools and services.</p>
-<p>The target audience for awesome-ai-agents includes developers and researchers who want to build and test custom AI agents. The project provides a range of use cases, including building custom agents and cognitive architectures, running different LLM models for different agents, and integrating with different databases. The project also supports multi-agent systems, human-agent interaction, and symbolic control, making it a versatile tool for a range of applications.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/e2b-dev/awesome-ai-agents">https://github.com/e2b-dev/awesome-ai-agents</a></p></section>
-<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building Multi-Agent Systems with ToolComponent.py</h2></div><p class="ch-summary">Building multi-agent systems</p><div class="ch-body"><p>The awesome-ai-agents library provides a framework for building custom agents and cognitive architectures. The ToolComponent. py class is a key component in this framework, allowing for the creation of complex agent systems. The library supports various databases, including MySQL and SQLite, and provides a range of configuration options, such as VectorDB and Semantic Search.</p>
-<p>The LLM-agnostic platform allows for the integration of different LLM models, including gpt-3. 5-16k. The library also supports multi-agent communication and human-agent interaction.</p>
-<p>The architecture of the library is based on a frontend built with NextJS and Typescript, and a backend built with FastAPI and Python. The DB is supported by MySQL through docker, with the option of running SQLite locally. The library also utilizes Long-short Term Memory and VectorDB + Semantic Search. The use of function-calling allows for the integration of external tools, enabling the creation of complex agent systems.</p>
-<p>One of the key features of the library is its support for building multi-agent systems. This is achieved through the use of classes and methods, such as ToolComponent. py, which provides a range of functionality for creating and managing agent systems. The library also supports the use of different LLM models, allowing for the creation of customized agent systems.</p>
-<p>The configuration options, such as LLM and VectorDB, provide a high degree of flexibility in the creation of agent systems.</p>
-<p>The library has a range of use cases, including building custom agents and cognitive architectures, running different LLM models for different agents, and rapid development and testing. The library also supports integration with different databases, building language agents, and human-agent interaction. The use of external tools via function-calling enables the creation of complex agent systems, and the library supports multi-agent communication and web navigation.</p>
-<p>The library has some limitations, including the lack of support for certain databases and LLM models. For example, the library does not support the use of PostgreSQL, and the LLM models are limited to gpt-3. 5-16k. The library also has some performance limitations, with a maximum of 1000 agents supported in the recommender system simulator.</p>
-<p>In terms of technical details, the library provides a range of API methods and class names, including ToolComponent. py and function-calling. The library also supports configuration options, such as VectorDB and Semantic Search, and provides a range of version numbers, including v1. 5 and v1.</p>
-<p>6. The library has a range of performance metrics, including a maximum of 1000 agents supported in the recommender system simulator.</p>
-<p>The library has some specific technical limitations, including the fact that it does not support the use of certain databases, such as PostgreSQL. The library also has some performance limitations, including a maximum of 1000 agents supported in the recommender system simulator. The library has a range of configuration options, including LLM and VectorDB, which provide a high degree of flexibility in the creation of agent systems.</p>
-<p>The library provides a range of use cases, including building custom agents and cognitive architectures, running different LLM models for different agents, and rapid development and testing. The library also supports integration with different databases, building language agents, and human-agent interaction. The use of external tools via function-calling enables the creation of complex agent systems, and the library supports multi-agent communication and web navigation.</p>
-<p>The library has a range of technical details, including the use of MCP servers, MCP Discovery API, Language Server Protocol (LSP), and VSCode API. The library also provides a range of code snippets, including @pthieu and @2214962083. The library has a range of version numbers, including v1. 5 and v1.</p>
-<p>6, and provides a range of performance metrics, including a maximum of 1000 agents supported in the recommender system simulator.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<div class="cover"><div class="cover-top"><div class="cover-inner"><img class="cover-logo" src="https://repository-images.githubusercontent.com/216628419/ba7d6000-5fcb-11ea-8d64-a3ecc37493cc" alt="flyte logo" onerror="this.style.display='none'"/><div class="cover-lib-name">flyte</div><div class="cover-suffix">Technical Deep Dive</div><div class="cover-rule"></div><p class="cover-subtitle">Learning flyte basics</p><p class="cover-desc">To create scalable workflows, users can leverage the pyflyte run command, which allows for local execution of workflows.  The pyflyte run command can be used in conjunction with the flytectl demo start command to create a sandbox cluster for remote execution.  This enables users to test and refine their workflows in a controlled environment before deploying them to a production environment.</p><div class="cover-tagline">Flyte made easy</div><div class="cover-meta"><strong>Author:</strong> Arvind Sundararajan &nbsp;|&nbsp; <strong>Published:</strong> April 13, 2026</div></div></div><div class="cover-bottom"><div class="cover-wallpaper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 420" preserveAspectRatio="xMidYMid slice"><rect width="595" height="420" fill="#fafafa"/><circle cx="520" cy="380" r="220" fill="#f5e6e6" opacity="0.45"/><circle cx="80"  cy="400" r="160" fill="#ede8f5" opacity="0.35"/><circle cx="300" cy="460" r="180" fill="#e8f0f5" opacity="0.3"/><circle cx="460" cy="180" r="90"  fill="#fce8e8" opacity="0.4"/><circle cx="140" cy="200" r="70"  fill="#e8eef5" opacity="0.35"/><circle cx="320" cy="300" r="110" fill="#f0ece8" opacity="0.3"/><circle cx="520" cy="380" r="260" fill="none" stroke="#e8d0d0" stroke-width="1" opacity="0.5"/><circle cx="520" cy="380" r="300" fill="none" stroke="#e8d0d0" stroke-width="0.8" opacity="0.35"/><circle cx="80"  cy="400" r="200" fill="none" stroke="#d8d0e8" stroke-width="1" opacity="0.4"/><line x1="0"   y1="420" x2="595" y2="0"   stroke="#e0dada" stroke-width="0.6" opacity="0.4"/><line x1="0"   y1="320" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.3"/><line x1="0"   y1="520" x2="595" y2="100" stroke="#e0dada" stroke-width="0.5" opacity="0.25"/><circle cx="200" cy="80"  r="4" fill="#e8c8c8" opacity="0.6"/><circle cx="380" cy="120" r="3" fill="#c8d8e8" opacity="0.5"/><circle cx="480" cy="60"  r="5" fill="#e8e0c8" opacity="0.5"/><circle cx="100" cy="140" r="3" fill="#d8c8e8" opacity="0.5"/><circle cx="560" cy="200" r="4" fill="#e8c8c8" opacity="0.4"/></svg></div></div></div>
+<section class="intro-section"><div class="intro-banner"><h2>Introduction</h2></div><div class="intro-callout">Flyte was built by the Flyte organization to solve production-grade data and ML pipeline problems.</div><div class="intro-body"><p>Flyte is an open-source workflow management system developed by the Flyte organization. It was first released as Flyte 1. x and has since been updated to Flyte 2. The specific problem Flyte was built to solve is the need for a scalable and efficient way to build, manage, and deploy data and machine learning pipelines in production environments.</p>
+<p>This is achieved through the use of a distributed backend and a Python SDK that allows users to construct pipelines and deploy them on both cloud and on-premises environments.</p>
+<p>The technical differences that set Flyte apart from alternatives include its use of Kubernetes as its underlying architecture, which provides a high degree of scalability and flexibility. Additionally, Flyte's use of a Python SDK allows for a high degree of customization and flexibility in pipeline construction. The Flyte types, such as FlyteFile and FlyteDirectory, provide a structured way of handling data and workflows. The task decorator is a key feature that enables users to define tasks and workflows in a straightforward and efficient manner.</p>
+<p>The target audience for Flyte includes data scientists, machine learning engineers, and DevOps engineers who are responsible for building, deploying, and managing data and machine learning pipelines in production environments. Flyte provides a range of features and tools that make it well-suited to this audience, including support for distributed processing, efficient resource utilization, and fine-tuning of code. The ability to deploy workflows on both cloud and on-premises environments also makes Flyte a versatile tool for a wide range of use cases, from forecasting sales with Horovod and Spark to nucleotide sequence querying with BLASTX.</p>
+<p>In terms of installation and use, Flyte provides a straightforward and well-documented process. The first step is to install Flyte's Python SDK using pip, followed by the creation of a workflow using the Python SDK. The workflow can then be run locally or deployed to a remote cluster using the pyflyte run and pyflyte run --remote commands. The flytectl demo start command can be used to create a new sandbox cluster, and the pyflyte run --remote command can be used to execute workflows on the cluster.</p>
+<p>Overall, Flyte provides a powerful and flexible tool for building, deploying, and managing data and machine learning pipelines in production environments.</p></div><p class="intro-repo">GitHub Repository: <a href="https://github.com/flyteorg/flyte">https://github.com/flyteorg/flyte</a></p></section>
+<section class="chapter" id="ch1"><div class="ch-banner"><span class="ch-num">Chapter 1</span><h2>Building Scalable Workflows with pyflyte run</h2></div><p class="ch-summary">Scalable workflow creation</p><div class="ch-body"><p>To create scalable workflows, users can leverage the pyflyte run command, which allows for local execution of workflows. The pyflyte run command can be used in conjunction with the flytectl demo start command to create a sandbox cluster for remote execution. This enables users to test and refine their workflows in a controlled environment before deploying them to a production environment. The Flyte 1.</p>
+<p>x and Flyte 2 versions of the platform provide a robust foundation for building scalable workflows. The task decorator is a key component in defining workflows, and the workflow function is used to orchestrate tasks. The pyflyte run --remote command enables remote execution of workflows on a cluster.</p>
+<p>The Flyte platform is built on top of Kubernetes, which provides a scalable and distributed architecture for workflow execution. The Python SDK provides a convenient interface for defining workflows and tasks, and the flytectl command-line tool provides a simple way to manage and execute workflows. The cache=True config key can be used to enable caching of task outputs, which can improve performance by reducing the number of times tasks need to be executed. The interruptible=True config key can be used to enable interruptibility of tasks, which allows for more flexible workflow execution.</p>
+<p>One of the key benefits of using Flyte is its ability to support distributed processing and efficient resource utilization. This is achieved through the use of a distributed backend, which allows workflows to be executed across multiple machines. The v2 branch of the Flyte codebase provides a number of improvements and enhancements to the platform, including improved support for distributed processing. The pyflyte run command can be used to execute workflows on a cluster, and the --remote flag can be used to specify the location of the cluster.</p>
+<p>The Flyte platform provides a number of features and tools for building and executing workflows, including the task decorator, the workflow function, and the pyflyte run command. The platform also provides a number of config keys, such as cache=True and interruptible=True, which can be used to customize the behavior of workflows. The Flyte 1. x and Flyte 2 versions of the platform provide a robust foundation for building scalable workflows, and the Python SDK provides a convenient interface for defining workflows and tasks.</p>
+<p>The Flyte platform has a number of use cases, including building production-grade data and ML pipelines, constructing pipelines using the Python SDK, and deploying them on both cloud and on-premises environments. The platform also supports fine-tuning code and productionizing workflows with the Deployment guide. The Flyte types, such as FlyteFile and FlyteDirectory, provide a way to define and work with data in a workflow. The Structured Dataset provides a way to define and work with structured data in a workflow.</p>
+<p>The Flyte platform has a number of limitations, including the fact that it does not support all types of workflows and tasks. For example, the platform does not support workflows that require low-level system access or workflows that require direct access to hardware resources. The platform also has some performance limitations, such as the fact that it can be slow to execute large workflows. However, the platform is designed to be scalable and can handle large workflows and datasets.</p>
+<p>The Flyte platform provides a number of tools and features for debugging and troubleshooting workflows, including the pyflyte run command and the flytectl command-line tool. The platform also provides a number of logs and metrics that can be used to monitor and debug workflows. The Flyte 1. x and Flyte 2 versions of the platform provide a robust foundation for building scalable workflows, and the Python SDK provides a convenient interface for defining workflows and tasks.</p>
+<p>In conclusion, the Flyte platform provides a robust and scalable way to build and execute workflows. The pyflyte run command and the flytectl command-line tool provide a simple way to manage and execute workflows, and the Python SDK provides a convenient interface for defining workflows and tasks. The platform has a number of use cases, including building production-grade data and ML pipelines, and it provides a number of features and tools for debugging and troubleshooting workflows.</p></div></section>
+<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Architecting Distributed Pipelines with Kubernetes</h2></div><p class="ch-summary">Distributed pipelines with Kubernetes</p><div class="ch-body"><p>The Flyte 2 version introduces significant improvements in distributed pipeline architecture. The pyflyte run method allows for local execution of workflows, while pyflyte run --remote enables execution on a remote cluster. The task decorator is used to define tasks within a workflow. The Flyte types, such as FlyteFile and FlyteDirectory, provide a structured way of handling data.</p>
+<p>The Kubernetes dashboard provides visibility into the execution of workflows. The Flyte-sandbox provides a local environment for testing and development. The cache=True config key can be used to optimize workflow execution. The interruptible=True config key allows for interrupting workflows.</p>
+<p>The Flyte architecture is designed to support distributed processing and efficient resource utilization. The workflow method is used to define workflows, which can be composed of multiple tasks. The sayhello() -> str method is an example of a task that can be defined within a workflow. The helloworldwf() -> str method is an example of a workflow that can be defined using the workflow decorator.</p>
+<p>The pyflyte run helloworld. py helloworldwf command can be used to execute a workflow locally.</p>
+<p>The Flyte 1. x version has some limitations, such as the lack of support for certain features. The Flyte 2 version addresses some of these limitations and provides improved performance. The pyflyte run --remote command can be used to execute workflows on a remote cluster, which can be created using the flytectl demo start command.</p>
+<p>The flytectl demo start command creates a new sandbox cluster, running as a Docker container. The pyflyte run --remote helloworld. py helloworldwf command can be used to execute a workflow on the remote cluster.</p>
+<p>The Flyte API provides several methods for executing workflows, such as the pyflyte run method and the pyflyte run --remote method. The tasklogs config key can be used to configure logging for tasks. The plugins config key can be used to configure plugins for workflows. The logs config key can be used to configure logging for workflows.</p>
+<p>The templates config key can be used to configure templates for workflows.</p>
+<p>The Flyte architecture is designed to support deployment on both cloud and on-premises environments. The AWS CloudWatch and GCP Stackdriver integrations provide visibility into workflow execution. The Splunk and Datadog integrations provide additional logging and monitoring capabilities. The Kubernetes dashboard provides a centralized view of workflow execution.</p>
+<p>The Flyte-sandbox provides a local environment for testing and development.</p>
+<p>The Flyte API provides several methods for fine-tuning code, such as the pyflyte run method and the pyflyte run --remote method. The cache=True config key can be used to optimize workflow execution. The interruptible=True config key allows for interrupting workflows. The domain config key can be used to configure the domain for workflows.</p>
+<p>The pyflyte run helloworld. py helloworld_wf command can be used to execute a workflow locally.</p>
+<p>The Flyte use cases include building production-grade data and ML pipelines, constructing pipelines using the Python SDK, and deploying them on both cloud and on-premises environments. The Forecast sales with Horovod and Spark use case demonstrates the use of Flyte for distributed processing. The Nucleotide Sequence Querying with BLASTX use case demonstrates the use of Flyte for bioinformatics workflows. The Fine-tune Code Llama on the Flyte codebase use case demonstrates the use of Flyte for fine-tuning machine learning models.</p>
+<p>The Flyte limitations include the lack of support for certain features in the Flyte 1. x version. The Flyte 2 version addresses some of these limitations and provides improved performance. The pyflyte run --remote command can be used to execute workflows on a remote cluster, which can be created using the flytectl demo start command.</p>
+<p>The flytectl demo start command creates a new sandbox cluster, running as a Docker container.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1534.93 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="cluster-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
-<title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1530.93,-40 1530.93,4 -4,4"/>
-<!-- N0 -->
-<g id="cluster-node1" class="node">
-<title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="54.27" cy="-18" rx="54.27" ry="18"/>
-<text text-anchor="middle" x="54.27" y="-14.5" font-family="Arial" font-size="10.00">AgentFramework</text>
-</g>
-<!-- N1 -->
-<g id="cluster-node2" class="node">
-<title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="238.1" cy="-18" rx="47.05" ry="18"/>
-<text text-anchor="middle" x="238.1" y="-14.5" font-family="Arial" font-size="10.00">AgentRuntime</text>
-</g>
-<!-- N0&#45;&gt;N1 -->
-<g id="cluster-edge1" class="edge">
-<title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M108.84,-18C130.96,-18 156.66,-18 179.21,-18"/>
-<polygon fill="#475569" stroke="#475569" points="179.17,-21.5 189.17,-18 179.17,-14.5 179.17,-21.5"/>
-<text text-anchor="middle" x="149.79" y="-19.95" font-family="Arial" font-size="9.00">instantiates</text>
-</g>
-<!-- N2 -->
-<g id="cluster-node3" class="node">
-<title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="415.92" cy="-18" rx="54.27" ry="18"/>
-<text text-anchor="middle" x="415.92" y="-14.5" font-family="Arial" font-size="10.00">KnowledgeGraph</text>
-</g>
-<!-- N1&#45;&gt;N2 -->
-<g id="cluster-edge2" class="edge">
-<title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M285.29,-18C305.04,-18 328.45,-18 349.9,-18"/>
-<polygon fill="#475569" stroke="#475569" points="349.73,-21.5 359.73,-18 349.73,-14.5 349.73,-21.5"/>
-<text text-anchor="middle" x="323.4" y="-19.95" font-family="Arial" font-size="9.00">populates</text>
-</g>
-<!-- N3 -->
-<g id="cluster-node4" class="node">
-<title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="688.92,-36 613.44,-18 688.92,0 764.39,-18 688.92,-36"/>
-<text text-anchor="middle" x="688.92" y="-14.5" font-family="Arial" font-size="10.00">EmbeddingIndex</text>
-</g>
-<!-- N2&#45;&gt;N3 -->
-<g id="cluster-edge3" class="edge">
-<title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M470.46,-18C507.42,-18 557.41,-18 600.13,-18"/>
-<polygon fill="#475569" stroke="#475569" points="599.89,-21.5 609.89,-18 599.89,-14.5 599.89,-21.5"/>
-<text text-anchor="middle" x="541.82" y="-19.95" font-family="Arial" font-size="9.00">generates embeddings for</text>
-</g>
-<!-- N4 -->
-<g id="cluster-node5" class="node">
-<title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="988.2" cy="-18" rx="72.31" ry="18"/>
-<text text-anchor="middle" x="988.2" y="-14.5" font-family="Arial" font-size="10.00">NearestNeighborSearch</text>
-</g>
-<!-- N3&#45;&gt;N4 -->
-<g id="cluster-edge4" class="edge">
-<title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M766.48,-18C808.64,-18 861.02,-18 904.17,-18"/>
-<polygon fill="#475569" stroke="#475569" points="903.99,-21.5 913.99,-18 903.99,-14.5 903.99,-21.5"/>
-<text text-anchor="middle" x="840.14" y="-19.95" font-family="Arial" font-size="9.00">enables similarity search via</text>
-</g>
-<!-- N5 -->
-<g id="cluster-node6" class="node">
-<title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1220.99" cy="-18" rx="56.98" ry="18"/>
-<text text-anchor="middle" x="1220.99" y="-14.5" font-family="Arial" font-size="10.00">TransformerModel</text>
-</g>
-<!-- N4&#45;&gt;N5 -->
-<g id="cluster-edge5" class="edge">
-<title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M1060.96,-18C1090.16,-18 1123.74,-18 1152.49,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1152.15,-21.5 1162.15,-18 1152.15,-14.5 1152.15,-21.5"/>
-<text text-anchor="middle" x="1112.26" y="-19.95" font-family="Arial" font-size="9.00">provides input to</text>
-</g>
-<!-- N6 -->
-<g id="cluster-node7" class="node">
-<title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1467.7" cy="-18" rx="59.23" ry="18"/>
-<text text-anchor="middle" x="1467.7" y="-14.5" font-family="Arial" font-size="10.00">MetadataDatabase</text>
-</g>
-<!-- N5&#45;&gt;N6 -->
-<g id="cluster-edge6" class="edge">
-<title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M1278.44,-18C1313.62,-18 1359.15,-18 1396.63,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1396.47,-21.5 1406.47,-18 1396.47,-14.5 1396.47,-21.5"/>
-<text text-anchor="middle" x="1343.22" y="-19.95" font-family="Arial" font-size="9.00">synchronizes state with</text>
-</g>
-</g>
-</svg><p class="diagram-caption">Figure: awesome-ai-agents internal system architecture</p></div></div></section>
-<section class="chapter" id="ch2"><div class="ch-banner"><span class="ch-num">Chapter 2</span><h2>Designing Core Architectures with FastAPI and VectorDB</h2></div><p class="ch-summary">FastAPI and VectorDB integration</p><div class="ch-body"><p>The architecture of awesome-ai-agents utilizes FastAPI as the backend framework, providing a solid foundation for building scalable and efficient AI agent systems. The use of VectorDB enables efficient semantic search capabilities, allowing agents to quickly retrieve relevant information. The config keys, such as VectorDB and Semantic Search, play a crucial role in configuring the system. The system's architecture is designed to support various use cases, including building custom agents and cognitive architectures.</p>
-<p>The ToolComponent. py class is used to integrate external tools via function-calling.</p>
-<p>The system's backend is built using FastAPI, which provides a flexible and modular framework for building AI agent systems. The use of FastAPI enables developers to create scalable and efficient systems, with support for various databases, including MySQL and SQLite. The system's database configuration is managed through config keys, such as MySQL and SQLite. The system's performance is critical, and the use of FastAPI helps to ensure that the system can handle a large number of agents and tasks.</p>
-<p>The system's version numbers, such as v1. 5 and v1. 6, indicate the evolution of the system's architecture.</p>
-<p>The use of VectorDB in the system enables efficient semantic search capabilities, allowing agents to quickly retrieve relevant information. The VectorDB config key is used to configure the VectorDB instance, and the Semantic Search config key is used to enable semantic search capabilities. The system's architecture is designed to support various use cases, including building custom agents and cognitive architectures. The system's limitations, such as the lack of support for certain databases, must be considered when designing the system.</p>
-<p>The system's performance metrics, such as latency and uptime, are critical in ensuring the system's efficiency.</p>
-<p>The system's architecture is designed to support various use cases, including building custom agents and cognitive architectures. The use of ToolComponent. py class enables developers to integrate external tools via function-calling, providing a flexible and modular framework for building AI agent systems. The system's config keys, such as LLM and gpt-3.</p>
-<p>5-16k, play a crucial role in configuring the system's language models. The system's version numbers, such as v1. 5 and v1. 6, indicate the evolution of the system's architecture.</p>
-<p>The system's performance metrics, such as latency and uptime, are critical in ensuring the system's efficiency.</p>
-<p>The system's limitations, such as the lack of support for certain databases, must be considered when designing the system. The system's architecture is designed to support various use cases, including building custom agents and cognitive architectures. The use of FastAPI and VectorDB enables developers to create scalable and efficient systems, with support for various databases and semantic search capabilities. The system's config keys, such as MySQL and SQLite, play a crucial role in configuring the system's database.</p>
-<p>The system's performance metrics, such as latency and uptime, are critical in ensuring the system's efficiency.</p>
-<p>The system's use cases, such as building custom agents and cognitive architectures, require a flexible and modular framework. The use of ToolComponent. py class enables developers to integrate external tools via function-calling, providing a flexible and modular framework for building AI agent systems. The system's config keys, such as LLM and gpt-3.</p>
-<p>5-16k, play a crucial role in configuring the system's language models. The system's version numbers, such as v1. 5 and v1. 6, indicate the evolution of the system's architecture.</p>
-<p>The system's performance metrics, such as latency and uptime, are critical in ensuring the system's efficiency.</p>
-<p>The system's architecture is designed to support various use cases, including building custom agents and cognitive architectures. The use of FastAPI and VectorDB enables developers to create scalable and efficient systems, with support for various databases and semantic search capabilities. The system's config keys, such as MySQL and SQLite, play a crucial role in configuring the system's database. The system's limitations, such as the lack of support for certain databases, must be considered when designing the system.</p>
-<p>The system's performance metrics, such as latency and uptime, are critical in ensuring the system's efficiency.</p>
-<p>The system's performance metrics, such as latency and uptime, are critical in ensuring the system's efficiency. The use of FastAPI and VectorDB enables developers to create scalable and efficient systems, with support for various databases and semantic search capabilities. The system's config keys, such as LLM and gpt-3. 5-16k, play a crucial role in configuring the system's language models.</p>
-<p>The system's version numbers, such as v1. 5 and v1. 6, indicate the evolution of the system's architecture. The system's use cases, such as building custom agents and cognitive architectures, require a flexible and modular framework.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
- -->
-<!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1499.08 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1140.80 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="seq-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1495.08,-40 1495.08,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-40 1136.8,-40 1136.8,4 -4,4"/>
 <!-- N0 -->
 <g id="seq-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="87.19" cy="-18" rx="87.19" ry="18"/>
-<text text-anchor="middle" x="87.19" y="-14.5" font-family="Arial" font-size="10.00">pip install awesome&#45;ai&#45;agents</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="53.82" cy="-18" rx="53.82" ry="18"/>
+<text text-anchor="middle" x="53.82" y="-14.5" font-family="Arial" font-size="10.00">pip install flytekit</text>
 </g>
 <!-- N1 -->
 <g id="seq-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="312.66" cy="-18" rx="56.53" ry="18"/>
-<text text-anchor="middle" x="312.66" y="-14.5" font-family="Arial" font-size="10.00">AI Agent Instance</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="271.88" cy="-18" rx="63.74" ry="18"/>
+<text text-anchor="middle" x="271.88" y="-14.5" font-family="Arial" font-size="10.00">define flyte workflow</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="seq-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M174.59,-18C197.81,-18 222.57,-18 244.57,-18"/>
-<polygon fill="#475569" stroke="#475569" points="244.28,-21.5 254.28,-18 244.28,-14.5 244.28,-21.5"/>
-<text text-anchor="middle" x="215.26" y="-19.95" font-family="Arial" font-size="9.00">then import</text>
+<path fill="none" stroke="#475569" d="M107.95,-18C134.65,-18 167.43,-18 196.58,-18"/>
+<polygon fill="#475569" stroke="#475569" points="196.45,-21.5 206.45,-18 196.45,-14.5 196.45,-21.5"/>
+<text text-anchor="middle" x="157.89" y="-19.95" font-family="Arial" font-size="9.00">after installation</text>
 </g>
 <!-- N2 -->
 <g id="seq-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="531.61" cy="-18" rx="52.92" ry="18"/>
-<text text-anchor="middle" x="531.61" y="-14.5" font-family="Arial" font-size="10.00">add ai agent tool</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="564.42" cy="-18" rx="86.29" ry="18"/>
+<text text-anchor="middle" x="564.42" y="-14.5" font-family="Arial" font-size="10.00">register workflow with flytectl</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="seq-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M369.53,-18C399.26,-18 435.93,-18 466.77,-18"/>
-<polygon fill="#475569" stroke="#475569" points="466.77,-21.5 476.77,-18 466.77,-14.5 466.77,-21.5"/>
-<text text-anchor="middle" x="423.94" y="-19.95" font-family="Arial" font-size="9.00">configure ai agent</text>
+<path fill="none" stroke="#475569" d="M335.92,-18C373.99,-18 423.3,-18 466.27,-18"/>
+<polygon fill="#475569" stroke="#475569" points="466.11,-21.5 476.11,-18 466.11,-14.5 466.11,-21.5"/>
+<text text-anchor="middle" x="406.87" y="-19.95" font-family="Arial" font-size="9.00">using flyte workflow config</text>
 </g>
 <!-- N3 -->
 <g id="seq-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="794.48,-36 707.52,-18 794.48,0 881.44,-18 794.48,-36"/>
-<text text-anchor="middle" x="794.48" y="-14.5" font-family="Arial" font-size="10.00">invoke ai agent skill</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="966.75,-36 800.71,-18 966.75,0 1132.8,-18 966.75,-36"/>
+<text text-anchor="middle" x="966.75" y="-14.5" font-family="Arial" font-size="10.00">launch workflow with pyflyte run &#45;&#45;remote</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="seq-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M584.77,-18C615.97,-18 656.64,-18 693.79,-18"/>
-<polygon fill="#475569" stroke="#475569" points="693.67,-21.5 703.67,-18 693.67,-14.5 693.67,-21.5"/>
-<text text-anchor="middle" x="646.02" y="-19.95" font-family="Arial" font-size="9.00">initialize ai agent skill</text>
-</g>
-<!-- N4 -->
-<g id="seq-node5" class="node">
-<title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1089.04" cy="-18" rx="69.6" ry="18"/>
-<text text-anchor="middle" x="1089.04" y="-14.5" font-family="Arial" font-size="10.00">copy ai agent skill files</text>
-</g>
-<!-- N3&#45;&gt;N4 -->
-<g id="seq-edge4" class="edge">
-<title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M883.65,-18C923.16,-18 969.42,-18 1007.93,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1007.58,-21.5 1017.58,-18 1007.58,-14.5 1007.58,-21.5"/>
-<text text-anchor="middle" x="950.44" y="-19.95" font-family="Arial" font-size="9.00">call ai agent skill function</text>
-</g>
-<!-- N5 -->
-<g id="seq-node6" class="node">
-<title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1415.61" cy="-18" rx="75.47" ry="18"/>
-<text text-anchor="middle" x="1415.61" y="-14.5" font-family="Arial" font-size="10.00">MCP AI Agent Discovery</text>
-</g>
-<!-- N4&#45;&gt;N5 -->
-<g id="seq-edge5" class="edge">
-<title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M1158.87,-18C1208.28,-18 1275.22,-18 1328.22,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1328.14,-21.5 1338.14,-18 1328.14,-14.5 1328.14,-21.5"/>
-<text text-anchor="middle" x="1249.4" y="-19.95" font-family="Arial" font-size="9.00">handle ai agent discovery response</text>
+<path fill="none" stroke="#475569" d="M650.81,-18C690.14,-18 738.4,-18 785.21,-18"/>
+<polygon fill="#475569" stroke="#475569" points="784.92,-21.5 794.92,-18 784.92,-14.5 784.92,-21.5"/>
+<text text-anchor="middle" x="725.71" y="-19.95" font-family="Arial" font-size="9.00">with flyte backend initialized</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: awesome-ai-agents integration flow</p></div></div></section>
-<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Setting Up Autonomous Agents with LLM and Semantic Search</h2></div><div class="ch-body"><p>QLite locally</p>
-<p>Long-short Term Memory</p>
-<p>VectorDB + Semantic Search</p>
-<p>LLM</p>
+</svg><p class="diagram-caption">Figure: flyte integration flow</p></div></div></section>
+<section class="chapter" id="ch3"><div class="ch-banner"><span class="ch-num">Chapter 3</span><h2>Deploying Local Workflows with flytectl demo start</h2></div><div class="ch-body"><p>Now execute your workflows on the cluster:</p>
+<p>USECASES:</p>
+<p>Building production-grade data and ML pipelines</p>
+<p>Construct pipelines using the Python SDK</p>
+<p>Deploy them on both cloud and on-premises environments</p>
+<p>Distributed processing and efficient resource utilization</p>
+<p>Fine-tune Code</p>
+<p>Productionize workflows with the Deployment guide</p>
+<p>CLASSESANDMETHODS:</p>
+<p>task decorator</p>
+<p>CONFIGKEYS:</p>
+<p>cache=True</p>
+<p>interruptible=True</p>
+<p>domain</p>
+<p>VERSIONNUMBERS:</p>
+<p>ARCHITECTURE:</p>
+<p>Flyte types</p>
+<p>FlyteFile</p>
+<p>FlyteDirectory</p>
+<p>Structured Dataset</p>
 <p>CODESNIPPETS:</p>
 <p>LIMITATIONS:</p>
 <p>INSTALLSTEPS:</p>
 <p>USECASES:</p>
-<p>Building custom agents and cognitive architectures</p>
-<p>Running different LLM models for different agents</p>
-<p>Rapid development and testing</p>
-<p>Integration with different databases</p>
-<p>Building language agents</p>
-<p>Building multi-agent systems</p>
-<p>Human-Agent interaction</p>
-<p>Symbolic Control</p>
-<p>Using external tools via function-calling</p>
-<p>Web Navigation</p>
-<p>Multi-agent Communication</p>
+<p>Forecast sales with Horovod and Spark</p>
+<p>Nucleotide Sequence Querying with BLASTX</p>
 <p>CLASSESANDMETHODS:</p>
+<p>pyflyte run, pyflyte run --remote</p>
 <p>CONFIGKEYS:</p>
-<p>VERSIONNUMBERS:</p>
+<p>VERSIONNUMBERS: Flyte 1.</p>
 <p>ARCHITECTURE:</p>
+<p>Kubernetes, Python SDK, distributed backend, v2 branch</p>
 <p>CODESNIPPETS:</p>
 <p>LIMITATIONS:</p>
 <p>INSTALLSTEPS:</p>
-<p>USECASES: Multi-agent task-solving, simulation, coding, build-your-own agents, autonomous agent collaboration, Vedic astrology calculation, financial exchange for AI agents, AI-native asset registry</p>
-<p>CLASSESANDMETHODS:</p>
-<p>@classmethod, cls</p>
-<p>CONFIGKEYS:</p>
-<p>None</p>
-<p>VERSIONNUMBERS:</p>
-<p>v1. 5, v1.</p>
-<p>ARCHITECTURE:</p>
-<p>MCP servers, MCP Discovery API, Language Server Protocol (LSP), VSCode API</p>
-<p>CODE_SNIPPETS:</p>
-<p>``</p>
-<p>747 | + - Blinky leverages the VSCode API, Language Server Protocol (LSP), and print statement debugging t</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
+<p>Install Flyte's Python SDK</p>
+<p>Create a new sa</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
  -->
 <!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 1316.79 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 832.11 98.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sm-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 94)">
 <title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-40 1312.79,-40 1312.79,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-94 828.11,-94 828.11,4 -4,4"/>
 <!-- N0 -->
 <g id="sm-node1" class="node">
 <title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="41.64" cy="-18" rx="41.64" ry="18"/>
-<text text-anchor="middle" x="41.64" y="-14.5" font-family="Arial" font-size="10.00">Uninitialized</text>
+<ellipse fill="#bfdbfe" stroke="#2563eb" cx="30.82" cy="-45" rx="30.82" ry="18"/>
+<text text-anchor="middle" x="30.82" y="-41.5" font-family="Arial" font-size="10.00">Pending</text>
 </g>
 <!-- N1 -->
 <g id="sm-node2" class="node">
 <title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="200.99" cy="-18" rx="47.96" ry="18"/>
-<text text-anchor="middle" x="200.99" y="-14.5" font-family="Arial" font-size="10.00">Goal Selection</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="182.62" cy="-45" rx="36.23" ry="18"/>
+<text text-anchor="middle" x="182.62" y="-41.5" font-family="Arial" font-size="10.00">Launching</text>
 </g>
 <!-- N0&#45;&gt;N1 -->
 <g id="sm-edge1" class="edge">
 <title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M83.57,-18C101.15,-18 122.02,-18 141.2,-18"/>
-<polygon fill="#475569" stroke="#475569" points="141.06,-21.5 151.06,-18 141.06,-14.5 141.06,-21.5"/>
-<text text-anchor="middle" x="118.16" y="-19.95" font-family="Arial" font-size="9.00">initialize</text>
+<path fill="none" stroke="#475569" d="M62.13,-45C83,-45 111.12,-45 134.84,-45"/>
+<polygon fill="#475569" stroke="#475569" points="134.57,-48.5 144.57,-45 134.57,-41.5 134.57,-48.5"/>
+<text text-anchor="middle" x="104.01" y="-46.95" font-family="Arial" font-size="9.00">receive task</text>
 </g>
 <!-- N2 -->
 <g id="sm-node3" class="node">
 <title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="390.22" cy="-18" rx="54.27" ry="18"/>
-<text text-anchor="middle" x="390.22" y="-14.5" font-family="Arial" font-size="10.00">Action Execution</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="338.62" cy="-45" rx="31.27" ry="18"/>
+<text text-anchor="middle" x="338.62" y="-41.5" font-family="Arial" font-size="10.00">Running</text>
 </g>
 <!-- N1&#45;&gt;N2 -->
 <g id="sm-edge2" class="edge">
 <title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M249.24,-18C271.96,-18 299.56,-18 324.23,-18"/>
-<polygon fill="#475569" stroke="#475569" points="324.19,-21.5 334.19,-18 324.19,-14.5 324.19,-21.5"/>
-<text text-anchor="middle" x="292.45" y="-19.95" font-family="Arial" font-size="9.00">select action</text>
+<path fill="none" stroke="#475569" d="M219.34,-45C242.17,-45 271.87,-45 295.8,-45"/>
+<polygon fill="#475569" stroke="#475569" points="295.52,-48.5 305.52,-45 295.52,-41.5 295.52,-48.5"/>
+<text text-anchor="middle" x="263.1" y="-46.95" font-family="Arial" font-size="9.00">initialize task</text>
 </g>
 <!-- N3 -->
 <g id="sm-node4" class="node">
 <title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="622.76,-36 538.99,-18 622.76,0 706.52,-18 622.76,-36"/>
-<text text-anchor="middle" x="622.76" y="-14.5" font-family="Arial" font-size="10.00">Reward Evaluation</text>
+<polygon fill="#fef9c3" stroke="#2563eb" points="554.69,-63 456.89,-45 554.69,-27 652.48,-45 554.69,-63"/>
+<text text-anchor="middle" x="554.69" y="-41.5" font-family="Arial" font-size="10.00">Waiting for Completion</text>
 </g>
 <!-- N2&#45;&gt;N3 -->
 <g id="sm-edge3" class="edge">
 <title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M444.98,-18C468.95,-18 497.94,-18 525.45,-18"/>
-<polygon fill="#475569" stroke="#475569" points="525.21,-21.5 535.21,-18 525.21,-14.5 525.21,-21.5"/>
-<text text-anchor="middle" x="491.74" y="-19.95" font-family="Arial" font-size="9.00">perform action</text>
+<path fill="none" stroke="#475569" d="M370.29,-45C389.71,-45 416.13,-45 442.87,-45"/>
+<polygon fill="#475569" stroke="#475569" points="442.82,-48.5 452.82,-45 442.82,-41.5 442.82,-48.5"/>
+<text text-anchor="middle" x="413.39" y="-46.95" font-family="Arial" font-size="9.00">execute task</text>
 </g>
 <!-- N4 -->
 <g id="sm-node5" class="node">
 <title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="869.09" cy="-18" rx="53.82" ry="18"/>
-<text text-anchor="middle" x="869.09" y="-14.5" font-family="Arial" font-size="10.00">Task Completion</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="785.17" cy="-72" rx="38.94" ry="18"/>
+<text text-anchor="middle" x="785.17" y="-68.5" font-family="Arial" font-size="10.00">Succeeded</text>
 </g>
 <!-- N3&#45;&gt;N4 -->
 <g id="sm-edge4" class="edge">
 <title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M708.87,-18C740,-18 774.67,-18 803.69,-18"/>
-<polygon fill="#475569" stroke="#475569" points="803.41,-21.5 813.41,-18 803.41,-14.5 803.41,-21.5"/>
-<text text-anchor="middle" x="760.9" y="-19.95" font-family="Arial" font-size="9.00">evaluate outcome</text>
+<path fill="none" stroke="#475569" d="M616.32,-52.16C653.61,-56.57 700.77,-62.14 735.6,-66.26"/>
+<polygon fill="#475569" stroke="#475569" points="735.06,-69.72 745.4,-67.42 735.88,-62.77 735.06,-69.72"/>
+<text text-anchor="middle" x="699.36" y="-65.95" font-family="Arial" font-size="9.00">task succeeds</text>
 </g>
 <!-- N5 -->
 <g id="sm-node6" class="node">
 <title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="1089.8" cy="-18" rx="41.64" ry="18"/>
-<text text-anchor="middle" x="1089.8" y="-14.5" font-family="Arial" font-size="10.00">Task Failure</text>
+<ellipse fill="#dbeafe" stroke="#2563eb" cx="785.17" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="785.17" y="-14.5" font-family="Arial" font-size="10.00">Failed</text>
 </g>
-<!-- N4&#45;&gt;N5 -->
+<!-- N3&#45;&gt;N5 -->
 <g id="sm-edge5" class="edge">
-<title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M923.32,-18C957.74,-18 1002.34,-18 1036.56,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1036.23,-21.5 1046.23,-18 1036.23,-14.5 1036.23,-21.5"/>
-<text text-anchor="middle" x="985.54" y="-19.95" font-family="Arial" font-size="9.00">learn from experience</text>
-</g>
-<!-- N6 -->
-<g id="sm-node7" class="node">
-<title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="1266.24" cy="-18" rx="42.54" ry="18"/>
-<text text-anchor="middle" x="1266.24" y="-14.5" font-family="Arial" font-size="10.00">Agent Crash</text>
-</g>
-<!-- N5&#45;&gt;N6 -->
-<g id="sm-edge6" class="edge">
-<title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M1131.7,-18C1155.63,-18 1186.11,-18 1211.91,-18"/>
-<polygon fill="#475569" stroke="#475569" points="1211.88,-21.5 1221.88,-18 1211.88,-14.5 1211.88,-21.5"/>
-<text text-anchor="middle" x="1177.57" y="-19.95" font-family="Arial" font-size="9.00">handle failure</text>
+<title>N3&#45;&gt;N5</title>
+<path fill="none" stroke="#475569" d="M616.32,-37.84C657.89,-32.92 711.71,-26.56 747.06,-22.39"/>
+<polygon fill="#475569" stroke="#475569" points="747.27,-25.89 756.79,-21.24 746.44,-18.93 747.27,-25.89"/>
+<text text-anchor="middle" x="699.36" y="-32.95" font-family="Arial" font-size="9.00">task fails</text>
 </g>
 </g>
-</svg><p class="diagram-caption">Figure: awesome-ai-agents lifecycle and state transitions</p></div></div></section>
-<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Agents with MySQL and SQLite through Docker</h2></div><p class="ch-summary">Integrate agents with databases</p><div class="ch-body"><p>The research highlights the importance of integrating agents with databases, specifically MySQL and SQLite, through Docker. This allows for a flexible and scalable architecture, enabling the use of different databases depending on the requirements of the project. The architecture internals module components flow involves data processing and autonomous learning, with modules handling custom data tasks and evolving through observations. The use of Docker enables easy deployment and management of the database containers.</p>
-<p>The research mentions the use of VectorDB and Semantic Search, but does not provide implementation details for this area.</p>
-<p>The use of MySQL through Docker provides a reliable and efficient way to store and retrieve data, with the option of running SQLite locally for development and testing purposes. The research does not provide specific details on the configuration of MySQL or SQLite, but mentions the use of config keys such as VectorDB and Semantic Search. The architecture of the system involves a frontend built with NextJS and Typescript, and a backend built with FastAPI and Python. The research highlights the importance of using external tools via function-calling, but does not provide specific examples of how this is implemented.</p>
-<p>The research mentions the use of LLM-agnostic platforms for agent building and testing, but does not provide specific details on how this is achieved. The use of LLMs such as gpt-3. 5-16k is mentioned, but the research does not provide information on how to integrate these models with the agents. The research highlights the importance of building custom agents and cognitive architectures, but does not provide specific examples of how this is done.</p>
-<p>The use of ToolComponent. py is mentioned, but the research does not provide details on how this is used in the context of the project.</p>
-<p>The research highlights the importance of rapid development and testing, with the use of Docker enabling easy deployment and management of the database containers. The research mentions the use of squads and docker-compose, with version numbers such as v2. 18. 0 mentioned.</p>
-<p>The research does not provide specific details on the installation steps, but mentions the use of npm install and sudo curl. The use of API gateways and schedulers is mentioned, but the research does not provide specific examples of how these are used.</p>
-<p>The research mentions the use of Blinky, an open-source AI debugging agent for VSCode, which uses LLMs to help identify and fix backend code errors. The research highlights the importance of using external tools via function-calling, but does not provide specific examples of how this is implemented. The use of MCP Discovery is mentioned, which enables agents to search for tools using natural language and get performance metrics. The research does not provide specific details on how this is achieved, but mentions the use of config keys such as default value = 'default'.</p>
-<p>The research highlights the limitations of AI agents, including production issues due to hallucinations, security vulnerabilities, and latency. The use of safety kernels and workflow engines is mentioned, but the research does not provide specific examples of how these are used. The research mentions the use of context engines and MCP servers, but does not provide details on how these are implemented. The use of CLI is mentioned, but the research does not provide specific examples of how this is used.</p>
-<p>The research does not provide implementation details for the integration of agents with MySQL and SQLite through Docker, but highlights the importance of using Docker for easy deployment and management of the database containers. The use of VectorDB and Semantic Search is mentioned, but the research does not provide specific details on how these are used. The research mentions the use of LLM-agnostic platforms for agent building and testing, but does not provide specific examples of how this is achieved. The use of ToolComponent.</p>
-<p>py is mentioned, but the research does not provide details on how this is used in the context of the project.</p>
-<p>The research highlights the importance of building custom agents and cognitive architectures, with the use of external tools via function-calling enabling the integration of different tools and models. The use of API gateways and schedulers is mentioned, but the research does not provide specific examples of how these are used. The research mentions the use of Blinky, an open-source AI debugging agent for VSCode, which uses LLMs to help identify and fix backend code errors. The research does not provide specific details on the installation steps, but mentions the use of npm install and sudo curl.</p><div class="diagram-box"><!-- Generated by graphviz version 9.0.0 (20230911.1827)
- -->
-<!-- Title: G Pages: 1 -->
-<svg style="width:100%;max-height:120mm;height:auto;display:block;" viewBox="0.00 0.00 227.83 539.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="pipe-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535)">
-<title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-535 223.83,-535 223.83,4 -4,4"/>
-<!-- N0 -->
-<g id="pipe-node1" class="node">
-<title>N0</title>
-<ellipse fill="#bfdbfe" stroke="#2563eb" cx="109.92" cy="-513" rx="66.9" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-509.5" font-family="Arial" font-size="10.00">NaturalLanguageInput</text>
-</g>
-<!-- N1 -->
-<g id="pipe-node2" class="node">
-<title>N1</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-430.5" rx="54.27" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-427" font-family="Arial" font-size="10.00">NLPTokenization</text>
-</g>
-<!-- N0&#45;&gt;N1 -->
-<g id="pipe-edge1" class="edge">
-<title>N0&#45;&gt;N1</title>
-<path fill="none" stroke="#475569" d="M109.92,-494.53C109.92,-484.51 109.92,-471.68 109.92,-460.21"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-460.45 109.92,-450.45 106.42,-460.45 113.42,-460.45"/>
-<text text-anchor="middle" x="147.42" y="-468.45" font-family="Arial" font-size="9.00">text preprocessing</text>
-</g>
-<!-- N2 -->
-<g id="pipe-node3" class="node">
-<title>N2</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-348" rx="67.35" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-344.5" font-family="Arial" font-size="10.00">ContextualEmbedding</text>
-</g>
-<!-- N1&#45;&gt;N2 -->
-<g id="pipe-edge2" class="edge">
-<title>N1&#45;&gt;N2</title>
-<path fill="none" stroke="#475569" d="M109.92,-412.03C109.92,-402.01 109.92,-389.18 109.92,-377.71"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-377.95 109.92,-367.95 106.42,-377.95 113.42,-377.95"/>
-<text text-anchor="middle" x="148.54" y="-385.95" font-family="Arial" font-size="9.00">semantic encoding</text>
-</g>
-<!-- N3 -->
-<g id="pipe-node4" class="node">
-<title>N3</title>
-<polygon fill="#fef9c3" stroke="#2563eb" points="109.92,-283.5 0,-265.5 109.92,-247.5 219.83,-265.5 109.92,-283.5"/>
-<text text-anchor="middle" x="109.92" y="-262" font-family="Arial" font-size="10.00">KnowledgeGraphRetrieval</text>
-</g>
-<!-- N2&#45;&gt;N3 -->
-<g id="pipe-edge3" class="edge">
-<title>N2&#45;&gt;N3</title>
-<path fill="none" stroke="#475569" d="M109.92,-329.53C109.92,-319.51 109.92,-306.68 109.92,-295.21"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-295.45 109.92,-285.45 106.42,-295.45 113.42,-295.45"/>
-<text text-anchor="middle" x="150.42" y="-303.45" font-family="Arial" font-size="9.00">information retrieval</text>
-</g>
-<!-- N4 -->
-<g id="pipe-node5" class="node">
-<title>N4</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-183" rx="62.84" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-179.5" font-family="Arial" font-size="10.00">ResponseReranking</text>
-</g>
-<!-- N3&#45;&gt;N4 -->
-<g id="pipe-edge4" class="edge">
-<title>N3&#45;&gt;N4</title>
-<path fill="none" stroke="#475569" d="M109.92,-247.03C109.92,-237.01 109.92,-224.18 109.92,-212.71"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-212.95 109.92,-202.95 106.42,-212.95 113.42,-212.95"/>
-<text text-anchor="middle" x="146.67" y="-220.95" font-family="Arial" font-size="9.00">candidate ranking</text>
-</g>
-<!-- N5 -->
-<g id="pipe-node6" class="node">
-<title>N5</title>
-<ellipse fill="#dbeafe" stroke="#2563eb" cx="109.92" cy="-100.5" rx="49.31" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-97" font-family="Arial" font-size="10.00">TextGeneration</text>
-</g>
-<!-- N4&#45;&gt;N5 -->
-<g id="pipe-edge5" class="edge">
-<title>N4&#45;&gt;N5</title>
-<path fill="none" stroke="#475569" d="M109.92,-164.53C109.92,-154.51 109.92,-141.68 109.92,-130.21"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-130.45 109.92,-120.45 106.42,-130.45 113.42,-130.45"/>
-<text text-anchor="middle" x="146.67" y="-138.45" font-family="Arial" font-size="9.00">response creation</text>
-</g>
-<!-- N6 -->
-<g id="pipe-node7" class="node">
-<title>N6</title>
-<ellipse fill="#bbf7d0" stroke="#2563eb" cx="109.92" cy="-18" rx="62.84" ry="18"/>
-<text text-anchor="middle" x="109.92" y="-14.5" font-family="Arial" font-size="10.00">ResponseStreaming</text>
-</g>
-<!-- N5&#45;&gt;N6 -->
-<g id="pipe-edge6" class="edge">
-<title>N5&#45;&gt;N6</title>
-<path fill="none" stroke="#475569" d="M109.92,-82.03C109.92,-72.01 109.92,-59.18 109.92,-47.71"/>
-<polygon fill="#475569" stroke="#475569" points="113.42,-47.95 109.92,-37.95 106.42,-47.95 113.42,-47.95"/>
-<text text-anchor="middle" x="144.04" y="-55.95" font-family="Arial" font-size="9.00">output formatting</text>
-</g>
-</g>
-</svg><p class="diagram-caption">Figure: awesome-ai-agents end-to-end processing pipeline</p></div><div class="sec-heading">awesome-ai-agents — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Use</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Customizability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Performance</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Integration</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Cost-Effectiveness</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:78%"></span></span></span><span class="bar-value">78%</span></div></div></div></section>
-<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Avoiding Production Gotchas with Function-Calling and MCP Servers</h2></div><p class="ch-summary">MCP server issues</p><div class="ch-body"><p>When working with MCP servers, it's essential to consider the potential pitfalls that can arise from function-calling. The research highlights the importance of using the MCP Discovery API to search for tools and get performance metrics. For instance, the MCP Discovery lets agents search for tools using natural language and compare options. The VSCode API and Language Server Protocol (LSP) are also crucial in identifying and fixing backend code errors.</p>
-<p>The Blinky agent, which uses LLMs to help identify and fix backend code errors, is a notable example of this.</p>
-<p>The function-calling method is a key aspect of the awesome-ai-agents library, allowing for the integration of external tools. However, it's crucial to note that the library does not provide implementation details for this area, and users must rely on external documentation. The ToolComponent. py class is a relevant example of how function-calling can be implemented.</p>
-<p>The CONFIGKEYS such as VectorDB, Semantic Search, and LLM are also important to consider when working with MCP servers.</p>
-<p>In terms of architecture, the awesome-ai-agents library uses a combination of Frontend: NextJS + Typescript and Backend: FastAPI + Python. The DB is handled by MySQL through docker, with the option of running SQLite locally. The Long-short Term Memory and VectorDB + Semantic Search are also key components of the architecture. The LLM is used in conjunction with the MCP server to provide a scalable and efficient solution.</p>
-<p>The research highlights several use cases for the awesome-ai-agents library, including building custom agents and cognitive architectures, running different LLM models for different agents, and rapid development and testing. The library also supports integration with different databases, building language agents, and building multi-agent systems. The MCP Discovery API is a critical component of this, allowing agents to search for tools and get performance metrics. The Blinky agent is a notable example of how this can be used to identify and fix backend code errors.</p>
-<p>One of the limitations of the awesome-ai-agents library is that it does not support certain features, such as automatic error handling. The LIMITATIONS section of the research highlights this, noting that there was an error while loading the page. The INSTALLSTEPS section provides guidance on how to install the library, including copying skill files directly into the . claude/skills/ directory.</p>
-<p>The USECASES section highlights the various use cases for the library, including MCP Discovery and Blinky.</p>
-<p>The research also highlights the importance of considering version numbers when working with the awesome-ai-agents library. The VERSIONNUMBERS section notes that the library is currently at version v1. 5 and v1. 6.</p>
-<p>The CONFIGKEYS such as VectorDB, Semantic Search, and LLM are also important to consider when working with MCP servers. The CODESNIPPETS section provides examples of how to use the library, including the @pthieu and @2214962083 snippets.</p>
-<p>In terms of technical depth, the research highlights the importance of using specific API methods, such as Agent. addtask() and workflow. run(). The config.</p>
-<p>maxretries config key is also important to consider when working with MCP servers. The research notes that the library does not support certain features, such as automatic error handling, and that the MCP Discovery API is a critical component of the library. The Blinky agent is a notable example of how this can be used to identify and fix backend code errors.</p>
-<p>The research also highlights the importance of considering performance metrics when working with the awesome-ai-agents library. The MCP Discovery API provides performance metrics, such as latency and uptime, which can be used to compare options and pick the best one. The Blinky agent is a notable example of how this can be used to identify and fix backend code errors. The research notes that the library does not provide implementation details for this area, and users must rely on external documentation.</p><div class="sec-heading">awesome-ai-agents — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Recommender System</td><td>1,000 agents</td><td>Simulator for testing agent interactions</td></tr><tr><td>Autonomous Data Agent</td><td>Labeling framework</td><td>Supports LLM-agnostic platform</td></tr><tr><td>LLM Model Support</td><td>gpt-3.5-16k</td><td>Compatible with multiple LLM models</td></tr><tr><td>Database Options</td><td>MySQL, SQLite, VectorDB</td><td>Flexible database integration</td></tr><tr><td>Frontend Framework</td><td>NextJS + Typescript</td><td>Supports rapid development and testing</td></tr><tr><td>Backend Framework</td><td>FastAPI + Python</td><td>High-performance backend support</td></tr></tbody></table></div></section>
-<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Long-Short Term Memory and LLM-Agnostic Platforms</h2></div><p class="ch-summary">Optimize AI agent performance</p><div class="ch-body"><p>The research does not provide implementation details for this area, however, we can discuss the general concept of optimizing performance with Long-Short Term Memory (LSTM) and LLM-Agnostic Platforms. LSTM is a type of Recurrent Neural Network (RNN) that can learn long-term dependencies in data. LLM-Agnostic Platforms, on the other hand, are designed to work with various Large Language Models (LLMs) without being specific to any one model. To optimize performance, developers can use techniques such as hyperparameter tuning and model pruning.</p>
-<p>The squads npm package can be used to manage and deploy AI agents.</p>
-<p>The use of LLMs in AI agents has become increasingly popular, with agents such as Blinky and Devon using LLMs to improve their performance. Blinky is an open-source AI debugging agent for VSCode that uses LLMs to help identify and fix backend code errors. Devon, previously known as Gilfoyle, aims to perfect code correction for fill-in-the-middle, bug spotting, and completion tasks. The DJD Agent Score is an on-chain reputation scoring API for AI agent wallets on Base L2.</p>
-<p>The E2B Sandbox offers secure cloud environments tailored for AI agents and apps, while AgentOps aims to improve AI agent development with tools for observability, evaluations, and replay analytics. The use of these platforms and tools can help optimize the performance of AI agents. However, AI agents often face production issues due to hallucinations, security vulnerabilities, and latency. The research does not provide specific details on how to address these issues.</p>
-<p>In terms of technical details, the research mentions the use of docker-compose and npm install -g squads to install and manage AI agents. The version number of docker-compose mentioned is v2. 18. 0.</p>
-<p>The research does not provide information on the architecture or configuration keys used in the AI agents. The use of LLMs in AI agents can be beneficial, but it also introduces limitations such as the need for large amounts of training data and computational resources.</p>
-<p>The use of LLM-Agnostic Platforms can help address some of these limitations by providing a flexible and scalable architecture for AI agents. The platforms can be used to deploy and manage AI agents, and can provide tools for monitoring and evaluating their performance. The research does not provide specific details on the classes and methods used in the AI agents, but it mentions the use of autonomous learning and data processing modules.</p>
-<p>The use of TEPS and other performance metrics can help evaluate the performance of AI agents and identify areas for optimization. The research does not provide specific details on the performance metrics used, but it mentions the importance of optimizing performance to improve the overall efficiency and effectiveness of AI agents. The use of LLMs and LLM-Agnostic Platforms can help improve the performance of AI agents, but it also introduces new challenges and limitations that need to be addressed.</p>
-<p>The research does not provide specific details on the code snippets or configuration keys used in the AI agents, but it mentions the importance of using secure and scalable architectures to deploy and manage AI agents. The use of docker-compose and npm install -g squads can help simplify the process of installing and managing AI agents, but it also introduces new dependencies and potential security vulnerabilities that need to be addressed.</p>
-<p>In conclusion, optimizing the performance of AI agents with Long-Short Term Memory and LLM-Agnostic Platforms requires a deep understanding of the technical details and limitations of the AI agents and platforms used. The research provides some general information on the use of LLMs and LLM-Agnostic Platforms, but it does not provide specific details on the implementation and optimization of AI agents. Further research is needed to provide more detailed information on the technical aspects of optimizing AI agent performance.</p></div></section>
-<div class="book-footer"><strong>awesome-ai-agents: Technical Deep Dive</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; April 12, 2026</div>
+</svg><p class="diagram-caption">Figure: flyte lifecycle and state transitions</p></div></div></section>
+<section class="chapter" id="ch4"><div class="ch-banner"><span class="ch-num">Chapter 4</span><h2>Integrating Remote Workflows with pyflyte run --remote</h2></div><p class="ch-summary">Run workflows remotely</p><div class="ch-body"><p>To integrate remote workflows, the pyflyte run --remote command is used. This allows users to execute their workflows on a remote cluster. The flytectl demo start command is used to create a new sandbox cluster. The pyflyte run --remote command can be used with a local file or a URL.</p>
+<p>For example, pyflyte run --remote helloworld. py helloworldwf or pyflyte run --remote https://raw. githubusercontent. com/flyteorg/flytesnacks/master/examplecode/basics/basics/helloworld.</p>
+<p>py helloworldwf. The workflow can also be run with inputs, such as pyflyte run --remote https://raw. githubusercontent. com/flyteorg/flytesnacks/master/examplecode/basics/basics/workflow.</p>
+<p>py simplewf --x '[-3,0,3]' --y '[7,4,-2]'.</p>
+<p>The pyflyte run --remote command uses the Kubernetes architecture to manage the remote cluster. The clusterresourcemanager and Pod plugin are used to create and manage pods. The PodTemplate is used to define the template for the pods. For example, the apiVersion: v1 kind: PodTemplate metadata: name: flyte-default-template namespace: flyte template: metadata: spec: containers: - name: noop image: docker.</p>
+<p>io/rwgrim/docker-noop.</p>
+<p>The pyflyte run --remote command has some limitations. For example, PVCs are namespace specific, which can limit the use of persistent volumes. Additionally, the dynamic workflow failed to correctly register, and Flyte's UI does not provide helpful information to understand that the registration of the dynamic sub workflow has failed and how to fix it.</p>
+<p>The pyflyte run --remote command can be used with different config keys, such as default-pod-template-name, outputlocationprefix, domain, project, and rawoutputdataconfig. For example, the workflow-reeval-duration and propeller. workflow-reeval-duration config keys can be used to control the re-evaluation of workflows.</p>
+<p>The pyflyte run --remote command can be used with different classes and methods, such as the task decorator and the pyflyte run method. For example, the task decorator can be used to define a task, and the pyflyte run method can be used to run the task.</p>
+<p>The pyflyte run --remote command has some performance metrics, such as the max-streak-length and propeller. max-streak-length config keys, which can be used to control the maximum streak length of a workflow. Additionally, the backoff. max-duration and tasks.</p>
+<p>backoff. max-duration config keys can be used to control the backoff duration of a workflow.</p>
+<p>The pyflyte run --remote command can be used with different version numbers, such as 1. x and 2. For example, the pyflyte run --remote command can be used with version 1. x to run a workflow on a remote cluster.</p>
+<p>The pyflyte run --remote command has some use cases, such as building production-grade data and ML pipelines, constructing pipelines using the Python SDK, and deploying them on both cloud and on-premises environments. Additionally, the pyflyte run --remote command can be used for distributed processing and efficient resource utilization, fine-tuning code, and productionizing workflows with the Deployment guide.</p><div class="sec-heading">flyte — Key Metrics</div><div class="bar-section"><div class="bar-row"><span class="bar-label">Ease of Use</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:90%"></span></span></span><span class="bar-value">90%</span></div><div class="bar-row"><span class="bar-label">Scalability</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:95%"></span></span></span><span class="bar-value">95%</span></div><div class="bar-row"><span class="bar-label">Flexibility</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:92%"></span></span></span><span class="bar-value">92%</span></div><div class="bar-row"><span class="bar-label">Performance</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:88%"></span></span></span><span class="bar-value">88%</span></div><div class="bar-row"><span class="bar-label">Security</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:85%"></span></span></span><span class="bar-value">85%</span></div><div class="bar-row"><span class="bar-label">Community Support</span><span class="bar-track"><span class="bar-inner"><span class="bar-fill" style="width:80%"></span></span></span><span class="bar-value">80%</span></div></div></div></section>
+<section class="chapter" id="ch5"><div class="ch-banner"><span class="ch-num">Chapter 5</span><h2>Troubleshooting Production-Grade Pipelines with the task decorator</h2></div><p class="ch-summary">Troubleshoot pipelines</p><div class="ch-body"><p>The task decorator is a crucial component in building production-grade data and ML pipelines with Flyte. It allows users to define tasks that can be executed in a distributed environment. To troubleshoot issues with the task decorator, users can leverage the pyflyte run command to execute their workflows locally. The pyflyte run --remote command can be used to execute workflows on a remote cluster.</p>
+<p>The Flyte 1. x and Flyte 2 versions have different architectures, with Flyte 2 using a Kubernetes-based distributed backend. The task decorator does not support caching by default, but this can be enabled using the cache=True config key. The interruptible=True config key can be used to make tasks interruptible.</p>
+<p>The domain config key can be used to specify the domain for a task.</p>
+<p>The Flyte types, such as FlyteFile and FlyteDirectory, can be used to define the input and output types for tasks. The Structured Dataset type can be used to define structured datasets. The sayhello() -> str and helloworldwf() -> str functions can be used as examples of tasks and workflows. The pyflyte run helloworld.</p>
+<p>py helloworldwf command can be used to execute a workflow. The pyflyte run --remote helloworld. py helloworldwf command can be used to execute a workflow on a remote cluster. The flytectl demo start command can be used to start a new sandbox cluster.</p>
+<p>The task decorator can be used to define tasks that can be executed in a distributed environment. The @task decorator can be used to define a task, and the @workflow decorator can be used to define a workflow. The tasklogs, plugins, logs, templates, and displayName config keys can be used to customize the behavior of tasks and workflows. The Kubernetes dashboard, Flyte-sandbox, AWS CloudWatch, GCP Stackdriver, Splunk, and Datadog can be used to monitor and troubleshoot workflows.</p>
+<p>The Flyte 1. x version has a different architecture than the Flyte 2 version. The Flyte 2 version uses a Kubernetes-based distributed backend, which provides more efficient resource utilization. The task decorator does not support caching by default, but this can be enabled using the cache=True config key.</p>
+<p>The interruptible=True config key can be used to make tasks interruptible. The domain config key can be used to specify the domain for a task.</p>
+<p>The pyflyte run command can be used to execute workflows locally, and the pyflyte run --remote command can be used to execute workflows on a remote cluster. The flytectl demo start command can be used to start a new sandbox cluster. The task decorator can be used to define tasks that can be executed in a distributed environment. The @task decorator can be used to define a task, and the @workflow decorator can be used to define a workflow.</p>
+<p>The task decorator can be used to define tasks that can be executed in a distributed environment. The task decorator does not support caching by default, but this can be enabled using the cache=True config key. The interruptible=True config key can be used to make tasks interruptible. The domain config key can be used to specify the domain for a task.</p>
+<p>The Flyte types, such as FlyteFile and FlyteDirectory, can be used to define the input and output types for tasks.</p>
+<p>The Flyte 2 version uses a Kubernetes-based distributed backend, which provides more efficient resource utilization. The task decorator can be used to define tasks that can be executed in a distributed environment. The @task decorator can be used to define a task, and the @workflow decorator can be used to define a workflow. The task_logs, plugins, logs, templates, and displayName config keys can be used to customize the behavior of tasks and workflows.</p>
+<p>The task decorator can be used to define tasks that can be executed in a distributed environment. The task decorator does not support caching by default, but this can be enabled using the cache=True config key. The interruptible=True config key can be used to make tasks interruptible. The domain config key can be used to specify the domain for a task.</p>
+<p>The Flyte types, such as FlyteFile and FlyteDirectory, can be used to define the input and output types for tasks. The Structured Dataset type can be used to define structured datasets.</p><div class="sec-heading">flyte — Feature Overview</div><table class="data-table"><thead><tr><th>Feature</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>Workflow Management</td><td>Flyte</td><td>Flyte provides a robust workflow management system for building production-grade data and ML pipelines</td></tr><tr><td>Cloud Support</td><td>Yes</td><td>Flyte supports deployment on both cloud and on-premises environments</td></tr><tr><td>Distributed Processing</td><td>Yes</td><td>Flyte enables distributed processing and efficient resource utilization</td></tr><tr><td>Python SDK</td><td>Yes</td><td>Flyte provides a Python SDK for constructing pipelines and deploying them on the cloud or on-premises</td></tr><tr><td>Kubernetes Support</td><td>Yes</td><td>Flyte is built on top of Kubernetes for scalable and secure deployment</td></tr><tr><td>Machine Learning Integration</td><td>Yes</td><td>Flyte supports integration with machine learning frameworks like Horovod and Spark</td></tr></tbody></table></div></section>
+<section class="chapter" id="ch6"><div class="ch-banner"><span class="ch-num">Chapter 6</span><h2>Optimizing Performance with Flyte 2 and the Python SDK</h2></div><p class="ch-summary">Optimize Flyte performance</p><div class="ch-body"><p>To optimize performance with Flyte 2 and the Python SDK, it's essential to understand the configuration options available. The flyte:propeller:all:freeworkerscount config key controls the number of free workers, which can impact performance. A low number may result in higher overall latency for each workflow evaluation loop, while a higher number implies that more workflows can be evaluated in parallel, reducing latency. The plugins.</p>
+<p>workqueue. config. workers config key also plays a crucial role in determining the number of worker pods. The FLYTEINTERNALCONFIGURATIONPATH and FLYTEINTERNALIMAGE environment variables can be used to customize the internal configuration and image used by Flyte.</p>
+<p>The FlytePropeller component is responsible for managing the workflow execution, and its performance can be optimized by adjusting the ackoff. max-duration and tasks. backoff. max-duration settings.</p>
+<p>The workflowStore Policy and propeller. workflowStore. policy settings can also be tuned to improve performance. The etcd component is used for storing workflow metadata, and its performance can be optimized by adjusting the ResourceVersionCache settings.</p>
+<p>The FlyteConsole provides a user-friendly interface for monitoring and managing workflows, but it has limitations, such as not providing helpful information when the registration of a dynamic sub workflow fails.</p>
+<p>The Python SDK provides a range of APIs for interacting with Flyte, including the @task decorator, which can be used to define tasks with specific resource requirements. The createtask method can be used to create tasks, and the stub. CreateTask method can be used to create tasks with custom settings. The processresult method can be used to process the results of a task, and the invoke method can be used to invoke a task.</p>
+<p>The ctx. invoke method can be used to invoke a task with a specific context. The handler method can be used to handle the results of a task.</p>
+<p>The dynamic workflow feature in Flyte allows for the creation of workflows that can be modified at runtime. However, this feature has limitations, such as the dynamic workflow failing to correctly register, and Flyte's UI not providing helpful information to understand that the registration of the dynamic sub workflow has failed and how to fix it. The flytepropeller logs can be used to diagnose issues with workflow execution. The MLOps team can use Flyte to manage and optimize their machine learning workflows.</p>
+<p>The PodTemplate and V1PodTemplate classes can be used to define custom pod templates for workflow execution. The V1PodSpec class can be used to define the specification for a pod. The tolerations setting can be used to specify the tolerations for a pod. The key, operator, and value settings can be used to specify the tolerations.</p>
+<p>The effect setting can be used to specify the effect of the toleration. The NoSchedule effect can be used to prevent the pod from being scheduled on a node with a specific taint.</p>
+<p>The pyflyte-fast-execute command can be used to execute workflows with custom settings. The --additional-distribution option can be used to specify an additional distribution for the workflow. The --dest-dir option can be used to specify the destination directory for the workflow. The --task-module option can be used to specify the task module for the workflow.</p>
+<p>The --task-name option can be used to specify the task name for the workflow. The --inputs option can be used to specify the inputs for the workflow. The --output-prefix option can be used to specify the output prefix for the workflow.</p>
+<p>The performance of Flyte can be optimized by adjusting the configuration settings and using custom pod templates. The flyte:propeller:all:freeworkers_count config key can be adjusted to control the number of free workers. The plugins. workqueue.</p>
+<p>config. workers config key can be adjusted to control the number of worker pods. The ackoff. max-duration and tasks.</p>
+<p>backoff. max-duration settings can be adjusted to optimize the performance of the FlytePropeller component. The workflowStore Policy and propeller. workflowStore.</p>
+<p>policy settings can be adjusted to optimize the performance of the workflow store.</p><div class="sec-heading">Further Viewing</div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Flyte 2 in 5 minutes - AI orchestration demo</div><a class="video-url" href="https://www.youtube.com/watch?v=LLwD6IrKqcQ">https://www.youtube.com/watch?v=LLwD6IrKqcQ</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Thomas J. Fan - Flytekit: A Python SDK to Quickly Bring your ...</div><a class="video-url" href="https://www.youtube.com/watch?v=hTz4PeH2sx4">https://www.youtube.com/watch?v=hTz4PeH2sx4</a></div><div class="video-card"><div class="video-label">Watch</div><div class="video-title">Flyte's Script Mode - pyflyte run</div><a class="video-url" href="https://www.youtube.com/watch?v=mJMf94h0LA8">https://www.youtube.com/watch?v=mJMf94h0LA8</a></div></div></section>
+<div class="book-footer"><strong>flyte: Technical Deep Dive</strong> &mdash; Arvind Sundararajan &nbsp;|&nbsp; April 13, 2026</div>
 </body>
 </html>
